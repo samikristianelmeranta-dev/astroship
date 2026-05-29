@@ -6,70 +6,70 @@ import PricingCard from "@/components/pricing.astro";
 
 const pricing = [
   {
-    name: "Personal",
-    price: "Free",
+    name: "Startti",
+    price: "Ilmainen",
     popular: false,
     features: [
-      "Lifetime free",
-      "Up to 3 users",
-      "Unlimited Pages",
-      "Astro Sub domain",
-      "Basic Integrations",
-      "Community Support",
+      "14 päivän ilmainen kokeilu",
+      "1 mainoskampanja",
+      "Peruskäyttäjätuki",
+      "Analytiikka-dashboard",
+      "Sähköpostituki",
+      "TulosAgentti-brändi",
     ],
     button: {
-      text: "Get Started",
-      link: "/",
+      text: "Aloita ilmaiseksi",
+      link: "/contact",
     },
   },
   {
-    name: "Startup",
+    name: "Kasvu",
     price: {
-      monthly: "$19",
-      annual: "$16",
-      discount: "10%",
-      original: "$24",
+      monthly: "490 €/kk",
+      annual: "420 €/kk",
+      discount: "15%",
+      original: "590 €",
     },
     popular: true,
     features: [
-      "All Free Features",
-      "Up to 20 users",
-      "20 Custom domains",
-      "Unlimited Collaborators",
-      "Advanced Integrations",
-      "Priority Support",
+      "Kaikki Startti-ominaisuudet",
+      "Rajattomat kampanjat",
+      "AI-optimointi reaaliajassa",
+      "Konversio-optimointi",
+      "Priorisoitu asiakastuki",
+      "Kuukausiraportointi",
     ],
     button: {
-      text: "Get Started",
-      link: "#",
+      text: "Aloita nyt",
+      link: "/contact",
     },
   },
   {
-    name: "Enterprise",
-    price: "Custom",
+    name: "Yritys",
+    price: "Räätälöity",
     popular: false,
     features: [
-      "All Pro Features",
-      "Unlimited Custom domains",
-      "99.99% Uptime SLA",
-      "SAML & SSO Integration",
-      "Dedicated Account Manager",
-      "24/7 Phone Support",
+      "Kaikki Kasvu-ominaisuudet",
+      "Oma tilivastaava",
+      "Räätälöity strategia",
+      "99,9 % palvelutaso (SLA)",
+      "API-integraatiot",
+      "24/7 puhelintuki",
     ],
     button: {
-      text: "Contact us",
+      text: "Ota yhteyttä",
       link: "/contact",
     },
   },
 ];
 ---
 
-<Layout title="Pricing">
+<Layout title="Hinnoittelu">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Pricing</Fragment>
+      <Fragment slot="title">Hinnoittelu</Fragment>
       <Fragment slot="desc">
-        Simple & Predictable pricing. No Surprises.
+        Selkeää hinnoittelua ilman yllätyksiä. Maksat tuloksista.
       </Fragment>
     </Sectionhead>
 

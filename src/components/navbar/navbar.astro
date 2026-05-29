@@ -6,35 +6,30 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Features",
+    title: "Palvelut",
     path: "#",
     children: [
-      { title: "Action", path: "/" },
-      { title: "Another action", path: "#" },
-      { title: "Dropdown Submenu", path: "#" },
-      { title: "404 Page", path: "/404" },
+      { title: "AI-markkinointi", path: "/" },
+      { title: "Konversio-optimointi", path: "#" },
+      { title: "Hakukoneoptimointi", path: "#" },
+      { title: "Somemarkkinointi", path: "#" },
     ],
   },
   {
-    title: "Pricing",
+    title: "Hinnoittelu",
     path: "/pricing",
   },
   {
-    title: "About",
+    title: "Meistä",
     path: "/about",
   },
   {
-    title: "Blog",
+    title: "Blogi",
     path: "/blog",
   },
   {
-    title: "Contact",
+    title: "Ota yhteyttä",
     path: "/contact",
-  },
-  {
-    title: "Pro Version",
-    badge: true,
-    path: "https://astroship-pro.web3templates.com/",
   },
 ];
 ---
@@ -44,8 +39,8 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
+          ><span class="font-bold text-slate-800">Tulos</span><span
+            class="text-indigo-600">Agentti</span
           >
         </a>
         <div class="block lg:hidden">
@@ -84,15 +79,15 @@ const menuitems = [
           }
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up</Link>
+          <Link href="/contact" style="muted" block size="md">Kirjaudu</Link>
+          <Link href="/contact" size="md" block>Aloita nyt</Link>
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="#">Log in</a>
-        <Link href="#" size="md">Sign up</Link>
+        <a href="/contact">Kirjaudu</a>
+        <Link href="/contact" size="md">Aloita nyt</Link>
       </div>
     </div>
   </header>
