@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vercel": "^8.1.0",
     "@fontsource-variable/bricolage-grotesque": "^5.2.5",
     "@fontsource-variable/inter": "^5.2.5",
     "@iconify-json/bx": "^1.2.2",
@@ -24,6 +25,8 @@
     "astro-icon": "^1.1.5",
     "astro-navbar": "^2.3.9",
     "astro-seo": "^0.8.4",
+    "cheerio": "^1.0.0",
+    "resend": "^4.1.2",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.0.14"
   }

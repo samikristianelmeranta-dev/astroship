@@ -155,6 +155,41 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 TailwindCSS is already configured in this repo, so you can start using it without any installation.
 
+## Hakukone- ja AI-näkyvyystesti (liidigeneraattori)
+
+Sivustolla `/nakyvyystesti` on lomake, jolla vierailija syöttää oman verkko-osoitteensa
+ja sähköpostinsa. Lomakkeen lähetys:
+
+1. Analysoi sivuston välittömästi (SEO- ja AI-näkyvyystarkistukset, ks.
+   `src/lib/visibilityAnalyzer.ts`).
+2. Lähettää sinulle liidi-ilmoituksen heti (`LEAD_NOTIFICATION_EMAIL`).
+3. Lähettää asiakkaalle vahvistusviestin heti ja täyden raportin automaattisesti
+   n. 4 tunnin kuluttua (Resendin `scheduledAt`-ominaisuudella, ei vaadi erillistä
+   jonoa tai tietokantaa).
+
+Toteutus vaatii serverin/adapterin (tässä `@astrojs/vercel`) ja
+[Resend](https://resend.com)-tilin sähköpostien lähetykseen.
+
+### Käyttöönotto
+
+1. Luo Resend-tili, vahvista lähettäjädomainisi ja luo API-avain.
+2. Kopioi `.env.example` → `.env` ja täytä arvot:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   - `RESEND_API_KEY` — Resendin API-avain
+   - `RESEND_FROM_EMAIL` — vahvistetun domainin lähettäjäosoite
+   - `LEAD_NOTIFICATION_EMAIL` — osoite, johon liidit lähetetään
+
+3. Deployaa Vercelliin ja lisää samat ympäristömuuttujat Vercelin projektiasetuksiin
+   (Settings → Environment Variables).
+
+Analyysin tarkistuslistaa (SEO- ja AI-näkyvyyskriteerit) voi muokata suoraan
+tiedostossa `src/lib/visibilityAnalyzer.ts`, ja sähköpostien ulkoasua tiedostossa
+`src/lib/emailTemplates.ts`.
+
 ## Credits
 
 [Hero Illustration](https://www.figma.com/community/file/1108400791662599811) by [Streamline](https://www.streamlinehq.com/)
