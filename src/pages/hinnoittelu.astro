@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import PricingCard from "@/components/pricing.astro";
+
+const pricing = [
+  {
+    name: "Käynnistyspaketti",
+    price: "alk. 490 €/kk",
+    popular: false,
+    features: [
+      "SEO-peruskuntoisuuden korjaus",
+      "Avainsana- ja kilpailija-analyysi",
+      "Kuukausittainen tulosraportti",
+      "Yksi sisältöpäivitys kuukaudessa",
+      "Sähköpostituki",
+    ],
+    button: {
+      text: "Kysy tarjous",
+      link: "/yhteystiedot",
+    },
+  },
+  {
+    name: "Kasvupaketti",
+    price: "alk. 990 €/kk",
+    popular: true,
+    features: [
+      "Kaikki Käynnistyspaketin sisällöt",
+      "AI-optimointi tekoälyhakuja varten",
+      "Sisällöntuotanto kahdesti kuukaudessa",
+      "Hakusanamainonnan hallinta",
+      "Kuukausittainen strategiapalaveri",
+    ],
+    button: {
+      text: "Kysy tarjous",
+      link: "/yhteystiedot",
+    },
+  },
+  {
+    name: "Kumppanuus",
+    price: "Räätälöity",
+    popular: false,
+    features: [
+      "Kaikki Kasvupaketin sisällöt",
+      "Kotisivu-uudistus tai jatkokehitys",
+      "Monikanavainen digimarkkinointi",
+      "Oma nimetty yhteyshenkilö",
+      "Viikoittainen raportointi",
+    ],
+    button: {
+      text: "Ota yhteyttä",
+      link: "/yhteystiedot",
+    },
+  },
+];
+---
+
+<Layout
+  title="Hinnoittelu"
+  description="Selkeät palvelupaketit SEO-optimointiin, AI-optimointiin, kotisivuihin ja digitaaliseen markkinointiin. Kysy räätälöity tarjous tarpeisiisi.">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Hinnoittelu</Fragment>
+      <Fragment slot="desc">
+        Selkeät palvelupaketit kasvun eri vaiheisiin. Hinnat ovat suuntaa
+        antavia – räätälöin aina tarjouksen yrityksesi tarpeiden mukaan.
+      </Fragment>
+    </Sectionhead>
+
+    <div
+      class="grid md:grid-cols-3 gap-10 mx-auto max-w-(--breakpoint-lg) mt-12">
+      {pricing.map((item) => <PricingCard plan={item} />)}
+    </div>
+
+    <p class="text-center text-slate-500 mt-12">
+      Epävarma, mikä paketti sopii sinulle? <a
+        href="/yhteystiedot"
+        class="text-emerald-600 font-medium hover:underline"
+        >Varaa maksuton alkukartoitus</a
+      >, niin katsotaan yhdessä.
+    </p>
+  </Container>
+</Layout>

@@ -1,6 +1,4 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/hero.png";
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
@@ -8,45 +6,146 @@ import { Icon } from "astro-icon/components";
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
+    <svg
+      viewBox="0 0 520 420"
+      class="w-full max-w-lg mx-auto"
+      aria-hidden="true">
+      <defs>
+        <linearGradient id="barGradient" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stop-color="#059669" />
+          <stop offset="1" stop-color="#34d399" />
+        </linearGradient>
+      </defs>
+
+      <circle cx="260" cy="210" r="190" fill="#f0fdf6" />
+
+      <!-- browser card -->
+      <rect
+        x="70"
+        y="70"
+        width="340"
+        height="260"
+        rx="16"
+        fill="white"
+        stroke="#0f172a"
+        stroke-width="2.5"
+      ></rect>
+      <rect x="70" y="70" width="340" height="34" rx="16" fill="#0f172a"
+      ></rect>
+      <rect x="70" y="88" width="340" height="16" fill="#0f172a"></rect>
+      <circle cx="90" cy="87" r="4.5" fill="#f87171"></circle>
+      <circle cx="105" cy="87" r="4.5" fill="#fbbf24"></circle>
+      <circle cx="120" cy="87" r="4.5" fill="#34d399"></circle>
+
+      <!-- bars -->
+      <rect x="110" y="250" width="30" height="50" rx="4" fill="#e2e8f0"
+      ></rect>
+      <rect x="160" y="220" width="30" height="80" rx="4" fill="#e2e8f0"
+      ></rect>
+      <rect
+        x="210"
+        y="180"
+        width="30"
+        height="120"
+        rx="4"
+        fill="url(#barGradient)"
+      ></rect>
+      <rect
+        x="260"
+        y="145"
+        width="30"
+        height="155"
+        rx="4"
+        fill="url(#barGradient)"
+      ></rect>
+      <rect
+        x="310"
+        y="110"
+        width="30"
+        height="190"
+        rx="4"
+        fill="url(#barGradient)"
+      ></rect>
+
+      <!-- trend line -->
+      <path
+        d="M110 245 160 210 210 175 260 140 340 95"
+        fill="none"
+        stroke="#0f172a"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M316 95h24v24"
+        fill="none"
+        stroke="#0f172a"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+
+      <!-- magnifier badge (SEO) -->
+      <g transform="translate(360,220)">
+        <circle
+          cx="36"
+          cy="36"
+          r="36"
+          fill="white"
+          stroke="#0f172a"
+          stroke-width="2.5"
+        ></circle>
+        <circle cx="32" cy="32" r="12" fill="none" stroke="#059669" stroke-width="4"
+        ></circle>
+        <path
+          d="M41 41 50 50"
+          stroke="#059669"
+          stroke-width="4"
+          stroke-linecap="round"
+        ></path>
+      </g>
+
+      <!-- sparkle badge (AI) -->
+      <g transform="translate(30,150)">
+        <circle
+          cx="30"
+          cy="30"
+          r="30"
+          fill="#0f172a"
+        ></circle>
+        <path
+          d="M30 14 34 26 46 30 34 34 30 46 26 34 14 30 26 26Z"
+          fill="#34d399"
+        ></path>
+      </g>
+    </svg>
   </div>
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      Näy siellä, missä asiakkaasi <span class="text-emerald-600"
+        >etsivät</span
+      >
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      Olen KasvuKumppani – yhden ihmisen asiantuntijayritys, joka auttaa
+      yrityksesi näkymään Googlen hakutuloksissa ja tekoälyavusteisissa
+      hauissa.<wbr /> SEO, AI-optimointi, kotisivut ja digitaalinen markkinointi
+      yhdeltä ja samalta kumppanilta.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        href="/yhteystiedot"
+        class="flex gap-1 items-center justify-center">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
+        Varaa maksuton alkukartoitus
       </Link>
       <Link
         size="lg"
         style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        href="/palvelut"
+        class="flex gap-1 items-center justify-center">
+        Katso palvelut
       </Link>
     </div>
   </div>

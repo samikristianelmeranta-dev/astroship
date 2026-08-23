@@ -4,51 +4,51 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "SEO-optimointi",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+      "Tekninen SEO, sisältöstrategia ja avainsana-analyysi, jotka nostavat sivustosi Googlen hakutuloksissa oikeilla hakusanoilla.",
+    icon: "bx:bxs-search-alt-2",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "AI-optimointi",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+      "Varmistan, että yrityksesi löytyy myös ChatGPT:n, Perplexityn ja Google AI Overviews'n kaltaisista tekoälyhauista.",
+    icon: "bx:bxs-brain",
   },
   {
-    title: "On-Demand Components",
+    title: "Kotisivujen toteutus",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+      "Nopeat, saavutettavat ja hakukoneystävälliset kotisivut, jotka on rakennettu muuntamaan kävijät asiakkaiksi.",
+    icon: "bx:bxs-palette",
   },
   {
-    title: "Broad Integration",
+    title: "Digitaalinen markkinointi",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+      "Google- ja somemainonta, sähköpostimarkkinointi ja sisällöntuotanto osana yhtenäistä kasvustrategiaa.",
+    icon: "bx:bxs-megaphone",
   },
   {
-    title: "SEO Enabled",
+    title: "Konversio-optimointi",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
+      "Sivuston ja laskeutumissivujen hienosäätöä, jotta nykyinen kävijämäärä muuttuu tehokkaammin liideiksi ja myynniksi.",
+    icon: "bx:trending-up",
   },
   {
-    title: "Community",
+    title: "Analytiikka & raportointi",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Selkeät kuukausiraportit ja mittarit, joista näet suoraan mitä tehdään ja miten se näkyy tuloksissa.",
+    icon: "bx:bxs-bar-chart-alt-2",
   },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+    Kaikki kasvun palaset saman katon alta
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+    Yhdistän hakukonenäkyvyyden, tekoälyoptimoinnin ja markkinoinnin yhdeksi
+    selkeäksi kokonaisuudeksi – ilman erillisiä toimistoja ja väliportaita.
   </p>
 </div>
 
@@ -56,7 +56,7 @@ const features = [
   {
     features.map((item) => (
       <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+        <div class="mt-1 bg-emerald-600 rounded-full p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
         </div>
         <div>

@@ -1,19 +1,38 @@
-<footer class="my-20">
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
-  </p>
-  <!--
-    Can we ask you a favor 🙏
-    Please keep this backlink on your website if possible.
-    or Purchase a commercial license from https://web3templates.com
-  -->
-  <p class="text-center text-xs text-slate-500 mt-1">
-    Made by <a
-      href="https://web3templates.com"
-      target="_blank"
-      rel="noopener"
-      class="hover:underline">
-      Web3Templates
-    </a>
-  </p>
+---
+import Container from "@/components/container.astro";
+
+const links = [
+  { title: "Palvelut", path: "/palvelut" },
+  { title: "Hinnoittelu", path: "/hinnoittelu" },
+  { title: "Blogi", path: "/blogi" },
+  { title: "Meistä", path: "/meista" },
+  { title: "Yhteystiedot", path: "/yhteystiedot" },
+];
+---
+
+<footer class="mt-20 border-t border-slate-100">
+  <Container>
+    <div
+      class="flex flex-col md:flex-row justify-between items-center gap-6 py-10">
+      <a href="/" class="flex items-center gap-2">
+        <span class="font-bold text-slate-800">Kasvu</span><span
+          class="text-emerald-600 font-bold">Kumppani</span
+        >
+      </a>
+      <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.path} class="hover:text-slate-800">
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <p class="text-center text-sm text-slate-500 pb-10">
+      Copyright © {new Date().getFullYear()} KasvuKumppani. Kaikki oikeudet pidätetään.
+    </p>
+  </Container>
 </footer>

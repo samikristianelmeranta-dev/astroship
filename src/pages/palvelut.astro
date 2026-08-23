@@ -1,0 +1,148 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import Cta from "@/components/cta.astro";
+import { Icon } from "astro-icon/components";
+
+const services = [
+  {
+    title: "SEO-optimointi",
+    icon: "bx:bxs-search-alt-2",
+    description:
+      "Näkyvyys Googlen hakutuloksissa ei synny sattumalta. Yhdistän teknisen SEO:n, sisältöstrategian ja jatkuvan mittaamisen kokonaisuudeksi, joka nostaa sivustoasi juuri niillä hakusanoilla, joilla asiakkaasi sinua etsivät.",
+    items: [
+      "Tekninen SEO-auditointi: sivuston nopeus, indeksointi ja rakenne",
+      "Avainsanatutkimus ja sisältöstrategia",
+      "On-page-optimointi: otsikot, metatiedot ja sisäinen linkitys",
+      "Paikallinen SEO ja Google-yritysprofiilin optimointi",
+    ],
+  },
+  {
+    title: "AI-optimointi",
+    icon: "bx:bxs-brain",
+    description:
+      "Yhä useampi hakee tietoa ChatGPT:ltä, Perplexitylta ja Googlen tekoälyvastauksista perinteisen hakutuloslistan sijaan. Optimoin sisältösi niin, että tekoäly ymmärtää ja suosittelee yritystäsi näissä vastauksissa.",
+    items: [
+      "Sisällön optimointi generatiivisille hakukoneille (AI Overviews, ChatGPT, Perplexity)",
+      "Rakenteinen data (schema.org), joka auttaa tekoälyä ymmärtämään sisältöäsi",
+      "Selkeät, vastauslähtöiset sisällöt, jotka tekoäly poimii lähteekseen",
+      "Brändisi näkyvyyden seuranta tekoälyvastauksissa",
+    ],
+  },
+  {
+    title: "Kotisivujen toteutus",
+    icon: "bx:bxs-palette",
+    description:
+      "Kotisivu on koko digitaalisen näkyvyytesi perusta. Rakennan nopeat, selkeät ja hakukoneystävälliset sivustot, jotka on suunniteltu muuttamaan kävijät asiakkaiksi jo ensimmäisestä päivästä lähtien.",
+    items: [
+      "Modernilla tekniikalla rakennetut, nopeat sivustot",
+      "Responsiivinen ja saavutettava design kaikille laitteille",
+      "Hakukone- ja AI-ystävällinen tekninen toteutus alusta asti",
+      "Yhteydenottolomakkeet, verkkokaupat ja muut liiketoimintaa tukevat toiminnot",
+    ],
+  },
+  {
+    title: "Digitaalinen markkinointi",
+    icon: "bx:bxs-megaphone",
+    description:
+      "Näkyvyys ei riitä, jos kävijät eivät muutu asiakkaiksi. Suunnittelen ja toteutan markkinointitoimenpiteitä, jotka tukevat hakukonenäkyvyyttäsi ja tuovat mitattavaa kasvua liiketoiminnallesi.",
+    items: [
+      "Google-mainonta ja hakusanamainonta",
+      "Somemarkkinointi ja sisällöntuotanto",
+      "Sähköpostimarkkinointi ja automaatiot",
+      "Kampanjoiden seuranta, raportointi ja jatkuva optimointi",
+    ],
+  },
+];
+
+const steps = [
+  {
+    title: "Kartoitus",
+    description:
+      "Käymme läpi sivustosi nykytilan: tekniikan, hakukonenäkyvyyden, kilpailijat ja suurimmat mahdollisuudet.",
+  },
+  {
+    title: "Strategia",
+    description:
+      "Rakennan selkeän, tavoitteisiin sidotun suunnitelman yhdessä kanssasi – ei yleispäteviä listoja.",
+  },
+  {
+    title: "Toteutus",
+    description:
+      "Viemme suunnitelman käytäntöön: tekniset korjaukset, sisällöt, sivusto ja kampanjat.",
+  },
+  {
+    title: "Mittaus & optimointi",
+    description:
+      "Seuraan tuloksia säännöllisesti ja hienosäädän tekemistä jatkuvasti parempaan suuntaan.",
+  },
+];
+---
+
+<Layout
+  title="Palvelut"
+  description="SEO-optimointi, AI-optimointi, kotisivujen toteutus ja digitaalinen markkinointi – kaikki kasvun palaset saman kumppanin kautta.">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Palvelut</Fragment>
+      <Fragment slot="desc">
+        Neljä osa-aluetta, yksi yhtenäinen kasvustrategia.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="mt-16 grid gap-16 max-w-4xl mx-auto">
+      {
+        services.map((service) => (
+          <div class="grid md:grid-cols-[auto_1fr] gap-6 items-start">
+            <div class="bg-emerald-600 rounded-full p-3 w-12 h-12 shrink-0 flex items-center justify-center">
+              <Icon class="text-white w-6 h-6" name={service.icon} />
+            </div>
+            <div>
+              <h2 class="font-bold text-2xl text-gray-800">
+                {service.title}
+              </h2>
+              <p class="text-slate-500 mt-2 leading-relaxed">
+                {service.description}
+              </p>
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2 mt-4">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-2 text-gray-700">
+                    <Icon
+                      class="text-emerald-600 w-5 h-5 mt-0.5 shrink-0"
+                      name="bx:bxs-check-circle"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-24 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center lg:tracking-tight">
+        Näin työskentelen
+      </h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
+        {
+          steps.map((step, index) => (
+            <div>
+              <div class="text-emerald-600 font-bold text-3xl">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <h3 class="font-semibold text-lg mt-2">{step.title}</h3>
+              <p class="text-slate-500 mt-1 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <Cta />
+  </Container>
+</Layout>

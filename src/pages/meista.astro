@@ -1,0 +1,86 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import Cta from "@/components/cta.astro";
+import { Icon } from "astro-icon/components";
+
+const values = [
+  {
+    title: "Läpinäkyvyys",
+    description:
+      "Näet aina, mitä tehdään ja miksi. Ei salattuja menetelmiä tai epämääräisiä raportteja.",
+    icon: "bx:bxs-badge-check",
+  },
+  {
+    title: "Tulokset ennen lupauksia",
+    description:
+      "Lupaan vain sen, minkä pystyn pitämään. Onnistuminen mitataan liiketoimintasi kasvussa, ei klikkauksissa.",
+    icon: "bx:trending-up",
+  },
+  {
+    title: "Yksi kumppani, ei väliportaita",
+    description:
+      "Puhut aina suoraan minun kanssani – ei projektipäälliköitä tai vaihtuvia yhteyshenkilöitä.",
+    icon: "bx:bxs-user",
+  },
+];
+---
+
+<Layout
+  title="Meistä"
+  description="Tutustu KasvuKumppaniin ja sen taustalla työskentelevään SEO-, AI-optimointi- ja markkinointiasiantuntijaan.">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Meistä</Fragment>
+      <Fragment slot="desc">Yhden asiantuntijan kasvukumppani.</Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col md:flex-row gap-10 mx-auto max-w-4xl mt-16 items-start">
+      <div
+        class="w-32 h-32 shrink-0 rounded-full bg-linear-to-br from-emerald-500 to-emerald-700 flex items-center justify-center text-white text-4xl font-bold mx-auto md:mx-0">
+        SE
+      </div>
+      <div>
+        <h2 class="font-bold text-3xl text-gray-800">
+          Sami Elmeranta – perustaja
+        </h2>
+        <p class="text-lg leading-relaxed text-slate-500 mt-3">
+          KasvuKumppani syntyi ajatuksesta, että hakukonenäkyvyyden,
+          tekoälyoptimoinnin, kotisivujen ja markkinoinnin ei tarvitse olla
+          hajallaan usealla eri toimijalla. Autan pieniä ja keskisuuria
+          suomalaisia yrityksiä näkymään siellä, missä asiakkaat oikeasti
+          etsivät tietoa – hakukoneissa ja yhä useammin myös tekoälyavusteisissa
+          hauissa.
+        </p>
+        <p class="text-lg leading-relaxed text-slate-500 mt-4">
+          Työskentelen tietoisesti yksin, ilman ison toimiston yleiskuluja ja
+          väliportaita. Se tarkoittaa, että saat suoraa yhteydenpitoa,
+          nopeampia päätöksiä ja työtä, joka on aina räätälöity juuri sinun
+          yrityksesi tilanteeseen – ei valmiita pohjia.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-24 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center lg:tracking-tight">
+        Näin toimin
+      </h2>
+      <div class="grid md:grid-cols-3 gap-10 mt-10">
+        {
+          values.map((value) => (
+            <div class="flex flex-col items-center text-center gap-3">
+              <div class="bg-emerald-600 rounded-full p-3 w-12 h-12 flex items-center justify-center">
+                <Icon class="text-white w-6 h-6" name={value.icon} />
+              </div>
+              <h3 class="font-semibold text-lg">{value.title}</h3>
+              <p class="text-slate-500 leading-relaxed">{value.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <Cta />
+  </Container>
+</Layout>

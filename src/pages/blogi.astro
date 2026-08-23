@@ -16,12 +16,15 @@ publishedBlogEntries.sort(function (a, b) {
 });
 ---
 
-<Layout title="Blog">
+<Layout
+  title="Blogi"
+  description="Käytännön vinkkejä SEO-optimointiin, AI-optimointiin, kotisivuihin ja digitaaliseen markkinointiin.">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
+      <Fragment slot="title">Blogi</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        Kirjoituksia SEO:sta, tekoälyoptimoinnista ja digitaalisesta
+        markkinoinnista.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -29,7 +32,7 @@ publishedBlogEntries.sort(function (a, b) {
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
+              <a href={`/blogi/${blogPostEntry.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <Picture
                     src={blogPostEntry.data.image.src}
@@ -42,7 +45,7 @@ publishedBlogEntries.sort(function (a, b) {
                     class="w-full rounded-md object-cover object-center bg-white"
                   />
                   <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    <span class="text-emerald-600 uppercase tracking-wider text-sm font-medium">
                       {blogPostEntry.data.category}
                     </span>
 
