@@ -7,7 +7,7 @@ image:
     src: "/blog/seo-perusteet.jpg",
     alt: "SEO-optimointi ja hakukonenäkyvyys",
   }
-publishDate: "2026-06-01 09:00"
+publishDate: "2026-06-01"
 category: "SEO"
 author: "Sami Elmeranta"
 tags: [seo, hakukoneoptimointi, sisältöstrategia]

@@ -7,7 +7,7 @@ image:
     src: "/blog/kotisivut.jpg",
     alt: "Kotisivujen suunnittelu ja toteutus",
   }
-publishDate: "2026-08-05 09:00"
+publishDate: "2026-08-05"
 category: "Kotisivut"
 author: "Sami Elmeranta"
 tags: [kotisivut, verkkosivu, konversio-optimointi]

@@ -1,0 +1,43 @@
+{
+  "paketit": [
+    {
+      "nimi": "Käynnistyspaketti",
+      "hinta": "alk. 490 €/kk",
+      "suosituin": false,
+      "ominaisuudet": [
+        "SEO-peruskuntoisuuden korjaus",
+        "Avainsana- ja kilpailija-analyysi",
+        "Kuukausittainen tulosraportti",
+        "Yksi sisältöpäivitys kuukaudessa",
+        "Sähköpostituki"
+      ],
+      "nappiTeksti": "Kysy tarjous"
+    },
+    {
+      "nimi": "Kasvupaketti",
+      "hinta": "alk. 990 €/kk",
+      "suosituin": true,
+      "ominaisuudet": [
+        "Kaikki Käynnistyspaketin sisällöt",
+        "AI-optimointi tekoälyhakuja varten",
+        "Sisällöntuotanto kahdesti kuukaudessa",
+        "Hakusanamainonnan hallinta",
+        "Kuukausittainen strategiapalaveri"
+      ],
+      "nappiTeksti": "Kysy tarjous"
+    },
+    {
+      "nimi": "Kumppanuus",
+      "hinta": "Räätälöity",
+      "suosituin": false,
+      "ominaisuudet": [
+        "Kaikki Kasvupaketin sisällöt",
+        "Kotisivu-uudistus tai jatkokehitys",
+        "Monikanavainen digimarkkinointi",
+        "Oma nimetty yhteyshenkilö",
+        "Viikoittainen raportointi"
+      ],
+      "nappiTeksti": "Ota yhteyttä"
+    }
+  ]
+}

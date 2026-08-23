@@ -3,57 +3,20 @@ import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import PricingCard from "@/components/pricing.astro";
+import hinnoitteluData from "@/data/hinnoittelu.json";
 
-const pricing = [
-  {
-    name: "Käynnistyspaketti",
-    price: "alk. 490 €/kk",
-    popular: false,
-    features: [
-      "SEO-peruskuntoisuuden korjaus",
-      "Avainsana- ja kilpailija-analyysi",
-      "Kuukausittainen tulosraportti",
-      "Yksi sisältöpäivitys kuukaudessa",
-      "Sähköpostituki",
-    ],
-    button: {
-      text: "Kysy tarjous",
-      link: "/yhteystiedot",
-    },
+// Sisältö tulee src/data/hinnoittelu.json-tiedostosta, jota voi muokata
+// paikallisesti Keystatic-editorilla (pnpm dev -> /keystatic) ilman koodia.
+const pricing = hinnoitteluData.paketit.map((paketti) => ({
+  name: paketti.nimi,
+  price: paketti.hinta,
+  popular: paketti.suosituin,
+  features: paketti.ominaisuudet,
+  button: {
+    text: paketti.nappiTeksti,
+    link: "/yhteystiedot",
   },
-  {
-    name: "Kasvupaketti",
-    price: "alk. 990 €/kk",
-    popular: true,
-    features: [
-      "Kaikki Käynnistyspaketin sisällöt",
-      "AI-optimointi tekoälyhakuja varten",
-      "Sisällöntuotanto kahdesti kuukaudessa",
-      "Hakusanamainonnan hallinta",
-      "Kuukausittainen strategiapalaveri",
-    ],
-    button: {
-      text: "Kysy tarjous",
-      link: "/yhteystiedot",
-    },
-  },
-  {
-    name: "Kumppanuus",
-    price: "Räätälöity",
-    popular: false,
-    features: [
-      "Kaikki Kasvupaketin sisällöt",
-      "Kotisivu-uudistus tai jatkokehitys",
-      "Monikanavainen digimarkkinointi",
-      "Oma nimetty yhteyshenkilö",
-      "Viikoittainen raportointi",
-    ],
-    button: {
-      text: "Ota yhteyttä",
-      link: "/yhteystiedot",
-    },
-  },
-];
+}));
 ---
 
 <Layout

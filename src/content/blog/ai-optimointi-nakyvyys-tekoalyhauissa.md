@@ -7,7 +7,7 @@ image:
     src: "/blog/ai-optimointi.jpg",
     alt: "AI-optimointi ja tekoälyhaut",
   }
-publishDate: "2026-07-10 09:00"
+publishDate: "2026-07-10"
 category: "AI-optimointi"
 author: "Sami Elmeranta"
 tags: [ai-optimointi, tekoäly, seo]

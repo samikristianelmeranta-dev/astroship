@@ -4,6 +4,10 @@ import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import yhteystiedotData from "@/data/yhteystiedot.json";
+
+// Sisältö tulee src/data/yhteystiedot.json-tiedostosta, jota voi muokata
+// paikallisesti Keystatic-editorilla (pnpm dev -> /keystatic) ilman koodia.
 ---
 
 <Layout
@@ -21,18 +25,16 @@ import { Icon } from "astro-icon/components";
           Ota yhteyttä KasvuKumppaniin
         </h2>
         <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Kerro lyhyesti tilanteestasi lomakkeella, tai laita suoraan viestiä
-          sähköpostilla. Vastaan yleensä 1–2 arkipäivän kuluessa ja sovitaan
-          maksuton alkukartoituspuhelu.
+          {yhteystiedotData.intro}
         </p>
         <div class="mt-5">
           <div class="flex items-center mt-2 space-x-2 text-gray-600">
             <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>Suomi (etätyönä koko maahan)</span>
+            <span>{yhteystiedotData.sijainti}</span>
           </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
             <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:info@kasvukumppani.fi"
-              >info@kasvukumppani.fi</a
+              href={`mailto:${yhteystiedotData.email}`}
+              >{yhteystiedotData.email}</a
             >
           </div>
         </div>

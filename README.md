@@ -23,6 +23,18 @@ pnpm build
 pnpm preview
 ```
 
+## Sisällönmuokkaus ilman koodia (Keystatic)
+
+Blogiartikkelit, hinnoittelupaketit ja yhteystiedot voi muokata selaimessa ilman koodia [Keystatic](https://keystatic.com/)-editorilla:
+
+```bash
+pnpm dev
+```
+
+Avaa sitten osoite `http://localhost:4321/keystatic`. Editori kirjoittaa muutokset suoraan projektin tiedostoihin (`src/content/blog/*.md`, `src/data/*.json`) — muista committaa ja pushata muutokset, jotta ne päätyvät julkaistulle sivulle.
+
+Editori on tarkoituksella käytössä vain paikallisessa kehityspalvelimessa (`pnpm dev`), ei julkaistulla sivulla (`pnpm build`), koska sivusto on rakennettu täysin staattiseksi. Jos haluat muokata sisältöä selaimesta ilman repon kloonaamista (esim. puhelimella, kirjautumalla GitHubilla), se on mahdollista laajentaa myöhemmin GitHub-pohjaiseksi tallennukseksi, mutta vaatii oman OAuth-sovelluksen ja palvelinpuolen deployn (esim. Vercel/Netlify).
+
 ## Yhteydenottolomake
 
 Yhteydenottolomake (`src/components/contactform.astro`) käyttää [Web3Forms](https://web3forms.com/)-palvelua. Luo ilmainen access key ja korvaa sillä `YOUR_ACCESS_KEY_HERE`-arvo, jotta lomakevastaukset saapuvat sähköpostiin.
