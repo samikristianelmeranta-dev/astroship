@@ -1,53 +1,75 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/hero.png";
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
+
+const chips = [
+  { icon: "bx:bxs-badge-check", text: "Virallinen Skaala-jälleenmyyjä" },
+  { icon: "bx:bxs-factory", text: "Kotimainen valmistus" },
+  { icon: "bx:bxs-wrench", text: "Asennus avaimet käteen" },
+  { icon: "bx:bxs-leaf", text: "Energiatehokkaat ratkaisut" },
+];
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
+<main class="grid lg:grid-cols-2 gap-10 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div>
+    <span
+      class="inline-flex items-center gap-2 rounded-full bg-brand-50 text-brand-800 px-4 py-1.5 text-sm font-medium">
+      <Icon name="bx:bxs-map-pin" class="w-4 h-4 text-accent-500" />
+      Palvelemme kotitalouksia ja rakennusliikkeitä kautta Suomen
+    </span>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      class="mt-5 text-5xl lg:text-6xl xl:text-6xl font-bold text-brand-950 lg:tracking-tight">
+      Kotimaiset ikkunat ja ovet suomalaiseen kotiin
     </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+    <p class="text-lg mt-5 text-slate-600 max-w-xl leading-relaxed">
+      Suomen Ikkuna &amp; Ovi Oy on Skaala-tuotteiden jälleenmyyjä, joka auttaa
+      sinua valitsemaan ja hankkimaan juuri kotiisi sopivat ikkunat ja ovet –
+      suunnittelusta mittatilaukseen ja asennukseen asti.<wbr /> Kotimaista laatua,
+      pohjoisiin olosuhteisiin suunniteltuna.
     </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+    <div class="mt-8 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        href="/yhteystiedot"
+        class="flex gap-2 items-center justify-center"
+        aria-label="Pyydä ilmainen tarjous ikkunoista ja ovista">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-envelope" />
+        Pyydä ilmainen tarjous
       </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+      <Link href="/ikkunat" size="lg" style="outline" class="flex gap-2 items-center justify-center">
+        Tutustu tuotteisiin
+        <Icon class="w-4 h-4" name="bx:right-arrow-alt" />
       </Link>
     </div>
+    <ul class="mt-8 grid grid-cols-2 gap-x-6 gap-y-3">
+      {
+        chips.map((chip) => (
+          <li class="flex items-center gap-2 text-sm text-slate-600">
+            <Icon name={chip.icon} class="w-4 h-4 text-brand-700 shrink-0" />
+            <span>{chip.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="w-full max-w-lg" aria-hidden="true">
+    <svg viewBox="0 0 480 420" class="w-full h-auto" role="img" aria-label="Kuvitus: moderni suomalainen talo Skaala-ikkunoilla ja -ovella">
+      <rect x="0" y="0" width="480" height="420" rx="24" fill="var(--color-brand-50)" />
+      <rect x="60" y="60" width="360" height="300" rx="8" fill="var(--color-brand-800)" />
+      <rect x="60" y="60" width="360" height="26" fill="var(--color-brand-950)" />
+      <!-- Large triple-pane window -->
+      <rect x="92" y="120" width="180" height="150" rx="4" fill="var(--color-brand-200)" stroke="var(--color-brand-950)" stroke-width="6" />
+      <line x1="152" y1="120" x2="152" y2="270" stroke="var(--color-brand-950)" stroke-width="5" />
+      <line x1="212" y1="120" x2="212" y2="270" stroke="var(--color-brand-950)" stroke-width="5" />
+      <line x1="92" y1="195" x2="272" y2="195" stroke="var(--color-brand-950)" stroke-width="5" />
+      <!-- Door -->
+      <rect x="300" y="150" width="90" height="180" rx="4" fill="var(--color-accent-500)" stroke="var(--color-brand-950)" stroke-width="6" />
+      <circle cx="380" cy="242" r="5" fill="var(--color-brand-950)" />
+      <rect x="312" y="162" width="66" height="70" rx="2" fill="var(--color-accent-100)" opacity="0.6" />
+      <!-- Roofline accent -->
+      <rect x="60" y="60" width="360" height="10" fill="var(--color-accent-500)" />
+      <!-- Ground line -->
+      <rect x="30" y="360" width="420" height="14" rx="7" fill="var(--color-brand-300)" />
+    </svg>
   </div>
 </main>

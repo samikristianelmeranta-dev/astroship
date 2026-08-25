@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  icon: string;
+  ratio?: string;
+  class?: string;
+}
+
+const { icon, ratio = "aspect-[4/3]", class: className = "" } = Astro.props;
+---
+
+<div
+  class={`relative overflow-hidden rounded-md bg-gradient-to-br from-brand-800 to-brand-950 flex items-center justify-center ${ratio} ${className}`}>
+  <svg
+    class="absolute inset-0 w-full h-full opacity-20"
+    viewBox="0 0 100 75"
+    preserveAspectRatio="none">
+    <line x1="50" y1="0" x2="50" y2="75" stroke="white" stroke-width="0.6" />
+    <line x1="0" y1="37.5" x2="100" y2="37.5" stroke="white" stroke-width="0.6" />
+  </svg>
+  <Icon name={icon} class="w-14 h-14 text-white relative" />
+</div>

@@ -4,63 +4,64 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Kotimainen Skaala-laatu",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+      "Myymme Skaalan Suomessa valmistamia ikkunoita ja ovia, jotka on suunniteltu kestämään pohjoismaiset sääolot vuosikymmenien ajan.",
+    icon: "bx:bxs-factory",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Energiatehokkaat ratkaisut",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+      "Autamme valitsemaan lämpöä pidättävät, matalan U-arvon ikkunat ja ovet, jotka pienentävät lämmityskuluja ja parantavat asumismukavuutta.",
+    icon: "bx:bxs-leaf",
   },
   {
-    title: "On-Demand Components",
+    title: "Mittatilaustyönä kotiisi",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+      "Ikkunat ja ovet valmistetaan juuri sinun kotisi mittojen ja tyylin mukaan – uudisrakentamiseen tai peruskorjaukseen.",
+    icon: "bx:bxs-ruler",
   },
   {
-    title: "Broad Integration",
+    title: "Ammattitaitoinen asennus",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+      "Asennusryhmämme huolehtii tiiviistä ja turvallisesta asennuksesta alusta loppuun, jotta ikkunat ja ovet toimivat moitteetta.",
+    icon: "bx:bxs-wrench",
   },
   {
-    title: "SEO Enabled",
+    title: "Laaja väri- ja mallivalikoima",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
+      "Valitse Skaalan värivaihtoehdoista sisä- ja ulkopuolelle erikseen, ja yhdistä ikkunat ja ovet talosi tyyliin sopivaksi kokonaisuudeksi.",
+    icon: "bx:bxs-palette",
   },
   {
-    title: "Community",
+    title: "Turvallisuus ja pitkä käyttöikä",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Laadukkaat helat, tiivisteet ja lasiratkaisut lisäävät kodin turvallisuutta ja varmistavat tuotteiden pitkän käyttöiän.",
+    icon: "bx:bxs-shield",
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+<div class="mt-16 md:mt-0" id="miksi-me">
+  <h2 class="text-4xl lg:text-5xl font-bold text-brand-950 lg:tracking-tight">
+    Miksi valita Suomen Ikkuna &amp; Ovi?
   </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+  <p class="text-lg mt-4 text-slate-600 max-w-2xl">
+    Olemme Skaala-tuotteiden jälleenmyyjä, joka yhdistää kotimaisen
+    valmistuksen laadun ja henkilökohtaisen, paikallisen palvelun. Näin
+    projektisi etenee sujuvasti mittauksesta valmiiseen asennukseen.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-x-10 gap-y-14">
   {
     features.map((item) => (
       <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+        <div class="mt-1 bg-brand-900 rounded-full p-2 w-9 h-9 shrink-0 flex items-center justify-center">
+          <Icon class="text-white w-5 h-5" name={item.icon} />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <h3 class="font-semibold text-lg text-brand-950">{item.title}</h3>
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>

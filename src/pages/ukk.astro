@@ -1,0 +1,93 @@
+---
+import Container from "@/components/container.astro";
+import Cta from "@/components/cta.astro";
+import Faq from "@/components/faq.astro";
+import Layout from "@/layouts/Layout.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+
+const faqItems = [
+  {
+    question: "Kuka on Suomen Ikkuna & Ovi Oy?",
+    answer:
+      "Suomen Ikkuna & Ovi Oy on kotimaisten Skaala-ikkunoiden ja -ovien jälleenmyyjä. Myymme ja asennamme ikkunoita ja ovia kotitalouksille ja rakennusliikkeille kautta Suomen.",
+  },
+  {
+    question: "Mitä tuotteita myytte?",
+    answer:
+      "Valikoimaamme kuuluvat Skaalan puu- ja puu-alumiini-ikkunat, kattoikkunat ja erikoismalliset ikkunat sekä ulko-, terassi-, parveke- ja liukuovet.",
+  },
+  {
+    question: "Onko tuotteenne kotimaisia?",
+    answer:
+      "Kyllä. Skaala valmistaa ikkunansa ja ovensa Suomessa, pohjoismaisiin sääolosuhteisiin suunniteltuina ja testattuina.",
+  },
+  {
+    question: "Kuinka pyydän tarjouksen?",
+    answer:
+      "Helpoiten täyttämällä yhteydenottolomakkeen yhteystiedot-sivulla tai soittamalla meille suoraan. Kerro kohteen tiedot, kuten ikkunoiden/ovien määrä ja aikataulu, niin palaamme asiaan mahdollisimman pian.",
+  },
+  {
+    question: "Onko tarjouksen pyytäminen maksutonta?",
+    answer:
+      "Kyllä, tarjouksen pyytäminen ja alustava kartoitus ovat aina maksuttomia ja sitoumuksettomia.",
+  },
+  {
+    question: "Teettekö projekteja myös uudisrakentamiseen?",
+    answer:
+      "Kyllä, palvelemme sekä uudisrakennuskohteita että peruskorjaus- ja ikkunaremonttiprojekteja.",
+  },
+  {
+    question: "Miten valitsen oikean ikkunatyypin kotiini?",
+    answer:
+      "Sopivaan ikkunatyyppiin vaikuttavat mm. talon rakennusvuosi, arkkitehtuuri, ilmansuunta ja energiatavoitteet. Autamme kartoittamaan tarpeesi ja suosittelemme sopivinta vaihtoehtoa – lue lisää ikkunat-sivultamme.",
+  },
+  {
+    question: "Voinko tilata pelkän tuotteen ilman asennusta?",
+    answer:
+      "Kyllä, tarjoamme sekä pelkän tuotetoimituksen että kokonaispalvelun, jossa hoidamme myös asennuksen avaimet käteen -periaatteella.",
+  },
+  {
+    question: "Kuinka pitkä toimitusaika ikkunoilla ja ovilla on?",
+    answer:
+      "Mittatilaustyönä valmistettavien tuotteiden toimitusaika on tyypillisesti muutamia viikkoja tilauksen vahvistumisesta. Tarkka aika riippuu tuotteesta, määrästä ja ajankohdasta, ja kerromme arvion aina tarjouksen yhteydessä.",
+  },
+  {
+    question: "Onko tuotteilla takuu?",
+    answer:
+      "Kyllä, Skaalan tuotteilla on valmistajan tehdastakuu. Kerromme tarkat takuuehdot tuotteittain tarjouksen yhteydessä.",
+  },
+  {
+    question: "Millä alueilla toimitte?",
+    answer:
+      "Palvelemme asiakkaita kautta Suomen. Ota yhteyttä, niin kerromme tarkemmin toimitus- ja asennusaikataulun juuri sinun sijaintiisi.",
+  },
+];
+---
+
+<Layout
+  title="Usein kysytyt kysymykset"
+  description="Vastauksia usein kysyttyihin kysymyksiin Suomen Ikkuna & Ovi Oy:n ikkunoista, ovista, tilausprosessista, toimitusajoista ja takuusta."
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Etusivu", item: new URL("/", Astro.site).toString() },
+      { "@type": "ListItem", position: 2, name: "UKK", item: new URL("/ukk", Astro.site).toString() },
+    ],
+  }}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Usein kysytyt kysymykset</Fragment>
+      <Fragment slot="desc">
+        Kokosimme vastaukset yleisimpiin ikkunoita, ovia ja tilausprosessia
+        koskeviin kysymyksiin.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="mt-4">
+      <Faq items={faqItems} title="" description="" />
+    </div>
+
+    <Cta />
+  </Container>
+</Layout>

@@ -1,0 +1,148 @@
+---
+import Container from "@/components/container.astro";
+import Cta from "@/components/cta.astro";
+import Faq from "@/components/faq.astro";
+import Layout from "@/layouts/Layout.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import { Icon } from "astro-icon/components";
+
+const doorTypes = [
+  {
+    title: "Ulko-ovet",
+    icon: "bx:bxs-door-open",
+    description:
+      "Kodin käyntikortti, joka yhdistää turvallisuuden, hyvän eristävyyden ja tyylikkään muotoilun. Laaja mallisto erilaisiin arkkitehtuureihin.",
+  },
+  {
+    title: "Terassiovet",
+    icon: "bx:bxs-window-alt",
+    description:
+      "Suuret lasipinnat tuovat valoa sisätiloihin ja avaavat näkymän pihalle. Saatavana liuku- ja saranaovina.",
+  },
+  {
+    title: "Parvekeovet",
+    icon: "bx:bxs-building",
+    description:
+      "Tilaa säästävät ja hyvin eristävät parvekeoviratkaisut, jotka sopivat sekä pientaloihin että kerrostaloasuntoihin.",
+  },
+  {
+    title: "Liukuovet",
+    icon: "bx:bxs-layer",
+    description:
+      "Tyylikäs ja käytännöllinen ratkaisu tiloihin, joissa perinteinen saranaovi veisi liikaa tilaa. Sopivat erityisesti terassi- ja parvekeratkaisuihin.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Kuinka hyvin uusi ulko-ovi eristää verrattuna vanhaan?",
+    answer:
+      "Moderni ulko-ovi eristää lämpöä huomattavasti paremmin kuin vanha, kymmeniä vuosia sitten asennettu ovi. Laadukas karmirakenne, tiivisteet ja eristekerrokset vähentävät lämpöhäviötä ja vetoa merkittävästi.",
+  },
+  {
+    question: "Millaisia lukitusratkaisuja ulko-oviin on saatavilla?",
+    answer:
+      "Tarjolla on useita lukitustasoja monipistelukoista sähköisiin ratkaisuihin ja älylukkoihin. Autamme valitsemaan kotisi tarpeisiin sopivan turvatason.",
+  },
+  {
+    question: "Voiko oven ulkonäön ja värin valita vapaasti?",
+    answer:
+      "Kyllä. Ovimalliston värit, lasiaiheet ja vetimet voi valita talon tyyliin sopiviksi, ja monissa malleissa sisä- ja ulkopuoli voidaan pinnoittaa eri sävyyn.",
+  },
+  {
+    question: "Sopiiko terassiovi myös kylmään ilmastoon?",
+    answer:
+      "Kyllä, nykyaikaiset terassi- ja parvekeovet on suunniteltu kestämään pohjoismaiset olosuhteet ja tarjoavat hyvän lämmöneristyksen suurista lasipinnoista huolimatta.",
+  },
+];
+---
+
+<Layout
+  title="Ovet"
+  description="Kotimaiset Skaala-ovet: ulko-, terassi-, parveke- ja liukuovet. Turvallisuutta, energiatehokkuutta ja tyylikästä muotoilua suomalaiseen kotiin."
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Etusivu", item: new URL("/", Astro.site).toString() },
+      { "@type": "ListItem", position: 2, name: "Ovet", item: new URL("/ovet", Astro.site).toString() },
+    ],
+  }}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Ovet</Fragment>
+      <Fragment slot="desc">
+        Kotimaiset Skaala-ovet – turvallisuutta, eristävyyttä ja tyyliä
+        suomalaiseen kotiin.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="max-w-3xl mx-auto mt-12 text-lg leading-relaxed text-slate-600 space-y-4">
+      <p>
+        Ovi on kodin ensivaikutelma ja samalla tärkeä osa turvallisuutta ja
+        energiatehokkuutta. Suomen Ikkuna &amp; Ovi Oy myy Skaalan
+        valmistamia ulko-, terassi- ja parvekeovia, jotka kestävät
+        pohjoismaiset olosuhteet vuodesta toiseen.
+      </p>
+      <p>
+        Autamme valitsemaan kotiisi sopivan oviratkaisun – huomioiden
+        turvallisuustason, eristävyyden, tyylin ja käyttötarkoituksen.
+        Ovet valmistetaan mittatilaustyönä, joten ne sopivat niin
+        uudisrakentamiseen kuin peruskorjaukseenkin.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8 mt-14 max-w-4xl mx-auto">
+      {
+        doorTypes.map((item) => (
+          <div class="flex gap-4 items-start p-6 rounded-xl bg-brand-50">
+            <div class="mt-1 bg-brand-900 rounded-full p-2.5 w-10 h-10 shrink-0 flex items-center justify-center">
+              <Icon class="text-white w-5 h-5" name={item.icon} />
+            </div>
+            <div>
+              <h2 class="font-semibold text-lg text-brand-950">{item.title}</h2>
+              <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="max-w-3xl mx-auto mt-16">
+      <h2 class="text-3xl font-bold text-brand-950">Turvallisuus ja eristävyys</h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-600">
+        Ulko-ovi on merkittävä osa kodin turvallisuutta. Kiinnitämme
+        huomiota karmirakenteen tukevuuteen, lukitusratkaisuihin ja
+        saranoiden laatuun, jotta ovi suojaa kotia ja kestää päivittäisen
+        käytön vuosikymmenten ajan. Samalla laadukas eristys pitää lämmön
+        sisällä ja vedon ulkona.
+      </p>
+      <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Vankat karmirakenteet ja saranat</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Useita lukitustasoja tarpeen mukaan</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Hyvä lämmön- ja äänieristys</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Laaja väri- ja mallivalikoima</span>
+        </li>
+      </ul>
+    </div>
+
+    <Faq
+      items={faqItems}
+      title="Usein kysytyt kysymykset ovista"
+      description="Vastauksia yleisimpiin oviin liittyviin kysymyksiin."
+    />
+
+    <Cta />
+  </Container>
+</Layout>

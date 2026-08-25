@@ -1,0 +1,64 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqItem[];
+  title?: string;
+  description?: string;
+}
+
+const {
+  items,
+  title = "Usein kysytyt kysymykset",
+  description = "Vastauksia yleisimpiin ikkunoita ja ovia koskeviin kysymyksiin.",
+} = Astro.props;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<div class="mt-24" id="ukk">
+  {
+    (title || description) && (
+      <div class="text-center max-w-2xl mx-auto">
+        {title && (
+          <h2 class="text-4xl lg:text-5xl font-bold text-brand-950 lg:tracking-tight">
+            {title}
+          </h2>
+        )}
+        {description && <p class="text-lg mt-4 text-slate-600">{description}</p>}
+      </div>
+    )
+  }
+
+  <div class="max-w-3xl mx-auto mt-10 divide-y divide-brand-100 border-y border-brand-100">
+    {
+      items.map((item) => (
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-brand-950 text-lg marker:content-none">
+            <span>{item.question}</span>
+            <span class="shrink-0 w-6 h-6 flex items-center justify-center rounded-full border-2 border-brand-300 text-brand-700 group-open:rotate-45 transition-transform text-lg leading-none">
+              +
+            </span>
+          </summary>
+          <p class="text-slate-500 mt-3 leading-relaxed">{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

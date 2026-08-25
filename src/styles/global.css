@@ -7,6 +7,31 @@
     Bricolage Grotesque Variable, Inter Variable, Inter, ui-sans-serif,
     system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Brand palette: deep Nordic navy, tuotettu Skaalan väriperheen mukaan */
+  --color-brand-50: #eef4fa;
+  --color-brand-100: #d7e6f2;
+  --color-brand-200: #b0cde5;
+  --color-brand-300: #82aed3;
+  --color-brand-400: #4d84b3;
+  --color-brand-500: #2c6390;
+  --color-brand-600: #1d4b73;
+  --color-brand-700: #163a5b;
+  --color-brand-800: #112c47;
+  --color-brand-900: #0c1f33;
+  --color-brand-950: #071523;
+
+  /* Warm accent: lämmin puu- ja kupari-sävy, kontrastiväri toiminnoille */
+  --color-accent-50: #fdf3ec;
+  --color-accent-100: #fbe2ce;
+  --color-accent-200: #f5c398;
+  --color-accent-300: #eea364;
+  --color-accent-400: #e08636;
+  --color-accent-500: #c96a1e;
+  --color-accent-600: #a95618;
+  --color-accent-700: #874415;
+  --color-accent-800: #663312;
+  --color-accent-900: #46230d;
 }
 
 /*

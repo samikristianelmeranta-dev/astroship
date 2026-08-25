@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon/components";
+
+const steps = [
+  {
+    title: "Yhteydenotto ja mittaus",
+    description:
+      "Otat yhteyttä lomakkeella tai puhelimitse. Sovimme maksuttoman mittakäynnin tai käymme mitat läpi piirustusten pohjalta.",
+    icon: "bx:bxs-phone-call",
+  },
+  {
+    title: "Tarjous ja tuotevalinta",
+    description:
+      "Saat selkeän tarjouksen ja autamme valitsemaan ikkunat ja ovet, jotka sopivat kotisi tyyliin, budjettiin ja energiatavoitteisiin.",
+    icon: "bx:bxs-file-find",
+  },
+  {
+    title: "Valmistus Skaalan tehtaalla",
+    description:
+      "Tilauksen vahvistuttua tuotteet valmistetaan mittojesi mukaan Skaalan Suomen-tehtailla.",
+    icon: "bx:bxs-factory",
+  },
+  {
+    title: "Asennus ja luovutus",
+    description:
+      "Ammattitaitoinen asennusryhmämme asentaa ikkunat ja ovet tiiviisti paikoilleen ja opastaa käytössä ja huollossa.",
+    icon: "bx:bxs-check-circle",
+  },
+];
+---
+
+<div class="mt-24">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold text-brand-950 lg:tracking-tight">
+      Näin projekti etenee
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Selkeä ja ennakoitava prosessi ensimmäisestä yhteydenotosta valmiiseen
+      lopputulokseen.
+    </p>
+  </div>
+
+  <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+    {
+      steps.map((step, index) => (
+        <li class="relative bg-brand-50 rounded-xl p-6">
+          <span class="text-sm font-bold text-accent-600">
+            Vaihe {index + 1}
+          </span>
+          <div class="w-11 h-11 rounded-full bg-brand-900 flex items-center justify-center mt-3">
+            <Icon name={step.icon} class="w-5 h-5 text-white" />
+          </div>
+          <h3 class="font-semibold text-lg text-brand-950 mt-4">
+            {step.title}
+          </h3>
+          <p class="text-slate-500 mt-2 text-sm leading-relaxed">
+            {step.description}
+          </p>
+        </li>
+      ))
+    }
+  </ol>
+</div>

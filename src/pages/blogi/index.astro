@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import PostCover from "@/components/postcover.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -16,49 +16,51 @@ publishedBlogEntries.sort(function (a, b) {
 });
 ---
 
-<Layout title="Blog">
+<Layout
+  title="Blogi"
+  description="Oppaita ja vinkkejä ikkunoiden ja ovien valintaan, energiatehokkuuteen ja kodin remontointiin – Suomen Ikkuna & Ovi Oy:n blogi.">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
+      <Fragment slot="title">Blogi</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        Oppaita ja vinkkejä ikkunoiden ja ovien valintaan sekä
+        energiatehokkaaseen asumiseen.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
       <ul class="grid gap-16 max-w-4xl mx-auto">
         {
-          publishedBlogEntries.map((blogPostEntry, index) => (
+          publishedBlogEntries.map((blogPostEntry) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
+              <a href={`/blogi/${blogPostEntry.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  <Picture
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    width={800}
-                    height={600}
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md object-cover object-center bg-white"
-                  />
+                  <PostCover icon={blogPostEntry.data.icon} />
                   <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    <span class="text-accent-600 uppercase tracking-wider text-sm font-medium">
                       {blogPostEntry.data.category}
                     </span>
 
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
+                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 text-brand-950">
                       {blogPostEntry.data.title}
                     </h2>
+
+                    <p class="text-slate-500 mt-2 leading-relaxed line-clamp-3">
+                      {blogPostEntry.data.snippet}
+                    </p>
 
                     <div class="flex gap-2 mt-3">
                       <span class="text-gray-400">
                         {blogPostEntry.data.author}
                       </span>
-                      <span class="text-gray-400">• </span>
+                      <span class="text-gray-400">•</span>
                       <time
                         class="text-gray-400"
                         datetime={blogPostEntry.data.publishDate.toISOString()}>
-                        {blogPostEntry.data.publishDate.toDateString()}
+                        {blogPostEntry.data.publishDate.toLocaleDateString("fi-FI", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
                       </time>
                     </div>
                   </div>

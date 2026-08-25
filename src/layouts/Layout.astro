@@ -8,7 +8,15 @@ import "../styles/global.css";
 
 export interface Props {
   title: string;
+  description?: string;
+  /** Optional extra JSON-LD object(s) to inject in addition to the sitewide Organization/LocalBusiness graph */
+  schema?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
 }
+
+const siteName = "Suomen Ikkuna & Ovi Oy";
+const defaultDescription =
+  "Suomen Ikkuna & Ovi Oy myy ja asentaa kotimaisia Skaala-ikkunoita ja -ovia. Kotimaiset ikkunat ja ovet suomalaiseen kotiin – kysy tarjous!";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
@@ -17,43 +25,113 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+const { title, description = defaultDescription, schema, noindex = false } =
+  Astro.props;
 
-const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+const homeTitle = `${siteName} | Kotimaiset ikkunat ja ovet suomalaiseen kotiin`;
+const makeTitle = title ? `${title} | ${siteName}` : homeTitle;
+
+const orgId = new URL("/#organization", Astro.site).toString();
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": orgId,
+  name: siteName,
+  alternateName: "Suomen Ikkuna & Ovi",
+  slogan: "Kotimaiset ikkunat ja ovet suomalaiseen kotiin",
+  url: Astro.site?.toString(),
+  logo: resolvedImageWithDomain,
+  image: resolvedImageWithDomain,
+  description: defaultDescription,
+  telephone: "+358401234567",
+  email: "myynti@suomenikkunajaovi.fi",
+  priceRange: "€€",
+  areaServed: {
+    "@type": "Country",
+    name: "Suomi",
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Teollisuustie 4",
+    postalCode: "00700",
+    addressLocality: "Helsinki",
+    addressCountry: "FI",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "16:00",
+  },
+  sameAs: ["https://www.facebook.com/", "https://www.instagram.com/"],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Product", name: "Skaala-ikkunat" },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Product", name: "Skaala-ovet" },
+    },
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": new URL("/#website", Astro.site).toString(),
+  url: Astro.site?.toString(),
+  name: siteName,
+  inLanguage: "fi-FI",
+  publisher: { "@id": orgId },
+};
+
+const schemaGraph = [organizationSchema, websiteSchema, ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="geo.region" content="FI" />
+    <meta name="geo.placename" content="Helsinki" />
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description={description}
       canonical={canonicalURL}
+      noindex={noindex}
+      nofollow={noindex}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: makeTitle,
           image: resolvedImageWithDomain,
         },
+        optional: {
+          description,
+          locale: "fi_FI",
+          siteName,
+        },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: `${siteName} – kotimaiset ikkunat ja ovet`,
         },
       }}
     />
+
+    {
+      schemaGraph.map((entry) => (
+        <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+      ))
+    }
   </head>
   <body>
     <Navbar />

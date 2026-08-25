@@ -1,0 +1,70 @@
+---
+import Contactform from "@/components/contactform.astro";
+import Container from "@/components/container.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout
+  title="Yhteystiedot"
+  description="Ota yhteyttä Suomen Ikkuna & Ovi Oy:hyn ja pyydä ilmainen tarjous kotimaisista Skaala-ikkunoista ja -ovista. Palvelemme kautta Suomen."
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Etusivu", item: new URL("/", Astro.site).toString() },
+      { "@type": "ListItem", position: 2, name: "Yhteystiedot", item: new URL("/yhteystiedot", Astro.site).toString() },
+    ],
+  }}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Yhteystiedot</Fragment>
+      <Fragment slot="desc">Autamme mielellämme – pyydä tarjous jo tänään.</Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+      <div>
+        <h2 class="font-medium text-2xl text-brand-950">
+          Ota yhteyttä Suomen Ikkuna &amp; Ovi Oy:hyn
+        </h2>
+        <p class="text-lg leading-relaxed text-slate-500 mt-3">
+          Kerro meille kohteestasi ja toiveistasi, niin autamme valitsemaan
+          sopivat ikkunat ja ovet sekä laadimme sinulle maksuttoman
+          tarjouksen. Vastaamme yhteydenottoihin arkisin.
+        </p>
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center gap-3 text-brand-800">
+            <Icon class="text-accent-500 w-5 h-5 shrink-0" name="uil:map-marker" />
+            <span>Teollisuustie 4, 00700 Helsinki</span>
+          </div>
+          <div class="flex items-center gap-3 text-brand-800">
+            <Icon class="text-accent-500 w-5 h-5 shrink-0" name="uil:envelope" />
+            <a href="mailto:myynti@suomenikkunajaovi.fi" class="hover:underline"
+              >myynti@suomenikkunajaovi.fi</a
+            >
+          </div>
+          <div class="flex items-center gap-3 text-brand-800">
+            <Icon class="text-accent-500 w-5 h-5 shrink-0" name="uil:phone" />
+            <a href="tel:+358401234567" class="hover:underline">040 123 4567</a>
+          </div>
+          <div class="flex items-center gap-3 text-brand-800">
+            <Icon class="text-accent-500 w-5 h-5 shrink-0" name="uil:clock" />
+            <span>Ma–Pe klo 8–16</span>
+          </div>
+        </div>
+        <div class="mt-8 rounded-xl bg-brand-50 p-6">
+          <h3 class="font-semibold text-brand-950">Palvelemme kautta Suomen</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed text-sm">
+            Toimitamme ja asennamme Skaala-ikkunoita ja -ovia niin
+            pääkaupunkiseudulla kuin muuallakin Suomessa. Kerro sijaintisi
+            lomakkeella, niin kerromme tarkemman aikataulun alueellesi.
+          </p>
+        </div>
+      </div>
+      <div>
+        <Contactform />
+      </div>
+    </div>
+  </Container>
+</Layout>

@@ -1,0 +1,149 @@
+---
+import Container from "@/components/container.astro";
+import Cta from "@/components/cta.astro";
+import Faq from "@/components/faq.astro";
+import Layout from "@/layouts/Layout.astro";
+import Sectionhead from "@/components/sectionhead.astro";
+import { Icon } from "astro-icon/components";
+
+const windowTypes = [
+  {
+    title: "Puuikkunat",
+    icon: "bx:bxs-leaf",
+    description:
+      "Perinteinen, hengittävä ja lämmin materiaalivalinta. Sopii erityisesti vanhaan rakennuskantaan ja arvokiinteistöihin, joissa halutaan säilyttää alkuperäinen ilme.",
+  },
+  {
+    title: "Puu-alumiini-ikkunat",
+    icon: "bx:bxs-shield",
+    description:
+      "Sisäpuolen lämmin puu yhdistettynä ulkopuolen huoltovapaaseen alumiiniin. Erinomainen valinta uudisrakentamiseen ja kohteisiin, joissa arvostetaan pitkää huoltoväliä.",
+  },
+  {
+    title: "Kattoikkunat ja erikoismallit",
+    icon: "bx:bxs-window-alt",
+    description:
+      "Kaari-, kolmio- ja muut erikoismuotoiset ikkunat sekä kattoikkunat tuovat lisävaloa ja persoonallisuutta kotiin. Valmistetaan mittatilaustyönä.",
+  },
+  {
+    title: "Ikkunatarvikkeet",
+    icon: "bx:bxs-cog",
+    description:
+      "Helat, tiivisteet, ikkunapellit ja muut lisävarusteet, jotka pidentävät ikkunoiden käyttöikää ja parantavat toimivuutta.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Mikä on ikkunan U-arvo ja miksi se on tärkeä?",
+    answer:
+      "U-arvo kertoo, kuinka hyvin ikkuna eristää lämpöä – mitä pienempi luku, sitä paremmin ikkuna pitää lämmön sisällä. Matalan U-arvon ikkunat pienentävät lämmityskuluja ja parantavat asumismukavuutta erityisesti talvella.",
+  },
+  {
+    question: "Milloin ikkunat kannattaa vaihtaa uusiin?",
+    answer:
+      "Ikkunoiden vaihtoa kannattaa harkita, jos ne vetävät, huurtuvat, ovat vaikeasti avattavia tai yli 25–30 vuotta vanhoja. Uudet energiatehokkaat ikkunat parantavat asumismukavuutta ja voivat pienentää lämmityskuluja merkittävästi.",
+  },
+  {
+    question: "Voinko valita eri värin ikkunan sisä- ja ulkopuolelle?",
+    answer:
+      "Kyllä. Skaalan värivalikoima mahdollistaa erillisen sävyn sisä- ja ulkopuolelle, joten voit yhdistää sisustuksen ja julkisivun tyylin toisiinsa sopivaksi.",
+  },
+  {
+    question: "Kuinka ikkunatilaus etenee?",
+    answer:
+      "Aloitamme tarvekartoituksella ja mittauksella, teemme tarjouksen valitsemistasi malleista, ja tilauksen vahvistuttua ikkunat valmistetaan mittojesi mukaan. Lopuksi asennamme ikkunat tiiviisti paikoilleen – katso tarkemmin kohdasta Näin projekti etenee etusivulla.",
+  },
+];
+---
+
+<Layout
+  title="Ikkunat"
+  description="Kotimaiset Skaala-ikkunat: puu-, puu-alumiini- ja erikoismalliset ikkunat mittatilaustyönä. Energiatehokkaat ratkaisut uudisrakentamiseen ja ikkunaremonttiin."
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Etusivu", item: new URL("/", Astro.site).toString() },
+      { "@type": "ListItem", position: 2, name: "Ikkunat", item: new URL("/ikkunat", Astro.site).toString() },
+    ],
+  }}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Ikkunat</Fragment>
+      <Fragment slot="desc">
+        Kotimaiset Skaala-ikkunat suomalaiseen kotiin – energiatehokkaasti ja
+        mittojesi mukaan valmistettuna.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="max-w-3xl mx-auto mt-12 text-lg leading-relaxed text-slate-600 space-y-4">
+      <p>
+        Ikkunat vaikuttavat merkittävästi kotisi energiankulutukseen,
+        asumismukavuuteen ja ulkonäköön. Suomen Ikkuna &amp; Ovi Oy myy
+        Skaalan valmistamia ikkunoita, jotka on suunniteltu erityisesti
+        pohjoismaisiin sääolosuhteisiin: koviin pakkasiin, tuuleen ja
+        vaihteleviin lämpötiloihin.
+      </p>
+      <p>
+        Autamme valitsemaan oikeat ikkunat niin uudiskohteeseen kuin
+        peruskorjaukseenkin. Otamme huomioon energialuokan, ilmansuunnan,
+        äänieristyksen tarpeen sekä talon arkkitehtuurin, jotta lopputulos on
+        sekä toimiva että kaunis.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8 mt-14 max-w-4xl mx-auto">
+      {
+        windowTypes.map((item) => (
+          <div class="flex gap-4 items-start p-6 rounded-xl bg-brand-50">
+            <div class="mt-1 bg-brand-900 rounded-full p-2.5 w-10 h-10 shrink-0 flex items-center justify-center">
+              <Icon class="text-white w-5 h-5" name={item.icon} />
+            </div>
+            <div>
+              <h2 class="font-semibold text-lg text-brand-950">{item.title}</h2>
+              <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="max-w-3xl mx-auto mt-16">
+      <h2 class="text-3xl font-bold text-brand-950">Energiatehokkuus ja säästöt</h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-600">
+        Uudet, energiatehokkaat ikkunat ovat yksi tehokkaimmista tavoista
+        pienentää kodin lämmityskuluja. Vanhat, vetävät ikkunat päästävät
+        lämpöä karkuun ja aiheuttavat vedon tunnetta – moderni
+        moninkertainen lasitus, laadukas karmirakenne ja tiivis asennus
+        parantavat sekä energiatehokkuutta että sisäilman laatua.
+      </p>
+      <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Matala U-arvo pienentää lämmityskuluja</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Laadukas tiivistys vähentää vedon tunnetta</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Hyvä äänieristys parantaa asumisviihtyvyyttä</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <Icon name="bx:bxs-check-circle" class="w-5 h-5 text-accent-500 mt-0.5 shrink-0" />
+          <span class="text-slate-600">Ammattimainen asennus varmistaa tiiviyden</span>
+        </li>
+      </ul>
+    </div>
+
+    <Faq
+      items={faqItems}
+      title="Usein kysytyt kysymykset ikkunoista"
+      description="Vastauksia yleisimpiin ikkunahankintaa koskeviin kysymyksiin."
+    />
+
+    <Cta />
+  </Container>
+</Layout>

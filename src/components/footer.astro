@@ -1,19 +1,119 @@
-<footer class="my-20">
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
-  </p>
-  <!--
-    Can we ask you a favor 🙏
-    Please keep this backlink on your website if possible.
-    or Purchase a commercial license from https://web3templates.com
-  -->
-  <p class="text-center text-xs text-slate-500 mt-1">
-    Made by <a
-      href="https://web3templates.com"
-      target="_blank"
-      rel="noopener"
-      class="hover:underline">
-      Web3Templates
-    </a>
-  </p>
+---
+import Container from "@/components/container.astro";
+import { Icon } from "astro-icon/components";
+
+const year = new Date().getFullYear();
+
+const tuotteet = [
+  { title: "Ikkunat", path: "/ikkunat" },
+  { title: "Ovet", path: "/ovet" },
+  { title: "Blogi", path: "/blogi" },
+  { title: "Usein kysytyt kysymykset", path: "/ukk" },
+];
+
+const yritys = [
+  { title: "Yritys", path: "/yritys" },
+  { title: "Yhteystiedot", path: "/yhteystiedot" },
+];
+---
+
+<footer class="bg-brand-950 text-brand-200 mt-24">
+  <Container class="py-14">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 text-lg w-fit">
+          <span
+            class="flex items-center justify-center w-9 h-9 rounded-md bg-white text-brand-900 shrink-0">
+            <Icon name="uil:window" class="w-5 h-5" />
+          </span>
+          <span class="leading-tight">
+            <span class="font-bold text-white block">Suomen Ikkuna &amp; Ovi Oy</span>
+            <span class="text-[11px] uppercase tracking-wide text-accent-400 font-semibold block -mt-0.5">
+              Kotimaiset ikkunat ja ovet suomalaiseen kotiin
+            </span>
+          </span>
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-brand-300 max-w-sm">
+          Suomen Ikkuna &amp; Ovi Oy myy ja asentaa kotimaisia Skaala-ikkunoita
+          ja -ovia uudis- ja korjausrakentamiseen. Autamme valitsemaan juuri
+          kotiisi sopivat, energiatehokkaat ratkaisut suunnittelusta
+          asennukseen asti.
+        </p>
+        <div class="flex gap-3 mt-5">
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-brand-900 hover:bg-accent-500 transition">
+            <Icon name="uil:facebook" class="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-brand-900 hover:bg-accent-500 transition">
+            <Icon name="uil:instagram" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-3">Tuotteet</h3>
+        <ul class="space-y-2 text-sm">
+          {
+            tuotteet.map((item) => (
+              <li>
+                <a href={item.path} class="hover:text-white transition">
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold mb-3">Yhteystiedot</h3>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-start gap-2">
+            <Icon name="uil:map-marker" class="w-4 h-4 mt-0.5 shrink-0 text-accent-400" />
+            <span>Teollisuustie 4, 00700 Helsinki</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="uil:phone" class="w-4 h-4 mt-0.5 shrink-0 text-accent-400" />
+            <a href="tel:+358401234567" class="hover:text-white transition">040 123 4567</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="uil:envelope" class="w-4 h-4 mt-0.5 shrink-0 text-accent-400" />
+            <a href="mailto:myynti@suomenikkunajaovi.fi" class="hover:text-white transition">
+              myynti@suomenikkunajaovi.fi
+            </a>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="uil:clock" class="w-4 h-4 mt-0.5 shrink-0 text-accent-400" />
+            <span>Ma–Pe 8–16</span>
+          </li>
+        </ul>
+        <ul class="mt-4 space-y-1 text-sm">
+          {
+            yritys.map((item) => (
+              <li>
+                <a href={item.path} class="hover:text-white transition">
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 pt-6 border-t border-brand-800 flex flex-col md:flex-row gap-3 justify-between items-center text-xs text-brand-400">
+      <p>Copyright © {year} Suomen Ikkuna &amp; Ovi Oy. Kaikki oikeudet pidätetään.</p>
+      <p>Y-tunnus 1234567-8 · Skaala-tuotteiden jälleenmyyjä</p>
+    </div>
+  </Container>
 </footer>

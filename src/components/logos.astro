@@ -1,18 +1,30 @@
 ---
-// @ts-ignore
 import { Icon } from "astro-icon/components";
+
+const badges = [
+  { icon: "bx:bxs-badge-check", text: "Skaala-jälleenmyyjä" },
+  { icon: "bx:bxs-map", text: "Toimitukset kautta Suomen" },
+  { icon: "bx:bxs-time-five", text: "Nopeat toimitusajat" },
+  { icon: "bx:bxs-phone", text: "Henkilökohtainen palvelu" },
+];
 ---
 
-<div class="mt-24">
-  <h2 class="text-center text-slate-500">Works with your technologies</h2>
-  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
-
-    <Icon class="size-8 md:size-12" name="simple-icons:react" />
-    <Icon class="size-8 md:size-12" name="simple-icons:svelte" />
-    <Icon class="size-8 md:size-12" name="simple-icons:astro" />
-    <Icon class="size-8 md:size-16" name="simple-icons:tailwindcss" />
-    <Icon class="size-8 md:size-16" name="simple-icons:alpinedotjs" />
-    <Icon class="size-8 md:size-12" name="simple-icons:vercel" />
-
+<div class="mt-24 bg-brand-900 rounded-xl px-6 py-10 md:py-8">
+  <p class="text-center text-brand-200 uppercase text-sm tracking-wider font-medium">
+    Yhteistyössä
+  </p>
+  <p class="text-center text-white text-3xl md:text-4xl font-bold mt-2 tracking-tight">
+    SKAALA
+  </p>
+  <div
+    class="flex gap-6 md:gap-12 items-center justify-center mt-8 flex-wrap">
+    {
+      badges.map((badge) => (
+        <div class="flex items-center gap-2 text-brand-100 text-sm md:text-base">
+          <Icon name={badge.icon} class="w-5 h-5 text-accent-400 shrink-0" />
+          <span>{badge.text}</span>
+        </div>
+      ))
+    }
   </div>
 </div>

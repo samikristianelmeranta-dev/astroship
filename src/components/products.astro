@@ -1,0 +1,67 @@
+---
+import { Icon } from "astro-icon/components";
+
+const products = [
+  {
+    title: "Ikkunat",
+    href: "/ikkunat",
+    icon: "bx:bxs-window-alt",
+    description:
+      "Puu-, puualumiini- ja MSEA-ikkunat energialuokasta ja tyylistä toiseen. Sopii sekä uudisrakentamiseen että ikkunaremonttiin.",
+    points: ["Matala U-arvo", "Laaja värivalikoima", "Mittatilaustyö"],
+  },
+  {
+    title: "Ovet",
+    href: "/ovet",
+    icon: "bx:bxs-door-open",
+    description:
+      "Ulko-, terassi- ja parvekeovet, jotka yhdistävät turvallisuuden, eristävyyden ja tyylikkään muotoilun.",
+    points: ["Vankat lukitusratkaisut", "Hyvä eristävyys", "Moderni muotoilu"],
+  },
+];
+---
+
+<div class="mt-24" id="tuotteet">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold text-brand-950 lg:tracking-tight">
+      Tuotteemme
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Valikoimamme kattaa kaikki Skaalan ikkuna- ja oviratkaisut. Tutustu
+      tuotteisiin ja pyydä maksuton tarjous omaan kohteeseesi.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8 mt-12">
+    {
+      products.map((item) => (
+        <a
+          href={item.href}
+          class="group flex flex-col justify-between rounded-xl border-2 border-brand-100 hover:border-accent-400 p-8 transition bg-white">
+          <div>
+            <div class="w-12 h-12 rounded-lg bg-brand-900 flex items-center justify-center">
+              <Icon name={item.icon} class="w-6 h-6 text-white" />
+            </div>
+            <h3 class="text-2xl font-semibold text-brand-950 mt-5">
+              {item.title}
+            </h3>
+            <p class="text-slate-500 mt-2 leading-relaxed">
+              {item.description}
+            </p>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {item.points.map((point) => (
+                <li class="text-xs font-medium bg-brand-50 text-brand-700 px-3 py-1 rounded-full">
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <span class="mt-6 flex items-center gap-1 text-accent-600 font-semibold group-hover:gap-2 transition-all">
+            Tutustu {item.title.toLowerCase()}
+            <Icon name="bx:right-arrow-alt" class="w-5 h-5" />
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</div>

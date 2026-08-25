@@ -1,17 +1,62 @@
 ---
 import Container from "@/components/container.astro";
 import Cta from "@/components/cta.astro";
+import Faq from "@/components/faq.astro";
 import Features from "@/components/features.astro";
 import Hero from "@/components/hero.astro";
 import Logos from "@/components/logos.astro";
+import Products from "@/components/products.astro";
+import Steps from "@/components/steps.astro";
 import Layout from "@/layouts/Layout.astro";
+
+const faqItems = [
+  {
+    question: "Mistä Suomen Ikkuna & Ovi Oy:n tuotteet valmistetaan?",
+    answer:
+      "Myymämme ikkunat ja ovet ovat Skaalan valmistamia. Skaala valmistaa tuotteensa Suomessa, pohjoismaisiin sääolosuhteisiin suunniteltuina.",
+  },
+  {
+    question: "Kauanko ikkunoiden ja ovien toimitus kestää?",
+    answer:
+      "Toimitusaika riippuu tuotteesta ja tilauskannasta, mutta tyypillisesti mittatilaustyönä valmistettavat ikkunat ja ovet toimitetaan muutamassa viikossa tilauksen vahvistumisesta. Saat tarkan arvion tarjouksen yhteydessä.",
+  },
+  {
+    question: "Asennatteko ikkunat ja ovet myös valmiiksi?",
+    answer:
+      "Kyllä. Tarjoamme sekä pelkän tuotetoimituksen että avaimet käteen -asennuksen, jossa ammattitaitoinen asennusryhmämme huolehtii koko työstä mittauksesta viimeistelyyn.",
+  },
+  {
+    question: "Miten valitsen oikeat ikkunat energiatehokkuuden kannalta?",
+    answer:
+      "Energiatehokkuuteen vaikuttavat muun muassa ikkunan U-arvo, lasitusratkaisu ja karmirakenne. Autamme kartoittamaan kohteesi tarpeet ja suosittelemme energialuokaltaan sopivinta ratkaisua – lue lisää ikkunat-sivultamme.",
+  },
+  {
+    question: "Toimitteko koko Suomen alueella?",
+    answer:
+      "Kyllä, palvelemme kotitalouksia ja rakennusliikkeitä kautta Suomen. Ota yhteyttä, niin kerromme toimitus- ja asennusmahdollisuudet juuri sinun alueellasi.",
+  },
+  {
+    question: "Voinko yhdistää eri väriset ikkunat ja ovet samaan kotiin?",
+    answer:
+      "Kyllä. Skaalan värivalikoima mahdollistaa eri sävyn sisä- ja ulkopuolelle, joten voit yhdistää ikkunat ja ovet talosi arkkitehtuuriin sopivaksi kokonaisuudeksi.",
+  },
+];
 ---
 
-<Layout title="">
+<Layout
+  title=""
+  description="Suomen Ikkuna & Ovi Oy myy ja asentaa kotimaisia Skaala-ikkunoita ja -ovia kautta Suomen. Kotimaiset ikkunat ja ovet suomalaiseen kotiin – pyydä ilmainen tarjous.">
   <Container>
     <Hero />
+    <Products />
     <Features />
+    <Steps />
     <Logos />
+    <Faq
+      items={faqItems}
+      title="Usein kysytyt kysymykset"
+      description="Vastauksia yleisimpiin kysymyksiin ikkunoiden ja ovien hankinnasta."
+    />
     <Cta />
   </Container>
 </Layout>

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
+import PostCover from "@/components/postcover.astro";
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -15,16 +16,27 @@ export async function getStaticPaths() {
 // Get the entry directly from the prop on render
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.snippet,
+  datePublished: entry.data.publishDate.toISOString(),
+  author: { "@type": "Organization", name: entry.data.author },
+  publisher: { "@id": new URL("/#organization", Astro.site).toString() },
+  mainEntityOfPage: new URL(`/blogi/${entry.slug}`, Astro.site).toString(),
+};
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} description={entry.data.snippet} schema={articleSchema}>
   <Container>
     <div class="mx-auto max-w-3xl mt-14">
-      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+      <span class="text-accent-600 uppercase tracking-wider text-sm font-medium">
         {entry.data.category}
       </span>
       <h1
-        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        class="text-4xl lg:text-5xl font-bold text-brand-950 lg:tracking-tight mt-1 lg:leading-tight">
         {entry.data.title}
       </h1>
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
@@ -35,7 +47,11 @@ const { Content } = await entry.render();
         <time
           class="text-gray-400"
           datetime={entry.data.publishDate.toISOString()}>
-          {entry.data.publishDate.toDateString()}
+          {entry.data.publishDate.toLocaleDateString("fi-FI", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
         </time>
         <span class="text-gray-400 hidden md:block">•</span>
         <div class="w-full md:w-auto flex flex-wrap gap-3">
@@ -46,16 +62,17 @@ const { Content } = await entry.render();
           }
         </div>
       </div>
+      <PostCover icon={entry.data.icon} ratio="aspect-[21/9]" class="mt-8" />
     </div>
 
-    <div class="mx-auto prose prose-lg mt-6 max-w-3xl">
+    <div class="mx-auto prose prose-lg mt-6 max-w-3xl prose-headings:text-brand-950 prose-a:text-accent-600">
       <Content />
     </div>
     <div class="text-center mt-8">
       <a
-        href="/blog"
-        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
-        >← Back to Blog</a
+        href="/blogi"
+        class="bg-brand-50 text-brand-800 px-5 py-3 rounded-md hover:bg-brand-100 transition"
+        >← Takaisin blogiin</a
       >
     </div>
   </Container>
