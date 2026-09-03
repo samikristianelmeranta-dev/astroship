@@ -4,66 +4,70 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Yli 20 vuoden kokemus",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+      "Olemme asentaneet satoja ikkuna- ja oviremontteja Turun seudulla. Tunnemme alueen talotyypit ja rakennusmääräykset.",
+    icon: "bx:bxs-medal",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Ilmainen mittaus ja tarjous",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+      "Käymme paikan päällä mittaamassa ja teemme sitovan tarjouksen ilman kuluja tai velvoitteita.",
+    icon: "bx:bxs-ruler",
   },
   {
-    title: "On-Demand Components",
+    title: "Asennus avaimet käteen",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+      "Oma, kokenut asennustiimimme hoitaa purun, asennuksen ja viimeistelyn — siivouksen unohtamatta.",
+    icon: "bx:bxs-wrench",
   },
   {
-    title: "Broad Integration",
+    title: "Energiatehokkuus ja säästöt",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+      "Nykyaikaiset ikkunat ja ovet pienentävät lämmityskuluja ja parantavat asumismukavuutta ympäri vuoden.",
+    icon: "bx:bxs-leaf",
   },
   {
-    title: "SEO Enabled",
+    title: "Takuu ja jälkihuolto",
     description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
+      "Annamme tuotteille ja asennustyölle pitkän takuun. Palvelemme myös asennuksen jälkeen.",
+    icon: "bx:bxs-shield-alt-2",
   },
   {
-    title: "Community",
+    title: "Paikallinen turkulainen tiimi",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Toimimme Turussa, Kaarinassa, Raisiossa, Naantalissa, Liedossa ja lähialueilla — nopeasti ja luotettavasti.",
+    icon: "bx:bxs-map",
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
-  </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
-  </p>
-</div>
+<div id="miksi-me" class="mt-20 scroll-mt-24">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Miksi valita meidät
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Yhdeltä toimittajalta suunnittelu, tuotteet ja asennus — ilman
+      välikäsiä.
+    </p>
+  </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-  {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+    {
+      features.map((item) => (
+        <div class="flex gap-4 items-start">
+          <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+            <Icon class="text-white" name={item.icon} />
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+            <p class="text-slate-500 mt-2 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-        </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>

@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+
+const steps = [
+  {
+    step: "1",
+    title: "Ota yhteyttä",
+    description: "Soita, täytä lomake tai pyydä tarjous verkossa.",
+    icon: "bx:bxs-phone-call",
+  },
+  {
+    step: "2",
+    title: "Ilmainen mittakäynti",
+    description:
+      "Käymme kotonasi mittaamassa ja kartoittamassa tarpeesi. Saat tarjouksen nopeasti.",
+    icon: "bx:bxs-ruler",
+  },
+  {
+    step: "3",
+    title: "Asennus sovittuna päivänä",
+    description:
+      "Asennustiimimme toimittaa ja asentaa ikkunat tai ovet aikataulun mukaisesti.",
+    icon: "bx:bxs-wrench",
+  },
+  {
+    step: "4",
+    title: "Vastaanotto ja takuu",
+    description:
+      "Käymme lopputuloksen läpi yhdessä ja jätämme takuutodistuksen.",
+    icon: "bx:bxs-check-shield",
+  },
+];
+---
+
+<div class="mt-20">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Näin projekti etenee
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Selkeä ja vaivaton prosessi ensimmäisestä puhelusta viimeistelyyn asti.
+    </p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+    {
+      steps.map((item) => (
+        <div class="relative text-center lg:text-left">
+          <div class="flex items-center justify-center lg:justify-start gap-3">
+            <div class="bg-black rounded-full p-3 w-12 h-12 flex items-center justify-center shrink-0">
+              <Icon class="text-white w-6 h-6" name={item.icon} />
+            </div>
+            <span class="text-3xl font-bold text-slate-200">
+              {item.step}
+            </span>
+          </div>
+          <h3 class="font-semibold text-lg mt-4">{item.title}</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

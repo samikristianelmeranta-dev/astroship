@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon/components";
+
+const products = [
+  {
+    id: "ikkunat",
+    title: "Ikkunat",
+    icon: "uil:window-grid",
+    description:
+      "Energiatehokkaat puu- ja puualumiini-ikkunat, jotka pitävät lämmön sisällä ja melun ulkona. Valittavana useita malleja, värejä ja lasiratkaisuja.",
+    features: [
+      "U-arvo alkaen 0,8 W/m²K",
+      "3-lasiset energiaikkunat",
+      "Kotimaiset valmistajat",
+      "Räätälöidyt mitat ja värit",
+    ],
+  },
+  {
+    id: "ulko-ovet",
+    title: "Ulko-ovet",
+    icon: "bx:bxs-door-open",
+    description:
+      "Tyylikkäät ja turvalliset ulko-ovet joka kotiin. Hyvä eristävyys, kestävät materiaalit ja laaja valikoima värejä sekä lasiaiheita.",
+    features: [
+      "Erinomainen lämmöneristys",
+      "Vakiona monipistelukitus",
+      "Teräs-, umpio- ja lasiovet",
+      "Sovitetaan julkisivuun",
+    ],
+  },
+];
+---
+
+<div id="tuotteet" class="mt-20 scroll-mt-24">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Tuotteemme
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Toimitamme ja asennamme ikkunat sekä ulko-ovet yhdellä sopimuksella —
+      mittauksesta viimeistelyyn.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8 mt-12">
+    {
+      products.map((product) => (
+        <div
+          id={product.id}
+          class="scroll-mt-24 border-2 border-slate-100 rounded-lg p-8 hover:border-slate-200 transition">
+          <div class="bg-black rounded-full p-3 w-12 h-12 flex items-center justify-center">
+            <Icon class="text-white w-6 h-6" name={product.icon} />
+          </div>
+          <h3 class="font-semibold text-2xl mt-5">{product.title}</h3>
+          <p class="text-slate-500 mt-3 leading-relaxed">
+            {product.description}
+          </p>
+          <ul class="grid gap-y-2 mt-5">
+            {product.features.map((feature) => (
+              <li class="flex items-center gap-2 text-slate-700">
+                <Icon
+                  class="w-4 h-4 text-black shrink-0"
+                  name="bx:bxs-check-circle"
+                />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</div>

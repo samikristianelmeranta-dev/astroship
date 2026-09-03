@@ -19,13 +19,15 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
+const siteName = "Turun Ikkuna & Ovi";
+
 const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+  ? title + " | " + siteName
+  : `${siteName} - Ikkunat ja ulko-ovet asennettuna Turun seudulla`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -35,22 +37,17 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Myymme ja asennamme laadukkaat ikkunat ja ulko-ovet Turun seudulla. Ilmainen mittakäynti, avaimet käteen -asennus ja pitkä takuu."
       canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `${siteName} - Ikkunat ja ulko-ovet asennettuna Turun seudulla`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: `${siteName} - etusivu`,
         },
       }}
     />

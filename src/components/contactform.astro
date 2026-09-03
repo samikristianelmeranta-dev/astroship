@@ -16,43 +16,43 @@ import Button from "./ui/button.astro";
   <div class="mb-5">
     <input
       type="text"
-      placeholder="Full Name"
+      placeholder="Koko nimi"
       required
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
       name="name"
     />
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please provide your full name.
+      Anna koko nimesi.
     </div>
   </div>
   <div class="mb-5">
-    <label for="email_address" class="sr-only">Email Address</label><input
+    <label for="email_address" class="sr-only">Sähköpostiosoite</label><input
       id="email_address"
       type="email"
-      placeholder="Email Address"
+      placeholder="Sähköpostiosoite"
       name="email"
       required
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     />
     <div class="empty-feedback text-red-400 text-sm mt-1">
-      Please provide your email address.
+      Anna sähköpostiosoitteesi.
     </div>
     <div class="invalid-feedback text-red-400 text-sm mt-1">
-      Please provide a valid email address.
+      Anna kelvollinen sähköpostiosoite.
     </div>
   </div>
   <div class="mb-3">
     <textarea
       name="message"
       required
-      placeholder="Your Message"
+      placeholder="Kerro projektistasi (esim. ikkunoiden/ovien määrä ja aikataulu)"
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-hidden h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     ></textarea>
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please enter your message.
+      Kirjoita viesti.
     </div>
   </div>
-  <Button type="submit" size="lg" block>Send Message</Button>
+  <Button type="submit" size="lg" block>Pyydä tarjous</Button>
   <div id="result" class="mt-3 text-center"></div>
 </form>
 
@@ -91,7 +91,7 @@ import Button from "./ui/button.astro";
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    result.innerHTML = "Sending...";
+    result.innerHTML = "Lähetetään...";
 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -114,7 +114,7 @@ import Button from "./ui/button.astro";
       })
       .catch((error) => {
         console.log(error);
-        result.innerHTML = "Something went wrong!";
+        result.innerHTML = "Jokin meni pieleen. Yritä uudelleen.";
       })
       .then(function () {
         form.reset();

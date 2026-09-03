@@ -1,17 +1,25 @@
 ---
+import Areas from "@/components/areas.astro";
 import Container from "@/components/container.astro";
 import Cta from "@/components/cta.astro";
 import Features from "@/components/features.astro";
 import Hero from "@/components/hero.astro";
-import Logos from "@/components/logos.astro";
+import Process from "@/components/process.astro";
+import Products from "@/components/products.astro";
+import Testimonials from "@/components/testimonials.astro";
+import Usps from "@/components/usps.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="">
   <Container>
     <Hero />
+    <Usps />
+    <Products />
     <Features />
-    <Logos />
+    <Process />
+    <Testimonials />
+    <Areas />
     <Cta />
   </Container>
 </Layout>

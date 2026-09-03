@@ -1,19 +1,77 @@
-<footer class="my-20">
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} Astroship. All rights reserved.
-  </p>
-  <!--
-    Can we ask you a favor 🙏
-    Please keep this backlink on your website if possible.
-    or Purchase a commercial license from https://web3templates.com
-  -->
-  <p class="text-center text-xs text-slate-500 mt-1">
-    Made by <a
-      href="https://web3templates.com"
-      target="_blank"
-      rel="noopener"
-      class="hover:underline">
-      Web3Templates
-    </a>
-  </p>
+---
+import Container from "@/components/container.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="mt-20 border-t border-slate-100">
+  <Container>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 py-16">
+      <div>
+        <a href="/" class="text-lg flex items-center gap-1"
+          ><span class="font-bold text-slate-800">Turun</span><span
+            class="text-slate-500">Ikkuna&amp;Ovi</span
+          >
+        </a>
+        <p class="text-slate-500 mt-3 leading-relaxed">
+          Ikkunoiden ja ulko-ovien myynti sekä asennus Turun seudulla.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-800">Palvelut</h3>
+        <ul class="mt-3 grid gap-2 text-slate-500">
+          <li><a class="hover:text-slate-900" href="/#ikkunat">Ikkunat</a></li>
+          <li>
+            <a class="hover:text-slate-900" href="/#ulko-ovet">Ulko-ovet</a>
+          </li>
+          <li>
+            <a class="hover:text-slate-900" href="/#miksi-me">Miksi me</a>
+          </li>
+          <li>
+            <a class="hover:text-slate-900" href="/#referenssit"
+              >Referenssit</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-800">Toiminta-alue</h3>
+        <p class="mt-3 text-slate-500 leading-relaxed">
+          Turku, Kaarina, Raisio, Naantali, Lieto, Rusko, Masku ja Paimio.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-slate-800">Yhteystiedot</h3>
+        <ul class="mt-3 grid gap-2 text-slate-500">
+          <li class="flex items-center gap-2">
+            <Icon class="w-4 h-4 text-slate-400 shrink-0" name="uil:phone" />
+            <a class="hover:text-slate-900" href="tel:+358401234567"
+              >040 123 4567</a
+            >
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon
+              class="w-4 h-4 text-slate-400 shrink-0"
+              name="uil:envelope"
+            />
+            <a
+              class="hover:text-slate-900"
+              href="mailto:myynti@turunikkunajaovi.fi"
+              >myynti@turunikkunajaovi.fi</a
+            >
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon
+              class="w-4 h-4 text-slate-400 shrink-0"
+              name="uil:map-marker"
+            />
+            <span>Esimerkkikatu 12, 20100 Turku</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center text-sm text-slate-500 border-t border-slate-100 py-6">
+      Copyright © {new Date().getFullYear()} Turun Ikkuna &amp; Ovi. Kaikki oikeudet
+      pidätetään.
+    </p>
+  </Container>
 </footer>

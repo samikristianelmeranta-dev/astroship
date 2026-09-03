@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+
+const testimonials = [
+  {
+    name: "Anna K.",
+    location: "Turku, Runosmäki",
+    quote:
+      "Ikkunoiden vaihto sujui todella jouhevasti. Mittaus, tarjous ja asennus hoituivat aikataulussa, ja lopputulos näyttää upealta.",
+  },
+  {
+    name: "Mika S.",
+    location: "Kaarina",
+    quote:
+      "Vaihdoimme koko talon ulko-ovet. Asentajat olivat ammattitaitoisia ja siistejä, ja hinta pysyi tarjouksen mukaisena.",
+  },
+  {
+    name: "Liisa H.",
+    location: "Raisio",
+    quote:
+      "Lämpölasku laski selvästi uusien ikkunoiden myötä. Suosittelen lämpimästi paikallista ja luotettavaa palvelua.",
+  },
+];
+---
+
+<div id="referenssit" class="mt-20 scroll-mt-24">
+  <div class="text-center max-w-2xl mx-auto">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Asiakkaidemme kokemuksia
+    </h2>
+    <p
+      class="text-lg mt-4 text-slate-600 flex items-center justify-center gap-2">
+      <span class="flex text-amber-400">
+        <Icon class="w-5 h-5" name="bx:bxs-star" />
+        <Icon class="w-5 h-5" name="bx:bxs-star" />
+        <Icon class="w-5 h-5" name="bx:bxs-star" />
+        <Icon class="w-5 h-5" name="bx:bxs-star" />
+        <Icon class="w-5 h-5" name="bx:bxs-star" />
+      </span>
+      4.9/5 — yli 200 tyytyväistä asiakasta
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8 mt-12">
+    {
+      testimonials.map((t) => (
+        <div class="border-2 border-slate-100 rounded-lg p-6">
+          <div class="flex text-amber-400">
+            <Icon class="w-4 h-4" name="bx:bxs-star" />
+            <Icon class="w-4 h-4" name="bx:bxs-star" />
+            <Icon class="w-4 h-4" name="bx:bxs-star" />
+            <Icon class="w-4 h-4" name="bx:bxs-star" />
+            <Icon class="w-4 h-4" name="bx:bxs-star" />
+          </div>
+          <p class="text-slate-600 mt-4 leading-relaxed">“{t.quote}”</p>
+          <p class="font-semibold mt-4">{t.name}</p>
+          <p class="text-sm text-slate-400">{t.location}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>

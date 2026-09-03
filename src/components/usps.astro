@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon/components";
+
+const usps = [
+  { title: "Ilmainen mittakäynti", icon: "bx:bxs-ruler" },
+  { title: "Asennus sisältyy hintaan", icon: "bx:bxs-wrench" },
+  { title: "Kotimaiset ikkunat ja ovet", icon: "bx:bxs-leaf" },
+  { title: "5 vuoden asennustakuu", icon: "bx:bxs-shield-alt-2" },
+];
+---
+
+<div class="mt-16 border-t border-b border-slate-100 py-8">
+  <div
+    class="flex flex-wrap gap-x-10 gap-y-4 items-center justify-center text-slate-600">
+    {
+      usps.map((item) => (
+        <div class="flex items-center gap-2">
+          <Icon class="w-5 h-5 text-black shrink-0" name={item.icon} />
+          <span class="font-medium">{item.title}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>

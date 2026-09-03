@@ -1,52 +1,74 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/hero.png";
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
 <main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
+  class="grid lg:grid-cols-2 gap-8 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block w-full">
+    <div class="relative max-w-md mx-auto">
+      <div
+        class="aspect-4/5 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200 p-10 flex items-center justify-center">
+        <div
+          class="grid grid-cols-2 grid-rows-2 gap-2 w-full h-full max-w-72 max-h-72 mx-auto border-4 border-slate-800/80 rounded-sm bg-white/50 p-2 shadow-inner">
+          <div class="bg-linear-to-br from-sky-100 to-white rounded-xs"></div>
+          <div class="bg-linear-to-br from-sky-100 to-white rounded-xs"></div>
+          <div class="bg-linear-to-br from-sky-100 to-white rounded-xs"></div>
+          <div class="bg-linear-to-br from-sky-100 to-white rounded-xs"></div>
+        </div>
+      </div>
+      <div
+        class="absolute -top-4 -left-4 bg-white rounded-lg shadow-lg px-4 py-3 flex items-center gap-2 border border-slate-100">
+        <Icon class="w-5 h-5 text-black" name="bx:bxs-medal" />
+        <div class="leading-tight">
+          <p class="font-semibold text-sm">20+ vuotta</p>
+          <p class="text-xs text-slate-500">kokemusta</p>
+        </div>
+      </div>
+      <div
+        class="absolute -bottom-4 -right-4 bg-black text-white rounded-lg shadow-lg px-4 py-3 flex items-center gap-2">
+        <Icon class="w-5 h-5" name="bx:bxs-truck" />
+        <div class="leading-tight">
+          <p class="font-semibold text-sm">500+</p>
+          <p class="text-xs text-slate-300">asennettua kohdetta</p>
+        </div>
+      </div>
+      <div
+        class="absolute top-1/2 -right-6 -translate-y-1/2 bg-white rounded-lg shadow-lg px-3 py-2 flex items-center gap-1.5 border border-slate-100">
+        <Icon class="w-4 h-4 text-amber-400" name="bx:bxs-star" />
+        <span class="text-xs font-semibold">4.9/5 arvostelut</span>
+      </div>
+    </div>
   </div>
   <div>
+    <p
+      class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 bg-slate-100 rounded-full px-3 py-1">
+      <Icon class="w-4 h-4" name="bx:bxs-map" />
+      Turku &amp; lähikunnat
+    </p>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter mt-4">
+      Ikkunat ja ulko-ovet, asennettuna avaimet käteen
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      Myymme ja asennamme laadukkaat ikkunat ja ulko-ovet Turun seudulla.<wbr
+      /> Ilmainen mittakäynti, asiantunteva asennus ja pitkä takuu — kotisi lämpimänä
+      ja turvassa.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        href="/contact"
+        class="flex gap-1 items-center justify-center">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-phone-call" />
+        Pyydä ilmainen tarjous
       </Link>
       <Link
         size="lg"
         style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        href="/#tuotteet"
+        class="flex gap-1 items-center justify-center">
+        <Icon class="text-black w-4 h-4" name="uil:window" />
+        Tutustu tuotteisiin
       </Link>
     </div>
   </div>
