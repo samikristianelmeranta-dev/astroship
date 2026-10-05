@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <?php wp_head(); ?>
 </head>
-<?php
-$nordic_slug    = is_singular( 'page' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
-$nordic_landing = in_array( $nordic_slug, nordic_noindex_slugs(), true ); // mainoslaskeutumissivu: ei päävalikkoa
-?>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip-link" href="#main-content"><?php esc_html_e( 'Siirry sisältöön', 'nordic' ); ?></a>
@@ -26,7 +22,6 @@ $nordic_landing = in_array( $nordic_slug, nordic_noindex_slugs(), true ); // mai
       <span class="site-logo-text">Ikkunakauppias<b>.fi</b></span>
     </a>
 
-    <?php if ( ! $nordic_landing ) : ?>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
       <span class="screen-reader-text"><?php esc_html_e( 'Valikko', 'nordic' ); ?></span>
@@ -63,7 +58,6 @@ $nordic_landing = in_array( $nordic_slug, nordic_noindex_slugs(), true ); // mai
       ?>
       <a class="btn btn-primary nav-cta-mobile" href="#tarjous" data-quote><?php esc_html_e( 'Pyydä ilmainen tarjous', 'nordic' ); ?></a>
     </nav>
-    <?php endif; ?>
 
     <a class="btn btn-primary header-cta" href="#tarjous" data-quote>
       <span><?php esc_html_e( 'Pyydä ilmainen tarjous', 'nordic' ); ?></span>
@@ -74,7 +68,7 @@ $nordic_landing = in_array( $nordic_slug, nordic_noindex_slugs(), true ); // mai
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 </header>
 
-<?php if ( is_singular( 'page' ) && ! is_front_page() && ! $nordic_landing ) : ?>
+<?php if ( is_singular( 'page' ) && ! is_front_page() && 'front' !== nordic_page_type( get_post_field( 'post_name', get_the_ID() ) ) ) : ?>
 <nav class="breadcrumbs" aria-label="<?php esc_attr_e( 'Murupolku', 'nordic' ); ?>">
   <div class="wrap">
     <ol>

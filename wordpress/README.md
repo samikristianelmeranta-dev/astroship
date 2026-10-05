@@ -6,14 +6,14 @@ identtiseksi alkuperäisen viennin (`nordic-sivut_26.xml`) kanssa. Uudistus
 tehdään kokonaan teemassa, joten **sivuja ei tarvitse tuoda uudelleen**.
 
 - `nordic-theme/`: teeman lähdekoodi
-- Ladattava paketti: `cd wordpress && zip -r nordic-theme-v2.0.0.zip nordic-theme`
+- Ladattava paketti: `cd wordpress && zip -r nordic-theme-v2.0.1.zip nordic-theme`
   (zip-tiedostoa ei ole versionhallinnassa)
 
 ## Käyttöönotto
 
 1. Ota varmuuskopio (tiedostot ja tietokanta).
 2. WordPress → Ulkoasu → Teemat → Lisää uusi → Lataa teema → valitse
-   `nordic-theme-v2.0.0.zip` → **Korvaa nykyinen ladatulla**. Kansion nimi on
+   `nordic-theme-v2.0.1.zip` → **Korvaa nykyinen ladatulla**. Kansion nimi on
    sama (`nordic-theme`), joten sisällön kuvapolut, valikot ja asetukset säilyvät.
 3. Tyhjennä välimuistit (välimuistilisäosa, CDN, palvelin).
 4. Tarkista nämä:
@@ -42,8 +42,7 @@ päälle lisäämällä `wp-config.php`:hen `define( 'NORDIC_LEGACY_PAGE_CSS', t
   mittauskäynti, sitoumukseton tarjous, valmistettu Suomessa.
 - Opassivuille "Lue myös" -nostot (3 seuraavaa opasta), jotka parantavat
   sisäistä linkitystä.
-- Näkyvä murupolku, uusi alatunniste (palvelut, alueet, yhteystiedot) ja
-  mainoslaskeutumissivu ilman päävalikkoa (`etusivu-ilman-navigaatiota`).
+- Näkyvä murupolku ja uusi alatunniste (palvelut, alueet, yhteystiedot).
 
 ### Animaatiot
 - Heron sisääntulo (teksti, kuvan paljastus ja zoom) sekä kevyt parallax
@@ -63,8 +62,10 @@ päälle lisäämällä `wp-config.php`:hen `define( 'NORDIC_LEGACY_PAGE_CSS', t
   FAQPage-skeemat säilyvät.
 - Open Graph -kuva mittoineen, `twitter:card`, artikkelien päivämäärät.
 - Robots `max-image-preview:large` ja `max-snippet:-1`.
-- Kopio-etusivun canonical osoittaa etusivulle, ja sivu on poistettu
-  XML-sivukartasta.
+- Sisällössä on kaksi etusivua (`etusivu-sisalto` ja
+  `etusivu-ilman-navigaatiota`). Se, jota ei ole asetettu etusivuksi
+  (Asetukset → Lukeminen), tulkitaan kopioksi: sen canonical osoittaa
+  etusivulle, ja se on poistettu XML-sivukartasta.
 - Sivulla on enää yksi `<main>` (sisällön sisäkkäinen `<main>` muutetaan
   tulostettaessa) ja ohituslinkki "Siirry sisältöön".
 

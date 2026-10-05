@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.0.0
+Version: 2.0.1
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -290,8 +290,6 @@ main:focus { outline: none; }
 
 .header-cta { min-height: 44px; padding: 10px 20px; font-size: 15px; flex: none; }
 .nav-cta-mobile { display: none; }
-.body-landing .site-nav { display: none; }
-.page-slug-etusivu-ilman-navigaatiota .header-cta { margin-left: auto; }
 
 .nav-toggle {
   display: none; margin-left: auto;
@@ -515,28 +513,25 @@ body:not(.page-type-article) .scroll-progress { display: none; }
 @keyframes lightDrift { from { transform: translate(0, 0); } to { transform: translate(-12%, 10%); } }
 @media (max-width: 1024px) { .hero.hero-photo { background-image: url('assets/img/hero-1024.webp'); } }
 
-.home .site-header:not(.is-scrolled), .page-slug-etusivu-ilman-navigaatiota .site-header:not(.is-scrolled) {
+body:has(.hero-photo) .site-header:not(.is-scrolled) {
   background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none;
 }
-.home .site-header:not(.is-scrolled) .site-logo-mark,
-.home .site-header:not(.is-scrolled) .site-logo-text,
-.page-slug-etusivu-ilman-navigaatiota .site-header:not(.is-scrolled) .site-logo-mark,
-.page-slug-etusivu-ilman-navigaatiota .site-header:not(.is-scrolled) .site-logo-text { color: #fff; }
-.home .site-header:not(.is-scrolled) .site-logo-text b,
-.page-slug-etusivu-ilman-navigaatiota .site-header:not(.is-scrolled) .site-logo-text b { color: var(--gold); }
+body:has(.hero-photo) .site-header:not(.is-scrolled) .site-logo-mark,
+body:has(.hero-photo) .site-header:not(.is-scrolled) .site-logo-text { color: #fff; }
+body:has(.hero-photo) .site-header:not(.is-scrolled) .site-logo-text b { color: var(--gold); }
 @media (min-width: 961px) {
-  .home .site-header:not(.is-scrolled) .site-nav a:not(.btn) { color: rgba(255, 255, 255, 0.82); }
-  .home .site-header:not(.is-scrolled) .site-nav a:not(.btn):hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
-  .home .site-header:not(.is-scrolled) .site-nav .current-menu-item > a,
-  .home .site-header:not(.is-scrolled) .site-nav a[aria-current="page"] { color: #fff; }
+  body:has(.hero-photo) .site-header:not(.is-scrolled) .site-nav a:not(.btn) { color: rgba(255, 255, 255, 0.82); }
+  body:has(.hero-photo) .site-header:not(.is-scrolled) .site-nav a:not(.btn):hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+  body:has(.hero-photo) .site-header:not(.is-scrolled) .site-nav .current-menu-item > a,
+  body:has(.hero-photo) .site-header:not(.is-scrolled) .site-nav a[aria-current="page"] { color: #fff; }
 }
-.home .site-header:not(.is-scrolled) .nav-toggle { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); }
-.home .site-header:not(.is-scrolled) .nav-toggle-bars span { background: #fff; }
-.home.nav-open .site-header { background: var(--paper); }
-.home.nav-open .site-header .site-logo-mark, .home.nav-open .site-header .site-logo-text { color: var(--spruce); }
-.home.nav-open .site-header .site-logo-text b { color: var(--pine); }
-.home.nav-open .site-header .nav-toggle-bars span { background: var(--spruce); }
-.home.nav-open .site-header .nav-toggle { background: #fff; border-color: var(--line-strong); }
+body:has(.hero-photo) .site-header:not(.is-scrolled) .nav-toggle { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.3); }
+body:has(.hero-photo) .site-header:not(.is-scrolled) .nav-toggle-bars span { background: #fff; }
+body:has(.hero-photo).nav-open .site-header { background: var(--paper); }
+body:has(.hero-photo).nav-open .site-header .site-logo-mark, body:has(.hero-photo).nav-open .site-header .site-logo-text { color: var(--spruce); }
+body:has(.hero-photo).nav-open .site-header .site-logo-text b { color: var(--pine); }
+body:has(.hero-photo).nav-open .site-header .nav-toggle-bars span { background: var(--spruce); }
+body:has(.hero-photo).nav-open .site-header .nav-toggle { background: #fff; border-color: var(--line-strong); }
 
 .hero.hero-photo > .wrap { width: 100%; }
 .hero-text { max-width: 660px; }

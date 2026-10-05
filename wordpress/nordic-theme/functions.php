@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.0.0' );
+define( 'NORDIC_VERSION', '2.0.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -553,11 +553,25 @@ function nordic_related_guides_html( $slug ) {
  * ========================================================================= */
 
 /**
- * Päällekkäiset sivut (kopio etusivusta mainoskäyttöön ilman päävalikkoa):
- * canonical osoittaa etusivulle ja sivu jätetään pois XML-sivukartasta ja llms.txt:stä.
+ * Päällekkäiset sivut: sisällössä on kaksi samanlaista etusivua
+ * (etusivu-sisalto ja etusivu-ilman-navigaatiota). Se, jota EI ole asetettu
+ * WordPressissä etusivuksi (Asetukset → Lukeminen), on kopio: sen canonical
+ * osoittaa etusivulle ja se jätetään pois XML-sivukartasta ja llms.txt:stä.
  */
 function nordic_noindex_slugs() {
-	return array( 'etusivu-ilman-navigaatiota' );
+	$front_id   = (int) get_option( 'page_on_front' );
+	$front_slug = $front_id ? get_post_field( 'post_name', $front_id ) : '';
+	$copies     = array();
+	foreach ( array( 'etusivu-sisalto', 'etusivu-ilman-navigaatiota' ) as $slug ) {
+		if ( $slug !== $front_slug ) {
+			$copies[] = $slug;
+		}
+	}
+	// Jos etusivua ei ole asetettu kumpaankaan, etusivu-sisalto on pääversio.
+	if ( count( $copies ) === 2 ) {
+		$copies = array( 'etusivu-ilman-navigaatiota' );
+	}
+	return $copies;
 }
 
 function nordic_meta_description( $post_id ) {
