@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.0.1' );
+define( 'NORDIC_VERSION', '2.0.2' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -471,6 +471,19 @@ function nordic_filter_content( $html ) {
 			} else {
 				$html .= $related;
 			}
+		}
+	}
+
+	// 6) Nordic CRM -lisäosan lomakkeet (vain jos lisäosa on käytössä).
+	if ( 'energiansaastolaskuri' === $slug && shortcode_exists( 'nordic_laskuri_lomake' ) && strpos( $html, 'nordic-crm-laskuri' ) === false ) {
+		$html = preg_replace( '#(<div class="cta-band".*?</a>\s*</div>)#s', '$1' . do_shortcode( '[nordic_laskuri_lomake]' ), $html, 1 );
+	}
+	if ( in_array( $slug, array( 'ikkunat', 'ovet' ), true ) && shortcode_exists( 'nordic_esite_lomake' ) && function_exists( 'nordic_crm_settings' ) ) {
+		$crm = nordic_crm_settings();
+		if ( ! empty( $crm['esite_url'] ) && strpos( $html, 'nordic-crm-esite' ) === false ) {
+			$block = '<section class="esite-cta"><div class="wrap">' . do_shortcode( '[nordic_esite_lomake]' ) . '</div></section>';
+			$pos   = strpos( $html, '<section class="seo-summary' );
+			$html  = false !== $pos ? substr_replace( $html, $block, $pos, 0 ) : $html . $block;
 		}
 	}
 

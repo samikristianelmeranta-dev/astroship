@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.0.1
+Version: 2.0.2
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -1382,3 +1382,12 @@ table.price-table, .article-body table {
   .panel-dark *, .final-cta * { color: #000 !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* =========================================================================
+   22. NORDIC CRM -LOMAKKEET (esite, laskurin tulos)
+   ========================================================================= */
+.esite-cta { padding: clamp(40px, 5vw, 64px) 0 0 !important; }
+.esite-cta .nordic-crm-form { max-width: 820px; margin: 0; }
+.page-slug-energiansaastolaskuri .nordic-crm-form { margin-top: 16px; }
+.nordic-crm-form .ncf-submit { box-shadow: var(--shadow-gold); transition: transform 0.3s var(--ease-out), background-color 0.2s; }
+.nordic-crm-form .ncf-submit:hover { background: var(--gold-dim); transform: translateY(-2px); }
