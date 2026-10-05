@@ -6,7 +6,8 @@ identtiseksi alkuperäisen viennin (`nordic-sivut_26.xml`) kanssa. Uudistus
 tehdään kokonaan teemassa, joten **sivuja ei tarvitse tuoda uudelleen**.
 
 - `nordic-theme/`: teeman lähdekoodi
-- `dist/nordic-theme-v2.0.0.zip`: valmis paketti WordPressiin ladattavaksi
+- Ladattava paketti: `cd wordpress && zip -r nordic-theme-v2.0.0.zip nordic-theme`
+  (zip-tiedostoa ei ole versionhallinnassa)
 
 ## Käyttöönotto
 
