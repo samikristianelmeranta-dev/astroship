@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_CRM_VERSION', '1.0.0' );
+define( 'NORDIC_CRM_VERSION', '1.1.0' );
 define( 'NORDIC_CRM_FILE', __FILE__ );
 define( 'NORDIC_CRM_DIR', __DIR__ );
 define( 'NORDIC_CRM_TRIGGER', 'nordic_crm_lead' );
@@ -24,6 +24,7 @@ require_once __DIR__ . '/includes/template.php';
 require_once __DIR__ . '/includes/leads.php';
 require_once __DIR__ . '/includes/forms.php';
 require_once __DIR__ . '/includes/installer.php';
+require_once __DIR__ . '/includes/privacy.php';
 
 /**
  * FluentCRM-riippuvaiset osat ladataan vasta, kun FluentCRM on käynnissä.

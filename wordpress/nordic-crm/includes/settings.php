@@ -11,8 +11,8 @@ function nordic_crm_defaults() {
 		'taloyhtio_match'    => 'taloyhtio',
 		'consent_field'      => 'markkinointilupa',
 		'double_optin'       => 1,
-		'esite_url'          => '',
-		'sender_name'        => '',
+		'esite_url'          => plugins_url( 'assets/nordic-esite-2026.pdf', NORDIC_CRM_FILE ),
+		'sender_name'        => 'Sami Elmeranta',
 		'sender_title'       => '',
 		'company'            => 'Nordic Ikkunat & Ovet Oy',
 		'phone'              => '',
@@ -67,8 +67,10 @@ function nordic_crm_sanitize_settings( $in ) {
 				$out[ $key ] = sanitize_text_field( $val );
 		}
 	}
-	if ( ! $out['logo_url'] ) {
-		$out['logo_url'] = $d['logo_url'];
+	foreach ( array( 'logo_url', 'esite_url' ) as $k ) {
+		if ( ! $out[ $k ] ) {
+			$out[ $k ] = $d[ $k ];
+		}
 	}
 	return $out;
 }
@@ -131,7 +133,7 @@ function nordic_crm_settings_page() {
 				$field( 'company', 'Yrityksen nimi' );
 				$field( 'phone', 'Puhelinnumero', 'Näkyy allekirjoituksessa, jos täytetty.' );
 				$field( 'email', 'Sähköposti', 'Näkyy allekirjoituksessa. Vastaukset tulevat FluentCRM:n lähetysasetusten Reply-to-osoitteeseen.', 'email' );
-				$field( 'esite_url', 'Esitteen osoite (PDF)', 'Linkki, joka lähetetään esitteen tilaajalle. Lataa PDF Mediakirjastoon ja liitä sen osoite tähän.' );
+				$field( 'esite_url', 'Esitteen osoite (PDF)', 'Linkki, joka lähetetään esitteen tilaajalle. Oletuksena lisäosan mukana tuleva esite (8 s.). Jos teet uuden version, lataa PDF Mediakirjastoon ja liitä sen osoite tähän.' );
 				$field( 'logo_url', 'Logo sähköposteihin (PNG)', 'Pieni neliömäinen kuva. Oletuksena lisäosan mukana tuleva logo.' );
 				$field( 'stop_tags', 'Pysäytystagit', 'Kun kontaktille lisätään jokin näistä tageista, jatkoviestit loppuvat. Pilkulla eroteltuna.' );
 				?>

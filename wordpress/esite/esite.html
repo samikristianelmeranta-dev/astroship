@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Ikkunat ja ulko-ovet – Nordic Ikkunat &amp; Ovet Oy</title>
+<style>
+  @font-face { font-family: 'Inter'; src: url('../nordic-theme/assets/fonts/inter.woff2') format('woff2'); font-weight: 100 900; }
+  @font-face { font-family: 'Space Grotesk'; src: url('../nordic-theme/assets/fonts/space-grotesk.woff2') format('woff2'); font-weight: 300 700; }
+  @page { size: A4; margin: 0; }
+  :root {
+    --spruce: #16303B; --night: #102530; --pine: #1D5E79; --pine-soft: #E3EEF2;
+    --gold: #FFD866; --gold-soft: #FFF4CF; --paper: #F6F8F9; --mist: #EBF1F3;
+    --ink: #16303B; --ink-2: #3D5561; --ink-3: #647A84; --line: rgba(22,48,59,.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: var(--ink-2); font-size: 10.5pt; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; color: var(--ink); margin: 0; letter-spacing: -0.02em; line-height: 1.12; }
+  p { margin: 0 0 8pt; }
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: auto; }
+  .pad { padding: 18mm 18mm 16mm; }
+  .kicker { font-size: 8pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--pine); margin-bottom: 4mm; display: flex; align-items: center; gap: 3mm; }
+  .kicker::before { content: ''; width: 8mm; height: 1.2mm; border-radius: 1mm; background: linear-gradient(90deg, var(--pine) 0 60%, var(--gold) 60%); }
+  .on-dark .kicker { color: var(--gold); }
+  h2 { font-size: 24pt; margin-bottom: 4mm; }
+  .lead { font-size: 12pt; color: var(--ink); line-height: 1.5; max-width: 150mm; }
+  .folio { position: absolute; left: 18mm; right: 18mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--ink-3); }
+  .on-dark .folio { color: rgba(255,255,255,.55); }
+  .logo { display: flex; align-items: center; gap: 2.5mm; font-family: 'Space Grotesk'; font-weight: 700; font-size: 13pt; color: var(--spruce); }
+  .logo svg { width: 8mm; height: 8mm; }
+  .logo b { color: var(--pine); }
+  .on-dark .logo, .on-dark .logo svg { color: #fff; }
+  .on-dark .logo b { color: var(--gold); }
+
+  /* Kansi */
+  .cover { background: var(--spruce); color: #fff; }
+  .cover-img { position: absolute; inset: 0 0 auto 0; height: 168mm; background: url('img/cover.jpg') center 55% / cover; }
+  .cover-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(16,37,48,.15) 0%, rgba(16,37,48,0) 40%, rgba(22,48,59,1) 100%); }
+  .cover .logo { position: absolute; top: 14mm; left: 18mm; background: rgba(255,255,255,.92); padding: 2.5mm 4mm; border-radius: 3mm; }
+  .cover .logo, .cover .logo svg { color: var(--spruce); }
+  .cover .logo b { color: var(--pine); }
+  .cover-body { position: absolute; left: 18mm; right: 18mm; top: 150mm; }
+  .cover h1 { color: #fff; font-size: 40pt; letter-spacing: -0.035em; line-height: 1.02; margin: 5mm 0 6mm; }
+  .cover h1 span { color: var(--gold); }
+  .cover p { color: rgba(255,255,255,.8); font-size: 12.5pt; max-width: 145mm; }
+  .cover-chips { display: flex; flex-wrap: wrap; gap: 2.5mm; margin-top: 9mm; }
+  .chip { padding: 2mm 4mm; border-radius: 99px; border: .3mm solid rgba(255,255,255,.25); font-size: 9pt; color: #fff; }
+  .chip i { display: inline-block; width: 2mm; height: 2mm; border-radius: 50%; background: var(--gold); margin-right: 2mm; vertical-align: middle; }
+
+  /* Sisältö */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .card { border: .3mm solid var(--line); border-radius: 4mm; padding: 5mm 5.5mm; background: #fff; break-inside: avoid; }
+  .card h3 { font-size: 12.5pt; margin-bottom: 1.5mm; }
+  .card p { font-size: 9.5pt; margin: 0; }
+  .card .fit { margin-top: 2.5mm; padding-top: 2.5mm; border-top: .3mm solid var(--line); font-size: 8.5pt; color: var(--ink-3); }
+  .card .fit b { color: var(--ink); font-weight: 600; }
+  .card .tag { display: inline-block; font-size: 7.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pine); margin-bottom: 2mm; }
+  .card.feature { border-top: 1.2mm solid var(--gold); }
+  .tinted { background: var(--paper); }
+  .num { width: 9mm; height: 9mm; border-radius: 50%; background: var(--gold); color: var(--spruce); font-family: 'Space Grotesk'; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 11pt; margin-bottom: 3mm; }
+  .stat { font-family: 'Space Grotesk'; font-weight: 700; font-size: 26pt; color: var(--spruce); letter-spacing: -0.03em; line-height: 1; }
+  .stat-label { font-size: 9pt; color: var(--ink-3); margin-top: 1.5mm; }
+  .photo { border-radius: 4mm; background-size: cover; background-position: center; }
+  ul.check { list-style: none; padding: 0; margin: 0; display: grid; gap: 2.2mm; }
+  ul.check li { position: relative; padding-left: 7mm; font-size: 10pt; }
+  ul.check li::before { content: ''; position: absolute; left: 0; top: .9mm; width: 4.4mm; height: 4.4mm; border-radius: 50%; background: var(--pine-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D5E79' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 2.8mm no-repeat; }
+  .on-dark ul.check li { color: rgba(255,255,255,.85); }
+  .on-dark ul.check li::before { background-color: rgba(255,216,102,.18); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFD866' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E"); }
+  table.price { width: 100%; border-collapse: separate; border-spacing: 0; border: .3mm solid var(--line); border-radius: 3mm; overflow: hidden; font-size: 9.5pt; }
+  table.price th { background: var(--spruce); color: #fff; text-align: left; padding: 2.6mm 4mm; font-family: 'Space Grotesk'; font-weight: 600; font-size: 9pt; }
+  table.price td { padding: 2.4mm 4mm; border-top: .3mm solid var(--line); }
+  table.price td:last-child { text-align: right; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .note { font-size: 8pt; color: var(--ink-3); margin-top: 2mm; }
+  .callout { background: var(--gold-soft); border: .3mm solid rgba(244,198,74,.6); border-radius: 4mm; padding: 5mm 6mm; }
+  .callout h3 { font-size: 12pt; margin-bottom: 2mm; }
+  .dark { background: var(--spruce); color: rgba(255,255,255,.8); }
+  .dark h2, .dark h3 { color: #fff; }
+  .steps .card { padding: 4mm 3.5mm; }
+  .steps .card h3 { font-size: 9.5pt !important; letter-spacing: -0.01em; }
+  .steps .card p { font-size: 8.5pt; }
+  .swatches { display: flex; gap: 2mm; margin-top: 3mm; }
+  .swatches span { width: 9mm; height: 9mm; border-radius: 2mm; border: .3mm solid var(--line); }
+</style>
+</head>
+<body>
+
+<!-- 1. KANSI -->
+<section class="page cover on-dark">
+  <div class="cover-img"></div>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="12" y="2" width="10" height="10" fill="#FFD866"/><rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Ikkunakauppias<b>.fi</b></span>
+  </div>
+  <div class="cover-body">
+    <div class="kicker">Nordic Ikkunat &amp; Ovet Oy</div>
+    <h1>Ikkunat ja ulko-ovet<br><span>mittojesi mukaan.</span></h1>
+    <p>Skaalan ikkuna- ja ovimallisto asennettuna Turussa ja Varsinais-Suomessa. Jokainen ikkuna ja ovi valmistetaan Suomessa juuri kotisi mittoihin.</p>
+    <div class="cover-chips">
+      <span class="chip"><i></i>Valtuutettu Skaala-jälleenmyyjä</span>
+      <span class="chip"><i></i>Valmistettu Ylihärmässä</span>
+      <span class="chip"><i></i>Ilmainen mittauskäynti</span>
+    </div>
+  </div>
+  <div class="folio"><span>ikkunakauppias.fi</span><span>Esite 2026</span></div>
+</section>
+
+<!-- 2. MEISTÄ -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Meistä</div>
+    <h2>Kotimainen tuote ja paikallinen asennus</h2>
+    <p class="lead">Olemme turkulainen asennusyritys ja valtuutettu Skaala-jälleenmyyjä. Hoidamme ikkuna- ja oviremontin kokonaisuutena mittauksesta valmiiseen asennukseen, joten sinun ei tarvitse sovitella aikatauluja useiden eri toimijoiden välillä.</p>
+
+    <div class="grid-3" style="margin:9mm 0 10mm;">
+      <div><div class="stat">10+</div><div class="stat-label">vuotta kokemusta</div></div>
+      <div><div class="stat">2–4 vko</div><div class="stat-label">tyypillinen projekti mittauksesta asennukseen</div></div>
+      <div><div class="stat">1–3 pv</div><div class="stat-label">omakotitalon asennus paikan päällä</div></div>
+    </div>
+
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <h3 style="font-size:13pt;margin-bottom:3mm;">Palveluumme kuuluu</h3>
+        <ul class="check">
+          <li>Ikkunoiden ja ovien mittaus paikan päällä</li>
+          <li>Skaalan ikkunoiden ja ulko-ovien asennus</li>
+          <li>Vanhojen ikkunoiden ja ovien purku ja poisvienti</li>
+          <li>Viimeistelytyöt ja siivous</li>
+          <li>Kirjallinen, sitoumukseton tarjous ilman piilokuluja</li>
+          <li>Takuu sekä tuotteelle että asennustyölle</li>
+        </ul>
+        <p style="margin-top:5mm;font-size:9.5pt;">Voit tilata myös pelkät tuotteet ilman asennusta, jos teet työn itse tai omalla remonttiporukalla.</p>
+      </div>
+      <div class="photo" style="height:78mm;background-image:url('img/ikkuna.jpg');"></div>
+    </div>
+
+    <h3 style="font-size:13pt;margin:10mm 0 4mm;">Näin tilaus etenee</h3>
+    <div class="steps" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3mm;">
+      <div class="card tinted"><div class="num">1</div><h3 style="font-size:10.5pt;">Yhteydenotto</h3><p>Jätä tarjouspyyntö tai lähetä sähköpostia.</p></div>
+      <div class="card tinted"><div class="num">2</div><h3 style="font-size:10.5pt;">Mittauskäynti</h3><p>Maksuton mittaus kotonasi.</p></div>
+      <div class="card tinted"><div class="num">3</div><h3 style="font-size:10.5pt;">Tarjous</h3><p>Kirjallinen ja sitoumukseton.</p></div>
+      <div class="card tinted"><div class="num">4</div><h3 style="font-size:10.5pt;">Valmistus</h3><p>Mittojesi mukaan Suomessa.</p></div>
+      <div class="card tinted"><div class="num">5</div><h3 style="font-size:10.5pt;">Asennus</h3><p>Ammattiasennus sovitusti.</p></div>
+    </div>
+  </div>
+  <div class="folio"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>2</span></div>
+</section>
+
+<!-- 3. IKKUNAMALLIT -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Ikkunat</div>
+    <h2>Skaalan ikkunamallit</h2>
+    <p class="lead" style="margin-bottom:8mm;">Kaikki Skaala-ikkunat valmistetaan mittatilaustyönä Ylihärmän tehtaalla, joten ikkuna istuu aukkoon tarkasti, olipa kyseessä vakio- tai erikoiskoko.</p>
+    <div class="grid-2">
+      <div class="card feature">
+        <span class="tag">Piilosarana</span>
+        <h3>Arvo / Arvo+</h3>
+        <p>Saranat on piilotettu karmirakenteen sisään, joten ikkunan ilme on siisti ilman näkyviä metalliosia. Saatavana useassa energialuokassa. U-arvo alkaen 0,57.</p>
+        <div class="fit"><b>Sopii:</b> uudiskohteisiin, moderneihin julkisivuihin ja remontteihin, joissa halutaan nostaa talon ilmettä.</div>
+      </div>
+      <div class="card feature">
+        <span class="tag">Sisäänaukeava</span>
+        <h3>Aukea / Aarre+</h3>
+        <p>Suomen yleisin ikkunamalli, helppo pestä sisältä käsin. Aukea on kolmilasinen. Aarre+ on Suomen ensimmäinen 2+2-rakenteella valmistettu nelilasinen matalaenergiaikkuna.</p>
+        <div class="fit"><b>Sopii:</b> kaikkiin koteihin. Aukea on kustannustehokas vakiovalinta, Aarre+ huipputason energiatehokkuuteen ja äänieristykseen.</div>
+      </div>
+      <div class="card">
+        <span class="tag">Ulosaukeava</span>
+        <h3>Aasa</h3>
+        <p>Pohjoismaissa suosittu malli. Ikkunalauta jää vapaaksi, kun ikkuna ei aukea huoneen puolelle. Hyvä ja hallittu tuuletusasento.</p>
+        <div class="fit"><b>Sopii:</b> koteihin, joissa ikkunalautaa käytetään esimerkiksi kasveille.</div>
+      </div>
+      <div class="card">
+        <span class="tag">Kiinteä</span>
+        <h3>Aava</h3>
+        <p>Yksinkertainen ja erittäin tiivis rakenne ilman liikkuvia osia. Mahdollistaa suuret pinnat, jopa noin 8 m² maisemaikkunat.</p>
+        <div class="fit"><b>Sopii:</b> koneellisella ilmanvaihdolla varustettuihin koteihin ja maisemaikkunoihin.</div>
+      </div>
+      <div class="card">
+        <span class="tag">Erikoismuodot</span>
+        <h3>Erikois- ja paloikkunat</h3>
+        <p>Vinokulmaiset, kaarevat ja muut erikoismuotoiset ikkunat sekä CE-merkityt paloikkunat vaativiin kohteisiin.</p>
+        <div class="fit"><b>Sopii:</b> ullakkotiloihin, kolmioikkunoihin ja kohteisiin, joissa määräykset vaativat paloikkunoita.</div>
+      </div>
+      <div class="card">
+        <span class="tag">Kaikki mallit</span>
+        <h3>Mittatilaustyö</h3>
+        <p>Mittaamme aukot paikan päällä ennen tilausta. Ikkunat tehdään valitsemillasi lisävarusteilla ja väreillä.</p>
+        <div class="fit"><b>Sopii:</b> uudis- ja saneerauskohteisiin, myös kun aukot poikkeavat vakiomitoista.</div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>3</span></div>
+</section>
+
+<!-- 4. ENERGIA JA LISÄVARUSTEET -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Energiatehokkuus</div>
+    <h2>Kolmi- vai nelilasinen?</h2>
+    <p class="lead">Ikkunan U-arvo kertoo, paljonko lämpöä karkaa sen läpi. Mitä pienempi luku, sitä vähemmän lämpöä menee hukkaan.</p>
+
+    <div class="grid-3" style="margin:8mm 0;">
+      <div class="card tinted"><div class="stat">2,8</div><div class="stat-label">1970-luvun alkuperäisen ikkunan U-arvo pahimmillaan</div></div>
+      <div class="card tinted"><div class="stat">1,0</div><div class="stat-label">nykyisten rakennusmääräysten enimmäisarvo</div></div>
+      <div class="card tinted" style="border-color:rgba(29,94,121,.35);"><div class="stat" style="color:var(--pine);">0,57</div><div class="stat-label">Skaala Arvo parhaimmillaan</div></div>
+    </div>
+
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <h3 style="font-size:13pt;margin-bottom:3mm;">Mitä nelilasinen tuo</h3>
+        <ul class="check">
+          <li>Nelilasisilla Arvo+ ja Aarre+ -ikkunoilla energiankulutus voi pienentyä jopa 70 % normitasoon verrattuna.</li>
+          <li>FrostFree vakiona kaikissa nelilasisissa ja energiatehokkaimmissa kolmilasisissa ikkunoissa. Se estää ikkunan huurtumista.</li>
+          <li>Ulkopuitteen alumiini ja sisäpuitteen PEFC-sertifioitu puu kestävät Suomen vaihtelevaa ilmastoa vuosikymmeniä.</li>
+        </ul>
+        <p style="margin-top:5mm;font-size:9.5pt;">Kumpi kannattaa, riippuu talosta ja lämmitysmuodosta. Käymme vaihtoehdot läpi mittauskäynnillä.</p>
+      </div>
+      <div>
+        <h3 style="font-size:13pt;margin-bottom:3mm;">Lisävarusteet ja lasit</h3>
+        <div class="card" style="margin-bottom:3mm;"><h3 style="font-size:11pt;">Auringonsuoja- ja äänieristyslasi</h3><p>Vähentää viilennystarvetta kesällä ja vaimentaa liikenteen tai naapuruston ääniä.</p></div>
+        <div class="card" style="margin-bottom:3mm;"><h3 style="font-size:11pt;">Sälekaihtimet</h3><p>Aurinkoenergialla toimivat, kaukosäädettävät sälekaihtimet ikkunan sisällä. Saatavilla Arvo- ja Aava-ikkunoihin.</p></div>
+        <div class="card"><h3 style="font-size:11pt;">Raitisilmaventtiilit</h3><p>Hallittu, vedoton tuuletus makuuhuoneisiin ja muihin tiloihin. Myös hyönteispuite allergiaverkolla.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>4</span></div>
+</section>
+
+<!-- 5. ULKO-OVET -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Ulko-ovet</div>
+    <h2>Kuusi ovimallistoa</h2>
+    <p class="lead" style="margin-bottom:7mm;">Skaalan mallistot erottuvat toisistaan lasiaukon muodon ja urituksen perusteella. Kaikki ovet tehdään mittatilaustyönä Ylihärmän tehtaalla.</p>
+    <div style="display:grid;grid-template-columns:1fr 46mm;gap:6mm;">
+      <div class="grid-2" style="gap:3.5mm;">
+        <div class="card"><span class="tag">Umpiovi</span><h3>Kaiku</h3><p>Moderni ja pelkistetty ilme ilman lasiaukkoa, eri pintakuvioinneilla.</p></div>
+        <div class="card"><span class="tag">Pystylasit</span><h3>Sävel</h3><p>Pystysuuntaiset lasiaukot tuovat valoa eteiseen ja ryhtiä sisäänkäyntiin.</p></div>
+        <div class="card"><span class="tag">Neliölasit</span><h3>Melodia</h3><p>Tasapainoinen kokonaisuus sekä moderniin että perinteiseen taloon.</p></div>
+        <div class="card"><span class="tag">Erikoismuodot</span><h3>Sointu</h3><p>Vaaka-, pyörö- ja puolipyörölasit persoonalliseen sisäänkäyntiin.</p></div>
+        <div class="card"><span class="tag">Uritettu</span><h3>Klassinen</h3><p>Perinteinen ristiuritus. Sopii erityisesti rintamamiestaloihin ja vanhempiin puutaloihin.</p></div>
+        <div class="card feature"><span class="tag">Uutuus</span><h3>Aika</h3><p>Alumiinipintainen mallisto, joka kestää pohjoisia oloja myös tummissa sävyissä. 20 vuoden pinnoitetakuu.</p></div>
+      </div>
+      <div class="photo" style="background:var(--mist) url('../nordic-theme/assets/img/product-portrait.png') center / contain no-repeat;"></div>
+    </div>
+
+    <div class="card dark on-dark" style="margin-top:7mm;padding:6mm 7mm;">
+      <h3 style="font-size:13pt;margin-bottom:4mm;">Tekniset ominaisuudet</h3>
+      <div class="grid-2" style="gap:3mm 8mm;">
+        <ul class="check">
+          <li>U-arvo 0,61–1,0 W/m²K rakenteesta riippuen</li>
+          <li>Ääneneristys jopa 38 dB (Rw+Ctr)</li>
+          <li>Murtosuojatut, säädettävät saranat ja Abloy LC 102 -lukkorunko vakiona</li>
+        </ul>
+        <ul class="check">
+          <li>Lisäksi Abloy Easy, Yale Doorman -älylukko tai sähkölukitusvalmius</li>
+          <li>10 vuoden suoranapysymistakuu ja 2 vuoden rakennetakuu</li>
+          <li>Aika-mallistolle lisäksi 20 vuoden pinnoitetakuu</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio on-light"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>5</span></div>
+</section>
+
+<!-- 6. OVITYYPIT JA VÄRIT -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Käyttötarkoituksen mukaan</div>
+    <h2>Ovityypit</h2>
+    <div class="grid-3" style="margin:6mm 0 10mm;">
+      <div class="card"><h3>Parveke- ja terassiovet</h3><p>Lasiaukolliset ovet, jotka tuovat valoa ja yhdistävät sisä- ja ulkotilan.</p></div>
+      <div class="card"><h3>Lasiliukuovet</h3><p>Näyttävä, tilaa säästävä ratkaisu suuriin lasipintoihin.</p></div>
+      <div class="card"><h3>Äänieristetty ovi</h3><p>Jopa 38 dB:n ääneneristys vilkasliikenteisiin ja meluisiin kohteisiin.</p></div>
+      <div class="card"><h3>Kerrostaso-ovet</h3><p>Taloyhtiöiden porrashuoneisiin, ääneneristys jopa 38 dB.</p></div>
+      <div class="card"><h3>Palo-ovet</h3><p>CE-merkityt EI30-palo-ovet vaativiin kohteisiin.</p></div>
+      <div class="card"><h3>Julkisten tilojen ovet</h3><p>Kestävät ovet julkisiin ja liiketiloihin.</p></div>
+    </div>
+
+    <div class="kicker">Värit</div>
+    <h2>Valitse sävy vapaasti</h2>
+    <div class="grid-2" style="align-items:start;margin-top:4mm;">
+      <div>
+        <ul class="check">
+          <li><b>RAL- ja NCS-sävykartat.</b> Myös erikoissävyt.</li>
+          <li><b>Eri väri sisä- ja ulkopuolelle.</b> Sisustus ja julkisivu voivat noudattaa eri tyyliä.</li>
+          <li><b>Puuviilupinta</b> HDF-pintaiseen oveen, jos haluat luonnollisen puun ilmeen.</li>
+          <li><b>Tummat sävyt</b> rasittuvat auringossa eniten. Aika-oven alumiinipinta kestää ne parhaiten.</li>
+        </ul>
+        <div class="swatches"><span style="background:#F4F4F0"></span><span style="background:#D8D5CC"></span><span style="background:#7C8A8E"></span><span style="background:#3B4A50"></span><span style="background:#1F2A2E"></span><span style="background:#7A5236"></span><span style="background:#9E2B25"></span></div>
+        <p class="note">Värimallit ovat suuntaa-antavia. Oikeat sävyt näet värikartoista mittauskäynnillä.</p>
+      </div>
+      <div class="callout">
+        <h3>Taloyhtiössä</h3>
+        <p style="font-size:9.5pt;margin:0;">Ulkonäköön vaikuttavat värivalinnat vaativat yleensä hallituksen hyväksynnän. Ikkunoiden ja ovien sävy kannattaa sovittaa julkisivun ja katon väreihin.</p>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>6</span></div>
+</section>
+
+<!-- 7. HINNAT -->
+<section class="page">
+  <div class="pad">
+    <div class="kicker">Hinnat</div>
+    <h2>Mitä remontti maksaa</h2>
+    <p class="lead" style="margin-bottom:7mm;">Hinnat ovat suuntaa-antavia haarukoita. Tarkan hinnan saat mittauskäynnin jälkeen kirjallisena tarjouksena.</p>
+
+    <div class="grid-2" style="gap:6mm;align-items:start;">
+      <div>
+        <table class="price">
+          <tr><th>Ikkuna asennettuna</th><th style="text-align:right;">Hinta-arvio</th></tr>
+          <tr><td>Pieni, yksinkertainen ikkuna</td><td>400–700 €</td></tr>
+          <tr><td>Keskikokoinen ikkuna</td><td>700–1 100 €</td></tr>
+          <tr><td>Suuri tai erikoismallinen</td><td>1 100–1 500 €</td></tr>
+        </table>
+        <table class="price" style="margin-top:5mm;">
+          <tr><th>Ulko-ovi asennettuna</th><th style="text-align:right;">Hinta-arvio</th></tr>
+          <tr><td>Perusmallinen teräsovi</td><td>1 500–2 500 €</td></tr>
+          <tr><td>Laadukas puuovi</td><td>3 000–4 000 €</td></tr>
+          <tr><td>Mittatilaus-design-ovi</td><td>3 500 € –</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="price">
+          <tr><th>Koko kohde</th><th style="text-align:right;">Hinta-arvio</th></tr>
+          <tr><td>Omakotitalo, 7–15 ikkunaa</td><td>6 000–20 000 €</td></tr>
+          <tr><td>Omakotitalo, 10 ikkunaa + 2 ulko-ovea</td><td>13 000–16 000 €</td></tr>
+          <tr><td>Taloyhtiö, per ikkuna</td><td>300–700 €</td></tr>
+        </table>
+        <p class="note">Hinta koostuu karkeasti tuotteista (40–60 %), asennustyöstä (25–40 %) sekä purusta, jätehuollosta ja viimeistelystä.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:9mm;gap:6mm;">
+      <div class="callout">
+        <h3>Kotitalousvähennys</h3>
+        <p style="font-size:9.5pt;">Asennustyön osuudesta voi vähentää 40 % verotuksessa. Omavastuu on 100 € ja enimmäismäärä 2 250 € henkilöä kohden.</p>
+        <p style="font-size:9.5pt;margin:0;"><b>Esimerkki:</b> työn osuus 3 000 € → vähennyskelpoinen 1 200 € → omavastuun jälkeen <b>1 100 € takaisin</b>.</p>
+        <p class="note" style="margin-top:3mm;">Tarkista ajantasaiset säännöt osoitteesta vero.fi.</p>
+      </div>
+      <div class="card tinted">
+        <h3>Maksaminen</h3>
+        <ul class="check" style="margin-top:3mm;">
+          <li>Kertamaksu esimerkiksi asennuksen valmistuttua</li>
+          <li>Maksu osissa sovitun aikataulun mukaan</li>
+          <li>Taloyhtiölle kertavastike, rahoitusvastike tai osakaskohtainen lisälaina</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>Nordic Ikkunat &amp; Ovet Oy</span><span>7</span></div>
+</section>
+
+<!-- 8. YHTEYSTIEDOT -->
+<section class="page dark on-dark">
+  <div class="photo" style="position:absolute;inset:0 0 auto 0;height:120mm;border-radius:0;background-image:linear-gradient(180deg,rgba(22,48,59,0) 40%,rgba(22,48,59,1) 100%),url('img/ovi.jpg');"></div>
+  <div class="pad" style="position:absolute;top:118mm;left:0;right:0;">
+    <div class="kicker">Seuraava askel</div>
+    <h2 style="font-size:30pt;">Pyydä ilmainen mittauskäynti</h2>
+    <p style="font-size:12pt;max-width:150mm;color:rgba(255,255,255,.82);">Käymme paikan päällä, mittaamme karmit ja käymme mallit läpi kanssasi. Sen jälkeen saat kirjallisen tarjouksen. Käynti on maksuton eikä sido mihinkään.</p>
+
+    <div class="grid-2" style="margin-top:10mm;gap:8mm;">
+      <div>
+        <ul class="check">
+          <li>Vastaamme viimeistään seuraavana arkipäivänä</li>
+          <li>Palvelemme arkisin klo 8–17</li>
+          <li>Turku ja koko Varsinais-Suomi</li>
+        </ul>
+      </div>
+      <div style="font-size:11pt;line-height:1.7;color:#fff;">
+        <div style="font-family:'Space Grotesk';font-weight:700;font-size:14pt;">Sami Elmeranta</div>
+        <div style="color:rgba(255,255,255,.75);">Nordic Ikkunat &amp; Ovet Oy</div>
+        <div style="margin-top:3mm;">info@ikkunakauppias.fi</div>
+        <div style="font-family:'Space Grotesk';font-weight:700;font-size:14pt;color:var(--gold);margin-top:1mm;">ikkunakauppias.fi</div>
+      </div>
+    </div>
+  </div>
+  <div class="folio" style="color:rgba(255,255,255,.5);"><span>Nordic Ikkunat &amp; Ovet Oy · Valtuutettu Skaala-jälleenmyyjä</span><span>8</span></div>
+</section>
+
+</body>
+</html>

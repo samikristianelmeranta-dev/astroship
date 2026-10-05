@@ -60,12 +60,16 @@ Jos lomakkeessa on jo Fluent Formsin oma *FluentCRM-integraatio*, poista se
 käytöstä. Nordic CRM hoitaa kontaktin luonnin ja luvan käsittelyn.
 
 ### 4. Lisäosa
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.0.0.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.1.0.zip` → Aktivoi.
 2. Avaa jokin hallintasivu. Lisäosa luo tagit, kentät ja 8 automaatiota, ja
    yläreunaan tulee ilmoitus.
-3. **Asetukset → Nordic CRM**: täytä allekirjoittajan nimi ja titteli,
-   puhelin, tietosuojaselosteen osoite ja esitteen PDF-osoite (lataa PDF
-   Mediakirjastoon).
+3. **Asetukset → Nordic CRM**: allekirjoittajana on valmiiksi Sami Elmeranta,
+   ja esitteenä lisäosan mukana tuleva 8-sivuinen PDF. Täydennä puhelinnumero
+   ja tietosuojaselosteen osoite.
+4. **Tietosuojaseloste**: Asetukset → Tietosuoja → Ohjeet → *Nordic CRM*.
+   Kopioi teksti selosteeseen ja täydennä hakasulkeissa olevat kohdat
+   (Y-tunnus, osoite, palveluntarjoajat). Sama teksti on tiedostossa
+   `TIETOSUOJA.md`.
 
 ### 5. Testaa itse
 Lähetä tarjouspyyntö omalla osoitteellasi luparuutu valittuna. Sinulle pitäisi
@@ -81,6 +85,13 @@ kontaktin, tagit ja automaation tilan.
   päälle.
 - **Vastaukset:** viestit pyytävät vastaamaan suoraan, joten vastaukset
   tulevat Reply-to-osoitteeseen.
+
+## Esite
+
+`assets/nordic-esite-2026.pdf` on 8-sivuinen esite: yritys, ikkunamallit,
+lasit ja energia, ulko-ovet, ovityypit ja värit, hinnat ja kotitalousvähennys
+sekä yhteystiedot. Lähde on tiedostossa `wordpress/esite/esite.html`, ja PDF
+tehdään komennolla `node build.mjs` (vaatii Playwrightin).
 
 ## Markkinointilupa ja lainsäädäntö
 
