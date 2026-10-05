@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.0.2' );
+define( 'NORDIC_VERSION', '2.0.3' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -36,6 +36,7 @@ function nordic_setup() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
 	add_theme_support( 'automatic-feed-links' );
+	add_post_type_support( 'page', 'excerpt' ); // Ote = hakukoneiden kuvaus (meta description)
 
 	register_nav_menus( array(
 		'primary'         => __( 'Päävalikko', 'nordic' ),
@@ -173,6 +174,8 @@ function nordic_business_info() {
  */
 function nordic_article_slugs() {
 	return array(
+		'kannattaako-ikkunoiden-vaihto',
+		'kannattaako-ulko-oven-vaihto',
 		'merkit-etta-ikkunat-pitaa-uusia',
 		'milloin-ikkunaremontti-kannattaa-aloittaa',
 		'kolmilasinen-vai-nelilasinen-ikkuna',
@@ -590,6 +593,10 @@ function nordic_noindex_slugs() {
 function nordic_meta_description( $post_id ) {
 	$desc = get_post_meta( $post_id, '_nordic_meta_description', true );
 	if ( ! $desc ) {
+		// Uusilla sivuilla kuvaus kirjoitetaan sivun Ote-kenttään.
+		$desc = get_post_field( 'post_excerpt', $post_id );
+	}
+	if ( ! $desc ) {
 		// Varakuvaus: ensimmäinen kappale sisällöstä.
 		$content = get_post_field( 'post_content', $post_id );
 		if ( preg_match( '#<p[^>]*>(.*?)</p>#si', $content, $m ) ) {
@@ -600,11 +607,24 @@ function nordic_meta_description( $post_id ) {
 }
 
 /**
+ * Sivut, jotka eivät kuulu hakutuloksiin (noindex) eivätkä sivukarttaan,
+ * esim. lomakkeen kiitossivu.
+ */
+function nordic_hidden_slugs() {
+	return apply_filters( 'nordic_hidden_slugs', array( 'kiitos' ) );
+}
+
+/**
  * Robots-ohjeet: isot esikatselukuvat ja täydet tekstiotteet sallittu
  * (Google Discover, AI-yhteenvedot). Kopio-etusivu ohjataan canonicalilla
  * etusivulle (ei noindexiä, jotta signaalit eivät ole ristiriidassa).
  */
 function nordic_robots( $robots ) {
+	if ( is_singular( 'page' ) && in_array( get_post_field( 'post_name', get_queried_object_id() ), nordic_hidden_slugs(), true ) ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+		return $robots;
+	}
 	$robots['max-image-preview'] = 'large';
 	$robots['max-snippet']       = '-1';
 	$robots['max-video-preview'] = '-1';
@@ -799,11 +819,41 @@ function nordic_head_meta() {
 
 	// Sivukohtainen skeema (FAQPage), tallennettu tuonnissa valmiina <script>-tagina.
 	$schema = get_post_meta( $post_id, '_nordic_schema_json', true );
+	if ( ! $schema ) {
+		$schema = nordic_faq_schema_from_content( $post_id );
+	}
 	if ( $schema ) {
 		echo $schema . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 add_action( 'wp_head', 'nordic_head_meta', 5 );
+
+/**
+ * FAQPage-skeema sivun omista UKK-lohkoista (<div class="faq-item"><h3>…</h3><p>…</p></div>).
+ * Uusille sivuille, joilla ei ole tuonnissa tallennettua skeemaa.
+ */
+function nordic_faq_schema_from_content( $post_id ) {
+	$content = (string) get_post_field( 'post_content', $post_id );
+	if ( ! preg_match_all( '#<div class="faq-item"[^>]*>\s*<h3>(.*?)</h3>\s*<p>(.*?)</p>#is', $content, $m, PREG_SET_ORDER ) ) {
+		return '';
+	}
+	$items = array();
+	foreach ( $m as $row ) {
+		$q = trim( html_entity_decode( wp_strip_all_tags( $row[1] ), ENT_QUOTES, 'UTF-8' ) );
+		$a = trim( html_entity_decode( wp_strip_all_tags( $row[2] ), ENT_QUOTES, 'UTF-8' ) );
+		if ( $q && $a ) {
+			$items[] = array(
+				'@type'          => 'Question',
+				'name'           => $q,
+				'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $a ),
+			);
+		}
+	}
+	if ( ! $items ) {
+		return '';
+	}
+	return '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $items ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>';
+}
 
 /**
  * Vanhat sivukohtaiset tyylit — vain jos NORDIC_LEGACY_PAGE_CSS on päällä.
@@ -827,7 +877,7 @@ function nordic_sitemap_exclude( $args, $post_type ) {
 		return $args;
 	}
 	$exclude = array();
-	foreach ( nordic_noindex_slugs() as $slug ) {
+	foreach ( array_merge( nordic_noindex_slugs(), nordic_hidden_slugs() ) as $slug ) {
 		$page = get_page_by_path( $slug );
 		if ( $page ) {
 			$exclude[] = $page->ID;
@@ -884,7 +934,7 @@ function nordic_llms_txt() {
 		'utility' => array( 'title' => 'Muut', 'items' => array() ),
 	);
 	foreach ( $pages as $page ) {
-		if ( in_array( $page->post_name, nordic_noindex_slugs(), true ) ) {
+		if ( in_array( $page->post_name, array_merge( nordic_noindex_slugs(), nordic_hidden_slugs() ), true ) ) {
 			continue;
 		}
 		$type = nordic_page_type( $page->post_name );
