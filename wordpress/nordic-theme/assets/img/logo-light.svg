@@ -1,0 +1,29 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap');
+      .word { font-family: 'Poppins', sans-serif; font-weight: 700; }
+      .cap  { font-family: 'Poppins', sans-serif; font-weight: 500; }
+      .tag  { font-family: 'Poppins', sans-serif; font-weight: 400; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- icon: window mark (valkoinen kehys tummalle taustalle) -->
+  <g>
+    <rect x="320" y="34" width="60" height="60" fill="#FFD866"/>
+    <rect x="260" y="34" width="120" height="120" fill="none" stroke="#F1ECE1" stroke-width="7"/>
+    <line x1="320" y1="34" x2="320" y2="154" stroke="#F1ECE1" stroke-width="6"/>
+    <line x1="260" y1="94" x2="380" y2="94" stroke="#F1ECE1" stroke-width="6"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="320" y="216" text-anchor="middle" class="word" font-size="46" fill="#F1ECE1">Ikkunakauppias<tspan fill="#FFD866">.fi</tspan></text>
+
+  <!-- divider + parent brand caption -->
+  <line x1="100" y1="248" x2="150" y2="248" stroke="#FFD866" stroke-width="1.5"/>
+  <text x="320" y="253" text-anchor="middle" class="cap" font-size="14" letter-spacing="3" fill="rgba(241,236,225,0.75)">NORDIC IKKUNAT &amp; OVET OY</text>
+  <line x1="490" y1="248" x2="540" y2="248" stroke="#FFD866" stroke-width="1.5"/>
+
+  <text x="320" y="284" text-anchor="middle" class="tag" font-size="14" fill="rgba(241,236,225,0.55)">Kotimaiset tuotteet ja rehellistä suomalaista osaamista</text>
+
+</svg>
