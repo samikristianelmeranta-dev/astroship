@@ -6,6 +6,8 @@ identtiseksi alkuperäisen viennin (`nordic-sivut_26.xml`) kanssa. Uudistus
 tehdään kokonaan teemassa, joten **sivuja ei tarvitse tuoda uudelleen**.
 
 - `nordic-theme/`: teeman lähdekoodi
+- `nordic-crm/`: sähköpostiautomaatiot (FluentCRM)
+- `nordic-chat/`: tekoälychat (Claude), asennuspaketti `bash nordic-chat/build.sh`
 - Ladattava paketti: `cd wordpress && zip -r nordic-theme-v2.0.2.zip nordic-theme`
   (zip-tiedostoa ei ole versionhallinnassa)
 
