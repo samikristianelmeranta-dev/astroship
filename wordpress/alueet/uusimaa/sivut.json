@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "etusivu",
+    "title": "Ikkunat ja ulko-ovet asennettuna pääkaupunkiseudulle",
+    "description": "Skaalan mittatilausikkunat ja ulko-ovet asennettuna Helsinkiin, Espooseen, Vantaalle ja Kauniaisiin. Ilmainen mittauskäynti ja kirjallinen tarjous."
+  },
+  {
+    "slug": "ikkunat",
+    "title": "Ikkunat Helsinkiin, Espooseen ja Vantaalle",
+    "description": "Aukea, Aarre+, Aasa, Arvo ja Aava: autamme valitsemaan ikkunat pääkaupunkiseudun taloon, meluun ja merituuleen. Pyydä ilmainen mittaus ja tarjous."
+  },
+  {
+    "slug": "ulko-ovet",
+    "title": "Ulko-ovet Helsinkiin, Espooseen ja Vantaalle",
+    "description": "Skaalan ulko-ovet asennettuna pääkaupunkiseudulle: rintamamiestalon Klassinen, tumma Aika ja 38 dB äänieristetty ovi. Ilmainen mittauskäynti."
+  },
+  {
+    "slug": "ikkunaremontit",
+    "title": "Ikkunaremontit Helsingissä, Espoossa ja Vantaalla",
+    "description": "Omakotitalon ja taloyhtiön ikkunaremontti pääkaupunkiseudulla: vaiheet, tyypilliset hinnat ja kotitalousvähennys. Pyydä ilmainen tarjous."
+  },
+  {
+    "slug": "oviremontit",
+    "title": "Oviremontit pääkaupunkiseudulla",
+    "description": "Ulko-, parveke- ja terassiovien vaihto sekä taloyhtiöiden porraskäytävä- ja kerrostaso-ovet Helsingissä, Espoossa ja Vantaalla. Katso hinnat."
+  },
+  {
+    "slug": "ikkuna-asennus",
+    "title": "Ikkuna-asennus Helsingissä, Espoossa ja Vantaalla",
+    "description": "Näin ikkuna-asennus etenee pääkaupunkiseudulla: purku, tiivistys, viimeistely ja kierrätys. Asennus myös talvella. Pyydä ilmainen tarjous."
+  },
+  {
+    "slug": "uudet-ikkunat-vai-huolto",
+    "title": "Uudet ikkunat vai huolto? Opas pääkaupunkiseudulle",
+    "description": "Riittääkö tiivisteiden vaihto ja maalaus vai onko uusien ikkunoiden aika? Vertailu ja kuntotarkastuslista Helsingin, Espoon ja Vantaan taloihin."
+  },
+  {
+    "slug": "yhteystiedot",
+    "title": "Yhteystiedot ja tarjouspyyntö pääkaupunkiseudulle",
+    "description": "Pyydä ilmainen mittauskäynti ja tarjous ikkunoista tai ulko-ovista Helsinkiin, Espooseen, Vantaalle tai Kauniaisiin. Vastaamme arkisin klo 8–17."
+  }
+]
