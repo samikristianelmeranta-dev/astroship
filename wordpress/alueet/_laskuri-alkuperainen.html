@@ -1,0 +1,212 @@
+
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Paljonko vanhat ikkunasi maksavat sinulle joka talvi?</h1>
+      <p>Vanhat, vetoisat ikkunat ja ovet päästävät lämmön ulos ja kylmän sisään. Laske alla, kuinka paljon säästäisit vuodessa uusilla, energiatehokkailla ikkunoilla ja ovilla.</p>
+    </div>
+  </header>
+
+  <div class="calc">
+    <div class="calc-grid">
+
+      <div class="inputs-panel">
+
+        <div class="field">
+          <label class="field-label" for="windowCount">Kuinka monta ikkunaa tai ovea vaihdat?</label>
+          <div class="slider-row">
+            <input type="range" id="windowCount" min="1" max="30" value="8">
+            <span class="slider-value" id="windowCountValue">8</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="ageLabel">Minkä ikäisiä nykyiset ikkunasi ovat?</span>
+          <div class="segmented" role="radiogroup" aria-labelledby="ageLabel">
+            <input type="radio" name="age" id="age-young" value="young">
+            <label for="age-young">Alle 10 vuotta</label>
+
+            <input type="radio" name="age" id="age-mid" value="mid" checked>
+            <label for="age-mid">10–30 vuotta</label>
+
+            <input type="radio" name="age" id="age-old" value="old">
+            <label for="age-old">Yli 30 vuotta</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="heatLabel">Mikä on kotisi lämmitysmuoto?</span>
+          <div class="segmented" role="radiogroup" aria-labelledby="heatLabel">
+            <input type="radio" name="heat" id="heat-sahko" value="sahko" checked>
+            <label for="heat-sahko">Sähkö</label>
+
+            <input type="radio" name="heat" id="heat-oljy" value="oljy">
+            <label for="heat-oljy">Öljy</label>
+
+            <input type="radio" name="heat" id="heat-kauko" value="kauko">
+            <label for="heat-kauko">Kaukolämpö</label>
+
+            <input type="radio" name="heat" id="heat-maalampo" value="maalampo">
+            <label for="heat-maalampo">Maalämpö</label>
+          </div>
+          <p class="field-hint">Laskuri käyttää koko Suomen keskimääräisiä lämmitystarvelukuja. Tarkka arvio lasketaan ilmaisen kotikäynnin yhteydessä.</p>
+        </div>
+
+      </div>
+
+      <aside class="result-panel">
+        <span class="result-label">Arvioitu säästö</span>
+        <div class="num-display"><span id="savingsAmount">0</span><span> €/vuosi</span></div>
+        <p class="result-sub" id="savingsSub">Näin paljon voit säästää lämmityskuluissa vaihtamalla vanhat ikkunat uusiin.</p>
+
+        <div class="grade-block">
+          <div class="grade-caption">
+            <span>Ikkunoiden energialuokka</span>
+          </div>
+          <div class="grade-bar">
+            <span style="background:#3E8A5C"></span>
+            <span style="background:#6FA968"></span>
+            <span style="background:#A8B95B"></span>
+            <span style="background:#D9C24A"></span>
+            <span style="background:#DE9B45"></span>
+            <span style="background:#D2703F"></span>
+            <span style="background:#B84A3A"></span>
+          </div>
+          <div class="grade-markers" id="gradeMarkers">
+            <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span>
+          </div>
+        </div>
+
+        <p class="disclaimer">Arvio perustuu ikkunoiden tyypilliseen lämmönläpäisykykyyn, Suomen keskimääräisiin lämmitystarvelukuihin sekä energian keskihintoihin. Todellinen säästö vaihtelee talon ja sään mukaan.</p>
+      </aside>
+
+    </div>
+
+    <div class="cta-band" id="ctaBand">
+      <p>Haluatko tarkan, veloituksettoman laskelman ja tarjouksen kotiisi?</p>
+      <a class="primary" href="/yhteystiedot/">Ota yhteyttä</a>
+    </div>
+
+  </div>
+
+</div>
+
+<section class="benefits-section">
+  <div class="wrap">
+    <h2>Miksi ikkunaremontti kannattaa?</h2>
+    <p class="benefits-intro">Muista, että uudet ikkunat nostavat kiinteistön arvoa huomattavasti &mdash; kyse ei ole pelkästä ulkonäöstä, vaan järkevästä sijoituksesta kotiin.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h3>Energiatehokkuus</h3>
+        <p>Uudet ikkunat pienentävät lämmityskuluja, mikä kiinnostaa myös mahdollisia ostajia.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Asumismukavuus</h3>
+        <p>Parempi äänieristys ja vedottomuus parantavat arjen laatua kodissa ympäri vuoden.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Ulkonäkö</h3>
+        <p>Siistit, uudet ikkunat antavat hyvän ensivaikutelman talosta &mdash; sekä asukkaalle että vierailijalle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const windowCount = document.getElementById('windowCount');
+  const windowCountValue = document.getElementById('windowCountValue');
+  const savingsAmount = document.getElementById('savingsAmount');
+  const savingsSub = document.getElementById('savingsSub');
+  const gradeMarkers = document.getElementById('gradeMarkers');
+
+  const ageDeltaU = { young: 0.3, mid: 1.0, old: 1.8 };
+  // effective price per kWh delivered heat, accounting for system efficiency / COP
+  const heatingParams = {
+    sahko:    0.150,
+    oljy:     0.141,
+    kauko:    0.084,
+    maalampo: 0.043
+  };
+
+  const DEGREE_DAYS = 4500;       // Suomen keskimääräinen lämmitystarveluku
+  const AVG_WINDOW_AREA = 1.5;    // m² per ikkuna/ovi (keskiarvo)
+  const SAVINGS_BOOST = 1.10;     // nostaa asiakkaalle näytettävää säästöarviota 10 %
+
+  function getSelected(name){
+    var checked = document.querySelector('input[name="' + name + '"]:checked');
+    if (checked) return checked.value;
+    // Varmuuskopio: jos mikään ei ole valittuna (esim. checked-attribuutti on kadonnut
+    // muokkauksessa), käytä ryhmän ensimmäistä vaihtoehtoa äläkä kaadu.
+    var first = document.querySelector('input[name="' + name + '"]');
+    if (first) {
+      first.checked = true;
+      return first.value;
+    }
+    return null;
+  }
+
+  function gradeForDeltaU(deltaU){
+    // maps delta-U roughly onto an A–G scale (7 segments)
+    if (deltaU <= 0.3) return 0; // A
+    if (deltaU <= 0.6) return 1; // B
+    if (deltaU <= 1.0) return 2; // C
+    if (deltaU <= 1.3) return 3; // D
+    if (deltaU <= 1.6) return 4; // E
+    if (deltaU <= 1.9) return 5; // F
+    return 6; // G
+  }
+
+  function calculate(){
+    const count = parseInt(windowCount.value, 10);
+    windowCountValue.textContent = count;
+
+    const age = getSelected('age') || 'mid';
+    const heat = getSelected('heat') || 'sahko';
+
+    const deltaU = ageDeltaU[age] !== undefined ? ageDeltaU[age] : ageDeltaU.mid;
+    const price = heatingParams[heat] !== undefined ? heatingParams[heat] : heatingParams.sahko;
+
+    const area = count * AVG_WINDOW_AREA;
+    const degreeHours = DEGREE_DAYS * 24;
+    const kwhSaved = (deltaU * area * degreeHours) / 1000 * SAVINGS_BOOST;
+    const eurosSaved = Math.round(kwhSaved * price / 5) * 5; // pyöristä lähimpään 5 euroon
+
+    savingsAmount.textContent = eurosSaved.toLocaleString('fi-FI');
+    savingsSub.textContent = count + ' ikkunan/oven vaihto voi säästää noin ' +
+      Math.round(kwhSaved).toLocaleString('fi-FI') + ' kWh lämmitysenergiaa vuodessa.';
+
+    const currentGrade = gradeForDeltaU(deltaU);
+    const targetGrade = 0; // uudet ikkunat ~ A
+
+    if (gradeMarkers) {
+      Array.from(gradeMarkers.children).forEach((el, i) => {
+        el.classList.remove('is-current', 'is-target');
+        if (i === currentGrade) el.classList.add('is-current');
+        if (i === targetGrade && targetGrade !== currentGrade) el.classList.add('is-target');
+      });
+    }
+  }
+
+  windowCount.addEventListener('input', calculate);
+  document.querySelectorAll('input[name="age"], input[name="heat"]').forEach(el => {
+    el.addEventListener('change', calculate);
+  });
+
+  calculate();
+</script>
+
+
+  <section class="seo-summary">
+    <div class="wrap">
+      <div class="seo-summary-text">
+        <h4>Autamme ikkunaremontin kannattavuuden arvioinnissa alusta loppuun sinua</h4>
+        <p>Vanhat, huonosti eristävät ikkunat voivat nostaa lämmityslaskua merkittävästi joka talvi. Laskuri antaa suuntaa siitä, kuinka paljon nykyiset ikkunasi maksavat sinulle vuosittain energiahukkana.</p>
+        <p>Jos laskelma herätti kysymyksiä, varaa maksuton mittauskäynti — käymme paikan päällä arvioimassa tilanteen tarkemmin ja teemme kirjallisen, sitoumuksettoman tarjouksen uusista Skaala-ikkunoista. Voit hyödyntää myös kotitalousvähennystä asennustyön osuudesta.</p>
+      </div>
+      <div class="seo-summary-media"><img src="/wp-content/themes/nordic-theme/assets/img/seo-ikkuna.jpg" alt="Uusi ikkuna" loading="lazy"></div>
+    </div>
+  </section>
+
+

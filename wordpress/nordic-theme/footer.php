@@ -1,4 +1,4 @@
-<?php $nordic_business = nordic_business_info(); ?>
+<?php $nordic_business = nordic_business_info(); $nordic_region = nordic_region(); ?>
 <footer class="site-footer">
   <div class="wrap footer-grid">
 
@@ -12,7 +12,7 @@
         </svg>
         <span class="site-logo-text">Ikkunakauppias<b>.fi</b></span>
       </a>
-      <p>Valtuutettu Skaala-jälleenmyyjä. Myymme ja asennamme energiatehokkaita ikkunoita ja ulko-ovia Turussa ja Varsinais-Suomessa.</p>
+      <p>Valtuutettu Skaala-jälleenmyyjä. Myymme ja asennamme energiatehokkaita ikkunoita ja ulko-ovia <?php echo esc_html( $nordic_region['in_text'] ); ?>.</p>
     </div>
 
     <div class="footer-col">
@@ -25,6 +25,15 @@
           'menu_class'     => '',
           'fallback_cb'    => false,
         ) );
+      } elseif ( nordic_is_regional() ) {
+        echo '<ul>';
+        foreach ( $nordic_region['menu'] as $nordic_path => $nordic_label ) {
+          if ( in_array( $nordic_path, array( '/', '/yhteystiedot/' ), true ) ) {
+            continue;
+          }
+          echo '<li><a href="' . esc_url( home_url( $nordic_path ) ) . '">' . esc_html( $nordic_label ) . '</a></li>';
+        }
+        echo '</ul>';
       } else {
         echo '<ul>';
         echo '<li><a href="' . esc_url( home_url( '/ikkunat/' ) ) . '">Ikkunat</a></li>';
@@ -49,6 +58,12 @@
           'menu_class'     => '',
           'fallback_cb'    => false,
         ) );
+      } elseif ( nordic_is_regional() ) {
+        echo '<ul class="footer-cities">';
+        foreach ( $nordic_region['cities'] as $nordic_city_name ) {
+          echo '<li><span>' . esc_html( $nordic_city_name ) . '</span></li>';
+        }
+        echo '</ul>';
       } else {
         echo '<ul class="footer-cities">';
         foreach ( array( 'turku', 'kaarina', 'raisio', 'naantali', 'lieto', 'salo', 'paimio', 'parainen' ) as $nordic_city ) {
@@ -63,7 +78,7 @@
     <div class="footer-col">
       <h2 class="footer-title"><?php esc_html_e( 'Yhteystiedot', 'nordic' ); ?></h2>
       <ul class="footer-contact">
-        <li><?php echo nordic_icon( 'pin' ); // phpcs:ignore ?><span>Turku ja Varsinais-Suomi</span></li>
+        <li><?php echo nordic_icon( 'pin' ); // phpcs:ignore ?><span><?php echo esc_html( $nordic_region['area_text'] ); ?></span></li>
         <li><?php echo nordic_icon( 'clock' ); // phpcs:ignore ?><span>Arkisin klo 8–17</span></li>
         <?php if ( $nordic_business['telephone'] ) : ?>
         <li><?php echo nordic_icon( 'phone' ); // phpcs:ignore ?><a href="tel:<?php echo esc_attr( $nordic_business['telephone'] ); ?>"><?php echo esc_html( $nordic_business['telephone'] ); ?></a></li>
@@ -78,7 +93,11 @@
   <div class="footer-bottom">
     <div class="wrap">
       <span>&copy; <?php echo esc_html( date( 'Y' ) ); ?> Nordic Ikkunat &amp; Ovet Oy</span>
+      <?php if ( nordic_is_regional() ) : ?>
+      <span>Y-tunnus 3653098-6 · <a href="https://ikkunakauppias.fi/tietosuojaseloste/">Tietosuojaseloste</a></span>
+      <?php else : ?>
       <span><a href="<?php echo esc_url( home_url( '/sivukartta/' ) ); ?>">Sivukartta</a></span>
+      <?php endif; ?>
     </div>
   </div>
 </footer>

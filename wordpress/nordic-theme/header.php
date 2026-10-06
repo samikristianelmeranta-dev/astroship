@@ -47,6 +47,9 @@
           '/energiansaastolaskuri/' => 'Laskuri',
           '/yhteystiedot/'          => 'Yhteystiedot',
         );
+        if ( nordic_is_regional() ) {
+          $nordic_menu = nordic_region()['menu'];
+        }
         $nordic_current = trailingslashit( wp_parse_url( (string) get_permalink(), PHP_URL_PATH ) );
         echo '<ul class="menu">';
         foreach ( $nordic_menu as $nordic_path => $nordic_label ) {

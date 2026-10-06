@@ -1,0 +1,239 @@
+
+<main>
+
+  <header class="v4hero">
+    <div class="wrap v4hero-wrap">
+      <div class="v4hero-text">
+        <h1>Uudet ikkunat Turkuun ja Varsinais-Suomeen</h1>
+        <p>Pienempi lämmityslasku, parempi asumismukavuus ja siistimpi julkisivu — uusilla, mittatilaustyönä valmistetuilla ikkunoilla.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#tarjous">Pyyd&auml;&nbsp;ilmainen&nbsp;tarjous</a>
+        </div>
+      </div>
+      <div class="v4hero-media">
+        <img src="/wp-content/themes/nordic-theme/assets/img/hero-guide.webp" alt="Uudet ikkunat Turkuun ja Varsinais-Suomeen">
+      </div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="wrap">
+      <p>Uudet ikkunat ovat yksi kannattavimmista tavoista parantaa kodin energiatehokkuutta ja asumismukavuutta. Nordic Ikkunat &amp; Ovet toimittaa ja asentaa energiatehokkaita, mittatilaustyönä valmistettuja ikkunoita koteihin, mökkeihin ja taloyhtiöihin Turun seudulla.</p>
+    </div>
+  </section>
+
+  <section class="nx-showcase" id="ikkunamallisto">
+  <style>
+    .nx-showcase { padding: clamp(56px, 7vw, 96px) 0; background: linear-gradient(180deg, #fff 0%, var(--paper, #F6F8F9) 100%); }
+    .nx-showcase .nx-bento { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; margin-top: 32px; }
+    .nx-showcase a.nx-feature, .nx-showcase a.nx-model { text-decoration: none !important; color: inherit; }
+    .nx-showcase .nx-feature { position: relative; display: block; min-height: 460px; border-radius: 22px; overflow: hidden; background: var(--spruce, #16303B); box-shadow: 0 18px 48px rgba(22, 48, 59, .18); }
+    .nx-showcase .nx-feature img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.22, 1, .36, 1); }
+    .nx-showcase .nx-feature:hover img { transform: scale(1.05); }
+    .nx-showcase .nx-feature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(16, 37, 48, 0) 35%, rgba(16, 37, 48, .88) 100%); }
+    .nx-showcase .nx-feature-text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: clamp(22px, 3vw, 34px); color: #fff; }
+    .nx-showcase .nx-feature-text h3 { margin: 6px 0 8px; color: #fff; font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem); line-height: 1.15; }
+    .nx-showcase .nx-feature-text p { margin: 0 0 12px; color: rgba(255, 255, 255, .85); max-width: 46ch; }
+    .nx-showcase .nx-kicker { display: inline-block; padding: 5px 11px; border-radius: 999px; background: var(--gold, #FFD866); color: var(--spruce, #16303B); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .nx-showcase .nx-more { font-weight: 600; font-size: 15px; color: var(--pine, #1D5E79); }
+    .nx-showcase .nx-feature .nx-more { color: var(--gold, #FFD866); }
+    .nx-showcase .nx-models { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .nx-showcase .nx-model { position: relative; display: flex; flex-direction: column; padding: 24px 22px 22px; border: 1px solid rgba(22, 48, 59, .1); border-radius: 18px; background: #fff; transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s, border-color .35s; }
+    .nx-showcase .nx-model::before { content: ''; position: absolute; left: 22px; right: 22px; top: -1px; height: 3px; border-radius: 0 0 3px 3px; background: linear-gradient(90deg, var(--pine, #1D5E79), var(--gold, #FFD866)); transform: scaleX(.25); transform-origin: left; transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+    .nx-showcase .nx-model:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(22, 48, 59, .14); border-color: rgba(29, 94, 121, .25); }
+    .nx-showcase .nx-model:hover::before { transform: scaleX(1); }
+    .nx-showcase .nx-tag { align-self: flex-start; padding: 4px 10px; border-radius: 999px; background: var(--mist, #EBF1F3); color: var(--pine, #1D5E79); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .nx-showcase .nx-model h3 { margin: 12px 0 6px; font-size: 1.2rem; }
+    .nx-showcase .nx-model p { margin: 0 0 14px; font-size: 15px; color: var(--ink-2, #3D5561); }
+    .nx-showcase .nx-model .nx-more { margin-top: auto; }
+    .nx-showcase .nx-details { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+    .nx-showcase .nx-detail { margin: 0; border-radius: 18px; overflow: hidden; background: #fff; border: 1px solid rgba(22, 48, 59, .1); }
+    .nx-showcase .nx-detail-img { aspect-ratio: 3 / 2; overflow: hidden; background: #fff; }
+    .nx-showcase .nx-detail img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.22, 1, .36, 1); }
+    .nx-showcase .nx-detail:hover img { transform: scale(1.06); }
+    .nx-showcase .nx-detail figcaption { padding: 16px 18px 18px; font-size: 14.5px; color: var(--ink-2, #3D5561); }
+    .nx-showcase .nx-detail strong { display: block; margin-bottom: 4px; font-family: var(--font-display, inherit); font-size: 1rem; color: var(--ink, #16303B); }
+    .nx-showcase .nx-detail a { color: var(--pine, #1D5E79); font-weight: 600; }
+    .nx-showcase .cta-row { justify-content: center; margin-top: 36px; }
+    @media (max-width: 980px) {
+      .nx-showcase .nx-bento { grid-template-columns: 1fr; }
+      .nx-showcase .nx-feature { min-height: 380px; }
+      .nx-showcase .nx-details { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .nx-showcase .nx-models { grid-template-columns: 1fr; }
+      .nx-showcase .nx-feature { min-height: 420px; }
+      .nx-showcase .nx-details { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nx-showcase * { transition: none !important; }
+    }
+  </style>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"></div>
+      <h2>Tutustu ikkunamallistoomme</h2>
+      <p>Myymme ja asennamme Skaalan mittatilausikkunoita. Malli valitaan sen mukaan, miten ikkunaa käytät, ja ulkonäkö talon tyylin mukaan.</p>
+    </div>
+
+    <div class="nx-bento">
+      <a class="nx-feature" href="/ikkunat-mittatilaus/">
+        <img src="/wp-content/uploads/2026/10/nordic-ikkuna-olohuone.webp" alt="Valoisa olohuone, jossa suuret puuikkunat ja näkymä metsään" width="1400" height="933" loading="lazy">
+        <div class="nx-feature-text">
+          <span class="nx-kicker">Valmistettu Suomessa</span>
+          <h3>Jokainen ikkuna tehdään sinun aukkoosi</h3>
+          <p>Skaala-ikkunat valmistetaan mittatilaustyönä Ylihärmässä. Ne sopivat yhtä hyvin uudiskohteeseen kuin vanhan talon remonttiin.</p>
+          <span class="nx-more">Lue mittatilausikkunoista &rarr;</span>
+        </div>
+      </a>
+
+      <div class="nx-models">
+        <a class="nx-model" href="/ikkunat-sisaanaukeava/">
+          <span class="nx-tag">Sisäänaukeava</span>
+          <h3>Aukea ja Aarre+</h3>
+          <p>Suomen yleisin ikkunamalli. Pesu onnistuu sisältä käsin, ja lasitukseksi voi valita kolme tai neljä lasia.</p>
+          <span class="nx-more">Tutustu &rarr;</span>
+        </a>
+        <a class="nx-model" href="/ikkunat-ulosaukeava/">
+          <span class="nx-tag">Ulosaukeava</span>
+          <h3>Aasa</h3>
+          <p>Ikkunalauta jää vapaaksi kasveille ja tavaroille, ja tuuletus on helppo hallita. Suosittu muissa Pohjoismaissa.</p>
+          <span class="nx-more">Tutustu &rarr;</span>
+        </a>
+        <a class="nx-model" href="/ikkunat-piilosaranalla/">
+          <span class="nx-tag">Piilosaranat</span>
+          <h3>Arvo ja Arvo+</h3>
+          <p>Saranat piilossa karmin sisällä ja siisti, virtaviivainen ilme. Arvo+ on malliston energiatehokkain.</p>
+          <span class="nx-more">Tutustu &rarr;</span>
+        </a>
+        <a class="nx-model" href="/ikkunat-kiintea/">
+          <span class="nx-tag">Kiinteä</span>
+          <h3>Aava</h3>
+          <p>Tiivis ja edullinen ratkaisu suurille maisemaikkunoille ja aukeavien ikkunoiden rinnalle.</p>
+          <span class="nx-more">Tutustu &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="nx-details">
+      <figure class="nx-detail">
+        <div class="nx-detail-img"><img src="/wp-content/uploads/2026/10/nordic-ikkuna-puupinta.webp" alt="Puupintainen ikkuna, jonka lasien välissä on sälekaihtimet" width="900" height="600" loading="lazy"></div>
+        <figcaption><strong>Lämmin puu sisäpuolella</strong>Puupinta tuo kotiin lämpöä, ja sälekaihtimet saa suojaan lasien väliin.</figcaption>
+      </figure>
+      <figure class="nx-detail">
+        <div class="nx-detail-img"><img src="/wp-content/uploads/2026/10/nordic-ikkuna-painike-musta.webp" alt="Musta Skaala-ikkunapainike puupintaisessa ikkunassa" width="900" height="600" loading="lazy"></div>
+        <figcaption><strong>Viimeistellyt yksityiskohdat</strong>Painikkeet ja helat valitaan kokonaisuuteen sopiviksi, myös tyylikkäänä mustana.</figcaption>
+      </figure>
+      <figure class="nx-detail">
+        <div class="nx-detail-img"><img src="/wp-content/uploads/2026/10/nordic-ikkuna-painike-valkoinen.webp" alt="Valkoinen ikkuna ja painike lähikuvassa" width="900" height="600" loading="lazy"></div>
+        <figcaption><strong>Värit talosi mukaan</strong>Valkoinen on klassikko, mutta sävyn voi valita vapaasti. <a href="/ikkunoiden-ja-ovien-varit/">Katso värit</a></figcaption>
+      </figure>
+      <figure class="nx-detail">
+        <div class="nx-detail-img"><img src="/wp-content/uploads/2026/10/nordic-ikkuna-rakenne.webp" alt="Ikkunan rakenne leikkauskuvana" width="900" height="600" loading="lazy"></div>
+        <figcaption><strong>Lasitus tarpeen mukaan</strong>Kolmi- vai nelilasinen? Valinta riippuu talosta ja melusta. <a href="/kolmilasinen-vai-nelilasinen-ikkuna/">Lue vertailu</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#tarjous" data-quote>Pyyd&auml;&nbsp;ilmainen&nbsp;tarjous</a>
+      <a class="btn btn-outline-pine" href="/ikkunat/">Kaikki ikkunat</a>
+    </div>
+  </div>
+</section>
+
+  
+  <section class="panel-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Miksi hankkia uudet ikkunat</h2>
+        
+      </div>
+      <div class="types-grid"><article class="type-card"><h3>Pienempi lämmityslasku</h3><p>Uudet, tiiviit ikkunat vähentävät lämmönhukkaa merkittävästi vanhoihin ikkunoihin verrattuna.</p></article><article class="type-card"><h3>Parempi asumismukavuus</h3><p>Veto ja kylmät pinnat katoavat, ja sisäilma pysyy tasaisen lämpimänä ympäri vuoden.</p></article><article class="type-card"><h3>Vähemmän melua</h3><p>Uudet, hyvin eristävät lasit vaimentavat myös ulkopuolista liikenne- ja ympäristömelua.</p></article><article class="type-card"><h3>Kodin arvon nousu</h3><p>Uudet ikkunat parantavat kodin ulkonäköä, energialuokitusta ja jälleenmyyntiarvoa.</p></article></div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Merkkejä siitä, että on aika hankkia uudet ikkunat</h2>
+        
+      </div>
+      <ul class="bullet"><li>Ikkunoista tuntuu vetoa, vaikka tiivisteet olisi juuri huollettu.</li><li>Lasien välissä näkyy huurua tai kosteutta.</li><li>Ikkuna ei aukea tai sulkeudu kunnolla, tai puitteet ovat vääntyneet.</li><li>Puitteet ovat lahonneet tai maali on lohkeillut laajalti.</li><li>Energialasku on noussut ilman selvää muuta syytä.</li></ul>
+    </div>
+  </section>
+
+  <section class="panel-dark">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Mitä uusien ikkunoiden hankinta sisältää meillä</h2>
+        
+      </div>
+      <div class="process-list"><div class="process-item"><div><h3>Ilmainen mittauskäynti</h3><p>Käymme paikan päällä mittaamassa ikkuna-aukot ja käymme läpi malli- ja lasivaihtoehdot.</p></div></div><div class="process-item"><div><h3>Tarjous ja tilaus</h3><p>Saat kirjallisen, sitoumuksettoman tarjouksen valitsemillasi tuotteilla.</p></div></div><div class="process-item"><div><h3>Valmistus mittojesi mukaan</h3><p>Ikkunat valmistetaan mittatilaustyönä täsmälleen kohteesi mittoihin.</p></div></div><div class="process-item"><div><h3>Asennus tai toimitus</h3><p>Asennamme ikkunat ammattitaidolla, tai toimitamme pelkät tuotteet, jos teet asennuksen itse.</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Lue myös</h2>
+        
+      </div>
+      <div class="types-grid"><article class="type-card"><h3>Miten valita oikeat ikkunat taloon</h3><p>Opas ikkunatyypin, materiaalin, lasituksen ja energiatehokkuuden valintaan.</p></article><article class="type-card"><h3>Mitä ikkunat ja ikkunaremontti maksavat</h3><p>Kattava hintaopas yksittäisestä ikkunasta koko talon remonttiin.</p></article></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Toiminta-alueemme</h2>
+        <p>Palvelemme Turkua ja koko Varsinais-Suomea.</p>
+      </div>
+      <ul class="area-list"><li>Turku</li><li>Kaarina</li><li>Raisio</li><li>Naantali</li><li>Lieto</li><li>Rusko</li><li>Masku</li><li>Paimio</li><li>Nousiainen</li><li>Salo</li></ul>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line"></div>
+        <h2>Usein kysytyt kysymykset</h2>
+      </div>
+      <div class="faq-list"><div class="faq-item"><h3>Kuinka usein ikkunat kannattaa uusia?</h3><p>Ikkunoiden käyttöikä on tyypillisesti 30–40 vuotta materiaalista ja huollosta riippuen. Uusiminen kannattaa, kun tiivisteet, puitteet tai lasitus alkavat pettää eikä huolto enää riitä.</p></div><div class="faq-item"><h3>Ovatko uudet ikkunat aina energiatehokkaampia kuin vanhat?</h3><p>Käytännössä lähes aina, sillä nykyiset ikkunat täyttävät tiukemmat energiatehokkuusvaatimukset kuin vanhemmat, usein vain kaksilasiset mallit.</p></div><div class="faq-item"><h3>Kuinka kauan uusien ikkunoiden toimitus kestää?</h3><p>Koska ikkunat valmistetaan mittatilaustyönä, toimitusaika on tyypillisesti 2–4 viikkoa tilauksesta.</p></div><div class="faq-item"><h3>Voiko uudet ikkunat tilata ilman asennusta?</h3><p>Kyllä, voit tilata pelkät ikkunat ilman asennusta, jos teet työn itse tai omalla remonttiporukalla.</p></div></div>
+    </div>
+  </section>
+
+
+  
+  
+  <section class="seo-summary">
+    <div class="wrap">
+      <div class="seo-summary-text">
+        <h4>Autamme uusien ikkunoiden hankinnassa alusta loppuun sinua</h4>
+        <p>Uudet ikkunat ovat yksi kannattavimmista kotiin tehtävistä investoinneista: lämmityslasku pienenee, veto ja kylmän tunne katoavat, ja koti on miellyttävämpi asua ympäri vuoden.</p>
+        <p>Mittaamme kohteesi ikkunat paikan päällä maksutta, ja saat kirjallisen tarjouksen nopeasti. Asennamme uudet Skaala-ikkunat ammattitaidolla, tai toimitamme pelkät tuotteet, jos teet asennuksen itse — joko tavalla voit hyödyntää kotitalousvähennystä.</p>
+      </div>
+      <div class="seo-summary-media"><img src="/wp-content/themes/nordic-theme/assets/img/seo-ikkuna.jpg" alt="Uusi ikkuna – Uudet ikkunat Turkuun ja Varsinais-Suomeen" loading="lazy"></div>
+    </div>
+  </section>
+
+<section class="final-cta" id="tarjous">
+    <div class="wrap">
+      <h2>Valmis hankkimaan uudet ikkunat?</h2>
+      <p>Pyydä maksuton mittaus- ja tarjouspyyntö kotiisi tai kohteeseesi.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#">Pyydä ilmainen tarjous</a>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+
+

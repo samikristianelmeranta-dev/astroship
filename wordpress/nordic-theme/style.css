@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.0.3
+Version: 2.1.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -1401,3 +1401,19 @@ table.price-table, .article-body table {
 .toc a:hover { text-decoration: underline; }
 .article-body[id], section[id] { scroll-margin-top: 96px; }
 .intro .toc { margin-top: 32px; max-width: 800px; }
+
+/* Aluesivustot: 9 välilehteä → kaksirivinen ylätunniste työpöydällä */
+@media (min-width: 961px) {
+  :root:has(body.nordic-regional) { --header-h: 112px; }
+  body.nordic-regional .site-header-inner,
+  body.nordic-regional .site-header.is-scrolled .site-header-inner { height: auto; flex-wrap: wrap; row-gap: 0; padding-top: 12px; padding-bottom: 6px; }
+  body.nordic-regional .site-logo { order: 1; }
+  body.nordic-regional .header-cta { order: 2; margin-left: auto; }
+  body.nordic-regional .site-nav { order: 3; flex: 1 0 100%; margin-left: -12px; }
+  body.nordic-regional .site-nav ul { flex-wrap: nowrap; gap: 0; }
+  body.nordic-regional .site-nav a:not(.btn) { white-space: nowrap; }
+}
+@media (min-width: 961px) and (max-width: 1080px) {
+  body.nordic-regional .site-nav { margin-left: -7px; }
+  body.nordic-regional .site-nav a:not(.btn) { padding: 10px 7px; font-size: 14px; }
+}

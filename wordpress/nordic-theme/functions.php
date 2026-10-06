@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.0.3' );
+define( 'NORDIC_VERSION', '2.1.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -22,10 +22,119 @@ if ( ! defined( 'NORDIC_LEGACY_PAGE_CSS' ) ) {
 
 /**
  * Tarjouslomakkeen Fluent Forms -lomakkeen ID (sama lomake kuin sivuilla).
+ * Aluesivustoilla ID valitaan Mukauta → Sivuston alue -kohdasta.
  */
 if ( ! defined( 'NORDIC_QUOTE_FORM_ID' ) ) {
 	define( 'NORDIC_QUOTE_FORM_ID', 3 );
 }
+
+function nordic_quote_form_id() {
+	$id = (int) get_theme_mod( 'nordic_quote_form_id', 0 );
+	return $id > 0 ? $id : (int) NORDIC_QUOTE_FORM_ID;
+}
+
+/* =========================================================================
+ * Alueet: sama teema pääsivustolle ja aluesivustoille (alidomainit).
+ * Alue valitaan Ulkoasu → Mukauta → Sivuston alue. Oletus on pääsivusto.
+ * ========================================================================= */
+
+function nordic_regions() {
+	$region_menu = array(
+		'/'                          => 'Etusivu',
+		'/ikkunat/'                  => 'Ikkunat',
+		'/ulko-ovet/'                => 'Ulko-ovet',
+		'/ikkunaremontit/'           => 'Ikkunaremontit',
+		'/oviremontit/'              => 'Oviremontit',
+		'/energiansaastolaskuri/'    => 'Energialaskuri',
+		'/ikkuna-asennus/'           => 'Ikkuna-asennus',
+		'/uudet-ikkunat-vai-huolto/' => 'Uudet ikkunat vai huolto',
+		'/yhteystiedot/'             => 'Yhteystiedot',
+	);
+	return apply_filters( 'nordic_regions', array(
+		'varsinais-suomi' => array(
+			'label'     => 'Varsinais-Suomi (pääsivusto)',
+			'mode'      => 'full',
+			'region'    => 'Varsinais-Suomi',
+			'area_text' => 'Turku ja Varsinais-Suomi',
+			'in_text'   => 'Turussa ja Varsinais-Suomessa',
+			'locality'  => 'Turku',
+			'cities'    => array_values( nordic_cities() ),
+		),
+		'uusimaa'         => array(
+			'label'     => 'Uusimaa: Helsinki, Espoo ja Vantaa',
+			'mode'      => 'region',
+			'region'    => 'Uusimaa',
+			'area_text' => 'Helsinki, Espoo, Vantaa ja Kauniainen',
+			'in_text'   => 'Helsingissä, Espoossa ja Vantaalla',
+			'locality'  => 'Helsinki',
+			'cities'    => array( 'Helsinki', 'Espoo', 'Vantaa', 'Kauniainen' ),
+			'menu'      => $region_menu,
+		),
+		'meri-lappi'      => array(
+			'label'     => 'Meri-Lappi',
+			'mode'      => 'region',
+			'region'    => 'Lappi',
+			'area_text' => 'Kemi, Tornio ja Meri-Lappi',
+			'in_text'   => 'Kemissä, Torniossa ja koko Meri-Lapissa',
+			'locality'  => 'Kemi',
+			'cities'    => array( 'Kemi', 'Tornio', 'Keminmaa', 'Simo', 'Tervola' ),
+			'menu'      => $region_menu,
+		),
+		'satakunta'       => array(
+			'label'     => 'Satakunta',
+			'mode'      => 'region',
+			'region'    => 'Satakunta',
+			'area_text' => 'Pori, Rauma ja Satakunta',
+			'in_text'   => 'Porissa, Raumalla ja koko Satakunnassa',
+			'locality'  => 'Pori',
+			'cities'    => array( 'Pori', 'Rauma', 'Ulvila', 'Eurajoki', 'Eura', 'Harjavalta', 'Kokemäki', 'Huittinen', 'Kankaanpää', 'Nakkila' ),
+			'menu'      => $region_menu,
+		),
+	) );
+}
+
+function nordic_region() {
+	$regions = nordic_regions();
+	$key     = (string) get_theme_mod( 'nordic_region', 'varsinais-suomi' );
+	if ( ! isset( $regions[ $key ] ) ) {
+		$key = 'varsinais-suomi';
+	}
+	return array_merge( array( 'key' => $key, 'menu' => array() ), $regions[ $key ] );
+}
+
+function nordic_is_regional() {
+	$r = nordic_region();
+	return 'region' === $r['mode'];
+}
+
+function nordic_customize_region( $wp_customize ) {
+	$wp_customize->add_section( 'nordic_site', array(
+		'title'       => 'Sivuston alue',
+		'priority'    => 30,
+		'description' => 'Valitse, minkä alueen sivusto tämä on. Valinta muuttaa päävalikon, alatunnisteen ja hakukoneille näkyvän toiminta-alueen.',
+	) );
+	$choices = array();
+	foreach ( nordic_regions() as $key => $r ) {
+		$choices[ $key ] = $r['label'];
+	}
+	$wp_customize->add_setting( 'nordic_region', array( 'default' => 'varsinais-suomi', 'sanitize_callback' => function ( $v ) {
+		return array_key_exists( $v, nordic_regions() ) ? $v : 'varsinais-suomi';
+	} ) );
+	$wp_customize->add_control( 'nordic_region', array( 'section' => 'nordic_site', 'label' => 'Alue', 'type' => 'select', 'choices' => $choices ) );
+	$wp_customize->add_setting( 'nordic_quote_form_id', array( 'default' => '', 'sanitize_callback' => 'absint' ) );
+	$wp_customize->add_control( 'nordic_quote_form_id', array(
+		'section'     => 'nordic_site',
+		'label'       => 'Tarjouslomakkeen ID (Fluent Forms)',
+		'description' => 'Lomakkeen numero lyhytkoodista [fluentform id="X"]. Tyhjä = ' . (int) NORDIC_QUOTE_FORM_ID . '.',
+		'type'        => 'number',
+	) );
+}
+add_action( 'customize_register', 'nordic_customize_region' );
+
+/** [nordic_tarjouslomake] – tarjouslomake sivun sisältöön (yhteystiedot). */
+add_shortcode( 'nordic_tarjouslomake', function () {
+	return nordic_quote_form_html();
+} );
 
 /* =========================================================================
  * Perusasetukset
@@ -140,6 +249,9 @@ function nordic_body_class( $classes ) {
 		$classes[] = 'page-slug-' . sanitize_html_class( $slug );
 		$classes[] = 'page-type-' . nordic_page_type( $slug );
 	}
+	if ( nordic_is_regional() ) {
+		$classes[] = 'nordic-regional';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'nordic_body_class' );
@@ -157,13 +269,13 @@ function nordic_business_info() {
 	return array(
 		'name'            => 'Nordic Ikkunat & Ovet Oy',
 		'brand'           => 'Ikkunakauppias.fi',
-		'description'     => 'Skaala-ikkunoiden ja -ovien asennus, myynti ja huolto Turussa ja Varsinais-Suomessa.',
-		'areaServed'      => array( 'Turku', 'Varsinais-Suomi' ),
+		'description'     => 'Skaala-ikkunoiden ja -ovien asennus, myynti ja huolto ' . nordic_region()['in_text'] . '.',
+		'areaServed'      => array_merge( array( nordic_region()['region'] ), nordic_region()['cities'] ),
 		'email'           => 'info@ikkunakauppias.fi',
 		'telephone'       => '', // esim. '+358401234567'
 		'streetAddress'   => '',
 		'postalCode'      => '',
-		'addressLocality' => 'Turku',
+		'addressLocality' => nordic_region()['locality'],
 		'openingHours'    => 'Mo-Fr 08:00-17:00',
 	);
 }
@@ -694,15 +806,15 @@ function nordic_head_meta() {
 		),
 		'image'        => nordic_asset_uri( 'img/hero-guide.webp' ),
 		'areaServed'   => array_merge(
-			array( array( '@type' => 'AdministrativeArea', 'name' => 'Varsinais-Suomi' ) ),
+			array( array( '@type' => 'AdministrativeArea', 'name' => nordic_region()['region'] ) ),
 			array_map( function ( $city ) {
 				return array( '@type' => 'City', 'name' => $city );
-			}, array_values( nordic_cities() ) )
+			}, nordic_region()['cities'] )
 		),
 		'address'      => array(
 			'@type'           => 'PostalAddress',
 			'addressLocality' => $business['addressLocality'],
-			'addressRegion'   => 'Varsinais-Suomi',
+			'addressRegion'   => nordic_region()['region'],
 			'addressCountry'  => 'FI',
 		),
 		'openingHours' => $business['openingHours'],
@@ -803,7 +915,7 @@ function nordic_head_meta() {
 			'url'         => $page_url,
 			'provider'    => array( '@id' => $org_id ),
 			'brand'       => array( '@type' => 'Brand', 'name' => 'Skaala' ),
-			'areaServed'  => array( '@type' => 'AdministrativeArea', 'name' => 'Varsinais-Suomi' ),
+			'areaServed'  => array( '@type' => 'AdministrativeArea', 'name' => nordic_region()['region'] ),
 		);
 		if ( $desc ) {
 			$service['description'] = $desc;
@@ -950,7 +1062,7 @@ function nordic_llms_txt() {
 	$out .= '> ' . $business['description'] . " Valtuutettu Skaala-jälleenmyyjä: Suomessa (Ylihärmässä) mittatilaustyönä valmistetut ikkunat ja ulko-ovet asennettuna tai ilman asennusta.\n\n";
 	$out .= "Perustiedot:\n";
 	$out .= '- Yritys: ' . $business['name'] . "\n";
-	$out .= '- Toiminta-alue: Turku ja Varsinais-Suomi (' . implode( ', ', array_values( nordic_cities() ) ) . ")\n";
+	$out .= '- Toiminta-alue: ' . nordic_region()['area_text'] . ' (' . implode( ', ', nordic_region()['cities'] ) . ")\n";
 	$out .= "- Palveluaika: arkisin klo 8–17\n";
 	$out .= '- Sähköposti: ' . $business['email'] . "\n";
 	if ( $business['telephone'] ) {
@@ -1024,7 +1136,7 @@ add_action( 'widgets_init', 'nordic_widgets_init' );
  * ========================================================================= */
 
 function nordic_quote_form_html() {
-	$shortcode = '[fluentform id="' . (int) NORDIC_QUOTE_FORM_ID . '"]';
+	$shortcode = '[fluentform id="' . nordic_quote_form_id() . '"]';
 	if ( shortcode_exists( 'fluentform' ) ) {
 		return do_shortcode( $shortcode );
 	}
@@ -1038,5 +1150,6 @@ function nordic_page_has_form() {
 	if ( ! is_singular( 'page' ) ) {
 		return false;
 	}
-	return strpos( (string) get_post_field( 'post_content', get_the_ID() ), '[fluentform' ) !== false;
+	$content = (string) get_post_field( 'post_content', get_the_ID() );
+	return strpos( $content, '[fluentform' ) !== false || strpos( $content, '[nordic_tarjouslomake' ) !== false;
 }
