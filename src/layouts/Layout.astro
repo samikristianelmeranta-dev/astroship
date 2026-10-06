@@ -1,70 +1,107 @@
 ---
-import { SEO } from "astro-seo";
-import Footer from "@/components/footer.astro";
-import Navbar from "@/components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
-import "@fontsource-variable/bricolage-grotesque";
-import "../styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { business } from "@/data/site";
+import "../styles/nordic.css";
+import "../styles/site.css";
 
 export interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  breadcrumbs?: { name: string; href?: string }[];
+  hasInlineForm?: boolean;
+  bodyClass?: string;
+  schema?: Record<string, unknown>[];
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const {
+  title,
+  description = business.description,
+  image = "/img/hero-guide.webp",
+  breadcrumbs = [],
+  hasInlineForm = false,
+  bodyClass = "",
+  schema = [],
+} = Astro.props;
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = Astro.url.pathname === "/" ? title : `${title} | ${business.brand}`;
+const ogImage = new URL(image, Astro.site).toString();
 
-const { title } = Astro.props;
-
-const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+const org = {
+  "@type": "HomeAndConstructionBusiness",
+  "@id": new URL("/#yritys", Astro.site).toString(),
+  name: business.brand,
+  legalName: business.name,
+  slogan: business.slogan,
+  description: business.description,
+  url: new URL("/", Astro.site).toString(),
+  email: business.email,
+  ...(business.telephone ? { telephone: business.telephone } : {}),
+  image: ogImage,
+  address: { "@type": "PostalAddress", addressLocality: business.addressLocality, addressCountry: "FI" },
+  areaServed: business.areaServed.map((name) => ({ "@type": "AdministrativeArea", name })),
+  openingHours: business.openingHoursSchema,
+};
+const crumbs = breadcrumbs.length
+  ? [{
+      "@type": "BreadcrumbList",
+      itemListElement: [{ name: "Etusivu", href: "/" }, ...breadcrumbs].map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: c.name,
+        ...(c.href ? { item: new URL(c.href, Astro.site).toString() } : {}),
+      })),
+    }]
+  : [];
+const graph = { "@context": "https://schema.org", "@graph": [org, ...crumbs, ...schema] };
 ---
-
 <!doctype html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#16303B" />
+    <link rel="icon" href="/img/site-icon-512.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/img/site-icon-512.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fi_FI" />
+    <meta property="og:site_name" content={business.brand} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
-      canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
-      openGraph={{
-        basic: {
-          url: canonicalURL,
-          type: "website",
-          title: `Astroship - Starter Template for Astro`,
-          image: resolvedImageWithDomain,
-        },
-        image: {
-          alt: "Astroship Homepage Screenshot",
-        },
-      }}
-    />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+    <script is:inline src="/js/nordic.js" defer></script>
+    <script is:inline src="/js/form.js" defer></script>
   </head>
-  <body>
-    <Navbar />
-    <slot />
-    <Footer />
-    <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
-      }
-    </style>
+  <body class={bodyClass || undefined}>
+    <a class="skip-link" href="#main-content">Siirry sisältöön</a>
+    <Header />
+    {breadcrumbs.length > 0 && (
+      <nav class="breadcrumbs" aria-label="Murupolku">
+        <div class="wrap">
+          <ol>
+            <li><a href="/">Etusivu</a></li>
+            {breadcrumbs.map((c) => (
+              <li>{c.href ? <a href={c.href}>{c.name}</a> : <span aria-current="page">{c.name}</span>}</li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+    )}
+    <main id="main-content" class="page-content" tabindex="-1">
+      <slot />
+    </main>
+    <Footer hasInlineForm={hasInlineForm} />
   </body>
 </html>

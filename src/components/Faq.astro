@@ -1,0 +1,29 @@
+---
+import SectionHead from "./SectionHead.astro";
+export interface Props {
+  items: { q: string; a: string }[];
+  title?: string;
+  eyebrow?: string;
+  alt?: boolean;
+}
+const { items, title = "Usein kysyttyä", eyebrow = "UKK", alt = true } = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((i) => ({ "@type": "Question", name: i.q, acceptedAnswer: { "@type": "Answer", text: i.a.replace(/<[^>]+>/g, "") } })),
+};
+---
+<section class:list={{ "panel-alt": alt }} id="ukk">
+  <div class="wrap">
+    <SectionHead eyebrow={eyebrow} title={title} center />
+    <div class="faq-list">
+      {items.map((i) => (
+        <div class="faq-item">
+          <h3>{i.q}</h3>
+          <p set:html={i.a} />
+        </div>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</section>

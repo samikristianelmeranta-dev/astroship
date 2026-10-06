@@ -1,0 +1,16 @@
+---
+import Icon from "./Icon.astro";
+const items = [
+  ["ruler", "Ilmainen kartoituskäynti"],
+  ["doc", "Kirjallinen, sitoumukseton tarjous"],
+  ["euro", "Kotitalousvähennys työn osuudesta"],
+  ["flag", "Kotimaiset tuotteet"],
+];
+---
+<div class="trust-strip" aria-label="Miksi TiivisTupa">
+  <div class="wrap">
+    <ul>
+      {items.map(([icon, text]) => <li><Icon name={icon} /><span>{text}</span></li>)}
+    </ul>
+  </div>
+</div>

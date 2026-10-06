@@ -1,0 +1,28 @@
+---
+import QuoteForm from "./QuoteForm.astro";
+import { business } from "@/data/site";
+const {
+  title = "Pyydä ilmainen tarjous",
+  text = "Kerro lyhyesti kohteestasi. Otamme yhteyttä yhden arkipäivän kuluessa ja sovimme maksuttoman kartoituskäynnin.",
+} = Astro.props as { title?: string; text?: string };
+---
+<section class="contact" id="tarjous">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="eyebrow-line" aria-hidden="true" style="background:linear-gradient(90deg,var(--gold) 0 60%,rgba(255,255,255,.4) 60% 100%)"></div>
+      <p class="eyebrow">Ilmainen kartoitus</p>
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <ul>
+        <li>Maksuton kartoitus- ja mittauskäynti</li>
+        <li>Kirjallinen, sitoumukseton tarjous</li>
+        <li>Toimimme Turussa ja koko Varsinais-Suomessa</li>
+        <li>Kotitalousvähennys työn osuudesta</li>
+      </ul>
+      <p style="margin-top:28px">Voit myös lähettää sähköpostia: <a href={`mailto:${business.email}`} style="color:#fff">{business.email}</a>{business.telephone && <> tai soittaa <a href={`tel:${business.telephone}`} style="color:#fff">{business.telephone}</a></>}.</p>
+    </div>
+    <div class="contact-form-col">
+      <QuoteForm />
+    </div>
+  </div>
+</section>

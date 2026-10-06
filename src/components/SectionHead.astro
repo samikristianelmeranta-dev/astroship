@@ -1,0 +1,9 @@
+---
+const { eyebrow, title, center = false } = Astro.props as { eyebrow?: string; title: string; center?: boolean };
+---
+<div class:list={["sec-head", { center }]}>
+  {!center && <div class="eyebrow-line" aria-hidden="true"></div>}
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 set:html={title} />
+  <slot />
+</div>

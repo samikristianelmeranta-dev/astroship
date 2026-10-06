@@ -1,0 +1,51 @@
+---
+import { business } from "@/data/site";
+const { id = "main" } = Astro.props as { id?: string };
+const f = (name: string) => `${id}-${name}`;
+---
+<form class="fluentform tt-form" data-endpoint={business.formEndpoint} data-mailto={business.email} novalidate>
+  <div class="ff-row">
+    <div class="ff-el-group">
+      <div class="ff-el-input--label"><label for={f("name")}>Nimi *</label></div>
+      <input class="ff-el-form-control" id={f("name")} name="Nimi" type="text" autocomplete="name" required />
+    </div>
+    <div class="ff-el-group">
+      <div class="ff-el-input--label"><label for={f("phone")}>Puhelin *</label></div>
+      <input class="ff-el-form-control" id={f("phone")} name="Puhelin" type="tel" autocomplete="tel" required />
+    </div>
+  </div>
+  <div class="ff-row">
+    <div class="ff-el-group">
+      <div class="ff-el-input--label"><label for={f("email")}>Sähköposti *</label></div>
+      <input class="ff-el-form-control" id={f("email")} name="Sähköposti" type="email" autocomplete="email" required />
+    </div>
+    <div class="ff-el-group">
+      <div class="ff-el-input--label"><label for={f("city")}>Paikkakunta</label></div>
+      <input class="ff-el-form-control" id={f("city")} name="Paikkakunta" type="text" autocomplete="address-level2" placeholder="esim. Turku" />
+    </div>
+  </div>
+  <div class="ff-el-group">
+    <div class="ff-el-input--label"><label for={f("service")}>Mistä olet kiinnostunut?</label></div>
+    <select class="ff-el-form-control" id={f("service")} name="Palvelu">
+      <option>Uudet ikkunat / ikkunaremontti</option>
+      <option>Ulko-ovet / oviremontti</option>
+      <option>Ikkunoiden ja ovien tiivistys</option>
+      <option>Ikkunoiden kunnostus / huolto</option>
+      <option>Parvekeovi tai terassiovi</option>
+      <option>Muu, kerron viestissä</option>
+    </select>
+  </div>
+  <div class="ff-el-group">
+    <div class="ff-el-input--label"><label for={f("msg")}>Viesti</label></div>
+    <textarea class="ff-el-form-control" id={f("msg")} name="Viesti" rows="4" placeholder="Esim. talotyyppi, ikkunoiden ja ovien määrä, toivottu aikataulu"></textarea>
+  </div>
+  <label class="tt-consent">
+    <input type="checkbox" name="Suostumus" value="Kyllä" required />
+    <span>Hyväksyn, että yhteystietojani käytetään tarjouspyyntöni käsittelyyn.</span>
+  </label>
+  <p class="tt-form-error" role="alert" hidden>Täytä pakolliset kentät (*) ja hyväksy tietojen käyttö.</p>
+  <button class="ff-btn-submit" type="submit">Lähetä tarjouspyyntö</button>
+  <div class="ff-message-success" role="status" hidden>
+    <strong>Kiitos yhteydenotosta!</strong> Palaamme asiaan yhden arkipäivän kuluessa.
+  </div>
+</form>

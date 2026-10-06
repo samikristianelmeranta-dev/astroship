@@ -1,0 +1,19 @@
+---
+import Icon from "./Icon.astro";
+import { business } from "@/data/site";
+const {
+  title = "Tiiviimpi koti alkaa ilmaisesta kartoituksesta",
+  text = "Tulemme paikan päälle, mittaamme ja kerromme rehellisesti, kannattaako ikkunat ja ovet tiivistää, kunnostaa vai uusia. Saat kirjallisen tarjouksen ilman sitoumuksia.",
+} = Astro.props as { title?: string; text?: string };
+---
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow-line" aria-hidden="true" style="margin-left:auto;margin-right:auto"></div>
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#tarjous" data-quote><span>Pyydä ilmainen tarjous</span><Icon name="arrow" /></a>
+      <a class="btn btn-outline-pine" style="--btn-fg:#fff;border-color:rgba(255,255,255,.4)" href={`mailto:${business.email}`}>{business.email}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+---
+import Icon from "./Icon.astro";
+import LogoMark from "./LogoMark.astro";
+import QuoteForm from "./QuoteForm.astro";
+import { business, footerServices, cities } from "@/data/site";
+
+const { hasInlineForm = false } = Astro.props as { hasInlineForm?: boolean };
+const footerCities = ["turku", "kaarina", "raisio", "naantali", "lieto", "salo", "paimio", "parainen"];
+---
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="site-logo site-logo--light" href="/">
+        <LogoMark />
+        <span class="site-logo-text">Tiivis<b>Tupa</b></span>
+      </a>
+      <p><strong class="footer-slogan">{business.slogan}.</strong> Myymme, asennamme, tiivistämme ja huollamme energiatehokkaita ikkunoita ja ulko-ovia Turussa ja Varsinais-Suomessa.</p>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Palvelut</h2>
+      <ul>
+        {footerServices.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Alueet</h2>
+      <ul class="footer-cities">
+        {footerCities.map((c) => <li><a href={`/alueet/${c}/`}>{cities[c].name}</a></li>)}
+        <li><a href="/alueet/">Kaikki alueet</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2 class="footer-title">Yhteystiedot</h2>
+      <ul class="footer-contact">
+        <li><Icon name="pin" /><span>Turku ja Varsinais-Suomi</span></li>
+        <li><Icon name="clock" /><span>{business.openingHours}</span></li>
+        {business.telephone && (
+          <li><Icon name="phone" /><a href={`tel:${business.telephone}`}>{business.telephone}</a></li>
+        )}
+        <li><Icon name="mail" /><a href={`mailto:${business.email}`}>{business.email}</a></li>
+        <li><a class="footer-link-strong" href="/yhteystiedot/">Ota yhteyttä &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="wrap">
+      <span>&copy; {new Date().getFullYear()} {business.name} · Markkinointinimi {business.brand}</span>
+      <span><a href="/sivukartta/">Sivukartta</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="btn btn-primary" href="#tarjous" data-quote tabindex="-1">
+    <span>Pyydä ilmainen tarjous</span>
+    <Icon name="arrow" />
+  </a>
+</div>
+
+{!hasInlineForm && (
+  <dialog class="quote-modal" id="quote-modal" aria-labelledby="quote-modal-title">
+    <div class="quote-modal-inner">
+      <button class="quote-modal-close" type="button" data-close aria-label="Sulje"><Icon name="close" /></button>
+      <div class="quote-modal-head">
+        <p class="quote-modal-kicker">Ilmainen kartoituskäynti</p>
+        <h2 id="quote-modal-title">Pyydä ilmainen tarjous</h2>
+        <p>Kerro kohteestasi, niin sovimme kartoituksen ja laadimme sitoumuksettoman tarjouksen.</p>
+      </div>
+      <div class="quote-modal-form contact-form-col">
+        <QuoteForm id="modal" />
+      </div>
+    </div>
+  </dialog>
+)}
