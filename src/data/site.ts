@@ -19,12 +19,12 @@ export const business = {
 };
 
 export const nav = [
-  { href: "/", label: "Etusivu" },
   { href: "/ikkunat/", label: "Ikkunat" },
   { href: "/ovet/", label: "Ovet" },
   { href: "/ikkunaremontti/", label: "Ikkunaremontti" },
   { href: "/tiivistys/", label: "Tiivistys" },
   { href: "/huolto/", label: "Huolto" },
+  { href: "/taloyhtiot/", label: "Taloyhtiöt" },
   { href: "/alueet/", label: "Alueet" },
   { href: "/yhteystiedot/", label: "Yhteystiedot" },
 ];
@@ -35,6 +35,7 @@ export const footerServices = [
   { href: "/ikkunaremontti/", label: "Ikkuna- ja oviremontti" },
   { href: "/tiivistys/", label: "Ikkunoiden ja ovien tiivistys" },
   { href: "/huolto/", label: "Ikkuna- ja ovihuolto" },
+  { href: "/taloyhtiot/", label: "Taloyhtiöt ja liikekiinteistöt" },
   { href: "/usein-kysytyt-kysymykset/", label: "Usein kysytyt kysymykset" },
   { href: "/sivukartta/", label: "Sivukartta" },
 ];

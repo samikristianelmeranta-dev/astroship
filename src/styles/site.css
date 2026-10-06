@@ -33,3 +33,12 @@
 .process-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 .feature-list.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
 .types-grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+
+/* Keskileveät näytöt: valikko ja CTA mahtuvat samalle riville */
+@media (min-width: 961px) and (max-width: 1240px) {
+  .site-header-inner { gap: 14px; }
+  .site-nav a:not(.btn) { padding: 10px 7px; font-size: 14px; }
+  .header-cta { padding: 10px 16px; }
+  .header-cta span { font-size: 0; }
+  .header-cta span::before { content: 'Pyydä tarjous'; font-size: 14.5px; }
+}

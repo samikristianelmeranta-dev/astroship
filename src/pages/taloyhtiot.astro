@@ -1,0 +1,110 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Icon from "@/components/Icon.astro";
+import Faq from "@/components/Faq.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import { faqTaloyhtio } from "@/data/faq";
+
+const services = [
+  ["wind", "Ikkunoiden ja ovien tiivistys", "Kuluneet tiivisteet vaihdetaan kestäviin silikonitiivisteisiin koko kiinteistössä. Veto ja asukkaiden lämpövalitukset vähenevät."],
+  ["wrench", "Huolto ja säädöt", "Puitteiden ja ovien säätö, helojen voitelu sekä lukkojen ja kahvojen tarkastus. Pidentää ikkunoiden käyttöikää vuosilla."],
+  ["window", "Lasinvaihdot", "Rikkoutuneet ja huurtuvat lasit vaihdetaan, ja kittaukset uusitaan tarvittaessa."],
+  ["home", "Puuosien ja pellitysten korjaus", "Lahovauriot paikataan ja vesipellit korjataan ennen kuin vaurio leviää rakenteisiin."],
+  ["door", "Porraskäytävien ja ulko-ovien korjaus", "Ovipumppujen, sulkimien, saranoiden ja lukkojen säätö ja vaihto. Ovet sulkeutuvat varmasti ja hiljaa."],
+  ["sound", "Parvekeovet", "Parvekeovien tiivistys, säätö ja korjaus. Lopettaa vedon ja kolinan."],
+];
+const steps = [
+  ["Kuntokartoitus", "Tarkastamme ikkunat ja ovet joko otantana tai jokaisesta huoneistosta."],
+  ["Raportti ja tarjous", "Saatte kirjallisen raportin ja kiinteähintaisen tarjouksen hallitukselle tai yhtiökokoukseen."],
+  ["Asukastiedote", "Laadimme tiedotteen aikatauluineen ja sovimme avainjärjestelyistä isännöitsijän kanssa."],
+  ["Toteutus", "Etenemme porras kerrallaan. Huoneistossa työ kestää yleensä muutaman tunnin."],
+  ["Luovutus", "Käymme työn läpi isännöitsijän kanssa ja toimitamme loppuraportin."],
+];
+const targets = [
+  ["Asunto-osakeyhtiöt", "Kerros- ja rivitaloyhtiöt, joissa halutaan parantaa asumismukavuutta ja energiatehokkuutta tai siirtää ikkunaremonttia."],
+  ["Liikekiinteistöt", "Toimisto-, liike- ja varastokiinteistöt. Työt voidaan ajoittaa iltaan tai viikonloppuun, ettei liiketoiminta häiriinny."],
+  ["Palvelukiinteistöt", "Esimerkiksi hoivakodit ja muut palvelukiinteistöt, joissa sisäilman laatu ja tasainen lämpötila ovat tärkeitä."],
+];
+---
+<Layout title="Taloyhtiöt ja liikekiinteistöt – tiivistys, huolto ja korjaukset" description="Ikkunoiden ja ovien tiivistys, huolto ja korjaukset taloyhtiöille ja liikekiinteistöille Turussa ja Varsinais-Suomessa. Kuntokartoitus, kiinteä hinta ja huoltosopimukset." breadcrumbs={[{ name: "Taloyhtiöt" }]} hasInlineForm>
+  <PageHero
+    eyebrow="Taloyhtiöt ja liikekiinteistöt"
+    title="Tiiviimmät ikkunat ja ovet koko kiinteistöön"
+    lead="Tiivistämme, huollamme ja korjaamme ikkunat ja ovet taloyhtiöissä ja liikekiinteistöissä. Usein se on huomattavasti edullisempi ratkaisu kuin ikkunaremontti, ja se voi siirtää remontin tarvetta vuosilla."
+    image="/img/hero-guide.webp"
+    imageAlt="Suuret ikkunat valoisassa tilassa"
+    secondary={{ href: "#palvelut", label: "Palvelut kiinteistöille" }}
+  />
+
+  <div class="trust-strip" aria-label="Miksi TiivisTupa">
+    <div class="wrap">
+      <ul>
+        <li><Icon name="ruler" /><span>Kuntokartoitus ja raportti</span></li>
+        <li><Icon name="doc" /><span>Kiinteähintainen tarjous</span></li>
+        <li><Icon name="home" /><span>Asukastiedotus hoidetaan</span></li>
+        <li><Icon name="wrench" /><span>Huoltosopimukset</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="intro">
+    <div class="wrap">
+      <p><strong>Ikkunoiden ja ovien kunnossapito on yksi taloyhtiön kannattavimmista energiatoimista.</strong> Kun tiivisteet, säädöt ja pienet viat korjataan ajoissa, lämmityskulut laskevat, asukkaiden valitukset vedosta vähenevät ja kalliin ikkunaremontin ajankohtaa voidaan siirtää.</p>
+      <p>Palvelemme isännöitsijöitä, taloyhtiöiden hallituksia ja kiinteistöjen omistajia Turussa ja koko Varsinais-Suomessa.</p>
+    </div>
+  </section>
+
+  <section class="panel-alt" id="palvelut">
+    <div class="wrap">
+      <SectionHead eyebrow="Palvelut" title="Tiivistys, huolto ja korjaukset kiinteistöille" />
+      <div class="feature-grid">
+        {services.map(([icon, t, p]) => (
+          <div class="feature-item"><div class="icon"><Icon name={icon} /></div><h3>{t}</h3><p>{p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <SectionHead eyebrow="Asiakkaat" title="Kenelle palvelumme sopii?" />
+      <div class="audience-grid">
+        {targets.map(([t, p]) => <div class="audience-card"><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-dark">
+    <div class="wrap">
+      <SectionHead eyebrow="Työvaiheet" title="Näin hanke etenee">
+        <p>Selkeä prosessi, jossa isännöitsijä ja hallitus tietävät koko ajan, mitä tehdään ja milloin.</p>
+      </SectionHead>
+      <ol class="process-list">
+        {steps.map(([t, p]) => <li class="process-item"><h3>{t}</h3><p>{p}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <SectionHead eyebrow="Vertailu" title="Huolto ja tiivistys vai ikkunaremontti?" />
+      <div class="compare" role="table" aria-label="Huollon ja ikkunaremontin vertailu taloyhtiössä">
+        <div class="compare-row head" role="row"><div class="compare-cell" role="columnheader"></div><div class="compare-cell" role="columnheader">Huolto ja tiivistys</div><div class="compare-cell" role="columnheader">Ikkunaremontti</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Kustannus</div><div class="compare-cell check-yes" role="cell">Murto-osa</div><div class="compare-cell check-no" role="cell">Suuri investointi</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Häiriö asukkaille</div><div class="compare-cell check-yes" role="cell">Muutama tunti / huoneisto</div><div class="compare-cell check-no" role="cell">Päiviä, telineet</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Poistaa vedon</div><div class="compare-cell check-yes" role="cell">Kyllä</div><div class="compare-cell check-yes" role="cell">Kyllä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Vaatii yhtiökokouksen päätöksen</div><div class="compare-cell check-yes" role="cell">Usein hallitus päättää</div><div class="compare-cell check-no" role="cell">Yleensä kyllä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Parantaa lasin U-arvoa</div><div class="compare-cell check-no" role="cell">Ei</div><div class="compare-cell check-yes" role="cell">Kyllä</div></div>
+      </div>
+      <div class="callout">
+        <p>Hyvä tietää</p>
+        <p>Jos kuntokartoitus osoittaa, että ikkunat on järkevämpää uusia, toteutamme myös <a href="/ikkunaremontti/">ikkuna- ja oviremontin</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqTaloyhtio} title="Kysymyksiä taloyhtiöiltä ja kiinteistöiltä" />
+  <ContactSection title="Pyydä kuntokartoitus kiinteistöön" text="Kerro kiinteistön tyyppi, osoite ja huoneistojen tai ikkunoiden arvioitu määrä. Otamme yhteyttä yhden arkipäivän kuluessa ja sovimme kartoituksesta." items={["Maksuton kuntokartoitus kiinteistöön", "Kirjallinen raportti ja kiinteähintainen tarjous", "Asukastiedotus ja avainjärjestelyt", "Huoltosopimukset taloyhtiöille ja yrityksille"]} />
+</Layout>

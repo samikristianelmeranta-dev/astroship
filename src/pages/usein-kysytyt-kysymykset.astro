@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Faq from "@/components/Faq.astro";
 import FinalCta from "@/components/FinalCta.astro";
-import { faqHome, faqTiivistys, faqRemontti } from "@/data/faq";
+import { faqHome, faqTiivistys, faqRemontti, faqTaloyhtio } from "@/data/faq";
 ---
 <Layout title="Usein kysytyt kysymykset" description="Vastauksia kysymyksiin ikkunoiden ja ovien tiivistyksestä, huollosta, ikkunaremontista ja kotitalousvähennyksestä." breadcrumbs={[{ name: "Usein kysytyt kysymykset" }]}>
   <section class="hero">
@@ -15,5 +15,6 @@ import { faqHome, faqTiivistys, faqRemontti } from "@/data/faq";
   <Faq items={faqHome} title="Yleistä" eyebrow="Yleiset" alt={false} />
   <Faq items={faqTiivistys} title="Tiivistys" eyebrow="Tiivistys" id="ukk-tiivistys" />
   <Faq items={faqRemontti} title="Ikkunaremontti" eyebrow="Remontti" alt={false} id="ukk-remontti" />
+  <Faq items={faqTaloyhtio} title="Taloyhtiöt ja liikekiinteistöt" eyebrow="Kiinteistöt" id="ukk-taloyhtiot" />
   <FinalCta />
 </Layout>

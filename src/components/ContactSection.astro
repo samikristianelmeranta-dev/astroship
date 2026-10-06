@@ -4,7 +4,13 @@ import { business } from "@/data/site";
 const {
   title = "Pyydä ilmainen tarjous",
   text = "Kerro lyhyesti kohteestasi. Otamme yhteyttä yhden arkipäivän kuluessa ja sovimme maksuttoman kartoituskäynnin.",
-} = Astro.props as { title?: string; text?: string };
+  items = [
+    "Maksuton kartoitus- ja mittauskäynti",
+    "Kirjallinen, sitoumukseton tarjous",
+    "Toimimme Turussa ja koko Varsinais-Suomessa",
+    "Kotitalousvähennys työn osuudesta",
+  ],
+} = Astro.props as { title?: string; text?: string; items?: string[] };
 ---
 <section class="contact" id="tarjous">
   <div class="wrap contact-grid">
@@ -14,10 +20,7 @@ const {
       <h2>{title}</h2>
       <p>{text}</p>
       <ul>
-        <li>Maksuton kartoitus- ja mittauskäynti</li>
-        <li>Kirjallinen, sitoumukseton tarjous</li>
-        <li>Toimimme Turussa ja koko Varsinais-Suomessa</li>
-        <li>Kotitalousvähennys työn osuudesta</li>
+        {items.map((i) => <li>{i}</li>)}
       </ul>
       <p style="margin-top:28px">Voit myös lähettää sähköpostia: <a href={`mailto:${business.email}`} style="color:#fff">{business.email}</a>{business.telephone && <> tai soittaa <a href={`tel:${business.telephone}`} style="color:#fff">{business.telephone}</a></>}.</p>
     </div>
