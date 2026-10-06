@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import FinalCta from "@/components/FinalCta.astro";
+
+const types = [
+  ["Ulko-ovet", "Lämpöä eristävät ja tiiviit pääovet moderneihin ja perinteisiin taloihin. Laaja valikoima malleja, värejä ja lasituksia."],
+  ["Parveke- ja terassiovet", "Valoisat ovet, jotka sulkeutuvat tiiviisti ja ovat turvallisia myös lasten kanssa."],
+  ["Varasto- ja tekniset ovet", "Kestävät ovet autotalliin, varastoon ja tekniseen tilaan."],
+  ["Taloyhtiöiden ovet", "Porraskäytävä-, rappu- ja huoneisto-ovet palo- ja ääniluokituksineen."],
+];
+---
+<Layout title="Ulko-ovet Turku – ulko-ovet asennettuna" description="Turvalliset ja energiatehokkaat ulko-ovet, parvekeovet ja terassiovet asennettuna Turussa ja Varsinais-Suomessa." breadcrumbs={[{ name: "Ovet" }]}>
+  <PageHero
+    eyebrow="Ulko-ovet"
+    title="Ulko-ovi, joka pitää lämmön sisällä"
+    lead="Ulko-ovi on kotisi käyntikortti ja tärkeä osa sen turvallisuutta ja energiatehokkuutta. Toimitamme ja asennamme kotimaiset ulko-, parveke- ja terassiovet."
+    image="/img/product-portrait.webp"
+    imageAlt="Tumma moderni ulko-ovi, jossa lasiraidat"
+    portrait
+    secondary={{ href: "/tiivistys/#ovet", label: "Ovien tiivistys" }}
+  />
+  <TrustStrip />
+
+  <section>
+    <div class="wrap">
+      <SectionHead eyebrow="Valikoima" title="Ovet kotiin ja taloyhtiöön" />
+      <div class="types-grid two">
+        {types.map(([t, p]) => <div class="type-card"><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-dark">
+    <div class="wrap">
+      <SectionHead eyebrow="Hyvän oven tuntomerkit" title="Mitä hyvä ulko-ovi tekee?" />
+      <div class="feature-list two">
+        <div class="feature-item"><span class="dot"></span><div><h4>Eristää lämpöä</h4><p>Paksu eristetty ovilehti ja hyvä U-arvo estävät kylmän tulon eteiseen.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Sulkeutuu tiiviisti</h4><p>Kaksinkertaiset tiivisteet ja säädettävä kynnys pitävät vedon ja lumen ulkona.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Suojaa murroilta</h4><p>Laadukas lukitus, murtosuojatut saranat ja tarvittaessa turvalasi.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Kestää säätä</h4><p>Pinnat ja rakenne kestävät Varsinais-Suomen rannikon kosteuden ja tuulet.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-summary">
+    <div class="wrap">
+      <div class="seo-summary-text">
+        <h4>Ulko-oven vaihto sujuu yhdessä päivässä</h4>
+        <p>Mittaamme oviaukon, autamme mallin ja värin valinnassa ja toimitamme oven valmiiksi asennettuna: vanha ovi puretaan, uusi asennetaan, tiivistetään ja viimeistellään listoineen. Vanha ovi viedään kierrätykseen.</p>
+        <div class="cta-row"><a class="btn btn-pine" href="#tarjous" data-quote>Pyydä tarjous ovesta</a></div>
+      </div>
+      <div class="seo-summary-media">
+        <img src="/img/seo-ovi.webp" alt="Tumma ulko-ovi puutalon kuistilla, koira makaa terassilla" width="1200" height="873" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <FinalCta title="Uusi ulko-ovi — tai vanha tiiviiksi" />
+</Layout>

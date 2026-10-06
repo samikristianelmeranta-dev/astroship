@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Faq from "@/components/Faq.astro";
+import FinalCta from "@/components/FinalCta.astro";
+import { faqHome, faqTiivistys, faqRemontti } from "@/data/faq";
+---
+<Layout title="Usein kysytyt kysymykset" description="Vastauksia kysymyksiin ikkunoiden ja ovien tiivistyksestä, huollosta, ikkunaremontista ja kotitalousvähennyksestä." breadcrumbs={[{ name: "Usein kysytyt kysymykset" }]}>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">UKK</p>
+      <h1>Usein kysytyt kysymykset</h1>
+      <p>Etkö löytänyt vastausta? <a href="/yhteystiedot/" style="color:var(--pine)">Kysy meiltä suoraan</a>.</p>
+    </div>
+  </section>
+  <Faq items={faqHome} title="Yleistä" eyebrow="Yleiset" alt={false} />
+  <Faq items={faqTiivistys} title="Tiivistys" eyebrow="Tiivistys" id="ukk-tiivistys" />
+  <Faq items={faqRemontti} title="Ikkunaremontti" eyebrow="Remontti" alt={false} id="ukk-remontti" />
+  <FinalCta />
+</Layout>

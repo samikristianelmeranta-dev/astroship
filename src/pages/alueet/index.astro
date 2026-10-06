@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import FinalCta from "@/components/FinalCta.astro";
+import { cities } from "@/data/site";
+---
+<Layout title="Toiminta-alueet – Turku ja Varsinais-Suomi" description="TiivisTupa palvelee Turussa ja koko Varsinais-Suomessa: Kaarina, Raisio, Naantali, Lieto, Salo, Paimio, Parainen ja muut kunnat." breadcrumbs={[{ name: "Alueet" }]}>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Toiminta-alue</p>
+      <h1>Turku ja koko Varsinais-Suomi</h1>
+      <p>Tulemme kartoittamaan kotisi ikkunat ja ovet maksutta kaikkialla Varsinais-Suomessa. Valitse paikkakuntasi.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="city-grid">
+        {Object.entries(cities).map(([slug, c]) => (
+          <div class="city-row">
+            <h3>{c.name}</h3>
+            <p style="font-size:15px;margin:0 0 6px">{c.note}</p>
+            <a href={`/alueet/${slug}/`}>Ikkunat, ovet ja tiivistys {c.inessive} &rarr;</a>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:32px">Etkö löytänyt paikkakuntaasi? <a href="/yhteystiedot/" style="color:var(--pine)">Kysy meiltä</a> — palvelemme myös muissa Varsinais-Suomen kunnissa.</p>
+    </div>
+  </section>
+  <FinalCta />
+</Layout>

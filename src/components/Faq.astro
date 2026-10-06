@@ -5,15 +5,16 @@ export interface Props {
   title?: string;
   eyebrow?: string;
   alt?: boolean;
+  id?: string;
 }
-const { items, title = "Usein kysyttyä", eyebrow = "UKK", alt = true } = Astro.props;
+const { items, title = "Usein kysyttyä", eyebrow = "UKK", alt = true, id = "ukk" } = Astro.props;
 const schema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: items.map((i) => ({ "@type": "Question", name: i.q, acceptedAnswer: { "@type": "Answer", text: i.a.replace(/<[^>]+>/g, "") } })),
 };
 ---
-<section class:list={{ "panel-alt": alt }} id="ukk">
+<section class:list={{ "panel-alt": alt }} id={id}>
   <div class="wrap">
     <SectionHead eyebrow={eyebrow} title={title} center />
     <div class="faq-list">

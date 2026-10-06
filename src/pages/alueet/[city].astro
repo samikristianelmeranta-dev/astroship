@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Icon from "@/components/Icon.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import { cities } from "@/data/site";
+
+export function getStaticPaths() {
+  return Object.keys(cities).map((city) => ({ params: { city } }));
+}
+const { city } = Astro.params;
+const c = cities[city!];
+const others = Object.entries(cities).filter(([s]) => s !== city);
+const services = [
+  ["wind", "Ikkunoiden tiivistys", "/tiivistys/"],
+  ["door", "Ovien tiivistys", "/tiivistys/#ovet"],
+  ["wrench", "Ikkuna- ja ovihuolto", "/huolto/"],
+  ["window", "Uudet ikkunat", "/ikkunat/"],
+  ["lock", "Ulko-ovet", "/ovet/"],
+  ["home", "Ikkunaremontti", "/ikkunaremontti/"],
+];
+---
+<Layout
+  title={`Ikkunat, ovet ja tiivistys ${c.inessive}`}
+  description={`TiivisTupa tiivistää, huoltaa ja uusii ikkunat ja ovet ${c.inessive}. Ilmainen kartoitus ja kirjallinen tarjous.`}
+  breadcrumbs={[{ name: "Alueet", href: "/alueet/" }, { name: c.name }]}
+  hasInlineForm
+>
+  <PageHero
+    eyebrow={c.name}
+    title={`Ikkunat, ovet ja tiivistys ${c.inessive}`}
+    lead={`Tiivistämme, huollamme ja uusimme ikkunat ja ulko-ovet ${c.inessive}. ${c.note} Kartoitus on aina maksuton.`}
+    image="/img/seo-ikkuna.webp"
+    imageAlt={`Ikkuna kodissa – ${c.name}`}
+    secondary={{ href: "#palvelut", label: "Palvelut" }}
+  />
+  <TrustStrip />
+
+  <section id="palvelut">
+    <div class="wrap">
+      <SectionHead eyebrow={`Palvelut ${c.inessive}`} title="Mitä voimme tehdä kodillesi?" />
+      <div class="feature-grid">
+        {services.map(([icon, t, href]) => (
+          <a class="feature-item" href={href} style="text-decoration:none;color:inherit">
+            <div class="icon"><Icon name={icon} /></div>
+            <h3>{t}</h3>
+            <p>Lue lisää &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Muut alueet" title="Palvelemme myös lähikunnissa" />
+      <ul class="area-list">
+        {others.map(([s, o]) => <li><a href={`/alueet/${s}/`}>{o.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <ContactSection title={`Pyydä tarjous – ${c.name}`} />
+</Layout>

@@ -1,0 +1,60 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Faq from "@/components/Faq.astro";
+import FinalCta from "@/components/FinalCta.astro";
+import { faqRemontti } from "@/data/faq";
+
+const steps = [
+  ["Kartoitus ja mittaus", "Käymme kohteessa, mittaamme aukot ja kartoitamme rakenteet."],
+  ["Tuotevalinnat", "Autamme valitsemaan ikkunat, ovet, värit ja varusteet."],
+  ["Tarjous ja aikataulu", "Saat kiinteähintaisen tarjouksen ja selkeän toteutusaikataulun."],
+  ["Purku ja asennus", "Vanhat pois, uudet tilalle — yksi aukko kerrallaan, jotta koti ei jäähdy."],
+  ["Viimeistely", "Listat, pellit, tiivistykset ja siivous. Vanhat ikkunat viedään kierrätykseen."],
+];
+---
+<Layout title="Ikkunaremontti ja oviremontti Turussa" description="Ikkuna- ja oviremontti avaimet käteen -periaatteella Turussa ja Varsinais-Suomessa: mittaus, purku, asennus, viimeistely ja kierrätys." breadcrumbs={[{ name: "Ikkunaremontti" }]}>
+  <PageHero
+    eyebrow="Ikkuna- ja oviremontti"
+    title="Ikkunaremontti avaimet käteen"
+    lead="Hoidamme koko remontin mittauksesta viimeistelyyn ja kierrätykseen. Sinä valitset ikkunat ja ovet — me huolehdimme lopusta."
+    image="/img/seo-ovi.webp"
+    imageAlt="Uusi ulko-ovi ja ikkuna puutalossa"
+    secondary={{ href: "/tiivistys/", label: "Riittäisikö tiivistys?" }}
+  />
+  <TrustStrip />
+
+  <section class="intro">
+    <div class="wrap">
+      <p>Hyvin tehty ikkunaremontti <strong>parantaa asumismukavuutta, laskee energiankulutusta ja nostaa asunnon arvoa</strong>. Erityisesti 1960–80-lukujen taloissa uudet ikkunat ja ovet ovat yksi kannattavimmista energiaremonteista.</p>
+      <p>Remontti on kuitenkin isompi investointi kuin tiivistys. Siksi kerromme aina ensin, voisiko <a href="/tiivistys/">tiivistys ja huolto</a> riittää.</p>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Työvaiheet" title="Näin ikkunaremontti etenee" />
+      <ol class="process-list">
+        {steps.map(([t, p]) => <li class="process-item"><h3>{t}</h3><p>{p}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="wrap">
+      <h2>Mistä ikkunaremontin hinta muodostuu?</h2>
+      <p>Hintaan vaikuttavat ikkunoiden ja ovien määrä ja koko, valittu malli ja lasitus, seinärakenne, tarvittavat telineet sekä purku- ja viimeistelytyöt. Tarkan hinnan saat kartoituksen jälkeen kirjallisena tarjouksena.</p>
+      <h3>Kotitalousvähennys pienentää kustannuksia</h3>
+      <p>Asennustyön osuudesta voi hakea kotitalousvähennystä. Vuosina 2025–2026 vähennys on 35 % työn osuudesta, enintään 1 600 € henkilöä kohden vuodessa. Pariskunta voi siis saada vähennystä yhteensä jopa 3 200 €.</p>
+      <div class="callout">
+        <p>Hyvä tietää</p>
+        <p>Samaan kotitalousvähennykseen voi yhdistää ikkuna- ja oviremontin. Kun molemmat tehdään kerralla, säästät myös aikaa ja asennuskustannuksissa.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqRemontti} title="Kysymyksiä ikkunaremontista" />
+  <FinalCta title="Suunnitellaan ikkunaremonttisi yhdessä" />
+</Layout>

@@ -1,0 +1,163 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Icon from "@/components/Icon.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Faq from "@/components/Faq.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import { business, cities } from "@/data/site";
+import { faqHome } from "@/data/faq";
+
+const services = [
+  { icon: "wind", title: "Ikkunoiden tiivistys", text: "Kuluneet tiivisteet vaihdetaan kestäviin silikonitiivisteisiin. Veto loppuu ja lämmityslasku kevenee.", href: "/tiivistys/" },
+  { icon: "door", title: "Ovien tiivistys", text: "Ulko-, parveke- ja terassiovien tiivistys ja säätö. Kynnyksen veto ja kolina jäävät historiaan.", href: "/tiivistys/#ovet" },
+  { icon: "wrench", title: "Ikkuna- ja ovihuolto", text: "Säädöt, helojen voitelu, lukkojen tarkastus, lasinvaihdot ja puuosien pienkorjaukset.", href: "/huolto/" },
+  { icon: "window", title: "Uudet ikkunat", text: "Energiatehokkaat kotimaiset puu- ja puualumiini-ikkunat mitoitettuna kotisi aukkoihin.", href: "/ikkunat/" },
+  { icon: "lock", title: "Ulko-ovet", text: "Turvalliset, tiiviit ja kauniit ulko-ovet sekä parvekeovet asennettuna.", href: "/ovet/" },
+  { icon: "home", title: "Ikkuna- ja oviremontti", text: "Avaimet käteen -remontti purkutöineen, asennuksineen ja viimeistelyineen.", href: "/ikkunaremontti/" },
+];
+const signs = [
+  "Ikkunan tai oven vierestä tuntuu veto",
+  "Lasien väliin tiivistyy kosteutta tai huurretta",
+  "Liikenteen melu kuuluu selvästi sisälle",
+  "Kahva on jäykkä tai puite ei sulkeudu kunnolla",
+];
+const steps = [
+  ["Yhteydenotto", "Jätä tarjouspyyntö lomakkeella tai sähköpostilla."],
+  ["Ilmainen kartoitus", "Tarkastamme ikkunat ja ovet paikan päällä ja mittaamme tarvittaessa."],
+  ["Kiinteä tarjous", "Saat kirjallisen tarjouksen, jossa on suositus: tiivistys, huolto vai uusiminen."],
+  ["Siisti työ", "Ammattitaitoiset asentajat tekevät työn sovitusti ja suojaavat pinnat."],
+  ["Tarkistus", "Käymme työn läpi kanssasi ja siivoamme jälkemme."],
+];
+const featured = ["turku", "kaarina", "raisio", "naantali", "lieto", "salo", "paimio", "parainen", "masku", "uusikaupunki", "laitila", "aura-poytya"];
+---
+<Layout
+  title={`${business.brand} – ikkunat, ovet ja tiivistys Turussa | ${business.slogan}`}
+  description="TiivisTupa tiivistää, huoltaa, myy ja asentaa ikkunoita ja ulko-ovia Turussa ja Varsinais-Suomessa. Ilmainen kartoitus ja kirjallinen tarjous."
+  hasInlineForm
+>
+  <section class="hero hero-photo">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="hero-eyebrow"><span class="dot"></span>Turku &amp; Varsinais-Suomi</p>
+        <h1>{business.slogan.replace(" puolesta", "")} <em>puolesta</em></h1>
+        <p>TiivisTupa tiivistää, huoltaa ja uusii ikkunat ja ulko-ovet. Lopetetaan veto, hiljennetään melu ja pienennetään lämmityslaskua — usein ilman raskasta remonttia.</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-pine" href="#tarjous" data-quote><span>Pyydä ilmainen tarjous</span><Icon name="arrow" /></a>
+          <a class="btn btn-outline-pine" href="#palvelut">Tutustu palveluihin</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-item"><b>0 €</b>kartoituskäynti</div>
+          <div class="hero-trust-item"><b>35 %</b>kotitalousvähennys työstä</div>
+          <div class="hero-trust-item"><b>12</b>kuntaa Varsinais-Suomessa</div>
+          <div class="hero-trust-item"><b>1 pv</b>vastaus arkisin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p><strong>Vetoinen ikkuna ei aina tarkoita uutta ikkunaa.</strong> Monesti syy on kuluneissa tiivisteissä tai väärin säädetyissä puitteissa. Siksi aloitamme aina kartoituksesta: kerromme rehellisesti, riittääkö tiivistys ja huolto vai onko uusiminen järkevämpi ratkaisu.</p>
+      <p>{business.name} palvelee markkinointinimellä {business.brand} koteja ja taloyhtiöitä Turussa ja koko Varsinais-Suomessa — kerrostaloasunnoista rintamamiestaloihin ja saariston kesäpaikkoihin.</p>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Tunnistatko nämä?" title="Merkit, joiden jälkeen kannattaa toimia">
+        <p>Jos yksikin kohta osuu, kodistasi karkaa todennäköisesti lämpöä ja rahaa.</p>
+      </SectionHead>
+      <div class="signs-grid">
+        {signs.map((s, i) => (
+          <div class="signs-card"><div class="num">0{i + 1}</div><p>{s}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="palvelut">
+    <div class="wrap">
+      <SectionHead eyebrow="Palvelut" title="Kaikki ikkunoihin ja oviin samasta paikasta">
+        <p>Pienestä säädöstä koko talon ikkunaremonttiin.</p>
+      </SectionHead>
+      <div class="feature-grid">
+        {services.map((s) => (
+          <a class="feature-item" href={s.href} style="text-decoration:none;color:inherit">
+            <div class="icon"><Icon name={s.icon} /></div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Kaksi tietä tiiviimpään kotiin" title="Kunnosta vanha tai uusi kerralla" />
+      <div class="remontti-grid">
+        <article class="remontti-card">
+          <div class="remontti-card-img"><img src="/img/seo-ikkuna-640.webp" srcset="/img/seo-ikkuna-640.webp 640w, /img/seo-ikkuna.webp 1200w" sizes="(max-width: 760px) 100vw, 600px" alt="Valkoinen puuikkuna olohuoneessa" width="1200" height="800" loading="lazy" /></div>
+          <p class="eyebrow">Edullinen ja ekologinen</p>
+          <h3>Tiivistys ja huolto</h3>
+          <p>Kun puitteet ja karmit ovat hyvässä kunnossa, tiivisteiden vaihto ja säätö palauttavat ikkunan toimivuuden murto-osalla remontin hinnasta.</p>
+          <a class="card-link" href="/tiivistys/">Lue tiivistyksestä <Icon name="arrow" /></a>
+        </article>
+        <article class="remontti-card">
+          <div class="remontti-card-img"><img src="/img/seo-ovi-640.webp" srcset="/img/seo-ovi-640.webp 640w, /img/seo-ovi.webp 1200w" sizes="(max-width: 760px) 100vw, 600px" alt="Tumma ulko-ovi ja ikkuna puutalon kuistilla" width="1200" height="873" loading="lazy" /></div>
+          <p class="eyebrow">Pitkäikäinen ratkaisu</p>
+          <h3>Uudet ikkunat ja ovet</h3>
+          <p>Jos puu on lahonnut tai halutaan selvä parannus energiatehokkuuteen ja ääneneristykseen, uudet kotimaiset ikkunat ja ovet ovat vuosikymmenten investointi.</p>
+          <a class="card-link" href="/ikkunaremontti/">Lue ikkunaremontista <Icon name="arrow" /></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <SectionHead eyebrow="Vertailu" title="Tiivistys vai ikkunaremontti?">
+        <p>Molemmilla on paikkansa. Kartoituksessa katsomme, kumpi sopii juuri sinun kotiisi.</p>
+      </SectionHead>
+      <div class="compare" role="table" aria-label="Tiivistyksen ja ikkunaremontin vertailu">
+        <div class="compare-row head" role="row"><div class="compare-cell" role="columnheader"></div><div class="compare-cell" role="columnheader">Tiivistys ja huolto</div><div class="compare-cell" role="columnheader">Ikkunaremontti</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Poistaa vedon</div><div class="compare-cell check-yes" role="cell">Kyllä</div><div class="compare-cell check-yes" role="cell">Kyllä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Työn kesto omakotitalossa</div><div class="compare-cell check-yes" role="cell">Yleensä 1 päivä</div><div class="compare-cell check-no" role="cell">Useita päiviä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Kustannus</div><div class="compare-cell check-yes" role="cell">Murto-osa</div><div class="compare-cell check-no" role="cell">Suurempi investointi</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Parantaa lasin U-arvoa</div><div class="compare-cell check-no" role="cell">Ei</div><div class="compare-cell check-yes" role="cell">Kyllä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Korjaa lahovauriot</div><div class="compare-cell check-no" role="cell">Pienet korjaukset</div><div class="compare-cell check-yes" role="cell">Kyllä</div></div>
+        <div class="compare-row" role="row"><div class="compare-cell label" role="rowheader">Kotitalousvähennys</div><div class="compare-cell check-yes" role="cell">Työn osuudesta</div><div class="compare-cell check-yes" role="cell">Työn osuudesta</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Näin etenemme" title="Viisi selkeää askelta" />
+      <div class="process-grid">
+        {steps.map(([t, p], i) => (
+          <div class="process-step"><span class="num">{i + 1}</span><h3>{t}</h3><p>{p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-summary">
+    <div class="wrap">
+      <div class="seo-summary-text">
+        <p class="eyebrow">Paikallinen tekijä</p>
+        <h4>Ikkunat, ovet ja tiivistys Turussa ja Varsinais-Suomessa</h4>
+        <p>Varsinais-Suomen rannikon tuulet, kosteus ja vaihtelevat talvet kuluttavat ikkunoita ja ovia. Tunnemme alueen rakennuskannan 1950-luvun rintamamiestaloista 70-luvun kerrostaloihin ja uusiin pientaloihin.</p>
+        <ul class="area-list" style="margin-top:20px">
+          {featured.map((c) => <li><a href={`/alueet/${c}/`}>{cities[c].name}</a></li>)}
+        </ul>
+      </div>
+      <div class="seo-summary-media">
+        <img src="/img/hero-guide-800.webp" srcset="/img/hero-guide-800.webp 800w, /img/hero-guide.webp 1400w" sizes="(max-width: 860px) 100vw, 540px" alt="Valoisa olohuone ja suuret ikkunat" width="1400" height="933" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqHome} />
+  <ContactSection />
+</Layout>

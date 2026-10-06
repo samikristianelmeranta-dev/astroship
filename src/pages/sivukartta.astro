@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { nav, cities } from "@/data/site";
+const extra = [{ href: "/usein-kysytyt-kysymykset/", label: "Usein kysytyt kysymykset" }];
+---
+<Layout title="Sivukartta" breadcrumbs={[{ name: "Sivukartta" }]} bodyClass="page-slug-sivukartta">
+  <section class="hero"><div class="wrap hero-inner"><h1>Sivukartta</h1></div></section>
+  <section>
+    <div class="wrap">
+      <h2>Sivut</h2>
+      <ul class="sitemap-list">{[...nav, ...extra].map((n) => <li><a href={n.href}>{n.label}</a></li>)}</ul>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>Alueet</h2>
+      <ul class="sitemap-list">{Object.entries(cities).map(([s, c]) => <li><a href={`/alueet/${s}/`}>{c.name}</a></li>)}</ul>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,87 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Faq from "@/components/Faq.astro";
+import FinalCta from "@/components/FinalCta.astro";
+import { faqTiivistys } from "@/data/faq";
+
+const benefits = [
+  ["Veto loppuu", "Kylmä ilma ei enää virtaa puitteiden ja karmin välistä — lattiatasossakin on lämpimämpää."],
+  ["Lämmityslasku pienenee", "Lämpö pysyy sisällä, joten lämmitysjärjestelmä tekee vähemmän töitä."],
+  ["Hiljaisempi koti", "Ehjä tiiviste vaimentaa liikenteen ja naapuruston ääniä selvästi."],
+  ["Vähemmän pölyä ja huurretta", "Kun raot ovat tiiviit, siitepöly ja katupöly eivät kulkeudu sisään eikä välilasi huurru yhtä herkästi."],
+];
+const steps = [
+  ["Kartoitus", "Tarkastamme jokaisen ikkunan ja oven sekä etsimme vuotokohdat."],
+  ["Vanhat tiivisteet pois", "Poistamme kuluneet tiivisteet ja puhdistamme kiinnityspinnat huolellisesti."],
+  ["Uusi tiiviste", "Asennamme kestävän silikonitiivisteen massan päälle, jolloin se muotoutuu juuri sinun puitteillesi."],
+  ["Karmiraot ja säädöt", "Tiivistämme karmin ja seinän väliset raot sekä säädämme ja voitelemme helat."],
+  ["Tarkistus ja siivous", "Testaamme sulkeutumisen ja tiiveyden ja siivoamme jäljet."],
+];
+---
+<Layout title="Ikkunoiden ja ovien tiivistys Turussa" description="Ikkunoiden ja ovien tiivistys Turussa ja Varsinais-Suomessa. Kestävät silikonitiivisteet, veto pois ja lämmityskulut alas. Ilmainen kartoitus." breadcrumbs={[{ name: "Tiivistys" }]}>
+  <PageHero
+    eyebrow="Ikkunoiden ja ovien tiivistys"
+    title="Veto pois — <br>ilman ikkunaremonttia"
+    lead="Useimmiten vetoisa ikkuna ei ole rikki, vaan sen tiivisteet ovat väsyneet. Vaihdamme ne kestäviin silikonitiivisteisiin ja säädämme puitteet, jolloin ikkuna toimii taas kuin uusi."
+    image="/img/seo-ikkuna.webp"
+    imageAlt="Puuikkuna ja verhot kodin olohuoneessa"
+    secondary={{ href: "#miten", label: "Näin tiivistys tehdään" }}
+  />
+  <TrustStrip />
+
+  <section class="intro">
+    <div class="wrap">
+      <p>Ikkunoiden ja ovien tiivistys on <strong>nopein ja edullisin tapa tehdä kodista tiiviimpi</strong>. Omakotitalon kaikki ikkunat ja ovet tiivistetään yleensä yhden päivän aikana, eikä työ vaadi purkamista tai telineitä.</p>
+      <p>Tiivistys sopii erityisesti taloihin, joiden ikkunat ja ovet ovat rakenteeltaan kunnossa, mutta tiivisteet ovat painuneet, kovettuneet tai irronneet.</p>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Hyödyt" title="Mitä tiivistys muuttaa kotonasi?" />
+      <div class="benefit-grid">
+        {benefits.map(([t, p]) => <div class="benefit-card"><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section id="miten">
+    <div class="wrap">
+      <SectionHead eyebrow="Työvaiheet" title="Näin tiivistämme ikkunat ja ovet" />
+      <ol class="process-list">
+        {steps.map(([t, p]) => <li class="process-item"><h3>{t}</h3><p>{p}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="panel-dark" id="ovet">
+    <div class="wrap">
+      <SectionHead eyebrow="Ovet" title="Ulko-, parveke- ja terassiovien tiivistys">
+        <p>Ovi on usein talon suurin yksittäinen vuotokohta — erityisesti kynnyksen kohdalla. Tiivistämme ja säädämme ovet niin, että ne sulkeutuvat kevyesti mutta tiiviisti.</p>
+      </SectionHead>
+      <div class="feature-list two">
+        <div class="feature-item"><span class="dot"></span><div><h4>Uudet ovitiivisteet</h4><p>Paksuus valitaan oven raon mukaan, jotta ovi ei jää jäykäksi.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Kynnyksen tiivistys</h4><p>Lopettaa lattiatason vedon ja estää lumen ja pölyn pääsyn sisään.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Saranoiden ja lukon säätö</h4><p>Ovi asettuu oikein karmiin, ja lukko toimii ilman väkivaltaa.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Karmirakojen tiivistys</h4><p>Karmin ja seinän väliset raot tiivistetään elastisella massalla.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="wrap">
+      <h2>Tiivistys ja ilmanvaihto kulkevat käsi kädessä</h2>
+      <p>Tiivis talo tarvitsee toimivan ilmanvaihdon. Kun ikkunaraot eivät enää vuoda, korvausilman pitää tulla hallitusti venttiilien kautta. Tarkistamme kartoituksessa korvausilmareitit ja kerromme, kannattaako koneellisen ilmanvaihdon säätöjä tarkistaa tiivistyksen jälkeen.</p>
+      <div class="callout">
+        <p>Vinkki</p>
+        <p>Testaa ikkunan tiiveys paperiarkilla: sulje ikkuna paperin päälle ja vedä. Jos paperi liukuu helposti pois, tiiviste ei enää pidä.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={faqTiivistys} title="Kysymyksiä tiivistyksestä" />
+  <FinalCta title="Tiivistetäänkö sinunkin kotisi ennen talvea?" />
+</Layout>

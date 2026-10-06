@@ -1,0 +1,35 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import Icon from "@/components/Icon.astro";
+import { business } from "@/data/site";
+---
+<Layout title="Yhteystiedot" description="Ota yhteyttä TiivisTupaan ja pyydä ilmainen kartoitus. Palvelemme Turussa ja Varsinais-Suomessa." breadcrumbs={[{ name: "Yhteystiedot" }]} hasInlineForm>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Yhteystiedot</p>
+      <h1>Ota yhteyttä — {business.slogan.toLowerCase()}</h1>
+      <p>Vastaamme yhteydenottoihin arkisin yhden arkipäivän kuluessa.</p>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="feature-grid">
+        <div class="feature-item"><div class="icon"><Icon name="mail" /></div><h3>Sähköposti</h3><p><a href={`mailto:${business.email}`} style="color:var(--pine)">{business.email}</a></p></div>
+        {business.telephone
+          ? <div class="feature-item"><div class="icon"><Icon name="phone" /></div><h3>Puhelin</h3><p><a href={`tel:${business.telephone}`} style="color:var(--pine)">{business.telephone}</a></p></div>
+          : <div class="feature-item"><div class="icon"><Icon name="clock" /></div><h3>Aukioloajat</h3><p>{business.openingHours}</p></div>}
+        <div class="feature-item"><div class="icon"><Icon name="pin" /></div><h3>Toiminta-alue</h3><p>Turku ja koko Varsinais-Suomi</p></div>
+      </div>
+      <div class="info-box" style="margin-top:24px;border-radius:var(--radius)">
+        <h3>Yritystiedot</h3>
+        <ul>
+          <li>{business.name}</li>
+          <li>Markkinointinimi: {business.brand}</li>
+          <li>Kotipaikka: {business.addressLocality}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <ContactSection />
+</Layout>

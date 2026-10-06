@@ -1,0 +1,67 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import FinalCta from "@/components/FinalCta.astro";
+import Icon from "@/components/Icon.astro";
+
+const items = [
+  ["wrench", "Säädöt", "Puitteet ja ovet säädetään sulkeutumaan kevyesti ja tasaisesti karmia vasten."],
+  ["drop", "Voitelu", "Helat, saranat ja lukot puhdistetaan ja voidellaan, jolloin ne toimivat pitkään."],
+  ["lock", "Lukot ja helat", "Vaihdamme kuluneet kahvat, salvat ja lukkorungot tarvittaessa."],
+  ["window", "Lasinvaihdot", "Rikkoutuneet tai huurtuvat lasit vaihdetaan ja kittaukset uusitaan."],
+  ["home", "Puuosien korjaus", "Paikkaamme vaurioituneet puuosat ja vesipellit ennen kuin vaurio laajenee."],
+  ["sun", "Maalipintojen kunto", "Arvioimme maalipinnat ja kerromme, milloin huoltomaalaus on ajankohtainen."],
+];
+---
+<Layout title="Ikkuna- ja ovihuolto Turussa" description="Ikkunoiden ja ovien huolto, säädöt, lasinvaihdot ja korjaukset Turussa ja Varsinais-Suomessa. Pidennä ikkunoiden käyttöikää vuosilla." breadcrumbs={[{ name: "Huolto" }]}>
+  <PageHero
+    eyebrow="Ikkuna- ja ovihuolto"
+    title="Huolto pidentää ikkunan ikää vuosilla"
+    lead="Säännöllinen huolto pitää ikkunat ja ovet toimivina, tiiviinä ja kauniina. Korjaamme pienet viat ennen kuin niistä tulee isoja — kodeille ja taloyhtiöille."
+    image="/img/hero-guide.webp"
+    imageAlt="Valoisa olohuone, jossa suuret ikkunat"
+    secondary={{ href: "/tiivistys/", label: "Tiivistys" }}
+  />
+  <TrustStrip />
+
+  <section class="value-prop">
+    <div class="wrap">
+      <SectionHead eyebrow="Mitä huoltoon kuuluu" title="Kokonaisvaltainen ikkuna- ja ovihuolto" />
+      <div class="feature-grid">
+        {items.map(([icon, t, p]) => (
+          <div class="feature-item"><div class="icon"><Icon name={icon} /></div><h3>{t}</h3><p>{p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-dark">
+    <div class="wrap">
+      <SectionHead eyebrow="Taloyhtiöille" title="Ikkunahuolto koko kiinteistöön">
+        <p>Ikkunoiden huolto ja tiivistys on taloyhtiölle usein huomattavasti ikkunaremonttia edullisempi tapa parantaa asumismukavuutta ja energiatehokkuutta — ja siirtää remontin tarvetta vuosilla.</p>
+      </SectionHead>
+      <div class="audience-grid">
+        <div class="audience-card"><h3>Kuntokartoitus</h3><p>Tarkastamme ikkunat ja ovet ja laadimme raportin isännöitsijälle ja hallitukselle.</p></div>
+        <div class="audience-card"><h3>Selkeä tarjous</h3><p>Kiinteä hinta ja aikataulu, joka on helppo viedä yhtiökokoukseen.</p></div>
+        <div class="audience-card"><h3>Sujuva toteutus</h3><p>Tiedotamme asukkaille ja etenemme porras kerrallaan mahdollisimman vähän häiriten.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="wrap">
+      <h2>Milloin ikkunat kannattaa huoltaa?</h2>
+      <p>Hyvä nyrkkisääntö on tarkastaa ikkunat ja ovet muutaman vuoden välein ja aina, kun huomaat jonkin seuraavista:</p>
+      <ul class="bullet">
+        <li>puite jää jumiin, kolisee tai ei sulkeudu kunnolla</li>
+        <li>välilasi huurtuu tai sisälasin pintaan tiivistyy runsaasti vettä</li>
+        <li>ulkopuitteen maali hilseilee tai puu tuntuu pehmeältä</li>
+        <li>kahva tai lukko on jäykkä</li>
+      </ul>
+    </div>
+  </section>
+
+  <FinalCta title="Tilaa ilmainen ikkunoiden kuntokartoitus" />
+</Layout>

@@ -23,3 +23,13 @@
 
 /* Alueen linkit */
 .area-list a { color: inherit; text-decoration: none; }
+
+/* Korttilinkkien nuoli-ikoni */
+.card-link .i { width: 18px; height: 18px; flex: none; transition: transform var(--dur) var(--ease-out); }
+.remontti-card:hover .card-link .i { transform: translateX(3px); }
+
+/* Ruudukot, joissa 4 tai 5 korttia: ei orpoja kortteja omalle rivilleen */
+.benefit-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.process-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.feature-list.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.types-grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }

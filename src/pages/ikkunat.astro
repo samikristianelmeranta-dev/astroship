@@ -1,0 +1,65 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TrustStrip from "@/components/TrustStrip.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import FinalCta from "@/components/FinalCta.astro";
+
+const types = [
+  ["Puualumiini-ikkunat", "Sisältä lämmin puu, ulkoa huoltovapaa alumiini. Suosituin valinta omakotitaloihin ja taloyhtiöihin."],
+  ["Puuikkunat", "Perinteinen ja korjattava ratkaisu vanhoihin puutaloihin ja kohteisiin, joissa julkisivun ilme halutaan säilyttää."],
+  ["Kiinteät ikkunat", "Suuret lasipinnat ja valoa ilman avattavia puitteita — myös erikoismuodot."],
+  ["Ääneneristysikkunat", "Vilkkaiden katujen varrelle: paksummat ja eripaksuiset lasit vaimentavat melua tehokkaasti."],
+  ["Parvekeovet ja ranskalaiset parvekkeet", "Tiiviit ja valoisat parveke- ja terassiovet ikkunoiden kanssa yhteensopivina."],
+  ["Lisävarusteet", "Välikaihtimet, tuuletusraitisilmaventtiilit, hyönteisverkot ja turvalasit."],
+];
+---
+<Layout title="Ikkunat Turku – energiatehokkaat ikkunat asennettuna" description="Kotimaiset puu- ja puualumiini-ikkunat asennettuna Turussa ja Varsinais-Suomessa. Ilmainen mittaus ja kirjallinen tarjous." breadcrumbs={[{ name: "Ikkunat" }]}>
+  <PageHero
+    eyebrow="Ikkunat"
+    title="Energiatehokkaat ikkunat mittatilauksena"
+    lead="Toimitamme ja asennamme kotimaisia puu- ja puualumiini-ikkunoita, jotka valmistetaan juuri sinun kotisi aukkoihin. Hyvä lasitus pitää lämmön sisällä ja melun ulkona."
+    image="/img/hero-guide.webp"
+    imageAlt="Suuret ikkunat valoisassa olohuoneessa"
+    secondary={{ href: "/ikkunaremontti/", label: "Ikkunaremontti" }}
+  />
+  <TrustStrip />
+
+  <section>
+    <div class="wrap">
+      <SectionHead eyebrow="Valikoima" title="Ikkunatyypit" />
+      <div class="types-grid">
+        {types.map(([t, p]) => <div class="type-card"><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="panel-alt">
+    <div class="wrap">
+      <SectionHead eyebrow="Valintaopas" title="Mihin kiinnittää huomiota ikkunaa valitessa?" />
+      <div class="feature-list">
+        <div class="feature-item"><span class="dot"></span><div><h4>U-arvo</h4><p>Mitä pienempi U-arvo, sitä vähemmän lämpöä karkaa. Nykyaikaisissa ikkunoissa se on tyypillisesti noin 0,7–1,0 W/m²K.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Lasitus</h4><p>Kolmi- tai nelilasinen rakenne, selektiivilasit ja kaasutäyte parantavat lämmöneristystä.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Materiaali</h4><p>Puualumiini on huoltovapaa ulkoa, puu sopii perinteiseen julkisivuun.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Ääneneristys</h4><p>Eri paksuiset lasit ja tiivis asennus vaimentavat liikenteen melua.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Aurinkosuojaus</h4><p>Auringonsuojalasi tai välikaihtimet estävät huoneiden kuumenemisen kesällä.</p></div></div>
+        <div class="feature-item"><span class="dot"></span><div><h4>Asennuksen laatu</h4><p>Paraskin ikkuna vuotaa, jos asennus ja liittymät on tehty huonosti. Siksi asennamme itse.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-summary">
+    <div class="wrap">
+      <div class="seo-summary-text">
+        <h4>Uusi ikkuna vai tiivistys?</h4>
+        <p>Uudet ikkunat ovat järkevä investointi, kun vanhoissa on lahoa, lasit huurtuvat jatkuvasti tai halutaan selvä parannus energiatehokkuuteen. Jos rakenne on kunnossa, <a href="/tiivistys/">tiivistys</a> voi riittää. Kerromme kartoituksessa rehellisesti, kumpi kannattaa.</p>
+        <div class="cta-row"><a class="btn btn-pine" href="#tarjous" data-quote>Pyydä tarjous ikkunoista</a></div>
+      </div>
+      <div class="seo-summary-media">
+        <img src="/img/seo-ikkuna.webp" alt="Valkoinen ikkuna, jonka takana havumetsä" width="1200" height="800" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <FinalCta />
+</Layout>
