@@ -1417,3 +1417,5 @@ table.price-table, .article-body table {
   body.nordic-regional .site-nav { margin-left: -7px; }
   body.nordic-regional .site-nav a:not(.btn) { padding: 10px 7px; font-size: 14px; }
 }
+/* Pitkät yhdyssanat eivät saa työntyä otsikon ulkopuolelle */
+h1, h2 { overflow-wrap: break-word; hyphens: auto; }
