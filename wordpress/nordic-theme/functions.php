@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.1.0' );
+define( 'NORDIC_VERSION', '2.1.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -95,7 +95,17 @@ function nordic_regions() {
 
 function nordic_region() {
 	$regions = nordic_regions();
-	$key     = (string) get_theme_mod( 'nordic_region', 'varsinais-suomi' );
+	$key     = (string) get_theme_mod( 'nordic_region', '' );
+	if ( '' === $key ) {
+		// Ei valittu Mukauta-valikosta: päätellään osoitteesta (esim. uusimaa.ikkunakauppias.fi).
+		$host = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+		foreach ( array( 'uusimaa' => 'uusimaa', 'merilappi' => 'meri-lappi', 'meri-lappi' => 'meri-lappi', 'satakunta' => 'satakunta' ) as $needle => $region ) {
+			if ( false !== strpos( $host, $needle ) ) {
+				$key = $region;
+				break;
+			}
+		}
+	}
 	if ( ! isset( $regions[ $key ] ) ) {
 		$key = 'varsinais-suomi';
 	}
@@ -117,7 +127,7 @@ function nordic_customize_region( $wp_customize ) {
 	foreach ( nordic_regions() as $key => $r ) {
 		$choices[ $key ] = $r['label'];
 	}
-	$wp_customize->add_setting( 'nordic_region', array( 'default' => 'varsinais-suomi', 'sanitize_callback' => function ( $v ) {
+	$wp_customize->add_setting( 'nordic_region', array( 'default' => nordic_region()['key'], 'sanitize_callback' => function ( $v ) {
 		return array_key_exists( $v, nordic_regions() ) ? $v : 'varsinais-suomi';
 	} ) );
 	$wp_customize->add_control( 'nordic_region', array( 'section' => 'nordic_site', 'label' => 'Alue', 'type' => 'select', 'choices' => $choices ) );
