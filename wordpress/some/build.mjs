@@ -10,8 +10,11 @@ const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 1800, height: 1200 } });
 await p.goto('file://' + path.join(dir, 'some.html'), { waitUntil: 'networkidle' });
 await p.evaluate(() => document.fonts.ready);
-for (const id of await p.$$eval('section.ab', s => s.map(x => x.id))) {
-  await (await p.$('#' + id)).screenshot({ path: path.join(out, id + '.png') });
+const only = process.argv[3] ? process.argv[3].split(',') : null;
+for (const [id, clear] of await p.$$eval('section.ab', s => s.map(x => [x.id, x.classList.contains('lapinakyva')]))) {
+  if (only && !only.some(o => id.startsWith(o))) continue;
+  await p.evaluate(c => { document.body.style.background = c ? 'transparent' : ''; }, clear);
+  await (await p.$('#' + id)).screenshot({ path: path.join(out, id + '.png'), omitBackground: clear });
   console.log(id);
 }
 await b.close();
