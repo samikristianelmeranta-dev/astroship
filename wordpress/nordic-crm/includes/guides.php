@@ -56,7 +56,8 @@ add_action( 'add_meta_boxes_' . NORDIC_CRM_GUIDE_TYPE, function () {
 function nordic_crm_guide_metabox( $post ) {
 	wp_nonce_field( 'nordic_opas_save', 'nordic_opas_nonce' );
 	wp_enqueue_media();
-	$pdf = (string) get_post_meta( $post->ID, '_nordic_opas_pdf', true );
+	$pdf   = (string) get_post_meta( $post->ID, '_nordic_opas_pdf', true );
+	$badge = (string) get_post_meta( $post->ID, '_nordic_opas_badge', true );
 	?>
 	<p>
 		<input type="url" class="large-text" id="nordic-opas-pdf" name="nordic_opas_pdf" value="<?php echo esc_attr( $pdf ); ?>" placeholder="https://…/opas.pdf">
@@ -66,6 +67,11 @@ function nordic_crm_guide_metabox( $post ) {
 		<?php if ( $pdf ) : ?>
 			<a class="button-link" href="<?php echo esc_url( $pdf ); ?>" target="_blank" rel="noopener" style="margin-left:8px;">Avaa nykyinen</a>
 		<?php endif; ?>
+	</p>
+	<p>
+		<label for="nordic-opas-badge"><strong>Merkki kortin kulmassa</strong></label><br>
+		<input type="text" id="nordic-opas-badge" name="nordic_opas_badge" value="<?php echo esc_attr( $badge ); ?>" placeholder="Ilmainen opas">
+		<span class="description">Esim. <code>Ilmainen opas</code> tai <code>Tuote-esite</code>.</span>
 	</p>
 	<p class="description">
 		<strong>Lyhyt kuvaus</strong> (Ote-kenttä) näkyy kortissa oppaan nimen alla, esim. "12 kohdan muistilista ennen tarjouspyyntöä".
@@ -99,6 +105,8 @@ add_action( 'save_post_' . NORDIC_CRM_GUIDE_TYPE, function ( $post_id ) {
 	}
 	$pdf = isset( $_POST['nordic_opas_pdf'] ) ? esc_url_raw( trim( wp_unslash( $_POST['nordic_opas_pdf'] ) ) ) : '';
 	update_post_meta( $post_id, '_nordic_opas_pdf', $pdf );
+	$badge = isset( $_POST['nordic_opas_badge'] ) ? sanitize_text_field( wp_unslash( $_POST['nordic_opas_badge'] ) ) : '';
+	update_post_meta( $post_id, '_nordic_opas_badge', $badge );
 } );
 
 add_filter( 'manage_' . NORDIC_CRM_GUIDE_TYPE . '_posts_columns', function ( $cols ) {
@@ -140,6 +148,7 @@ function nordic_crm_guide( $id ) {
 		'desc'  => has_excerpt( $post ) ? get_the_excerpt( $post ) : '',
 		'pdf'   => $pdf,
 		'cover' => get_the_post_thumbnail_url( $post, 'medium_large' ),
+		'badge' => (string) get_post_meta( $post->ID, '_nordic_opas_badge', true ),
 	);
 }
 
@@ -221,7 +230,7 @@ function nordic_crm_guide_card( $g, $wide ) {
 	$out .= '<div class="ng-cover">' . ( $g['cover']
 		? '<img src="' . esc_url( $g['cover'] ) . '" alt="" loading="lazy">'
 		: '<span class="ng-cover-ph" aria-hidden="true"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 21.5z"/><path d="M4 21.5V4.5"/><path d="M8 7h8M8 11h6"/></svg></span>' )
-		. '<span class="ng-badge">Ilmainen opas</span></div>';
+		. '<span class="ng-badge">' . esc_html( $g['badge'] ? $g['badge'] : 'Ilmainen opas' ) . '</span></div>';
 	$out .= '<div class="ng-body">';
 	$out .= '<h3 class="ng-title">' . esc_html( $g['title'] ) . '</h3>';
 	if ( $g['desc'] ) {
@@ -286,7 +295,7 @@ function nordic_crm_guides_assets() {
 		. '.nordic-guides .ng-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(16,37,48,.12)}'
 		. '.nordic-guides .ng-cover{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#16303B,#1D5E79);color:#FFD866;display:flex;align-items:center;justify-content:center;overflow:hidden}'
 		. '.nordic-guides .ng-cover img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}'
-		. '.nordic-guides .ng-badge{position:absolute;left:14px;top:14px;padding:5px 11px;border-radius:999px;background:#FFD866;color:#16303B;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}'
+		. '.nordic-guides .ng-badge{position:absolute;right:14px;top:14px;padding:5px 11px;border-radius:999px;background:#FFD866;color:#16303B;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}'
 		. '.nordic-guides .ng-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;color:#3D5561}'
 		. '.nordic-guides .ng-title{margin:0;font-size:1.2rem;line-height:1.25;color:#16303B}'
 		. '.nordic-guides .ng-desc{margin:0 0 6px}'
@@ -315,4 +324,102 @@ function nordic_crm_guides_assets() {
 		. '@media(prefers-reduced-motion:reduce){.nordic-guides *{transition:none!important}}';
 	$js = 'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-nordic-guide-open]");if(a&&window.dataLayer)window.dataLayer.push({event:"guide_open",guide_id:+a.getAttribute("data-nordic-guide-open")});});';
 	return '<style>' . $css . '</style><script>' . $js . '</script>';
+}
+
+/* -------------------------------------------------------------------------
+ * Valmiit oppaat (Skaalan tuote-esitteet)
+ *
+ * Asennus kopioi lisäosan mukana tulevat PDF:t ja kansikuvat mediakirjastoon
+ * ja luo niistä oppaat. Kukin luodaan vain kerran: jos opas poistetaan,
+ * sitä ei palauteta päivityksessä.
+ * ---------------------------------------------------------------------- */
+
+function nordic_crm_default_guides() {
+	return array(
+		'skaala-aukea-ikkuna'           => array(
+			'title' => 'Aukea-ikkuna – sisäänaukeava',
+			'desc'  => 'Suomen yleisin ikkunamalli: Aukea, Aukea+ ja Mökki-ikkuna. U-arvot, värit ja karmisyvyydet.',
+		),
+		'skaala-aasa-ikkuna'            => array(
+			'title' => 'Aasa-ikkuna – ulosaukeava',
+			'desc'  => 'Skandinavian suosituin malli: avaus yhdellä painikkeella, U-arvo jopa 0,8 ja lapsilukko vakiona.',
+		),
+		'skaala-aava-ikkuna'            => array(
+			'title' => 'Aava-ikkuna – kiinteä',
+			'desc'  => 'Markkinoiden siroimmat kiinteät ikkunat, jopa noin 8 m². Saatavana myös EI30-paloikkunana.',
+		),
+		'skaala-terassi-ja-parvekeovet' => array(
+			'title' => 'Terassi- ja parvekeovet',
+			'desc'  => 'Kolmilasiset terassi- ja parvekeovet HDF- tai alumiinipinnalla. Mallit Aamu, Aero, Loiste ja Louna.',
+		),
+		'skaala-palo-ovet'              => array(
+			'title' => 'Palo-ovet',
+			'desc'  => 'Milloin palo-ovi tarvitaan, mitä EI30 tarkoittaa ja missä koossa Skaalan palo-ovet tehdään.',
+		),
+	);
+}
+
+/**
+ * @return string[] Luotujen oppaiden nimet.
+ */
+function nordic_crm_install_default_guides() {
+	$done    = (array) get_option( 'nordic_crm_default_guides', array() );
+	$created = array();
+	$order   = 1;
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	foreach ( nordic_crm_default_guides() as $slug => $g ) {
+		$order++;
+		if ( isset( $done[ $slug ] ) ) {
+			continue;
+		}
+		$pdf_id   = nordic_crm_import_asset( 'assets/oppaat/' . $slug . '.pdf', $g['title'] );
+		$cover_id = nordic_crm_import_asset( 'assets/oppaat/' . $slug . '-kansi.jpg', $g['title'] . ' – kansi' );
+		if ( ! $pdf_id ) {
+			continue;
+		}
+		$post_id = wp_insert_post( array(
+			'post_type'    => NORDIC_CRM_GUIDE_TYPE,
+			'post_status'  => 'publish',
+			'post_title'   => $g['title'],
+			'post_excerpt' => $g['desc'],
+			'menu_order'   => $order,
+		) );
+		if ( ! $post_id || is_wp_error( $post_id ) ) {
+			continue;
+		}
+		update_post_meta( $post_id, '_nordic_opas_pdf', wp_get_attachment_url( $pdf_id ) );
+		update_post_meta( $post_id, '_nordic_opas_badge', 'Tuote-esite' );
+		if ( $cover_id ) {
+			set_post_thumbnail( $post_id, $cover_id );
+		}
+		$done[ $slug ] = (int) $post_id;
+		$created[]     = $g['title'];
+	}
+	update_option( 'nordic_crm_default_guides', $done, false );
+	return $created;
+}
+
+/** Kopioi lisäosan tiedoston mediakirjastoon. Palauttaa liitteen ID:n tai 0. */
+function nordic_crm_import_asset( $rel, $title ) {
+	$src = NORDIC_CRM_DIR . '/' . $rel;
+	if ( ! is_readable( $src ) ) {
+		return 0;
+	}
+	$upload = wp_upload_bits( basename( $src ), null, (string) file_get_contents( $src ) );
+	if ( ! empty( $upload['error'] ) ) {
+		return 0;
+	}
+	$type = wp_check_filetype( $upload['file'] );
+	$id   = wp_insert_attachment( array(
+		'post_mime_type' => $type['type'],
+		'post_title'     => $title,
+		'post_status'    => 'inherit',
+	), $upload['file'] );
+	if ( ! $id || is_wp_error( $id ) ) {
+		return 0;
+	}
+	if ( 0 === strpos( (string) $type['type'], 'image/' ) ) {
+		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $upload['file'] ) );
+	}
+	return (int) $id;
 }

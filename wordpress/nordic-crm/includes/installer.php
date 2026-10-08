@@ -76,7 +76,12 @@ function nordic_crm_install( $force = false ) {
 		update_option( 'nordic_crm_doi_hash', md5( $doi_body ), false );
 	}
 
-	// 4) Automaatiot
+	// 4) Valmiit oppaat (Skaalan tuote-esitteet) mediakirjastoon
+	foreach ( nordic_crm_install_default_guides() as $title ) {
+		$result['created'][] = 'Opas: ' . $title;
+	}
+
+	// 5) Automaatiot
 	$installed = nordic_crm_installed_funnels();
 	foreach ( nordic_crm_flows() as $flow ) {
 		try {
@@ -269,8 +274,15 @@ function nordic_crm_update_flow( $flow, $info, $force, &$result ) {
 
 function nordic_crm_install_summary( $r ) {
 	$parts = array();
-	if ( ! empty( $r['created'] ) ) {
-		$parts[] = 'Luotiin ' . count( $r['created'] ) . ' automaatiota.';
+	$guides = array_filter( (array) ( $r['created'] ?? array() ), function ( $c ) {
+		return 0 === strpos( $c, 'Opas: ' );
+	} );
+	$flows  = array_diff( (array) ( $r['created'] ?? array() ), $guides );
+	if ( $flows ) {
+		$parts[] = 'Luotiin ' . count( $flows ) . ' automaatiota.';
+	}
+	if ( $guides ) {
+		$parts[] = 'Lisättiin ' . count( $guides ) . ' opasta kohtaan Oppaat.';
 	}
 	if ( ! empty( $r['updated'] ) ) {
 		$parts[] = 'Päivitettiin ' . count( $r['updated'] ) . ' viestiä.';

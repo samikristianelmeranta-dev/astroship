@@ -38,6 +38,11 @@ Lisäosa tuo WordPressiin valikon **Oppaat**. Jokainen opas on oma kohteensa:
 | Oppaan tiedosto (PDF) | Valitse mediakirjastosta |
 | Järjestys | Sivun määritteet → Järjestys |
 
+Lisäosan mukana tulee viisi valmista opasta (Skaalan tuote-esitteet): Aukea-,
+Aasa- ja Aava-ikkuna, terassi- ja parvekeovet sekä palo-ovet. Asennus kopioi PDF:t
+ja kansikuvat mediakirjastoon ja luo oppaat kerran. Poistettua opasta ei palauteta
+päivityksessä.
+
 Sivulle oppaat lisätään lyhytkoodilla:
 
 - `[nordic_oppaat]` kaikki julkaistut oppaat korttiruudukkona (esim. sivu *Oppaat*)

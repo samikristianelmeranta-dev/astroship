@@ -292,7 +292,7 @@ HTML
 <p>{{nordic.tervehdys}}</p>
 <p>kiitos, että latasit oppaan. Tässä se on vielä tallessa:</p>
 <p><a href="{{nordic.opas_url}}"><strong>Avaa opas: {{nordic.opas_nimi}}</strong></a></p>
-<p>Opas on kirjoitettu niin, että sen avulla voi miettiä omaa remonttia rauhassa ennen kuin kenellekään tarvitsee soittaa.</p>
+<p>Voit palata siihen rauhassa milloin tahansa tämän viestin kautta.</p>
 <p>Jos jokin kohta herättää kysymyksiä omasta talostasi, vastaa suoraan tähän viestiin. Viesti tulee meille, ei automaatille.</p>
 <p>{{nordic.allekirjoitus}}</p>
 HTML
@@ -313,7 +313,7 @@ HTML
 					'preheader'=> 'Kolme asiaa, joita kysytään useimmin.',
 					'body'     => <<<'HTML'
 <p>{{nordic.tervehdys}}</p>
-<p>latasit muutama päivä sitten oppaan. Oppaan jälkeen meiltä kysytään yleensä näitä kolmea asiaa:</p>
+<p>latasit muutama päivä sitten sivuiltamme oppaan {{nordic.opas_nimi}}. Sen jälkeen meiltä kysytään yleensä näitä kolmea asiaa:</p>
 <ul>
 <li><strong>Mitä remontti maksaa?</strong> Yksittäisen ikkunan vaihto asennettuna on tyypillisesti noin 400–1 500 euroa. Tarkka hinta riippuu koosta, mallista ja asennuksesta.</li>
 <li><strong>Saako kotitalousvähennystä?</strong> Saa, asennustyön osuudesta.</li>
