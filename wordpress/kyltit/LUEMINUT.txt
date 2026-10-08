@@ -1,0 +1,21 @@
+IKKUNAKAUPPIAS.FI – KYLTIT (painovalmiit PDF:t)
+
+Tiedostot ovat täysikokoisia (1:1) vektori-PDF:iä. Fontit on upotettu.
+Kaikissa kylteissä tausta on yhtenäinen tummanvihreä, joten painotalo voi
+lisätä tarvittavat leikkuu- ja kiinnitysvarat (esim. 10–30 mm) jatkamalla taustaa.
+
+Värit
+- Tumma tausta:  #16303B  (RGB 22 48 59)
+- Keltainen:     #FFD866  (RGB 255 216 102)
+- Valkoinen:     #FFFFFF
+Pyydä painotaloa sovittamaan värit omaan tulostusprofiiliinsa (RGB → CMYK).
+
+Koot ja materiaaliehdotukset
+1. tienvarsikyltti-2000x1000   2000 x 1000 mm  alumiinikomposiitti 3 mm tai PVC-banneri (rei'itys)
+2. tienvarsikyltti-1200x600    1200 x 600 mm   alumiinikomposiitti 3 mm
+3. banderolli-3000x800         3000 x 800 mm   PVC-banneri, päärmäys ja rei'itys n. 50 cm välein
+4. a-teline-594x841            A1 pysty        A-telineen sisäkkeet (2 kpl, molemmat puolet)
+5. tyomaakyltti-600x400        600 x 400 mm    kevyt muovilevy / alumiinikomposiitti asennuskohteeseen
+
+Tekstit ovat vähintään 5 mm:n päässä reunoista. Rei'ityksen ja päärmäyksen
+kohdalla tulee olla tyhjää tilaa (tumma tausta).

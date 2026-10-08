@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Ikkunakauppias.fi – tienvarsikyltit</title>
+<!--
+  Jokainen <section class="sign"> on yksi kyltti täysikokoisena (mitat millimetreinä).
+  build.mjs tekee jokaisesta painovalmiin PDF:n (1:1, vektori) ja esikatselukuvan.
+  Mitoitus käyttää container-yksiköitä (cqw/cqh), joten sama ilme skaalautuu kokoon.
+-->
+<style>
+/* Staattiset fontit (fonts/): PDF:ään upotetaan tavallisina TrueType-fontteina, ei Type 3 -fontteina */
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-SemiBold.ttf') format('truetype'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype'); font-weight: 700; }
+:root { --spruce: #16303B; --night: #102530; --pine: #1D5E79; --gold: #FFD866; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #777; }
+body { display: flex; flex-direction: column; gap: 40mm; padding: 40mm; align-items: flex-start; font-family: 'Inter', sans-serif; }
+body.print { padding: 0; gap: 0; background: none; }
+
+.sign { position: relative; overflow: hidden; flex: none; container-type: size; color: #fff; background: var(--spruce);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Space Grotesk', sans-serif; }
+/* Hienovarainen taustavalo kuten somekuvissa */
+.sign::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(70cqw 90cqh at 100% 0%, rgba(255,216,102,.10), transparent 60%),
+              radial-gradient(70cqw 90cqh at 0% 100%, rgba(29,94,121,.55), transparent 60%); }
+.sign > * { position: relative; }
+
+.mark { display: block; flex: none; color: #fff; }
+.name { font-weight: 700; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+.name b { color: var(--gold); font-weight: 700; }
+.band { background: var(--gold); color: var(--spruce); font-weight: 700; letter-spacing: 0.04em; line-height: 1; white-space: nowrap; text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
+.phone { font-weight: 700; letter-spacing: 0.01em; line-height: 1; white-space: nowrap; display: flex; align-items: center; }
+.phone svg { flex: none; }
+.small { font-family: 'Inter', sans-serif; font-weight: 600; color: rgba(255,255,255,.85); line-height: 1.2; white-space: nowrap; }
+
+/* ---------- Vaakakyltti (n. 2:1): nimi, keltainen raita, puhelin ---------- */
+.l-stack { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.l-stack .row1 { display: flex; align-items: center; gap: 3.5cqw; margin-bottom: 7cqh; }
+.l-stack .row1 .mark { width: 15.5cqh; height: 15.5cqh; }
+.l-stack .name { font-size: 17cqh; }
+.l-stack .band { align-self: stretch; height: 25cqh; font-size: 17cqh; }
+.l-stack .phone { margin-top: 7.5cqh; font-size: 11.5cqh; gap: 2.4cqw; }
+.l-stack .phone svg { width: 10cqh; height: 10cqh; }
+
+/* ---------- Banderolli (n. 4:1): logo, nimi ja raita + puhelin ---------- */
+.l-banner { display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: 3.2cqw; row-gap: 6cqh; align-content: center; justify-content: center; }
+.l-banner .mark { grid-row: 1 / 3; align-self: center; width: 51cqh; height: 51cqh; }
+.l-banner .name { font-size: 26.5cqh; }
+.l-banner .row2 { display: flex; align-items: center; gap: 2.6cqw; }
+.l-banner .band { font-size: 15cqh; height: 25cqh; padding: 0 2.6cqw; border-radius: 1cqh; }
+.l-banner .phone { font-size: 15.5cqh; gap: 1.4cqw; }
+.l-banner .phone svg { width: 14cqh; height: 14cqh; }
+
+/* ---------- A-teline (pysty): enemmän tietoa, luetaan läheltä ---------- */
+.l-portrait { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 8cqh 6cqw 0; }
+.l-portrait .mark { width: 30cqw; height: 30cqw; margin-bottom: 4.5cqh; }
+.l-portrait .name { font-size: 11.6cqw; }
+.l-portrait .band { align-self: stretch; margin: 5cqh -6cqw 0; height: 13cqh; font-size: 11cqw; }
+.l-portrait .list { list-style: none; display: grid; gap: 2.6cqh; margin: 5.5cqh 0 0; text-align: left; font-family: 'Inter'; font-weight: 600; font-size: 5.3cqw; color: #fff; }
+.l-portrait .list li { display: flex; align-items: center; gap: 3cqw; }
+.l-portrait .list li::before { content: ''; flex: none; width: 5.6cqw; height: 5.6cqw; border-radius: 50%; background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%2316303B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat; }
+.l-portrait .foot { margin-top: auto; align-self: stretch; margin-left: -6cqw; margin-right: -6cqw; background: var(--night); padding: 4.5cqh 6cqw 5cqh; display: flex; flex-direction: column; align-items: center; gap: 1.6cqh; }
+.l-portrait .phone { font-size: 10.5cqw; gap: 3cqw; }
+.l-portrait .phone svg { width: 9cqw; height: 9cqw; }
+.l-portrait .small { font-size: 4.2cqw; }
+
+/* ---------- Työmaakyltti (3:2): "Tässä kohteessa" ---------- */
+.l-site { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.l-site .kicker { font-family: 'Inter'; font-weight: 700; font-size: 6.2cqh; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.8); margin-bottom: 5cqh; }
+.l-site .row1 { display: flex; align-items: center; gap: 3cqw; margin-bottom: 6cqh; }
+.l-site .row1 .mark { width: 13cqh; height: 13cqh; }
+.l-site .name { font-size: 13.4cqh; }
+.l-site .band { align-self: stretch; height: 20cqh; font-size: 12.5cqh; }
+.l-site .phone { margin-top: 6.5cqh; font-size: 9.5cqh; gap: 2.4cqw; }
+.l-site .phone svg { width: 8.5cqh; height: 8.5cqh; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="0 0 24 24">
+      <rect x="12" y="2" width="10" height="10" fill="#FFD866"/>
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="tel" viewBox="0 0 24 24">
+      <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="#FFD866"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 1. Tienvarsikyltti 2000 x 1000 mm -->
+<section class="sign l-stack" id="tienvarsikyltti-2000x1000" style="width:2000mm;height:1000mm">
+  <div class="row1"><svg class="mark"><use href="#logo"/></svg><span class="name">Ikkunakauppias<b>.fi</b></span></div>
+  <div class="band">Ikkunat &amp; ovet</div>
+  <div class="phone"><svg><use href="#tel"/></svg>045 7832 5070</div>
+</section>
+
+<!-- 2. Tienvarsikyltti 1200 x 600 mm -->
+<section class="sign l-stack" id="tienvarsikyltti-1200x600" style="width:1200mm;height:600mm">
+  <div class="row1"><svg class="mark"><use href="#logo"/></svg><span class="name">Ikkunakauppias<b>.fi</b></span></div>
+  <div class="band">Ikkunat &amp; ovet</div>
+  <div class="phone"><svg><use href="#tel"/></svg>045 7832 5070</div>
+</section>
+
+<!-- 3. Banderolli aitaan 3000 x 800 mm -->
+<section class="sign l-banner" id="banderolli-3000x800" style="width:3000mm;height:800mm">
+  <svg class="mark"><use href="#logo"/></svg>
+  <span class="name">Ikkunakauppias<b>.fi</b></span>
+  <div class="row2">
+    <div class="band">Ikkunat &amp; ovet</div>
+    <div class="phone"><svg><use href="#tel"/></svg>045 7832 5070</div>
+  </div>
+</section>
+
+<!-- 4. A-teline / pystykyltti A1 594 x 841 mm -->
+<section class="sign l-portrait" id="a-teline-594x841" style="width:594mm;height:841mm">
+  <svg class="mark"><use href="#logo"/></svg>
+  <span class="name">Ikkunakauppias<b>.fi</b></span>
+  <div class="band">Ikkunat &amp; ovet</div>
+  <ul class="list">
+    <li>Ilmainen mittauskäynti</li>
+    <li>Valmistettu Suomessa</li>
+    <li>Asennus ammattitaidolla</li>
+  </ul>
+  <div class="foot">
+    <div class="phone"><svg><use href="#tel"/></svg>045 7832 5070</div>
+    <span class="small">Valtuutettu Skaala-jälleenmyyjä</span>
+  </div>
+</section>
+
+<!-- 5. Työmaakyltti asennuskohteeseen 600 x 400 mm -->
+<section class="sign l-site" id="tyomaakyltti-600x400" style="width:600mm;height:400mm">
+  <p class="kicker">Tässä kohteessa työskentelee</p>
+  <div class="row1"><svg class="mark"><use href="#logo"/></svg><span class="name">Ikkunakauppias<b>.fi</b></span></div>
+  <div class="band">Ikkunat &amp; ovet</div>
+  <div class="phone"><svg><use href="#tel"/></svg>045 7832 5070</div>
+</section>
+
+</body>
+</html>
