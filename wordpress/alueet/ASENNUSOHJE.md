@@ -20,7 +20,7 @@ Oviremontit, Energialaskuri, Ikkuna-asennus, Uudet ikkunat vai huolto ja Yhteyst
 3. **Asetukset → Yleiset:** sivuston otsikko esim. `Ikkunakauppias.fi Uusimaa`, kieli suomi,
    aikavyöhyke Helsinki.
 4. **Asetukset → Kestolinkit:** valitse *Artikkelin nimi*.
-5. **Teema:** Ulkoasu → Teemat → Lisää uusi → Lataa teema → `nordic-theme-v2.2.0.zip` →
+5. **Teema:** Ulkoasu → Teemat → Lisää uusi → Lataa teema → `nordic-theme-v2.3.0.zip` →
    Ota käyttöön.
 6. **Alue:** Ulkoasu → Mukauta → **Sivuston alue** → valitse alue → Julkaise.
 7. **Sivut:** Työkalut → Tuonti → WordPress → *Asenna nyt* → *Suorita tuonti* → valitse

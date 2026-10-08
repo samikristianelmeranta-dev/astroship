@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.2.0' );
+define( 'NORDIC_VERSION', '2.3.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -354,6 +354,11 @@ function nordic_article_slugs() {
 		'ikkunoiden-ja-ovien-vaihto-samalla-kertaa',
 		'ikkuna-ja-ovitarjousten-vertailu',
 		'ikkunan-ja-ulko-oven-u-arvo',
+		'sisaanaukeava-vai-ulosaukeava-ikkuna',
+		'palo-ovi-ja-paloikkuna',
+		'parveke-ja-terassioven-valinta',
+		'ikkunalasit-ja-lasivaihtoehdot',
+		'miksi-ikkuna-huurtuu-ulkopuolelta',
 	);
 }
 
@@ -694,7 +699,7 @@ function nordic_related_guides_html( $slug ) {
 			continue;
 		}
 		$found++;
-		$desc   = get_post_meta( $page->ID, '_nordic_meta_description', true );
+		$desc   = nordic_meta_description( $page->ID ); // tuontikuvaus, Ote-kenttä tai ensimmäinen kappale
 		$cards .= '<article class="type-card related-card"><span class="related-kicker">Opas</span><h3><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( nordic_short_title( $page->ID ) ) . '</a></h3>';
 		if ( $desc ) {
 			$cards .= '<p>' . esc_html( wp_trim_words( $desc, 18, '…' ) ) . '</p>';

@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.2.0
+Version: 2.3.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -647,6 +647,8 @@ body:has(.hero-photo).nav-open .site-header .nav-toggle { background: #fff; bord
 .article-body .wrap > * { max-width: 800px; }
 .article-body h2 { margin-bottom: 18px; }
 .article-body h3 { margin: 28px 0 10px; }
+.article-body h4 { margin: 22px 0 8px; font-size: 1.05rem; line-height: 1.35; color: var(--ink); }
+.article-body h3 + h4 { margin-top: 12px; }
 .article-body p { font-size: 1.0625rem; }
 .article-body p, .article-body ul, .article-body table, .article-body .callout { max-width: 100%; }
 
@@ -681,6 +683,12 @@ table.price-table, .article-body table {
 @media (max-width: 560px) {
   .price-table th, .price-table td { padding: 12px 14px; font-size: 14px; }
   .price-table td:last-child { white-space: normal; }
+}
+/* Leveät taulukot (4+ saraketta) puhelimessa: vieritys sivusuunnassa leikkautumisen sijaan */
+@media (max-width: 760px) {
+  table.price-table, .article-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .price-table th, .price-table td { min-width: 112px; }
+  .price-table th:first-child, .price-table td:first-child { min-width: 128px; }
 }
 
 /* =========================================================================

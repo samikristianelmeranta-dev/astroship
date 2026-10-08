@@ -1,0 +1,35 @@
+UUDET ARTIKKELIT – SIVUN TIEDOT WORDPRESSIIN
+
+Jokaiselle artikkelille: Sivut → Lisää uusi → Otsikko, Kestolinkki (osoite) ja Ote (= hakukoneiden kuvaus).
+Sisältö liitetään Mukautettu HTML -lohkoon. Käytä kansion juuressa olevaa versiota (sisältää H1-otsikon ja kuvan).
+Kansion ilman-h1 versiot ovat niitä varten, jotka lisäävät H1-otsikon itse WordPressissä.
+
+sisaanaukeava-vai-ulosaukeava-ikkuna.html
+  Otsikko (title):   Sisäänaukeava vai ulosaukeava ikkuna? Erot ja oikea valinta
+  Osoite (slug):     /sisaanaukeava-vai-ulosaukeava-ikkuna/
+  Ote (kuvaus):      Sisäänaukeava, ulosaukeava vai kiinteä ikkuna? Vertaa pesua, tilantarvetta, tiiviyttä ja energiatehokkuutta ja valitse taloosi sopiva avautumistapa.  [148 merkkiä]
+  H1 sivulla:        Sisäänaukeava vai ulosaukeava ikkuna? Erot, edut ja oikea valinta
+
+palo-ovi-ja-paloikkuna.html
+  Otsikko (title):   Palo-ovi ja paloikkuna: milloin vaaditaan ja mitä EI30 tarkoittaa
+  Osoite (slug):     /palo-ovi-ja-paloikkuna/
+  Ote (kuvaus):      Mitä EI30 ja EI60 tarkoittavat, milloin palo-ovi tai paloikkuna vaaditaan ja mitä oven vaihdossa pitää huomioida. Selkeä opas kotiin ja taloyhtiöön.  [148 merkkiä]
+  H1 sivulla:        Palo-ovi ja paloikkuna: milloin niitä vaaditaan ja mitä EI30 tarkoittaa?
+
+parveke-ja-terassioven-valinta.html
+  Otsikko (title):   Parvekeovi ja terassiovi: näin valitset oikean mallin
+  Osoite (slug):     /parveke-ja-terassioven-valinta/
+  Ote (kuvaus):      Parvekeovi vai terassiovi? Vertaa malleja, lasivaihtoehtoja, kynnyksiä, lukitusta sekä HDF- ja alumiinipintaa ja valitse valoisa ja lämmin ovi.  [143 merkkiä]
+  H1 sivulla:        Parvekeovi ja terassiovi: näin valitset oikean mallin
+
+ikkunalasit-ja-lasivaihtoehdot.html
+  Otsikko (title):   Ikkunalasit: selektiivi-, turva-, auringonsuoja- ja äänilasi
+  Osoite (slug):     /ikkunalasit-ja-lasivaihtoehdot/
+  Ote (kuvaus):      Selektiivilasi, turvalasi, auringonsuojalasi vai äänilasi? Opas lasityyppeihin, U- ja g-arvoon ja siihen, mikä lasi sopii mihinkin ikkunaan.  [140 merkkiä]
+  H1 sivulla:        Ikkunalasit: selektiivilasi, turvalasi, auringonsuojalasi ja muut vaihtoehdot
+
+miksi-ikkuna-huurtuu-ulkopuolelta.html
+  Otsikko (title):   Miksi ikkuna huurtuu ulkopuolelta? Ulkopuolinen kondenssi
+  Osoite (slug):     /miksi-ikkuna-huurtuu-ulkopuolelta/
+  Ote (kuvaus):      Uudet ikkunat huurussa ulkopuolelta? Se on merkki hyvästä eristyksestä. Näin ilmiö syntyy, miten sitä vähennät ja milloin huurre kertoo viasta.  [143 merkkiä]
+  H1 sivulla:        Miksi ikkuna huurtuu ulkopuolelta? Ulkopuolinen kondenssi selitettynä
