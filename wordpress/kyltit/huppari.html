@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Ikkunakauppias.fi – hupparipainatukset</title>
+<!--
+  Painatukset läpinäkyvällä taustalla. Mitat millimetreinä (todellinen painokoko).
+  Tummaan huppariin: valkoinen + keltainen, IKKUNAT & OVET on "kaiverrettu" keltaiseen raitaan
+  (teksti on läpinäkyvää, eli siinä näkyy hupparin oma väri) → vain 2 painoväriä.
+  Vaaleaan huppariin: tumma + keltainen.
+  huppari-build.mjs tekee jokaisesta PDF:n (vektori) ja 300 dpi PNG:n.
+-->
+<style>
+@font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype'); font-weight: 700; }
+:root { --spruce: #16303B; --gold: #FFD866; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #8a8f93; display: flex; flex-wrap: wrap; gap: 30mm; padding: 30mm; align-items: flex-start; font-family: 'Space Grotesk', sans-serif; }
+body.print { background: transparent; padding: 0; gap: 0; }
+.print-item { flex: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.dark { --ink: #fff; --accent: var(--gold); }
+.light { --ink: var(--spruce); --accent: var(--gold); }
+
+/* Rintapaino: logo + nimi yhdellä rivillä */
+.chest { display: flex; align-items: center; gap: 2.8mm; padding: 0; }
+.chest svg.mark { width: 11.2mm; height: 11.2mm; flex: none; color: var(--ink); }
+.chest .name { font-weight: 700; font-size: 10.6mm; letter-spacing: -0.02em; line-height: 1; color: var(--ink); white-space: nowrap; }
+.chest .name b { color: var(--accent); }
+.light.chest .name b { color: #1D5E79; }
+
+/* Selkäpaino */
+.back { width: 300mm; display: flex; flex-direction: column; align-items: center; }
+.back svg.mark { width: 92mm; height: 92mm; color: var(--ink); margin-bottom: 14mm; }
+.back .name { font-weight: 700; font-size: 37.5mm; letter-spacing: -0.02em; line-height: 1; color: var(--ink); white-space: nowrap; }
+.back .name b { color: var(--accent); }
+.light.back .name b { color: #1D5E79; }
+.back svg.band { display: block; width: 300mm; height: 46mm; margin-top: 12mm; }
+.back .tag { margin-top: 11mm; font-weight: 700; font-size: 13mm; letter-spacing: -0.01em; line-height: 1.15; color: var(--ink); text-align: center; }
+
+/* Mallikuva */
+.mock { width: 520mm; display: flex; gap: 20mm; background: #e9edef; padding: 20mm; border-radius: 10mm; }
+.mock figure { position: relative; flex: 1; }
+.mock figcaption { text-align: center; font-size: 12mm; color: #3D5561; margin-top: 4mm; }
+.mock .hood { width: 100%; height: auto; display: block; }
+.mock .place { position: absolute; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="0 0 24 24">
+      <rect x="12" y="2" width="10" height="10" fill="#FFD866"/>
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <!-- Huppari-siluetti mallikuvaa varten (viewBox 200 x 230) -->
+    <symbol id="hoodie" viewBox="0 0 200 230">
+      <path d="M70 18 C78 6 122 6 130 18 L160 30 C176 36 184 48 188 66 L198 170 C199 178 194 182 187 182 L176 182 L170 96 L168 222 C168 226 165 228 161 228 L39 228 C35 228 32 226 32 222 L30 96 L24 182 L13 182 C6 182 1 178 2 170 L12 66 C16 48 24 36 40 30 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Rintapaino tummaan huppariin (leveys n. 100 mm) -->
+<div class="print-item chest dark" id="huppari-rinta-tumma">
+  <svg class="mark"><use href="#logo"/></svg><span class="name">Ikkunakauppias<b>.fi</b></span>
+</div>
+
+<!-- Rintapaino vaaleaan huppariin -->
+<div class="print-item chest light" id="huppari-rinta-vaalea">
+  <svg class="mark"><use href="#logo"/></svg><span class="name">Ikkunakauppias<b>.fi</b></span>
+</div>
+
+<!-- Selkäpaino tummaan huppariin (leveys 300 mm) -->
+<div class="print-item back dark" id="huppari-selka-tumma">
+  <svg class="mark"><use href="#logo"/></svg>
+  <span class="name">Ikkunakauppias<b>.fi</b></span>
+  <svg class="band" viewBox="0 0 300 46">
+    <!-- Raita, josta IKKUNAT & OVET on leikattu pois (tekstit polkuina, evenodd) -->
+    <path fill="#FFD866" fill-rule="evenodd" d="M0 0H300V46H0Z M27.887499999999996 33.85V12.150000000000002H31.979499999999994V33.85ZM37.271499999999996 33.85V12.150000000000002H41.363499999999995V20.768H41.921499999999995L48.9585 12.150000000000002H54.1975L45.1455 22.845L54.50749999999999 33.85H49.113499999999995L41.921499999999995 25.046H41.363499999999995V33.85ZM57.87749999999999 33.85V12.150000000000002H61.96949999999999V20.768H62.52749999999999L69.5645 12.150000000000002H74.80349999999999L65.7515 22.845L75.11349999999999 33.85H69.7195L62.52749999999999 25.046H61.96949999999999V33.85ZM86.85349999999998 34.284Q84.18749999999999 34.284 82.28099999999998 33.307500000000005Q80.37449999999998 32.331 79.36699999999999 30.517500000000002Q78.35949999999998 28.704 78.35949999999998 26.224V12.150000000000002H82.45149999999998V26.348000000000003Q82.45149999999998 28.332 83.58299999999998 29.479Q84.71449999999999 30.626 86.85349999999998 30.626Q88.99249999999998 30.626 90.12399999999998 29.479Q91.25549999999998 28.332 91.25549999999998 26.348000000000003V12.150000000000002H95.34749999999998V26.224Q95.34749999999998 28.704 94.33999999999997 30.517500000000002Q93.33249999999998 32.331 91.42599999999999 33.307500000000005Q89.5195 34.284 86.85349999999998 34.284ZM100.51549999999999 33.85V12.150000000000002H108.29649999999998L112.60549999999998 31.060000000000002H113.16349999999998V12.150000000000002H117.19349999999999V33.85H109.41249999999998L105.10349999999998 14.940000000000001H104.54549999999998V33.85ZM120.99749999999999 33.85 126.70149999999998 12.150000000000002H133.83149999999998L139.53549999999998 33.85H135.31949999999998L134.14149999999998 29.076H126.39149999999998L125.21349999999998 33.85ZM127.35249999999998 25.294000000000004H133.1805L130.54549999999998 14.723000000000003H129.98749999999998ZM146.3775 33.85V15.870000000000001H140.05349999999999V12.150000000000002H156.7935V15.870000000000001H150.46949999999998V33.85ZM174.16649999999998 33.85Q172.2445 33.85 170.803 33.1525Q169.36149999999998 32.455 168.5555 31.1375Q167.74949999999998 29.82 167.74949999999998 27.991Q167.74949999999998 26.658 168.23 25.666Q168.7105 24.674 169.5475 24.023Q170.3845 23.372 171.4075 23.062V22.628Q169.8575 22.163000000000004 168.8655 21.016000000000002Q167.87349999999998 19.869 167.87349999999998 17.978Q167.87349999999998 16.087000000000003 168.71049999999997 14.785000000000002Q169.54749999999999 13.483 170.98899999999998 12.816500000000001Q172.4305 12.150000000000002 174.29049999999998 12.150000000000002H177.6695V15.374000000000002H175.00349999999997Q173.6085 15.374000000000002 172.694 16.118000000000002Q171.77949999999998 16.862000000000002 171.77949999999998 18.319000000000003Q171.77949999999998 19.342000000000002 172.22899999999998 19.993000000000002Q172.67849999999999 20.644000000000002 173.40699999999998 20.954Q174.13549999999998 21.264000000000003 175.00349999999997 21.264000000000003H178.01049999999998V18.474000000000004H181.91649999999998V21.264000000000003H184.7685V24.488H181.91649999999998V33.85ZM174.87949999999998 30.626H178.01049999999998V24.488H174.87949999999998Q173.51549999999997 24.488 172.58549999999997 25.262999999999998Q171.6555 26.038 171.6555 27.557000000000002Q171.6555 29.107 172.632 29.866500000000002Q173.6085 30.626 174.87949999999998 30.626ZM205.9545 34.284Q201.86249999999998 34.284 199.4445 32.036500000000004Q197.0265 29.789 197.0265 25.604V20.396Q197.0265 16.211000000000002 199.4445 13.963500000000002Q201.86249999999998 11.716000000000001 205.9545 11.716000000000001Q210.04649999999998 11.716000000000001 212.4645 13.963500000000002Q214.8825 16.211000000000002 214.8825 20.396V25.604Q214.8825 29.789 212.4645 32.036500000000004Q210.04649999999998 34.284 205.9545 34.284ZM205.9545 30.626Q208.24849999999998 30.626 209.5195 29.293Q210.79049999999998 27.96 210.79049999999998 25.728V20.272000000000002Q210.79049999999998 18.04 209.5195 16.707Q208.24849999999998 15.374000000000002 205.9545 15.374000000000002Q203.6915 15.374000000000002 202.40499999999997 16.707Q201.11849999999998 18.04 201.11849999999998 20.272000000000002V25.728Q201.11849999999998 27.96 202.40499999999997 29.293Q203.6915 30.626 205.9545 30.626ZM223.2745 33.85 217.7565 12.150000000000002H221.9725L226.5605 31.215000000000003H226.9945L231.58249999999998 12.150000000000002H235.7985L230.2805 33.85ZM239.6025 33.85V12.150000000000002H253.5525V15.870000000000001H243.6945V21.047000000000004H252.6845V24.767000000000003H243.6945V30.130000000000003H253.7385V33.85ZM262.9985 33.85V15.870000000000001H256.6745V12.150000000000002H273.4145V15.870000000000001H267.0905V33.85Z"/>
+  </svg>
+  <p class="tag">Kotimaisuus &amp; ammattitaito<br>kulkee käsi kädessä.</p>
+</div>
+
+<!-- Selkäpaino vaaleaan huppariin -->
+<div class="print-item back light" id="huppari-selka-vaalea">
+  <svg class="mark"><use href="#logo"/></svg>
+  <span class="name">Ikkunakauppias<b>.fi</b></span>
+  <svg class="band" viewBox="0 0 300 46">
+    <rect width="300" height="46" fill="#FFD866"/>
+    <text x="150" y="23" text-anchor="middle" dominant-baseline="central" font-family="Space Grotesk" font-weight="700" font-size="31" letter-spacing="1.2" fill="#16303B">IKKUNAT &amp; OVET</text>
+  </svg>
+  <p class="tag">Kotimaisuus &amp; ammattitaito<br>kulkee käsi kädessä.</p>
+</div>
+
+<!-- Mallikuva: edessä rintapaino, takana selkäpaino (vain esikatselu) -->
+<div class="mock" id="huppari-mallikuva">
+  <figure>
+    <svg class="hood" viewBox="0 0 200 230" style="color:#16303B"><use href="#hoodie" fill="#1f2a30"/>
+      <path d="M78 16 C86 40 114 40 122 16" fill="none" stroke="#11181c" stroke-width="2"/>
+      <line x1="94" y1="34" x2="92" y2="70" stroke="#d9dde0" stroke-width="1.2"/><line x1="106" y1="34" x2="108" y2="70" stroke="#d9dde0" stroke-width="1.2"/>
+      <path d="M62 160 L138 160 L146 205 L54 205 Z" fill="none" stroke="#11181c" stroke-width="1.6"/>
+    </svg>
+    <div class="place" data-src="huppari-rinta-tumma" style="left:57%;top:27%;width:12%"></div>
+    <figcaption>Edessä: rintapaino 100 mm</figcaption>
+  </figure>
+  <figure>
+    <svg class="hood" viewBox="0 0 200 230"><use href="#hoodie" fill="#1f2a30"/>
+      <path d="M70 18 C80 46 120 46 130 18" fill="#192328" stroke="#11181c" stroke-width="2"/>
+    </svg>
+    <div class="place" data-src="huppari-selka-tumma" style="left:32%;top:22%;width:36%"></div>
+    <figcaption>Takana: selkäpaino 300 mm</figcaption>
+  </figure>
+</div>
+
+<script>
+// Mallikuvaan kopioidaan varsinaiset painatukset pienennettyinä
+document.querySelectorAll('.mock .place').forEach(function (p) {
+  var src = document.getElementById(p.dataset.src).cloneNode(true);
+  src.removeAttribute('id');
+  src.style.width = 'max-content';
+  src.querySelectorAll('[id]').forEach(function (n) { n.id = n.id + '-m'; });
+  p.appendChild(src);
+  requestAnimationFrame(function () {
+    var w = src.getBoundingClientRect().width;
+    src.style.transformOrigin = '0 0';
+    src.style.transform = 'scale(' + (p.getBoundingClientRect().width / w) + ')';
+  });
+});
+</script>
+</body>
+</html>

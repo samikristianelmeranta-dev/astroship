@@ -1,0 +1,22 @@
+IKKUNAKAUPPIAS.FI – HUPPARIPAINATUKSET
+
+Tiedostot (läpinäkyvä tausta):
+- huppari-rinta-tumma.pdf / -300dpi.png    rintapaino tummaan huppariin, n. 100 x 11 mm
+- huppari-rinta-vaalea.pdf / -300dpi.png   rintapaino vaaleaan huppariin
+- huppari-selka-tumma.pdf / -300dpi.png    selkäpaino tummaan huppariin, 300 x 242 mm
+- huppari-selka-vaalea.pdf / -300dpi.png   selkäpaino vaaleaan huppariin
+- huppari-mallikuva.png                    esikatselu (ei painoon)
+
+PDF:t ovat vektoritiedostoja, joten ne skaalautuvat mihin tahansa kokoon. PNG:t ovat 300 dpi.
+
+Värit
+- Tummaan huppariin 2 väriä: valkoinen #FFFFFF ja keltainen #FFD866.
+  IKKUNAT & OVET -teksti on leikattu keltaisesta raidasta, eli tekstissä näkyy hupparin oma väri.
+- Vaaleaan huppariin 3 väriä: tumma #16303B, keltainen #FFD866 ja sininen #1D5E79 (.fi).
+
+Sijoitus
+- Rintapaino: vasen rinta (kantajan vasen), yläreuna n. 18–20 cm olkasaumasta.
+- Selkäpaino: keskelle, yläreuna n. 8–10 cm kaulussaumasta. Hupun alle jää tilaa.
+
+Suositus: tummanvihreä, musta tai tummansininen huppari. Painomenetelmäksi käy
+silkkipaino, DTF-siirtopaino tai brodeeraus (rintalogo).
