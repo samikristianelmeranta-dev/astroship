@@ -1,0 +1,71 @@
+<section class="nx-esite" id="aukea-esite">
+  <style>
+    .nx-esite { padding: clamp(48px, 6vw, 80px) 0; }
+    .nx-esite .nx-esite-wrap { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+    .nx-esite .nx-esite-cover { display: block; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid rgba(22, 48, 59, .1); box-shadow: 0 18px 44px rgba(22, 48, 59, .16); background: #EBF1F3; transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s; }
+    .nx-esite .nx-esite-cover:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 26px 56px rgba(22, 48, 59, .22); }
+    .nx-esite .nx-esite-cover img { display: block; width: 100%; height: auto; }
+    .nx-esite .nx-esite-tag { position: absolute; right: 12px; bottom: 12px; padding: 6px 12px; border-radius: 999px; background: var(--spruce, #16303B); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .nx-esite .nx-kicker { display: inline-block; padding: 5px 11px; border-radius: 999px; background: var(--gold, #FFD866); color: var(--spruce, #16303B); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .nx-esite h2 { margin: 12px 0 10px; overflow-wrap: break-word; hyphens: auto; }
+    .nx-esite .nx-esite-lead { margin: 0 0 20px; color: var(--ink-2, #3D5561); max-width: 62ch; }
+    .nx-esite .nx-esite-table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 0 0 18px; }
+    .nx-esite .nx-esite-table th, .nx-esite .nx-esite-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(22, 48, 59, .1); vertical-align: top; }
+    .nx-esite .nx-esite-table thead th { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: #647A84; }
+    .nx-esite .nx-esite-table tbody th { font-weight: 700; color: var(--spruce, #16303B); white-space: nowrap; }
+    .nx-esite .nx-esite-table td { white-space: nowrap; }
+    .nx-esite .nx-esite-table small { display: block; color: #647A84; font-weight: 400; white-space: normal; }
+    .nx-esite .nx-esite-list { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 6px; }
+    .nx-esite .nx-esite-list li { padding-left: 24px; position: relative; }
+    .nx-esite .nx-esite-list li::before { content: ''; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: var(--gold, #FFD866); box-shadow: 0 0 0 3px rgba(255, 216, 102, .3); }
+    .nx-esite .nx-esite-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .nx-esite .nx-esite-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; font-weight: 600; text-decoration: none !important; transition: transform .25s, box-shadow .25s; }
+    .nx-esite .nx-esite-btn:hover { transform: translateY(-2px); }
+    .nx-esite .nx-esite-btn.is-primary { background: var(--gold, #FFD866); color: var(--spruce, #16303B) !important; box-shadow: 0 10px 26px rgba(255, 216, 102, .45); }
+    .nx-esite .nx-esite-btn.is-ghost { border: 1.5px solid var(--spruce, #16303B); color: var(--spruce, #16303B) !important; }
+    .nx-esite .nx-esite-note { margin: 14px 0 0; font-size: 13px; color: #647A84; }
+    @media (max-width: 760px) {
+      .nx-esite .nx-esite-wrap { grid-template-columns: 1fr; }
+      .nx-esite .nx-esite-cover { max-width: 240px; }
+      .nx-esite .nx-esite-table { font-size: 14px; }
+      .nx-esite .nx-esite-table tbody th { white-space: normal; }
+      .nx-esite .nx-esite-table th, .nx-esite .nx-esite-table td { padding: 9px 6px; }
+      .nx-esite .nx-esite-btn { flex: 1 1 100%; justify-content: center; }
+    }
+  </style>
+  <div class="wrap nx-esite-wrap">
+    <a class="nx-esite-cover" href="/wp-content/uploads/2026/10/skaala-aukea-ikkuna-esite.pdf" target="_blank" rel="noopener" data-pdf="aukea" aria-label="Avaa Aukea-ikkunan esite (PDF)">
+      <img src="/wp-content/uploads/2026/10/aukea-esite-kansi.jpg" alt="Skaala Aukea -ikkunan esitteen kansi" width="600" height="849" loading="lazy">
+      <span class="nx-esite-tag">PDF-esite</span>
+    </a>
+    <div>
+      <span class="nx-kicker">Sisäänaukeava</span>
+      <h2>Aukea-ikkuna – Suomen yleisin ikkunamalli</h2>
+      <p class="nx-esite-lead">Energiatehokas sisäänaukeava ikkuna pohjoisiin olosuhteisiin. Aukea pitää lämmön sisällä talvella, suojaa auringon kuumuudelta kesällä ja vaimentaa liikenteen melua.</p>
+      <table class="nx-esite-table">
+        <thead>
+          <tr><th scope="col">Malli</th><th scope="col">U-arvo</th><th scope="col">Valon&shy;läpäisy</th><th scope="col">Ääni (Rw+Ctr)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Aukea+<small>Matalaenergia, FrostFree vakiona</small></th><td>0,77–0,78</td><td>59 %</td><td>37–48 dB</td></tr>
+          <tr><th scope="row">Aukea<small>Kolmilasinen 2+1</small></th><td>0,94–0,95</td><td>64 %</td><td>37–48 dB</td></tr>
+          <tr><th scope="row">Aukea Mökki<small>Kapeisiin seiniin, karmi 115 mm</small></th><td>1,02</td><td>64 %</td><td>39 dB</td></tr>
+        </tbody>
+      </table>
+      <ul class="nx-esite-list">
+        <li>Karmisyvyydet 131, 175 tai 210 mm (Mökki-ikkuna 115 mm)</li>
+        <li>Sisäpuoli valkoinen (NCS S 0502-Y) tai kuultolakattu puu</li>
+        <li>Alumiininen ulkopuite missä tahansa RAL Classic -värissä</li>
+        <li>Saranat ja painikkeet valkoisena, mustana tai kromattuna/sinkittynä</li>
+      </ul>
+      <div class="nx-esite-actions">
+        <a class="nx-esite-btn is-primary" href="#tarjous">Pyydä tarjous Aukea-ikkunoista →</a>
+        <a class="nx-esite-btn is-ghost" href="/wp-content/uploads/2026/10/skaala-aukea-ikkuna-esite.pdf" target="_blank" rel="noopener" data-pdf="aukea">Avaa esite (PDF, 70 kt)</a>
+      </div>
+      <p class="nx-esite-note">Tekniset tiedot: Skaala, Aukea-ikkunan tuote-esite 2/2026.</p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('click', function (e) { var a = e.target.closest('[data-pdf]'); if (a && window.dataLayer) window.dataLayer.push({ event: 'pdf_click', pdf_name: a.getAttribute('data-pdf') }); });
+  </script>
+</section>
