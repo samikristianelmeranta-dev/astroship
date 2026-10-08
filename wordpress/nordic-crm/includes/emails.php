@@ -13,6 +13,8 @@
  *   {{nordic.allekirjoitus}} allekirjoitus asetuksista
  *   {{nordic.esite_url}}     esitteen osoite asetuksista
  *   {{nordic.laskelma}}      laskurin tulos (laskurisarja)
+ *   {{nordic.opas_nimi}}     ladatun oppaan nimi (opassarja)
+ *   {{nordic.opas_url}}      ladatun oppaan PDF (opassarja)
  *   %site%                   sivuston osoite ilman loppukauttaviivaa (korvataan asennuksessa)
  *
  * Jokaisella viestillä on pysyvä avain (key). Asennus päivittää viestin, jos sen
@@ -265,6 +267,71 @@ HTML
 <p>{{nordic.tervehdys}}</p>
 <p>hintaoppaan luvut ovat haarukoita. Tarkan hinnan saa vasta, kun ikkunat on mitattu.</p>
 <p>Mittauskäynti on maksuton, eikä se sido mihinkään. Käymme paikan päällä Turussa tai muualla Varsinais-Suomessa, mittaamme karmit ja käymme mallit läpi kanssasi. Sen jälkeen saat kirjallisen tarjouksen.</p>
+<p><a href="%site%/yhteystiedot/">Pyydä mittauskäynti</a> tai vastaa tähän viestiin, niin otamme yhteyttä.</p>
+<p>{{nordic.allekirjoitus}}</p>
+HTML
+				),
+			),
+		),
+
+		/* -------------------------------------------------------------
+		 * OPPAAN LATAUS
+		 * ------------------------------------------------------------- */
+		array(
+			'key'       => 'opas-palvelu',
+			'title'     => 'Opas: lähetys (kaikille)',
+			'lead_type' => 'opas',
+			'audience'  => 'all',
+			'steps'     => array(
+				array(
+					'key'      => 'opas-lahetys',
+					'wait'     => 0,
+					'subject'  => 'Pyytämäsi opas: {{nordic.opas_nimi}}',
+					'preheader'=> 'Opas on linkin takana, ja voit tallentaa sen itsellesi.',
+					'body'     => <<<'HTML'
+<p>{{nordic.tervehdys}}</p>
+<p>kiitos, että latasit oppaan. Tässä se on vielä tallessa:</p>
+<p><a href="{{nordic.opas_url}}"><strong>Avaa opas: {{nordic.opas_nimi}}</strong></a></p>
+<p>Opas on kirjoitettu niin, että sen avulla voi miettiä omaa remonttia rauhassa ennen kuin kenellekään tarvitsee soittaa.</p>
+<p>Jos jokin kohta herättää kysymyksiä omasta talostasi, vastaa suoraan tähän viestiin. Viesti tulee meille, ei automaatille.</p>
+<p>{{nordic.allekirjoitus}}</p>
+HTML
+				),
+			),
+		),
+
+		array(
+			'key'       => 'opas-jatko',
+			'title'     => 'Opas: jatkoviestit (markkinointilupa)',
+			'lead_type' => 'opas',
+			'audience'  => 'consent',
+			'steps'     => array(
+				array(
+					'key'      => 'opas-kysyttavaa',
+					'wait'     => 3,
+					'subject'  => 'Jäikö oppaasta jotain mietityttämään',
+					'preheader'=> 'Kolme asiaa, joita kysytään useimmin.',
+					'body'     => <<<'HTML'
+<p>{{nordic.tervehdys}}</p>
+<p>latasit muutama päivä sitten oppaan. Oppaan jälkeen meiltä kysytään yleensä näitä kolmea asiaa:</p>
+<ul>
+<li><strong>Mitä remontti maksaa?</strong> Yksittäisen ikkunan vaihto asennettuna on tyypillisesti noin 400–1 500 euroa. Tarkka hinta riippuu koosta, mallista ja asennuksesta.</li>
+<li><strong>Saako kotitalousvähennystä?</strong> Saa, asennustyön osuudesta.</li>
+<li><strong>Pitääkö kaikki vaihtaa kerralla?</strong> Ei tarvitse. Remontin voi tehdä osissa, esimerkiksi huonokuntoisimmat ensin.</li>
+</ul>
+<p>Jos mielessä on jotain muuta, vastaa tähän viestiin.</p>
+<p>{{nordic.allekirjoitus}}</p>
+HTML
+				),
+				array(
+					'key'      => 'opas-mittaus',
+					'wait'     => 7,
+					'subject'  => 'Oppaasta omaan taloon',
+					'preheader'=> 'Mittauskäynti on maksuton eikä sido mihinkään.',
+					'body'     => <<<'HTML'
+<p>{{nordic.tervehdys}}</p>
+<p>opas antaa hyvän pohjan, mutta jokainen talo on vähän erilainen. Siksi tarkka suunnitelma ja hinta tehdään aina paikan päällä.</p>
+<p>Mittauskäynti on maksuton, eikä se sido mihinkään. Mittaamme karmit, katsomme nykyisten ikkunoiden ja ovien kunnon ja käymme mallit läpi kanssasi. Sen jälkeen saat kirjallisen tarjouksen.</p>
 <p><a href="%site%/yhteystiedot/">Pyydä mittauskäynti</a> tai vastaa tähän viestiin, niin otamme yhteyttä.</p>
 <p>{{nordic.allekirjoitus}}</p>
 HTML

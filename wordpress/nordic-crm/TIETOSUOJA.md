@@ -11,7 +11,7 @@ Tämä osio täydentää Nordic Ikkunat & Ovet Oy:n tietosuojaselostetta. Hakasu
 
 ## Mihin tietoja käytetään
 
-- **Yhteydenottojen käsittely.** Vastaamme tarjouspyyntöihin, sovimme mittauskäynnit, laadimme tarjoukset ja lähetämme pyydetyn esitteen tai laskurin tuloksen. Käsittelyn peruste on asiakkaan pyynnöstä tehtävät sopimusta edeltävät toimenpiteet ja sopimuksen täytäntöönpano (EU:n tietosuoja-asetus, 6 artiklan 1 kohdan b alakohta).
+- **Yhteydenottojen käsittely.** Vastaamme tarjouspyyntöihin, sovimme mittauskäynnit, laadimme tarjoukset ja lähetämme pyydetyn esitteen, oppaan tai laskurin tuloksen. Käsittelyn peruste on asiakkaan pyynnöstä tehtävät sopimusta edeltävät toimenpiteet ja sopimuksen täytäntöönpano (EU:n tietosuoja-asetus, 6 artiklan 1 kohdan b alakohta).
 - **Sähköpostimarkkinointi.** Lähetämme vinkkejä ja tarjouksia ikkuna- ja oviremontista vain, jos olet antanut siihen luvan lomakkeen valintaruudulla ja vahvistanut luvan sähköpostiin lähetetystä linkistä. Käsittelyn peruste on suostumus (6 artiklan 1 kohdan a alakohta sekä sähköisen viestinnän palveluista annetun lain 200 §).
 - **Viestien toimivuuden seuranta.** Seuraamme, avataanko viestejä ja klikataanko niiden linkkejä, jotta voimme parantaa viestejä ja lopettaa niiden lähettämisen, jos ne eivät kiinnosta. Peruste on oikeutettu etumme. Voit vastustaa tätä ottamalla yhteyttä meihin.
 
@@ -20,6 +20,7 @@ Tämä osio täydentää Nordic Ikkunat & Ovet Oy:n tietosuojaselostetta. Hakasu
 - nimi, sähköpostiosoite ja puhelinnumero
 - yhteydenoton sisältö, kuten viesti ja kohteen tiedot
 - energiansäästölaskurin tiedot, jos pyysit tuloksen sähköpostiisi (ikkunoiden määrä ja ikä, lämmitysmuoto, laskettu säästö)
+- ladatut oppaat (minkä oppaan latasit ja milloin)
 - sivu, jolta yhteydenotto lähetettiin
 - markkinointiluvan antamisen ja vahvistamisen ajankohta
 - tieto lähetetyistä viesteistä sekä niiden avauksista ja klikkauksista

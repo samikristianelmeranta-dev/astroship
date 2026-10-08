@@ -132,6 +132,8 @@ function nordic_crm_reason_for( $lead_type, $audience ) {
 			return 'Saat tämän viestin, koska tilasit esitteen sivustollamme ' . $host . '.';
 		case 'laskuri':
 			return 'Saat tämän viestin, koska pyysit laskurin tuloksen sähköpostiisi sivustollamme ' . $host . '.';
+		case 'opas':
+			return 'Saat tämän viestin, koska latasit oppaan sivustollamme ' . $host . '.';
 	}
 	return '';
 }

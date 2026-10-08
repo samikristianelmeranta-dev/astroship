@@ -3,6 +3,7 @@
  * Omat kevyet lomakkeet:
  *   [nordic_esite_lomake]    esitteen tilaus
  *   [nordic_laskuri_lomake]  energiansäästölaskurin tulos sähköpostiin
+ *   [nordic_oppaat], [nordic_opas]  ladattavat oppaat (includes/guides.php)
  *
  * Lomakkeet toimivat ilman JavaScriptiä (tavallinen POST + uudelleenohjaus).
  * Roskapostisuoja: piilokenttä, allekirjoitettu aikaleima ja IP-kohtainen raja.
@@ -101,17 +102,31 @@ function nordic_crm_handle_form() {
 	$type = isset( $_POST['nc_type'] ) ? sanitize_key( wp_unslash( $_POST['nc_type'] ) ) : ''; // phpcs:ignore
 	$back = isset( $_POST['nc_back'] ) ? esc_url_raw( wp_unslash( $_POST['nc_back'] ) ) : home_url( '/' ); // phpcs:ignore
 	$back = wp_validate_redirect( $back, home_url( '/' ) );
-	if ( ! in_array( $type, array( 'esite', 'laskuri' ), true ) ) {
+	if ( ! in_array( $type, array( 'esite', 'laskuri', 'opas' ), true ) ) {
 		wp_safe_redirect( $back );
 		exit;
 	}
-	$anchor = '#nordic-crm-' . $type;
-	$fail   = function () use ( $back, $type, $anchor ) {
-		wp_safe_redirect( add_query_arg( 'nc_err', $type, $back ) . $anchor );
+	$guide = null;
+	$extra = array();
+	if ( 'opas' === $type ) {
+		$guide = nordic_crm_guide_from_post();
+		if ( ! $guide ) {
+			wp_safe_redirect( $back );
+			exit;
+		}
+		$extra = array( 'nc_opas' => $guide['id'] );
+	}
+	$back   = remove_query_arg( array( 'nc', 'nc_err', 'nc_opas', 'nc_k' ), $back );
+	$anchor = $guide ? '#nordic-opas-' . $guide['id'] : '#nordic-crm-' . $type;
+	$fail   = function () use ( $back, $type, $anchor, $extra ) {
+		wp_safe_redirect( add_query_arg( array_merge( array( 'nc_err' => $type ), $extra ), $back ) . $anchor );
 		exit;
 	};
-	$ok     = function () use ( $back, $type, $anchor ) {
-		wp_safe_redirect( add_query_arg( 'nc', $type, remove_query_arg( 'nc_err', $back ) ) . $anchor );
+	$ok     = function () use ( $back, $type, $anchor, $extra, $guide ) {
+		if ( $guide ) {
+			$extra['nc_k'] = nordic_crm_guide_key( $guide['id'] );
+		}
+		wp_safe_redirect( add_query_arg( array_merge( array( 'nc' => $type ), $extra ), $back ) . $anchor );
 		exit;
 	};
 
@@ -157,6 +172,11 @@ function nordic_crm_handle_form() {
 			'laskuri_ika'      => $txt( 'nc_ika' ),
 			'laskuri_lammitys' => $txt( 'nc_lammitys' ),
 		) );
+	}
+
+	if ( $guide ) {
+		$lead['guide_id']           = $guide['id'];
+		$lead['custom']['opas_viimeisin'] = $guide['title'];
 	}
 
 	nordic_crm_process_lead( $lead );

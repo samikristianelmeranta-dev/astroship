@@ -29,6 +29,7 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 			array( 'id' => 'taloyhtio', 'title' => 'Tarjouspyyntö (taloyhtiö)' ),
 			array( 'id' => 'esite', 'title' => 'Esitteen tilaus' ),
 			array( 'id' => 'laskuri', 'title' => 'Laskurin tulos sähköpostiin' ),
+			array( 'id' => 'opas', 'title' => 'Oppaan lataus' ),
 		);
 	}
 
@@ -36,7 +37,7 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 		return array(
 			'category'    => 'Nordic',
 			'label'       => 'Nordic: uusi yhteydenotto',
-			'description' => 'Käynnistyy, kun asiakas lähettää tarjouspyynnön, tilaa esitteen tai pyytää laskurin tuloksen sähköpostiin.',
+			'description' => 'Käynnistyy, kun asiakas lähettää tarjouspyynnön, tilaa esitteen, lataa oppaan tai pyytää laskurin tuloksen sähköpostiin.',
 			'icon'        => 'fc-icon-fluentforms',
 		);
 	}
@@ -62,7 +63,7 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 					'type'    => 'radio',
 					'label'   => 'Kenelle',
 					'options' => array(
-						array( 'id' => 'all', 'title' => 'Kaikille (palveluviesti: vahvistus, esite, laskelma)' ),
+						array( 'id' => 'all', 'title' => 'Kaikille (palveluviesti: vahvistus, esite, opas, laskelma)' ),
 						array( 'id' => 'consent', 'title' => 'Vain markkinointiluvan antaneille (jatkoviestit)' ),
 					),
 				),

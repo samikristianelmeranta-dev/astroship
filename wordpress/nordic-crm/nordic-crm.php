@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       Nordic CRM – sähköpostiautomaatiot
- * Description:       Valmiit FluentCRM-automaatiot Nordic Ikkunat & Ovet -sivustolle: tarjouspyyntö, taloyhtiö, esitteen tilaus ja energiansäästölaskuri. Luo tagit, viestipohjat ja viestisarjat, ja hoitaa markkinointiluvan.
- * Version:           1.0.0
+ * Description:       Valmiit FluentCRM-automaatiot Nordic Ikkunat & Ovet -sivustolle: tarjouspyyntö, taloyhtiö, esitteen tilaus, ladattavat oppaat ja energiansäästölaskuri. Luo tagit, viestipohjat ja viestisarjat, ja hoitaa markkinointiluvan.
+ * Version:           1.2.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  fluent-crm
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_CRM_VERSION', '1.1.0' );
+define( 'NORDIC_CRM_VERSION', '1.2.0' );
 define( 'NORDIC_CRM_FILE', __FILE__ );
 define( 'NORDIC_CRM_DIR', __DIR__ );
 define( 'NORDIC_CRM_TRIGGER', 'nordic_crm_lead' );
@@ -23,6 +23,7 @@ require_once __DIR__ . '/includes/emails.php';
 require_once __DIR__ . '/includes/template.php';
 require_once __DIR__ . '/includes/leads.php';
 require_once __DIR__ . '/includes/forms.php';
+require_once __DIR__ . '/includes/guides.php';
 require_once __DIR__ . '/includes/installer.php';
 require_once __DIR__ . '/includes/privacy.php';
 
@@ -45,6 +46,10 @@ register_activation_hook( __FILE__, function () {
 } );
 
 add_action( 'admin_init', function () {
+	// Lisäosan päivitys (zip korvattu): uudet automaatiot ja kentät asennetaan automaattisesti.
+	if ( get_option( 'nordic_crm_installed_version' ) && get_option( 'nordic_crm_installed_version' ) !== NORDIC_CRM_VERSION ) {
+		update_option( 'nordic_crm_needs_install', 1, false );
+	}
 	if ( ! get_option( 'nordic_crm_needs_install' ) || ! defined( 'FLUENTCRM' ) ) {
 		return;
 	}

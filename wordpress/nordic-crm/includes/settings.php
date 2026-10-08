@@ -15,7 +15,7 @@ function nordic_crm_defaults() {
 		'sender_name'        => 'Sami Elmeranta',
 		'sender_title'       => '',
 		'company'            => 'Nordic Ikkunat & Ovet Oy',
-		'phone'              => '',
+		'phone'              => '045 7832 5070',
 		'email'              => 'info@ikkunakauppias.fi',
 		'logo_url'           => plugins_url( 'assets/logo.png', NORDIC_CRM_FILE ),
 		'privacy_url'        => '',
@@ -152,7 +152,8 @@ function nordic_crm_settings_page() {
 
 		<h2>Lomakkeet sivuille</h2>
 		<p>Esitteen tilauslomake: <code>[nordic_esite_lomake]</code><br>
-		Laskurin tulos sähköpostiin: <code>[nordic_laskuri_lomake]</code> (Nordic-teema lisää tämän laskurisivulle automaattisesti)</p>
+		Laskurin tulos sähköpostiin: <code>[nordic_laskuri_lomake]</code> (Nordic-teema lisää tämän laskurisivulle automaattisesti)<br>
+		Ladattavat oppaat: <code>[nordic_oppaat]</code> kaikki oppaat, <code>[nordic_opas id="123"]</code> yksi opas. Oppaat lisätään kohdassa <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=nordic_opas' ) ); ?>">Oppaat</a>.</p>
 	</div>
 	<?php
 }

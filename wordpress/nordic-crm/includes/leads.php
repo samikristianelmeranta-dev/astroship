@@ -21,6 +21,7 @@ function nordic_crm_tag_names() {
 		'taloyhtio' => 'Lähde: Taloyhtiö',
 		'esite'     => 'Lähde: Esite',
 		'laskuri'   => 'Lähde: Laskuri',
+		'opas'      => 'Lähde: Opas',
 		'consent'   => 'Markkinointilupa',
 	);
 }
@@ -36,6 +37,7 @@ function nordic_crm_custom_fields() {
 		array( 'slug' => 'laskuri_saasto', 'label' => 'Laskuri: arvioitu säästö €/v', 'type' => 'number' ),
 		array( 'slug' => 'laskuri_kwh', 'label' => 'Laskuri: säästö kWh/v', 'type' => 'number' ),
 		array( 'slug' => 'liidin_sivu', 'label' => 'Yhteydenoton sivu', 'type' => 'text' ),
+		array( 'slug' => 'opas_viimeisin', 'label' => 'Viimeksi ladattu opas', 'type' => 'text' ),
 	);
 }
 
@@ -61,8 +63,8 @@ function nordic_crm_tag_id( $key ) {
  * Pääfunktio: käsittelee yhden yhteydenoton.
  *
  * @param array $lead {
- *   email, first_name, last_name, phone, type (tarjous|taloyhtio|esite|laskuri),
- *   consent (bool), source_url, custom (array lisäkenttiä)
+ *   email, first_name, last_name, phone, type (tarjous|taloyhtio|esite|laskuri|opas),
+ *   consent (bool), source_url, custom (array lisäkenttiä), guide_id (opas)
  * }
  * @return \FluentCrm\App\Models\Subscriber|false
  */
@@ -79,6 +81,7 @@ function nordic_crm_process_lead( $lead ) {
 		'consent'    => false,
 		'source_url' => '',
 		'custom'     => array(),
+		'guide_id'   => 0,
 	) );
 	$lead['email'] = sanitize_email( $lead['email'] );
 	if ( ! is_email( $lead['email'] ) ) {
@@ -119,6 +122,14 @@ function nordic_crm_process_lead( $lead ) {
 		$tags[] = nordic_crm_tag_id( 'consent' );
 		fluentcrm_update_subscriber_meta( $subscriber->id, '_nordic_consent_at', current_time( 'mysql' ) );
 		fluentcrm_update_subscriber_meta( $subscriber->id, '_nordic_consent_source', esc_url_raw( $lead['source_url'] ) );
+	}
+	if ( $lead['guide_id'] && function_exists( 'nordic_crm_guide' ) ) {
+		$guide = nordic_crm_guide( $lead['guide_id'] );
+		if ( $guide ) {
+			$tags[] = nordic_crm_guide_tag_id( $guide['title'] );
+			// Oppaan viestin muuttujat ({{nordic.opas_nimi}}, {{nordic.opas_url}}) lukevat tämän.
+			fluentcrm_update_subscriber_meta( $subscriber->id, '_nordic_opas_id', (int) $guide['id'] );
+		}
 	}
 	if ( $tags ) {
 		$subscriber->attachTags( array_filter( $tags ) );

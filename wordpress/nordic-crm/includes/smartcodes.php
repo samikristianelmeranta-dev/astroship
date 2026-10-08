@@ -1,7 +1,7 @@
 <?php
 /**
  * Omat muuttujat viesteihin: {{nordic.tervehdys}}, {{nordic.allekirjoitus}},
- * {{nordic.esite_url}}, {{nordic.laskelma}}.
+ * {{nordic.esite_url}}, {{nordic.laskelma}}, {{nordic.opas_nimi}}, {{nordic.opas_url}}.
  *
  * Muuttujat haetaan lähetyshetkellä asetuksista, joten esimerkiksi allekirjoituksen
  * tai esitteen linkin voi vaihtaa ilman, että viestejä tarvitsee muokata.
@@ -21,6 +21,8 @@ function nordic_crm_register_smartcodes() {
 			'allekirjoitus' => 'Allekirjoitus',
 			'esite_url'     => 'Esitteen osoite',
 			'laskelma'      => 'Laskurin tulos',
+			'opas_nimi'     => 'Ladatun oppaan nimi',
+			'opas_url'      => 'Ladatun oppaan osoite (PDF)',
 		),
 		'nordic_crm_smartcode_value'
 	);
@@ -41,6 +43,16 @@ function nordic_crm_smartcode_value( $code, $key, $default, $subscriber ) {
 
 		case 'laskelma':
 			return nordic_crm_calc_html( $subscriber );
+
+		case 'opas_nimi':
+		case 'opas_url':
+			$guide = ( $subscriber && function_exists( 'nordic_crm_guide' ) )
+				? nordic_crm_guide( (int) fluentcrm_get_subscriber_meta( $subscriber->id, '_nordic_opas_id', 0 ) )
+				: null;
+			if ( 'opas_nimi' === $key ) {
+				return $guide ? esc_html( $guide['title'] ) : 'opas';
+			}
+			return esc_url( $guide ? $guide['pdf'] : home_url( '/' ) );
 	}
 	return $default !== '' ? $default : $code;
 }

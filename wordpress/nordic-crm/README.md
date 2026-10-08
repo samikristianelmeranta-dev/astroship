@@ -14,6 +14,7 @@ antoi markkinointiluvan, perään lähtee lyhyt jatkosarja.
 | Tarjouspyyntö taloyhtiösivulta | Tarjouspyyntönne on perillä | 2 pv: PTS ja kuntotarkastus · +5 pv: rahoitus ja kustannusten jako · +7 pv: hinta-arvio yhtiökokoukseen |
 | Esitteen tilaus | Pyytämäsi esite | 3 pv: mistä hinta muodostuu · +7 pv: tarkka hinta mittauskäynnillä |
 | Laskurin tulos sähköpostiin | Säästölaskelmasi (asiakkaan omat luvut) | 3 pv: U-arvo · +7 pv: laskurista tarkkaan arvioon |
+| Oppaan lataus | Pyytämäsi opas: *oppaan nimi* | 3 pv: jäikö oppaasta mietityttämään · +7 pv: oppaasta omaan taloon |
 
 Lisäksi lisäosa:
 - luo tagit (Lähde: …, Markkinointilupa, Asiakas, Ei kiinnostunut) ja
@@ -24,6 +25,33 @@ Lisäksi lisäosa:
   esitelomakkeen Ikkunat- ja Ovet-sivuille, kun esitteen osoite on asetettu.
 - **pysäyttää jatkosarjan**, kun kontaktille lisätään tagi *Asiakas* tai
   *Ei kiinnostunut*
+
+## Ladattavat oppaat
+
+Lisäosa tuo WordPressiin valikon **Oppaat**. Jokainen opas on oma kohteensa:
+
+| Kenttä | Mihin |
+|---|---|
+| Otsikko | Oppaan nimi kortissa, sähköpostissa ja tagissa |
+| Ote | Lyhyt kuvaus kortissa |
+| Kansikuva | Kortin yläosan kuva (esim. PDF:n ensimmäinen sivu) |
+| Oppaan tiedosto (PDF) | Valitse mediakirjastosta |
+| Järjestys | Sivun määritteet → Järjestys |
+
+Sivulle oppaat lisätään lyhytkoodilla:
+
+- `[nordic_oppaat]` kaikki julkaistut oppaat korttiruudukkona (esim. sivu *Oppaat*)
+- `[nordic_oppaat ids="12,15" otsikko="Ilmaiset oppaat"]` valitut oppaat ja otsikko
+- `[nordic_opas id="12"]` yksi opas leveänä nostona, esim. artikkelin loppuun
+
+Kun kävijä lataa oppaan:
+1. Hän antaa etunimen ja sähköpostin. Markkinointilupa on erillinen, vapaaehtoinen ruutu.
+2. Kontakti tallentuu FluentCRM:ään tageilla *Lähde: Opas* ja *Opas: oppaan nimi*,
+   ja kenttään *Viimeksi ladattu opas*.
+3. Latauslinkki näkyy heti sivulla, ja opas lähtee myös sähköpostiin.
+4. Luvan antaneet saavat lisäksi kaksi jatkoviestiä.
+
+Analytics saa tapahtumat `guide_download` (lomake lähetetty) ja `guide_open` (PDF avattu).
 
 Kaikki automaatiot ja viestit näkyvät FluentCRM:ssä (*Automations*), ja niitä voi
 muokata siellä kuten mitä tahansa FluentCRM-automaatiota.
@@ -60,7 +88,9 @@ Jos lomakkeessa on jo Fluent Formsin oma *FluentCRM-integraatio*, poista se
 käytöstä. Nordic CRM hoitaa kontaktin luonnin ja luvan käsittelyn.
 
 ### 4. Lisäosa
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.1.0.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.0.zip` → Aktivoi.
+   Päivitettäessä valitse *Korvaa nykyinen*. Uudet automaatiot asennetaan
+   automaattisesti, kun avaat seuraavan kerran hallintapaneelin.
 2. Avaa jokin hallintasivu. Lisäosa luo tagit, kentät ja 8 automaatiota, ja
    yläreunaan tulee ilmoitus.
 3. **Asetukset → Nordic CRM**: allekirjoittajana on valmiiksi Sami Elmeranta,
@@ -122,7 +152,8 @@ Jos lisäät viestejä, katso kirjoitusohje tiedoston `includes/emails.php` alus
 | `includes/trigger.php` | FluentCRM-käynnistin *Nordic: uusi yhteydenotto* |
 | `includes/leads.php` | Lomakkeiden käsittely, luvan logiikka, pysäytystagit |
 | `includes/forms.php` | Esite- ja laskurilomakkeet |
-| `includes/smartcodes.php` | Muuttujat `{{nordic.tervehdys}}`, `{{nordic.allekirjoitus}}`, `{{nordic.esite_url}}`, `{{nordic.laskelma}}` |
+| `includes/guides.php` | Oppaat: hallinta, lyhytkoodit ja latauslomake |
+| `includes/smartcodes.php` | Muuttujat `{{nordic.tervehdys}}`, `{{nordic.allekirjoitus}}`, `{{nordic.esite_url}}`, `{{nordic.laskelma}}`, `{{nordic.opas_nimi}}`, `{{nordic.opas_url}}` |
 | `includes/installer.php` | Automaatioiden asennus ja päivitys |
 
 Testattu: WordPress 7.1.2, FluentCRM 2.9.84, PHP 8.3.
