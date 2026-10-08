@@ -22,11 +22,11 @@ define( 'NORDIC_WA_FILE', __FILE__ );
 function nordic_wa_defaults() {
 	return array(
 		'enabled'       => 1,
-		'sales_number'  => '05084578325070',
+		'sales_number'  => '045 7832 5070',
 		'sales_label'   => 'Myynti',
 		'sales_desc'    => 'Tarjoukset, tuotteet ja mittauskäynnit',
 		'sales_text'    => 'Hei! Haluaisin kysyä ikkunoista tai ovista.',
-		'inst_number'   => '05084578304746',
+		'inst_number'   => '045 7830 4746',
 		'inst_label'    => 'Asennus',
 		'inst_desc'     => 'Asennusaikataulut ja asennuspäivän asiat',
 		'inst_text'     => 'Hei! Minulla on kysymys asennuksesta.',
