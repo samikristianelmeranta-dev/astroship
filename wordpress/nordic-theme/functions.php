@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.1.1' );
+define( 'NORDIC_VERSION', '2.2.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -140,6 +140,15 @@ function nordic_customize_region( $wp_customize ) {
 	) );
 }
 add_action( 'customize_register', 'nordic_customize_region' );
+
+/** [nordic_puhelimet] – Myynti- ja Asennus-numerot sivun sisältöön (esim. Yhteystiedot). */
+add_shortcode( 'nordic_puhelimet', function () {
+	$out = '<ul class="nordic-phones">';
+	foreach ( nordic_phones() as $p ) {
+		$out .= '<li><strong>' . esc_html( $p['label'] ) . ':</strong> <a href="tel:' . esc_attr( $p['tel'] ) . '" data-phone="' . esc_attr( $p['type'] ) . '">' . esc_html( $p['display'] ) . '</a></li>';
+	}
+	return $out . '</ul>';
+} );
 
 /** [nordic_tarjouslomake] – tarjouslomake sivun sisältöön (yhteystiedot). */
 add_shortcode( 'nordic_tarjouslomake', function () {
@@ -275,6 +284,17 @@ add_filter( 'body_class', 'nordic_body_class' );
  * Täytä puhelin ja osoite, kun ne ovat käytettävissä — ne tulostuvat
  * automaattisesti skeemaan, llms.txt-tiedostoon ja alatunnisteeseen.
  */
+/**
+ * Puhelinnumerot: näkyvät alatunnisteessa, skeemassa, llms.txt:ssä ja
+ * lyhytkoodilla [nordic_puhelimet]. tel = kansainvälinen muoto.
+ */
+function nordic_phones() {
+	return apply_filters( 'nordic_phones', array(
+		array( 'type' => 'sales', 'label' => 'Myynti', 'display' => '045 7832 5070', 'tel' => '+3584578325070' ),
+		array( 'type' => 'installation', 'label' => 'Asennus', 'display' => '045 7830 4746', 'tel' => '+3584578304746' ),
+	) );
+}
+
 function nordic_business_info() {
 	return array(
 		'name'            => 'Nordic Ikkunat & Ovet Oy',
@@ -282,7 +302,8 @@ function nordic_business_info() {
 		'description'     => 'Skaala-ikkunoiden ja -ovien asennus, myynti ja huolto ' . nordic_region()['in_text'] . '.',
 		'areaServed'      => array_merge( array( nordic_region()['region'] ), nordic_region()['cities'] ),
 		'email'           => 'info@ikkunakauppias.fi',
-		'telephone'       => '', // esim. '+358401234567'
+		'telephone'       => '+3584578325070', // päänumero skeemaa varten (= myynti)
+		'phones'          => nordic_phones(),
 		'streetAddress'   => '',
 		'postalCode'      => '',
 		'addressLocality' => nordic_region()['locality'],
@@ -841,6 +862,19 @@ function nordic_head_meta() {
 	if ( $business['telephone'] ) {
 		$org['telephone'] = $business['telephone'];
 	}
+	if ( $business['phones'] ) {
+		$org['contactPoint'] = array_map( function ( $p ) use ( $business ) {
+			return array(
+				'@type'             => 'ContactPoint',
+				'contactType'       => 'sales' === $p['type'] ? 'sales' : 'technical support',
+				'name'              => $p['label'],
+				'telephone'         => $p['tel'],
+				'email'             => $business['email'],
+				'areaServed'        => 'FI',
+				'availableLanguage' => 'Finnish',
+			);
+		}, $business['phones'] );
+	}
 	if ( $business['streetAddress'] ) {
 		$org['address']['streetAddress'] = $business['streetAddress'];
 	}
@@ -1075,8 +1109,8 @@ function nordic_llms_txt() {
 	$out .= '- Toiminta-alue: ' . nordic_region()['area_text'] . ' (' . implode( ', ', nordic_region()['cities'] ) . ")\n";
 	$out .= "- Palveluaika: arkisin klo 8–17\n";
 	$out .= '- Sähköposti: ' . $business['email'] . "\n";
-	if ( $business['telephone'] ) {
-		$out .= '- Puhelin: ' . $business['telephone'] . "\n";
+	foreach ( $business['phones'] as $nordic_phone ) {
+		$out .= '- Puhelin, ' . strtolower( $nordic_phone['label'] ) . ': ' . $nordic_phone['display'] . "\n";
 	}
 	$out .= "- Tarjouspyyntö: ilmainen mittauskäynti ja kirjallinen, sitoumukseton tarjous — " . home_url( '/yhteystiedot/' ) . "\n\n";
 

@@ -267,6 +267,12 @@
     root.classList.add('is-ready');
   }
 
+  // Puhelinlinkkien klikkaukset Analyticsiin
+  doc.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (a && window.dataLayer) window.dataLayer.push({ event: 'phone_click', phone_number: a.getAttribute('href').slice(4) });
+  });
+
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
   else init();
 })();

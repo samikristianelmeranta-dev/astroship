@@ -20,7 +20,7 @@ Oviremontit, Energialaskuri, Ikkuna-asennus, Uudet ikkunat vai huolto ja Yhteyst
 3. **Asetukset → Yleiset:** sivuston otsikko esim. `Ikkunakauppias.fi Uusimaa`, kieli suomi,
    aikavyöhyke Helsinki.
 4. **Asetukset → Kestolinkit:** valitse *Artikkelin nimi*.
-5. **Teema:** Ulkoasu → Teemat → Lisää uusi → Lataa teema → `nordic-theme-v2.1.1.zip` →
+5. **Teema:** Ulkoasu → Teemat → Lisää uusi → Lataa teema → `nordic-theme-v2.2.0.zip` →
    Ota käyttöön.
 6. **Alue:** Ulkoasu → Mukauta → **Sivuston alue** → valitse alue → Julkaise.
 7. **Sivut:** Työkalut → Tuonti → WordPress → *Asenna nyt* → *Suorita tuonti* → valitse
@@ -42,6 +42,6 @@ aluesivustoilla samalla tavalla kuin pääsivustolla.
 
 - Alatunnisteen tietosuojalinkki osoittaa pääsivuston tietosuojaselosteeseen
   (sama yritys ja sama rekisteri). Muita sivuja ei tarvita.
-- Puhelinnumeroa ei ole millään aluesivulla.
+- Yhteystiedot-sivulla ja alatunnisteessa ovat myynnin (045 7832 5070) ja asennuksen (045 7830 4746) numerot.
 - Sisällöt ovat aluekohtaisia ja keskenään erilaisia, joten Google ei tulkitse niitä kopioiksi.
 - Energialaskuri on täsmälleen sama kuin pääsivustolla.

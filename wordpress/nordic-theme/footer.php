@@ -80,9 +80,9 @@
       <ul class="footer-contact">
         <li><?php echo nordic_icon( 'pin' ); // phpcs:ignore ?><span><?php echo esc_html( $nordic_region['area_text'] ); ?></span></li>
         <li><?php echo nordic_icon( 'clock' ); // phpcs:ignore ?><span>Arkisin klo 8–17</span></li>
-        <?php if ( $nordic_business['telephone'] ) : ?>
-        <li><?php echo nordic_icon( 'phone' ); // phpcs:ignore ?><a href="tel:<?php echo esc_attr( $nordic_business['telephone'] ); ?>"><?php echo esc_html( $nordic_business['telephone'] ); ?></a></li>
-        <?php endif; ?>
+        <?php foreach ( $nordic_business['phones'] as $nordic_phone ) : ?>
+        <li><?php echo nordic_icon( 'phone' ); // phpcs:ignore ?><span><?php echo esc_html( $nordic_phone['label'] ); ?> <a href="tel:<?php echo esc_attr( $nordic_phone['tel'] ); ?>" data-phone="<?php echo esc_attr( $nordic_phone['type'] ); ?>"><?php echo esc_html( $nordic_phone['display'] ); ?></a></span></li>
+        <?php endforeach; ?>
         <li><?php echo nordic_icon( 'mail' ); // phpcs:ignore ?><a href="mailto:<?php echo esc_attr( $nordic_business['email'] ); ?>"><?php echo esc_html( $nordic_business['email'] ); ?></a></li>
         <li><a class="footer-link-strong" href="<?php echo esc_url( home_url( '/yhteystiedot/' ) ); ?>">Ota yhteyttä &rarr;</a></li>
       </ul>
