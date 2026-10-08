@@ -14,7 +14,7 @@ antoi markkinointiluvan, perään lähtee lyhyt jatkosarja.
 | Tarjouspyyntö taloyhtiösivulta | Tarjouspyyntönne on perillä | 2 pv: PTS ja kuntotarkastus · +5 pv: rahoitus ja kustannusten jako · +7 pv: hinta-arvio yhtiökokoukseen |
 | Esitteen tilaus | Pyytämäsi esite | 3 pv: mistä hinta muodostuu · +7 pv: tarkka hinta mittauskäynnillä |
 | Laskurin tulos sähköpostiin | Säästölaskelmasi (asiakkaan omat luvut) | 3 pv: U-arvo · +7 pv: laskurista tarkkaan arvioon |
-| Oppaan lataus | Pyytämäsi opas: *oppaan nimi* | 3 pv: jäikö oppaasta mietityttämään · +7 pv: oppaasta omaan taloon |
+| Oppaan lataus | Pyytämäsi opas: *oppaan nimi* | 7 pv: Vieläkö mietit ikkuna- ja oviratkaisua? (yhteystiedot) |
 
 Lisäksi lisäosa:
 - luo tagit (Lähde: …, Markkinointilupa, Asiakas, Ei kiinnostunut) ja
@@ -54,7 +54,7 @@ Kun kävijä lataa oppaan:
 2. Kontakti tallentuu FluentCRM:ään tageilla *Lähde: Opas* ja *Opas: oppaan nimi*,
    ja kenttään *Viimeksi ladattu opas*.
 3. Latauslinkki näkyy heti sivulla, ja opas lähtee myös sähköpostiin.
-4. Luvan antaneet saavat lisäksi kaksi jatkoviestiä.
+4. Luvan antaneet saavat viikon päästä viestin *Vieläkö mietit ikkuna- ja oviratkaisua?*, jossa on yhteystiedot.
 
 Analytics saa tapahtumat `guide_download` (lomake lähetetty) ja `guide_open` (PDF avattu).
 
@@ -93,7 +93,7 @@ Jos lomakkeessa on jo Fluent Formsin oma *FluentCRM-integraatio*, poista se
 käytöstä. Nordic CRM hoitaa kontaktin luonnin ja luvan käsittelyn.
 
 ### 4. Lisäosa
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.0.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.1.zip` → Aktivoi.
    Päivitettäessä valitse *Korvaa nykyinen*. Uudet automaatiot asennetaan
    automaattisesti, kun avaat seuraavan kerran hallintapaneelin.
 2. Avaa jokin hallintasivu. Lisäosa luo tagit, kentät ja 8 automaatiota, ja

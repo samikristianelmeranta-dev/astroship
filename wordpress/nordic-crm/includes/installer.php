@@ -26,7 +26,7 @@ function nordic_crm_installed_funnels() {
  * @return array Yhteenveto.
  */
 function nordic_crm_install( $force = false ) {
-	$result = array( 'created' => array(), 'updated' => array(), 'kept' => array(), 'errors' => array() );
+	$result = array( 'created' => array(), 'guides' => array(), 'updated' => array(), 'kept' => array(), 'errors' => array() );
 	if ( ! defined( 'FLUENTCRM' ) || ! class_exists( '\FluentCrm\App\Models\Funnel' ) ) {
 		$result['errors'][] = 'FluentCRM ei ole käytössä.';
 		return $result;
@@ -77,9 +77,7 @@ function nordic_crm_install( $force = false ) {
 	}
 
 	// 4) Valmiit oppaat (Skaalan tuote-esitteet) mediakirjastoon
-	foreach ( nordic_crm_install_default_guides() as $title ) {
-		$result['created'][] = 'Opas: ' . $title;
-	}
+	$result['guides'] = nordic_crm_install_default_guides();
 
 	// 5) Automaatiot
 	$installed = nordic_crm_installed_funnels();
@@ -94,6 +92,14 @@ function nordic_crm_install( $force = false ) {
 			}
 		} catch ( \Throwable $e ) {
 			$result['errors'][] = $flow['title'] . ': ' . $e->getMessage();
+		}
+	}
+	// Poistuneet automaatiot (korvattu uudemmilla): asetetaan luonnokseksi, jotta ne eivät enää käynnisty.
+	foreach ( array( 'opas-jatko' ) as $retired ) {
+		if ( ! empty( $installed[ $retired ]['funnel_id'] ) ) {
+			Funnel::where( 'id', (int) $installed[ $retired ]['funnel_id'] )->update( array( 'status' => 'draft' ) );
+			unset( $installed[ $retired ] );
+			$result['updated'][] = 'vanha opassarja pois käytöstä';
 		}
 	}
 	update_option( 'nordic_crm_funnels', $installed, false );
@@ -274,15 +280,11 @@ function nordic_crm_update_flow( $flow, $info, $force, &$result ) {
 
 function nordic_crm_install_summary( $r ) {
 	$parts = array();
-	$guides = array_filter( (array) ( $r['created'] ?? array() ), function ( $c ) {
-		return 0 === strpos( $c, 'Opas: ' );
-	} );
-	$flows  = array_diff( (array) ( $r['created'] ?? array() ), $guides );
-	if ( $flows ) {
-		$parts[] = 'Luotiin ' . count( $flows ) . ' automaatiota.';
+	if ( ! empty( $r['created'] ) ) {
+		$parts[] = 'Luotiin ' . count( $r['created'] ) . ' automaatiota.';
 	}
-	if ( $guides ) {
-		$parts[] = 'Lisättiin ' . count( $guides ) . ' opasta kohtaan Oppaat.';
+	if ( ! empty( $r['guides'] ) ) {
+		$parts[] = 'Lisättiin ' . count( $r['guides'] ) . ' opasta kohtaan Oppaat.';
 	}
 	if ( ! empty( $r['updated'] ) ) {
 		$parts[] = 'Päivitettiin ' . count( $r['updated'] ) . ' viestiä.';

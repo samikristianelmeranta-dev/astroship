@@ -301,38 +301,26 @@ HTML
 		),
 
 		array(
-			'key'       => 'opas-jatko',
-			'title'     => 'Opas: jatkoviestit (markkinointilupa)',
+			'key'       => 'opas-seuranta',
+			'title'     => 'Opas: viikon päästä (markkinointilupa)',
 			'lead_type' => 'opas',
 			'audience'  => 'consent',
 			'steps'     => array(
 				array(
-					'key'      => 'opas-kysyttavaa',
-					'wait'     => 3,
-					'subject'  => 'Jäikö oppaasta jotain mietityttämään',
-					'preheader'=> 'Kolme asiaa, joita kysytään useimmin.',
-					'body'     => <<<'HTML'
-<p>{{nordic.tervehdys}}</p>
-<p>latasit muutama päivä sitten sivuiltamme oppaan {{nordic.opas_nimi}}. Sen jälkeen meiltä kysytään yleensä näitä kolmea asiaa:</p>
-<ul>
-<li><strong>Mitä remontti maksaa?</strong> Yksittäisen ikkunan vaihto asennettuna on tyypillisesti noin 400–1 500 euroa. Tarkka hinta riippuu koosta, mallista ja asennuksesta.</li>
-<li><strong>Saako kotitalousvähennystä?</strong> Saa, asennustyön osuudesta.</li>
-<li><strong>Pitääkö kaikki vaihtaa kerralla?</strong> Ei tarvitse. Remontin voi tehdä osissa, esimerkiksi huonokuntoisimmat ensin.</li>
-</ul>
-<p>Jos mielessä on jotain muuta, vastaa tähän viestiin.</p>
-<p>{{nordic.allekirjoitus}}</p>
-HTML
-				),
-				array(
-					'key'      => 'opas-mittaus',
+					'key'      => 'opas-vielako-mietit',
 					'wait'     => 7,
-					'subject'  => 'Oppaasta omaan taloon',
-					'preheader'=> 'Mittauskäynti on maksuton eikä sido mihinkään.',
+					'subject'  => 'Vieläkö mietit ikkuna- ja oviratkaisua?',
+					'preheader'=> 'Ota yhteyttä, niin käydään vaihtoehdot läpi yhdessä.',
 					'body'     => <<<'HTML'
 <p>{{nordic.tervehdys}}</p>
-<p>opas antaa hyvän pohjan, mutta jokainen talo on vähän erilainen. Siksi tarkka suunnitelma ja hinta tehdään aina paikan päällä.</p>
-<p>Mittauskäynti on maksuton, eikä se sido mihinkään. Mittaamme karmit, katsomme nykyisten ikkunoiden ja ovien kunnon ja käymme mallit läpi kanssasi. Sen jälkeen saat kirjallisen tarjouksen.</p>
-<p><a href="%site%/yhteystiedot/">Pyydä mittauskäynti</a> tai vastaa tähän viestiin, niin otamme yhteyttä.</p>
+<p>latasit viikko sitten sivuiltamme oppaan {{nordic.opas_nimi}}. Vieläkö mietit ikkuna- ja oviratkaisua?</p>
+<p>Ota meihin yhteyttä, niin käydään vaihtoehdot läpi yhdessä. Mittauskäynti ja tarjous ovat maksuttomia, eivätkä ne sido mihinkään.</p>
+<p><strong>Myynti:</strong> <a href="tel:+3584578325070">045 7832 5070</a><br>
+<strong>Asennus:</strong> <a href="tel:+3584578304746">045 7830 4746</a><br>
+<strong>Sähköposti:</strong> <a href="mailto:info@ikkunakauppias.fi">info@ikkunakauppias.fi</a><br>
+Palvelemme arkisin klo 8–17.</p>
+<p><a href="%site%/yhteystiedot/"><strong>Pyydä ilmainen tarjous</strong></a></p>
+<p>Voit myös vastata suoraan tähän viestiin.</p>
 <p>{{nordic.allekirjoitus}}</p>
 HTML
 				),
