@@ -72,7 +72,7 @@
         '<textarea id="nfaq-input" rows="1" maxlength="300" placeholder="Kirjoita kysymyksesi…" required></textarea>' +
         '<button class="nfaq-send" type="submit" aria-label="Kysy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z" fill="currentColor"/></svg></button>' +
       '</form>' +
-      '<p class="nfaq-note">Vastaukset sivustomme usein kysytyistä kysymyksistä · ' +
+      '<p class="nfaq-note">' + (cfg.guides ? '<a class="nfaq-note-guides" href="' + esc(cfg.guides.url) + '" data-guides>Ladattavat esitteet</a> · ' : 'Vastaukset sivustomme usein kysytyistä kysymyksistä · ') +
         '<a href="mailto:' + esc(cfg.email) + '">' + esc(cfg.email) + '</a></p>' +
     '</section>';
   document.body.appendChild(root);
@@ -156,6 +156,19 @@
       box.querySelector('[data-ask]').addEventListener('click', function () { askForm(box, m.text); });
       return miss;
     }
+    if (m.type === 'guides' && cfg.guides) {
+      var list = (cfg.guides.items || []).map(function (g) {
+        var href = localUrl(g.u);
+        return href ? '<li><a href="' + esc(href) + '" data-guide-link>' + esc(g.t) + '</a></li>' : '';
+      }).join('');
+      return add(
+        '<p class="nfaq-q">Ladattavat esitteet</p>' +
+        '<p>Voit ladata ikkuna- ja oviesitteet maksutta. Saat esitteen heti ja myös sähköpostiisi.</p>' +
+        (list ? '<ul class="nfaq-guides">' + list + '</ul>' : '') +
+        '<div class="nfaq-actions"><a class="nfaq-btn nfaq-btn-primary" href="' + esc(localUrl(cfg.guides.url)) + '" data-guide-link>Kaikki esitteet</a></div>',
+        'nfaq-msg nfaq-bot nfaq-answer'
+      );
+    }
     if (m.type === 'sent') {
       return add('<p>Kiitos! Kysymys on lähetetty. Vastaamme osoitteeseen <strong>' + esc(m.email) + '</strong> mahdollisimman pian.</p>');
     }
@@ -221,6 +234,14 @@
     state.log.forEach(draw);
     chips.innerHTML = '';
     chips.hidden = !!state.log.length;
+    if (cfg.guides) {
+      var g = document.createElement('button');
+      g.type = 'button';
+      g.className = 'nfaq-chip nfaq-chip-guides';
+      g.textContent = 'Ladattavat esitteet';
+      g.addEventListener('click', function () { showGuides('Ladattavat esitteet'); });
+      chips.appendChild(g);
+    }
     (cfg.quick || []).forEach(function (q) {
       var b = document.createElement('button');
       b.type = 'button';
@@ -243,9 +264,25 @@
     }
   }
 
+  // Esitteet: oma vastaus ilman hakua
+  var GUIDE_RE = /esite|esittee|esitte|opas|oppa|pdf|brosyyr|ladat/i;
+  function showGuides(q) {
+    chips.hidden = true;
+    var um = { type: 'user', text: q };
+    var gm = { type: 'guides' };
+    state.log.push(um, gm);
+    save();
+    draw(um);
+    scroll(draw(gm));
+    input.value = '';
+    autosize();
+    if (window.dataLayer) window.dataLayer.push({ event: 'faq_guides' });
+  }
+
   function ask(q) {
     q = String(q || '').trim();
     if (!q) return;
+    if (cfg.guides && GUIDE_RE.test(q)) { showGuides(q); return; }
     chips.hidden = true;
     var um = { type: 'user', text: q };
     state.log.push(um);
@@ -310,6 +347,14 @@
   // Tarjouspainike: teeman tarjouslomake avautuu, joten chat suljetaan alta pois
   root.addEventListener('click', function (e) {
     if (e.target.closest('[data-quote]')) setOpen(false, true);
+    // Esitelinkki: ikkuna suljetaan, ettei se peitä latauslomaketta
+    var gl = e.target.closest('[data-guide-link], [data-guides]');
+    if (gl) {
+      state.open = false;
+      save();
+      var u = new URL(gl.href, location.href);
+      if (u.pathname === location.pathname) { setOpen(false, true); }
+    }
   });
   // Muut sivun painikkeet voivat avata ikkunan: <a href="#chat"> tai data-open-chat
   document.addEventListener('click', function (e) {

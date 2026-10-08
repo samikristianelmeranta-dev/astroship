@@ -1,0 +1,116 @@
+<!-- Esite-ponnahdusikkuna (ikkunakauppias.fi)
+     Liitä sivuille /uudet-ikkunat/ ja /ovet/ Mukautettu HTML -lohkoon.
+     Aukeaa, kun kävijä on ollut sivulla 30 sekuntia. Vaatii Nordic CRM 1.2.2:n. -->
+<div class="nep" id="nordic-esite-popup" hidden>
+  <div class="nep-backdrop" data-nep-close></div>
+  <div class="nep-box" role="dialog" aria-modal="true" aria-labelledby="nep-title-ikkunat">
+    <button class="nep-close" type="button" data-nep-close aria-label="Sulje">&times;</button>
+    <div class="nep-group" data-nep-aihe="ikkunat">
+      <p class="nep-kicker">Ilmainen esite</p>
+      <h2 class="nep-title" id="nep-title-ikkunat">Vertaile ikkunamalleja rauhassa kotona</h2>
+      <p class="nep-lead">Lataa esite, niin saat sen heti ja myös sähköpostiisi.</p>
+      [nordic_oppaat aihe="ikkunat" tyyli="lista"]
+    </div>
+    <div class="nep-group" data-nep-aihe="ovet">
+      <p class="nep-kicker">Ilmainen esite</p>
+      <h2 class="nep-title" id="nep-title-ovet">Vertaile ovimalleja rauhassa kotona</h2>
+      <p class="nep-lead">Lataa esite, niin saat sen heti ja myös sähköpostiisi.</p>
+      [nordic_oppaat aihe="ovet" tyyli="lista"]
+    </div>
+    <p class="nep-all"><a href="/ladattavat-esitteet/">Katso kaikki esitteet &rarr;</a></p>
+  </div>
+</div>
+<style>
+.nep { position: fixed; inset: 0; z-index: 10050; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.nep[hidden] { display: none; }
+.nep-backdrop { position: absolute; inset: 0; background: rgba(16, 37, 48, .55); animation: nepFade .3s ease; }
+.nep-box { position: relative; width: min(560px, 100%); max-height: min(86vh, 760px); overflow: auto; overscroll-behavior: contain; padding: 28px 26px 22px; background: #F6F8F9; border-radius: 24px; box-shadow: 0 30px 80px rgba(16, 37, 48, .35); animation: nepIn .4s cubic-bezier(.22, 1, .36, 1); }
+.nep-close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: #fff; color: #16303B; font-size: 24px; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(16, 37, 48, .12); }
+.nep-close:focus-visible { outline: 3px solid #FFD866; outline-offset: 2px; }
+.nep-kicker { display: inline-block; margin: 0 0 10px; padding: 5px 11px; border-radius: 999px; background: #FFD866; color: #16303B; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.nep-title { margin: 0 44px 6px 0; font-size: clamp(1.35rem, 1.1rem + 1vw, 1.7rem); line-height: 1.2; color: #16303B; }
+.nep-lead { margin: 0 0 16px; color: #3D5561; }
+.nep-all { margin: 16px 0 0; text-align: center; font-weight: 600; }
+.nep-all a { color: #1D5E79; }
+html.nep-lock { overflow: hidden; }
+@keyframes nepFade { from { opacity: 0; } }
+@keyframes nepIn { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+@media (max-width: 600px) {
+  .nep { align-items: flex-end; padding: 0; }
+  .nep-box { width: 100%; max-height: 90vh; padding: 24px 16px 18px; border-radius: 22px 22px 0 0; animation-name: nepUp; }
+  @keyframes nepUp { from { transform: translateY(100%); } }
+}
+@media (prefers-reduced-motion: reduce) { .nep-backdrop, .nep-box { animation: none; } }
+</style>
+<script>
+(function () {
+  var pop = document.getElementById('nordic-esite-popup');
+  if (!pop) return;
+  var WAIT = 30;                       // sekuntia sivulla ennen avautumista
+  var PAUSE_DAYS = 14;                 // suljettu ikkuna ei aukea uudelleen tänä aikana
+  var KEY = 'nordicEsitePopup';
+
+  // Ovisivulla oviesitteet, muuten ikkunaesitteet
+  var aihe = /\/ovet\//.test(location.pathname) ? 'ovet' : 'ikkunat';
+  pop.querySelectorAll('[data-nep-aihe]').forEach(function (g) {
+    if (g.getAttribute('data-nep-aihe') === aihe) return;
+    // Esitteiden tyylit voivat olla poistettavassa ryhmässä: siirretään ne talteen
+    g.querySelectorAll('style').forEach(function (st) { pop.appendChild(st); });
+    g.remove();
+  });
+  var group = pop.querySelector('[data-nep-aihe]');
+  if (!group || !group.querySelector('.ng-card')) return;   // ei esitteitä
+  pop.querySelector('.nep-box').setAttribute('aria-labelledby', 'nep-title-' + aihe);
+  document.body.appendChild(pop);      // irti sivun asettelusta
+
+  function read() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+  function write(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* yksityinen tila */ } }
+  function track(ev) { if (window.dataLayer) window.dataLayer.push({ event: ev, popup_topic: aihe }); }
+
+  var lastFocus = null;
+  function open(auto) {
+    if (!pop.hidden) return;
+    lastFocus = document.activeElement;
+    pop.hidden = false;
+    document.documentElement.classList.add('nep-lock');
+    setTimeout(function () { pop.querySelector('.nep-close').focus({ preventScroll: true }); }, 50);
+    if (auto) track('guide_popup_open');
+  }
+  function close() {
+    if (pop.hidden) return;
+    pop.hidden = true;
+    document.documentElement.classList.remove('nep-lock');
+    var s = read(); s.closed = Date.now(); write(s);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  pop.addEventListener('click', function (e) { if (e.target.closest('[data-nep-close]')) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  pop.addEventListener('submit', function () { var s = read(); s.done = Date.now(); write(s); track('guide_popup_submit'); });
+
+  // Lomake lähetetty tai virhe: sivu latautuu uudelleen, näytetään tulos ikkunassa
+  var q = location.search;
+  var card = location.hash && pop.querySelector(location.hash.replace(/[^#\w-]/g, ''));
+  if (card && /[?&](nc|nc_err)=opas/.test(q)) {
+    open(false);
+    setTimeout(function () { card.scrollIntoView({ block: 'nearest' }); }, 60);
+    return;
+  }
+
+  var s = read();
+  if (s.done) return;
+  if (s.closed && Date.now() - s.closed < PAUSE_DAYS * 864e5) return;
+
+  // Lasketaan vain aika, jolloin sivu on näkyvissä. Ei aukea toisen ikkunan päälle.
+  var seconds = 0;
+  var timer = setInterval(function () {
+    if (document.visibilityState !== 'visible') return;
+    seconds++;
+    if (seconds < WAIT) return;
+    var busy = document.documentElement.classList.contains('nfaq-open') ||
+      document.body.classList.contains('modal-open') || document.querySelector('dialog[open]');
+    if (busy) return;
+    clearInterval(timer);
+    open(true);
+  }, 1000);
+})();
+</script>

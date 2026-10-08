@@ -5,7 +5,10 @@
  *   Hallinta:  WordPress → Oppaat (otsikko, lyhyt kuvaus, kansikuva, PDF)
  *   Sivulle:   [nordic_oppaat]            kaikki oppaat korttiruudukkona
  *              [nordic_oppaat ids="12,15"] valitut oppaat
+ *              [nordic_oppaat aihe="ikkunat"] tai aihe="ovet"  valmiit Skaala-esitteet aiheittain
+ *              [nordic_oppaat tyyli="lista"] kompakti lista (esim. ponnahdusikkunaan)
  *              [nordic_opas id="12"]      yksi opas leveänä nostona (esim. artikkelin loppuun)
+ *   Linkki muotoa /sivu/#nordic-opas-12 avaa kyseisen oppaan latauslomakkeen.
  *
  * Lataus kysyy etunimen ja sähköpostin. Kontakti viedään FluentCRM:ään
  * (tagit "Lähde: Opas" ja "Opas: <oppaan nimi>"), opas lähetetään sähköpostiin
@@ -174,8 +177,28 @@ function nordic_crm_guide_tag_id( $title ) {
  * Lyhytkoodit
  * ---------------------------------------------------------------------- */
 
+/** Valmiiden oppaiden ID:t aiheittain (ikkunat / ovet). */
+function nordic_crm_guide_ids_for_topic( $topic ) {
+	$groups = array(
+		'ikkunat' => array( 'skaala-aukea-ikkuna', 'skaala-aasa-ikkuna', 'skaala-aava-ikkuna' ),
+		'ovet'    => array( 'skaala-terassi-ja-parvekeovet', 'skaala-palo-ovet' ),
+	);
+	$topic = sanitize_key( $topic );
+	if ( ! isset( $groups[ $topic ] ) ) {
+		return array();
+	}
+	$done = (array) get_option( 'nordic_crm_default_guides', array() );
+	$ids  = array();
+	foreach ( $groups[ $topic ] as $slug ) {
+		if ( ! empty( $done[ $slug ] ) ) {
+			$ids[] = (int) $done[ $slug ];
+		}
+	}
+	return $ids;
+}
+
 add_shortcode( 'nordic_oppaat', function ( $atts ) {
-	$atts  = shortcode_atts( array( 'ids' => '', 'otsikko' => '' ), $atts );
+	$atts  = shortcode_atts( array( 'ids' => '', 'otsikko' => '', 'aihe' => '', 'tyyli' => '' ), $atts );
 	$query = array(
 		'post_type'      => NORDIC_CRM_GUIDE_TYPE,
 		'post_status'    => 'publish',
@@ -184,6 +207,12 @@ add_shortcode( 'nordic_oppaat', function ( $atts ) {
 		'fields'         => 'ids',
 	);
 	$ids = array_filter( array_map( 'absint', explode( ',', $atts['ids'] ) ) );
+	if ( ! $ids && $atts['aihe'] ) {
+		$ids = nordic_crm_guide_ids_for_topic( $atts['aihe'] );
+		if ( ! $ids ) {
+			return '';
+		}
+	}
 	if ( $ids ) {
 		$query['post__in'] = $ids;
 		$query['orderby']  = 'post__in';
@@ -192,7 +221,7 @@ add_shortcode( 'nordic_oppaat', function ( $atts ) {
 	if ( ! $guides ) {
 		return current_user_can( 'edit_posts' ) ? '<p><em>Oppaita ei ole vielä julkaistu. Lisää ne kohdassa Oppaat → Lisää opas. (Tämä huomautus näkyy vain ylläpitäjille.)</em></p>' : '';
 	}
-	$out = nordic_crm_guides_assets() . '<div class="nordic-guides">';
+	$out = nordic_crm_guides_assets() . '<div class="nordic-guides' . ( 'lista' === $atts['tyyli'] ? ' is-list' : '' ) . '">';
 	if ( $atts['otsikko'] ) {
 		$out .= '<h2 class="ng-heading">' . esc_html( $atts['otsikko'] ) . '</h2>';
 	}
@@ -321,8 +350,21 @@ function nordic_crm_guides_assets() {
 		. '.nordic-guides.is-single .ng-card.is-wide .ng-cover{flex:0 0 38%;aspect-ratio:auto;min-height:260px}'
 		. '.nordic-guides.is-single .ng-card.is-wide .ng-body{flex:1;padding:26px 28px}'
 		. '@media(max-width:700px){.nordic-guides.is-single .ng-card.is-wide{flex-direction:column}.nordic-guides.is-single .ng-card.is-wide .ng-cover{flex:none;aspect-ratio:4/3;min-height:0}}'
+		. '.nordic-guides.is-list{margin:0}'
+		. '.nordic-guides.is-list .ng-grid{grid-template-columns:1fr;gap:10px}'
+		. '.nordic-guides.is-list .ng-card{flex-direction:row;align-items:flex-start;border-radius:16px;box-shadow:none}'
+		. '.nordic-guides.is-list .ng-card:hover{transform:none;box-shadow:0 6px 18px rgba(16,37,48,.08)}'
+		. '.nordic-guides.is-list .ng-cover{flex:0 0 78px;aspect-ratio:3/4;margin:12px 0 12px 12px;border-radius:8px;border:1px solid rgba(22,48,59,.1)}'
+		. '.nordic-guides.is-list .ng-badge{display:none}'
+		. '.nordic-guides.is-list .ng-body{flex:1;min-width:0;padding:12px 14px 14px;gap:4px}'
+		. '.nordic-guides.is-list .ng-title{font-size:1rem}'
+		. '.nordic-guides.is-list .ng-desc{font-size:13.5px;line-height:1.45;margin:0 0 4px}'
+		. '.nordic-guides.is-list .ng-btn{min-height:40px;padding:0 16px;font-size:14px;align-self:flex-start}'
+		. '.nordic-guides.is-list .ng-submit{align-self:stretch}'
+		. '.nordic-guides.is-list .ng-done{padding:12px}'
 		. '@media(prefers-reduced-motion:reduce){.nordic-guides *{transition:none!important}}';
-	$js = 'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-nordic-guide-open]");if(a&&window.dataLayer)window.dataLayer.push({event:"guide_open",guide_id:+a.getAttribute("data-nordic-guide-open")});});';
+	$js = '(function(){function h(){var m=location.hash.match(/^#nordic-opas-(\\d+)$/);if(!m)return;var c=document.getElementById("nordic-opas-"+m[1]);var d=c&&c.querySelector("details");if(d&&!d.open){d.open=true;var i=d.querySelector("input[name=nc_first_name]");if(i)setTimeout(function(){i.focus({preventScroll:true})},300)}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",h);else h();addEventListener("hashchange",h)})();'
+		. 'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-nordic-guide-open]");if(a&&window.dataLayer)window.dataLayer.push({event:"guide_open",guide_id:+a.getAttribute("data-nordic-guide-open")});});';
 	return '<style>' . $css . '</style><script>' . $js . '</script>';
 }
 

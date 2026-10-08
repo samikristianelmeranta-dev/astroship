@@ -93,7 +93,7 @@ Jos lomakkeessa on jo Fluent Formsin oma *FluentCRM-integraatio*, poista se
 käytöstä. Nordic CRM hoitaa kontaktin luonnin ja luvan käsittelyn.
 
 ### 4. Lisäosa
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.1.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.2.zip` → Aktivoi.
    Päivitettäessä valitse *Korvaa nykyinen*. Uudet automaatiot asennetaan
    automaattisesti, kun avaat seuraavan kerran hallintapaneelin.
 2. Avaa jokin hallintasivu. Lisäosa luo tagit, kentät ja 8 automaatiota, ja

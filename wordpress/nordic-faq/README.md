@@ -36,7 +36,7 @@ lähtee sähköpostina.
 
 ## Käyttöönotto
 
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-faq-1.0.0.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-faq-1.1.0.zip` → Aktivoi.
 2. Jos Nordic Chat on käytössä, poista se käytöstä.
 3. Avaa sivusto ja kokeile esim. "Mitä ikkunaremontti maksaa?" ja jotain,
    mihin ei ole vastausta, ja lähetä se omalla sähköpostiosoitteellasi.
@@ -48,6 +48,22 @@ tulevat perille (esim. WP Mail SMTP / FluentSMTP), nämäkin tulevat.
 
 Teeman painikkeet: linkki `href="#chat"` tai attribuutti `data-open-chat`
 avaa ikkunan. *Pyydä tarjous* -painike avaa teeman tarjouslomakkeen.
+
+## Ladattavat esitteet
+
+Jos Nordic CRM (1.2.2 tai uudempi) on käytössä, chatissa on:
+- pikapainike **Ladattavat esitteet**, joka listaa esitteet linkkeinä,
+- sama lista, kun kävijä kysyy esitteestä, oppaasta tai PDF:stä,
+- linkki *Ladattavat esitteet* ikkunan alareunassa.
+
+Linkki vie sivulle `/ladattavat-esitteet/` ja avaa valitun esitteen
+latauslomakkeen. Osoitteen voi vaihtaa:
+
+```php
+add_filter( 'nordic_faq_guides_url', function () {
+	return home_url( '/esitteet/' );
+} );
+```
 
 ## Muokkaus
 

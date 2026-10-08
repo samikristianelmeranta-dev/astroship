@@ -91,6 +91,11 @@
 .nfaq-form.is-busy .nfaq-send { opacity: .5; pointer-events: none; }
 .nfaq-note { margin: 0; padding: 0 14px 10px; background: #fff; font-size: 11.5px; color: var(--nf-ink-3); }
 .nfaq-note a { color: var(--nf-ink-3); }
+.nfaq-note a.nfaq-note-guides { color: var(--nf-pine); font-weight: 600; }
+.nfaq-chip-guides { background: var(--nf-gold); border-color: var(--nf-gold); color: var(--nf-spruce); font-weight: 600; }
+.nfaq-chip-guides:hover { background: #FFE38F; border-color: #F2C94C; }
+.nfaq-guides { margin: 6px 0 0; padding-left: 18px; }
+.nfaq-guides li { margin: 4px 0; }
 .nfaq-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) {

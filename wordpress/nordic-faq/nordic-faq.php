@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Nordic Kysy meiltä – UKK-chat
  * Description:       Kevyt ja ilmainen chat-ikkuna, joka vastaa yleisimpiin kysymyksiin sivuston omista UKK-vastauksista ja näyttää linkin lähdesivulle. Jos vastausta ei löydy, kysymyksen voi lähettää sähköpostiin. Ei ulkoisia palveluita eikä käyttökuluja.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Nordic Ikkunat & Ovet Oy
@@ -12,7 +12,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_FAQ_VERSION', '1.0.0' );
+define( 'NORDIC_FAQ_VERSION', '1.1.0' );
 define( 'NORDIC_FAQ_FILE', __FILE__ );
 
 /**
@@ -211,6 +211,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		'send'     => esc_url_raw( rest_url( 'nordic-faq/v1/kysymys' ) ),
 		'email'    => nordic_faq_email(),
 		'contact'  => home_url( '/yhteystiedot/' ),
+		'guides'   => nordic_faq_guides(),
 		'greeting' => apply_filters( 'nordic_faq_greeting', 'Hei! Kysy meiltä ikkunoista, ovista tai remontista. Haen vastauksen usein kysytyistä kysymyksistä, ja jos en löydä sitä, voit lähettää kysymyksen meille.' ),
 		'quick'    => apply_filters( 'nordic_faq_quick', array(
 			'Mitä ikkunaremontti maksaa?',
@@ -222,3 +223,33 @@ add_action( 'wp_enqueue_scripts', function () {
 		) ),
 	) );
 } );
+
+/**
+ * Ladattavat esitteet chattiin (Nordic CRM:n Oppaat).
+ * Sivun osoitteen voi vaihtaa suodattimella nordic_faq_guides_url.
+ */
+function nordic_faq_guides() {
+	$url = apply_filters( 'nordic_faq_guides_url', home_url( '/ladattavat-esitteet/' ) );
+	if ( ! $url ) {
+		return null;
+	}
+	$items = array();
+	if ( post_type_exists( 'nordic_opas' ) ) {
+		$posts = get_posts( array(
+			'post_type'      => 'nordic_opas',
+			'post_status'    => 'publish',
+			'posts_per_page' => 12,
+			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+		) );
+		foreach ( $posts as $p ) {
+			if ( ! get_post_meta( $p->ID, '_nordic_opas_pdf', true ) ) {
+				continue;
+			}
+			$items[] = array(
+				't' => get_the_title( $p ),
+				'u' => $url . '#nordic-opas-' . $p->ID,
+			);
+		}
+	}
+	return array( 'url' => $url, 'items' => $items );
+}
