@@ -94,9 +94,9 @@
     <div class="wrap">
       <span>&copy; <?php echo esc_html( date( 'Y' ) ); ?> Nordic Ikkunat &amp; Ovet Oy</span>
       <?php if ( nordic_is_regional() ) : ?>
-      <span>Y-tunnus 3653098-6 · Kotipaikka Masku · <a href="https://ikkunakauppias.fi/tietosuojaseloste/">Tietosuojaseloste</a></span>
+      <span>Y-tunnus 3653098-6 · Kotipaikka Masku · <a href="https://ikkunakauppias.fi/tietosuojaseloste/">Tietosuojaseloste</a><?php if ( function_exists( 'nordic_evasteet_link' ) ) echo ' · ' . nordic_evasteet_link(); ?></span>
       <?php else : ?>
-      <span>Y-tunnus 3653098-6 · Kotipaikka Masku · <a href="<?php echo esc_url( nordic_privacy_url() ); ?>">Tietosuojaseloste</a> · <a href="<?php echo esc_url( home_url( '/sivukartta/' ) ); ?>">Sivukartta</a></span>
+      <span>Y-tunnus 3653098-6 · Kotipaikka Masku · <a href="<?php echo esc_url( nordic_privacy_url() ); ?>">Tietosuojaseloste</a> · <a href="<?php echo esc_url( home_url( '/sivukartta/' ) ); ?>">Sivukartta</a><?php if ( function_exists( 'nordic_evasteet_link' ) ) echo ' · ' . nordic_evasteet_link(); ?></span>
       <?php endif; ?>
     </div>
   </div>
