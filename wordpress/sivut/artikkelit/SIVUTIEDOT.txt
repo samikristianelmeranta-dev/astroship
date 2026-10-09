@@ -33,3 +33,23 @@ miksi-ikkuna-huurtuu-ulkopuolelta.html
   Osoite (slug):     /miksi-ikkuna-huurtuu-ulkopuolelta/
   Ote (kuvaus):      Uudet ikkunat huurussa ulkopuolelta? Se on merkki hyvästä eristyksestä. Näin ilmiö syntyy, miten sitä vähennät ja milloin huurre kertoo viasta.  [143 merkkiä]
   H1 sivulla:        Miksi ikkuna huurtuu ulkopuolelta? Ulkopuolinen kondenssi selitettynä
+
+LISÄTTY 9.10.2026 (hero ilman kuvaa, kuvat tekstin seassa, vaatii teeman 2.4.0)
+
+miten-valita-ikkunat-mokille.html
+  Otsikko (title):   Miten valita oikeat ikkunat mökille? Opas mökki-ikkunoihin
+  Osoite (slug):     /miten-valita-ikkunat-mokille/
+  Ote (kuvaus):      Kesämökki vai talviasuttava? Näin valitset mökille oikeat ikkunat: karmisyvyys, hirsiseinä, maisemaikkunat, kosteus, murtosuoja ja hinta.  [137 merkkiä]
+  H1 sivulla:        Miten valita oikeat ikkunat mökille?
+
+edulliset-ikkunat.html
+  Otsikko (title):   Edulliset ikkunat: mistä ostaa ja mitä kannattaa huomioida
+  Osoite (slug):     /edulliset-ikkunat/
+  Ote (kuvaus):      Mistä saa edulliset ikkunat ja missä voi säästää turvallisesti? Ostopaikat, kymmenen säästövinkkiä ja tarkistuslista tarjousten vertailuun.  [139 merkkiä]
+  H1 sivulla:        Edulliset ikkunat: mistä ostaa ja mitä kannattaa huomioida?
+
+ikkunoiden-hinta.html
+  Otsikko (title):   Ikkunat hinta 2027: mitä ikkunat maksavat?
+  Osoite (slug):     /ikkunoiden-hinta/
+  Ote (kuvaus):      Mitä uusi ikkuna maksaa ilman asennusta ja asennettuna? Suuntaa-antavat hinnat 2027, hinnanmuodostus ja laskuesimerkki kotitalousvähennyksellä.  [143 merkkiä]
+  H1 sivulla:        Ikkunat hinta: mitä ikkunat maksavat vuonna 2027?

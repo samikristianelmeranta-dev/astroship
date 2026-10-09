@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.3.0
+Version: 2.4.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -394,6 +394,11 @@ body:not(.page-type-article) .scroll-progress { display: none; }
 .v4hero-text h1 { margin-bottom: 20px; }
 .v4hero-text > p { font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem); color: var(--ink-2); max-width: 54ch; }
 .v4hero-text .cta-row { margin-top: 32px; }
+/* Hero ilman kuvaa (artikkelit): yksi palsta, kuvat tekstin seassa */
+.v4hero.is-text { padding-bottom: clamp(20px, 3vw, 36px); }
+.v4hero.is-text .v4hero-wrap { grid-template-columns: minmax(0, 1fr); }
+.v4hero.is-text .v4hero-text { max-width: 920px; }
+.v4hero.is-text .v4hero-text > p { max-width: 68ch; }
 .v4hero-media { position: relative; }
 .v4hero-media img {
   width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover;
@@ -649,6 +654,9 @@ body:has(.hero-photo).nav-open .site-header .nav-toggle { background: #fff; bord
 .article-body h3 { margin: 28px 0 10px; }
 .article-body h4 { margin: 22px 0 8px; font-size: 1.05rem; line-height: 1.35; color: var(--ink); }
 .article-body h3 + h4 { margin-top: 12px; }
+.article-figure { margin: 28px 0 32px; }
+.article-figure img { display: block; width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.article-figure figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
 .article-body p { font-size: 1.0625rem; }
 .article-body p, .article-body ul, .article-body table, .article-body .callout { max-width: 100%; }
 

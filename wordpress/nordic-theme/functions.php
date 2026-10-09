@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.3.0' );
+define( 'NORDIC_VERSION', '2.4.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -359,6 +359,9 @@ function nordic_article_slugs() {
 		'parveke-ja-terassioven-valinta',
 		'ikkunalasit-ja-lasivaihtoehdot',
 		'miksi-ikkuna-huurtuu-ulkopuolelta',
+		'miten-valita-ikkunat-mokille',
+		'edulliset-ikkunat',
+		'ikkunoiden-hinta',
 	);
 }
 
