@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.5.1' );
+define( 'NORDIC_VERSION', '2.5.2' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -316,7 +316,7 @@ function nordic_business_info() {
  * ja "Lue myös" -nostot.
  */
 function nordic_article_slugs() {
-	return array(
+	return apply_filters( 'nordic_article_slugs', array(
 		'kannattaako-ikkunoiden-vaihto',
 		'kannattaako-ulko-oven-vaihto',
 		'merkit-etta-ikkunat-pitaa-uusia',
@@ -362,7 +362,7 @@ function nordic_article_slugs() {
 		'miten-valita-ikkunat-mokille',
 		'edulliset-ikkunat',
 		'ikkunoiden-hinta',
-	);
+	) );
 }
 
 /**
@@ -1303,4 +1303,59 @@ add_shortcode( 'nordic_sivukartta', function () {
 		}
 	}
 	return $out . '</div>';
+} );
+
+/**
+ * [nordic_artikkelit] – kaikki julkaistut oppaat ja artikkelit kortteina,
+ * uusin ensin. Valinnaiset: maara="6" (näytä vain uusimmat), otsikko="…".
+ * Mukaan tulevat nordic_article_slugs()-listan sivut sekä sivut, joilla on
+ * mukautettu kenttä _nordic_artikkeli (esim. automaattisesti kirjoitetut).
+ */
+function nordic_article_pages( $limit = -1 ) {
+	$by_slug = new WP_Query( array(
+		'post_type'      => 'page',
+		'post_status'    => 'publish',
+		'post_name__in'  => nordic_article_slugs(),
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+		'no_found_rows'  => true,
+	) );
+	$by_meta = new WP_Query( array(
+		'post_type'      => 'page',
+		'post_status'    => 'publish',
+		'meta_key'       => '_nordic_artikkeli',
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+		'no_found_rows'  => true,
+	) );
+	$ids = array_unique( array_merge( $by_slug->posts, $by_meta->posts ) );
+	if ( ! $ids ) {
+		return array();
+	}
+	return get_posts( array(
+		'post_type'      => 'page',
+		'post__in'       => $ids,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'posts_per_page' => (int) $limit,
+	) );
+}
+
+add_shortcode( 'nordic_artikkelit', function ( $atts ) {
+	$atts  = shortcode_atts( array( 'maara' => -1, 'otsikko' => '' ), $atts );
+	$pages = nordic_article_pages( (int) $atts['maara'] > 0 ? (int) $atts['maara'] : -1 );
+	if ( ! $pages ) {
+		return '';
+	}
+	$cards = '';
+	foreach ( $pages as $page ) {
+		$desc   = nordic_meta_description( $page->ID );
+		$cards .= '<article class="type-card related-card"><span class="related-kicker">Opas</span><h3><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( nordic_short_title( $page->ID ) ) . '</a></h3>';
+		if ( $desc ) {
+			$cards .= '<p>' . esc_html( wp_trim_words( $desc, 22, '…' ) ) . '</p>';
+		}
+		$cards .= '<span class="card-link" aria-hidden="true">Lue opas &rarr;</span></article>';
+	}
+	$head = $atts['otsikko'] ? '<div class="section-head"><div class="eyebrow-line"></div><h2>' . esc_html( $atts['otsikko'] ) . '</h2></div>' : '';
+	return '<div class="nordic-articles">' . $head . '<div class="types-grid">' . $cards . '</div></div>';
 } );

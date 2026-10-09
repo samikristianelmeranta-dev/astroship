@@ -42,6 +42,10 @@
         echo '<li><a href="' . esc_url( home_url( '/oviremontti/' ) ) . '">Oviremontti</a></li>';
         echo '<li><a href="' . esc_url( home_url( '/huolto/' ) ) . '">Ikkuna- ja ovihuolto</a></li>';
         echo '<li><a href="' . esc_url( home_url( '/energiansaastolaskuri/' ) ) . '">Energiansäästölaskuri</a></li>';
+        $nordic_hub = get_page_by_path( 'oppaat-ja-artikkelit' );
+        if ( $nordic_hub && 'publish' === $nordic_hub->post_status ) {
+          echo '<li><a href="' . esc_url( get_permalink( $nordic_hub ) ) . '">Oppaat ja artikkelit</a></li>';
+        }
         echo '<li><a href="' . esc_url( home_url( '/sivukartta/' ) ) . '">Sivukartta</a></li>';
         echo '</ul>';
       }
