@@ -100,8 +100,8 @@ HTML
 					'body'     => <<<'HTML'
 <p>{{nordic.tervehdys}}</p>
 <p>ikkuna- ja oviremontin asennustyöstä saa kotitalousvähennystä, ja se kannattaa ottaa huomioon, kun vertaat tarjouksia.</p>
-<p>Vähennys on 40 % työn osuudesta. Omavastuu on 100 euroa, ja vähennyksen enimmäismäärä on 2 250 euroa henkilöä kohden.</p>
-<p>Esimerkki: jos laskun työn osuus on 3 000 euroa, vähennyskelpoinen osuus on 1 200 euroa. Kun siitä vähennetään 100 euron omavastuu, verotuksessa saat 1 100 euroa takaisin.</p>
+<p>Vähennys on 35 % työn osuudesta. Omavastuu on 150 euroa, ja vähennyksen enimmäismäärä on 1 600 euroa henkilöä kohden. Tarkista ajantasaiset luvut Verohallinnon sivuilta.</p>
+<p>Esimerkki: jos laskun työn osuus on 3 000 euroa, vähennyskelpoinen osuus on 1 050 euroa. Kun siitä vähennetään 150 euron omavastuu, verotuksessa saat 900 euroa takaisin.</p>
 <p>Vähennys haetaan jälkikäteen verotuksessa, joten säilytä lasku, josta työn osuus näkyy erikseen. Säännöt voivat muuttua vuosittain, joten ajantasaiset tiedot kannattaa tarkistaa vero.fi:stä.</p>
 <p><a href="%site%/kotitalousvahennys-ikkuna-ovi/">Lue lisää kotitalousvähennyksestä</a></p>
 <p>{{nordic.allekirjoitus}}</p>

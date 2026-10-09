@@ -17,4 +17,4 @@ ikkunat-ulosaukeava|Ulosaukeava ikkuna Skaala Aasa — Turku ja Varsinais-Suomi|
 ikkunat-piilosaranalla|Piilosaranaikkuna Arvo — Turku ja Varsinais-Suomi|Skaala Arvo / Arvo+ -piilosaranaikkunat: tyylikäs, energiatehokas malli. Myynti ja asennus Turussa ja Varsinais-Suomessa, valtuutettu Skaala-jälleenmyyjä.
 ikkunat-kiintea|Kiinteä ikkuna Skaala Aava — Turku ja Varsinais-Suomi|Skaala Aava -kiinteät ikkunat suuriin maisemapintoihin ja koneellisella ilmanvaihdolla varustettuihin koteihin. Turku ja Varsinais-Suomi.
 skaala-aika-ovi|Skaala Aika-ovi — uusi alumiinipintainen mallisto|Skaala Aika-ovi: alumiinipintainen ulko-ovimallisto 20 vuoden pinnoitetakuulla. Myynti ja asennus Turussa ja Varsinais-Suomessa.
-kotitalousvahennys-ikkuna-ovi|Kotitalousvähennys ikkuna- ja oviremontista|Kuinka kotitalousvähennys toimii ikkuna- ja oviremontissa? 40 % työn osuudesta, 100 € omavastuu, enintään 2 250 € henkilöä kohden. Laskuesimerkki mukana.
+kotitalousvahennys-ikkuna-ovi|Kotitalousvähennys ikkuna- ja oviremontista|Kuinka kotitalousvähennys toimii ikkuna- ja oviremontissa? 35 % työn osuudesta, 150 € omavastuu, enintään 1 600 € henkilöä kohden. Laskuesimerkki mukana.

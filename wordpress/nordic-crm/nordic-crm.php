@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Nordic CRM – sähköpostiautomaatiot
  * Description:       Valmiit FluentCRM-automaatiot Nordic Ikkunat & Ovet -sivustolle: tarjouspyyntö, taloyhtiö, esitteen tilaus, ladattavat oppaat ja energiansäästölaskuri. Luo tagit, viestipohjat ja viestisarjat, ja hoitaa markkinointiluvan.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  fluent-crm
@@ -13,7 +13,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_CRM_VERSION', '1.2.2' );
+define( 'NORDIC_CRM_VERSION', '1.2.3' );
 define( 'NORDIC_CRM_FILE', __FILE__ );
 define( 'NORDIC_CRM_DIR', __DIR__ );
 define( 'NORDIC_CRM_TRIGGER', 'nordic_crm_lead' );
