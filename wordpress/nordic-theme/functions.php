@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.4.0' );
+define( 'NORDIC_VERSION', '2.5.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1205,3 +1205,102 @@ function nordic_page_has_form() {
 	$content = (string) get_post_field( 'post_content', get_the_ID() );
 	return strpos( $content, '[fluentform' ) !== false || strpos( $content, '[nordic_tarjouslomake' ) !== false;
 }
+
+
+/* =========================================================================
+ * Tietoturva ja tietosuoja (2.5.0)
+ * ========================================================================= */
+
+/** Tietosuojaselosteen osoite: WordPressin tietosuojasivu tai /tietosuojaseloste/. */
+function nordic_privacy_url() {
+	$url = get_privacy_policy_url();
+	return $url ? $url : home_url( '/tietosuojaseloste/' );
+}
+
+/**
+ * Tietoturvaotsakkeet sivuston sivuille. Eivät estä mitään sivuston omaa
+ * toimintoa (Analytics, lomakkeet, chat), mutta estävät sivun upottamisen
+ * vieraalle sivustolle (clickjacking) ja tiukentavat selaimen oletuksia.
+ * Jos samat otsakkeet asetetaan myös palvelimelle (.htaccess), poista ne
+ * toisesta paikasta, ettei niitä lähetetä kahdesti.
+ */
+add_action( 'send_headers', function () {
+	if ( is_admin() || headers_sent() ) {
+		return;
+	}
+	header( 'X-Frame-Options: SAMEORIGIN' );
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()' );
+	header( "Content-Security-Policy: frame-ancestors 'self'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests" );
+} );
+
+/**
+ * Käyttäjätunnukset piiloon: REST-rajapinnan käyttäjälista ja ?author=N-ohjaus
+ * eivät paljasta tunnuksia kirjautumattomille.
+ */
+add_filter( 'rest_endpoints', function ( $endpoints ) {
+	if ( is_user_logged_in() ) {
+		return $endpoints;
+	}
+	foreach ( array_keys( $endpoints ) as $route ) {
+		if ( 0 === strpos( $route, '/wp/v2/users' ) ) {
+			unset( $endpoints[ $route ] );
+		}
+	}
+	return $endpoints;
+} );
+
+add_action( 'template_redirect', function () {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( isset( $_GET['author'] ) || is_author() ) {
+		wp_safe_redirect( home_url( '/' ), 301 );
+		exit;
+	}
+}, 1 );
+
+/** XML-RPC pois käytöstä (ei tarvita, yleinen salasanojen arvailureitti). */
+add_filter( 'xmlrpc_enabled', '__return_false' );
+add_filter( 'wp_headers', function ( $headers ) {
+	unset( $headers['X-Pingback'] );
+	return $headers;
+} );
+
+/**
+ * [nordic_sivukartta] – automaattinen sivukartta julkaistuista sivuista
+ * ryhmiteltynä. Nimet tulevat sivujen H1-otsikoista, joten sisäiset
+ * työnimet sivujen otsikoissa eivät näy kävijöille.
+ */
+add_shortcode( 'nordic_sivukartta', function () {
+	$groups = array(
+		'front'   => array( 'Etusivu', array() ),
+		'service' => array( 'Palvelut', array() ),
+		'product' => array( 'Ikkunat ja ovet', array() ),
+		'article' => array( 'Oppaat', array() ),
+		'city'    => array( 'Toiminta-alue', array() ),
+		'utility' => array( 'Muut sivut', array() ),
+	);
+	$skip  = array_merge( nordic_noindex_slugs(), nordic_hidden_slugs(), array( 'sivukartta' ) );
+	$pages = get_pages( array( 'post_status' => 'publish', 'sort_column' => 'menu_order,post_title' ) );
+	foreach ( $pages as $page ) {
+		if ( in_array( $page->post_name, $skip, true ) || post_password_required( $page ) ) {
+			continue;
+		}
+		$type = nordic_page_type( $page->post_name );
+		if ( (int) get_option( 'page_on_front' ) === (int) $page->ID ) {
+			$type = 'front';
+		}
+		if ( ! isset( $groups[ $type ] ) ) {
+			$type = 'utility';
+		}
+		$groups[ $type ][1][] = '<li><a href="' . esc_url( get_permalink( $page ) ) . '">' . esc_html( nordic_short_title( $page->ID ) ) . '</a></li>';
+	}
+	$groups['utility'][1][] = '<li><a href="' . esc_url( nordic_privacy_url() ) . '">Tietosuojaseloste</a></li>';
+	$out = '<div class="nordic-sitemap">';
+	foreach ( $groups as $g ) {
+		if ( $g[1] ) {
+			$out .= '<h2>' . esc_html( $g[0] ) . '</h2><ul class="bullet">' . implode( '', array_unique( $g[1] ) ) . '</ul>';
+		}
+	}
+	return $out . '</div>';
+} );

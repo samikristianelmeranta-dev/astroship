@@ -1,0 +1,19 @@
+YLLÄPIDON TARKISTUSLISTA (WordPress, ikkunakauppias.fi)
+========================================================
+[ ] Päivitykset: Hallintapaneeli → Päivitykset → WordPress, lisäosat ja teemat ajan tasalle.
+    Ota automaattiset päivitykset käyttöön lisäosille (Lisäosat → "Ota automaattiset päivitykset käyttöön").
+[ ] Poista käyttämättömät lisäosat ja teemat (myös poistetut ovat riski, jos ne ovat palvelimella).
+[ ] Kaksivaiheinen tunnistautuminen kaikille ylläpitäjille: esim. lisäosa "Two-Factor"
+    (WordPress.org) tai Wordfence Login Security.
+[ ] Kirjautumisyritysten rajoitus: esim. "Limit Login Attempts Reloaded" tai Wordfence.
+[ ] Ylläpitäjätunnus ei ole "admin" ja salasana on pitkä ja ainutkertainen.
+[ ] Käyttäjätunnukset piilossa: Nordic-teema 2.5.0 piilottaa /wp-json/wp/v2/users ja ?author=1.
+    Tarkista: https://ikkunakauppias.fi/wp-json/wp/v2/users → "rest_no_route".
+[ ] XML-RPC: Nordic-teema 2.5.0 poistaa kirjautumista vaativat XML-RPC-toiminnot.
+[ ] Lomakkeet: Fluent Forms → Global Settings → Security: honeypot ja reCAPTCHA/Turnstile päälle.
+    Fluent Forms → Settings → "Entries": säilytysaika (esim. poista lähetykset 24 kk jälkeen),
+    sama kuin tietosuojaselosteessa.
+[ ] Varmuuskopiot: cPanel → JetBackup tai lisäosa (esim. UpdraftPlus) → kopio myös
+    palvelimen ulkopuolelle (Google Drive / Dropbox). Testaa palautus kerran.
+[ ] Hakukoneet: Asetukset → Lukeminen → poista rasti "Estä hakukoneita indeksoimasta
+    tätä sivustoa", kun sivusto julkaistaan. (Tästä tulee nyt noindex, nofollow kaikille sivuille.)

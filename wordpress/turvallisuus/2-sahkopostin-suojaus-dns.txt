@@ -1,0 +1,42 @@
+SÄHKÖPOSTIN SUOJAUS: DNS-TIETUEET (ikkunakauppias.fi)
+=====================================================
+Tavoite: kukaan muu ei voi lähettää aidon näköistä postia osoitteesta @ikkunakauppias.fi.
+Tee muutokset siellä, missä domainin DNS on (Polar55 cPanel → Zone Editor tai
+domainin rekisteröijä). Lähetä tämä tiedosto tarvittaessa Polar55:n tukeen.
+
+1) MailChannels Domain Lockdown (lukitustietue)
+   Nimi:   _mailchannels.ikkunakauppias.fi
+   Tyyppi: TXT
+   Arvo:   v=mc1 auth=<Polar55:n MailChannels-tunnus>
+   → Kysy oikea auth-arvo Polar55:n tuesta: "Mikä on MailChannels Domain Lockdown
+     -tietueen auth-arvo palvelimellemme?" Väärä arvo estää palvelimen sähköpostit.
+   Lähde: https://docs.mailchannels.com/outbound/domain-lockdown
+
+2) SPF (tarkista, älä lisää toista SPF-tietuetta)
+   Domainilla saa olla vain YKSI TXT-tietue, joka alkaa "v=spf1".
+   Sen pitää sisältää sekä palvelin (MailChannels) että Brevo, esim.:
+   v=spf1 +a +mx include:relay.mailchannels.net include:spf.brevo.com ~all
+   (Jos sähköpostilaatikot ovat muualla, esim. Microsoft 365 tai Google, myös niiden include.)
+
+3) DKIM
+   Tarkista, että Brevon DKIM-tietueet ovat paikallaan ja Brevo näyttää domainin
+   "Authenticated"-tilassa (Brevo → Senders, Domains & Dedicated IPs → Domains).
+   Palvelimen (cPanel) DKIM: cPanel → Email Deliverability → "Valid".
+
+4) DMARC (kun 1–3 ovat kunnossa)
+   Nimi:   _dmarc.ikkunakauppias.fi
+   Tyyppi: TXT
+   Arvo:   v=DMARC1; p=quarantine; pct=100; adkim=r; aspf=r; rua=mailto:info@ikkunakauppias.fi
+   → Jos tietue on jo olemassa (esim. p=none), muokkaa sitä. Älä lisää toista.
+   → 2–4 viikon päästä, kun raporteissa ei näy omia viestejä hylättyinä,
+     voi tiukentaa tasoon p=reject.
+
+5) Tarkistus
+   https://mxtoolbox.com/SuperTool.aspx → "dmarc:ikkunakauppias.fi" ja "spf:ikkunakauppias.fi"
+   Lähetä testiviesti lomakkeelta ja Brevosta Gmail-osoitteeseen → "Näytä alkuperäinen":
+   SPF, DKIM ja DMARC = PASS.
+
+6) Laskuhuijausten ehkäisy (teksti tarjouksiin, laskuihin ja sähköpostin allekirjoitukseen)
+   "Tilinumeromme ei koskaan vaihdu sähköpostitse ilmoitettuna. Jos saat viestin,
+    jossa pyydetään maksamaan toiselle tilille, soita meille ennen maksamista:
+    045 7832 5070."

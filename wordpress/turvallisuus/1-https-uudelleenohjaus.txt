@@ -1,0 +1,29 @@
+HTTP → HTTPS -UUDELLEENOHJAUS (ikkunakauppias.fi)
+================================================
+
+Helpoin tapa (cPanel, Polar55):
+  cPanel → Verkkotunnukset (Domains) → ikkunakauppias.fi → "Force HTTPS Redirect" päälle.
+  Tee sama alidomaineille (uusimaa., merilappi., satakunta.), kun ne on otettu käyttöön.
+
+Jos kytkintä ei ole, lisää tämä WordPressin juurikansion .htaccess-tiedoston ALKUUN
+(ennen riviä "# BEGIN WordPress"). Ota tiedostosta varmuuskopio ennen muokkausta.
+
+# BEGIN Nordic HTTPS
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+# END Nordic HTTPS
+
+Tarkista lopuksi:
+  1. Avaa selaimen yksityisessä ikkunassa http://ikkunakauppias.fi/yhteystiedot/
+     → osoitteen pitää vaihtua https://-alkuiseksi.
+  2. WordPress: Asetukset → Yleiset → molemmissa osoitteissa https://ikkunakauppias.fi
+  3. Jos sivu jää lataamaan ikuisesti ("liian monta uudelleenohjausta"), poista lisätyt
+     rivit ja käytä cPanelin kytkintä tai kysy Polar55:n tuesta.
+
+Tietoturvaotsakkeet (X-Frame-Options, CSP frame-ancestors, X-Content-Type-Options,
+Referrer-Policy, Permissions-Policy) lähettää Nordic-teema 2.5.0 automaattisesti.
+Niitä EI tarvitse lisätä .htaccess-tiedostoon.
