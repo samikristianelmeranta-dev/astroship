@@ -1,0 +1,89 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/ulkomaalaus -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/ulkomaalaus#webpage",
+      "url": "https://www.maalausmestari.fi/ulkomaalaus",
+      "name": "Ulkomaalaus",
+      "description": "Talojen ulkomaalaukset ripeästi ja ensiluokkaisella työjäljellä – talon maalaus, julkisivumaalaus ja kattojen maalaus samalta maalausliikkeeltä.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/ulkomaalaus#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/ulkomaalaus#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/ulkomaalaus#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/ulkomaalaus#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ulkomaalaus",
+          "item": "https://www.maalausmestari.fi/ulkomaalaus"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/ulkomaalaus#service",
+      "name": "Ulkomaalaus",
+      "serviceType": "Ulkomaalaus",
+      "description": "Talojen ulkomaalaukset ripeästi ja ensiluokkaisella työjäljellä – talon maalaus, julkisivumaalaus ja kattojen maalaus samalta maalausliikkeeltä.",
+      "url": "https://www.maalausmestari.fi/ulkomaalaus",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      ],
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ]
+    }
+  ]
+}
+</script>

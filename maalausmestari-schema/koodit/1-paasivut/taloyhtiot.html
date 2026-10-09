@@ -1,0 +1,93 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/taloyhtiöt -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/taloyhtiöt#webpage",
+      "url": "https://www.maalausmestari.fi/taloyhtiöt",
+      "name": "Taloyhtiöiden maalaukset",
+      "description": "Ulkomaalaukset taloyhtiöille ja rivitaloille kiinteähintaisella urakkasopimuksella – julkisivut, katot ja muut ulkopinnat.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/taloyhtiöt#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/taloyhtiöt#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/taloyhtiöt#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/taloyhtiöt#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Taloyhtiöiden maalaukset",
+          "item": "https://www.maalausmestari.fi/taloyhtiöt"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/taloyhtiöt#service",
+      "name": "Taloyhtiöiden maalaukset",
+      "serviceType": "Taloyhtiön ulkomaalaus",
+      "description": "Ulkomaalaukset taloyhtiöille ja rivitaloille kiinteähintaisella urakkasopimuksella – julkisivut, katot ja muut ulkopinnat.",
+      "url": "https://www.maalausmestari.fi/taloyhtiöt",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      ],
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Taloyhtiöt ja isännöitsijät"
+      }
+    }
+  ]
+}
+</script>

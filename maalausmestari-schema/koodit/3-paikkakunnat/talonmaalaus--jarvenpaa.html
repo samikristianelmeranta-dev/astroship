@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/talonmaalaus/järvenpää -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#webpage",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/järvenpää",
+      "name": "Talon maalaus Järvenpäässä",
+      "description": "Talon maalaus Järvenpäässä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Talon maalaus",
+          "item": "https://www.maalausmestari.fi/talonmaalaus"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Järvenpää",
+          "item": "https://www.maalausmestari.fi/talonmaalaus/järvenpää"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/järvenpää#service",
+      "name": "Talon maalaus Järvenpäässä",
+      "serviceType": "Talon maalaus",
+      "description": "Talon maalaus Järvenpäässä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/järvenpää",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Järvenpää",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      },
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 3,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

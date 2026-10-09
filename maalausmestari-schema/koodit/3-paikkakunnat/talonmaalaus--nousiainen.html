@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/talonmaalaus/nousiainen -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#webpage",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/nousiainen",
+      "name": "Talon maalaus Nousiaisissa",
+      "description": "Talon maalaus Nousiaisissa kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Talon maalaus",
+          "item": "https://www.maalausmestari.fi/talonmaalaus"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Nousiainen",
+          "item": "https://www.maalausmestari.fi/talonmaalaus/nousiainen"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nousiainen#service",
+      "name": "Talon maalaus Nousiaisissa",
+      "serviceType": "Talon maalaus",
+      "description": "Talon maalaus Nousiaisissa kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/nousiainen",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Nousiainen",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      },
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 3,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

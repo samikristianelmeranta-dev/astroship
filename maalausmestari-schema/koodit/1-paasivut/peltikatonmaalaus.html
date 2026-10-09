@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/peltikatonmaalaus -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#webpage",
+      "url": "https://www.maalausmestari.fi/peltikatonmaalaus",
+      "name": "Peltikaton maalaus",
+      "description": "Peltikaton maalaus pidentää katon käyttöikää ja ehkäisee ruostumista. Tarkka pintakäsittely ja laadukkaat maalit. Työlle 2 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Peltikaton maalaus",
+          "item": "https://www.maalausmestari.fi/peltikatonmaalaus"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#service",
+      "name": "Peltikaton maalaus",
+      "serviceType": "Peltikaton maalaus",
+      "description": "Peltikaton maalaus pidentää katon käyttöikää ja ehkäisee ruostumista. Tarkka pintakäsittely ja laadukkaat maalit. Työlle 2 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/peltikatonmaalaus",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      ],
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 2,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

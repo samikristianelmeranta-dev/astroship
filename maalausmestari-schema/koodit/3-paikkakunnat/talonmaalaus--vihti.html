@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/talonmaalaus/vihti -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#webpage",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/vihti",
+      "name": "Talon maalaus Vihdissä",
+      "description": "Talon maalaus Vihdissä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Talon maalaus",
+          "item": "https://www.maalausmestari.fi/talonmaalaus"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Vihti",
+          "item": "https://www.maalausmestari.fi/talonmaalaus/vihti"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/vihti#service",
+      "name": "Talon maalaus Vihdissä",
+      "serviceType": "Talon maalaus",
+      "description": "Talon maalaus Vihdissä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/vihti",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Vihti",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      },
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 3,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

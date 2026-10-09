@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/talonmaalaus/raisio -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#webpage",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/raisio",
+      "name": "Talon maalaus Raisiossa",
+      "description": "Talon maalaus Raisiossa kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Talon maalaus",
+          "item": "https://www.maalausmestari.fi/talonmaalaus"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Raisio",
+          "item": "https://www.maalausmestari.fi/talonmaalaus/raisio"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/raisio#service",
+      "name": "Talon maalaus Raisiossa",
+      "serviceType": "Talon maalaus",
+      "description": "Talon maalaus Raisiossa kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/raisio",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Raisio",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      },
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 3,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

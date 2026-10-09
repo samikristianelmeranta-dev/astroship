@@ -1,0 +1,245 @@
+<!-- Maalausmestari – koko sivuston JSON-LD (Site Settings → Head HTML) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HousePainter",
+      "@id": "https://www.maalausmestari.fi/#organization",
+      "name": "Maalausmestari",
+      "url": "https://www.maalausmestari.fi/",
+      "description": "Kotimainen maalausalan perheyritys, joka on erikoistunut talojen ulkomaalauksiin, tiilikattojen pinnoituksiin ja peltikattojen maalauksiin Varsinais-Suomessa ja Uudellamaalla. Toimipisteet Turussa ja Helsingissä.",
+      "slogan": "Ulkomaalausten vankka ammattilainen.",
+      "email": "info@maalausmestari.fi",
+      "telephone": "+358503667703",
+      "image": [
+        "https://irp.cdn-website.com/dacabec0/dms3rep/multi/talon+maalaus-586b90b5.webp",
+        "https://irp.cdn-website.com/dacabec0/dms3rep/multi/tiilikaton+pinnoitus-ed8db2d6.webp",
+        "https://irp.cdn-website.com/dacabec0/dms3rep/multi/peltikaton+maalaus-8742761e.webp"
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Turku",
+          "addressRegion": "Varsinais-Suomi",
+          "addressCountry": "FI"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Helsinki",
+          "addressRegion": "Uusimaa",
+          "addressCountry": "FI"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Varsinais-Suomi",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Etelä-Karjala",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Pirkanmaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Pohjois-Savo",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+358503667703",
+        "email": "info@maalausmestari.fi",
+        "areaServed": "FI",
+        "availableLanguage": [
+          "fi"
+        ]
+      },
+      "employee": {
+        "@type": "Person",
+        "name": "Juhana Pöyhtäri",
+        "telephone": "+358503667703",
+        "email": "juhana.poyhtari@maalausmestari.fi",
+        "worksFor": {
+          "@id": "https://www.maalausmestari.fi/#organization"
+        }
+      },
+      "department": [
+        {
+          "@id": "https://www.maalausmestari.fi/#toimipiste-turku"
+        },
+        {
+          "@id": "https://www.maalausmestari.fi/#toimipiste-helsinki"
+        }
+      ],
+      "award": "Avainlippu – Suomalaisen Työn Liitto",
+      "knowsAbout": [
+        "Talon maalaus",
+        "Ulkomaalaus",
+        "Julkisivumaalaus",
+        "Tiilikaton pinnoitus",
+        "Peltikaton maalaus",
+        "Rapatun talon maalaus",
+        "Hirsitalon maalaus",
+        "Taloyhtiöiden maalaus",
+        "Kotitalousvähennys"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/maalausmestari.fi/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Maalausliikkeen palvelut",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/talonmaalaus#service"
+            },
+            "warranty": {
+              "@type": "WarrantyPromise",
+              "durationOfWarranty": {
+                "@type": "QuantitativeValue",
+                "value": 3,
+                "unitCode": "ANN"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/tiilikaton-pinnoitusjamaalaus#service"
+            },
+            "warranty": {
+              "@type": "WarrantyPromise",
+              "durationOfWarranty": {
+                "@type": "QuantitativeValue",
+                "value": 5,
+                "unitCode": "ANN"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/peltikatonmaalaus#service"
+            },
+            "warranty": {
+              "@type": "WarrantyPromise",
+              "durationOfWarranty": {
+                "@type": "QuantitativeValue",
+                "value": 2,
+                "unitCode": "ANN"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/ulkomaalaus#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/julkisivumaalaus#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://www.maalausmestari.fi/taloyhtiöt#service"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "HousePainter",
+      "@id": "https://www.maalausmestari.fi/#toimipiste-turku",
+      "name": "Maalausmestari Turku",
+      "url": "https://www.maalausmestari.fi/varsinais-suomi",
+      "parentOrganization": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "image": "https://irp.cdn-website.com/dacabec0/dms3rep/multi/talon+maalaus-586b90b5.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Turku",
+        "addressRegion": "Varsinais-Suomi",
+        "addressCountry": "FI"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Varsinais-Suomi",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Suomi"
+        }
+      }
+    },
+    {
+      "@type": "HousePainter",
+      "@id": "https://www.maalausmestari.fi/#toimipiste-helsinki",
+      "name": "Maalausmestari Helsinki",
+      "url": "https://www.maalausmestari.fi/uusimaab84c772c",
+      "parentOrganization": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "image": "https://irp.cdn-website.com/dacabec0/dms3rep/multi/talon+maalaus-586b90b5.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Helsinki",
+        "addressRegion": "Uusimaa",
+        "addressCountry": "FI"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Uusimaa",
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Suomi"
+        }
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.maalausmestari.fi/#website",
+      "url": "https://www.maalausmestari.fi/",
+      "name": "Maalausmestari",
+      "inLanguage": "fi-FI",
+      "publisher": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      }
+    }
+  ]
+}
+</script>

@@ -1,0 +1,100 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/talonmaalaus/nurmijärvi -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#webpage",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi",
+      "name": "Talon maalaus Nurmijärvellä",
+      "description": "Talon maalaus Nurmijärvellä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#service"
+      },
+      "mainEntity": {
+        "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#service"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Talon maalaus",
+          "item": "https://www.maalausmestari.fi/talonmaalaus"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Nurmijärvi",
+          "item": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi#service",
+      "name": "Talon maalaus Nurmijärvellä",
+      "serviceType": "Talon maalaus",
+      "description": "Talon maalaus Nurmijärvellä kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, kiinteähintainen urakkasopimus ja 3 vuoden takuu.",
+      "url": "https://www.maalausmestari.fi/talonmaalaus/nurmijärvi",
+      "provider": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Nurmijärvi",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Uusimaa",
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Suomi"
+          }
+        }
+      },
+      "brand": [
+        {
+          "@type": "Brand",
+          "name": "Tikkurila"
+        },
+        {
+          "@type": "Brand",
+          "name": "Teknos"
+        },
+        {
+          "@type": "Brand",
+          "name": "Ormax"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "warranty": {
+          "@type": "WarrantyPromise",
+          "durationOfWarranty": {
+            "@type": "QuantitativeValue",
+            "value": 3,
+            "unitCode": "ANN"
+          }
+        }
+      }
+    }
+  ]
+}
+</script>

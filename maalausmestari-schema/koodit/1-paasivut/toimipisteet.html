@@ -1,0 +1,51 @@
+<!-- Maalausmestari – JSON-LD sivulle https://www.maalausmestari.fi/toimipisteet -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://www.maalausmestari.fi/toimipisteet#webpage",
+      "url": "https://www.maalausmestari.fi/toimipisteet",
+      "name": "Toimipisteet",
+      "description": "Maalausmestarin toimipisteet Turussa ja Helsingissä.",
+      "inLanguage": "fi-FI",
+      "isPartOf": {
+        "@id": "https://www.maalausmestari.fi/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://www.maalausmestari.fi/toimipisteet#breadcrumb"
+      },
+      "about": {
+        "@id": "https://www.maalausmestari.fi/#organization"
+      },
+      "mainEntity": [
+        {
+          "@id": "https://www.maalausmestari.fi/#toimipiste-turku"
+        },
+        {
+          "@id": "https://www.maalausmestari.fi/#toimipiste-helsinki"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.maalausmestari.fi/toimipisteet#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Etusivu",
+          "item": "https://www.maalausmestari.fi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Toimipisteet",
+          "item": "https://www.maalausmestari.fi/toimipisteet"
+        }
+      ]
+    }
+  ]
+}
+</script>
