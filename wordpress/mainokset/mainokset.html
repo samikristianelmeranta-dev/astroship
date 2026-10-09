@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Ikkunakauppias.fi – isot mainoskuvat</title>
+<!--
+  Jokainen <section class="ad"> on yksi mainos täysikokoisena, mitat millimetreinä
+  ja 3 mm leikkuuvara (bleed) joka reunalla. build.mjs tekee jokaisesta
+  painovalmiin vektori-PDF:n ja esikatselukuvan (PNG).
+  Mitoitus käyttää container-yksiköitä (cqw/cqh), joten ilme skaalautuu kokoon.
+-->
+<style>
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-SemiBold.ttf') format('truetype'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype'); font-weight: 700; }
+:root { --spruce: #16303B; --night: #102530; --pine: #1D5E79; --gold: #FFD866; --mist: #EBF1F3; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #777; }
+body { display: flex; flex-wrap: wrap; gap: 40mm; padding: 40mm; align-items: flex-start; font-family: 'Inter', sans-serif; }
+body.print { padding: 0; gap: 0; background: none; }
+
+.ad { position: relative; overflow: hidden; flex: none; container-type: size; color: #fff; background: var(--spruce);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Space Grotesk', sans-serif; }
+.ad::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(80cqw 60cqh at 100% 0%, rgba(255,216,102,.12), transparent 60%),
+              radial-gradient(90cqw 70cqh at 0% 100%, rgba(29,94,121,.6), transparent 62%); }
+.ad > * { position: relative; }
+
+.logo { display: flex; align-items: center; white-space: nowrap; }
+.logo svg { flex: none; color: #fff; }
+.logo span { font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.logo b { color: var(--gold); }
+.kicker { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); line-height: 1.2; }
+h1 { font-weight: 700; letter-spacing: -0.03em; line-height: .98; }
+h1 em { font-style: normal; color: var(--gold); }
+.lead { font-family: 'Inter', sans-serif; font-weight: 600; color: rgba(255,255,255,.86); line-height: 1.35; }
+.list { list-style: none; font-family: 'Inter', sans-serif; font-weight: 700; line-height: 1.2; }
+.list li { display: flex; align-items: center; }
+.check { flex: none; }
+.band { background: var(--gold); color: var(--spruce); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; }
+.contact { display: flex; align-items: center; justify-content: space-between; }
+.phones { display: flex; flex-direction: column; }
+.phone { font-weight: 700; line-height: 1; white-space: nowrap; display: flex; align-items: center; }
+.phone small { font-family: 'Inter', sans-serif; font-weight: 600; color: rgba(255,255,255,.75); letter-spacing: .02em; }
+.web { font-weight: 700; color: var(--gold); line-height: 1; white-space: nowrap; }
+.qr { flex: none; background: #fff; display: flex; flex-direction: column; align-items: center; }
+.qr svg { display: block; width: 100%; height: auto; }
+.qr span { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--spruce); text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; line-height: 1; }
+.fine { font-family: 'Inter', sans-serif; font-weight: 600; color: rgba(255,255,255,.7); line-height: 1.3; }
+.scene { display: block; aspect-ratio: 300 / 360; height: auto; }
+
+/* ---------- Roll-up 850 x 2000 mm (+3 mm) ---------- */
+.rollup { display: flex; flex-direction: column; padding: 5cqh 8cqw 9cqh; }
+.rollup .logo { gap: 3cqw; }
+.rollup .logo svg { width: 11cqw; height: 11cqw; }
+.rollup .logo span { font-size: 8.6cqw; }
+.rollup .kicker { margin-top: 4.5cqh; font-size: 3.3cqw; }
+.rollup h1 { margin-top: 2cqh; font-size: 12.4cqw; }
+.rollup .lead { margin-top: 2.6cqh; font-size: 4.3cqw; }
+.rollup .scene { width: 50cqw; margin: 3.4cqh 0 0; align-self: center; }
+.rollup .list { margin-top: 3.4cqh; font-size: 4.8cqw; display: grid; gap: 1.5cqh; }
+.rollup .list li { gap: 3cqw; }
+.rollup .check { width: 6cqw; height: 6cqw; }
+.rollup .band { margin: 3cqh -8cqw 0; height: 6.5cqh; font-size: 6.4cqw; }
+.rollup .contact { margin-top: 3cqh; gap: 5cqw; }
+.rollup .phones { gap: 1.6cqh; }
+.rollup .phone { font-size: 7cqw; gap: 3cqw; }
+.rollup .phone small { font-size: 3.4cqw; width: 17cqw; }
+.rollup .web { margin-top: 1cqh; font-size: 6.2cqw; }
+.rollup .qr { width: 25cqw; padding: 2.4cqw 2.4cqw 1.6cqw; border-radius: 2cqw; gap: 1.2cqw; }
+.rollup .qr span { font-size: 2.3cqw; }
+.rollup .fine { margin-top: 2.6cqh; font-size: 3cqw; }
+
+/* ---------- Pystyjuliste A1 594 x 841 mm (+3 mm), skaalautuu A2–A4 ---------- */
+.poster { display: flex; flex-direction: column; padding: 6cqw 7.5cqw 0; }
+.poster .logo { gap: 2.4cqw; }
+.poster .logo svg { width: 8cqw; height: 8cqw; }
+.poster .logo span { font-size: 6.2cqw; }
+.poster .top { display: grid; grid-template-columns: 1fr 34cqw; gap: 4cqw; align-items: end; margin-top: 7cqh; }
+.poster .kicker { font-size: 2.2cqw; white-space: nowrap; }
+.poster h1 { margin-top: 2cqh; font-size: 10.6cqw; }
+.poster .scene { width: 34cqw; }
+.poster .lead { margin-top: 4cqh; font-size: 3.3cqw; max-width: 80cqw; }
+.poster .list { margin-top: 4cqh; font-size: 3.5cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 2.2cqh 4cqw; }
+.poster .list li { gap: 2cqw; }
+.poster .check { width: 4.4cqw; height: 4.4cqw; }
+.poster .band { margin: auto -7.5cqw 0; height: 9cqh; font-size: 5.6cqw; }
+.poster .foot { background: var(--night); margin: 0 -7.5cqw; padding: 3.4cqh 7.5cqw 4.4cqh; }
+.poster .contact { gap: 4cqw; }
+.poster .phones { gap: 1.6cqh; }
+.poster .phone { font-size: 5.4cqw; gap: 2.4cqw; }
+.poster .phone small { font-size: 2.5cqw; width: 13cqw; }
+.poster .web { margin-top: .6cqh; font-size: 4.6cqw; }
+.poster .qr { width: 19cqw; padding: 1.8cqw 1.8cqw 1.2cqw; border-radius: 1.6cqw; gap: 1cqw; }
+.poster .qr span { font-size: 1.7cqw; }
+
+/* ---------- Vaakajuliste A1 841 x 594 mm (+3 mm) ---------- */
+.wide { display: grid; grid-template-columns: 1fr 40cqw; }
+.wide .left { display: flex; flex-direction: column; padding: 6.5cqh 3cqw 0 6cqw; }
+.wide .logo { gap: 1.8cqw; }
+.wide .logo svg { width: 5.6cqw; height: 5.6cqw; }
+.wide .logo span { font-size: 4.3cqw; }
+.wide .kicker { margin-top: 5cqh; font-size: 1.7cqw; }
+.wide h1 { margin-top: 1.6cqh; font-size: 6.2cqw; }
+.wide .lead { margin-top: 2.6cqh; font-size: 1.9cqw; max-width: 50cqw; }
+.wide .list { margin-top: 3.2cqh; font-size: 1.9cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 2.4cqh 2.4cqw; max-width: 52cqw; }
+.wide .list li { gap: 1.3cqw; }
+.wide .check { width: 2.5cqw; height: 2.5cqw; }
+.wide .band { margin: auto -3cqw 0 -6cqw; height: 12cqh; font-size: 3cqw; }
+.wide .right { background: var(--night); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 7cqh 4cqw 6cqh; }
+.wide .scene { width: 23cqw; }
+.wide .contact { width: 100%; gap: 2cqw; }
+.wide .phones { gap: 1.8cqh; }
+.wide .phone { font-size: 2.6cqw; gap: 1.2cqw; }
+.wide .phone small { font-size: 1.3cqw; width: 6.6cqw; }
+.wide .web { margin-top: .8cqh; font-size: 2.2cqw; }
+.wide .qr { width: 9cqw; padding: 1cqw 1cqw .7cqw; border-radius: .9cqw; gap: .6cqw; }
+.wide .qr span { font-size: .95cqw; }
+
+/* ---------- Neliö 1000 x 1000 mm (+3 mm) ---------- */
+.square { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 7cqw 7cqw 0; }
+.square .logo { gap: 2.4cqw; }
+.square .logo svg { width: 7.4cqw; height: 7.4cqw; }
+.square .logo span { font-size: 5.8cqw; }
+.square .scene { width: 30cqw; margin-top: 4.5cqh; }
+.square h1 { margin-top: 5cqh; font-size: 9.6cqw; }
+.square .lead { margin: 2.4cqh 0 5cqh; font-size: 3.2cqw; }
+.square .band { margin: auto -7cqw 0; align-self: stretch; height: 11cqh; font-size: 5.4cqw; }
+.square .foot { align-self: stretch; margin: 0 -7cqw; background: var(--night); padding: 3.4cqh 7cqw 4cqh; display: flex; justify-content: center; gap: 6cqw; align-items: center; }
+.square .phone { font-size: 4.6cqw; gap: 1.8cqw; }
+.square .phone small { font-size: 2.2cqw; }
+.square .web { font-size: 4.6cqw; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="0 0 24 24">
+      <rect x="12" y="2" width="10" height="10" fill="#FFD866"/>
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="tel" viewBox="0 0 24 24">
+      <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="#FFD866"/>
+    </symbol>
+    <symbol id="ok" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#FFD866"/>
+      <path d="M6.5 12.5l3.6 3.6 7.4-7.6" fill="none" stroke="#16303B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D5E79"/>
+      <stop offset=".62" stop-color="#7FB3C6"/>
+      <stop offset="1" stop-color="#E3EEF2"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5E97AC"/>
+      <stop offset="1" stop-color="#1D5E79"/>
+    </linearGradient>
+    <clipPath id="glass"><rect x="30" y="30" width="240" height="300"/></clipPath>
+    <!-- Kuvitus: Skaala-tyylinen kaksiruutuinen ikkuna, jonka takana järvimaisema -->
+    <symbol id="scene" viewBox="0 0 300 360">
+      <g clip-path="url(#glass)">
+        <rect x="30" y="30" width="240" height="300" fill="url(#sky)"/>
+        <circle cx="198" cy="150" r="30" fill="#FFD866"/>
+        <path d="M30 222 L78 176 L112 204 L160 150 L214 206 L240 186 L270 210 V330 H30Z" fill="#164B61"/>
+        <path d="M30 238 Q90 214 150 232 T270 226 V330 H30Z" fill="#102530"/>
+        <rect x="30" y="262" width="240" height="68" fill="url(#lake)"/>
+        <rect x="30" y="262" width="240" height="2.5" fill="#E3EEF2" opacity=".55"/>
+        <path d="M168 280h40M150 296h70M180 312h30" stroke="#FFD866" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        <path d="M30 30 L118 30 L30 150Z" fill="#fff" opacity=".07"/>
+      </g>
+      <rect x="18" y="18" width="264" height="324" fill="none" stroke="#fff" stroke-width="24"/>
+      <rect x="31" y="31" width="238" height="298" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/>
+      <rect x="144" y="18" width="12" height="324" fill="#fff"/>
+      <rect x="236" y="0" width="64" height="64" fill="#FFD866"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 1. Roll-up 850 x 2000 mm. Alin 150 mm jää usein telineen sisään: siellä vain taustaa. -->
+<section class="ad rollup" id="rollup-850x2000" style="width:856mm;height:2006mm">
+  <div class="logo"><svg><use href="#logo"/></svg><span>Ikkunakauppias<b>.fi</b></span></div>
+  <p class="kicker">Valtuutettu Skaala-jälleenmyyjä</p>
+  <h1>Uudet ikkunat ja ovet <em>asennettuna.</em></h1>
+  <p class="lead">Suomessa mittatilaustyönä valmistetut Skaala-ikkunat ja -ovet. Myynti, mittaus ja asennus Turussa ja Varsinais-Suomessa.</p>
+  <svg class="scene" viewBox="0 0 300 360"><use href="#scene"/></svg>
+  <ul class="list">
+    <li><svg class="check"><use href="#ok"/></svg>Maksuton mittauskäynti</li>
+    <li><svg class="check"><use href="#ok"/></svg>Kirjallinen tarjous</li>
+    <li><svg class="check"><use href="#ok"/></svg>Asennus avaimet käteen</li>
+    <li><svg class="check"><use href="#ok"/></svg>Kotimaiset Skaala-tuotteet</li>
+  </ul>
+  <div class="band">Pyydä ilmainen tarjous</div>
+  <div class="contact">
+    <div class="phones">
+      <div class="phone"><svg style="width:6cqw;height:6cqw"><use href="#tel"/></svg><small>Myynti</small>045 7832 5070</div>
+      <div class="phone"><svg style="width:6cqw;height:6cqw"><use href="#tel"/></svg><small>Asennus</small>045 7830 4746</div>
+      <div class="web">ikkunakauppias.fi</div>
+    </div>
+    <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path stroke="#16303b" d="M0 0.5h7m1 0h4m1 0h1m4 0h7m-25 1h1m5 0h1m3 0h1m5 0h1m1 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h2m2 0h4m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m3 0h4m4 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m1 0h3m5 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-16 1h1m1 0h1m-12 1h1m1 0h1m3 0h2m1 0h1m5 0h2m2 0h1m2 0h1m1 0h1m-23 1h1m1 0h2m1 0h5m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-24 1h1m1 0h2m1 0h2m4 0h4m1 0h1m2 0h3m1 0h1m-25 1h2m2 0h1m3 0h1m1 0h1m3 0h2m1 0h2m1 0h2m-22 1h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2m4 0h1m-21 1h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h2m-25 1h2m1 0h2m1 0h1m3 0h2m1 0h3m1 0h1m3 0h2m1 0h1m-23 1h4m1 0h1m1 0h4m1 0h1m2 0h5m-22 1h2m1 0h4m5 0h1m2 0h6m2 0h1m-16 1h1m1 0h2m2 0h1m1 0h1m3 0h1m3 0h1m-25 1h7m1 0h4m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m7 0h3m3 0h1m3 0h1m-25 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h7m2 0h1m-24 1h1m1 0h3m1 0h1m4 0h3m2 0h2m2 0h1m1 0h2m-24 1h1m1 0h3m1 0h1m1 0h1m1 0h3m6 0h3m1 0h2m-25 1h1m5 0h1m2 0h4m3 0h2m1 0h2m-21 1h7m1 0h2m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1"/></svg><span>Lue lisää</span></div>
+  </div>
+</section>
+
+<!-- 2. Pystyjuliste A1 594 x 841 mm (sama tiedosto käy A2-, A3- ja A4-kokoon) -->
+<section class="ad poster" id="juliste-a1-pysty-594x841" style="width:600mm;height:847mm">
+  <div class="logo"><svg><use href="#logo"/></svg><span>Ikkunakauppias<b>.fi</b></span></div>
+  <div class="top">
+    <div>
+      <p class="kicker">Ikkunat &amp; ovet Varsinais-Suomeen</p>
+      <h1>Vetävätkö ikkunat? <em>Vaihda lämpimiin.</em></h1>
+    </div>
+    <svg class="scene" viewBox="0 0 300 360"><use href="#scene"/></svg>
+  </div>
+  <p class="lead">Energiatehokkaat Skaala-ikkunat ja -ovet valmistetaan Suomessa mittatilaustyönä. Hoidamme mittauksen, purun, asennuksen ja jätteiden viennin.</p>
+  <ul class="list">
+    <li><svg class="check"><use href="#ok"/></svg>Maksuton mittaus</li>
+    <li><svg class="check"><use href="#ok"/></svg>Kirjallinen tarjous</li>
+    <li><svg class="check"><use href="#ok"/></svg>Asennus avaimet käteen</li>
+    <li><svg class="check"><use href="#ok"/></svg>Valtuutettu jälleenmyyjä</li>
+  </ul>
+  <div class="band">Pyydä ilmainen tarjous</div>
+  <div class="foot">
+    <div class="contact">
+      <div class="phones">
+        <div class="phone"><svg style="width:4.6cqw;height:4.6cqw"><use href="#tel"/></svg><small>Myynti</small>045 7832 5070</div>
+        <div class="phone"><svg style="width:4.6cqw;height:4.6cqw"><use href="#tel"/></svg><small>Asennus</small>045 7830 4746</div>
+        <div class="web">ikkunakauppias.fi</div>
+      </div>
+      <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path stroke="#16303b" d="M0 0.5h7m1 0h4m1 0h1m4 0h7m-25 1h1m5 0h1m3 0h1m5 0h1m1 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h2m2 0h4m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m3 0h4m4 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m1 0h3m5 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-16 1h1m1 0h1m-12 1h1m1 0h1m3 0h2m1 0h1m5 0h2m2 0h1m2 0h1m1 0h1m-23 1h1m1 0h2m1 0h5m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-24 1h1m1 0h2m1 0h2m4 0h4m1 0h1m2 0h3m1 0h1m-25 1h2m2 0h1m3 0h1m1 0h1m3 0h2m1 0h2m1 0h2m-22 1h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2m4 0h1m-21 1h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h2m-25 1h2m1 0h2m1 0h1m3 0h2m1 0h3m1 0h1m3 0h2m1 0h1m-23 1h4m1 0h1m1 0h4m1 0h1m2 0h5m-22 1h2m1 0h4m5 0h1m2 0h6m2 0h1m-16 1h1m1 0h2m2 0h1m1 0h1m3 0h1m3 0h1m-25 1h7m1 0h4m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m7 0h3m3 0h1m3 0h1m-25 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h7m2 0h1m-24 1h1m1 0h3m1 0h1m4 0h3m2 0h2m2 0h1m1 0h2m-24 1h1m1 0h3m1 0h1m1 0h1m1 0h3m6 0h3m1 0h2m-25 1h1m5 0h1m2 0h4m3 0h2m1 0h2m-21 1h7m1 0h2m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1"/></svg><span>Lue lisää</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Vaakajuliste A1 841 x 594 mm (sama tiedosto käy A2-, A3- ja A4-kokoon) -->
+<section class="ad wide" id="juliste-a1-vaaka-841x594" style="width:847mm;height:600mm">
+  <div class="left">
+    <div class="logo"><svg><use href="#logo"/></svg><span>Ikkunakauppias<b>.fi</b></span></div>
+    <p class="kicker">Valtuutettu Skaala-jälleenmyyjä</p>
+    <h1>Ikkunat &amp; ovet<br><em>myynti ja asennus</em></h1>
+    <p class="lead">Kotimaiset Skaala-ikkunat ja -ovet mittatilaustyönä. Palvelemme Turkua ja koko Varsinais-Suomea.</p>
+    <ul class="list">
+      <li><svg class="check"><use href="#ok"/></svg>Maksuton mittauskäynti</li>
+      <li><svg class="check"><use href="#ok"/></svg>Kirjallinen tarjous</li>
+      <li><svg class="check"><use href="#ok"/></svg>Asennus avaimet käteen</li>
+      <li><svg class="check"><use href="#ok"/></svg>Purku ja jätteiden vienti</li>
+    </ul>
+    <div class="band">Pyydä ilmainen tarjous</div>
+  </div>
+  <div class="right">
+    <svg class="scene" viewBox="0 0 300 360"><use href="#scene"/></svg>
+    <div class="contact">
+      <div class="phones">
+        <div class="phone"><svg style="width:2.6cqw;height:2.6cqw"><use href="#tel"/></svg><small>Myynti</small>045 7832 5070</div>
+        <div class="phone"><svg style="width:2.6cqw;height:2.6cqw"><use href="#tel"/></svg><small>Asennus</small>045 7830 4746</div>
+        <div class="web">ikkunakauppias.fi</div>
+      </div>
+      <div class="qr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path stroke="#16303b" d="M0 0.5h7m1 0h4m1 0h1m4 0h7m-25 1h1m5 0h1m3 0h1m5 0h1m1 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h2m2 0h4m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m3 0h4m4 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m1 0h3m5 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-16 1h1m1 0h1m-12 1h1m1 0h1m3 0h2m1 0h1m5 0h2m2 0h1m2 0h1m1 0h1m-23 1h1m1 0h2m1 0h5m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-24 1h1m1 0h2m1 0h2m4 0h4m1 0h1m2 0h3m1 0h1m-25 1h2m2 0h1m3 0h1m1 0h1m3 0h2m1 0h2m1 0h2m-22 1h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h2m4 0h1m-21 1h2m2 0h1m1 0h1m4 0h2m1 0h2m3 0h2m-25 1h2m1 0h2m1 0h1m3 0h2m1 0h3m1 0h1m3 0h2m1 0h1m-23 1h4m1 0h1m1 0h4m1 0h1m2 0h5m-22 1h2m1 0h4m5 0h1m2 0h6m2 0h1m-16 1h1m1 0h2m2 0h1m1 0h1m3 0h1m3 0h1m-25 1h7m1 0h4m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m7 0h3m3 0h1m3 0h1m-25 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h7m2 0h1m-24 1h1m1 0h3m1 0h1m4 0h3m2 0h2m2 0h1m1 0h2m-24 1h1m1 0h3m1 0h1m1 0h1m1 0h3m6 0h3m1 0h2m-25 1h1m5 0h1m2 0h4m3 0h2m1 0h2m-21 1h7m1 0h2m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1"/></svg><span>Lue lisää</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Neliö 1000 x 1000 mm (messuseinä, ikkunateippi, ilmoitus) -->
+<section class="ad square" id="nelio-1000x1000" style="width:1006mm;height:1006mm">
+  <div class="logo"><svg><use href="#logo"/></svg><span>Ikkunakauppias<b>.fi</b></span></div>
+  <svg class="scene" viewBox="0 0 300 360"><use href="#scene"/></svg>
+  <h1>Ikkunat &amp; ovet <em>asennettuna</em></h1>
+  <p class="lead">Skaala-ikkunat ja -ovet Turkuun ja Varsinais-Suomeen</p>
+  <div class="band">Pyydä ilmainen tarjous</div>
+  <div class="foot">
+    <div class="phone"><svg style="width:4.4cqw;height:4.4cqw"><use href="#tel"/></svg>045 7832 5070</div>
+    <div class="web">ikkunakauppias.fi</div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+IKKUNAKAUPPIAS.FI – ISOT MAINOSKUVAT (painovalmiit PDF:t)
+
+Kaikki tiedostot ovat vektori-PDF:iä: tekstit, logo, kuvitus ja QR-koodi pysyvät terävinä
+missä tahansa koossa. Fontit on upotettu. Jokaisessa on 3 mm leikkuuvara (bleed) joka reunalla.
+
+1. rollup-850x2000.pdf          Roll-up 850 x 2000 mm (+3 mm). Alin noin 160 mm on pelkkää taustaa,
+                                koska se jää telineen kasettiin.
+2. juliste-a1-pysty-594x841.pdf Pystyjuliste A1. Sama tiedosto käy myös A2-, A3- ja A4-kokoon
+                                (pyydä painoa skaalaamaan, A-koot ovat samassa suhteessa).
+3. juliste-a1-vaaka-841x594.pdf Vaakajuliste A1. Käy myös A2/A3/A4 vaakana, esim. lehti-ilmoitus,
+                                messuseinä tai näyteikkuna.
+4. nelio-1000x1000.pdf          Neliö 1000 x 1000 mm. Käy kaikkiin neliökokoihin (ikkunateippi,
+                                messuseinä, auton ovi, neliöilmoitus).
+
+Painolle kerrottavaa:
+- Värit: RGB-tiedosto. Pyydä painoa muuntamaan CMYK:ksi (esim. FOGRA39) tai tekemään vedos.
+  Brändin värit: tummanvihreä #16303B, keltainen #FFD866, sininen #1D5E79.
+- Leikkuuvara 3 mm on mukana, leikkuumerkkejä ei tarvita.
+- QR-koodi vie osoitteeseen https://ikkunakauppias.fi/ (testaa puhelimella vedoksesta).
+
+Muokkaus: tekstit ovat tiedostossa mainokset.html. Uudet PDF:t: node build.mjs
+Puhelinnumerot: myynti 045 7832 5070, asennus 045 7830 4746.
