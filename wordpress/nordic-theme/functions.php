@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.5.2' );
+define( 'NORDIC_VERSION', '2.5.3' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -414,7 +414,7 @@ function nordic_page_type( $slug ) {
 	if ( nordic_city_from_slug( $slug ) ) {
 		return 'city';
 	}
-	if ( preg_match( '/^(ikkunat-|ovet-|skaala-)/', $slug ) && ! in_array( $slug, array( 'ikkunat-ja-ovet-omakotitaloon', 'ikkunat-ja-ovet-rakennusliikkeille', 'ikkunat-rivitaloon', 'ovet-rivitaloon', 'ovet-ja-ikkunat-mokille' ), true ) ) {
+	if ( preg_match( '/^(ikkunat-|ovet-|skaala-)/', $slug ) && ! in_array( $slug, array( 'ikkunat-ja-ovet-omakotitaloon', 'ikkunat-ja-ovet-rakennusliikkeille', 'ikkunat-rivitaloon', 'ovet-rivitaloon', 'ovet-ja-ikkunat-mokille', 'skaala-rahoitus' ), true ) ) {
 		return 'product';
 	}
 	if ( in_array( $slug, array( 'sivukartta', 'yhteystiedot', 'energiansaastolaskuri' ), true ) ) {

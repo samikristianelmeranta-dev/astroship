@@ -1,0 +1,8 @@
+SKAALA-RAHOITUS – SIVUN TIEDOT WORDPRESSIIN
+
+Sivut → Lisää uusi
+  Otsikko (title):   Ikkunat ja ovet rahoituksella – Skaala-rahoitus
+  Osoite (slug):     /skaala-rahoitus/
+  Ote (kuvaus):      Ikkunat, ovet ja asennus kiinteillä kuukausierillä jopa 10 vuoden maksuajalla. Skaala-rahoitus OP:n kautta, päätös heti, ei vakuuksia. Turku ja Varsinais-Suomi.  [155 merkkiä]
+  Sisältö:           Mukautettu HTML -lohko → tiedoston skaala-rahoitus.html koko koodi
+Teema 2.5.3 tai uudempi: alatunnisteeseen tulee Rahoitus-linkki ja murupolku on oikein.
