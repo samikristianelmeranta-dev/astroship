@@ -1,0 +1,1187 @@
+/*
+ * TiliHub – teeman komponenttityylit.
+ * Värit, fontit ja perusasetukset ovat theme.json-tiedostossa; tämä tiedosto
+ * hoitaa osioiden asettelun ja vanhan artikkelisisällön luokat.
+ */
+
+:root {
+	--th-radius: var(--wp--custom--radius, 6px);
+	--th-line: var(--wp--preset--color--line);
+	--th-muted: var(--wp--preset--color--muted);
+	--th-accent: var(--wp--preset--color--accent);
+	--th-hero: var(--wp--preset--color--hero);
+	--th-hero-ink: var(--wp--preset--color--hero-ink);
+	--th-hero-muted: var(--wp--preset--color--hero-muted);
+	--th-hero-accent: var(--wp--preset--color--hero-accent);
+	--th-mono: var(--wp--preset--font-family--mono);
+	--th-display: var(--wp--preset--font-family--display);
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+	text-wrap: balance;
+}
+
+:where(.wp-site-blocks) :focus-visible {
+	outline: 2px solid var(--th-accent);
+	outline-offset: 3px;
+}
+
+.wp-site-blocks > * + * {
+	margin-block-start: 0;
+}
+
+/* ---------- Yleiset apuluokat ---------- */
+
+.th-eyebrow {
+	font-family: var(--th-mono);
+	font-size: 0.75rem !important;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--th-accent);
+}
+
+.th-dark {
+	background: var(--th-hero);
+	color: var(--th-hero-ink);
+}
+.th-dark .th-eyebrow {
+	color: var(--th-hero-accent);
+}
+.th-dark :where(h1, h2, h3, h4) {
+	color: var(--th-hero-ink);
+}
+.th-dark a:where(:not(.wp-element-button)) {
+	color: var(--th-hero-ink);
+}
+.th-dark .th-muted,
+.th-dark .th-lead {
+	color: var(--th-hero-muted);
+}
+.th-dark .wp-element-button,
+.th-dark .wp-block-button__link {
+	background: var(--th-hero-accent);
+	color: #06231a;
+}
+.th-dark .is-style-outline .wp-block-button__link {
+	background: transparent;
+	color: var(--th-hero-ink);
+	border: 1px solid currentColor;
+}
+
+.th-muted {
+	color: var(--th-muted);
+}
+
+.th-lead {
+	font-size: var(--wp--preset--font-size--large);
+	line-height: 1.55;
+	max-width: 38rem;
+}
+
+.th-tnum {
+	font-variant-numeric: tabular-nums;
+}
+
+.is-style-outline .wp-block-button__link {
+	border: 1px solid currentColor;
+	background: transparent;
+	color: var(--wp--preset--color--ink);
+}
+.wp-block-button__link {
+	transition: transform 0.15s ease, filter 0.15s ease;
+}
+.wp-block-button__link:hover {
+	transform: translateY(-1px);
+}
+
+/* ---------- Ylätunniste ---------- */
+
+.th-header {
+	position: relative;
+	z-index: 20;
+}
+.th-header .wp-block-site-title a,
+.th-logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-family: var(--th-display);
+	font-weight: 800;
+	font-size: 1.35rem;
+	letter-spacing: -0.03em;
+	text-decoration: none;
+	color: var(--th-hero-ink);
+}
+.th-header .wp-block-site-title a::before,
+.th-logo::before {
+	content: "";
+	width: 1.35rem;
+	height: 1.35rem;
+	border-radius: 4px;
+	flex-shrink: 0;
+	background:
+		linear-gradient(var(--th-hero), var(--th-hero)) 50% 32% / 60% 2px no-repeat,
+		linear-gradient(var(--th-hero), var(--th-hero)) 50% 68% / 60% 2px no-repeat,
+		var(--th-hero-accent);
+}
+.th-header .wp-block-navigation a {
+	color: var(--th-hero-muted);
+	text-decoration: none;
+	padding-block: 0.3rem;
+	border-bottom: 2px solid transparent;
+}
+.th-header .wp-block-navigation a:hover,
+.th-header .wp-block-navigation .current-menu-item > a,
+.th-header .wp-block-navigation a[aria-current="page"] {
+	color: var(--th-hero-ink);
+	border-bottom-color: var(--th-hero-accent);
+}
+.th-header .wp-block-navigation__submenu-container {
+	background: var(--th-hero) !important;
+	border: 1px solid rgb(255 255 255 / 0.12) !important;
+	border-radius: var(--th-radius);
+	padding: 0.4rem 0;
+}
+.th-header .wp-block-navigation__submenu-container a {
+	padding: 0.5rem 1rem;
+	border: 0;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open {
+	background: var(--th-hero) !important;
+	color: var(--th-hero-ink) !important;
+	padding: 1.5rem var(--wp--custom--gutter);
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open a {
+	font-family: var(--th-display);
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--th-hero-ink);
+}
+.th-header .wp-block-navigation__responsive-container-open,
+.th-header .wp-block-navigation__responsive-container-close {
+	color: var(--th-hero-ink);
+}
+@media (max-width: 1080px) {
+	.th-header .th-header-cta {
+		display: none;
+	}
+}
+
+/* ---------- Etusivun hero ---------- */
+
+.th-hero {
+	position: relative;
+	overflow: hidden;
+}
+.th-hero::before {
+	/* ruutupaperin hento ristikko */
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+		linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+	background-size: 32px 32px;
+	-webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
+	mask-image: linear-gradient(to bottom, #000 30%, transparent);
+	pointer-events: none;
+}
+.th-hero > * {
+	position: relative;
+}
+.th-hero h1 em,
+.th-hero h1 mark {
+	font-style: normal;
+	background: none;
+	color: var(--th-hero-accent);
+}
+.th-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 2.5rem;
+	margin: 0;
+}
+.th-stats > div {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.th-stats dt {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--th-hero-muted);
+}
+.th-stats dd {
+	margin: 0;
+	font-family: var(--th-display);
+	font-weight: 800;
+	font-size: var(--wp--preset--font-size--x-large);
+}
+
+/* Kuukausiraportti-havainnekuva */
+.th-report {
+	margin: 0;
+	background: #fbfcfb;
+	color: #0f2420;
+	border-radius: 10px;
+	padding: 1.5rem;
+	box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.55);
+	position: relative;
+	font-size: 0.95rem;
+}
+.th-report__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: 1rem;
+}
+.th-report__label {
+	margin: 0;
+	font-family: var(--th-mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #6b7c75;
+}
+.th-report__title {
+	margin: 0.2rem 0 0;
+	font-family: var(--th-display);
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+.th-report__badge {
+	font-size: 0.75rem;
+	font-weight: 600;
+	background: #e2efe9;
+	color: #0b6e55;
+	padding: 0.25rem 0.6rem;
+	border-radius: 99px;
+	white-space: nowrap;
+}
+.th-ledger {
+	margin: 1.25rem 0 0;
+	font-family: var(--th-mono);
+	font-size: 0.85rem;
+	font-variant-numeric: tabular-nums;
+}
+.th-ledger div {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.45rem 0;
+	border-bottom: 1px dashed #d9e0dc;
+}
+.th-ledger dt {
+	font-family: var(--wp--preset--font-family--body);
+	font-size: 0.95rem;
+	color: #3d4f48;
+}
+.th-ledger dd {
+	margin: 0;
+	white-space: nowrap;
+}
+.th-ledger .is-total {
+	border-bottom: 3px double #0f2420;
+}
+.th-ledger .is-total dt {
+	font-weight: 600;
+	color: #0f2420;
+}
+.th-ledger .is-total dd {
+	color: #0b6e55;
+	font-weight: 500;
+}
+.th-bars {
+	display: flex;
+	align-items: end;
+	gap: 6px;
+	height: 70px;
+	margin-top: 1.25rem;
+}
+.th-bars span {
+	flex: 1;
+	background: #cfe2da;
+	border-radius: 2px 2px 0 0;
+}
+.th-bars span:last-child {
+	background: #0b6e55;
+}
+.th-report__caption {
+	font-size: 0.75rem;
+	color: #6b7c75;
+	margin: 0.35rem 0 0;
+}
+.th-deadlines {
+	margin-top: 1.25rem;
+	padding-top: 1rem;
+	border-top: 1px solid #d9e0dc;
+}
+.th-deadlines ul {
+	list-style: none;
+	margin: 0.5rem 0 0;
+	padding: 0;
+	display: grid;
+	gap: 0.4rem;
+	font-size: 0.9rem;
+}
+.th-deadlines li {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 0.75rem;
+	align-items: baseline;
+}
+.th-deadlines time {
+	font-family: var(--th-mono);
+	font-size: 0.8rem;
+	min-width: 3.2rem;
+}
+.th-deadlines li span {
+	margin-left: auto;
+	font-size: 0.75rem;
+	color: #0b6e55;
+	font-weight: 600;
+}
+.th-deadlines li.is-open span {
+	color: #b8641a;
+}
+.th-report__flag {
+	position: absolute;
+	top: -0.7rem;
+	right: 1rem;
+	font-family: var(--th-mono);
+	font-size: 0.65rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	background: #b8641a;
+	color: #fff;
+	padding: 0.15rem 0.5rem;
+	border-radius: 3px;
+}
+
+/* ---------- Ohjelmistorivi ---------- */
+
+.th-strip p {
+	margin: 0;
+}
+.th-strip .th-strip__names {
+	font-family: var(--th-display);
+	font-weight: 700;
+	font-size: 1.05rem;
+	color: var(--th-muted);
+	word-spacing: 0.9rem;
+}
+
+/* ---------- Kortit ja listat ---------- */
+
+.th-cards > .wp-block-column,
+.th-card {
+	background: var(--wp--preset--color--surface);
+	border: 1px solid var(--th-line);
+	border-radius: var(--th-radius);
+	padding: 1.75rem;
+	display: flex;
+	flex-direction: column;
+	transition: border-color 0.15s ease;
+}
+.th-cards > .wp-block-column:hover {
+	border-color: var(--th-accent);
+}
+.th-cards > .wp-block-column > :last-child {
+	margin-top: auto;
+}
+.th-cards .th-card__foot {
+	padding-top: 0.75rem;
+}
+.th-tag {
+	display: inline-block;
+	font-family: var(--th-mono);
+	font-size: 0.72rem !important;
+	letter-spacing: 0.04em;
+	color: var(--wp--preset--color--due);
+	background: var(--wp--preset--color--due-soft);
+	padding: 0.2rem 0.5rem;
+	border-radius: 3px;
+}
+.th-more a {
+	font-family: var(--th-display);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+/* Perustelut kahden sarakkeen ruudukossa viivoin */
+.th-grid-lines {
+	display: grid !important;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+	gap: 0 !important;
+	border-top: 1px solid var(--th-line);
+}
+.th-grid-lines > * {
+	margin: 0 !important;
+	padding: 1.5rem 1.75rem 1.5rem 0;
+	border-bottom: 1px solid var(--th-line);
+}
+.th-grid-lines h3 {
+	font-size: 1.1rem;
+	margin: 0 0 0.4rem;
+}
+.th-grid-lines p {
+	margin: 0;
+	color: var(--th-muted);
+}
+
+/* Numeroidut vaiheet */
+.th-steps {
+	list-style: none;
+	counter-reset: th-step;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 1.75rem;
+}
+.th-steps li {
+	counter-increment: th-step;
+	display: grid;
+	grid-template-columns: 2.5rem 1fr;
+	column-gap: 1.25rem;
+	color: var(--th-muted);
+}
+.th-steps li::before {
+	content: counter(th-step);
+	grid-row: span 2;
+	width: 2.5rem;
+	height: 2.5rem;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	border: 1.5px solid var(--th-accent);
+	color: var(--th-accent);
+	font-family: var(--th-mono);
+}
+.th-steps li strong {
+	display: block;
+	font-family: var(--th-display);
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--wp--preset--color--ink);
+	margin: 0.35rem 0 0.25rem;
+}
+
+/* Rastilista */
+.th-checks {
+	list-style: none;
+	padding: 0;
+	display: grid;
+	gap: 0.55rem;
+}
+.th-checks li {
+	padding-left: 1.6rem;
+	position: relative;
+}
+.th-checks li::before {
+	content: "";
+	position: absolute;
+	left: 0.15rem;
+	top: 0.45em;
+	width: 0.7rem;
+	height: 0.4rem;
+	border-left: 2px solid var(--th-accent);
+	border-bottom: 2px solid var(--th-accent);
+	transform: rotate(-45deg);
+}
+
+/* Asiakaslainaukset */
+.th-quote {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.th-quote .wp-block-quote {
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0;
+}
+.th-quote .wp-block-quote p {
+	font-family: var(--th-display);
+	font-size: 1.2rem;
+	font-weight: 500;
+	line-height: 1.45;
+}
+.th-quote .wp-block-quote cite {
+	display: block;
+	margin-top: 1.25rem;
+	padding-top: 1rem;
+	border-top: 2px solid var(--th-accent);
+	font-style: normal;
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--th-muted);
+}
+.th-quote .wp-block-quote cite strong {
+	display: block;
+	color: var(--wp--preset--color--ink);
+	font-size: 1rem;
+}
+
+/* Alueet */
+.th-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.th-chips li {
+	padding: 0.3rem 0.75rem;
+	border-radius: 99px;
+	font-size: var(--wp--preset--font-size--small);
+	background: var(--wp--preset--color--accent-soft);
+}
+
+/* Yhteystietokortti */
+.th-contact-card {
+	border-radius: 10px;
+}
+.th-contact-card dl {
+	margin: 0;
+}
+.th-contact-card dl div {
+	padding: 0.75rem 0;
+	border-bottom: 1px solid rgb(255 255 255 / 0.1);
+}
+.th-contact-card dt {
+	font-family: var(--th-mono);
+	font-size: 0.7rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--th-hero-muted);
+}
+.th-contact-card dd {
+	margin: 0.15rem 0 0;
+	font-weight: 600;
+	font-size: 1.05rem;
+}
+.th-contact-card .wp-block-button,
+.th-contact-card .wp-block-button__link {
+	width: 100%;
+	text-align: center;
+}
+
+/* Sivupalkin yhteydenottokortti */
+.th-aside {
+	position: sticky;
+	top: 1.5rem;
+}
+@media (max-width: 781px) {
+	.th-aside-col {
+		display: none;
+	}
+}
+
+/* ---------- Alasivujen otsake ---------- */
+
+.th-page-hero h1 {
+	max-width: 24ch;
+}
+.th-crumbs {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--th-hero-muted);
+}
+.th-crumbs a {
+	color: var(--th-hero-muted) !important;
+}
+.th-meta {
+	font-family: var(--th-mono);
+	font-size: 0.8rem;
+	color: var(--th-hero-muted);
+}
+.th-meta .wp-block-post-date {
+	color: var(--th-hero-muted);
+}
+
+/* ---------- Artikkelilistat ---------- */
+
+.th-post-list .wp-block-post-template {
+	border-top: 1px solid var(--th-line);
+	gap: 0 !important;
+}
+.th-post-list .wp-block-post {
+	border-bottom: 1px solid var(--th-line);
+	padding: 1.5rem 0;
+	margin: 0 !important;
+}
+.th-post-list .th-post-row {
+	display: grid;
+	grid-template-columns: 7.5rem minmax(0, 1fr);
+	gap: 0.4rem 2rem;
+}
+.th-post-list .wp-block-post-date {
+	color: var(--th-muted);
+	padding-top: 0.3rem;
+}
+.th-post-list .wp-block-post-title {
+	font-size: var(--wp--preset--font-size--large);
+	margin: 0;
+}
+.th-post-list .wp-block-post-title a {
+	text-decoration: none;
+	color: var(--wp--preset--color--ink);
+}
+.th-post-list .wp-block-post-title a:hover {
+	color: var(--th-accent);
+}
+.th-post-list .wp-block-post-excerpt {
+	color: var(--th-muted);
+	margin-top: 0.4rem;
+	font-size: 1rem;
+}
+.th-post-list .wp-block-post-excerpt__more-link {
+	display: none;
+}
+@media (max-width: 600px) {
+	.th-post-list .th-post-row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+.wp-block-query-pagination {
+	font-family: var(--th-display);
+	font-weight: 600;
+}
+.wp-block-query-pagination a {
+	text-decoration: none;
+}
+
+.wp-block-categories-list.th-chips-nav,
+.th-terms .wp-block-post-terms {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.wp-block-categories-list.th-chips-nav a,
+.th-terms .wp-block-post-terms a {
+	display: inline-block;
+	padding: 0.3rem 0.75rem;
+	border: 1px solid var(--th-line);
+	border-radius: 99px;
+	font-size: var(--wp--preset--font-size--small);
+	text-decoration: none;
+	color: var(--wp--preset--color--ink);
+	background: var(--wp--preset--color--surface);
+}
+.wp-block-categories-list.th-chips-nav a:hover,
+.th-terms .wp-block-post-terms a:hover {
+	border-color: var(--th-accent);
+	color: var(--th-accent);
+}
+.th-terms .wp-block-post-terms__separator {
+	display: none;
+}
+
+/* ---------- Hinnasto ---------- */
+
+.th-rate-card table {
+	font-family: var(--th-mono);
+	font-variant-numeric: tabular-nums;
+	border-collapse: collapse;
+	width: 100%;
+}
+.th-rate-card td {
+	border: 0;
+	border-bottom: 1px dashed rgb(255 255 255 / 0.18);
+	padding: 0.7rem 0;
+	font-size: 1.1rem;
+}
+.th-rate-card td:first-child {
+	font-family: var(--wp--preset--font-family--body);
+	color: var(--th-hero-muted);
+	font-size: 1rem;
+}
+.th-rate-card td:last-child {
+	text-align: right;
+}
+.th-rate-card figcaption {
+	color: var(--th-hero-muted);
+	text-align: left;
+	font-size: var(--wp--preset--font-size--small);
+}
+.th-plans > .wp-block-column {
+	position: relative;
+}
+.th-plans .is-featured {
+	border: 2px solid var(--th-accent);
+}
+.th-plan__flag {
+	position: absolute;
+	top: -0.75rem;
+	left: 1.5rem;
+	background: var(--th-accent);
+	color: #fff;
+	font-size: 0.75rem !important;
+	font-weight: 600;
+	padding: 0.2rem 0.65rem;
+	border-radius: 99px;
+	margin: 0 !important;
+}
+.th-price {
+	color: var(--th-muted);
+	margin-top: 0.5rem !important;
+}
+.th-price strong {
+	font-family: var(--th-display);
+	font-weight: 800;
+	font-size: var(--wp--preset--font-size--xx-large);
+	color: var(--wp--preset--color--ink);
+	letter-spacing: -0.02em;
+}
+.th-plan__note {
+	font-family: var(--th-mono);
+	font-size: 0.75rem !important;
+	color: var(--wp--preset--color--due);
+	margin-top: 0.25rem !important;
+}
+.th-plans .th-checks {
+	border-top: 1px solid var(--th-line);
+	padding-top: 1rem;
+	font-size: 0.98rem;
+}
+.th-plans .wp-block-buttons {
+	margin-top: auto;
+}
+.th-plans .wp-block-button,
+.th-plans .wp-block-button__link {
+	width: 100%;
+	text-align: center;
+}
+
+/* ---------- CTA-kaista ja alatunniste ---------- */
+
+.th-cta-band h2 {
+	font-size: var(--wp--preset--font-size--x-large);
+}
+.th-footer {
+	font-size: var(--wp--preset--font-size--small);
+}
+.th-footer h2 {
+	font-family: var(--th-mono);
+	font-size: 0.72rem !important;
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--th-hero-accent) !important;
+}
+.th-footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 0.55rem;
+}
+.th-footer a {
+	text-decoration: none;
+}
+.th-footer a:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.th-footer .th-footer__bottom {
+	border-top: 1px solid rgb(255 255 255 / 0.1);
+	color: var(--th-hero-muted);
+}
+
+/* ---------- Pitkä teksti (sivut ja artikkelit) ---------- */
+
+.th-prose {
+	font-size: 1.1rem;
+	line-height: 1.7;
+}
+.th-prose h2 {
+	margin-top: 2.2em;
+	font-size: var(--wp--preset--font-size--x-large);
+}
+.th-prose h3 {
+	margin-top: 1.8em;
+}
+.th-prose h4 {
+	margin-top: 1.5em;
+}
+.th-prose :where(h2, h3, h4) + * {
+	margin-top: 0.6em;
+}
+.th-prose > :first-child {
+	margin-top: 0;
+}
+.th-prose a {
+	text-underline-offset: 3px;
+}
+.th-prose li + li {
+	margin-top: 0.35em;
+}
+.th-prose li::marker {
+	color: var(--th-accent);
+}
+.th-prose img {
+	height: auto;
+	border-radius: var(--th-radius);
+}
+.th-prose table,
+.th-prose .wp-block-table table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 0.95rem;
+	font-variant-numeric: tabular-nums;
+}
+.th-prose table {
+	display: block;
+	overflow-x: auto;
+}
+.th-prose .wp-block-table table {
+	display: table;
+}
+.th-prose .wp-block-table {
+	overflow-x: auto;
+}
+.th-prose th,
+.th-prose td {
+	text-align: left;
+	padding: 0.6rem 0.75rem;
+	border: 0;
+	border-bottom: 1px solid var(--th-line);
+	vertical-align: top;
+}
+.th-prose th,
+.th-prose thead td {
+	font-family: var(--th-display);
+	font-weight: 600;
+	background: var(--wp--preset--color--accent-soft);
+}
+.th-prose details,
+.th-prose .wp-block-details {
+	border-top: 1px solid var(--th-line);
+	border-bottom: 1px solid var(--th-line);
+	padding: 0.9rem 0;
+}
+.th-prose details + details {
+	margin-top: 0;
+	border-top: 0;
+}
+.th-prose summary {
+	cursor: pointer;
+	font-family: var(--th-display);
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+.th-prose details > :not(summary) {
+	margin-top: 0.6rem;
+	color: var(--th-muted);
+}
+
+/* ---------- Vanhan artikkelisisällön luokat (Oma HTML -lohkot) ---------- */
+
+.th-prose .legacy-lede p,
+.th-prose .lede {
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--th-muted);
+}
+.th-prose .wrap,
+.th-prose article,
+.th-prose section,
+.th-prose .th-art,
+.th-prose .th-art-body {
+	max-width: none;
+	padding: 0;
+	margin-inline: 0;
+	background: none;
+}
+.th-prose .eyebrow,
+.th-prose .label,
+.th-prose .lbl {
+	display: block;
+	font-family: var(--th-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--th-accent);
+	font-weight: 500;
+}
+.th-prose .quick-answer,
+.th-prose .th-fact {
+	background: var(--wp--preset--color--accent-soft);
+	border-left: 3px solid var(--th-accent);
+	border-radius: 0 var(--th-radius) var(--th-radius) 0;
+	padding: 1.1rem 1.25rem;
+}
+.th-prose .callout-warn {
+	background: var(--wp--preset--color--due-soft);
+	border-left: 3px solid var(--wp--preset--color--due);
+	border-radius: 0 var(--th-radius) var(--th-radius) 0;
+	padding: 1.1rem 1.25rem;
+}
+.th-prose .toc {
+	border: 1px solid var(--th-line);
+	background: var(--wp--preset--color--surface);
+	border-radius: var(--th-radius);
+	padding: 1.1rem 1.5rem;
+}
+.th-prose .toc h2,
+.th-prose .toc h3 {
+	font-family: var(--th-mono);
+	font-size: 0.75rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--th-accent);
+	margin: 0 0 0.5rem;
+}
+.th-prose .toc ol,
+.th-prose .toc ul {
+	margin: 0;
+	padding-left: 1.2em;
+}
+.th-prose .cta-box,
+.th-prose .th-cta,
+.th-prose .th-inline-cta {
+	background: var(--th-hero);
+	color: var(--th-hero-ink);
+	border-radius: 10px;
+	padding: 1.75rem;
+	margin-block: 2.5rem;
+}
+.th-prose .cta-box :where(h2, h3, h4),
+.th-prose .th-cta :where(h2, h3, h4),
+.th-prose .th-inline-cta :where(h2, h3, h4) {
+	color: var(--th-hero-ink);
+	margin-top: 0;
+}
+.th-prose .cta-box p,
+.th-prose .th-cta p,
+.th-prose .th-inline-cta p {
+	color: var(--th-hero-muted);
+}
+.th-prose .cta-box a,
+.th-prose .th-cta a,
+.th-prose .th-inline-cta a,
+.th-prose a.btn {
+	display: inline-block;
+	background: var(--th-hero-accent);
+	color: #06231a;
+	font-family: var(--th-display);
+	font-weight: 600;
+	text-decoration: none;
+	padding: 0.7rem 1.2rem;
+	border-radius: var(--th-radius);
+	margin-top: 0.5rem;
+}
+.th-prose .checklist,
+.th-prose .th-list {
+	list-style: none;
+	padding-left: 0;
+}
+.th-prose .checklist li,
+.th-prose .th-list li {
+	padding-left: 1.6rem;
+	position: relative;
+}
+.th-prose .checklist li::before,
+.th-prose .th-list li::before {
+	content: "";
+	position: absolute;
+	left: 0.15rem;
+	top: 0.5em;
+	width: 0.7rem;
+	height: 0.4rem;
+	border-left: 2px solid var(--th-accent);
+	border-bottom: 2px solid var(--th-accent);
+	transform: rotate(-45deg);
+}
+.th-prose .icon-badge,
+.th-prose .th-svc-icon,
+.th-prose .ico {
+	display: none;
+}
+.th-prose .tag-row,
+.th-prose .th-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.th-prose .tag,
+.th-prose .th-tag {
+	display: inline-block;
+	font-family: var(--th-mono);
+	font-size: 0.72rem;
+	color: var(--wp--preset--color--due);
+	background: var(--wp--preset--color--due-soft);
+	padding: 0.2rem 0.5rem;
+	border-radius: 3px;
+	text-decoration: none;
+}
+.th-prose .th-svc-grid,
+.th-prose .th-stats,
+.th-prose .th-why-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+	gap: 1rem;
+}
+.th-prose .th-svc-card,
+.th-prose .service-card,
+.th-prose .th-review,
+.th-prose .th-stat {
+	border: 1px solid var(--th-line);
+	background: var(--wp--preset--color--surface);
+	border-radius: var(--th-radius);
+	padding: 1.25rem;
+}
+.th-prose .th-stat-num {
+	font-family: var(--th-display);
+	font-weight: 800;
+	font-size: var(--wp--preset--font-size--x-large);
+	color: var(--th-accent);
+}
+.th-prose .th-stat-label {
+	color: var(--th-muted);
+	font-size: var(--wp--preset--font-size--small);
+}
+.th-prose .th-review-stars {
+	color: var(--wp--preset--color--due);
+}
+.th-prose .th-review-author {
+	color: var(--th-muted);
+	font-size: var(--wp--preset--font-size--small);
+}
+.th-prose .th-why-row,
+.th-prose .th-step {
+	display: grid;
+	grid-template-columns: 2.5rem 1fr;
+	gap: 1rem;
+	align-items: start;
+	margin-top: 1.25rem;
+}
+.th-prose .th-why-num,
+.th-prose .th-step-num,
+.th-prose .num {
+	width: 2.5rem;
+	height: 2.5rem;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	border: 1.5px solid var(--th-accent);
+	color: var(--th-accent);
+	font-family: var(--th-mono);
+}
+.th-prose .th-faq-item,
+.th-prose .faq-item {
+	border-bottom: 1px solid var(--th-line);
+	padding: 1rem 0;
+}
+.th-prose .th-faq-q,
+.th-prose .question {
+	font-family: var(--th-display);
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+.th-prose .th-faq-a,
+.th-prose .answer {
+	color: var(--th-muted);
+	margin-top: 0.4rem;
+}
+.th-prose .price {
+	font-family: var(--th-display);
+	font-weight: 700;
+	color: var(--th-accent);
+}
+.th-prose .ok {
+	color: var(--th-accent);
+}
+.th-prose .no {
+	color: var(--wp--preset--color--due);
+}
+.th-prose .th-meta-dot,
+.th-prose .th-art-meta-dot {
+	display: none;
+}
+
+/* ---------- WPForms ---------- */
+
+.wpforms-container {
+	--wpforms-field-border-color: var(--th-line);
+	--wpforms-field-border-radius: 4px;
+	--wpforms-field-background-color: var(--wp--preset--color--surface);
+	--wpforms-field-text-color: var(--wp--preset--color--ink);
+	--wpforms-label-color: var(--wp--preset--color--ink);
+	--wpforms-label-sublabel-color: var(--th-muted);
+	--wpforms-button-background-color: var(--th-accent);
+	--wpforms-button-text-color: #ffffff;
+	--wpforms-button-border-radius: var(--th-radius);
+	--wpforms-page-break-color: var(--th-accent);
+	font-family: var(--wp--preset--font-family--body);
+}
+.wpforms-container .wpforms-field-label {
+	font-weight: 600 !important;
+	font-size: var(--wp--preset--font-size--small) !important;
+}
+.wpforms-container input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+.wpforms-container select,
+.wpforms-container textarea {
+	font: inherit !important;
+	border: 1px solid var(--th-line) !important;
+	border-radius: 4px !important;
+	padding: 0.7rem 0.8rem !important;
+	max-width: 100% !important;
+}
+.wpforms-container input:focus,
+.wpforms-container textarea:focus,
+.wpforms-container select:focus {
+	border-color: var(--th-accent) !important;
+	box-shadow: 0 0 0 1px var(--th-accent) !important;
+}
+.wpforms-container button[type="submit"],
+.wpforms-container .wpforms-submit {
+	background: var(--th-accent) !important;
+	color: #fff !important;
+	border: 0 !important;
+	border-radius: var(--th-radius) !important;
+	font-family: var(--th-display) !important;
+	font-weight: 600 !important;
+	font-size: 1rem !important;
+	padding: 0.8rem 1.5rem !important;
+	height: auto !important;
+	cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+/* Yhteyshenkilö */
+.th-person .wp-block-media-text__media img {
+	border-radius: 50%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	background: rgb(255 255 255 / 0.1);
+}
+.th-person .wp-block-media-text__content {
+	padding: 0 0 0 1rem;
+}
+.th-person p {
+	font-size: var(--wp--preset--font-size--small);
+	color: var(--th-hero-muted);
+}
+.th-person strong {
+	color: var(--th-hero-ink);
+	font-family: var(--th-display);
+	font-size: 1rem;
+}
+.th-cards h3 a {
+	color: inherit;
+	text-decoration: none;
+}
+.th-cards h3 a:hover {
+	color: var(--th-accent);
+}
