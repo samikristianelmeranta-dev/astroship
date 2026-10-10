@@ -1196,3 +1196,36 @@ h1, h2, h3, h4 {
 .th-bars span:nth-child(7) { height: 66%; }
 .th-bars span:nth-child(8) { height: 74%; }
 .th-bars span:nth-child(9) { height: 82%; }
+
+/* Mobiilivalikko: vasemmalle tasattu ja väljä */
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+	align-items: flex-start !important;
+	justify-content: flex-start !important;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+	gap: 0.4rem;
+	width: 100%;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+	width: 100%;
+	border-bottom: 1px solid rgb(255 255 255 / 0.08);
+	padding-bottom: 0.4rem;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
+	border: 0 !important;
+	padding: 0.25rem 0 0 1rem !important;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item {
+	border: 0;
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container a {
+	font-size: 1rem;
+	font-weight: 500;
+	color: var(--th-hero-muted);
+}
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item,
+.th-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
+	align-items: flex-start !important;
+	text-align: left;
+}
