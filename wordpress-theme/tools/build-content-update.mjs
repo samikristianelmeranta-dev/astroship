@@ -278,7 +278,10 @@ const pages = PAGE_SOURCES.map((p) => {
 });
 
 fs.mkdirSync(path.join(OUT, "data"), { recursive: true });
-fs.writeFileSync(path.join(OUT, "data/updates.json"), JSON.stringify({ generated: new Date().toISOString(), pages, posts }, null, 1));
+// 3) Poistettavat sivut (siirretään roskakoriin; teema ohjaa vanhan osoitteen 301:llä)
+const trash = [{ id: 2106, slug: "kirjanpito-hoiva-alalle", title: "Kirjanpito hoiva-alalle", redirect: "/kirjanpitopalvelut/" }];
+
+fs.writeFileSync(path.join(OUT, "data/updates.json"), JSON.stringify({ generated: new Date().toISOString(), pages, posts, trash }, null, 1));
 fs.writeFileSync(
   path.join(OUT, "MUUTOKSET.md"),
   `# Sisältöpäivityksen muutokset\n\nArtikkeleita: ${posts.length}. Yliviivattu = poistuu, lihavoitu = uusi teksti.\n\n` + report.join("\n")

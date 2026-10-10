@@ -28,7 +28,7 @@ function tilihub_sp_data() {
 		$json = file_get_contents( __DIR__ . '/data/updates.json' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$data = json_decode( (string) $json, true );
 		if ( ! is_array( $data ) ) {
-			$data = array( 'pages' => array(), 'posts' => array() );
+			$data = array( 'pages' => array(), 'posts' => array(), 'trash' => array() );
 		}
 	}
 	return $data;
@@ -149,6 +149,19 @@ function tilihub_sp_run( $force ) {
 		$result[] = sprintf( '%s: hinnat korjattu', get_the_title( $s['post'] ) );
 	}
 
+	foreach ( $data['trash'] ?? array() as $item ) {
+		$page = get_post( (int) $item['id'] );
+		if ( ! $page || 'page' !== $page->post_type || $page->post_name !== $item['slug'] ) {
+			$page = get_page_by_path( $item['slug'], OBJECT, 'page' );
+		}
+		if ( ! $page || 'trash' === $page->post_status ) {
+			$result[] = sprintf( '%s: jo poistettu', $item['slug'] );
+			continue;
+		}
+		wp_trash_post( $page->ID );
+		$result[] = sprintf( '%s: siirretty roskakoriin, osoite ohjautuu sivulle %s', $item['title'], $item['redirect'] );
+	}
+
 	kses_init_filters();
 	return $result;
 }
@@ -191,11 +204,28 @@ function tilihub_sp_render_page() {
 		<p>Päivitys tekee kaksi asiaa:</p>
 		<ol>
 			<li><strong>Palvelusivut tavallisiksi sivuiksi:</strong> etusivun, kirjanpidon, palkanlaskennan, tilinpäätöksen, hinnaston, Tietoa meistä -sivun ja yhteystietojen sisältö siirretään sivujen omaksi sisällöksi. Sen jälkeen niitä muokataan tavallisessa sivueditorissa.</li>
+			<li><strong>Hoiva-alan sivu poistetaan:</strong> sivu siirretään roskakoriin, ja sen osoite ohjataan pysyvästi kirjanpitosivulle.</li>
 			<li><strong>Artikkelien hinnat:</strong> Premium-paketti poistetaan ja hinnat korjataan nykyisen hinnaston mukaisiksi (kirjanpito alkaen 55 € + alv / kk, 55 €/h, asiantuntijatyö 79 €/h, verosuunnittelu 119 €/h). Tarkat muutokset ovat lisäosan tiedostossa <code>MUUTOKSET.md</code>.</li>
 		</ol>
 
 		<h2>Sivut</h2>
 		<?php tilihub_sp_table( $data['pages'], true ); ?>
+
+		<?php if ( ! empty( $data['trash'] ) ) : ?>
+			<h2>Poistettavat sivut</h2>
+			<table class="widefat striped" style="max-width:60rem">
+				<thead><tr><th>Sivu</th><th>Tila</th></tr></thead>
+				<tbody>
+				<?php foreach ( $data['trash'] as $item ) : ?>
+					<?php $tp = get_page_by_path( $item['slug'], OBJECT, 'page' ); ?>
+					<tr>
+						<td><?php echo esc_html( $item['title'] ); ?> (<code>/<?php echo esc_html( $item['slug'] ); ?>/</code>)</td>
+						<td><?php echo esc_html( $tp ? 'Siirretään roskakoriin, osoite ohjautuu sivulle ' . $item['redirect'] : 'Jo poistettu' ); ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
 
 		<h2>Artikkelit</h2>
 		<?php tilihub_sp_table( $data['posts'], false ); ?>

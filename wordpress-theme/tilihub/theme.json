@@ -17,7 +17,7 @@
 				{
 					"slug": "base",
 					"name": "Tausta",
-					"color": "#f4f6f5"
+					"color": "#f3f6f6"
 				},
 				{
 					"slug": "surface",
@@ -27,7 +27,7 @@
 				{
 					"slug": "ink",
 					"name": "Teksti",
-					"color": "#0f2420"
+					"color": "#0e2424"
 				},
 				{
 					"slug": "muted",
@@ -37,17 +37,17 @@
 				{
 					"slug": "line",
 					"name": "Viiva",
-					"color": "#d9e0dc"
+					"color": "#d6e0de"
 				},
 				{
 					"slug": "accent",
 					"name": "Havunvihreä",
-					"color": "#0b6e55"
+					"color": "#0b6b63"
 				},
 				{
 					"slug": "accent-soft",
 					"name": "Vaalea vihreä",
-					"color": "#e2efe9"
+					"color": "#e0f0ee"
 				},
 				{
 					"slug": "due",
@@ -62,7 +62,7 @@
 				{
 					"slug": "hero",
 					"name": "Tumma pohja",
-					"color": "#0f2420"
+					"color": "#0e2526"
 				},
 				{
 					"slug": "hero-ink",
@@ -77,7 +77,12 @@
 				{
 					"slug": "hero-accent",
 					"name": "Kirkas vihreä",
-					"color": "#3fbf96"
+					"color": "#14a99b"
+				},
+				{
+					"slug": "logo",
+					"name": "Logon turkoosi",
+					"color": "#14a99b"
 				}
 			]
 		},
@@ -325,7 +330,7 @@
 				},
 				":hover": {
 					"color": {
-						"background": "#0d7f62",
+						"background": "#0d7c72",
 						"text": "var(--wp--preset--color--surface)"
 					}
 				}

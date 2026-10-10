@@ -47,3 +47,4 @@ add_action( 'init', 'tilihub_pattern_categories' );
 
 require_once get_theme_file_path( 'inc/legacy-content.php' );
 require_once get_theme_file_path( 'inc/shortcodes.php' );
+require_once get_theme_file_path( 'inc/redirects.php' );

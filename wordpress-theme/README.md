@@ -22,6 +22,7 @@ Asenna teeman jälkeen lisäosa `tilihub-sisaltopaivitys.zip` (*Lisäosat → Li
 ja valitse *Työkalut → TiliHub-sisältöpäivitys*. Sivu näyttää ensin, mitä muuttuu. Muutokset tehdään
 vasta, kun painat *Suorita päivitys*:
 
+- Hoiva-alan sivu siirretään roskakoriin, ja sen osoite ohjataan pysyvästi (301) kirjanpitosivulle.
 - Etusivun, kirjanpidon, palkanlaskennan, tilinpäätöksen, hinnaston, Tietoa meistä -sivun ja
   yhteystietojen sisältö siirretään sivujen omaksi sisällöksi. Niiden sivupohjaksi tulee
   *Laskeutumissivu*. Sen jälkeen sivuja muokataan tavallisessa sivueditorissa.
