@@ -86,6 +86,10 @@ function tilihub_filter_legacy_blocks( $content, $block ) {
 	if ( 'core/html' !== $name && null !== $name ) {
 		return $content;
 	}
+	// Siistitään vain vanhan tyylin sisältöä; teeman omat HTML-lohkot (th-…) jätetään rauhaan.
+	if ( ! preg_match( '#<style|<!doctype|<html|<head|<body|class="[^"]*\bhero\b|<h1[\s>]|!important#i', $content ) ) {
+		return $content;
+	}
 	return tilihub_clean_legacy_html( $content );
 }
 add_filter( 'render_block', 'tilihub_filter_legacy_blocks', 10, 2 );

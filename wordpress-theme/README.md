@@ -8,32 +8,41 @@ WPForms-lomakkeet pysyvät WordPressissä ennallaan. Teema vaihtaa vain ulkoasun
 1. **Ota varmuuskopio** sivustosta (esim. UpdraftPlus tai palveluntarjoajan varmuuskopio).
 2. Valitse *Ulkoasu → Teemat → Lisää uusi teema → Lataa teema* ja valitse `tilihub.zip`.
 3. Valitse ensin **Esikatselu (Live Preview)**, ja kun kaikki näyttää hyvältä, valitse **Ota käyttöön**.
-4. Luo uusi sivu nimeltä **Artikkelit**, jonka osoite (slug) on `blogi`. Jätä sivu tyhjäksi.
+4. Asenna ja aja sisältöpäivitys (ks. alla).
+5. Luo uusi sivu nimeltä **Artikkelit**, jonka osoite (slug) on `blogi`. Jätä sivu tyhjäksi.
    Teema näyttää siinä kaikki artikkelit (osoite `/blogi/`), ja valikon "Artikkelit"-linkki toimii.
-5. Tyhjennä välimuisti, jos käytössä on välimuistilisäosa tai palvelimen välimuisti.
+6. Tyhjennä välimuisti, jos käytössä on välimuistilisäosa tai palvelimen välimuisti.
 
 Vanhan Gutentools-teeman muokatut sivupohjat jäävät tallennetuiksi tietokantaan. Teeman voi siis
 vaihtaa takaisin milloin tahansa.
 
-## Mistä sivujen sisältö tulee
+## Sisältöpäivitys: palvelusivut sivuiksi ja hintakorjaukset
 
-| Osoite | Sivupohja | Muokkaus |
-| --- | --- | --- |
-| `/` | `front-page.html` | Ulkoasu → Editori → Sivupohjat → Etusivu |
-| `/kirjanpitopalvelut/` | `page-kirjanpitopalvelut.html` | Ulkoasu → Editori → Sivupohjat |
-| `/palkanlaskenta/` | `page-palkanlaskenta.html` | 〃 |
-| `/tilinpaatos/` | `page-tilinpaatos.html` | 〃 |
-| `/kirjanpidon-hinnat/` | `page-kirjanpidon-hinnat.html` | 〃 |
-| `/tietoa-meista/` | `page-tietoa-meista.html` | 〃 |
-| `/yhteystiedot/` | `page-yhteystiedot.html` (WPForms-lomake 1283) | 〃 |
-| `/blogi/` | `page-blogi.html` | Artikkelilista |
-| Muut sivut | `page.html` | Sivun oma sisältö sivueditorissa |
-| Artikkelit | `single.html` | Artikkelin oma sisältö |
-| `/category/…/`, `/tag/…/` | `archive.html` | – |
+Asenna teeman jälkeen lisäosa `tilihub-sisaltopaivitys.zip` (*Lisäosat → Lisää uusi → Lataa lisäosa*)
+ja valitse *Työkalut → TiliHub-sisältöpäivitys*. Sivu näyttää ensin, mitä muuttuu. Muutokset tehdään
+vasta, kun painat *Suorita päivitys*:
 
-Palvelusivujen sisältö on siis sivupohjassa, kuten vanhassa teemassa. Sivupohjaan tehdyt muutokset
-tallentuvat tietokantaan. Alkuperäisen version saa takaisin valitsemalla sivupohjan kohdalla
-*Palauta*.
+- Etusivun, kirjanpidon, palkanlaskennan, tilinpäätöksen, hinnaston, Tietoa meistä -sivun ja
+  yhteystietojen sisältö siirretään sivujen omaksi sisällöksi. Niiden sivupohjaksi tulee
+  *Laskeutumissivu*. Sen jälkeen sivuja muokataan tavallisessa sivueditorissa.
+- 27 artikkelista poistetaan Premium-paketti ja hinnat korjataan nykyisen hinnaston mukaisiksi.
+  Myös rakenteinen data ja AIOSEO-kuvaukset korjataan. Kaikki muutokset on lueteltu tiedostossa
+  `wordpress-plugin/tilihub-sisaltopaivitys/MUUTOKSET.md`.
+
+Jokaisesta muutoksesta jää versio, joten vanhan sisällön voi palauttaa. Artikkelit, joita on
+muokattu viennin (10.10.2026) jälkeen, ohitetaan, ellet erikseen valitse niiden päivittämistä.
+Kun päivitys on tehty, lisäosan voi poistaa.
+
+| Osoite | Sisältö |
+| --- | --- |
+| Palvelusivut, etusivu | Sivun oma sisältö, sivupohja *Laskeutumissivu* |
+| `/blogi/` | Sivupohja `page-blogi.html` (artikkelilista) |
+| Muut sivut | `page.html`: tumma otsake ja sivun sisältö |
+| Artikkelit | `single.html` |
+| `/category/…/`, `/tag/…/` | `archive.html` |
+
+Teemassa on varalla sivupohjat `page-<osoite>.html`. Niiden ansiosta palvelusivut näkyvät oikein
+myös ennen kuin päivitys on tehty. Päivityksen jälkeen niitä ei käytetä.
 
 ## Vanhojen artikkelien ulkoasu
 
@@ -53,6 +62,6 @@ add_filter( 'tilihub_clean_legacy_content', '__return_false' );
 
 - Värit, fontit ja välistykset: `theme.json`. Fontit ladataan teeman omista tiedostoista, ei Googlelta.
 - Komponenttien tyylit: `assets/css/theme.css`
-- Palvelusivujen sivupohjat luodaan WordPress-viennistä:
-  `node scripts/wp-import.mjs vienti.xml && node wordpress-theme/tools/build-page-templates.mjs`
-- Zip-paketti: `cd wordpress-theme && zip -r tilihub.zip tilihub`
+- Palvelusivujen sisältö ja hintakorjaukset luodaan WordPress-viennistä:
+  `node scripts/wp-import.mjs vienti.xml && node wordpress-theme/tools/build-page-templates.mjs && node wordpress-theme/tools/build-content-update.mjs vienti.xml`
+- Zip-paketit: `cd wordpress-theme && zip -r tilihub.zip tilihub` ja `cd wordpress-plugin && zip -r tilihub-sisaltopaivitys.zip tilihub-sisaltopaivitys`

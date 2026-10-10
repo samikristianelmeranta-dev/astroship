@@ -14,19 +14,71 @@
 			"defaultDuotone": false,
 			"custom": true,
 			"palette": [
-				{ "slug": "base", "name": "Tausta", "color": "#f4f6f5" },
-				{ "slug": "surface", "name": "Pinta", "color": "#ffffff" },
-				{ "slug": "ink", "name": "Teksti", "color": "#0f2420" },
-				{ "slug": "muted", "name": "Himmeä teksti", "color": "#55665f" },
-				{ "slug": "line", "name": "Viiva", "color": "#d9e0dc" },
-				{ "slug": "accent", "name": "Havunvihreä", "color": "#0b6e55" },
-				{ "slug": "accent-soft", "name": "Vaalea vihreä", "color": "#e2efe9" },
-				{ "slug": "due", "name": "Eräpäivä", "color": "#b8641a" },
-				{ "slug": "due-soft", "name": "Vaalea eräpäivä", "color": "#f6eadf" },
-				{ "slug": "hero", "name": "Tumma pohja", "color": "#0f2420" },
-				{ "slug": "hero-ink", "name": "Teksti tummalla", "color": "#eef4f1" },
-				{ "slug": "hero-muted", "name": "Himmeä tummalla", "color": "#9fb4ac" },
-				{ "slug": "hero-accent", "name": "Kirkas vihreä", "color": "#3fbf96" }
+				{
+					"slug": "base",
+					"name": "Tausta",
+					"color": "#f4f6f5"
+				},
+				{
+					"slug": "surface",
+					"name": "Pinta",
+					"color": "#ffffff"
+				},
+				{
+					"slug": "ink",
+					"name": "Teksti",
+					"color": "#0f2420"
+				},
+				{
+					"slug": "muted",
+					"name": "Himmeä teksti",
+					"color": "#55665f"
+				},
+				{
+					"slug": "line",
+					"name": "Viiva",
+					"color": "#d9e0dc"
+				},
+				{
+					"slug": "accent",
+					"name": "Havunvihreä",
+					"color": "#0b6e55"
+				},
+				{
+					"slug": "accent-soft",
+					"name": "Vaalea vihreä",
+					"color": "#e2efe9"
+				},
+				{
+					"slug": "due",
+					"name": "Eräpäivä",
+					"color": "#b8641a"
+				},
+				{
+					"slug": "due-soft",
+					"name": "Vaalea eräpäivä",
+					"color": "#f6eadf"
+				},
+				{
+					"slug": "hero",
+					"name": "Tumma pohja",
+					"color": "#0f2420"
+				},
+				{
+					"slug": "hero-ink",
+					"name": "Teksti tummalla",
+					"color": "#eef4f1"
+				},
+				{
+					"slug": "hero-muted",
+					"name": "Himmeä tummalla",
+					"color": "#9fb4ac"
+				},
+				{
+					"slug": "hero-accent",
+					"name": "Kirkas vihreä",
+					"color": "#3fbf96"
+				}
 			]
 		},
 		"typography": {
@@ -43,7 +95,9 @@
 							"fontStyle": "normal",
 							"fontWeight": "400 900",
 							"fontDisplay": "swap",
-							"src": [ "file:./assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" ]
+							"src": [
+								"file:./assets/fonts/schibsted-grotesk-latin-wght-normal.woff2"
+							]
 						}
 					]
 				},
@@ -57,14 +111,18 @@
 							"fontStyle": "normal",
 							"fontWeight": "200 900",
 							"fontDisplay": "swap",
-							"src": [ "file:./assets/fonts/source-sans-3-latin-wght-normal.woff2" ]
+							"src": [
+								"file:./assets/fonts/source-sans-3-latin-wght-normal.woff2"
+							]
 						},
 						{
 							"fontFamily": "Source Sans 3",
 							"fontStyle": "italic",
 							"fontWeight": "200 900",
 							"fontDisplay": "swap",
-							"src": [ "file:./assets/fonts/source-sans-3-latin-wght-italic.woff2" ]
+							"src": [
+								"file:./assets/fonts/source-sans-3-latin-wght-italic.woff2"
+							]
 						}
 					]
 				},
@@ -78,30 +136,104 @@
 							"fontStyle": "normal",
 							"fontWeight": "100 800",
 							"fontDisplay": "swap",
-							"src": [ "file:./assets/fonts/jetbrains-mono-latin-wght-normal.woff2" ]
+							"src": [
+								"file:./assets/fonts/jetbrains-mono-latin-wght-normal.woff2"
+							]
 						}
 					]
 				}
 			],
 			"fontSizes": [
-				{ "slug": "small", "name": "Pieni", "size": "0.875rem", "fluid": false },
-				{ "slug": "medium", "name": "Normaali", "size": "1.0625rem", "fluid": false },
-				{ "slug": "large", "name": "Suuri", "size": "1.25rem", "fluid": { "min": "1.125rem", "max": "1.25rem" } },
-				{ "slug": "x-large", "name": "Erittäin suuri", "size": "1.625rem", "fluid": { "min": "1.375rem", "max": "1.625rem" } },
-				{ "slug": "xx-large", "name": "Otsikko", "size": "2.25rem", "fluid": { "min": "1.75rem", "max": "2.25rem" } },
-				{ "slug": "huge", "name": "Pääotsikko", "size": "3.5rem", "fluid": { "min": "2.1rem", "max": "3.5rem" } }
+				{
+					"slug": "small",
+					"name": "Pieni",
+					"size": "0.875rem",
+					"fluid": false
+				},
+				{
+					"slug": "medium",
+					"name": "Normaali",
+					"size": "1.0625rem",
+					"fluid": false
+				},
+				{
+					"slug": "large",
+					"name": "Suuri",
+					"size": "1.25rem",
+					"fluid": {
+						"min": "1.125rem",
+						"max": "1.25rem"
+					}
+				},
+				{
+					"slug": "x-large",
+					"name": "Erittäin suuri",
+					"size": "1.625rem",
+					"fluid": {
+						"min": "1.375rem",
+						"max": "1.625rem"
+					}
+				},
+				{
+					"slug": "xx-large",
+					"name": "Otsikko",
+					"size": "2.25rem",
+					"fluid": {
+						"min": "1.75rem",
+						"max": "2.25rem"
+					}
+				},
+				{
+					"slug": "huge",
+					"name": "Pääotsikko",
+					"size": "3.5rem",
+					"fluid": {
+						"min": "2.1rem",
+						"max": "3.5rem"
+					}
+				}
 			]
 		},
 		"spacing": {
 			"defaultSpacingSizes": false,
-			"units": [ "px", "rem", "em", "%", "vw" ],
+			"units": [
+				"px",
+				"rem",
+				"em",
+				"%",
+				"vw"
+			],
 			"spacingSizes": [
-				{ "slug": "20", "name": "XS", "size": "0.5rem" },
-				{ "slug": "30", "name": "S", "size": "1rem" },
-				{ "slug": "40", "name": "M", "size": "1.5rem" },
-				{ "slug": "50", "name": "L", "size": "clamp(2rem, 4vw, 3rem)" },
-				{ "slug": "60", "name": "XL", "size": "clamp(3rem, 7vw, 5rem)" },
-				{ "slug": "70", "name": "XXL", "size": "clamp(4rem, 9vw, 7rem)" }
+				{
+					"slug": "20",
+					"name": "XS",
+					"size": "0.5rem"
+				},
+				{
+					"slug": "30",
+					"name": "S",
+					"size": "1rem"
+				},
+				{
+					"slug": "40",
+					"name": "M",
+					"size": "1.5rem"
+				},
+				{
+					"slug": "50",
+					"name": "L",
+					"size": "clamp(2rem, 4vw, 3rem)"
+				},
+				{
+					"slug": "60",
+					"name": "XL",
+					"size": "clamp(3rem, 7vw, 5rem)"
+				},
+				{
+					"slug": "70",
+					"name": "XXL",
+					"size": "clamp(4rem, 9vw, 7rem)"
+				}
 			]
 		},
 		"custom": {
@@ -128,9 +260,17 @@
 		},
 		"elements": {
 			"link": {
-				"color": { "text": "var(--wp--preset--color--accent)" },
-				"typography": { "textDecoration": "underline" },
-				":hover": { "typography": { "textDecoration": "none" } }
+				"color": {
+					"text": "var(--wp--preset--color--accent)"
+				},
+				"typography": {
+					"textDecoration": "underline"
+				},
+				":hover": {
+					"typography": {
+						"textDecoration": "none"
+					}
+				}
 			},
 			"heading": {
 				"typography": {
@@ -140,55 +280,141 @@
 					"letterSpacing": "-0.02em"
 				}
 			},
-			"h1": { "typography": { "fontSize": "var(--wp--preset--font-size--huge)", "fontWeight": "800" } },
-			"h2": { "typography": { "fontSize": "var(--wp--preset--font-size--xx-large)" } },
-			"h3": { "typography": { "fontSize": "var(--wp--preset--font-size--large)" } },
-			"h4": { "typography": { "fontSize": "1.1rem" } },
+			"h1": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--huge)",
+					"fontWeight": "800"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--xx-large)"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--large)"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontSize": "1.1rem"
+				}
+			},
 			"button": {
-				"border": { "radius": "var(--wp--custom--radius)" },
+				"border": {
+					"radius": "var(--wp--custom--radius)"
+				},
 				"color": {
 					"background": "var(--wp--preset--color--accent)",
 					"text": "var(--wp--preset--color--surface)"
 				},
-				"spacing": { "padding": { "top": "0.8rem", "bottom": "0.8rem", "left": "1.3rem", "right": "1.3rem" } },
+				"spacing": {
+					"padding": {
+						"top": "0.8rem",
+						"bottom": "0.8rem",
+						"left": "1.3rem",
+						"right": "1.3rem"
+					}
+				},
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--display)",
 					"fontWeight": "600",
 					"fontSize": "1rem",
 					"textDecoration": "none"
 				},
-				":hover": { "color": { "background": "#0d7f62", "text": "var(--wp--preset--color--surface)" } }
+				":hover": {
+					"color": {
+						"background": "#0d7f62",
+						"text": "var(--wp--preset--color--surface)"
+					}
+				}
 			}
 		},
 		"blocks": {
 			"core/quote": {
-				"border": { "left": { "color": "var(--wp--preset--color--accent)", "width": "3px", "style": "solid" } },
-				"spacing": { "padding": { "left": "1.25rem" } },
-				"typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontSize": "1.2rem", "fontWeight": "500", "lineHeight": "1.45" }
+				"border": {
+					"left": {
+						"color": "var(--wp--preset--color--accent)",
+						"width": "3px",
+						"style": "solid"
+					}
+				},
+				"spacing": {
+					"padding": {
+						"left": "1.25rem"
+					}
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--display)",
+					"fontSize": "1.2rem",
+					"fontWeight": "500",
+					"lineHeight": "1.45"
+				}
 			},
 			"core/table": {
-				"typography": { "fontSize": "0.95rem" }
+				"typography": {
+					"fontSize": "0.95rem"
+				}
 			},
 			"core/separator": {
-				"color": { "text": "var(--wp--preset--color--line)" }
+				"color": {
+					"text": "var(--wp--preset--color--line)"
+				}
 			},
 			"core/post-title": {
-				"typography": { "fontWeight": "800" }
+				"typography": {
+					"fontWeight": "800"
+				}
 			},
 			"core/navigation": {
-				"typography": { "fontSize": "1rem", "fontWeight": "500" }
+				"typography": {
+					"fontSize": "1rem",
+					"fontWeight": "500"
+				}
 			},
 			"core/post-date": {
-				"typography": { "fontFamily": "var(--wp--preset--font-family--mono)", "fontSize": "0.8rem" }
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--mono)",
+					"fontSize": "0.8rem"
+				}
 			}
 		}
 	},
 	"templateParts": [
-		{ "name": "header", "title": "Ylätunniste", "area": "header" },
-		{ "name": "footer", "title": "Alatunniste", "area": "footer" }
+		{
+			"name": "header",
+			"title": "Ylätunniste",
+			"area": "header"
+		},
+		{
+			"name": "footer",
+			"title": "Alatunniste",
+			"area": "footer"
+		}
 	],
 	"customTemplates": [
-		{ "name": "page-wide", "title": "Leveä sivu ilman sivupalkkia", "postTypes": [ "page", "post" ] },
-		{ "name": "page-blank", "title": "Tyhjä (vain ylä- ja alatunniste)", "postTypes": [ "page" ] }
+		{
+			"name": "page-landing",
+			"title": "Laskeutumissivu (sisältö koko leveydeltä)",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "page-wide",
+			"title": "Leveä sivu ilman sivupalkkia",
+			"postTypes": [
+				"page",
+				"post"
+			]
+		},
+		{
+			"name": "page-blank",
+			"title": "Tyhjä (vain ylä- ja alatunniste)",
+			"postTypes": [
+				"page"
+			]
+		}
 	]
 }

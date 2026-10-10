@@ -1185,3 +1185,14 @@ h1, h2, h3, h4 {
 .th-cards h3 a:hover {
 	color: var(--th-accent);
 }
+
+/* Pylväiden korkeudet myös ilman inline-tyylejä */
+.th-bars span:nth-child(1) { height: 42%; }
+.th-bars span:nth-child(2) { height: 55%; }
+.th-bars span:nth-child(3) { height: 48%; }
+.th-bars span:nth-child(4) { height: 61%; }
+.th-bars span:nth-child(5) { height: 58%; }
+.th-bars span:nth-child(6) { height: 70%; }
+.th-bars span:nth-child(7) { height: 66%; }
+.th-bars span:nth-child(8) { height: 74%; }
+.th-bars span:nth-child(9) { height: 82%; }
