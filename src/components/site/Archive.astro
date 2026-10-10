@@ -1,0 +1,87 @@
+---
+import Layout from "@/layouts/TilihubLayout.astro";
+import CtaBand from "./CtaBand.astro";
+import { categories, formatDate, type Post } from "@/lib/posts";
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  intro?: string;
+  items: Post[];
+  n: number;
+  total: number;
+  url: (n: number) => string;
+  activeCategory?: string;
+  seoTitle?: string;
+}
+
+const { title, eyebrow, intro, items, n, total, url, activeCategory, seoTitle } = Astro.props;
+const pageSuffix = n > 1 ? ` – sivu ${n}` : "";
+---
+
+<Layout title={title + pageSuffix} seoTitle={seoTitle && n === 1 ? seoTitle : undefined} description={intro}>
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      {intro && <p class="lead">{intro}</p>}
+    </div>
+  </header>
+  <main class="section">
+    <div class="wrap">
+      <nav aria-label="Kategoriat" class="cat-nav">
+        <ul class="chips">
+          <li><a href="/blogi/" aria-current={!activeCategory && eyebrow === "Artikkelit" ? "page" : undefined}>Kaikki</a></li>
+          {
+            categories.map((c) => (
+              <li>
+                <a href={`/category/${c.slug}/`} aria-current={activeCategory === c.slug ? "page" : undefined}>
+                  {c.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <ul class="post-list">
+        {
+          items.map((p) => (
+            <li>
+              <a href={p.data.path}>
+                <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time>
+                <div>
+                  <h3>{p.data.title}</h3>
+                  {p.data.description && <p>{p.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        total > 1 && (
+          <nav class="pager" aria-label="Sivutus">
+            {n > 1 ? <a href={url(n - 1)}>← Uudemmat</a> : <span />}
+            <span class="pager-pos">
+              Sivu {n} / {total}
+            </span>
+            {n < total ? <a href={url(n + 1)}>Vanhemmat →</a> : <span />}
+          </nav>
+        )
+      }
+    </div>
+  </main>
+  <CtaBand />
+</Layout>
+
+<style>
+  .cat-nav {
+    margin-bottom: 2rem;
+  }
+  .pager-pos {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+</style>

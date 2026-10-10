@@ -1,0 +1,139 @@
+---
+import { nav, site } from "@/data/site";
+import Logo from "./Logo.astro";
+
+const current = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/blogi/" ? current.startsWith("/blogi/") || current.startsWith("/category/") || current.startsWith("/tag/") : current === href;
+---
+
+<header class="site-header">
+  <nav class="wrap topbar" aria-label="Päävalikko">
+    <Logo />
+    <ul class="menu">
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/yhteystiedot/" class="btn btn-primary topbar-cta">Pyydä tarjous</a>
+    <details class="mobile-nav">
+      <summary aria-label="Avaa valikko">
+        <span></span><span></span><span></span>
+      </summary>
+      <div class="mobile-panel">
+        <ul>
+          <li><a href="/">Etusivu</a></li>
+          {nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+          <li><a href="/yhteystiedot/">Yhteystiedot</a></li>
+        </ul>
+        <a href={site.phoneHref} class="mobile-phone">{site.phone}</a>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    position: relative;
+    z-index: 10;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 1.1rem;
+  }
+  .menu {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+  }
+  .menu a {
+    text-decoration: none;
+    color: var(--hero-muted);
+    font-weight: 500;
+    padding-block: 0.3rem;
+    border-bottom: 2px solid transparent;
+  }
+  .menu a:hover,
+  .menu a[aria-current="page"] {
+    color: var(--hero-ink);
+    border-bottom-color: var(--hero-accent);
+  }
+  .topbar-cta {
+    padding: 0.55rem 1rem;
+  }
+  .mobile-nav {
+    display: none;
+  }
+  @media (max-width: 1020px) {
+    .menu,
+    .topbar-cta {
+      display: none;
+    }
+    .mobile-nav {
+      display: block;
+      margin-left: auto;
+    }
+  }
+  .mobile-nav summary {
+    list-style: none;
+    cursor: pointer;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    align-content: center;
+    gap: 5px;
+    padding: 0 0.6rem;
+    border: 1px solid rgb(255 255 255 / 0.25);
+    border-radius: var(--radius);
+  }
+  .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-nav summary span {
+    display: block;
+    height: 2px;
+    background: var(--hero-ink);
+    border-radius: 1px;
+  }
+  .mobile-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--hero-bg);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    padding: 0.5rem var(--gutter) 1.5rem;
+    box-shadow: 0 20px 30px -10px rgb(0 0 0 / 0.4);
+  }
+  .mobile-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mobile-panel a {
+    display: block;
+    padding: 0.8rem 0;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  }
+  .mobile-panel .mobile-phone {
+    border: 0;
+    color: var(--hero-accent);
+    margin-top: 0.5rem;
+  }
+</style>

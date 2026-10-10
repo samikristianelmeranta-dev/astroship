@@ -1,0 +1,39 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: cls } = Astro.props;
+---
+
+<a href="/" class:list={["logo", cls]} aria-label="TiliHub Oy – etusivu">
+  <span class="logo-mark" aria-hidden="true"></span>
+  <span>Tili<b>Hub</b></span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+  }
+  .logo b {
+    font-weight: 800;
+  }
+  /* Pääkirjan sarake: kaksi viivaa vihreällä pohjalla */
+  .logo-mark {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 4px;
+    background:
+      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 32% / 60% 2px no-repeat,
+      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 68% / 60% 2px no-repeat,
+      var(--hero-accent);
+  }
+</style>

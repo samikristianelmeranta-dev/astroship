@@ -1,0 +1,215 @@
+---
+/**
+ * Kaikki WordPressistä tuodut artikkelit ja sivut alkuperäisiin osoitteisiinsa,
+ * esim. /kirjanpidon-sailytysika/ ja /yhteystiedot/privacy-policy/.
+ */
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/TilihubLayout.astro";
+import CtaBand from "@/components/site/CtaBand.astro";
+import { getPosts, categoryName, tagName, formatDate, readingTime, type Post } from "@/lib/posts";
+import { site } from "@/data/site";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const pages = await getCollection("pages");
+  const strip = (p: string) => p.replace(/^\/|\/$/g, "");
+  return [
+    ...posts.map((entry) => ({ params: { path: strip(entry.data.path) }, props: { kind: "post" as const, entry, posts } })),
+    ...pages.map((entry) => ({ params: { path: strip(entry.data.path) }, props: { kind: "page" as const, entry, posts } })),
+  ];
+}
+
+const { kind, entry, posts } = Astro.props;
+const { Content } = await render(entry);
+
+let related: Post[] = [];
+if (kind === "post") {
+  const cats = new Set(entry.data.categories);
+  related = posts
+    .filter((p) => p.id !== entry.id && p.data.categories.some((c) => cats.has(c)))
+    .slice(0, 4);
+}
+
+const post = kind === "post" ? (entry as Post) : null;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const jsonLd = post
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.date.toISOString(),
+      dateModified: (post.data.updated ?? post.data.date).toISOString(),
+      inLanguage: "fi-FI",
+      mainEntityOfPage: canonical,
+      ...(post.data.image ? { image: post.data.image } : {}),
+      author: { "@type": "Organization", name: site.name, url: site.url },
+      publisher: { "@type": "Organization", name: site.name, url: site.url },
+    }
+  : undefined;
+
+const heading = kind === "page" ? (entry.data as { heading?: string }).heading || entry.data.title : entry.data.title;
+---
+
+<Layout
+  title={entry.data.title}
+  seoTitle={entry.data.seoTitle}
+  description={entry.data.description}
+  type={post ? "article" : "website"}
+  image={post?.data.image}
+  published={post?.data.date}
+  modified={entry.data.updated}
+  jsonLd={jsonLd}
+>
+  <header class="page-hero">
+    <div class="wrap">
+      {
+        post ? (
+          <p class="crumbs">
+            <a href="/blogi/">Artikkelit</a>
+            {post.data.categories[0] && (
+              <>
+                {" / "}
+                <a href={`/category/${post.data.categories[0]}/`}>{categoryName(post.data.categories[0])}</a>
+              </>
+            )}
+          </p>
+        ) : (
+          <p class="eyebrow">TiliHub Oy · {site.areas[0]} & {site.region}</p>
+        )
+      }
+      <h1>{heading}</h1>
+      {
+        post && (
+          <p class="meta">
+            <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+            <span>Lukuaika noin {readingTime(post.body)} min</span>
+          </p>
+        )
+      }
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap article-grid">
+      <article class="prose">
+        {
+          entry.body?.trim() ? (
+            <Content />
+          ) : (
+            <>
+              <p>{entry.data.description}</p>
+              <p>
+                Kerromme mielellämme lisää – <a href="/yhteystiedot/">ota yhteyttä</a> tai tutustu{" "}
+                <a href="/kirjanpitopalvelut/">kirjanpitopalveluihimme</a>.
+              </p>
+            </>
+          )
+        }
+      </article>
+      <aside class="article-aside" aria-label="Yhteydenotto">
+        <div class="aside-card">
+          <p class="eyebrow">Kysy kirjanpitäjältä</p>
+          <p class="aside-title">Tarvitsetko apua yrityksesi taloushallintoon?</p>
+          <p>Kartoitamme tilanteesi maksutta ja vastaamme yhden arkipäivän kuluessa.</p>
+          <a href="/yhteystiedot/" class="btn btn-primary">Pyydä tarjous</a>
+          <a href={site.phoneHref} class="aside-phone">{site.phone}</a>
+        </div>
+      </aside>
+    </div>
+
+    {
+      post && (post.data.tags.length > 0 || post.data.categories.length > 0) && (
+        <div class="wrap terms">
+          <ul class="chips" aria-label="Aiheet">
+            {post.data.categories.map((c) => (
+              <li><a href={`/category/${c}/`}>{categoryName(c)}</a></li>
+            ))}
+            {post.data.tags.map((t) => (
+              <li><a href={`/tag/${t}/`}>#{tagName(t)}</a></li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {
+      related.length > 0 && (
+        <section class="wrap related" aria-labelledby="related-title">
+          <h2 id="related-title">Lue myös</h2>
+          <ul class="post-list">
+            {related.map((p) => (
+              <li>
+                <a href={p.data.path}>
+                  <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time>
+                  <div>
+                    <h3>{p.data.title}</h3>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+  <CtaBand />
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .article-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .article-aside {
+      display: none;
+    }
+  }
+  .article-aside {
+    position: sticky;
+    top: 1.5rem;
+  }
+  .aside-card {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .aside-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.25;
+  }
+  .aside-card p:not(.eyebrow):not(.aside-title) {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .aside-card .btn {
+    justify-content: center;
+  }
+  .aside-phone {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  .terms {
+    margin-top: 3rem;
+  }
+  .related {
+    margin-top: 4rem;
+  }
+  .related h2 {
+    font-size: var(--step-2);
+    margin-bottom: 1.25rem;
+  }
+</style>

@@ -1,142 +1,135 @@
 ---
 import Layout from "@/layouts/TilihubLayout.astro";
+import CtaBand from "@/components/site/CtaBand.astro";
+import { site } from "@/data/site";
+import { getPosts, formatDate } from "@/lib/posts";
 
-const nav = [
-  { title: "Palvelut", href: "#palvelut" },
-  { title: "Hinnasto", href: "#hinnasto" },
-  { title: "Näin aloitat", href: "#aloitus" },
-  { title: "Usein kysyttyä", href: "#ukk" },
-  { title: "Yhteystiedot", href: "#yhteys" },
-];
+const latest = (await getPosts()).slice(0, 4);
 
 const services = [
   {
-    title: "Kirjanpito",
-    text: "Kuitit ja laskut kulkevat sähköisesti. Kirjaamme tapahtumat ja täsmäytämme pankkitilit joka kuukausi.",
+    title: "Kirjanpitopalvelut",
+    text: "Luotettavaa ja selkeää kirjanpitoa, joka pitää yrityksesi talouden hallinnassa – ajallaan, ilman yllätyksiä. Automaatio antaa reaaliaikaisen näkymän kannattavuuteen ja kassavirtaan.",
+    href: "/kirjanpitopalvelut/",
     tag: "Kuukausittain",
   },
   {
-    title: "Arvonlisävero",
-    text: "Laadimme ALV-laskelman ja annamme kausiveroilmoituksen OmaVeroon ennen eräpäivää.",
-    tag: "Kuun 12. päivä",
-  },
-  {
-    title: "Palkanlaskenta",
-    text: "Palkat, lomarahat ja tulorekisteri-ilmoitukset. Työntekijä saa palkkalaskelman sähköisesti.",
-    tag: "Tulorekisteri",
-  },
-  {
-    title: "Tilinpäätös",
-    text: "Tilinpäätös, veroilmoitus ja yhtiökokouksen pöytäkirjapohjat valmiina tilikauden päätyttyä.",
+    title: "Tilinpäätöspalvelut",
+    text: "Huolellisesti laadittu tilinpäätös antaa vahvan pohjan tulevaan. Varmistamme, että tilinpäätös täyttää lakisääteiset vaatimukset – ajallaan ja ammattitaidolla.",
+    href: "/tilinpaatos/",
     tag: "Tilikauden lopussa",
   },
   {
-    title: "Laskutus ja reskontra",
-    text: "Myyntilaskut verkkolaskuina, maksujen seuranta ja maksumuistutukset puolestasi.",
-    tag: "Verkkolasku",
+    title: "Palkanlaskenta",
+    text: "Täsmällinen palkanlaskenta takaa tyytyväiset työntekijät ja mielenrauhan työnantajalle. Hoidamme lakisääteiset velvoitteet oikein, ajallaan ja tietoturvallisesti.",
+    href: "/palkanlaskenta/",
+    tag: "Tulorekisteri",
+  },
+];
+
+const reasons = [
+  {
+    title: "Aidosti tavoitettavissa",
+    text: "Meidät saa kiinni puhelimella, sähköpostilla tai WhatsAppilla. Asiat hoituvat tutun ihmisen kautta ilman organisaatioviidakkoa.",
   },
   {
-    title: "Yrityksen perustaminen",
-    text: "Valitaan yritysmuoto, tehdään perustamisilmoitus ja otetaan kirjanpito käyttöön ensimmäisestä päivästä.",
-    tag: "Y-tunnus",
+    title: "Konsultoiva tapa tehdä töitä",
+    text: "Emme vain kirjaa lukuja – autamme, opastamme ja konsultoimme. Veroneuvonta ja liiketoimintakonsultointi kuuluvat yhteistyöhön.",
+  },
+  {
+    title: "Täysin läpinäkyvä hinnoittelu",
+    text: "Tiedät tarkalleen, mitä maksat ja mitä olemme tehneet. Ei piilokuluja, ei yllätyksiä laskussa.",
+  },
+  {
+    title: "Digitaalinen ja reaaliaikainen",
+    text: "Automaation ansiosta näet myynnin, kannattavuuden ja kassavirran milloin tahansa.",
+  },
+  {
+    title: "Skaalautuu yrityksesi mukana",
+    text: "Palvelu mukautuu tarpeisiin, olitpa aloittava yrittäjä tai vakiintunut toimija. Erikoistumme pk-yrityksiin.",
+  },
+  {
+    title: "Asiakastyytyväisyys strategisena prioriteettina",
+    text: "Asiakastyytyväisyys ei ole meille fraasi vaan strateginen painopiste. Asiakasarviot puhuvat puolestaan.",
   },
 ];
 
 const steps = [
+  { title: "Ilmainen kartoitus", text: "Käydään läpi yrityksesi tarpeet ja nykytilanne – ilman sitoumuksia." },
+  { title: "Selkeä tarjous", text: "Saat läpinäkyvän tarjouksen, jossa ei ole piilokuluja." },
+  { title: "Sujuva siirto", text: "Hoidamme siirron ja olemme tarvittaessa yhteydessä edelliseen tilitoimistoon." },
+  { title: "Yhteistyö alkaa", text: "Sinulla on yksi tuttu yhteyshenkilö, joka tuntee yrityksesi alusta asti." },
+];
+
+const testimonials = [
   {
-    title: "Varaa maksuton tutustumispuhelu",
-    text: "Käydään läpi yrityksesi tilanne ja tarpeet. Puhelu kestää noin 20 minuuttia.",
+    quote:
+      "TiliHub Oy:n kanssa yhteistyö on ollut helppoa ja mutkatonta. He tuntevat sote-alan käytännöt, joten hammasklinikkamme kirjanpito ja palkanlaskenta ovat sujuneet huoletta. Vahva suositus.",
+    name: "Joel Mustonen",
+    company: "Hammasklinikka Timantti",
   },
   {
-    title: "Saat kiinteän tarjouksen",
-    text: "Tarjous perustuu tositemäärään ja palveluihin. Ei tuntiveloitusta eikä yllätyksiä.",
+    quote:
+      "TiliHub on ollut meille hyvinvointialan koulutus- ja konsultaatiotyötä tekevälle uudelle yritykselle erinomainen kumppani. Asiantunteva verokonsultointi on tukenut päätöksentekoamme yrityksen alkutaipaleella.",
+    name: "Iiro Jokipalo",
+    company: "Open Mind Consulting",
   },
   {
-    title: "Hoidamme siirron",
-    text: "Pyydämme aineistot edelliseltä tilitoimistolta ja otamme valtuudet Suomi.fi:ssä.",
+    quote:
+      "TiliHub Oy on meille juuri oikea kirjanpitotoimisto. Kirjanpitäjän saa kiinni ja puhelimessa on aina ihminen. Me olemme todella tyytyväisiä.",
+    name: "Henri Haapakorva",
+    company: "Mahti Kylpyhuoneet",
   },
 ];
 
-const plans = [
-  {
-    name: "Toiminimi",
-    price: "89",
-    for: "Yksinyrittäjälle ja sivutoimiselle",
-    items: ["Enintään 30 tositetta / kk", "Kirjanpito ja ALV-ilmoitus", "Veroilmoitus (5-lomake)", "Sähköinen kuittiarkisto"],
-  },
-  {
-    name: "Osakeyhtiö",
-    price: "189",
-    for: "Kasvavalle pienyritykselle",
-    items: ["Enintään 80 tositetta / kk", "Kirjanpito ja ALV-ilmoitus", "Tilinpäätös ja veroilmoitus", "Kuukausiraportti ja kassaennuste", "Oma kirjanpitäjä"],
-    featured: true,
-  },
-  {
-    name: "Työnantaja",
-    price: "289",
-    for: "Kun yrityksessä on palkansaajia",
-    items: ["Kaikki Osakeyhtiö-paketin palvelut", "Palkanlaskenta 1–5 hlö", "Tulorekisteri-ilmoitukset", "Vuosi-ilmoitukset ja TyEL"],
-  },
-];
-
-const faqs = [
-  {
-    q: "Mitä ohjelmistoa käytätte?",
-    a: "Käytämme pilvipohjaista taloushallinto-ohjelmistoa, johon saat omat tunnukset. Näet luvut ja raportit milloin tahansa selaimella tai puhelimella.",
-  },
-  {
-    q: "Voinko vaihtaa tilitoimistoa kesken tilikauden?",
-    a: "Voit. Hoidamme siirron puolestasi ja sovimme vaihtopäivän niin, ettei yksikään ALV-ilmoitus tai palkanmaksu jää väliin.",
-  },
-  {
-    q: "Miten kuitit toimitetaan?",
-    a: "Kuvaat kuitin mobiilisovelluksella tai välität sen sähköpostiin. Ostolaskut tulevat suoraan verkkolaskuina.",
-  },
-  {
-    q: "Sisältyvätkö hintoihin arvonlisävero?",
-    a: "Hinnat ovat arvonlisäverottomia kuukausihintoja (alv 0 %). Arvonlisävero lisätään laskuun voimassa olevan verokannan mukaan.",
-  },
-];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  name: site.name,
+  description:
+    "Moderni digitaalinen tilitoimisto Kaarinassa. Kirjanpito, palkanlaskenta ja tilinpäätöspalvelut pk-yrityksille Turussa ja koko Suomessa.",
+  url: site.url,
+  telephone: "+358440803344",
+  email: site.email,
+  address: { "@type": "PostalAddress", addressLocality: site.locality, addressRegion: site.region, addressCountry: "FI" },
+  areaServed: ["Turku", "Kaarina", "Varsinais-Suomi", "Suomi"],
+  serviceType: ["Kirjanpito", "Palkanlaskenta", "Tilinpäätös", "Taloushallinto"],
+  sameAs: [site.facebook, site.instagram],
+};
 ---
 
-<Layout>
+<Layout
+  seoTitle="Tilitoimisto Turku & Varsinais-Suomi - Digitaalinen kirjanpito"
+  description="Tilitoimisto TiliHub Oy on moderni digitaalinen tilitoimisto Kaarinasta. Tilitoimistopalvelut Turku & Varsinais-Suomi. Digitaalisesti ympäri Suomea. Kysy lisää!"
+  jsonLd={jsonLd}
+>
   <!-- Hero -->
-  <header class="hero">
-    <nav class="wrap topbar" aria-label="Päävalikko">
-      <a href="/" class="logo" aria-label="Tilihub etusivu">
-        <span class="logo-mark" aria-hidden="true"></span>
-        Tilihub
-      </a>
-      <ul class="menu">
-        {nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
-      </ul>
-      <a href="#yhteys" class="btn btn-ghost topbar-cta">Kirjaudu</a>
-    </nav>
-
+  <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow hero-eyebrow">Tilitoimisto pienyrittäjälle</p>
-        <h1>Kirjanpito ajallaan. Luvut aina näkyvillä.</h1>
+        <p class="eyebrow hero-eyebrow">Digitaalinen tilitoimisto · Turku & Varsinais-Suomi</p>
+        <h1>Tilitoimisto Turku & Varsinais-Suomi – <span>digitaalinen taloushallinnon kumppani</span></h1>
         <p class="lead">
-          Tilihub hoitaa kirjanpidon, palkat, arvonlisäverot ja tilinpäätöksen kiinteällä
-          kuukausihinnalla. Sinä näet yrityksesi tilanteen reaaliajassa ja keskityt omaan työhösi.
+          TiliHub Oy on yrittäjälähtöinen tilitoimisto Kaarinasta. Hoidamme kirjanpidon, palkanlaskennan ja
+          tilinpäätökset pk-yrityksille selkeällä hinnoittelulla ilman piilokuluja – ja olemme aidosti
+          tavoitettavissa. Palvelemme digitaalisesti koko Suomessa.
         </p>
         <div class="hero-actions">
-          <a href="#yhteys" class="btn btn-primary">Pyydä tarjous</a>
-          <a href="#hinnasto" class="btn btn-ghost">Katso hinnasto</a>
+          <a href="/yhteystiedot/" class="btn btn-primary">Pyydä tarjous</a>
+          <a href="/kirjanpidon-hinnat/" class="btn btn-ghost">Katso hinnasto</a>
         </div>
-        <ul class="hero-facts">
-          <li><strong>Auktorisoitu</strong> kirjanpitäjä (KLT)</li>
-          <li><strong>Kiinteä</strong> kuukausihinta</li>
-          <li><strong>Vastaus</strong> 1 arkipäivässä</li>
-        </ul>
+        <dl class="hero-stats">
+          <div><dt>Asiakasarvioiden keskiarvo</dt><dd>5★</dd></div>
+          <div><dt>Perustettu</dt><dd>2025</dd></div>
+          <div><dt>Digitaalinen</dt><dd>100 %</dd></div>
+        </dl>
       </div>
 
-      <figure class="report" aria-label="Esimerkki asiakkaan kuukausikatsauksesta">
+      <figure class="report" aria-label="Havainnekuva kuukausiraportista">
         <div class="report-head">
           <div>
-            <p class="report-label">Kuukausikatsaus</p>
-            <p class="report-title">Esimerkki Oy · syyskuu 2026</p>
+            <p class="report-label">Kuukausiraportti</p>
+            <p class="report-title">Asiakasyritys Oy · syyskuu</p>
           </div>
           <span class="badge">Täsmäytetty</span>
         </div>
@@ -148,195 +141,197 @@ const faqs = [
           <div class="total"><dt>Tulos</dt><dd>6 598,55 €</dd></div>
         </dl>
         <div class="bars" aria-hidden="true">
-          {[42, 55, 48, 61, 58, 70, 66, 74, 82].map((h, i) => (
-            <span style={`--h:${h}%`} class={i === 8 ? "now" : ""}></span>
-          ))}
+          {[42, 55, 48, 61, 58, 70, 66, 74, 82].map((h, i) => <span style={`--h:${h}%`} class={i === 8 ? "now" : ""} />)}
         </div>
         <p class="bars-caption">Liikevaihto tammi–syys</p>
         <div class="deadlines">
-          <p class="report-label">Tulevat eräpäivät</p>
+          <p class="report-label">Eräpäivät</p>
           <ul class="tnum">
-            <li><time datetime="2026-10-12">12.10.</time> ALV-ilmoitus ja maksu <span>Hoidettu</span></li>
-            <li><time datetime="2026-10-12">12.10.</time> Työnantajasuoritukset <span>Hoidettu</span></li>
-            <li class="open"><time datetime="2026-10-20">20.10.</time> TyEL-maksu <span>Muistutus lähetetty</span></li>
+            <li><time>12.10.</time> ALV-ilmoitus ja maksu <span>Hoidettu</span></li>
+            <li><time>12.10.</time> Työnantajasuoritukset <span>Hoidettu</span></li>
+            <li class="open"><time>20.10.</time> TyEL-maksu <span>Muistutettu</span></li>
           </ul>
         </div>
-        <figcaption>Esimerkkiluvut</figcaption>
+        <figcaption>Esimerkki</figcaption>
       </figure>
     </div>
-  </header>
+  </section>
+
+  <section class="strip" aria-label="Ohjelmistot ja jäsenyys">
+    <div class="wrap strip-inner">
+      <p>Käytämme nykyaikaisia ohjelmistoja</p>
+      <ul>{site.software.map((s) => <li>{s}</li>)}</ul>
+      <p class="strip-member">Taloushallintoliiton jäsen</p>
+    </div>
+  </section>
 
   <main>
-    <!-- Ohjelmistot -->
-    <section class="strip" aria-label="Ohjelmistot ja yhteistyö">
-      <div class="wrap strip-inner">
-        <p>Toimimme yleisimmissä taloushallinnon ohjelmistoissa</p>
-        <ul>
-          <li>Procountor</li>
-          <li>Netvisor</li>
-          <li>Fennoa</li>
-          <li>Holvi</li>
-          <li>OmaVero</li>
-          <li>Tulorekisteri</li>
-        </ul>
-      </div>
-    </section>
-
     <!-- Palvelut -->
-    <section id="palvelut" class="section">
+    <section class="section">
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow">Palvelut</p>
-          <h2>Koko taloushallinto yhdestä paikasta</h2>
-          <p>Valitse tarvitsemasi palvelut. Kaikki hoituu sähköisesti, ja sinulla on yksi nimetty kirjanpitäjä.</p>
+          <h2>Kaikki tilitoimiston palvelut saman katon alta</h2>
+          <p>
+            Me huolehdimme numeroistasi, jotta sinä voit keskittyä yrityksen kasvattamiseen Turun alueella tai
+            digitaalisesti ympäri Suomea. Olemme aito kumppani – enemmän kuin perinteinen tilitoimisto.
+          </p>
         </div>
         <ul class="services">
-          {services.map((s) => (
-            <li>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-              <span class="tag">{s.tag}</span>
-            </li>
-          ))}
+          {
+            services.map((s) => (
+              <li>
+                <a href={s.href}>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                  <span class="service-foot">
+                    <span class="tag">{s.tag}</span>
+                    <span class="more">Lue lisää →</span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </section>
 
-    <!-- Näin aloitat -->
-    <section id="aloitus" class="section section-alt">
-      <div class="wrap steps-grid">
-        <div class="section-head">
-          <p class="eyebrow">Näin aloitat</p>
-          <h2>Tilitoimiston vaihto on helpompaa kuin luulet</h2>
-          <p>Useimmat asiakkaamme siirtyvät meille kesken tilikauden. Hoidamme paperityöt, sinä vastaat muutamaan kysymykseen.</p>
-        </div>
-        <ol class="steps">
-          {steps.map((s, i) => (
-            <li>
-              <span class="step-no tnum">{i + 1}</span>
-              <div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-
-    <!-- Hinnasto -->
-    <section id="hinnasto" class="section">
+    <!-- Miksi -->
+    <section class="section section-alt">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Hinnasto</p>
-          <h2>Kiinteä hinta, ei tuntilaskutusta</h2>
-          <p>Hinnat ovat esimerkkejä, alv 0 %. Lopullinen hinta määräytyy tositemäärän ja valittujen palveluiden mukaan.</p>
-        </div>
-        <div class="plans">
-          {plans.map((p) => (
-            <article class:list={["plan", { featured: p.featured }]}>
-              {p.featured && <span class="plan-flag">Suosituin</span>}
-              <h3>{p.name}</h3>
-              <p class="plan-for">{p.for}</p>
-              <p class="price tnum"><span>{p.price} €</span> / kk</p>
-              <ul>
-                {p.items.map((it) => <li>{it}</li>)}
-              </ul>
-              <a href="#yhteys" class:list={["btn", p.featured ? "btn-primary" : "btn-ghost"]}>Pyydä tarjous</a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Asiakaskokemus -->
-    <section class="section section-alt">
-      <div class="wrap quote">
-        <blockquote>
+          <p class="eyebrow">Miksi TiliHub?</p>
+          <h2>Tilitoimisto, joka auttaa aidosti yrittäjän arkea</h2>
           <p>
-            ”Ennen istuin kuitti­pinon kanssa joka kuun lopussa. Nyt kuvaan kuitin heti ja näen
-            kuukauden tuloksen ennen kuin olen ehtinyt kysyä.”
+            Läpinäkyvä hinnoittelu, konsultoiva ote ja aito kiinnostus yrityksesi menestykseen – siksi kasvava
+            joukko pk-yrittäjiä luottaa TiliHubiin.
           </p>
-          <footer>
-            <strong>Asiakkaan nimi</strong> · Toimitusjohtaja, rakennusalan osakeyhtiö
-          </footer>
-        </blockquote>
-        <dl class="stats tnum">
-          <div><dt>Asiakasyrityksiä</dt><dd>120+</dd></div>
-          <div><dt>ALV-ilmoitukset ajallaan</dt><dd>100 %</dd></div>
-          <div><dt>Vastausaika</dt><dd>&lt; 1 pv</dd></div>
+        </div>
+        <dl class="reasons">
+          {
+            reasons.map((r) => (
+              <div>
+                <dt>{r.title}</dt>
+                <dd>{r.text}</dd>
+              </div>
+            ))
+          }
         </dl>
       </div>
     </section>
 
-    <!-- UKK -->
-    <section id="ukk" class="section">
-      <div class="wrap faq-grid">
+    <!-- Vaihto -->
+    <section class="section">
+      <div class="wrap steps-grid">
         <div class="section-head">
-          <p class="eyebrow">Usein kysyttyä</p>
-          <h2>Kysymyksiä ennen aloitusta</h2>
+          <p class="eyebrow">Tilitoimiston vaihto</p>
+          <h2>Oletko vaihtamassa tilitoimistoa?</h2>
+          <p>
+            Vaihto on helpompi kuin usein luullaan. Käymme yrityksesi tilanteen, tarpeet ja nykyisen
+            taloushallintoratkaisun läpi yhdessä. Vaihdos ei aiheuta katkoksia – tarvittaessa hoidamme kaiken
+            puolestasi.
+          </p>
+          <a href="/tilitoimistoa-vaihtamassa/" class="text-link">Lue lisää tilitoimiston vaihdosta →</a>
         </div>
-        <div class="faq">
-          {faqs.map((f) => (
-            <details>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))}
+        <ol class="steps">
+          {
+            steps.map((s, i) => (
+              <li>
+                <span class="step-no tnum">{i + 1}</span>
+                <div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- Asiakaskokemukset -->
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Asiakaskokemukset</p>
+          <h2>Mitä asiakkaat meistä sanovat?</h2>
+        </div>
+        <div class="quotes">
+          {
+            testimonials.map((t) => (
+              <figure>
+                <blockquote>”{t.quote}”</blockquote>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  <span>{t.company}</span>
+                </figcaption>
+              </figure>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- Yhteys -->
-    <section id="yhteys" class="contact">
-      <div class="wrap contact-grid">
-        <div>
-          <p class="eyebrow">Ota yhteyttä</p>
-          <h2>Pyydä tarjous, vastaamme yhden arkipäivän kuluessa</h2>
-          <ul class="contact-list">
-            <li><span>Sähköposti</span> info@tilihub.fi</li>
-            <li><span>Puhelin</span> 010 123 4567</li>
-            <li><span>Aukioloajat</span> ma–pe 8–16</li>
-          </ul>
+    <!-- Paikallinen -->
+    <section class="section">
+      <div class="wrap local-grid">
+        <div class="local-text">
+          <p class="eyebrow">Tilitoimisto Turku & Varsinais-Suomi</p>
+          <h2>Paikallinen tilitoimisto Turun talousalueella</h2>
+          <p>
+            Etsitkö tilitoimistoa Turusta tai lähialueilta? TiliHub Oy on kaarinalainen tilitoimisto, joka palvelee
+            pk-yrityksiä koko Varsinais-Suomessa – ja digitaalisesti koko Suomessa.
+          </p>
+          <p>
+            Paikallisuus tarkoittaa meille nopeaa palvelua, henkilökohtaista yhteydenpitoa ja ymmärrystä alueen
+            yritystoiminnan erityispiirteistä. Ymmärrämme yrittäjän arjen ja tarjoamme ratkaisuja, jotka tukevat
+            kasvua ja kannattavuutta – olitpa juuri aloittanut tai jo vakiintunut toimija.
+          </p>
+          <ul class="chips area-chips">{site.areas.map((a) => <li><span>{a}</span></li>)}</ul>
         </div>
-        <form class="form" id="tarjous">
-          <label for="f-nimi">Nimi</label>
-          <input id="f-nimi" name="nimi" autocomplete="name" required />
-          <label for="f-email">Sähköposti</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required />
-          <label for="f-muoto">Yritysmuoto</label>
-          <select id="f-muoto" name="yritysmuoto">
-            <option>Toiminimi</option>
-            <option selected>Osakeyhtiö</option>
-            <option>Avoin tai kommandiittiyhtiö</option>
-            <option>Yhdistys</option>
-            <option>Yritys on vasta perusteilla</option>
-          </select>
-          <label for="f-viesti">Viesti</label>
-          <textarea id="f-viesti" name="viesti" rows="3" placeholder="Esim. tositteita noin 40 kuukaudessa, kaksi työntekijää"></textarea>
-          <button type="submit" class="btn btn-primary">Lähetä tarjouspyyntö</button>
-          <p class="form-note" id="f-tila" role="status"></p>
-        </form>
+        <aside class="contact-card">
+          <h3>Ota yhteyttä – vastaamme nopeasti</h3>
+          <dl>
+            <div><dt>Puhelin</dt><dd><a href={site.phoneHref}>{site.phone}</a></dd></div>
+            <div><dt>Sähköposti</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href={site.whatsapp} rel="noopener">Lähetä viesti</a></dd></div>
+            <div><dt>Toimialue</dt><dd>{site.area}</dd></div>
+          </dl>
+          <a href="/yhteystiedot/" class="btn btn-primary">Jätä yhteydenottopyyntö</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Uusimmat artikkelit -->
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="section-head head-row">
+          <div>
+            <p class="eyebrow">Artikkelit</p>
+            <h2>Ajankohtaista kirjanpidosta</h2>
+          </div>
+          <a href="/blogi/" class="text-link">Kaikki artikkelit →</a>
+        </div>
+        <ul class="post-list latest">
+          {
+            latest.map((p) => (
+              <li>
+                <a href={p.data.path}>
+                  <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date)}</time>
+                  <div>
+                    <h3>{p.data.title}</h3>
+                    {p.data.description && <p>{p.data.description}</p>}
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p class="logo"><span class="logo-mark" aria-hidden="true"></span> Tilihub</p>
-      <p>Tilitoimisto Tilihub · Y-tunnus 1234567-8 · Auktorisoitu tilitoimisto</p>
-      <p>© 2026 Tilihub</p>
-    </div>
-  </footer>
-
-  <script>
-    const form = document.getElementById("tarjous") as HTMLFormElement | null;
-    const status = document.getElementById("f-tila");
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (status) status.textContent = "Lomake on esikatseluversio, eikä viestiä lähetetty.";
-    });
-  </script>
+  <CtaBand />
 </Layout>
 
 <style>
@@ -360,67 +355,13 @@ const faqs = [
     mask-image: linear-gradient(to bottom, #000 30%, transparent);
     pointer-events: none;
   }
-  .topbar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding-block: 1.25rem;
-  }
-  .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.03em;
-    text-decoration: none;
-  }
-  .logo-mark {
-    width: 1.35rem;
-    height: 1.35rem;
-    border-radius: 4px;
-    background:
-      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 32% / 60% 2px no-repeat,
-      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 68% / 60% 2px no-repeat,
-      #3fbf96;
-  }
-  .menu {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0 0 0 auto;
-    padding: 0;
-  }
-  .menu a {
-    text-decoration: none;
-    color: var(--hero-muted);
-    font-weight: 500;
-  }
-  .menu a:hover {
-    color: var(--hero-ink);
-  }
-  .topbar-cta {
-    padding: 0.5rem 1rem;
-    color: var(--hero-ink);
-  }
-  @media (max-width: 860px) {
-    .menu {
-      display: none;
-    }
-    .topbar-cta {
-      margin-left: auto;
-    }
-  }
-
   .hero-grid {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: clamp(2rem, 5vw, 4.5rem);
     align-items: center;
-    padding-top: clamp(2rem, 6vw, 4.5rem);
+    padding-top: clamp(2rem, 5vw, 4rem);
   }
   @media (max-width: 900px) {
     .hero-grid {
@@ -428,19 +369,21 @@ const faqs = [
     }
   }
   .hero-eyebrow {
-    color: #7fd8b8;
+    color: var(--hero-accent);
   }
   .hero h1 {
-    font-size: var(--step-4);
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
     font-weight: 800;
     margin-top: 1rem;
-    max-width: 14ch;
+  }
+  .hero h1 span {
+    color: var(--hero-accent);
   }
   .lead {
     margin-top: 1.5rem;
     font-size: var(--step-1);
     color: var(--hero-muted);
-    max-width: 34rem;
+    max-width: 36rem;
     line-height: 1.55;
   }
   .hero-actions {
@@ -449,29 +392,32 @@ const faqs = [
     gap: 0.75rem;
     margin-top: 2rem;
   }
-  .hero .btn-primary {
-    background: #3fbf96;
-    color: #06231a;
-  }
   .hero .btn-ghost {
     color: var(--hero-ink);
   }
-  .hero-facts {
+  .hero-stats {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.75rem;
-    list-style: none;
-    padding: 0;
-    margin: 2.25rem 0 0;
+    gap: 1rem 2.5rem;
+    margin: 2.5rem 0 0;
+  }
+  .hero-stats div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .hero-stats dt {
     font-size: var(--step--1);
     color: var(--hero-muted);
   }
-  .hero-facts strong {
+  .hero-stats dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-2);
     color: var(--hero-ink);
-    font-weight: 600;
   }
 
-  /* Raporttikortti */
+  /* Raporttikortti (havainnekuva, sama ilme molemmissa teemoissa) */
   .report {
     margin: 0;
     background: #fbfcfb;
@@ -644,21 +590,21 @@ const faqs = [
     font-weight: 700;
     font-size: 1.05rem;
     color: var(--muted);
-    opacity: 0.85;
+  }
+  .strip-member {
+    margin-left: auto;
   }
 
   /* Osiot */
-  .section {
-    padding-block: clamp(3.5rem, 8vw, 6rem);
-  }
   .section-alt {
     background: var(--surface);
     border-block: 1px solid var(--line);
   }
   .section-head {
-    max-width: 40rem;
+    max-width: 42rem;
     display: grid;
     gap: 0.9rem;
+    justify-items: start;
   }
   .section-head h2 {
     font-size: var(--step-3);
@@ -667,6 +613,27 @@ const faqs = [
   .section-head p:not(.eyebrow) {
     color: var(--muted);
   }
+  .head-row {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+  }
+  .head-row > div {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .text-link {
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .text-link:hover {
+    text-decoration: underline;
+  }
 
   .services {
     list-style: none;
@@ -674,25 +641,43 @@ const faqs = [
     margin: 3rem 0 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
-    border-top: 1px solid var(--line);
+    gap: 1.25rem;
   }
-  .services li {
+  .services a {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    padding: 1.75rem 1.75rem 1.75rem 0;
-    border-bottom: 1px solid var(--line);
+    gap: 0.75rem;
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .services a:hover {
+    border-color: var(--accent);
   }
   .services h3 {
     font-size: var(--step-1);
-    font-weight: 700;
   }
   .services p {
     color: var(--muted);
   }
-  .tag {
+  .service-foot {
     margin-top: auto;
-    align-self: start;
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .more {
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .tag {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     letter-spacing: 0.04em;
@@ -702,16 +687,36 @@ const faqs = [
     border-radius: 3px;
   }
 
-  .steps-grid,
-  .faq-grid {
+  .reasons {
+    margin: 3rem 0 0;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    border-top: 1px solid var(--line);
+  }
+  .reasons div {
+    padding: 1.5rem 1.75rem 1.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .reasons dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .reasons dd {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+  }
+
+  .steps-grid,
+  .local-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(2rem, 6vw, 5rem);
     align-items: start;
   }
   @media (max-width: 860px) {
     .steps-grid,
-    .faq-grid {
+    .local-grid {
       grid-template-columns: minmax(0, 1fr);
     }
   }
@@ -720,7 +725,7 @@ const faqs = [
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 2rem;
+    gap: 1.75rem;
   }
   .steps li {
     display: grid;
@@ -744,253 +749,95 @@ const faqs = [
   }
   .steps p {
     color: var(--muted);
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
   }
 
-  .plans {
+  .quotes {
+    margin-top: 2.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    gap: 1.25rem;
-    margin-top: 3rem;
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 2.5rem;
   }
-  .plan {
-    position: relative;
+  .quotes figure {
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    padding: 2rem 1.75rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
+    gap: 1.25rem;
   }
-  .plan.featured {
-    border: 2px solid var(--accent);
-  }
-  .plan-flag {
-    position: absolute;
-    top: -0.75rem;
-    left: 1.75rem;
-    background: var(--accent);
-    color: var(--accent-ink);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.2rem 0.65rem;
-    border-radius: 99px;
-  }
-  .plan h3 {
-    font-size: var(--step-2);
-  }
-  .plan-for {
-    color: var(--muted);
-  }
-  .price {
-    margin-top: 0.75rem;
-    color: var(--muted);
-  }
-  .price span {
+  .quotes blockquote {
+    margin: 0;
     font-family: var(--font-display);
-    font-weight: 800;
-    font-size: var(--step-3);
-    color: var(--ink);
-    letter-spacing: -0.02em;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.45;
   }
-  .plan ul {
-    list-style: none;
-    padding: 1rem 0 0;
-    margin: 0.5rem 0 1.5rem;
-    border-top: 1px solid var(--line);
-    display: grid;
-    gap: 0.55rem;
-  }
-  .plan li {
-    padding-left: 1.6rem;
-    position: relative;
-  }
-  .plan li::before {
-    content: "";
-    position: absolute;
-    left: 0.15rem;
-    top: 0.45em;
-    width: 0.7rem;
-    height: 0.4rem;
-    border-left: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
-    transform: rotate(-45deg);
-  }
-  .plan .btn {
+  .quotes figcaption {
     margin-top: auto;
-    justify-content: center;
-  }
-  .plan .btn-ghost {
-    color: var(--ink);
-    border-color: var(--line);
-  }
-
-  .quote {
     display: grid;
-    gap: 3rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--accent);
   }
-  .quote blockquote {
-    margin: 0;
-    max-width: 52rem;
-  }
-  .quote blockquote p {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2.1rem);
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
-  }
-  .quote footer {
-    margin-top: 1.25rem;
-    color: var(--muted);
-  }
-  .quote footer strong {
-    color: var(--ink);
-  }
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
-    gap: 1.5rem;
-    margin: 0;
-    border-top: 1px solid var(--line);
-    padding-top: 2rem;
-  }
-  .stats dt {
+  .quotes figcaption span {
     color: var(--muted);
     font-size: var(--step--1);
   }
-  .stats dd {
-    margin: 0.25rem 0 0;
-    font-family: var(--font-display);
-    font-size: var(--step-3);
-    font-weight: 800;
-    color: var(--accent);
-  }
 
-  .faq {
-    border-top: 1px solid var(--line);
-  }
-  .faq details {
-    border-bottom: 1px solid var(--line);
-    padding: 1.1rem 0;
-  }
-  .faq summary {
-    cursor: pointer;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: var(--step-1);
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
+  .local-text {
+    display: grid;
     gap: 1rem;
   }
-  .faq summary::-webkit-details-marker {
-    display: none;
-  }
-  .faq summary::after {
-    content: "+";
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .faq details[open] summary::after {
-    content: "−";
-  }
-  .faq details p {
-    color: var(--muted);
-    margin-top: 0.6rem;
-    max-width: 38rem;
-  }
-
-  .contact {
-    background: var(--accent-soft);
-    padding-block: clamp(3.5rem, 8vw, 6rem);
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .contact-grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-  .contact h2 {
+  .local-text h2 {
     font-size: var(--step-3);
-    margin-top: 0.9rem;
   }
-  .contact-list {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0 0;
+  .local-text p:not(.eyebrow) {
+    color: var(--muted);
+  }
+  .area-chips span {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    font-size: var(--step--1);
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+  .contact-card {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    border-radius: 10px;
+    padding: 2rem;
     display: grid;
-    gap: 0.75rem;
+    gap: 1.25rem;
+  }
+  .contact-card h3 {
     font-size: var(--step-1);
   }
-  .contact-list span {
-    display: block;
+  .contact-card dl {
+    margin: 0;
+  }
+  .contact-card dl div {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .contact-card dt {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--hero-muted);
   }
-  .form {
-    display: grid;
-    gap: 0.4rem;
-    background: var(--surface);
-    padding: 1.75rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--line);
-  }
-  .form label {
+  .contact-card dd {
+    margin: 0.15rem 0 0;
     font-weight: 600;
-    font-size: var(--step--1);
-    margin-top: 0.6rem;
   }
-  .form label:first-child {
-    margin-top: 0;
+  .contact-card a {
+    color: var(--hero-ink);
   }
-  .form input,
-  .form select,
-  .form textarea {
-    font: inherit;
-    color: var(--ink);
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0.65rem 0.75rem;
-    width: 100%;
-  }
-  .form .btn {
-    margin-top: 1rem;
+  .contact-card .btn {
     justify-content: center;
-    cursor: pointer;
-  }
-  .form-note {
-    font-size: var(--step--1);
-    color: var(--muted);
+    color: var(--accent-ink);
   }
 
-  .site-footer {
-    background: var(--hero-bg);
-    color: var(--hero-muted);
-    font-size: var(--step--1);
-  }
-  .footer-inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem 2rem;
-    padding-block: 2rem;
-  }
-  .site-footer .logo {
-    color: var(--hero-ink);
-    font-size: 1.1rem;
+  .latest {
+    margin-top: 2rem;
   }
 </style>

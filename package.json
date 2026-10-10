@@ -1,5 +1,5 @@
 {
-  "name": "astroship",
+  "name": "tilihub",
   "type": "module",
   "version": "3.0.0",
   "private": true,
@@ -8,7 +8,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "wp:import": "node scripts/wp-import.mjs",
+    "wp:images": "node scripts/wp-fetch-images.mjs",
+    "check:urls": "node scripts/check-urls.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.0",
@@ -26,5 +29,11 @@
     "astro-seo": "^0.8.4",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.0.14"
+  },
+  "devDependencies": {
+    "cheerio": "1.0.0",
+    "fast-xml-parser": "4.5.0",
+    "turndown": "7.2.0",
+    "turndown-plugin-gfm": "1.0.2"
   }
 }

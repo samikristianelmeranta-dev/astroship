@@ -1,0 +1,133 @@
+---
+import { site } from "@/data/site";
+import Logo from "./Logo.astro";
+
+const services = [
+  { title: "Kirjanpito", href: "/kirjanpitopalvelut/" },
+  { title: "Palkanlaskenta", href: "/palkanlaskenta/" },
+  { title: "Tilinpäätös", href: "/tilinpaatos/" },
+  { title: "Kirjanpito hoiva-alalle", href: "/kirjanpito-hoiva-alalle/" },
+  { title: "Hinnasto", href: "/kirjanpidon-hinnat/" },
+];
+const company = [
+  { title: "Tietoa meistä", href: "/tietoa-meista/" },
+  { title: "Yhteystiedot", href: "/yhteystiedot/" },
+  { title: "Artikkelit", href: "/blogi/" },
+  { title: "Tietosuoja", href: "/yhteystiedot/privacy-policy/" },
+];
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p>{site.tagline}.</p>
+      <p class="footer-member">
+        <a href="https://taloushallintoliitto.fi/" rel="noopener">Taloushallintoliiton jäsen</a>
+      </p>
+    </div>
+    <nav aria-label="Palvelut">
+      <h2>Palvelut</h2>
+      <ul>{services.map((l) => <li><a href={l.href}>{l.title}</a></li>)}</ul>
+    </nav>
+    <nav aria-label="Yritys">
+      <h2>TiliHub</h2>
+      <ul>{company.map((l) => <li><a href={l.href}>{l.title}</a></li>)}</ul>
+    </nav>
+    <div>
+      <h2>Ota yhteyttä</h2>
+      <ul class="footer-contact">
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.whatsapp} rel="noopener">WhatsApp</a></li>
+        <li>{site.area}</li>
+      </ul>
+      <p class="footer-social">
+        <a href={site.facebook} rel="noopener">Facebook</a>
+        <a href={site.instagram} rel="noopener">Instagram</a>
+      </p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© {new Date().getFullYear()} Tilitoimisto {site.name} · {site.locality}, {site.region}</p>
+    <p>Ohjelmistot: {site.software.join(" · ")}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--hero-bg);
+    color: var(--hero-muted);
+    font-size: var(--step--1);
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+  @media (max-width: 860px) {
+    .footer-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .footer-brand {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    max-width: 22rem;
+    color: var(--hero-ink);
+  }
+  .footer-brand p {
+    color: var(--hero-muted);
+  }
+  .site-footer h2 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hero-accent);
+    margin-bottom: 1rem;
+  }
+  .site-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .site-footer a {
+    color: var(--hero-ink);
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .footer-contact {
+    color: var(--hero-ink);
+  }
+  .footer-social {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    margin-top: 3rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+</style>

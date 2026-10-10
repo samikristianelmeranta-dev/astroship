@@ -1,0 +1,306 @@
+---
+import Layout from "@/layouts/TilihubLayout.astro";
+import { site } from "@/data/site";
+
+/**
+ * Lomakkeen vastaanottaja. Staattinen sivusto tarvitsee lomakepalvelun
+ * (esim. Formspree, Basin tai hosting-palvelun oma lomaketoiminto).
+ * Kun osoite on asetettu, lomake lähettää tiedot sinne.
+ */
+const FORM_ENDPOINT = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
+
+const services = [
+  { title: "Kirjanpitopalvelut", text: "Digitaalinen kirjanpito pk-yrityksille ajantasaisesti.", href: "/kirjanpitopalvelut/" },
+  { title: "Palkanlaskenta", text: "Palkat ajallaan, tulorekisteri ja TES-osaaminen.", href: "/palkanlaskenta/" },
+  { title: "Tilinpäätös", text: "Ammattitaitoisesti laadittu tilinpäätös ajallaan.", href: "/tilinpaatos/" },
+  { title: "Hinnasto", text: "Selkeät hinnat ilman yllätyksiä.", href: "/kirjanpidon-hinnat/" },
+];
+---
+
+<Layout
+  title="Yhteystiedot"
+  description="Ota yhteyttä tilitoimisto TiliHub Oy:hyn. Olemme tavoitettavissa puhelimitse, sähköpostilla ja WhatsAppissa. Kaarina / Turku & koko Suomi."
+>
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">TiliHub Oy – Kaarina</p>
+      <h1>Etsitkö aitoa kumppania?</h1>
+      <p class="lead">
+        TiliHub Oy on valmiina palvelemaan sinua. Ota rohkeasti yhteyttä – olemme aidosti tavoitettavissa
+        puhelimitse, sähköpostilla tai WhatsAppissa. Kysyminen ei velvoita sinua mihinkään.
+      </p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap contact-grid">
+      <section aria-labelledby="form-title">
+        <h2 id="form-title">Pyydä tarjous</h2>
+        <p class="muted">Täytä lomake, niin olemme sinuun yhteydessä mahdollisimman pian.</p>
+        <form class="form" id="tarjous" method="post" action={FORM_ENDPOINT || undefined} data-endpoint={FORM_ENDPOINT}>
+          <div class="field">
+            <label for="f-nimi">Nimi / yritys *</label>
+            <input id="f-nimi" name="nimi" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-email">Sähköposti *</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-puhelin">Puhelin</label>
+            <input id="f-puhelin" name="puhelin" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="f-muoto">Yritysmuoto</label>
+            <select id="f-muoto" name="yritysmuoto">
+              <option>Toiminimi</option>
+              <option selected>Osakeyhtiö</option>
+              <option>Avoin tai kommandiittiyhtiö</option>
+              <option>Yhdistys tai seura</option>
+              <option>Asunto-osakeyhtiö</option>
+              <option>Yritys on vasta perusteilla</option>
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="f-viesti">Viestisi</label>
+            <textarea id="f-viesti" name="viesti" rows="5" placeholder="Esim. tositteita noin 40 kuukaudessa, kaksi työntekijää, nykyinen ohjelmisto Netvisor"></textarea>
+          </div>
+          <p class="consent wide">
+            Lähettämällä lomakkeen hyväksyt, että saat meiltä sähköpostiviestintää, ja ymmärrät, että yhteystietosi
+            tallennetaan. <a href="/yhteystiedot/privacy-policy/">Tietosuoja</a>
+          </p>
+          <div class="wide">
+            <button type="submit" class="btn btn-primary">Lähetä</button>
+          </div>
+          <p class="form-status wide" id="f-tila" role="status"></p>
+        </form>
+      </section>
+
+      <aside class="contact-card">
+        <h2>Ota yhteyttä</h2>
+        <dl>
+          <div><dt>Puhelin</dt><dd><a href={site.phoneHref}>{site.phone}</a></dd></div>
+          <div><dt>Sähköposti</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href={site.whatsapp} rel="noopener">Lähetä viesti</a></dd></div>
+          <div><dt>Toimialue</dt><dd>{site.area}</dd></div>
+        </dl>
+        <div class="person">
+          <img
+            src="https://www.tilihub.fi/wp-content/uploads/2026/06/jakke.jpg"
+            alt="Jackson Shuudifonya – TiliHub Oy:n perustaja"
+            width="72"
+            height="72"
+            loading="lazy"
+          />
+          <div>
+            <p class="person-name">Jackson Shuudifonya</p>
+            <p class="person-role">Perustaja & pääkirjanpitäjä</p>
+            <a href="/tietoa-meista/">Tietoa meistä →</a>
+          </div>
+        </div>
+        <p class="social">
+          <a href={site.facebook} rel="noopener">Facebook</a>
+          <a href={site.instagram} rel="noopener">Instagram</a>
+        </p>
+      </aside>
+    </div>
+
+    <section class="wrap explore" aria-labelledby="explore-title">
+      <h2 id="explore-title">Tutustu palveluihimme</h2>
+      <ul>
+        {
+          services.map((s) => (
+            <li>
+              <a href={s.href}>
+                <strong>{s.title}</strong>
+                <span>{s.text}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("tarjous") as HTMLFormElement | null;
+    const status = document.getElementById("f-tila");
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!status) return;
+      const endpoint = form.dataset.endpoint;
+      if (!endpoint) {
+        status.textContent = "Lomakkeen lähetys otetaan käyttöön julkaisun yhteydessä. Soita tai lähetä sähköpostia: info@tilihub.fi.";
+        return;
+      }
+      status.textContent = "Lähetetään…";
+      try {
+        const res = await fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.textContent = "Kiitos! Viestisi on vastaanotettu, palaamme asiaan pian.";
+      } catch {
+        status.textContent = "Lähetys epäonnistui. Soita 044 080 3344 tai lähetä sähköpostia info@tilihub.fi.";
+      }
+    });
+  </script>
+</Layout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  h2 {
+    font-size: var(--step-2);
+  }
+  .muted {
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+  .form {
+    margin-top: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 1.25rem;
+  }
+  @media (max-width: 560px) {
+    .form {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .field {
+    display: grid;
+    gap: 0.35rem;
+  }
+  .wide {
+    grid-column: 1 / -1;
+  }
+  label {
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.7rem 0.8rem;
+    width: 100%;
+  }
+  .consent {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .consent a {
+    color: var(--accent);
+  }
+  button {
+    cursor: pointer;
+  }
+  .form-status {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .contact-card {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    border-radius: 10px;
+    padding: 2rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .contact-card dl {
+    margin: 0;
+  }
+  .contact-card dl div {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+  .contact-card dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--hero-muted);
+  }
+  .contact-card dd {
+    margin: 0.15rem 0 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  .contact-card a {
+    color: var(--hero-ink);
+  }
+  .person {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .person img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgb(255 255 255 / 0.1);
+  }
+  .person-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  .person-role {
+    color: var(--hero-muted);
+    font-size: var(--step--1);
+  }
+  .person a {
+    font-size: var(--step--1);
+    color: var(--hero-accent);
+  }
+  .social {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .explore {
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+  .explore ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1rem;
+  }
+  .explore a {
+    display: grid;
+    gap: 0.3rem;
+    height: 100%;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    text-decoration: none;
+  }
+  .explore a:hover {
+    border-color: var(--accent);
+  }
+  .explore strong {
+    font-family: var(--font-display);
+  }
+  .explore span {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+</style>

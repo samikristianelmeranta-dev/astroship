@@ -1,15 +1,24 @@
 ---
-import Container from "@/components/container.astro";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/TilihubLayout.astro";
 ---
 
-<Layout title="404 Not Found">
-  <Container>
-    <div class="min-h-[calc(100vh-16rem)] flex items-center justify-center">
-      <div class="mt-16 text-center">
-        <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">404</h1>
-        <p class="text-lg mt-4 text-slate-600">Page not found.</p>
-      </div>
+<Layout title="Sivua ei löytynyt" noindex>
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Virhe 404</p>
+      <h1>Sivua ei löytynyt</h1>
+      <p class="lead">Etsimääsi sivua ei ole tai se on siirretty. Kokeile jotakin näistä:</p>
     </div>
-  </Container>
+  </header>
+  <main class="section">
+    <div class="wrap">
+      <ul class="chips">
+        <li><a href="/">Etusivu</a></li>
+        <li><a href="/kirjanpitopalvelut/">Kirjanpito</a></li>
+        <li><a href="/kirjanpidon-hinnat/">Hinnasto</a></li>
+        <li><a href="/blogi/">Artikkelit</a></li>
+        <li><a href="/yhteystiedot/">Yhteystiedot</a></li>
+      </ul>
+    </div>
+  </main>
 </Layout>

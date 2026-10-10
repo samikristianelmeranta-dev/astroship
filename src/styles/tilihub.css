@@ -14,6 +14,7 @@
   --hero-bg: #0f2420;
   --hero-ink: #eef4f1;
   --hero-muted: #9fb4ac;
+  --hero-accent: #3fbf96;
 
   --font-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", Roboto, sans-serif;
@@ -165,4 +166,255 @@ a {
 
 .tnum {
   font-variant-numeric: tabular-nums;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0.6rem 1rem;
+}
+.skip:focus {
+  left: 1rem;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+/* ---------- Sivun otsake (alasivut) ---------- */
+.page-hero {
+  background: var(--hero-bg);
+  color: var(--hero-ink);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+.page-hero .eyebrow {
+  color: var(--hero-accent);
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  margin-top: 0.9rem;
+  max-width: 22ch;
+}
+.page-hero .lead {
+  margin-top: 1.25rem;
+  font-size: var(--step-1);
+  color: var(--hero-muted);
+  max-width: 40rem;
+}
+.page-hero .meta {
+  margin-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--hero-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+}
+.page-hero .meta a {
+  color: var(--hero-ink);
+}
+.crumbs {
+  font-size: var(--step--1);
+  color: var(--hero-muted);
+}
+.crumbs a {
+  color: var(--hero-muted);
+}
+
+/* ---------- Pitkä teksti (artikkelit ja sivut) ---------- */
+.prose {
+  max-width: 44rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.prose > * + * {
+  margin-top: 1.1em;
+}
+.prose h2 {
+  font-size: var(--step-2);
+  margin-top: 2.2em;
+}
+.prose h3 {
+  font-size: var(--step-1);
+  margin-top: 1.8em;
+}
+.prose h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 1.5em 0 0;
+}
+.prose h2 + *,
+.prose h3 + *,
+.prose h4 + * {
+  margin-top: 0.6em;
+}
+.prose a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose li::marker {
+  color: var(--accent);
+}
+.prose blockquote {
+  margin-inline: 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.prose img {
+  height: auto;
+  border-radius: var(--radius);
+}
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: 2.5em;
+}
+.prose table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+.prose .table-wrap {
+  overflow-x: auto;
+}
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  background: var(--accent-soft);
+}
+.prose details {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.9rem 0;
+}
+.prose details + details {
+  margin-top: 0;
+  border-top: 0;
+}
+.prose summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.prose details > :not(summary) {
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+/* ---------- Artikkelilistat ---------- */
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.post-list li {
+  border-bottom: 1px solid var(--line);
+}
+.post-list a {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.4rem 2rem;
+  padding: 1.5rem 0;
+  text-decoration: none;
+}
+.post-list time {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding-top: 0.3rem;
+}
+.post-list h3 {
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+.post-list a:hover h3 {
+  color: var(--accent);
+}
+.post-list p {
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  .post-list a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.chips a {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  font-size: var(--step--1);
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+}
+.chips a:hover,
+.chips a[aria-current="page"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.pager a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+/* Painikkeet tummalla pohjalla */
+.site-header .btn-primary,
+.hero .btn-primary,
+.page-hero .btn-primary,
+.contact-card .btn-primary {
+  background: var(--hero-accent);
+  color: #06231a;
 }

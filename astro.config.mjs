@@ -6,7 +6,12 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://www.tilihub.fi",
+  // WordPressin osoitteet päättyvät kauttaviivaan (/sivu/) – pidetään samana.
+  trailingSlash: "always",
+  build: {
+    format: "directory",
+  },
   integrations: [mdx(), sitemap(), icon()],
   vite: {
     plugins: [tailwindcss()],

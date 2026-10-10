@@ -1,0 +1,21 @@
+---
+import Archive from "@/components/site/Archive.astro";
+import { getPosts, pages, tags } from "@/lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return tags.flatMap((t) =>
+    pages(
+      posts.filter((p) => p.data.tags.includes(t.slug)),
+      `/tag/${t.slug}/`
+    ).map((p) => ({
+      params: { slug: t.slug, page: p.n === 1 ? undefined : `page/${p.n}` },
+      props: { ...p, name: t.name },
+    }))
+  );
+}
+
+const { items, n, total, url, name } = Astro.props;
+---
+
+<Archive title={`#${name}`} eyebrow="Avainsana" items={items} n={n} total={total} url={url} />

@@ -1,0 +1,24 @@
+---
+import Archive from "@/components/site/Archive.astro";
+import { getPosts, pages } from "@/lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return pages(posts, "/blogi/").map((p) => ({
+    params: { page: p.n === 1 ? undefined : `page/${p.n}` },
+    props: p,
+  }));
+}
+
+const { items, n, total, url } = Astro.props;
+---
+
+<Archive
+  title="Artikkelit kirjanpidosta ja taloushallinnosta"
+  eyebrow="Artikkelit"
+  intro="Käytännön oppaita yrittäjälle: kirjanpito, verotus, palkanlaskenta, tilinpäätös ja tilitoimiston valinta."
+  items={items}
+  n={n}
+  total={total}
+  url={url}
+/>

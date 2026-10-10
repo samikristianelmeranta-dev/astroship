@@ -1,0 +1,320 @@
+---
+import Layout from "@/layouts/TilihubLayout.astro";
+import CtaBand from "@/components/site/CtaBand.astro";
+
+const plans = [
+  {
+    name: "Juokseva kirjanpito",
+    price: "55",
+    note: "Minimiveloitus 55 € / kirjanpitokuukausi",
+    lead: "Yrityksen säännöllinen kirjanpito ja kuukausittainen taloushallinto.",
+    items: [
+      "Tositteet ja kirjanpidon kuukausikirjaukset",
+      "Osto- ja myyntireskontra",
+      "ALV-ilmoitukset sekä muut erikseen sovitut juoksevan kirjanpidon ilmoitukset",
+      "Pankkitilien, kirjanpidon tilien ja tase-erien täsmäytykset",
+      "Kuukausittaiset talousraportit",
+    ],
+    extra: "Kirjanpitoasiakkaan tavanomainen lyhyt yhteydenpito ei maksa erikseen.",
+    cta: "Kysy juoksevasta kirjanpidosta",
+    featured: true,
+  },
+  {
+    name: "Palkanlaskenta",
+    price: "55",
+    note: "alk. 15 € / palkka-ajo",
+    lead: "Säännöllinen palkanlaskenta ja siihen välittömästi liittyvät ilmoitukset.",
+    items: [
+      "Palkkojen laskenta ja palkkalaskelmat",
+      "Palkkatietojen ja palkka-aineiston käsittely",
+      "Tulorekisteri-ilmoitukset",
+      "Työnantajan erillisilmoitukset",
+    ],
+    cta: "Kysy palkanlaskennasta",
+  },
+  {
+    name: "Asiantuntijatyö",
+    price: "79",
+    note: "Minimiveloitus 1 tunti",
+    lead: "Tavanomaista kirjanpitoa tai palkanlaskentaa vaativammat asiantuntijatyöt.",
+    items: [
+      "Tilinpäätös ja yrityksen veroilmoitus",
+      "Osingonjakolaskelmat",
+      "Kirjanpidon korjaukset ja Verohallinnon selvitykset",
+      "Taloushallinnon kehitys- ja käyttöönottotyöt (kustannuspaikat, ohjelmistot, järjestelmät ja integraatiot)",
+      "Sopimus- ja yhtiöasiakirjat (osakas-, alihankinta- ja työsopimukset sekä kokouspöytäkirjat)",
+      "Kirjanpidon ja palkanlaskennan vaativat laskenta-, selvitys- ja tulkintatilanteet",
+    ],
+    cta: "Kysy asiantuntijatyöstä",
+  },
+  {
+    name: "Verosuunnittelu",
+    price: "119",
+    note: "Minimiveloitus 1 tunti",
+    lead: "Ennakoiva verosuunnittelu yrityksen ja yrittäjän kokonaisuuteen.",
+    items: [
+      "Palkka-osinko-optimointi ja osingonjaon suunnittelu",
+      "Omistusjärjestelyt (holding-yhtiöt, osakevaihdot ja muut omistusrakenteet)",
+      "Yritysjärjestelyt (liiketoimintasiirrot, sulautumiset ja muut järjestelyt)",
+      "Ennakkoverojen suunnittelu sekä sijoitus- ja varallisuusrakenteiden verovaikutukset",
+    ],
+    cta: "Varaa verosuunnittelun kartoitus",
+  },
+];
+---
+
+<Layout
+  seoTitle="Kirjanpidon hinnat, tilitoimiston hinta?"
+  description="Tilitoimiston hinnasto Turku – selkeät hinnat ilman yllätyksiä. Etsitään yhdessä sinulle paras kirjanpidon paketti."
+>
+  <header class="page-hero">
+    <div class="wrap hero-row">
+      <div>
+        <p class="eyebrow">Kirjanpidon hinnoittelu 1.7.2026 alkaen</p>
+        <h1>Kirjanpito, jonka hinnan tiedät etukäteen</h1>
+        <p class="lead">Selkeä tuntihinnoittelu. Ei piilokuluja, ei yllätyksiä laskulla.</p>
+      </div>
+      <table class="rate-card tnum" aria-label="Tuntihinnat">
+        <tbody>
+          {
+            plans.map((p) => (
+              <tr>
+                <th scope="row">{p.name}</th>
+                <td>{p.price} €/h</td>
+              </tr>
+            ))
+          }
+        </tbody>
+        <caption>Hinnat alv 0 %. Arvonlisävero 25,5 % lisätään laskuun.</caption>
+      </table>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Palvelukokonaisuudet</p>
+        <h2>Neljä selkeästi hinnoiteltua palvelukokonaisuutta</h2>
+        <p>Kaikki palvelut laskutetaan tuntihinnalla palvelukokonaisuuden mukaan. Alla näet, mitä kukin sisältää ja mitä se maksaa.</p>
+      </div>
+
+      <div class="plans">
+        {
+          plans.map((p) => (
+            <article class:list={["plan", { featured: p.featured }]}>
+              {p.featured && <span class="plan-flag">Yleisin</span>}
+              <h3>{p.name}</h3>
+              <p class="price tnum">
+                <span>{p.price} €</span> / h
+              </p>
+              <p class="plan-note">{p.note}</p>
+              <p class="plan-lead">{p.lead}</p>
+              <ul>{p.items.map((it) => <li>{it}</li>)}</ul>
+              {p.extra && <p class="plan-extra">{p.extra}</p>}
+              <a href="/yhteystiedot/" class:list={["btn", p.featured ? "btn-primary" : "btn-ghost"]}>
+                {p.cta}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <section class="which">
+        <h2>Mikä hinnoittelu koskee sinua?</h2>
+        <div class="which-body">
+          <p>
+            Suurin osa kuukausittaisesta kirjanpidosta ja säännöllisestä palkanlaskennasta hoituu <strong>55 €/h</strong>
+            tuntihinnalla. Tilinpäätökset, yrityksen veroilmoitukset sekä vaativammat laskenta-, selvitys-, projekti- ja
+            asiakirjatyöt laskutetaan asiantuntijatyön hinnalla <strong>79 €/h</strong>. Ennakoiva verosuunnittelu ja
+            yritysjärjestelyt laskutetaan <strong>119 €/h</strong>.
+          </p>
+          <p>Katsomme tilanteesi nopeasti läpi ja kerromme, mikä hinnoittelu koskee juuri sinun tarpeitasi.</p>
+          <a href="/yhteystiedot/" class="btn btn-primary">Ota yhteyttä</a>
+        </div>
+      </section>
+
+      <p class="fineprint">
+        Hinnoittelu voimassa 1.7.2026 alkaen. Hinnasto kuvaa palveluiden pääsisältöä. Asiakaskohtainen palvelusisältö,
+        rajaukset ja tarkempi hinnoittelu vahvistetaan tarjouksessa ja asiakassopimuksessa. Hintoihin lisätään
+        arvonlisävero 25,5 %. Ohjelmistomaksut eivät sisälly palveluhintoihin.
+      </p>
+    </div>
+  </main>
+  <CtaBand title="Etsitään yhdessä sinulle sopiva kokonaisuus" />
+</Layout>
+
+<style>
+  .hero-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 2.5rem;
+    align-items: end;
+  }
+  @media (max-width: 860px) {
+    .hero-row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .rate-card {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+  }
+  .rate-card th,
+  .rate-card td {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgb(255 255 255 / 0.18);
+  }
+  .rate-card th {
+    text-align: left;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--hero-muted);
+  }
+  .rate-card td {
+    text-align: right;
+    color: var(--hero-ink);
+    font-size: 1.1rem;
+  }
+  .rate-card caption {
+    caption-side: bottom;
+    text-align: left;
+    padding-top: 0.8rem;
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    color: var(--hero-muted);
+  }
+
+  .section-head {
+    max-width: 42rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .section-head h2 {
+    font-size: var(--step-3);
+  }
+  .section-head p:not(.eyebrow) {
+    color: var(--muted);
+  }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+  .plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .plan.featured {
+    border: 2px solid var(--accent);
+  }
+  .plan-flag {
+    position: absolute;
+    top: -0.75rem;
+    left: 1.5rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+  }
+  .plan h3 {
+    font-size: var(--step-1);
+  }
+  .price {
+    color: var(--muted);
+  }
+  .price span {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .plan-note {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--due);
+  }
+  .plan-lead {
+    margin-top: 0.5rem;
+  }
+  .plan ul {
+    list-style: none;
+    padding: 1rem 0 0;
+    margin: 0.5rem 0 1rem;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 0.55rem;
+    font-size: 0.98rem;
+  }
+  .plan li {
+    padding-left: 1.6rem;
+    position: relative;
+  }
+  .plan li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.45em;
+    width: 0.7rem;
+    height: 0.4rem;
+    border-left: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg);
+  }
+  .plan-extra {
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .plan .btn {
+    margin-top: auto;
+    justify-content: center;
+    text-align: center;
+  }
+  .plan .btn-ghost {
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+  .which {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 860px) {
+    .which {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .which h2 {
+    font-size: var(--step-2);
+  }
+  .which-body {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+    max-width: 42rem;
+  }
+  .fineprint {
+    margin-top: 3rem;
+    font-size: var(--step--1);
+    color: var(--muted);
+    max-width: 52rem;
+  }
+</style>

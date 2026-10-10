@@ -1,0 +1,31 @@
+---
+import Archive from "@/components/site/Archive.astro";
+import { getPosts, pages, categories } from "@/lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return categories.flatMap((c) =>
+    pages(
+      posts.filter((p) => p.data.categories.includes(c.slug)),
+      `/category/${c.slug}/`
+    ).map((p) => ({
+      params: { slug: c.slug, page: p.n === 1 ? undefined : `page/${p.n}` },
+      props: { ...p, name: c.name },
+    }))
+  );
+}
+
+const { items, n, total, url, name } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<Archive
+  title={name}
+  eyebrow="Kategoria"
+  intro={`Artikkelit aiheesta ${name.toLowerCase()}.`}
+  items={items}
+  n={n}
+  total={total}
+  url={url}
+  activeCategory={slug}
+/>
