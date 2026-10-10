@@ -1,17 +1,996 @@
 ---
-import Container from "@/components/container.astro";
-import Cta from "@/components/cta.astro";
-import Features from "@/components/features.astro";
-import Hero from "@/components/hero.astro";
-import Logos from "@/components/logos.astro";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/TilihubLayout.astro";
+
+const nav = [
+  { title: "Palvelut", href: "#palvelut" },
+  { title: "Hinnasto", href: "#hinnasto" },
+  { title: "Näin aloitat", href: "#aloitus" },
+  { title: "Usein kysyttyä", href: "#ukk" },
+  { title: "Yhteystiedot", href: "#yhteys" },
+];
+
+const services = [
+  {
+    title: "Kirjanpito",
+    text: "Kuitit ja laskut kulkevat sähköisesti. Kirjaamme tapahtumat ja täsmäytämme pankkitilit joka kuukausi.",
+    tag: "Kuukausittain",
+  },
+  {
+    title: "Arvonlisävero",
+    text: "Laadimme ALV-laskelman ja annamme kausiveroilmoituksen OmaVeroon ennen eräpäivää.",
+    tag: "Kuun 12. päivä",
+  },
+  {
+    title: "Palkanlaskenta",
+    text: "Palkat, lomarahat ja tulorekisteri-ilmoitukset. Työntekijä saa palkkalaskelman sähköisesti.",
+    tag: "Tulorekisteri",
+  },
+  {
+    title: "Tilinpäätös",
+    text: "Tilinpäätös, veroilmoitus ja yhtiökokouksen pöytäkirjapohjat valmiina tilikauden päätyttyä.",
+    tag: "Tilikauden lopussa",
+  },
+  {
+    title: "Laskutus ja reskontra",
+    text: "Myyntilaskut verkkolaskuina, maksujen seuranta ja maksumuistutukset puolestasi.",
+    tag: "Verkkolasku",
+  },
+  {
+    title: "Yrityksen perustaminen",
+    text: "Valitaan yritysmuoto, tehdään perustamisilmoitus ja otetaan kirjanpito käyttöön ensimmäisestä päivästä.",
+    tag: "Y-tunnus",
+  },
+];
+
+const steps = [
+  {
+    title: "Varaa maksuton tutustumispuhelu",
+    text: "Käydään läpi yrityksesi tilanne ja tarpeet. Puhelu kestää noin 20 minuuttia.",
+  },
+  {
+    title: "Saat kiinteän tarjouksen",
+    text: "Tarjous perustuu tositemäärään ja palveluihin. Ei tuntiveloitusta eikä yllätyksiä.",
+  },
+  {
+    title: "Hoidamme siirron",
+    text: "Pyydämme aineistot edelliseltä tilitoimistolta ja otamme valtuudet Suomi.fi:ssä.",
+  },
+];
+
+const plans = [
+  {
+    name: "Toiminimi",
+    price: "89",
+    for: "Yksinyrittäjälle ja sivutoimiselle",
+    items: ["Enintään 30 tositetta / kk", "Kirjanpito ja ALV-ilmoitus", "Veroilmoitus (5-lomake)", "Sähköinen kuittiarkisto"],
+  },
+  {
+    name: "Osakeyhtiö",
+    price: "189",
+    for: "Kasvavalle pienyritykselle",
+    items: ["Enintään 80 tositetta / kk", "Kirjanpito ja ALV-ilmoitus", "Tilinpäätös ja veroilmoitus", "Kuukausiraportti ja kassaennuste", "Oma kirjanpitäjä"],
+    featured: true,
+  },
+  {
+    name: "Työnantaja",
+    price: "289",
+    for: "Kun yrityksessä on palkansaajia",
+    items: ["Kaikki Osakeyhtiö-paketin palvelut", "Palkanlaskenta 1–5 hlö", "Tulorekisteri-ilmoitukset", "Vuosi-ilmoitukset ja TyEL"],
+  },
+];
+
+const faqs = [
+  {
+    q: "Mitä ohjelmistoa käytätte?",
+    a: "Käytämme pilvipohjaista taloushallinto-ohjelmistoa, johon saat omat tunnukset. Näet luvut ja raportit milloin tahansa selaimella tai puhelimella.",
+  },
+  {
+    q: "Voinko vaihtaa tilitoimistoa kesken tilikauden?",
+    a: "Voit. Hoidamme siirron puolestasi ja sovimme vaihtopäivän niin, ettei yksikään ALV-ilmoitus tai palkanmaksu jää väliin.",
+  },
+  {
+    q: "Miten kuitit toimitetaan?",
+    a: "Kuvaat kuitin mobiilisovelluksella tai välität sen sähköpostiin. Ostolaskut tulevat suoraan verkkolaskuina.",
+  },
+  {
+    q: "Sisältyvätkö hintoihin arvonlisävero?",
+    a: "Hinnat ovat arvonlisäverottomia kuukausihintoja (alv 0 %). Arvonlisävero lisätään laskuun voimassa olevan verokannan mukaan.",
+  },
+];
 ---
 
-<Layout title="">
-  <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
-  </Container>
+<Layout>
+  <!-- Hero -->
+  <header class="hero">
+    <nav class="wrap topbar" aria-label="Päävalikko">
+      <a href="/" class="logo" aria-label="Tilihub etusivu">
+        <span class="logo-mark" aria-hidden="true"></span>
+        Tilihub
+      </a>
+      <ul class="menu">
+        {nav.map((item) => <li><a href={item.href}>{item.title}</a></li>)}
+      </ul>
+      <a href="#yhteys" class="btn btn-ghost topbar-cta">Kirjaudu</a>
+    </nav>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Tilitoimisto pienyrittäjälle</p>
+        <h1>Kirjanpito ajallaan. Luvut aina näkyvillä.</h1>
+        <p class="lead">
+          Tilihub hoitaa kirjanpidon, palkat, arvonlisäverot ja tilinpäätöksen kiinteällä
+          kuukausihinnalla. Sinä näet yrityksesi tilanteen reaaliajassa ja keskityt omaan työhösi.
+        </p>
+        <div class="hero-actions">
+          <a href="#yhteys" class="btn btn-primary">Pyydä tarjous</a>
+          <a href="#hinnasto" class="btn btn-ghost">Katso hinnasto</a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong>Auktorisoitu</strong> kirjanpitäjä (KLT)</li>
+          <li><strong>Kiinteä</strong> kuukausihinta</li>
+          <li><strong>Vastaus</strong> 1 arkipäivässä</li>
+        </ul>
+      </div>
+
+      <figure class="report" aria-label="Esimerkki asiakkaan kuukausikatsauksesta">
+        <div class="report-head">
+          <div>
+            <p class="report-label">Kuukausikatsaus</p>
+            <p class="report-title">Esimerkki Oy · syyskuu 2026</p>
+          </div>
+          <span class="badge">Täsmäytetty</span>
+        </div>
+        <dl class="ledger tnum">
+          <div><dt>Liikevaihto</dt><dd>24 860,00 €</dd></div>
+          <div><dt>Materiaalit ja palvelut</dt><dd>−6 412,40 €</dd></div>
+          <div><dt>Henkilöstökulut</dt><dd>−9 730,15 €</dd></div>
+          <div><dt>Muut kulut</dt><dd>−2 118,90 €</dd></div>
+          <div class="total"><dt>Tulos</dt><dd>6 598,55 €</dd></div>
+        </dl>
+        <div class="bars" aria-hidden="true">
+          {[42, 55, 48, 61, 58, 70, 66, 74, 82].map((h, i) => (
+            <span style={`--h:${h}%`} class={i === 8 ? "now" : ""}></span>
+          ))}
+        </div>
+        <p class="bars-caption">Liikevaihto tammi–syys</p>
+        <div class="deadlines">
+          <p class="report-label">Tulevat eräpäivät</p>
+          <ul class="tnum">
+            <li><time datetime="2026-10-12">12.10.</time> ALV-ilmoitus ja maksu <span>Hoidettu</span></li>
+            <li><time datetime="2026-10-12">12.10.</time> Työnantajasuoritukset <span>Hoidettu</span></li>
+            <li class="open"><time datetime="2026-10-20">20.10.</time> TyEL-maksu <span>Muistutus lähetetty</span></li>
+          </ul>
+        </div>
+        <figcaption>Esimerkkiluvut</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <!-- Ohjelmistot -->
+    <section class="strip" aria-label="Ohjelmistot ja yhteistyö">
+      <div class="wrap strip-inner">
+        <p>Toimimme yleisimmissä taloushallinnon ohjelmistoissa</p>
+        <ul>
+          <li>Procountor</li>
+          <li>Netvisor</li>
+          <li>Fennoa</li>
+          <li>Holvi</li>
+          <li>OmaVero</li>
+          <li>Tulorekisteri</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Palvelut -->
+    <section id="palvelut" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Palvelut</p>
+          <h2>Koko taloushallinto yhdestä paikasta</h2>
+          <p>Valitse tarvitsemasi palvelut. Kaikki hoituu sähköisesti, ja sinulla on yksi nimetty kirjanpitäjä.</p>
+        </div>
+        <ul class="services">
+          {services.map((s) => (
+            <li>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+              <span class="tag">{s.tag}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Näin aloitat -->
+    <section id="aloitus" class="section section-alt">
+      <div class="wrap steps-grid">
+        <div class="section-head">
+          <p class="eyebrow">Näin aloitat</p>
+          <h2>Tilitoimiston vaihto on helpompaa kuin luulet</h2>
+          <p>Useimmat asiakkaamme siirtyvät meille kesken tilikauden. Hoidamme paperityöt, sinä vastaat muutamaan kysymykseen.</p>
+        </div>
+        <ol class="steps">
+          {steps.map((s, i) => (
+            <li>
+              <span class="step-no tnum">{i + 1}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Hinnasto -->
+    <section id="hinnasto" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Hinnasto</p>
+          <h2>Kiinteä hinta, ei tuntilaskutusta</h2>
+          <p>Hinnat ovat esimerkkejä, alv 0 %. Lopullinen hinta määräytyy tositemäärän ja valittujen palveluiden mukaan.</p>
+        </div>
+        <div class="plans">
+          {plans.map((p) => (
+            <article class:list={["plan", { featured: p.featured }]}>
+              {p.featured && <span class="plan-flag">Suosituin</span>}
+              <h3>{p.name}</h3>
+              <p class="plan-for">{p.for}</p>
+              <p class="price tnum"><span>{p.price} €</span> / kk</p>
+              <ul>
+                {p.items.map((it) => <li>{it}</li>)}
+              </ul>
+              <a href="#yhteys" class:list={["btn", p.featured ? "btn-primary" : "btn-ghost"]}>Pyydä tarjous</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Asiakaskokemus -->
+    <section class="section section-alt">
+      <div class="wrap quote">
+        <blockquote>
+          <p>
+            ”Ennen istuin kuitti­pinon kanssa joka kuun lopussa. Nyt kuvaan kuitin heti ja näen
+            kuukauden tuloksen ennen kuin olen ehtinyt kysyä.”
+          </p>
+          <footer>
+            <strong>Asiakkaan nimi</strong> · Toimitusjohtaja, rakennusalan osakeyhtiö
+          </footer>
+        </blockquote>
+        <dl class="stats tnum">
+          <div><dt>Asiakasyrityksiä</dt><dd>120+</dd></div>
+          <div><dt>ALV-ilmoitukset ajallaan</dt><dd>100 %</dd></div>
+          <div><dt>Vastausaika</dt><dd>&lt; 1 pv</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- UKK -->
+    <section id="ukk" class="section">
+      <div class="wrap faq-grid">
+        <div class="section-head">
+          <p class="eyebrow">Usein kysyttyä</p>
+          <h2>Kysymyksiä ennen aloitusta</h2>
+        </div>
+        <div class="faq">
+          {faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Yhteys -->
+    <section id="yhteys" class="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">Ota yhteyttä</p>
+          <h2>Pyydä tarjous, vastaamme yhden arkipäivän kuluessa</h2>
+          <ul class="contact-list">
+            <li><span>Sähköposti</span> info@tilihub.fi</li>
+            <li><span>Puhelin</span> 010 123 4567</li>
+            <li><span>Aukioloajat</span> ma–pe 8–16</li>
+          </ul>
+        </div>
+        <form class="form" id="tarjous">
+          <label for="f-nimi">Nimi</label>
+          <input id="f-nimi" name="nimi" autocomplete="name" required />
+          <label for="f-email">Sähköposti</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required />
+          <label for="f-muoto">Yritysmuoto</label>
+          <select id="f-muoto" name="yritysmuoto">
+            <option>Toiminimi</option>
+            <option selected>Osakeyhtiö</option>
+            <option>Avoin tai kommandiittiyhtiö</option>
+            <option>Yhdistys</option>
+            <option>Yritys on vasta perusteilla</option>
+          </select>
+          <label for="f-viesti">Viesti</label>
+          <textarea id="f-viesti" name="viesti" rows="3" placeholder="Esim. tositteita noin 40 kuukaudessa, kaksi työntekijää"></textarea>
+          <button type="submit" class="btn btn-primary">Lähetä tarjouspyyntö</button>
+          <p class="form-note" id="f-tila" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="logo"><span class="logo-mark" aria-hidden="true"></span> Tilihub</p>
+      <p>Tilitoimisto Tilihub · Y-tunnus 1234567-8 · Auktorisoitu tilitoimisto</p>
+      <p>© 2026 Tilihub</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("tarjous") as HTMLFormElement | null;
+    const status = document.getElementById("f-tila");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (status) status.textContent = "Lomake on esikatseluversio, eikä viestiä lähetetty.";
+    });
+  </script>
 </Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-ink);
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    /* ruutupaperin hento ristikko */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, #000 30%, transparent);
+    pointer-events: none;
+  }
+  .topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 1.25rem;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 4px;
+    background:
+      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 32% / 60% 2px no-repeat,
+      linear-gradient(var(--hero-bg), var(--hero-bg)) 50% 68% / 60% 2px no-repeat,
+      #3fbf96;
+  }
+  .menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+  }
+  .menu a {
+    text-decoration: none;
+    color: var(--hero-muted);
+    font-weight: 500;
+  }
+  .menu a:hover {
+    color: var(--hero-ink);
+  }
+  .topbar-cta {
+    padding: 0.5rem 1rem;
+    color: var(--hero-ink);
+  }
+  @media (max-width: 860px) {
+    .menu {
+      display: none;
+    }
+    .topbar-cta {
+      margin-left: auto;
+    }
+  }
+
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+    padding-top: clamp(2rem, 6vw, 4.5rem);
+  }
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .hero-eyebrow {
+    color: #7fd8b8;
+  }
+  .hero h1 {
+    font-size: var(--step-4);
+    font-weight: 800;
+    margin-top: 1rem;
+    max-width: 14ch;
+  }
+  .lead {
+    margin-top: 1.5rem;
+    font-size: var(--step-1);
+    color: var(--hero-muted);
+    max-width: 34rem;
+    line-height: 1.55;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .hero .btn-primary {
+    background: #3fbf96;
+    color: #06231a;
+  }
+  .hero .btn-ghost {
+    color: var(--hero-ink);
+  }
+  .hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 2.25rem 0 0;
+    font-size: var(--step--1);
+    color: var(--hero-muted);
+  }
+  .hero-facts strong {
+    color: var(--hero-ink);
+    font-weight: 600;
+  }
+
+  /* Raporttikortti */
+  .report {
+    margin: 0;
+    background: #fbfcfb;
+    color: #0f2420;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.55);
+    position: relative;
+    animation: rise 0.7s ease-out both;
+  }
+  @keyframes rise {
+    from {
+      transform: translateY(12px);
+    }
+    to {
+      transform: none;
+    }
+  }
+  .report-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+  }
+  .report-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7c75;
+  }
+  .report-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 0.2rem;
+  }
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #e2efe9;
+    color: #0b6e55;
+    padding: 0.25rem 0.6rem;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .ledger {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  .ledger div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed #d9e0dc;
+  }
+  .ledger dt {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #3d4f48;
+  }
+  .ledger dd {
+    margin: 0;
+    white-space: nowrap;
+  }
+  .ledger .total {
+    border-bottom: 3px double #0f2420;
+    font-weight: 500;
+  }
+  .ledger .total dt {
+    font-weight: 600;
+    color: #0f2420;
+  }
+  .ledger .total dd {
+    color: #0b6e55;
+  }
+  .bars {
+    display: flex;
+    align-items: end;
+    gap: 6px;
+    height: 70px;
+    margin-top: 1.25rem;
+  }
+  .bars span {
+    flex: 1;
+    height: var(--h);
+    background: #cfe2da;
+    border-radius: 2px 2px 0 0;
+  }
+  .bars .now {
+    background: #0b6e55;
+  }
+  .bars-caption {
+    font-size: 0.75rem;
+    color: #6b7c75;
+    margin-top: 0.35rem;
+  }
+  .deadlines {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d9e0dc;
+  }
+  .deadlines ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+  }
+  .deadlines li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    align-items: baseline;
+  }
+  .deadlines time {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    min-width: 3.2rem;
+  }
+  .deadlines li span {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #0b6e55;
+    font-weight: 600;
+  }
+  .deadlines li.open span {
+    color: #b8641a;
+  }
+  .report figcaption {
+    position: absolute;
+    top: -0.7rem;
+    right: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #b8641a;
+    color: #fff;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  /* Ohjelmistot */
+  .strip {
+    border-bottom: 1px solid var(--line);
+  }
+  .strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2.5rem;
+    padding-block: 1.5rem;
+  }
+  .strip p {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .strip ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--muted);
+    opacity: 0.85;
+  }
+
+  /* Osiot */
+  .section {
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+  }
+  .section-alt {
+    background: var(--surface);
+    border-block: 1px solid var(--line);
+  }
+  .section-head {
+    max-width: 40rem;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .section-head h2 {
+    font-size: var(--step-3);
+    font-weight: 700;
+  }
+  .section-head p:not(.eyebrow) {
+    color: var(--muted);
+  }
+
+  .services {
+    list-style: none;
+    padding: 0;
+    margin: 3rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    border-top: 1px solid var(--line);
+  }
+  .services li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.75rem 1.75rem 1.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .services h3 {
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .services p {
+    color: var(--muted);
+  }
+  .tag {
+    margin-top: auto;
+    align-self: start;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--due);
+    background: var(--due-soft);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .steps-grid,
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .steps-grid,
+    .faq-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2rem;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+  }
+  .step-no {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+  .steps h3 {
+    font-size: var(--step-1);
+    margin-top: 0.35rem;
+  }
+  .steps p {
+    color: var(--muted);
+    margin-top: 0.4rem;
+  }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+    align-items: stretch;
+  }
+  .plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .plan.featured {
+    border: 2px solid var(--accent);
+  }
+  .plan-flag {
+    position: absolute;
+    top: -0.75rem;
+    left: 1.75rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+  }
+  .plan h3 {
+    font-size: var(--step-2);
+  }
+  .plan-for {
+    color: var(--muted);
+  }
+  .price {
+    margin-top: 0.75rem;
+    color: var(--muted);
+  }
+  .price span {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--step-3);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .plan ul {
+    list-style: none;
+    padding: 1rem 0 0;
+    margin: 0.5rem 0 1.5rem;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 0.55rem;
+  }
+  .plan li {
+    padding-left: 1.6rem;
+    position: relative;
+  }
+  .plan li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.45em;
+    width: 0.7rem;
+    height: 0.4rem;
+    border-left: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(-45deg);
+  }
+  .plan .btn {
+    margin-top: auto;
+    justify-content: center;
+  }
+  .plan .btn-ghost {
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+  .quote {
+    display: grid;
+    gap: 3rem;
+  }
+  .quote blockquote {
+    margin: 0;
+    max-width: 52rem;
+  }
+  .quote blockquote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .quote footer {
+    margin-top: 1.25rem;
+    color: var(--muted);
+  }
+  .quote footer strong {
+    color: var(--ink);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 1.5rem;
+    margin: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 2rem;
+  }
+  .stats dt {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .stats dd {
+    margin: 0.25rem 0 0;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .faq {
+    border-top: 1px solid var(--line);
+  }
+  .faq details {
+    border-bottom: 1px solid var(--line);
+    padding: 1.1rem 0;
+  }
+  .faq summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq summary::after {
+    content: "+";
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .faq details[open] summary::after {
+    content: "−";
+  }
+  .faq details p {
+    color: var(--muted);
+    margin-top: 0.6rem;
+    max-width: 38rem;
+  }
+
+  .contact {
+    background: var(--accent-soft);
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .contact h2 {
+    font-size: var(--step-3);
+    margin-top: 0.9rem;
+  }
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    gap: 0.75rem;
+    font-size: var(--step-1);
+  }
+  .contact-list span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form {
+    display: grid;
+    gap: 0.4rem;
+    background: var(--surface);
+    padding: 1.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .form label {
+    font-weight: 600;
+    font-size: var(--step--1);
+    margin-top: 0.6rem;
+  }
+  .form label:first-child {
+    margin-top: 0;
+  }
+  .form input,
+  .form select,
+  .form textarea {
+    font: inherit;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+  }
+  .form .btn {
+    margin-top: 1rem;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .form-note {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  .site-footer {
+    background: var(--hero-bg);
+    color: var(--hero-muted);
+    font-size: var(--step--1);
+  }
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-block: 2rem;
+  }
+  .site-footer .logo {
+    color: var(--hero-ink);
+    font-size: 1.1rem;
+  }
+</style>

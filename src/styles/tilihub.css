@@ -1,0 +1,168 @@
+/* Layout: vasemmalle tasattu "pääkirja"-rytmi – teksti vasemmalla, luvut oikealla
+   kuin tilitoimiston raportissa. Hero näyttää yrittäjän kuukausikatsauksen. */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --ink: #0f2420;
+  --muted: #55665f;
+  --line: #d9e0dc;
+  --accent: #0b6e55; /* kirjanpidon "plus" – syvä havuvihreä */
+  --accent-ink: #ffffff;
+  --accent-soft: #e2efe9;
+  --due: #b8641a; /* eräpäivät */
+  --due-soft: #f6eadf;
+  --hero-bg: #0f2420;
+  --hero-ink: #eef4f1;
+  --hero-muted: #9fb4ac;
+
+  --font-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.5rem, 5.5vw, 4.25rem);
+
+  --radius: 6px;
+  --wrap: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1a17;
+    --surface: #12241f;
+    --ink: #e7efeb;
+    --muted: #9db0a8;
+    --line: #23392f;
+    --accent: #3fbf96;
+    --accent-ink: #06231a;
+    --accent-soft: #163a2f;
+    --due: #e6a065;
+    --due-soft: #3a2a1b;
+    --hero-bg: #08130f;
+    --hero-ink: #eef4f1;
+    --hero-muted: #9fb4ac;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1a17;
+  --surface: #12241f;
+  --ink: #e7efeb;
+  --muted: #9db0a8;
+  --line: #23392f;
+  --accent: #3fbf96;
+  --accent-ink: #06231a;
+  --accent-soft: #163a2f;
+  --due: #e6a065;
+  --due-soft: #3a2a1b;
+  --hero-bg: #08130f;
+  --hero-ink: #eef4f1;
+  --hero-muted: #9fb4ac;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn-ghost {
+  border-color: currentColor;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
