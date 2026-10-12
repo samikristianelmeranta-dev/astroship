@@ -52,3 +52,4 @@ require_once get_theme_file_path( 'inc/business.php' );
 require_once get_theme_file_path( 'inc/schema.php' );
 require_once get_theme_file_path( 'inc/llms.php' );
 require_once get_theme_file_path( 'inc/seo.php' );
+require_once get_theme_file_path( 'inc/chat.php' );

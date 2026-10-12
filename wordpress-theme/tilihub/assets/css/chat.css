@@ -1,0 +1,382 @@
+/* TiliHub – kevyt chat. WhatsApp-tuttu keskusteluasettelu teeman väreissä. */
+
+.th-chat {
+	--wa: #25d366;
+	--wa-dark: #1ebe57;
+	--chat-bg: #eef3f2;
+	--chat-bot: #ffffff;
+	--chat-user: #d9f5e4;
+	--chat-ink: var(--wp--preset--color--ink, #0e2424);
+	--chat-muted: var(--wp--preset--color--muted, #55665f);
+	--chat-head: var(--wp--preset--color--hero, #0e2526);
+	--chat-accent: var(--wp--preset--color--accent, #0b6b63);
+	position: fixed;
+	right: max(1rem, env(safe-area-inset-right, 0px));
+	bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+	z-index: 9990;
+	font-family: var(--wp--preset--font-family--body, system-ui, sans-serif);
+	color: var(--chat-ink);
+}
+
+/* Avauspainike */
+.th-chat-launcher {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	margin-left: auto;
+	padding: 0.7rem 1.1rem 0.7rem 0.75rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--wa);
+	color: #fff;
+	font: 600 0.98rem/1 var(--wp--preset--font-family--display, system-ui, sans-serif);
+	box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.45);
+	cursor: pointer;
+	transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.2s ease;
+	animation: th-chat-in 0.6s 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.th-chat-launcher:hover {
+	background: var(--wa-dark);
+	transform: translateY(-2px);
+}
+.th-chat-launcher:focus-visible {
+	outline: 3px solid var(--chat-accent);
+	outline-offset: 3px;
+}
+.th-chat-launcher__icon svg {
+	display: block;
+	width: 1.7rem;
+	height: 1.7rem;
+}
+.th-chat.is-open .th-chat-launcher__label {
+	display: none;
+}
+.th-chat.is-open .th-chat-launcher {
+	padding: 0.7rem;
+}
+@media (max-width: 480px) {
+	.th-chat-launcher__label {
+		display: none;
+	}
+	.th-chat-launcher {
+		padding: 0.8rem;
+	}
+}
+@keyframes th-chat-in {
+	from { opacity: 0; transform: translateY(16px) scale(0.9); }
+	to { opacity: 1; transform: none; }
+}
+
+/* Ikkuna */
+.th-chat-panel {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 0.75rem);
+	width: min(23.5rem, calc(100vw - 2rem));
+	height: min(36rem, calc(100vh - 7rem));
+	display: flex;
+	flex-direction: column;
+	background: var(--chat-bg);
+	border-radius: 14px;
+	overflow: hidden;
+	box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.5);
+	transform-origin: bottom right;
+	animation: th-chat-pop 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.th-chat-panel[hidden] {
+	display: none;
+}
+@keyframes th-chat-pop {
+	from { opacity: 0; transform: translateY(10px) scale(0.96); }
+	to { opacity: 1; transform: none; }
+}
+@media (max-width: 480px) {
+	.th-chat-panel {
+		position: fixed;
+		inset: auto 0.5rem calc(4.5rem + env(safe-area-inset-bottom, 0px)) 0.5rem;
+		width: auto;
+		height: min(34rem, calc(100vh - 6rem));
+	}
+}
+
+.th-chat-head {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.8rem 0.9rem;
+	background: var(--chat-head);
+	color: #eef4f1;
+}
+.th-chat-avatar {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	overflow: hidden;
+	flex-shrink: 0;
+	background: var(--wp--preset--color--logo, #14a99b);
+	display: grid;
+	place-items: center;
+	position: relative;
+}
+.th-chat-avatar::after {
+	/* paikalla-merkki */
+	content: "";
+	position: absolute;
+	right: 1px;
+	bottom: 1px;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 50%;
+	background: var(--wa);
+	box-shadow: 0 0 0 2px var(--chat-head);
+}
+.th-chat-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.th-chat-avatar.is-fallback {
+	font: 700 0.85rem/1 var(--wp--preset--font-family--display, sans-serif);
+	color: var(--chat-head);
+}
+.th-chat-avatar.is-fallback img {
+	display: none;
+}
+.th-chat-who {
+	display: grid;
+	line-height: 1.25;
+	min-width: 0;
+}
+.th-chat-who strong {
+	font-family: var(--wp--preset--font-family--display, sans-serif);
+	font-size: 1rem;
+}
+.th-chat-who span {
+	font-size: 0.78rem;
+	color: #9fb4ac;
+}
+.th-chat-close {
+	margin-left: auto;
+	background: none;
+	border: 0;
+	color: inherit;
+	padding: 0.35rem;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.th-chat-close:hover {
+	background: rgb(255 255 255 / 0.1);
+}
+.th-chat-close svg,
+.th-chat-send svg {
+	display: block;
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+/* Keskustelu */
+.th-chat-log {
+	flex: 1;
+	overflow-y: auto;
+	padding: 1rem 0.85rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	background-color: var(--chat-bg);
+	background-image: radial-gradient(rgb(14 37 38 / 0.05) 1px, transparent 1px);
+	background-size: 14px 14px;
+	overscroll-behavior: contain;
+}
+.th-chat-msg {
+	max-width: 86%;
+	padding: 0.55rem 0.75rem 0.4rem;
+	border-radius: 10px;
+	font-size: 0.93rem;
+	line-height: 1.45;
+	box-shadow: 0 1px 1px rgb(0 0 0 / 0.08);
+	animation: th-chat-pop 0.25s ease both;
+	overflow-wrap: anywhere;
+}
+.th-chat-msg p {
+	margin: 0;
+}
+.th-chat-msg--bot {
+	align-self: flex-start;
+	background: var(--chat-bot);
+	border-top-left-radius: 2px;
+}
+.th-chat-msg--user {
+	align-self: flex-end;
+	background: var(--chat-user);
+	border-top-right-radius: 2px;
+}
+.th-chat-time {
+	display: block;
+	text-align: right;
+	font-size: 0.68rem;
+	color: var(--chat-muted);
+	margin-top: 0.2rem;
+}
+.th-chat-heading {
+	display: block;
+	font-family: var(--wp--preset--font-family--display, sans-serif);
+	margin-bottom: 0.25rem;
+}
+.th-chat-source {
+	display: inline-block;
+	margin-top: 0.45rem;
+	color: var(--chat-accent);
+	font-weight: 600;
+	text-decoration: none;
+}
+.th-chat-source:hover {
+	text-decoration: underline;
+}
+.th-chat-related {
+	display: grid;
+	gap: 0.15rem;
+	margin-top: 0.5rem;
+	padding-top: 0.45rem;
+	border-top: 1px solid rgb(14 37 38 / 0.08);
+	font-size: 0.85rem;
+}
+.th-chat-related span {
+	font-size: 0.72rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--chat-muted);
+}
+.th-chat-related a {
+	color: var(--chat-ink);
+}
+.th-chat-wa {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-top: 0.6rem;
+	padding: 0.4rem 0.7rem;
+	border-radius: 999px;
+	background: var(--wa);
+	color: #fff !important;
+	font-weight: 600;
+	font-size: 0.82rem;
+	text-decoration: none;
+}
+.th-chat-wa:hover {
+	background: var(--wa-dark);
+}
+.th-chat-wa svg,
+.th-chat-wa-main svg {
+	width: 1.05rem;
+	height: 1.05rem;
+	flex-shrink: 0;
+}
+
+/* Valmiit kysymykset */
+.th-chat-quick {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin-top: 0.2rem;
+}
+.th-chat-quick button {
+	border: 1px solid var(--chat-accent);
+	background: #fff;
+	color: var(--chat-accent);
+	border-radius: 999px;
+	padding: 0.4rem 0.75rem;
+	font: 600 0.82rem/1.2 var(--wp--preset--font-family--body, sans-serif);
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+.th-chat-quick button:hover {
+	background: var(--chat-accent);
+	color: #fff;
+}
+
+/* Kirjoittaa… */
+.th-chat-typing {
+	display: inline-flex;
+	gap: 4px;
+	padding: 0.3rem 0.1rem;
+}
+.th-chat-typing i {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--chat-muted);
+	animation: th-chat-dot 1s infinite ease-in-out;
+}
+.th-chat-typing i:nth-child(2) { animation-delay: 0.15s; }
+.th-chat-typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes th-chat-dot {
+	0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+	40% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Kirjoituskenttä ja WhatsApp-jatko */
+.th-chat-bottom {
+	background: #f7f9f8;
+	border-top: 1px solid rgb(14 37 38 / 0.08);
+	padding: 0.6rem;
+	display: grid;
+	gap: 0.5rem;
+}
+.th-chat-form {
+	display: flex;
+	gap: 0.45rem;
+}
+.th-chat-input {
+	flex: 1;
+	min-width: 0;
+	border: 1px solid rgb(14 37 38 / 0.15);
+	border-radius: 999px;
+	padding: 0.6rem 0.95rem;
+	font: inherit;
+	font-size: 0.95rem;
+	background: #fff;
+	color: var(--chat-ink);
+}
+.th-chat-input:focus {
+	outline: none;
+	border-color: var(--chat-accent);
+	box-shadow: 0 0 0 1px var(--chat-accent);
+}
+.th-chat-send {
+	width: 2.6rem;
+	height: 2.6rem;
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	border: 0;
+	border-radius: 50%;
+	background: var(--chat-accent);
+	color: #fff;
+	cursor: pointer;
+}
+.th-chat-send:hover {
+	filter: brightness(1.1);
+}
+.th-chat-wa-main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	padding: 0.5rem;
+	border-radius: 8px;
+	color: #128c4a;
+	font-weight: 600;
+	font-size: 0.88rem;
+	text-decoration: none;
+}
+.th-chat-wa-main:hover {
+	background: rgb(37 211 102 / 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.th-chat *,
+	.th-chat {
+		animation: none !important;
+		transition: none !important;
+	}
+}

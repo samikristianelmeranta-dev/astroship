@@ -71,6 +71,18 @@ Yrityksen tiedot (hinnat, yhteystiedot, toimialue) muutetaan yhdestä paikasta: 
 5. Jos AIOSEO:n oma llms.txt-toiminto on päällä, jätä se pois päältä tai poista teeman versio suodattimella `tilihub_llms_txt`.
 6. Google Search Console: lähetä sivukartta uudelleen ja tarkista *Rich results test* -työkalulla etusivu ja kirjanpitosivu.
 
+## Chat ja WhatsApp
+
+Sivuston oikeassa alakulmassa on kevyt chat (`inc/chat.php`, `assets/js/chat.js`, `assets/css/chat.css`):
+
+- Chat vastaa sivuston omasta sisällöstä: hinnastosta, yhteystiedoista, palvelusivujen usein kysytyistä kysymyksistä sekä sivujen ja artikkelien teksteistä. Vastauksen alla on linkki lähdesivulle ja kaksi muuta aiheeseen liittyvää sivua.
+- Jokaisen vastauksen alla on painike **Kysy tarkemmin WhatsAppissa**. Se avaa WhatsAppin numeroon 044 080 3344, ja kävijän kysymys on valmiina viestissä ("Hei! Kysyin sivuillanne: …").
+- Chat ei käytä ulkopuolisia palveluita, tekoälyrajapintoja eikä evästeitä, eikä kysymyksiä tallenneta. Väärinkäytön estämiseksi yhdestä IP-osoitteesta voi lähettää enintään 40 kysymystä minuutissa.
+- Hakemisto päivittyy itsestään, kun sivuja tai artikkeleita muokataan.
+- Valmiit kysymykset, tervehdys ja tilateksti muutetaan tiedostossa `inc/chat.php` (kohta `wp_localize_script`).
+- Mikä tahansa linkki, jonka osoite on `#chat`, avaa chatin, esimerkiksi "Kysy chatissa".
+- Chatin saa pois päältä: `add_filter( 'tilihub_chat_enabled', '__return_false' );`
+
 ## Vanhojen artikkelien ulkoasu
 
 Monessa artikkelissa on Oma HTML -lohkona kokonainen HTML-sivu omine tyyleineen. Ne piilottivat
