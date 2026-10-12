@@ -22,7 +22,9 @@ Asenna teeman jälkeen lisäosa `tilihub-sisaltopaivitys.zip` (*Lisäosat → Li
 ja valitse *Työkalut → TiliHub-sisältöpäivitys*. Sivu näyttää ensin, mitä muuttuu. Muutokset tehdään
 vasta, kun painat *Suorita päivitys*:
 
-- Hoiva-alan sivu siirretään roskakoriin, ja sen osoite ohjataan pysyvästi (301) kirjanpitosivulle.
+- Hoiva-alan sivu ja 8 päällekkäistä artikkelia siirretään roskakoriin, ja niiden osoitteet ohjataan pysyvästi (301)
+  korvaavalle sivulle (lista: `tools/redirects.json`).
+- Artikkelien rikkinäiset sisäiset linkit (43 kpl) korjataan.
 - Etusivun, kirjanpidon, palkanlaskennan, tilinpäätöksen, hinnaston, Tietoa meistä -sivun ja
   yhteystietojen sisältö siirretään sivujen omaksi sisällöksi. Niiden sivupohjaksi tulee
   *Laskeutumissivu*. Sen jälkeen sivuja muokataan tavallisessa sivueditorissa.
@@ -44,6 +46,30 @@ Kun päivitys on tehty, lisäosan voi poistaa.
 
 Teemassa on varalla sivupohjat `page-<osoite>.html`. Niiden ansiosta palvelusivut näkyvät oikein
 myös ennen kuin päivitys on tehty. Päivityksen jälkeen niitä ei käytetä.
+
+## Hakukone- ja tekoälyoptimointi
+
+Teema hoitaa nämä automaattisesti (`inc/`):
+
+| Mitä | Missä |
+| --- | --- |
+| 301-uudelleenohjaukset poistetuille sivuille, yhdistetyille artikkeleille ja vanhoille rikkinäisille osoitteille | `redirects.php`, lista `redirects-map.php` |
+| Rakenteinen data: tilitoimisto (AccountingService) yhteystietoineen, palvelut ja hinnat, palvelusivuille Service ja usein kysyttyjen kysymysten rakenne (FAQPage), joka luetaan sivun omasta Usein kysyttyä- tai Q&A-osiosta | `schema.php`, tiedot `business.php` |
+| `/llms.txt`: tiivis kuvaus tekoälyhauille, jossa ovat yritys, hinnat, palvelut ja kaikki artikkelit (päivittyy itsestään) | `llms.php` |
+| robots.txt: tekoälyhakujen indeksoijat sallitaan (GPTBot, ClaudeBot, PerplexityBot ym.), ja llms.txt mainitaan | `seo.php` |
+| Tagisivut, Uncategorized-kategoria ja haku piilotetaan hakukoneilta (noindex, follow) | `seo.php` |
+| Englanninkielisille artikkeleille merkitään kieli `lang="en"` | `seo.php` |
+
+Yrityksen tiedot (hinnat, yhteystiedot, toimialue) muutetaan yhdestä paikasta: `inc/business.php`.
+
+### Tarkista AIOSEO:sta käyttöönoton jälkeen
+
+1. *Hakunäkyvyys → Taksonomiat → Avainsanat (Tags)*: **Näytä hakutuloksissa: ei**.
+2. *Hakunäkyvyys → Sisältötyypit*: sivuilla ja artikkeleilla rakenteisen datan tyyppi WebPage / Article. Teema lisää tilitoimiston tiedot erikseen.
+3. *Työkalut → Robots.txt*: varmista, ettei tekoälyhakuja estetä (esim. `Disallow` GPTBotille).
+4. *Sivukartat*: luo sivukartta uudelleen, jotta poistetut artikkelit poistuvat siitä.
+5. Jos AIOSEO:n oma llms.txt-toiminto on päällä, jätä se pois päältä tai poista teeman versio suodattimella `tilihub_llms_txt`.
+6. Google Search Console: lähetä sivukartta uudelleen ja tarkista *Rich results test* -työkalulla etusivu ja kirjanpitosivu.
 
 ## Vanhojen artikkelien ulkoasu
 

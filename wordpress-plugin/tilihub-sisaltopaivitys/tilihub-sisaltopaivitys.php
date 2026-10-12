@@ -2,7 +2,7 @@
 /**
  * Plugin Name: TiliHub – sisältöpäivitys
  * Description: Kertakäyttöinen päivitys: siirtää palvelusivujen sisällön sivupohjista tavallisiksi sivuiksi ja korjaa artikkelien hinnat (Premium-paketti pois). Näyttää ensin esikatselun. Jokaisesta muutoksesta jää versio, joten muutokset voi perua.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.6
  * Requires PHP: 7.4
  * Author: TiliHub Oy
@@ -150,9 +150,10 @@ function tilihub_sp_run( $force ) {
 	}
 
 	foreach ( $data['trash'] ?? array() as $item ) {
+		$type = $item['type'] ?? 'page';
 		$page = get_post( (int) $item['id'] );
-		if ( ! $page || 'page' !== $page->post_type || $page->post_name !== $item['slug'] ) {
-			$page = get_page_by_path( $item['slug'], OBJECT, 'page' );
+		if ( ! $page || $type !== $page->post_type || $page->post_name !== $item['slug'] ) {
+			$page = get_page_by_path( $item['slug'], OBJECT, $type );
 		}
 		if ( ! $page || 'trash' === $page->post_status ) {
 			$result[] = sprintf( '%s: jo poistettu', $item['slug'] );
@@ -204,7 +205,8 @@ function tilihub_sp_render_page() {
 		<p>Päivitys tekee kaksi asiaa:</p>
 		<ol>
 			<li><strong>Palvelusivut tavallisiksi sivuiksi:</strong> etusivun, kirjanpidon, palkanlaskennan, tilinpäätöksen, hinnaston, Tietoa meistä -sivun ja yhteystietojen sisältö siirretään sivujen omaksi sisällöksi. Sen jälkeen niitä muokataan tavallisessa sivueditorissa.</li>
-			<li><strong>Hoiva-alan sivu poistetaan:</strong> sivu siirretään roskakoriin, ja sen osoite ohjataan pysyvästi kirjanpitosivulle.</li>
+			<li><strong>Hoiva-alan sivu ja päällekkäiset artikkelit poistetaan:</strong> ne siirretään roskakoriin, ja niiden osoitteet ohjataan pysyvästi (301) korvaavalle sivulle. Teema hoitaa uudelleenohjaukset.</li>
+			<li><strong>Rikkinäiset sisäiset linkit korjataan</strong> artikkeleissa osoittamaan oikeille sivuille.</li>
 			<li><strong>Artikkelien hinnat:</strong> Premium-paketti poistetaan ja hinnat korjataan nykyisen hinnaston mukaisiksi (kirjanpito alkaen 55 € + alv / kk, 55 €/h, asiantuntijatyö 79 €/h, verosuunnittelu 119 €/h). Tarkat muutokset ovat lisäosan tiedostossa <code>MUUTOKSET.md</code>.</li>
 		</ol>
 
@@ -212,12 +214,12 @@ function tilihub_sp_render_page() {
 		<?php tilihub_sp_table( $data['pages'], true ); ?>
 
 		<?php if ( ! empty( $data['trash'] ) ) : ?>
-			<h2>Poistettavat sivut</h2>
+			<h2>Poistettavat sivut ja päällekkäiset artikkelit</h2>
 			<table class="widefat striped" style="max-width:60rem">
 				<thead><tr><th>Sivu</th><th>Tila</th></tr></thead>
 				<tbody>
 				<?php foreach ( $data['trash'] as $item ) : ?>
-					<?php $tp = get_page_by_path( $item['slug'], OBJECT, 'page' ); ?>
+					<?php $tp = get_page_by_path( $item['slug'], OBJECT, $item['type'] ?? 'page' ); ?>
 					<tr>
 						<td><?php echo esc_html( $item['title'] ); ?> (<code>/<?php echo esc_html( $item['slug'] ); ?>/</code>)</td>
 						<td><?php echo esc_html( $tp ? 'Siirretään roskakoriin, osoite ohjautuu sivulle ' . $item['redirect'] : 'Jo poistettu' ); ?></td>

@@ -29,6 +29,14 @@ const FIXES = [
     /Kirjanpidon hinta on alkaen 55 €\/kk sisältäen ohjelmiston perusmaksun\. Hintaan lisätään voimassa oleva arvonlisävero 25,5 %\./,
     "Kirjanpidon hinta on alkaen 55 € + alv kuukaudessa. Tarkemmat hinnat löydät [hinnastosta](/kirjanpidon-hinnat/).",
   ],
+  [
+    /Hinta riippuu yrityksen koosta, työntekijämäärästä ja TES-vaatimuksista, mutta se on usein edullisempaa/,
+    "Palkanlaskenta maksaa TiliHubilla 55 €/h + alv, alkaen 15 € / palkka-ajo. Kokonaishinta riippuu yrityksen koosta, työntekijämäärästä ja TES-vaatimuksista, mutta se on usein edullisempaa",
+  ],
+  [
+    /Hinta riippuu yrityksen koosta ja kirjanpidon laajuudesta\. Meiltä saat aina selkeän tarjouksen/,
+    "Tilinpäätös ja yrityksen veroilmoitus laskutetaan asiantuntijatyön tuntihinnalla 79 €/h + alv. Kokonaishinta riippuu yrityksen koosta ja kirjanpidon laajuudesta. Meiltä saat aina selkeän tarjouksen",
+  ],
 ];
 
 const AREAS = /^(Turku|Kaarina|Raisio|Naantali|Lieto|Varsinais-Suomi|Koko Suomi \(digitaalisesti\)|\s)+$/;

@@ -189,8 +189,27 @@ function textOf(s) {
   return s.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 }
 
+// Uudelleenohjaukset: poistettavat sivut ja vanhat rikkinäiset linkit (yksi yhteinen lista).
+const REDIRECTS = JSON.parse(fs.readFileSync(path.join(ROOT, "wordpress-theme/tools/redirects.json"), "utf8"));
+const LINK_MAP = { ...REDIRECTS.broken, ...REDIRECTS.removed };
+const escRe = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Korjaa sisäiset linkit, jotka osoittavat poistettuihin tai olemattomiin osoitteisiin. */
+function fixLinks(html, log) {
+  for (const [from, to] of Object.entries(LINK_MAP)) {
+    // myös suhteelliset linkit ilman alkukauttaviivaa (esim. href="yhteystiedot.html")
+    const bare = from.replace(/^\/|\/$/g, "");
+    const re = new RegExp(`(href=["'])(?:https?://(?:www\\.)?tilihub\\.fi)?/?${escRe(bare)}/?(?=["'#?])`, "gi");
+    html = html.replace(re, (m0, a) => {
+      log.push(`LINKKI: ${from} → ${to}`);
+      return a + "https://www.tilihub.fi" + to;
+    });
+  }
+  return html;
+}
+
 function fixContent(content, log) {
-  let html = content;
+  let html = fixLinks(content, log);
   for (const [re, to] of PHRASES) html = html.replace(re, to);
   html = removePremiumElements(html, log);
   html = cleanScripts(html);
@@ -221,7 +240,8 @@ for (const it of items) {
   const type = text(it["wp:post_type"]);
   if (type !== "post" || text(it["wp:status"]) !== "publish") continue;
   const content = text(it["content:encoded"]);
-  if (!/premium|\b50\s?€|\b54\s?€|\b89\s?€|\b109\s?€|€89|€109|50€/i.test(content)) continue;
+  const linkPath = new URL(text(it.link)).pathname;
+  if (REDIRECTS.removed[linkPath]) continue; // poistetaan kokonaan, ei korjata
   const log = [];
   const fixed = fixContent(content, log);
   const m = meta(it);
@@ -244,6 +264,7 @@ for (const it of items) {
     `### ${text(it.title)}\n\`/${slug}/\` (ID ${id})\n\n` +
       snippets.map(([s, t]) => `${s === "-" ? "- ~~" + t.slice(0, 220) + "~~" : "- **" + t.slice(0, 220) + "**"}`).join("\n") +
       (newDesc !== desc ? `\n- SEO-kuvaus: ~~${desc}~~ → **${newDesc}**` : "") +
+      [...new Set(log.filter((l) => l.startsWith("LINKKI")))].map((l) => "\n- " + l.replace("LINKKI: ", "Linkki korjattu: ")).join("") +
       "\n"
   );
 }
@@ -279,7 +300,31 @@ const pages = PAGE_SOURCES.map((p) => {
 
 fs.mkdirSync(path.join(OUT, "data"), { recursive: true });
 // 3) Poistettavat sivut (siirretään roskakoriin; teema ohjaa vanhan osoitteen 301:llä)
-const trash = [{ id: 2106, slug: "kirjanpito-hoiva-alalle", title: "Kirjanpito hoiva-alalle", redirect: "/kirjanpitopalvelut/" }];
+const trash = items
+  .filter((it) => ["post", "page"].includes(text(it["wp:post_type"])) && text(it["wp:status"]) === "publish")
+  .map((it) => ({ it, p: new URL(text(it.link)).pathname }))
+  .filter(({ p }) => REDIRECTS.removed[p])
+  .map(({ it, p }) => ({
+    id: Number(text(it["wp:post_id"])),
+    type: text(it["wp:post_type"]),
+    slug: decodeURIComponent(text(it["wp:post_name"])),
+    title: text(it.title),
+    redirect: REDIRECTS.removed[p],
+  }));
+
+// Teeman uudelleenohjauslista
+const php = Object.entries(LINK_MAP)
+  .map(([a, b]) => `\t'${a.replace(/'/g, "\\'")}' => '${b}',`)
+  .join("\n");
+fs.writeFileSync(
+  path.join(THEME, "inc/redirects-map.php"),
+  `<?php\n/**\n * 301-uudelleenohjaukset. Generoitu: wordpress-theme/tools/redirects.json\n *\n * @package TiliHub\n */\n\nreturn array(\n${php}\n);\n`
+);
+report.unshift(
+  "## Poistettavat sivut ja artikkelit (301-uudelleenohjaus)\n\n" +
+    trash.map((t) => `- ~~${t.title}~~ \`${new URL("https://x/" + t.slug + "/").pathname}\` → \`${t.redirect}\``).join("\n") +
+    "\n\n## Artikkelien korjaukset\n"
+);
 
 fs.writeFileSync(path.join(OUT, "data/updates.json"), JSON.stringify({ generated: new Date().toISOString(), pages, posts, trash }, null, 1));
 fs.writeFileSync(

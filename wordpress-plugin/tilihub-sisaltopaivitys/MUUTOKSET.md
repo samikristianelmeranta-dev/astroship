@@ -1,6 +1,20 @@
 # Sisältöpäivityksen muutokset
 
-Artikkeleita: 27. Yliviivattu = poistuu, lihavoitu = uusi teksti.
+Artikkeleita: 42. Yliviivattu = poistuu, lihavoitu = uusi teksti.
+
+## Poistettavat sivut ja artikkelit (301-uudelleenohjaus)
+
+- ~~Kirjanpito hoiva-alalle~~ `/kirjanpito-hoiva-alalle/` → `/kirjanpitopalvelut/`
+- ~~Tilitoimisto Turusta?~~ `/tilitoimisto-turusta/` → `/tilitoimisto-turussa/`
+- ~~Pieni tilitoimisto Turusta~~ `/pieni-tilitoimisto-turusta/` → `/pieni-tilitoimisto-turku/`
+- ~~Edullinen tilitoimisto~~ `/edullinen-tilitoimisto/` → `/edullinen-tilitoimisto-turku/`
+- ~~Mitä tehdä, jos ALV-ilmoitus myöhästyy?~~ `/mitatehdajosalvilmoitusmyohastyy/` → `/alv-ilmoitus-myohassa-miten-toimin/`
+- ~~Yrityksen perustaminen~~ `/yrityksen-perustaminen-3/` → `/yrityksen-perustaminen/`
+- ~~Accounting Firm in Finland (Turku) | TiliHub – Digital Accounting~~ `/accounting-firm-in-finland-turku-tilihub-digital-accounting/` → `/accounting-firm-in-finland-turku/`
+- ~~Accounting Turku - bookkeeping services~~ `/accounting-turku-bookkeeping-services/` → `/accounting-firm-in-finland-turku/`
+- ~~Mitä tarkoittaa juokseva kirjanpito?~~ `/mita-tarkoittaa-juokseva-kirjanpito-tarkoittaa/` → `/juokseva-kirjanpito-mita-tarkoittaa/`
+
+## Artikkelien korjaukset
 
 ### Tilitoimisto Kaarina
 `/tilitoimisto-kaarina/` (ID 1344)
@@ -75,12 +89,14 @@ Artikkeleita: 27. Yliviivattu = poistuu, lihavoitu = uusi teksti.
 - **⚡ Pikavastaus Osakeyhtiön kirjanpidon hinta Suomessa on tyypillisesti 80–400 €/kk riippuen tositemääristä ja lisäpalveluista. Pienelle osakeyhtiölle (alle 30 tositetta/kk) tilitoimistopalvelu maksaa keskimäärin 80–150 €/**
 - **alk. 55 € / kk**
 - **Pienen osakeyhtiön kirjanpito maksaa tyypillisesti noin 80–150 €/kk, keskisuuren 150–400 €/kk ja suuremman yrityksen yli 400 €/kk. TiliHub tarjoaa pienille osakeyhtiöille kirjanpitoa alkaen 55 €/kk + alv 25,5 %. Mistä os**
+- Linkki korjattu: /osakeyhtion-kirjanpito/ → /kirjanpito-pienelle-osakeyhtiolle/
 
 ### Kirjanpito hinta kuukaudessa – mitä yrittäjän tulee tietää?
 `/kirjanpito-hinta-kuukaudessa-mita-yrittajan-tulee-tietaa/` (ID 1797)
 
 - ~~Meillä on tarjolla yrityksille premium-paketti, joka sisältää kaiken kiinteällä hinnalla. Tutustu tästä.~~
 - ~~Meillä on yrityksille premium-paketti, joka sisältää kaiken tarvittavan.~~
+- Linkki korjattu: /tilitoimiston-vaihto-edessa/ → /tilitoimistoa-vaihtamassa/
 
 ### Tilitoimisto Parainen
 `/tilitoimisto-parainen/` (ID 2053)
@@ -294,6 +310,125 @@ Artikkeleita: 27. Yliviivattu = poistuu, lihavoitu = uusi teksti.
 - **Ei piilokuluuja – saat aina selkeän tarjouksen ja sovitun kuukausihinnan. Kirjanpito alkaen 55 € + alv kuukaudessa: peruspalvelut 55 €/h, tilinpäätös 79 €/h.**
 - **Kirjanpito alkaen 55 € + alv kuukaudessa: peruspalvelut 55 €/h, tilinpäätös 79 €/h. Pienelle toiminimelle tyypillisesti 55–150 €/kk, osakeyhtiölle 150–350 €/kk. Pyydä maksuton tarjous niin saat tarkan hinnan yritykselles**
 
+### ALV-ilmoitus myöhässä, miten toimin?
+`/alv-ilmoitus-myohassa-miten-toimin/` (ID 2599)
+
+
+- Linkki korjattu: /yhteystiedot.html → /yhteystiedot/
+
+### Verovähennykset, jotka helposti unohtuu
+`/verovahennykset-jotka-helposti-unohtuu/` (ID 2601)
+
+
+- Linkki korjattu: /yhteystiedot.html → /yhteystiedot/
+
+### Kassavirtaennuste, tärkeämpää kuin tulos?
+`/kassavirtaennuste-tarkeampaa-kuin-tulos/` (ID 2603)
+
+
+- Linkki korjattu: /yhteystiedot.html → /yhteystiedot/
+
+### Tilitoimistot Turun alueella - opas 2026
+`/tilitoimistot-turun-alueella-opas-202/` (ID 2605)
+
+
+- Linkki korjattu: /yhteystiedot.html → /yhteystiedot/
+- Linkki korjattu: /kirjanpito.html → /kirjanpitopalvelut/
+- Linkki korjattu: /hinnasto.html → /kirjanpidon-hinnat/
+- Linkki korjattu: /palkanlaskenta.html → /palkanlaskenta/
+- Linkki korjattu: /tilinpaatos.html → /tilinpaatos/
+- Linkki korjattu: /yrityksen-perustaminen.html → /yrityksen-perustaminen/
+
+### Miten digitaalinen tilitoimisto toimii?
+`/miten-digitaalinen-tilitoimisto-toimii/` (ID 2607)
+
+
+- Linkki korjattu: /yhteystiedot.html → /yhteystiedot/
+- Linkki korjattu: /kirjanpito.html → /kirjanpitopalvelut/
+- Linkki korjattu: /hinnasto.html → /kirjanpidon-hinnat/
+- Linkki korjattu: /palkanlaskenta.html → /palkanlaskenta/
+- Linkki korjattu: /yrityksen-perustaminen.html → /yrityksen-perustaminen/
+- Linkki korjattu: /osakeyhtion-kirjanpito.html → /kirjanpito-pienelle-osakeyhtiolle/
+- Linkki korjattu: /artikkeli-alv-ilmoitus-myohastyy.html → /alv-ilmoitus-myohassa-miten-toimin/
+- Linkki korjattu: /artikkeli-kassavirtaennuste.html → /kassavirtaennuste-tarkeampaa-kuin-tulos/
+- Linkki korjattu: /artikkeli-unohdetut-verovahennykset.html → /verovahennykset-jotka-helposti-unohtuu/
+
+### Kirjanpitoa & neuvontaa kevytyrittäjille
+`/kirjanpitoa-neuvontaa-kevytyrittajille/` (ID 2628)
+
+
+- Linkki korjattu: /toiminimen-kirjanpito/ → /kirjanpidon-erot-toiminimi-vs-osakeyhtio/
+- Linkki korjattu: /kilometrikorvaus-matkakorvaus-paivaraha-2026/ → /kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/
+
+### Teollisuuden kirjanpito
+`/teollisuuden-kirjanpito/` (ID 2630)
+
+
+- Linkki korjattu: /tilitoimisto-pori/ → /tilitoimisto-porissa-digitaalisesti-ympari-suomea/
+
+### Siivousalan kirjanpitoa
+`/siivousalan-kirjanpitoa/` (ID 2632)
+
+
+- Linkki korjattu: /kilometrikorvaus-matkakorvaus-paivaraha-2026/ → /kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/
+- Linkki korjattu: /kirjanpito-teollisuuteen/ → /teollisuuden-kirjanpito/
+
+### Asiantuntijayrityksen kirjanpito- lue lisää!
+`/asiantuntijayrityksen-kirjanpito-lue-lisaa/` (ID 2634)
+
+
+- Linkki korjattu: /toiminimen-kirjanpito/ → /kirjanpidon-erot-toiminimi-vs-osakeyhtio/
+- Linkki korjattu: /osakeyhtion-kirjanpito/ → /kirjanpito-pienelle-osakeyhtiolle/
+
+### Kirjanpidon resurssit kirjanpitoon ja verotukseen
+`/kirjanpidon-resurssit-kirjanpitoon-ja-verotukseen/` (ID 2636)
+
+
+- Linkki korjattu: /kirjanpito-ohjelmat-vertailu-2026/ → /kirjanpito-ohjelmat-vertailu/
+- Linkki korjattu: /kilometrikorvaus-matkakorvaus-paivaraha-2026/ → /kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/
+- Linkki korjattu: /luontoisedut-2026/ → /kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/
+
+### Kirjanpidon säilytysikä
+`/kirjanpidon-sailytysika/` (ID 2638)
+
+
+- Linkki korjattu: /hinnasto/ → /kirjanpidon-hinnat/
+- Linkki korjattu: /ota-yhteytta/ → /yhteystiedot/
+
+### Kirjanpito mikroyrityksille, Turku & Varsinais-Suom
+`/kirjanpito-mikroyrityksille-turku-varsinais-suom/` (ID 2640)
+
+
+- Linkki korjattu: /toiminimen-kirjanpito/ → /kirjanpidon-erot-toiminimi-vs-osakeyhtio/
+- Linkki korjattu: /osakeyhtion-kirjanpito/ → /kirjanpito-pienelle-osakeyhtiolle/
+- Linkki korjattu: /kirjanpito-ohjelmat-vertailu-2026/ → /kirjanpito-ohjelmat-vertailu/
+- Linkki korjattu: /kilometrikorvaus-matkakorvaus-paivaraha-2026/ → /kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/
+
+### Rästinkirjanpito - miten saat kirjanpidon ajan tasalle?
+`/rastinkirjanpito-miten-saat-kirjanpidon-ajan-tasalle/` (ID 2642)
+
+
+- Linkki korjattu: /toiminimen-kirjanpito/ → /kirjanpidon-erot-toiminimi-vs-osakeyhtio/
+- Linkki korjattu: /osakeyhtion-kirjanpito/ → /kirjanpito-pienelle-osakeyhtiolle/
+
+### Juokseva kirjanpito - mitä tarkoittaa?
+`/juokseva-kirjanpito-mita-tarkoittaa/` (ID 2644)
+
+
+- Linkki korjattu: /kirjanpito-ohjelmat-vertailu-2026/ → /kirjanpito-ohjelmat-vertailu/
+
+### Mitä kirjanpito-ohjelmat maksaa?
+`/mita-kirjanpito-ohjelmat-maksaa/` (ID 2674)
+
+
+- Linkki korjattu: /kirjanpito-ohjelmat-vertailu-2026/ → /kirjanpito-ohjelmat-vertailu/
+
+### Fennoa tilitoimisto
+`/fennoa-tilitoimisto/` (ID 2689)
+
+
+- Linkki korjattu: /kirjanpito-ohjelmat-vertailu-2026/ → /kirjanpito-ohjelmat-vertailu/
+
 ### Tilitoimisto Paimiossa
 `/tilitoimistopaimio/` (ID 2696)
 
@@ -341,22 +476,6 @@ Artikkeleita: 27. Yliviivattu = poistuu, lihavoitu = uusi teksti.
 - **€119/hour**
 - **Bookkeeping starts from €55/hour. A small sole trader typically pays €55–150/month, and a limited company (Oy) €150–350/month. Are you switching accounting firms?**
 
-### Accounting Firm in Finland (Turku) | TiliHub – Digital Accounting
-`/accounting-firm-in-finland-turku-tilihub-digital-accounting/` (ID 2707)
-
-- ~~⚡ Quick answer TiliHub Oy is a digital accounting firm based in Kaarina, near Turku, serving entrepreneurs and foreign-owned companies across all of Finland. Bookkeeping starts from €55/hour, or a fixed Premium package f~~
-- ~~Premium package~~
-- ~~from €167/month~~
-- ~~€89/hour~~
-- ~~€109/hour~~
-- ~~All prices are subject to VAT at 25.5%. A small sole trader typically pays €50–150/month; a limited company (Oy) €150–350/month.~~
-- ~~Bookkeeping starts from €55/hour, or a fixed Premium package from €167/month.~~
-- **⚡ Quick answer TiliHub Oy is a digital accounting firm based in Kaarina, near Turku, serving entrepreneurs and foreign-owned companies across all of Finland. Bookkeeping starts from €55/hour. Everything is handled remote**
-- **€79/hour**
-- **€119/hour**
-- **All prices are subject to VAT at 25.5%. A small sole trader typically pays €55–150/month; a limited company (Oy) €150–350/month.**
-- **Bookkeeping starts from €55/hour.**
-
 ### Kevytyrittäjän ja freelancerin taloushallinto
 `/kevytyrittajan-ja-freelancerin-taloushallinto/` (ID 2714)
 
@@ -375,20 +494,9 @@ Artikkeleita: 27. Yliviivattu = poistuu, lihavoitu = uusi teksti.
 - **79 €/h**
 - **119 €/h**
 
-### Accounting Turku - bookkeeping services
-`/accounting-turku-bookkeeping-services/` (ID 2718)
+### Yleiset virheet kirjanpidossa, lue lisää!
+`/yleiset-virheet-kirjanpidossa-lue-lisaa/` (ID 2745)
 
-- ~~Accounting Firm in Turku & Southwest Finland | TiliHub { "@context": "https://schema.org", "@type": "Article", "headline": "Accounting Firm in Turku & Southwest Finland", "description": "TiliHub offers bookkeeping, payro~~
-- ~~⚡ Quick answer TiliHub Oy is a digital accounting firm based in Kaarina, about 12 km from central Turku, serving businesses across Turku and all of Southwest Finland. Bookkeeping starts from €55/hour, or a fixed Premium ~~
-- ~~Premium package~~
-- ~~from €167/month~~
-- ~~€89/hour~~
-- ~~€109/hour~~
-- ~~All prices are subject to VAT at 25.5%. A small sole trader typically pays €50-150/month; a limited company (Oy) €150-350/month.~~
-- ~~Bookkeeping starts from €55/hour, or a fixed Premium package from €167/month. A small sole trader typically pays €50-150/month, and a limited company (Oy) €150-350/month. Can TiliHub help switch accounting firms in Turku~~
-- **Accounting Firm in Turku & Southwest Finland | TiliHub { "@context": "https://schema.org", "@type": "Article", "headline": "Accounting Firm in Turku & Southwest Finland", "description": "TiliHub offers bookkeeping, payro**
-- **⚡ Quick answer TiliHub Oy is a digital accounting firm based in Kaarina, about 12 km from central Turku, serving businesses across Turku and all of Southwest Finland. Bookkeeping starts from €55/hour. Everything is handl**
-- **€79/hour**
-- **€119/hour**
-- **All prices are subject to VAT at 25.5%. A small sole trader typically pays €55–150/month; a limited company (Oy) €150-350/month.**
-- **Bookkeeping starts from €55/hour. A small sole trader typically pays €55–150/month, and a limited company (Oy) €150-350/month. Can TiliHub help switch accounting firms in Turku?**
+
+- Linkki korjattu: /kirjanpidon-perusteet-liiketoiminnassa/ → /mita-kirjanpitoon-kuuluu/
+- Linkki korjattu: /juokseva-kirjanpito/ → /juokseva-kirjanpito-mita-tarkoittaa/

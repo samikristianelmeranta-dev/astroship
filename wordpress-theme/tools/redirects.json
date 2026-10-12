@@ -1,0 +1,42 @@
+{
+  "_ohje": "removed = poistettavat sivut/artikkelit (siirretään roskakoriin); broken = vanhojen artikkelien rikkinäiset sisäiset linkit. Molemmat ohjataan 301:llä.",
+  "removed": {
+    "/kirjanpito-hoiva-alalle/": "/kirjanpitopalvelut/",
+    "/yrityksen-perustaminen-3/": "/yrityksen-perustaminen/",
+    "/mita-tarkoittaa-juokseva-kirjanpito-tarkoittaa/": "/juokseva-kirjanpito-mita-tarkoittaa/",
+    "/mitatehdajosalvilmoitusmyohastyy/": "/alv-ilmoitus-myohassa-miten-toimin/",
+    "/accounting-firm-in-finland-turku-tilihub-digital-accounting/": "/accounting-firm-in-finland-turku/",
+    "/accounting-turku-bookkeeping-services/": "/accounting-firm-in-finland-turku/",
+    "/pieni-tilitoimisto-turusta/": "/pieni-tilitoimisto-turku/",
+    "/tilitoimisto-turusta/": "/tilitoimisto-turussa/",
+    "/edullinen-tilitoimisto/": "/edullinen-tilitoimisto-turku/"
+  },
+  "broken": {
+    "/hinnasto/": "/kirjanpidon-hinnat/",
+    "/hinnat/": "/kirjanpidon-hinnat/",
+    "/kirjanpito/": "/kirjanpitopalvelut/",
+    "/yhteystiedot/yhteystiedot/": "/yhteystiedot/",
+    "/yhteystiedot.html": "/yhteystiedot/",
+    "/ota-yhteytta/": "/yhteystiedot/",
+    "/kirjanpito.html": "/kirjanpitopalvelut/",
+    "/hinnasto.html": "/kirjanpidon-hinnat/",
+    "/palkanlaskenta.html": "/palkanlaskenta/",
+    "/tilinpaatos.html": "/tilinpaatos/",
+    "/yrityksen-perustaminen.html": "/yrityksen-perustaminen/",
+    "/toiminimen-kirjanpito/": "/kirjanpidon-erot-toiminimi-vs-osakeyhtio/",
+    "/osakeyhtion-kirjanpito/": "/kirjanpito-pienelle-osakeyhtiolle/",
+    "/osakeyhtion-kirjanpito.html": "/kirjanpito-pienelle-osakeyhtiolle/",
+    "/kirjanpito-ohjelmat-vertailu-2026/": "/kirjanpito-ohjelmat-vertailu/",
+    "/kilometrikorvaus-matkakorvaus-paivaraha-2026/": "/kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/",
+    "/luontoisedut-2026/": "/kilometrikorvaus-matkakorvaus-ja-paivaraha-vuonna-2026/",
+    "/tilitoimiston-vaihto-edessa/": "/tilitoimistoa-vaihtamassa/",
+    "/kirjanpidon-perusteet-liiketoiminnassa/": "/mita-kirjanpitoon-kuuluu/",
+    "/yleisimmat-kirjanpidon-virheet/": "/yleiset-virheet-kirjanpidossa-lue-lisaa/",
+    "/juokseva-kirjanpito/": "/juokseva-kirjanpito-mita-tarkoittaa/",
+    "/artikkeli-alv-ilmoitus-myohastyy.html": "/alv-ilmoitus-myohassa-miten-toimin/",
+    "/artikkeli-kassavirtaennuste.html": "/kassavirtaennuste-tarkeampaa-kuin-tulos/",
+    "/artikkeli-unohdetut-verovahennykset.html": "/verovahennykset-jotka-helposti-unohtuu/",
+    "/kirjanpito-teollisuuteen/": "/teollisuuden-kirjanpito/",
+    "/tilitoimisto-pori/": "/tilitoimisto-porissa-digitaalisesti-ympari-suomea/"
+  }
+}
