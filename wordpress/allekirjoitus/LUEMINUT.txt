@@ -1,0 +1,21 @@
+SÄHKÖPOSTIN ALLEKIRJOITUS
+
+Tiedostot:
+  allekirjoitus.html       Allekirjoitus (avaa selaimessa ja kopioi, tai käytä koodia suoraan)
+  allekirjoitus-logo.png   Pieni logo (606 x 96 px, näytetään 189 x 30 px, terävä myös tarkoilla näytöillä)
+
+Logon osoite:
+  Allekirjoitus hakee logon osoitteesta
+  https://ikkunakauppias.fi/wp-content/themes/nordic-theme/assets/img/allekirjoitus-logo.png
+  Logo on mukana Nordic-teemassa 2.6.1. Jos et halua päivittää teemaa, lataa allekirjoitus-logo.png
+  WordPressin Mediaan (Media → Lisää uusi), kopioi tiedoston URL ja vaihda se allekirjoitus.html:n
+  img src -kohtaan.
+  (Logoa ei upoteta viestiin base64-muodossa, koska Gmail ja moni muu ohjelma estää sellaiset kuvat.)
+
+Käyttöönotto:
+  Gmail:    Asetukset (ratas) → Näytä kaikki asetukset → Yleiset → Allekirjoitus → Luo uusi →
+            liitä kopioitu allekirjoitus → Tallenna muutokset (sivun alalaidassa).
+  Outlook:  Asetukset → Tili → Allekirjoitukset → Uusi allekirjoitus → liitä → Tallenna.
+            Valitse se oletukseksi uusille viesteille ja vastauksille.
+  iPhone:   Asetukset → Mail → Allekirjoitus → liitä (ravista puhelinta ja valitse Kumoa,
+            jos muotoilu katoaa).
