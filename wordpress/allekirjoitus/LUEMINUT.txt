@@ -1,21 +1,11 @@
-SÄHKÖPOSTIN ALLEKIRJOITUS
+SÄHKÖPOSTIN ALLEKIRJOITUS (erillinen, ei vaadi teemaa eikä kuvatiedostoa)
 
-Tiedostot:
-  allekirjoitus.html       Allekirjoitus (avaa selaimessa ja kopioi, tai käytä koodia suoraan)
-  allekirjoitus-logo.png   Pieni logo (606 x 96 px, näytetään 189 x 30 px, terävä myös tarkoilla näytöillä)
+  allekirjoitus-koodi.html  Pelkkä allekirjoituksen HTML-koodi (sähköpostiohjelmiin, jotka ottavat koodin)
+  allekirjoitus.html        Sama allekirjoitus selaimessa avattavana: maalaa, kopioi ja liitä
 
-Logon osoite:
-  Allekirjoitus hakee logon osoitteesta
-  https://ikkunakauppias.fi/wp-content/themes/nordic-theme/assets/img/allekirjoitus-logo.png
-  Logo on mukana Nordic-teemassa 2.6.1. Jos et halua päivittää teemaa, lataa allekirjoitus-logo.png
-  WordPressin Mediaan (Media → Lisää uusi), kopioi tiedoston URL ja vaihda se allekirjoitus.html:n
-  img src -kohtaan.
-  (Logoa ei upoteta viestiin base64-muodossa, koska Gmail ja moni muu ohjelma estää sellaiset kuvat.)
+Logo (ikkunamerkki + Ikkunakauppias.fi) on rakennettu HTML-taulukolla ja teksteillä, joten se näkyy
+myös silloin, kun vastaanottajan ohjelma estää kuvat.
 
-Käyttöönotto:
-  Gmail:    Asetukset (ratas) → Näytä kaikki asetukset → Yleiset → Allekirjoitus → Luo uusi →
-            liitä kopioitu allekirjoitus → Tallenna muutokset (sivun alalaidassa).
-  Outlook:  Asetukset → Tili → Allekirjoitukset → Uusi allekirjoitus → liitä → Tallenna.
-            Valitse se oletukseksi uusille viesteille ja vastauksille.
-  iPhone:   Asetukset → Mail → Allekirjoitus → liitä (ravista puhelinta ja valitse Kumoa,
-            jos muotoilu katoaa).
+Gmail:    Asetukset → Näytä kaikki asetukset → Yleiset → Allekirjoitus → Luo uusi → liitä → Tallenna muutokset
+Outlook:  Asetukset → Tili → Allekirjoitukset → Uusi → liitä → Tallenna (valitse oletukseksi)
+Thunderbird: Tilin asetukset → Allekirjoitus → rasti "Käytä HTML-muotoilua" → liitä allekirjoitus-koodi.html:n sisältö
