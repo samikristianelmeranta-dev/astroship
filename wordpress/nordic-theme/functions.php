@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.5.3' );
+define( 'NORDIC_VERSION', '2.6.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -235,7 +235,12 @@ function nordic_head_early() {
 	// Hero-kuvan esilataus (LCP-kuva) — nopeuttaa näkyvää latausta.
 	if ( is_singular( 'page' ) ) {
 		$hero = nordic_page_hero_image( get_the_ID() );
-		if ( $hero ) {
+		if ( $hero && false !== strpos( get_post_field( 'post_content', get_the_ID() ), 'hero-photo' ) ) {
+			// Etusivun taustakuva: sama tiedosto kuin CSS:ssä kullakin näytön leveydellä.
+			$img = get_template_directory_uri() . '/assets/img/';
+			echo '<link rel="preload" as="image" href="' . esc_url( $img . 'ovi-valkoinen-1024.webp' ) . '" media="(max-width: 1024px)" fetchpriority="high">' . "\n";
+			echo '<link rel="preload" as="image" href="' . esc_url( $img . nordic_front_hero_file() ) . '" media="(min-width: 1025px)" fetchpriority="high">' . "\n";
+		} elseif ( $hero ) {
 			$attrs = nordic_image_variant_attrs( $hero );
 			echo '<link rel="preload" as="image" href="' . esc_url( $attrs['src'] ) . '"';
 			if ( ! empty( $attrs['srcset'] ) ) {
@@ -503,6 +508,8 @@ function nordic_image_map() {
 		'seo-ikkuna.jpg'        => array( 'w' => 1200, 'h' => 800, 'webp' => 'seo-ikkuna.webp', 'srcset' => array( 640 => 'seo-ikkuna-640.webp', 1200 => 'seo-ikkuna.webp' ) ),
 		'seo-ovi.jpg'           => array( 'w' => 1200, 'h' => 873, 'webp' => 'seo-ovi.webp', 'srcset' => array( 640 => 'seo-ovi-640.webp', 1200 => 'seo-ovi.webp' ) ),
 		'product-portrait.png'  => array( 'w' => 238, 'h' => 504, 'webp' => 'product-portrait.webp' ),
+		'ovi-valkoinen.webp'    => array( 'w' => 2000, 'h' => 1334, 'webp' => 'ovi-valkoinen.webp', 'srcset' => array( 640 => 'ovi-valkoinen-640.webp', 1024 => 'ovi-valkoinen-1024.webp', 2000 => 'ovi-valkoinen.webp' ) ),
+		'julkisivu-ovet.webp'   => array( 'w' => 1110, 'h' => 740, 'webp' => 'julkisivu-ovet.webp', 'srcset' => array( 640 => 'julkisivu-ovet-640.webp', 1110 => 'julkisivu-ovet.webp' ) ),
 	);
 }
 
@@ -534,13 +541,54 @@ function nordic_image_variant_attrs( $url ) {
 }
 
 /**
+ * Ryhmäkuvat (2.6.0): ovisivuilla ja ikkunasivuilla on oma pääkuvansa, jonka
+ * teema vaihtaa sivun ylätunnisteeseen automaattisesti. Kuvat voi vaihtaa
+ * suodattimella nordic_group_photos.
+ */
+function nordic_group_photos() {
+	return apply_filters( 'nordic_group_photos', array(
+		'ovi'    => array( 'file' => 'ovi-valkoinen.webp', 'alt' => 'Valkoinen Skaala-ulko-ovi avattuna aurinkoiselle terassille' ),
+		'ikkuna' => array( 'file' => 'julkisivu-ovet.webp', 'alt' => 'Tumma puujulkisivu, jossa uudet ikkunat ja ulko-ovet terassin varrella' ),
+	) );
+}
+
+/** Etusivun taustakuva. */
+function nordic_front_hero_file() {
+	return apply_filters( 'nordic_front_hero_file', 'ovi-valkoinen.webp' );
+}
+
+/**
+ * Sivun kuvaryhmä osoitteen perusteella: 'ovi', 'ikkuna' tai ''.
+ * Koskee palvelu-, tuote- ja paikkakuntasivuja (ei oppaita).
+ */
+function nordic_photo_group( $slug ) {
+	if ( ! in_array( nordic_page_type( $slug ), array( 'service', 'product', 'city' ), true ) ) {
+		return '';
+	}
+	if ( preg_match( '/^(ikkuna|uudet-ikkunat)/', $slug ) ) {
+		return 'ikkuna';
+	}
+	if ( preg_match( '/(^|-)(ovet|ovi|oviremontti)(-|$)/', $slug ) ) {
+		return 'ovi';
+	}
+	if ( false !== strpos( $slug, 'ikkun' ) ) {
+		return 'ikkuna';
+	}
+	return '';
+}
+
+/**
  * Sivun pääkuva (ensimmäinen kuva sisällössä) — käytetään hero-esilatauksessa,
  * og:image-tagissa ja skeemoissa.
  */
 function nordic_page_hero_image( $post_id ) {
 	$content = get_post_field( 'post_content', $post_id );
 	if ( strpos( $content, 'hero-photo' ) !== false ) {
-		return get_template_directory_uri() . '/assets/img/hero.webp';
+		return get_template_directory_uri() . '/assets/img/' . nordic_front_hero_file();
+	}
+	$group = nordic_photo_group( get_post_field( 'post_name', $post_id ) );
+	if ( $group && strpos( $content, 'v4hero-media' ) !== false ) {
+		return get_template_directory_uri() . '/assets/img/' . nordic_group_photos()[ $group ]['file'];
 	}
 	if ( preg_match( '#<img[^>]+src="([^"]+)"#i', $content, $m ) ) {
 		return $m[1];
@@ -581,6 +629,27 @@ function nordic_filter_content( $html ) {
 		}
 	} else {
 		$html = '<div class="page-content">' . $html . '</div>';
+	}
+
+	// 1b) Ovi- ja ikkunasivujen pääkuva vaihdetaan ryhmäkuvaan.
+	$group = nordic_photo_group( $slug );
+	if ( $group ) {
+		$photo = nordic_group_photos()[ $group ];
+		$html  = preg_replace(
+			'#<div class="v4hero-media( portrait)?">\s*<img\b[^>]*>#i',
+			'<div class="v4hero-media"><img src="' . esc_url( get_template_directory_uri() . '/assets/img/' . $photo['file'] ) . '" alt="' . esc_attr( $photo['alt'] ) . '">',
+			$html,
+			1
+		);
+	}
+	// Etusivun nostokuvat: ikkunanosto ja ovinosto saavat uudet kuvat.
+	if ( false !== strpos( $html, 'hero-photo' ) ) {
+		$photos = nordic_group_photos();
+		$html   = str_replace(
+			array( '/assets/img/seo-ikkuna.jpg', '/assets/img/seo-ovi.jpg' ),
+			array( '/assets/img/' . $photos['ikkuna']['file'], '/assets/img/' . $photos['ovi']['file'] ),
+			$html
+		);
 	}
 
 	// 2) Kuvat: WebP, srcset, mitat, laiska lataus. Ensimmäinen kuva on hero → ladataan heti.

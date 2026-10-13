@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.5.3
+Version: 2.6.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -498,7 +498,7 @@ body:not(.page-type-article) .scroll-progress { display: none; }
   padding: clamp(96px, 12vw, 150px) 0 clamp(72px, 9vw, 110px);
   margin-top: calc(var(--header-h) * -1);
   background-color: var(--spruce);
-  background-image: url('assets/img/hero.webp');
+  background-image: url('assets/img/ovi-valkoinen.webp');
   background-size: cover; background-position: 70% center;
   color: #fff; overflow: hidden;
 }
@@ -516,7 +516,7 @@ body:not(.page-type-article) .scroll-progress { display: none; }
   pointer-events: none;
 }
 @keyframes lightDrift { from { transform: translate(0, 0); } to { transform: translate(-12%, 10%); } }
-@media (max-width: 1024px) { .hero.hero-photo { background-image: url('assets/img/hero-1024.webp'); } }
+@media (max-width: 1024px) { .hero.hero-photo { background-image: url('assets/img/ovi-valkoinen-1024.webp'); } }
 
 body:has(.hero-photo) .site-header:not(.is-scrolled) {
   background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none;
