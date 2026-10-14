@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Nordic Ikkunat &amp; Ovet Oy – esittelymainos</title>
+<!--
+  Esittelymainos kahdessa koossa:
+  - A4 pysty (210 x 297 mm + 3 mm leikkuuvara) painoon ja lehti-ilmoitukseksi (skaalautuu)
+  - Some 1080 x 1350 px (Facebook/Instagram 4:5)
+  build-esittely.mjs tekee PDF:n ja PNG:t.
+-->
+<style>
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-SemiBold.ttf') format('truetype'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype'); font-weight: 700; }
+:root { --spruce: #16303B; --night: #102530; --pine: #1D5E79; --gold: #FFD866; --ink2: rgba(255,255,255,.86); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #777; }
+body { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; align-items: flex-start; }
+body.print { padding: 0; gap: 0; background: none; }
+
+.ad { position: relative; overflow: hidden; flex: none; container-type: size; color: #fff; background: var(--spruce);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: 'Inter', sans-serif;
+}
+.in { height: 100%; display: flex; flex-direction: column; padding: 8cqw 9cqw 0; }
+.ad::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(80cqw 50cqh at 100% 0%, rgba(255,216,102,.13), transparent 60%),
+              radial-gradient(90cqw 60cqh at 0% 100%, rgba(29,94,121,.6), transparent 62%); }
+/* Iso ikkunamerkki taustalla */
+.ad::after { content: ''; position: absolute; right: -14cqw; top: 18cqh; width: 62cqw; height: 62cqw; pointer-events: none;
+  border: 2.4cqw solid rgba(255,255,255,.05);
+  background:
+    linear-gradient(rgba(255,255,255,.05), rgba(255,255,255,.05)) center / 2cqw 100% no-repeat,
+    linear-gradient(rgba(255,255,255,.05), rgba(255,255,255,.05)) center / 100% 2cqw no-repeat; }
+.ad > * { position: relative; z-index: 1; }
+
+.logo { display: flex; align-items: center; gap: 2.6cqw; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 4.8cqw; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+.logo svg { width: 6.4cqw; height: 6.4cqw; flex: none; color: #fff; }
+.logo b { color: var(--gold); }
+.kicker { margin-top: 5.5cqh; font-weight: 700; font-size: 2.2cqw; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+h1 { margin-top: 2.2cqh; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 6.4cqw; line-height: 1.06; letter-spacing: -0.025em; max-width: 78cqw; }
+h1 em { font-style: normal; color: var(--gold); }
+.body { margin-top: 3.4cqh; font-weight: 600; font-size: 3.05cqw; line-height: 1.55; color: var(--ink2); max-width: 78cqw; }
+.body p + p { margin-top: 2.2cqh; }
+.badge { margin-top: 4.2cqh; display: inline-flex; align-self: flex-start; align-items: center; gap: 2.2cqw; padding: 2.2cqw 3.4cqw 2.2cqw 2.6cqw;
+  border: 1px solid rgba(255,216,102,.55); border-radius: 999px; font-weight: 700; font-size: 2.7cqw; line-height: 1.2; }
+.badge i { width: 3.6cqw; height: 3.6cqw; border-radius: 50%; background: var(--gold); flex: none; position: relative; }
+.badge i::after { content: ''; position: absolute; left: 1.15cqw; top: .65cqw; width: .9cqw; height: 1.7cqw; border: solid var(--spruce); border-width: 0 .55cqw .55cqw 0; transform: rotate(45deg); }
+.sign { margin-top: auto; padding-top: 3cqh; }
+.sign .greet { font-weight: 600; font-size: 2.6cqw; color: rgba(255,255,255,.72); }
+.sign .company { margin-top: .8cqh; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3.6cqw; letter-spacing: -0.01em; }
+.names { margin-top: 2cqh; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqh 6cqw; }
+.names span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3.2cqw; color: var(--gold); white-space: nowrap; }
+.foot { margin: 4cqh -9cqw 0; background: var(--night); padding: 3.2cqh 9cqw 3.6cqh; display: flex; justify-content: space-between; align-items: center; gap: 4cqw; }
+.foot .tel { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3.2cqw; line-height: 1.5; white-space: nowrap; }
+.foot .tel small { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 2.3cqw; color: rgba(255,255,255,.65); display: inline-block; width: 13cqw; }
+.foot .web { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 3.6cqw; color: var(--gold); white-space: nowrap; }
+
+/* Some 4:5: vähän tiiviimpi */
+.some .in { padding-top: 6.5cqw; }
+.some .kicker { margin-top: 4.5cqh; }
+.some h1 { font-size: 5.9cqw; }
+.some .body { font-size: 2.8cqw; margin-top: 2.6cqh; }
+.some .body p + p { margin-top: 1.6cqh; }
+.some .sign { padding-top: 2.4cqh; }
+.some .names { margin-top: 1.4cqh; gap: 1.2cqh 6cqw; }
+.some .foot { margin-top: 3cqh; padding: 2.6cqh 9cqw 3cqh; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="0 0 24 24">
+      <rect x="12" y="2" width="10" height="10" fill="#FFD866"/>
+      <rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<template id="content">
+<div class="in">
+  <div class="logo"><svg><use href="#logo"/></svg><span>Ikkunakauppias<b>.fi</b></span></div>
+  <p class="kicker">Kotimainen &amp; luotettava</p>
+  <h1>Nordic Ikkunat &amp; Ovet Oy on <em>neljän kokeneen yrittäjän</em> yhteisyritys.</h1>
+  <div class="body">
+    <p>Kaikilla osakkailla on kokemusta rakennusalan yrittäjyydestä vuosien ajalta. Halusimme nyt luoda ikkuna- ja ovialalle kotimaisen &amp; luotettavan yrityksen, joka parantaa asumismukavuutta ja energiatehokkuutta asunto kerrallaan.</p>
+    <p>Me toimimme Skaalan virallisena jälleenmyyjänä ja valtuutettuna asentajaliikkeenä.</p>
+  </div>
+  <div class="sign">
+    <p class="greet">Ystävällisin terveisin,</p>
+    <p class="company">Nordic Ikkunat &amp; Ovet Oy</p>
+    <div class="names"><span>Matias Sirkiä</span><span>Jussi Henriksson</span><span>Sami Elmeranta</span><span>Anton Hörkkö</span></div>
+  </div>
+  <div class="foot">
+    <div class="tel"><small>Myynti</small>045 7832 5070<br><small>Asennus</small>045 7830 4746</div>
+    <div class="web">ikkunakauppias.fi</div>
+  </div>
+</div>
+</template>
+
+<section class="ad a4" id="esittely-a4" style="width:216mm;height:303mm"></section>
+<section class="ad some" id="esittely-some-1080x1350" style="width:1080px;height:1350px"></section>
+
+<script>
+const t = document.getElementById('content');
+document.querySelectorAll('section.ad').forEach(s => s.appendChild(t.content.cloneNode(true)));
+</script>
+</body>
+</html>
