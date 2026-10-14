@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Ikkunakauppias.fi – logomainos</title>
+<!-- Logomainos: 300 x 300 mm (+3 mm leikkuuvara) ja 1080 x 1080 px. build-logomainos.mjs tekee PDF:n ja kuvat. -->
+<style>
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-SemiBold.ttf') format('truetype'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('fonts/Inter-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'Space Grotesk'; src: url('fonts/SpaceGrotesk-Bold.ttf') format('truetype'); font-weight: 700; }
+:root { --spruce: #16303B; --night: #102530; --gold: #FFD866; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #777; }
+body { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; align-items: flex-start; }
+body.print { padding: 0; gap: 0; background: none; }
+.ad { position: relative; overflow: hidden; flex: none; container-type: size; color: #fff; background: var(--spruce);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.ad::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(70cqw 70cqh at 100% 0%, rgba(255,216,102,.12), transparent 60%),
+              radial-gradient(80cqw 80cqh at 0% 100%, rgba(29,94,121,.6), transparent 62%); }
+.in { position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.mark { width: 30cqw; height: 30cqw; color: #fff; display: block; }
+.name { margin-top: 7cqh; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 10.2cqw; letter-spacing: -0.025em; line-height: 1; white-space: nowrap; }
+.name b { color: var(--gold); }
+.band { margin-top: 6cqh; align-self: stretch; background: var(--gold); color: var(--spruce); font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 6.4cqw; letter-spacing: .06em; text-transform: uppercase; height: 13cqh; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
+.tel { margin-top: 6cqh; display: flex; align-items: center; gap: 2.4cqw; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 6cqw; line-height: 1; white-space: nowrap; }
+.tel svg { width: 5.4cqw; height: 5.4cqw; flex: none; }
+.small { margin-top: 2.6cqh; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 2.5cqw; color: rgba(255,255,255,.75); letter-spacing: .02em; white-space: nowrap; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="logo" viewBox="0 0 24 24">
+    <rect x="12" y="2" width="10" height="10" fill="#FFD866"/>
+    <rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <line x1="12" y1="2" x2="12" y2="22" stroke="currentColor" stroke-width="1.6"/>
+    <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.6"/>
+  </symbol>
+  <symbol id="tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" fill="#FFD866"/></symbol>
+</defs></svg>
+<template id="content">
+  <div class="in">
+    <svg class="mark"><use href="#logo"/></svg>
+    <div class="name">Ikkunakauppias<b>.fi</b></div>
+    <div class="band">Ikkunat &amp; ovet</div>
+    <div class="tel"><svg><use href="#tel"/></svg>045 7832 5070</div>
+    <div class="small">Nordic Ikkunat &amp; Ovet Oy · Skaalan valtuutettu jälleenmyyjä</div>
+  </div>
+</template>
+<section class="ad" id="logomainos-300x300mm" style="width:306mm;height:306mm"></section>
+<section class="ad" id="logomainos-1080x1080" style="width:1080px;height:1080px"></section>
+<script>
+const t = document.getElementById('content');
+document.querySelectorAll('section.ad').forEach(s => s.appendChild(t.content.cloneNode(true)));
+</script>
+</body>
+</html>
