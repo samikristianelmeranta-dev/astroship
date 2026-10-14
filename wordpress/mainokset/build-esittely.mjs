@@ -10,7 +10,7 @@ const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 1400, height: 1600 } });
 await p.goto('file://' + path.join(dir, 'esittely.html'), { waitUntil: 'networkidle' });
 await p.evaluate(() => document.fonts.ready);
-for (const id of ['esittely-a4', 'esittely-some-1080x1350']) {
+for (const id of ['esittely-a4', 'esittely-some-1080x1350', 'esittely-300x300mm']) {
   const info = await p.evaluate(id => {
     document.body.classList.add('print');
     document.querySelectorAll('section.ad').forEach(s => { s.style.display = s.id === id ? '' : 'none'; });
@@ -20,7 +20,7 @@ for (const id of ['esittely-a4', 'esittely-some-1080x1350']) {
     }).map(n => n.className || n.tagName);
     return { w: el.style.width, h: el.style.height, bad };
   }, id);
-  if (id === 'esittely-a4') await p.pdf({ path: path.join(out, id + '.pdf'), width: info.w, height: info.h, printBackground: true, pageRanges: '1' });
+  if (id !== 'esittely-some-1080x1350') await p.pdf({ path: path.join(out, id + '.pdf'), width: info.w, height: info.h, printBackground: true, pageRanges: '1' });
   await p.locator('#' + id).screenshot({ path: path.join(out, id + '.png') });
   console.log(id, info.w, info.h, info.bad.length ? 'YLITYS: ' + info.bad.join(', ') : 'ok');
 }
