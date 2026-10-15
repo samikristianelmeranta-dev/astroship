@@ -382,7 +382,9 @@ function draw() {
     ...nodes(
       el('div', { class: 'page-head' },
         el('h1', {}, title),
-        el('span', { class: `pill ${project.status === 'avoin' ? 'wait' : project.status === 'peruttu' ? 'no' : 'ok'}` }, STATUS_TEXT[project.status] ?? project.status),
+        project.status === 'avoin' && !data.open
+          ? el('span', { class: 'pill ok' }, 'Arviot auki')
+          : el('span', { class: `pill ${project.status === 'avoin' ? 'wait' : project.status === 'peruttu' ? 'no' : 'ok'}` }, STATUS_TEXT[project.status] ?? project.status),
       ),
       el('p', { class: 'hint' }, [project.streetAddress, project.city].filter(Boolean).join(', ')),
       flash ? el('div', { class: flash.tone === 'ok' ? 'notice' : 'form-alert', role: 'status' }, flash.text) : null,
