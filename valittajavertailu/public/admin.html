@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Ylläpito | Välittäjävertailu</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container"><a class="logo" href="/">Välittäjä<span>vertailu</span></a><strong>Ylläpito</strong></div>
+  </header>
+  <main class="container">
+    <form id="login" class="form-card narrow" hidden>
+      <div class="field"><label for="token">Ylläpitotunnus (ADMIN_TOKEN)</label><input id="token" type="password" autocomplete="off" required></div>
+      <button class="btn" type="submit">Kirjaudu</button>
+      <div class="form-alert" id="alert" role="alert" hidden></div>
+    </form>
+    <div id="content" hidden>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div id="panel" class="stack"></div>
+    </div>
+  </main>
+  <script type="module" src="/admin.js"></script>
+</body>
+</html>

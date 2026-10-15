@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Välittäjille – uusia myyntitoimeksiantoja | Välittäjävertailu</title>
+  <meta name="description" content="Rekisteröidy välittäjäksi ja saa myyntikohteita omalta alueeltasi. Jätä hinta-arvio ja palkkiotarjous, maksat vain kun myyjä valitsee sinut.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Välittäjä<span>vertailu</span></a>
+      <nav class="nav">
+        <a href="/omat">Omat kohteet</a>
+        <a href="/valittaja">Välittäjille</a>
+        <a class="btn" href="/kilpailuta">Kilpailuta välittäjät</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Myyntikohteita omalta alueeltasi</h1>
+        <p class="lead">Näet alueesi asunnot, joiden omistaja aikoo myydä ja etsii välittäjää. Saat perustiedot ja kuvat, voit kysyä lisätietoja ja pyytää lisää kuvia. Jätä hinta-arvio ja palkkiotarjous määräaikaan mennessä. Kilpailijat eivät näe tarjoustasi, ja myyjän yhteystiedot saat, kun hän valitsee sinut. Myyjä voi valita kaksi välittäjää arviokäynnille.</p>
+        <p><a href="/valittaja">Onko sinulla jo tunnus? Kirjaudu sisään →</a></p>
+      </div>
+    </section>
+    <div class="narrow">
+      <form id="agent-form" class="form-card" novalidate>
+        <h2>Rekisteröidy välittäjäksi</h2>
+        <div class="field" data-field="company"><label for="company">Välitysliikkeen nimi</label><input id="company" name="company" type="text" autocomplete="organization" required></div>
+        <div class="row">
+          <div class="field" data-field="businessId"><label for="businessId">Y-tunnus</label><input id="businessId" name="businessId" type="text" placeholder="1234567-8" required></div>
+          <div class="field" data-field="chain"><label for="chain">Ketju <span class="hint">(valinnainen)</span></label><input id="chain" name="chain" type="text"></div>
+        </div>
+        <div class="field" data-field="contactName"><label for="contactName">Välittäjän nimi</label><input id="contactName" name="contactName" type="text" autocomplete="name" required></div>
+        <div class="row">
+          <div class="field" data-field="email"><label for="email">Sähköposti</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field" data-field="phone"><label for="phone">Puhelin</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="field" data-field="password"><label for="password">Salasana</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required><div class="hint">Vähintään 10 merkkiä.</div></div>
+        <div class="field" data-field="regions"><span class="label">Toiminta-alueet (maakunnat)</span><div class="check-grid" id="regions"></div></div>
+        <div class="row">
+          <div class="field" data-field="homePostalCode"><label for="homePostalCode">Toimiston postinumero <span class="hint">(valinnainen)</span></label><input id="homePostalCode" name="homePostalCode" type="text" inputmode="numeric" maxlength="5"></div>
+          <div class="field" data-field="radiusKm"><label for="radiusKm">Toimintasäde km <span class="hint">(valinnainen)</span></label><input id="radiusKm" name="radiusKm" type="text" inputmode="numeric"></div>
+        </div>
+        <p class="hint">Valitse maakunnat tai anna säde toimiston postinumerosta, tai molemmat. Näet kaikki kohteet, jotka osuvat jompaankumpaan.</p>
+        <div class="field" data-field="description"><label for="description">Esittely <span class="hint">(valinnainen)</span></label><textarea id="description" name="description" maxlength="1000" placeholder="Kokemus, erikoistuminen, alueet…"></textarea></div>
+        <div class="field" data-field="licensed"><label class="check"><input type="checkbox" name="licensed"><span>Välitysliike on rekisteröity aluehallintoviraston välitysliikerekisteriin, ja kohteita hoitaa LKV- tai AKA-pätevyyden omaava välittäjä.</span></label></div>
+        <div class="field" data-field="termsAccepted"><label class="check"><input type="checkbox" name="termsAccepted"><span>Hyväksyn <a href="/valittajaehdot" target="_blank">välittäjien käyttöehdot</a>, mukaan lukien palvelumaksun, kun myyjä valitsee minut.</span></label></div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-alert" id="form-alert" role="alert" hidden></div>
+        <div class="form-actions"><span></span><button type="submit" class="btn">Lähetä rekisteröityminen</button></div>
+      </form>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© Välittäjävertailu – kiinteistönvälittäjien kilpailutus</div>
+      <div><a href="/valittajille">Välittäjille</a> · <a href="/oppaat">Oppaat</a> · <a href="/kayttoehdot">Käyttöehdot</a> · <a href="/tietosuoja">Tietosuoja</a></div>
+    </div>
+  </footer>
+  <script type="module" src="/valittajille.js"></script>
+</body>
+</html>

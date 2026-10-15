@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kilpailuta kiinteistönvälittäjät | Välittäjävertailu</title>
+  <meta name="description" content="Kerro asunnostasi ja saat alueesi kiinteistönvälittäjiltä hinta-arviot ja palkkiotarjoukset rinnakkain.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Välittäjä<span>vertailu</span></a>
+    </div>
+  </header>
+
+  <main class="narrow">
+    <form id="listing-form" class="form-card" novalidate>
+      <div class="progress" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <fieldset class="step" data-step="0">
+        <legend><h1 class="step-title">Kerro asunnostasi</h1></legend>
+        <div class="field" data-field="propertyType">
+          <span class="label" id="type-label">Asunnon tyyppi</span>
+          <div class="choice-grid" id="type-choices" role="radiogroup" aria-labelledby="type-label"></div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="ownership">
+            <label for="ownership">Omistusmuoto</label>
+            <select id="ownership" name="ownership" required></select>
+          </div>
+          <div class="field" data-field="buildYear">
+            <label for="buildYear">Rakennusvuosi</label>
+            <input id="buildYear" name="buildYear" type="number" inputmode="numeric" min="1700" max="2030" placeholder="esim. 1985" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="area">
+            <label for="area">Asuinpinta-ala (m²)</label>
+            <input id="area" name="area" type="text" inputmode="decimal" placeholder="esim. 54,5" required>
+          </div>
+          <div class="field" data-field="rooms">
+            <label for="rooms">Huoneita</label>
+            <select id="rooms" name="rooms" required></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="roomLayout">
+            <label for="roomLayout">Kokoonpano <span class="hint">(valinnainen)</span></label>
+            <input id="roomLayout" name="roomLayout" type="text" placeholder="esim. 2h+k+s">
+          </div>
+          <div class="field" data-field="floor" data-types="kerrostalo rivitalo">
+            <label for="floor">Kerros <span class="hint">(valinnainen)</span></label>
+            <input id="floor" name="floor" type="text" placeholder="esim. 3/5">
+          </div>
+          <div class="field" data-field="plotArea" data-types="omakotitalo erillistalo paritalo vapaa_ajan_asunto">
+            <label for="plotArea">Tontin pinta-ala m² <span class="hint">(valinnainen)</span></label>
+            <input id="plotArea" name="plotArea" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="condition">
+            <label for="condition">Kunto</label>
+            <select id="condition" name="condition"></select>
+          </div>
+          <div class="field" data-field="maintenanceFee" data-ownership="osake">
+            <label for="maintenanceFee">Hoitovastike €/kk <span class="hint">(valinnainen)</span></label>
+            <input id="maintenanceFee" name="maintenanceFee" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="field" data-field="features">
+          <span class="label">Varustelu <span class="hint">(valinnainen)</span></span>
+          <div class="check-grid" id="features"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="1" hidden>
+        <legend><h1 class="step-title">Osoite, kuvat ja aikataulu</h1></legend>
+        <div class="field" data-field="streetAddress">
+          <label for="streetAddress">Katuosoite</label>
+          <input id="streetAddress" name="streetAddress" type="text" autocomplete="street-address" placeholder="esim. Koivutie 12 B 7" required>
+          <div class="hint">Katuosoitteen näkevät vain välittäjät, jotka valitset. Muut näkevät postinumeron ja paikkakunnan.</div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="postalCode">
+            <label for="postalCode">Postinumero</label>
+            <input id="postalCode" name="postalCode" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" required>
+          </div>
+          <div class="field" data-field="city">
+            <label for="city">Paikkakunta</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2">
+          </div>
+        </div>
+        <div class="field" data-field="region">
+          <label for="region">Maakunta</label>
+          <select id="region" name="region" required></select>
+          <div class="hint">Täyttyy postinumeron perusteella. Tarkista ja korjaa tarvittaessa.</div>
+        </div>
+        <div class="coverage" id="coverage" aria-live="polite" hidden></div>
+        <div class="field" data-field="photos">
+          <span class="label" id="photos-label">Kuvat <span class="hint" id="photos-hint"></span></span>
+          <label class="dropzone" id="dropzone" for="photo-input">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+            <strong>Lisää kuvia</strong>
+            <span>Valitse tai raahaa tähän. Esim. olohuone, keittiö, makuuhuone, kylpyhuone ja näkymä ulos.</span>
+          </label>
+          <input id="photo-input" type="file" accept="image/*" multiple class="visually-hidden" aria-labelledby="photos-label">
+          <div class="thumbs" id="thumbs"></div>
+          <div class="hint">Kuvat näkyvät alueen hyväksytyille välittäjille. Puhelinkuvat riittävät, välittäjä teettää myyntikuvat myöhemmin. Kuvista poistetaan sijaintitiedot automaattisesti.</div>
+        </div>
+        <div class="row">
+          <div class="field" data-field="timeline">
+            <label for="timeline">Milloin haluat myydä?</label>
+            <select id="timeline" name="timeline" required></select>
+          </div>
+          <div class="field" data-field="priceExpectation">
+            <label for="priceExpectation">Hintatoive € <span class="hint">(valinnainen)</span></label>
+            <input id="priceExpectation" name="priceExpectation" type="text" inputmode="numeric" placeholder="velaton hinta">
+          </div>
+        </div>
+        <div class="field" data-field="deadlineDays">
+          <label for="deadlineDays">Arvioiden määräaika</label>
+          <select id="deadlineDays" name="deadlineDays" required></select>
+          <div class="hint">Välittäjät voivat jättää arvion ja kysyä lisätietoja määräaikaan asti. Näet kaikki arviot rinnakkain, kun määräaika päättyy.</div>
+        </div>
+        <div class="field" data-field="details">
+          <label for="details">Lisätiedot <span class="hint">(valinnainen)</span></label>
+          <textarea id="details" name="details" maxlength="2000" placeholder="Esim. tehdyt remontit, tulevat taloyhtiön remontit, milloin asunto vapautuu…"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend><h1 class="step-title">Yhteystietosi</h1></legend>
+        <p class="hint">Lähetämme sähköpostiisi vahvistuslinkin. Kohde julkaistaan välittäjille, kun avaat linkin. Yhteystietosi luovutetaan vain valitsemillesi välittäjille.</p>
+        <div class="field" data-field="name">
+          <label for="name">Nimi</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="row">
+          <div class="field" data-field="email">
+            <label for="email">Sähköposti</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field" data-field="phone">
+            <label for="phone">Puhelin</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="040 123 4567" required>
+          </div>
+        </div>
+        <div class="field" data-field="consent">
+          <label class="check"><input type="checkbox" name="consent" required>
+            <span>Hyväksyn <a href="/kayttoehdot" target="_blank">käyttöehdot</a>. Ymmärrän, että alueen välittäjät näkevät asunnon tiedot ja kuvat ilman yhteystietojani; nimeni, osoitteeni, sähköpostini ja puhelinnumeroni näkevät vain välittäjät, jotka valitsen. <a href="/tietosuoja" target="_blank">Tietosuojaseloste</a></span>
+          </label>
+        </div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </fieldset>
+
+      <div class="form-alert" id="form-alert" role="alert" hidden></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" id="prev" hidden>Takaisin</button>
+        <span></span>
+        <button type="submit" class="btn" id="next">Jatka</button>
+      </div>
+    </form>
+    <section class="form-card done-card" id="sent" hidden>
+      <div class="done-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </div>
+      <h1 class="step-title">Tarkista sähköpostisi</h1>
+      <p>Lähetimme vahvistuslinkin osoitteeseen <strong id="sent-email"></strong>. Kohteesi julkaistaan alueen välittäjille, kun avaat linkin.</p>
+      <p class="hint">Linkillä vastaat myös välittäjien kysymyksiin ja valitset välittäjät, joten säilytä viesti. Jos viestiä ei näy, katso roskapostikansio.</p>
+      <p class="dev-link" id="dev-link" hidden>Kehitystila, sähköpostia ei lähetetä: <a id="dev-link-a" href="#">avaa vahvistuslinkki</a></p>
+    </section>
+  </main>
+
+  <script type="module" src="/kilpailuta.js"></script>
+</body>
+</html>

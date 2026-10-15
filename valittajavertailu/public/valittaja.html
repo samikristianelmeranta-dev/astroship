@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Välittäjän näkymä | Välittäjävertailu</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Välittäjä<span>vertailu</span></a>
+      <nav class="nav">
+        <a href="/omat">Omat kohteet</a>
+        <a href="/valittaja">Välittäjille</a>
+        <a class="btn" href="/kilpailuta">Kilpailuta välittäjät</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <form id="login" class="form-card narrow" novalidate hidden>
+      <h1 class="step-title">Välittäjän kirjautuminen</h1>
+      <div class="field"><label for="login-email">Sähköposti</label><input id="login-email" name="email" type="email" autocomplete="username" required></div>
+      <div class="field"><label for="login-password">Salasana</label><input id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+      <div class="form-alert" id="login-alert" role="alert" hidden></div>
+      <div class="form-actions"><a href="/valittajille">Rekisteröidy välittäjäksi</a><button class="btn" type="submit">Kirjaudu</button></div>
+    </form>
+    <div id="app" class="stack" hidden></div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© Välittäjävertailu – kiinteistönvälittäjien kilpailutus</div>
+      <div><a href="/valittajille">Välittäjille</a> · <a href="/oppaat">Oppaat</a> · <a href="/kayttoehdot">Käyttöehdot</a> · <a href="/tietosuoja">Tietosuoja</a></div>
+    </div>
+  </footer>
+  <script type="module" src="/valittaja.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kilpailuta kiinteistönvälittäjä – hinta-arviot ja palkkiot rinnakkain | Välittäjävertailu</title>
+  <meta name="description" content="Myytkö asuntoa? Kerro asunnostasi kerran, niin alueesi kiinteistönvälittäjät jättävät hinta-arvion ja palkkiotarjouksen. Vertaa ja valitse yksi tai kaksi välittäjää. Maksuton.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="has-sticky-cta">
+  <header class="site-header on-night" id="site-header">
+    <div class="container">
+      <a class="logo" href="/">Välittäjä<span>vertailu</span></a>
+      <nav class="nav">
+        <a href="#miten">Miten se toimii</a>
+        <a href="#laskuri">Palkkiolaskuri</a>
+        <a href="/valittajille">Välittäjille</a>
+        <a href="/omat">Omat kohteet</a>
+        <a class="btn btn-sm" href="/kilpailuta">Kilpailuta välittäjät</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow rise rise-1">Asunnon myyjälle · Maksuton · Koko Suomi</p>
+          <h1 class="rise rise-2">Anna välittäjien kilpailla. <em>Sinä valitset.</em></h1>
+          <p class="lead rise rise-3">Kerro asunnostasi ja lisää muutama kuva. Alueesi välittäjät jättävät hinta-arvion ja palkkiotarjouksen suljetusti. Vertaa rinnakkain ja valitse yksi tai kaksi arviokäynnille.</p>
+
+          <form class="quickstart rise rise-4" id="quickstart" novalidate>
+            <span class="label" id="qs-label">Mitä olet myymässä?</span>
+            <div class="service-chips" role="radiogroup" aria-labelledby="qs-label">
+              <input type="radio" name="propertyType" id="qs-kerrostalo" value="kerrostalo" checked><label for="qs-kerrostalo">Kerrostalo<small>Kerrostaloasunto</small></label>
+              <input type="radio" name="propertyType" id="qs-rivitalo" value="rivitalo"><label for="qs-rivitalo">Rivitalo<small>Rivi- tai paritalo</small></label>
+              <input type="radio" name="propertyType" id="qs-omakotitalo" value="omakotitalo"><label for="qs-omakotitalo">Omakotitalo<small>Oma tai vuokratontti</small></label>
+              <input type="radio" name="propertyType" id="qs-vapaa_ajan_asunto" value="vapaa_ajan_asunto"><label for="qs-vapaa_ajan_asunto">Mökki<small>Vapaa-ajan asunto</small></label>
+            </div>
+            <div class="qs-row">
+              <input type="text" id="qs-postal" name="postalCode" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="Postinumero, esim. 00100" aria-label="Asunnon postinumero">
+              <button class="btn btn-lg" type="submit">Aloita <span class="arrow" aria-hidden="true">→</span></button>
+            </div>
+            <p class="qs-note" id="qs-note">Maksuton ja sitoumukseton. Vie noin 3 minuuttia.</p>
+          </form>
+
+          <ul class="hero-facts rise rise-5">
+            <li>0 € myyjälle</li>
+            <li>Suljetut arviot</li>
+            <li>Valitse 1–2 välittäjää</li>
+            <li>Yhteystietosi vain valituille</li>
+          </ul>
+        </div>
+
+        <svg class="scene rise rise-3" viewBox="0 0 520 440" role="img" aria-label="Kolme välittäjää jättää suljetun arvion samasta kodista">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3a2f"/><stop offset="1" stop-color="#12221c"/></linearGradient>
+            <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf4ea"/><stop offset="1" stop-color="#f1e3cf"/></linearGradient>
+            <radialGradient id="warm"><stop offset="0" stop-color="#c2572b" stop-opacity="0.55"/><stop offset="1" stop-color="#c2572b" stop-opacity="0"/></radialGradient>
+            <clipPath id="frame"><rect width="520" height="440" rx="28"/></clipPath>
+          </defs>
+          <g clip-path="url(#frame)">
+            <rect width="520" height="440" fill="url(#sky)"/>
+            <circle class="glow" cx="260" cy="250" r="190" fill="url(#warm)"/>
+            <path d="M0 372 Q130 356 260 368 T520 362 V440 H0 Z" fill="#2c4a3d"/>
+            <path d="M0 392 Q160 380 300 394 T520 388 V440 H0 Z" fill="#23403a"/>
+            <!-- talo -->
+            <rect x="170" y="210" width="180" height="160" fill="url(#wall)" stroke="#0e1a15" stroke-width="6"/>
+            <polygon points="150,216 260,128 370,216" fill="#c2572b" stroke="#0e1a15" stroke-width="6" stroke-linejoin="round"/>
+            <rect x="196" y="238" width="44" height="40" rx="4" fill="#f2d59b" stroke="#0e1a15" stroke-width="4"/>
+            <rect x="280" y="238" width="44" height="40" rx="4" fill="#f2d59b" stroke="#0e1a15" stroke-width="4"/>
+            <rect x="238" y="300" width="44" height="70" rx="4" fill="#2d6a57" stroke="#0e1a15" stroke-width="4"/>
+            <circle cx="272" cy="338" r="3" fill="#f2d59b"/>
+            <rect x="318" y="150" width="20" height="40" fill="#8c3f20" stroke="#0e1a15" stroke-width="4"/>
+            <!-- myyntikyltti -->
+            <rect x="388" y="306" width="6" height="66" fill="#0e1a15"/>
+            <rect x="366" y="292" width="92" height="40" rx="8" fill="#ffffff" stroke="#0e1a15" stroke-width="4"/>
+            <text x="412" y="318" text-anchor="middle" fill="#c2572b" font-size="17" font-weight="800">MYYDÄÄN</text>
+            <!-- suljetut arviot -->
+            <g class="bid-tag">
+              <rect x="26" y="40" width="170" height="54" rx="14" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.3"/>
+              <text x="46" y="63" fill="#eef4f0" font-size="14" font-weight="700">Välittäjä A</text>
+              <text x="46" y="83" fill="#a9bdb3" font-size="13">Arvio suljettu</text>
+            </g>
+            <g class="bid-tag">
+              <rect x="324" y="40" width="170" height="54" rx="14" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.3"/>
+              <text x="344" y="63" fill="#eef4f0" font-size="14" font-weight="700">Välittäjä B</text>
+              <text x="344" y="83" fill="#a9bdb3" font-size="13">Arvio suljettu</text>
+            </g>
+            <g class="bid-tag">
+              <rect x="26" y="150" width="120" height="54" rx="14" fill="#c2572b"/>
+              <text x="44" y="173" fill="#ffffff" font-size="14" font-weight="700">Välittäjä C</text>
+              <text x="44" y="193" fill="#fbefe8" font-size="13">Kysyy lisäkuvia</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section id="miten">
+      <div class="container how">
+        <div>
+          <div class="section-head reveal">
+            <p class="eyebrow">Suljettu kilpailu</p>
+            <h2>Näin saat parhaan välittäjän</h2>
+            <p>Välittäjä ei tiedä, mitä kilpailijat tarjoavat. Paras tapa voittaa on perusteltu arvio ja kilpailukykyinen palkkio heti.</p>
+          </div>
+          <ol class="timeline" id="timeline">
+            <li class="reveal" data-step="1"><div><h3>Kerro asunnostasi</h3><p>Osoite, perustiedot ja vähintään kolme kuvaa. Puhelinkuvat riittävät.</p></div></li>
+            <li class="reveal" data-step="2"><div><h3>Välittäjät kysyvät ja arvioivat</h3><p>Alueesi tarkistetut välittäjät voivat kysyä lisätietoja ja pyytää kuvia. Kaikki näkevät samat vastaukset.</p></div></li>
+            <li class="reveal" data-step="3"><div><h3>Arviot avautuvat sinulle</h3><p>Määräajan päättyessä näet hinta-arviot ja palkkiot rinnakkain, kulut laskettuna samalla kauppahinnalla.</p></div></li>
+            <li class="reveal" data-step="4"><div><h3>Valitse yksi tai kaksi</h3><p>Vain valitsemasi välittäjät saavat yhteystietosi ja sopivat arviokäynnin. Voit myös jättää kaikki valitsematta.</p></div></li>
+          </ol>
+        </div>
+
+        <div class="bid-demo reveal" id="bid-demo" aria-label="Esimerkki arvioiden avautumisesta">
+          <div class="bid-demo-head">
+            <strong>Esimerkki: kaksio 54 m², Tampere</strong>
+            <span class="clock" id="bid-clock">Arviot auki</span>
+          </div>
+          <div class="bid-rows">
+            <div class="bid-row" data-order="1">
+              <span class="avatar">A</span>
+              <span class="who">Välittäjä A<small>Arvio 205–215 t€ · 3,2 % (väh. 3 500 €)</small></span>
+              <span class="amount"><span class="value">6 720 €</span><span class="sealed-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Suljettu</span></span>
+            </div>
+            <div class="bid-row best" data-order="0">
+              <span class="avatar">B</span>
+              <span class="who">Välittäjä B<small>Arvio 200–212 t€ · kiinteä 4 900 €</small></span>
+              <span class="amount"><span class="value">4 900 €</span><span class="sealed-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Suljettu</span></span>
+            </div>
+            <div class="bid-row" data-order="2">
+              <span class="avatar">C</span>
+              <span class="who">Välittäjä C<small>Arvio 215–230 t€ · 3,9 % + 490 € kulut</small></span>
+              <span class="amount"><span class="value">8 680 €</span><span class="sealed-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Suljettu</span></span>
+            </div>
+          </div>
+          <div class="bid-demo-foot">
+            <span>Kulut 210 000 € kaupasta. Esimerkki; välittäjät eivät näe toistensa rivejä.</span>
+            <button type="button" class="link-btn" id="bid-replay">Toista</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="laskuri" class="band">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Palkkiolaskuri</p>
+          <h2>Paljonko välityspalkkio on euroina?</h2>
+          <p>Prosentti näyttää pieneltä, mutta kauppahinnasta laskettuna ero on usein tuhansia euroja.</p>
+        </div>
+        <div class="calc">
+          <form class="card calc-inputs reveal" id="calc" novalidate>
+            <div>
+              <div class="range-head"><label for="calc-price">Arvioitu kauppahinta</label><output id="calc-price-out" for="calc-price">250 000 €</output></div>
+              <input type="range" id="calc-price" min="50000" max="1000000" step="5000" value="250000">
+            </div>
+            <div>
+              <div class="range-head"><label for="calc-min">Vähimmäispalkkio</label><output id="calc-min-out" for="calc-min">3 000 €</output></div>
+              <input type="range" id="calc-min" min="0" max="6000" step="250" value="3000">
+              <p class="calc-note">Monella välittäjällä on vähimmäispalkkio, joka ratkaisee edullisissa asunnoissa.</p>
+            </div>
+          </form>
+          <div class="calc-results" id="calc-results" aria-live="polite"></div>
+        </div>
+        <p class="calc-note">Esimerkkilaskelma. Prosentit sisältävät arvonlisäveron. Todellinen palkkio riippuu välittäjän tarjouksesta.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Vertailu</p>
+          <h2>Soittelu itse vai kilpailutus?</h2>
+        </div>
+        <div class="compare-wrap reveal">
+          <table class="compare">
+            <thead><tr><th scope="col"></th><th scope="col">Soittelet itse</th><th scope="col" class="us">Välittäjävertailu</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Arvioiden pyytäminen</th><td class="them">Kutsut 3–5 välittäjää kotiisi</td><td class="us">Yksi lomake, arviot etänä</td></tr>
+              <tr><th scope="row">Kilpailu</th><td class="them">Välittäjä ei tiedä kilpailevansa</td><td class="us">Suljettu kilpailu, paras tarjous kerralla</td></tr>
+              <tr><th scope="row">Vertailu</th><td class="them">Palkkiot eri muodoissa</td><td class="us">Kulut samalla kauppahinnalla rinnakkain</td></tr>
+              <tr><th scope="row">Yhteystietosi</th><td class="them">Jokaiselle, jolta kysyt</td><td class="us">Vain 1–2 valitsemallesi</td></tr>
+              <tr><th scope="row">Välittäjät</th><td class="them">Selvität rekisteröinnin itse</td><td class="us">Y-tunnus ja välitysliikerekisteri tarkistettu</td></tr>
+              <tr><th scope="row">Hinta sinulle</th><td class="them">0 €</td><td class="us">0 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="narrow">
+        <div class="section-head reveal">
+          <p class="eyebrow">Usein kysyttyä</p>
+          <h2>Kysymyksiä ennen aloittamista</h2>
+        </div>
+        <details class="reveal">
+          <summary>Maksaako palvelu minulle jotain?</summary>
+          <p>Ei. Arvioiden pyytäminen on myyjälle maksutonta eikä sido mihinkään. Palvelun rahoittavat välittäjät, jotka maksavat pienen maksun, kun valitset heidät.</p>
+        </details>
+        <details class="reveal">
+          <summary>Miksi tarvitaan vähintään kolme kuvaa?</summary>
+          <p>Kuvien avulla välittäjä voi arvioida asunnon kunnon ja tunnelman ilman kotikäyntiä. Puhelimella otetut kuvat riittävät. Välittäjät voivat pyytää lisää kuvia, ja voit lisätä niitä myöhemmin.</p>
+        </details>
+        <details class="reveal">
+          <summary>Kuinka tarkka hinta-arvio on ilman kotikäyntiä?</summary>
+          <p>Arvio on alustava ja perustuu tietoihin, kuviin ja alueen kauppoihin. Välittäjä tarkentaa sen arviokäynnillä. Siksi voit valita kaksi välittäjää ja tavata molemmat ennen päätöstä.</p>
+        </details>
+        <details class="reveal">
+          <summary>Miksi kulut lasketaan samalla kauppahinnalla?</summary>
+          <p>Jos yksi välittäjä arvioi asunnon muita korkeammalle, myös hänen prosenttipalkkionsa näyttäisi erilaiselta. Laskemme kaikkien palkkiot ja lisäkulut samalla viitehinnalla, joka on arvioiden mediaani. Korkein arvio ei takaa korkeinta kauppahintaa.</p>
+        </details>
+        <details class="reveal">
+          <summary>Soittavatko välittäjät minulle?</summary>
+          <p>Eivät. Välittäjät näkevät asunnon tiedot ja kuvat ilman nimeäsi, katuosoitettasi, puhelinnumeroasi ja sähköpostiasi. Yhteystietosi saavat vain ne välittäjät, jotka valitset.</p>
+        </details>
+        <details class="reveal">
+          <summary>Sitoudunko johonkin, kun valitsen välittäjän?</summary>
+          <p>Et. Valinta tarkoittaa, että välittäjä saa yhteystietosi ja sopii kanssasi arviokäynnin. Toimeksiantosopimus tehdään vasta, jos päätät antaa asunnon myyntiin.</p>
+        </details>
+        <details class="reveal">
+          <summary>Miten tietojani käsitellään?</summary>
+          <p>Yhteystietosi luovutetaan vain valitsemillesi välittäjille, eikä niitä myydä eteenpäin. Kuvista poistetaan sijaintitiedot. Lue lisää <a href="/tietosuoja">tietosuojaselosteesta</a>.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="aloita">
+      <div class="container">
+        <div class="cta reveal">
+          <h2>Myyt kotisi kerran. Valitse välittäjä huolella.</h2>
+          <p>Saat arviot ja palkkiotarjoukset muutamassa päivässä. Maksutonta ja sitoumuksetonta.</p>
+          <a class="btn btn-lg" href="/kilpailuta">Kilpailuta välittäjät <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn btn-lg" href="/kilpailuta">Kilpailuta välittäjät <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© Välittäjävertailu – kiinteistönvälittäjien kilpailutus</div>
+      <div><a href="/valittajille">Välittäjille</a> · <a href="/oppaat">Oppaat</a> · <a href="/kiinteistonvalittaja">Kaupungit</a> · <a href="/kayttoehdot">Käyttöehdot</a> · <a href="/tietosuoja">Tietosuoja</a></div>
+    </div>
+  </footer>
+  <script type="module" src="/etusivu.js"></script>
+</body>
+</html>

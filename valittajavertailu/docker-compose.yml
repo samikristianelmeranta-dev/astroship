@@ -1,0 +1,27 @@
+# Paikallinen tuotantoa vastaava ympäristö: palvelu + PostgreSQL.
+# Käynnistys: cp .env.example .env && docker compose up --build
+services:
+  app:
+    build: .
+    ports: ["3000:3000"]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://valittaja:${POSTGRES_PASSWORD:-valittaja}@db:5432/valittaja
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: valittaja
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-valittaja}
+      POSTGRES_DB: valittaja
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U valittaja"]
+      interval: 5s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  pgdata:
