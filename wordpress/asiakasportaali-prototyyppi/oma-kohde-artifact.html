@@ -1,0 +1,280 @@
+<title>Oma kohde</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--spruce:#16303B;--night:#102530;--pine:#1D5E79;--pinesoft:#E3EEF2;--gold:#FFD866;--goldsoft:#FFF4CF;--paper:#F6F8F9;--ink:#16303B;--ink2:#3D5561;--ink3:#647A84;--line:rgba(22,48,59,.12);--r:14px;--sh:0 1px 2px rgba(16,37,48,.06),0 8px 24px rgba(16,37,48,.07)}
+*{box-sizing:border-box}html,body{margin:0}
+html{color-scheme:light}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#dfe6ea;color:var(--ink);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.proto{margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));background:var(--night);color:#cfe0e8;font-size:12.5px;text-align:center;padding:7px 12px}.proto b{color:var(--gold)}
+.switch{margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));display:flex;justify-content:center;gap:6px;padding:10px;background:#fff;border-bottom:1px solid var(--line)}
+.switch button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-weight:600;font-size:13.5px;font-family:inherit;cursor:pointer;color:var(--ink2)}
+.switch button.on{background:var(--spruce);color:#fff;border-color:var(--spruce)}
+.app{max-width:440px;margin:18px auto 40px;background:var(--paper);border-radius:28px;box-shadow:0 20px 60px rgba(16,37,48,.25);overflow:hidden;min-height:760px;display:flex;flex-direction:column;border:8px solid var(--night)}
+.top{background:var(--spruce);color:#fff;padding:18px 18px 16px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px}.logo b{color:var(--gold)}
+.logo svg{width:22px;height:22px}
+.top h1{font-size:21px;margin:14px 0 2px;letter-spacing:-.01em}.top p{margin:0;color:rgba(255,255,255,.75);font-size:13.5px}
+.status{margin-top:12px;display:inline-flex;gap:6px;align-items:center;background:rgba(255,216,102,.16);color:var(--gold);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:700}
+main{flex:1;padding:16px;overflow-y:auto}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid var(--line)}
+.tabs button{border:0;background:none;padding:10px 4px 12px;font-weight:600;font-size:11.5px;font-family:inherit;color:var(--ink3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative}
+.tabs button span{font-size:19px;line-height:1}
+.tabs button.on{color:var(--spruce)}.tabs button.on::before{content:"";position:absolute;top:0;left:25%;right:25%;height:3px;background:var(--gold);border-radius:0 0 3px 3px}
+.badge{position:absolute;top:6px;right:calc(50% - 20px);background:#d14b3f;color:#fff;font-size:10px;border-radius:99px;padding:1px 5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:16px;margin-bottom:12px}
+h2{font-size:16px;margin:0 0 10px}h3{font-size:14.5px;margin:0 0 4px}
+.muted{color:var(--ink3)}.small{font-size:13px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:26px 1fr;gap:10px;padding-bottom:14px;position:relative}
+.tl li::before{content:"";position:absolute;left:12px;top:24px;bottom:0;width:2px;background:var(--line)}
+.tl li:last-child::before{display:none}
+.dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:var(--pinesoft);color:var(--pine)}
+.tl .done .dot{background:var(--pine);color:#fff}.tl .now .dot{background:var(--gold);color:var(--spruce)}
+.tl .now h3::after{content:" · nyt";color:#9a6b00;font-size:12px}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
+.ic{width:38px;height:38px;border-radius:10px;background:var(--pinesoft);display:grid;place-items:center;font-size:18px;flex:none}
+.row div{flex:1;min-width:0}.row b{display:block;font-size:14px}.row small{color:var(--ink3);font-size:12.5px}
+.dl{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;font-weight:600;font-size:12.5px;font-family:inherit;color:var(--pine);cursor:pointer}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:13px;font-weight:700;font-size:15px;font-family:inherit;cursor:pointer;background:var(--gold);color:var(--spruce)}
+.btn.o{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}.kv dt{color:var(--ink3)}.kv dd{margin:0;font-weight:600;text-align:right}
+.ok{background:var(--pinesoft);color:var(--pine);border-radius:10px;padding:10px 12px;font-size:13.5px;font-weight:600}
+.note{background:var(--goldsoft);border-radius:10px;padding:10px 12px;font-size:13px;color:#6b4a00}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ph{aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,#7FB3C6,#1D5E79);display:grid;place-items:end start;color:#fff;font-size:11px;font-weight:700;padding:6px}
+.ph.b{background:linear-gradient(135deg,#C9B79C,#7a6a55)}
+.chat{display:flex;flex-direction:column;gap:8px}
+.msg{max-width:82%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.4}
+.msg small{display:block;font-size:11px;opacity:.65;margin-top:3px}
+.them{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.me{background:var(--spruce);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.compose{display:flex;gap:6px;margin-top:12px}
+.compose input{flex:1;border:1px solid var(--line);border-radius:999px;padding:11px 14px;font-size:14px;font-family:inherit}
+.compose button{border:0;border-radius:999px;background:var(--gold);padding:0 16px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer}
+.view{display:none}.view.on{display:block}
+.list .row{cursor:pointer}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 8px;background:var(--pinesoft);color:var(--pine)}
+.pill.g{background:var(--goldsoft);color:#8a5a00}
+.switch{flex-wrap:wrap}
+.otab{width:100%;border-collapse:collapse;font-size:13.5px}
+.otab th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);padding:6px 4px;border-bottom:1px solid var(--line)}
+.otab td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.otab td.n,.otab th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.otab input{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 8px;font-size:13.5px;font-family:inherit;background:#fff;color:var(--ink)}
+.otab input.n{text-align:right}
+.otab tr.pr td{border-bottom:0;padding-bottom:2px}
+.tot{display:flex;justify-content:space-between;padding:10px 0 0;font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}
+.sub2{display:flex;justify-content:space-between;color:var(--ink3);font-size:13px;font-variant-numeric:tabular-nums}
+label.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin:10px 0;cursor:pointer}
+label.chk input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var(--pine)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn+.btn{margin-top:8px}
+.lnk{background:none;border:0;color:var(--pine);font-weight:600;font-size:14px;font-family:inherit;cursor:pointer;padding:8px 0;text-decoration:underline}
+.fld{display:block;font-size:13px;font-weight:600;margin:10px 0 0}.fld input,.fld select{display:block;width:100%;margin-top:4px;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
+.rem{list-style:none;margin:0;padding:0}.rem li{display:grid;grid-template-columns:74px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px}.rem li:last-child{border:0}.rem b{font-variant-numeric:tabular-nums}.rem .done{color:var(--ink3)}.rem .done span::before{content:"✓ ";color:var(--pine)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--night);color:#fff;padding:11px 16px;border-radius:12px;font-size:14px;transition:.3s;z-index:9;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0)}
+</style>
+
+<div class="proto"><b>Prototyyppi</b> · klikattava esikatselu, ei tallenna mitään · esimerkkitiedot ovat keksittyjä</div>
+<div class="switch"><button data-role="asentaja">1 · Asentaja tekee tarjouksen</button><button data-role="tarjous">2 · Asiakas saa tarjouksen</button><button class="on" data-role="asiakas">3 · Projekti etenee</button><button data-role="nordic">Nordicin kohteet</button></div>
+
+<div class="app">
+  <div class="top">
+    <div class="logo"><svg viewBox="0 0 24 24"><rect x="12" y="2" width="10" height="10" fill="#FFD866"/><rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="#fff" stroke-width="1.8"/><line x1="12" y1="2" x2="12" y2="22" stroke="#fff" stroke-width="1.6"/><line x1="2" y1="12" x2="22" y2="12" stroke="#fff" stroke-width="1.6"/></svg><span>Ikkunakauppias<b>.fi</b> · Oma kohde</span></div>
+    <h1 id="title">Ikkunaremontti</h1>
+    <p id="sub">Esimerkkitie 4, Masku · 9 ikkunaa ja 1 ulko-ovi</p>
+    <div class="status" id="statusPill">● Tilattu tehtaalta – toimitus viikolla 47</div>
+  </div>
+
+  <main>
+    <!-- ASENTAJA: TARJOUS -->
+    <section class="view" id="v-asentaja">
+      <div class="card">
+        <h2>Uusi tarjous · Koetie 7, Raisio</h2>
+        <p class="small muted" style="margin:0 0 8px">Mittauskäynti 18.10.2026 · asiakas Anna Esimerkki</p>
+        <div style="overflow-x:auto"><table class="otab" id="otab">
+          <thead><tr><th>Tuote ja koko</th><th class="n">Kpl</th><th class="n">€/kpl</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <button class="lnk" onclick="addRow()">+ Lisää rivi</button>
+        <label class="fld">Asennustyö, purku ja jätteet (€, sis. alv)<input id="otyo" type="number" value="4200" oninput="calc()"></label>
+        <label class="fld">Tarjous voimassa<select id="ovalid"><option>30 päivää</option><option>14 päivää</option><option>60 päivää</option></select></label>
+        <div class="tot"><span>Yhteensä (sis. alv 25,5 %)</span><span id="osum">–</span></div>
+        <div class="sub2"><span>josta työn osuus</span><span id="otyoshow">–</span></div>
+      </div>
+      <div class="card">
+        <h2>Kuvat aukoista</h2>
+        <div class="photos"><div class="ph b">Olohuone</div><div class="ph b">Makuuhuone</div><div class="ph b">Ulko-ovi</div></div>
+        <button class="lnk" onclick="toast('Kamera avautuu – kuvat liitetään tarjoukseen')">📷 Lisää kuva</button>
+      </div>
+      <button class="btn" onclick="sendOffer()">Lähetä tarjous asiakkaalle</button>
+      <button class="btn o" onclick="toast('Tallennettu luonnokseksi – toimisto voi tarkistaa ennen lähetystä')">Tallenna luonnokseksi</button>
+    </section>
+
+    <!-- ASIAKAS: TARJOUS -->
+    <section class="view" id="v-tarjous">
+      <div class="card">
+        <h2>Tarjouksesi on valmis</h2>
+        <p class="small muted" style="margin:0 0 8px">Tarjous N-2026-0158 · voimassa 17.11.2026 asti</p>
+        <div style="overflow-x:auto"><table class="otab" id="ctab">
+          <thead><tr><th>Tuote</th><th class="n">Kpl</th><th class="n">Yhteensä</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <div class="tot"><span>Yhteensä (sis. alv)</span><span id="csum">–</span></div>
+        <div class="sub2"><span>josta työn osuus (kotitalousvähennys)</span><span id="ctyo">–</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><span class="ic">📄</span><div><b>Tarjous ja sopimusehdot.pdf</b><small>Sisältää peruutusohjeet ja -lomakkeen</small></div><button class="dl" onclick="toast('PDF ladattu')">Lataa</button></div>
+      </div>
+      <div class="card" id="offerAccept">
+        <label class="chk"><input type="checkbox" id="c1" onchange="chk()"><span>Olen lukenut tarjouksen ja sopimusehdot ja hyväksyn ne.</span></label>
+        <label class="chk"><input type="checkbox" id="c2"><span>Pyydän, että ikkunat tilataan tehtaalta heti. Ymmärrän, että jos peruutan kaupan 14 päivän peruutusaikana, joudun maksamaan jo tehdystä työstä ja mittatilaustuotteista sopimusehtojen mukaisesti.</span></label>
+        <button class="btn" id="acceptOffer" disabled onclick="acceptOffer()">Hyväksyn tarjouksen</button>
+        <button class="btn o" onclick="toast('Viestit avautuvat – kysymys menee myyjälle')">Kysy tarkennusta</button>
+        <button class="lnk" onclick="toast('Kiitos tiedosta. Muistutukset loppuvat.')">En ole kiinnostunut</button>
+      </div>
+      <p class="small muted">Jos et ehdi vastata, muistutamme tarjouksesta sähköpostilla. Muistutukset loppuvat, kun vastaat.</p>
+    </section>
+
+    <!-- KOHDE -->
+    <section class="view on" id="v-kohde">
+      <div class="card">
+        <h2>Remontin vaiheet</h2>
+        <ul class="tl">
+          <li class="done"><span class="dot">✓</span><div><h3>Tarjous hyväksytty</h3><span class="small muted">2.10.2026</span></div></li>
+          <li class="done"><span class="dot">✓</span><div><h3>Mittauskäynti</h3><span class="small muted">6.10.2026 · mittauspöytäkirja Dokumenteissa</span></div></li>
+          <li class="now"><span class="dot">3</span><div><h3>Valmistus Skaalan tehtaalla</h3><span class="small muted">Ylihärmä · arvioitu toimitus viikko 47</span></div></li>
+          <li><span class="dot">4</span><div><h3>Asennus</h3><span class="small muted">Alustavasti 23.–25.11. · vahvistetaan viikkoa ennen</span></div></li>
+          <li><span class="dot">5</span><div><h3>Valmis ja luovutus</h3><span class="small muted">Takuutodistus ja huolto-ohjeet tänne</span></div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Yhteyshenkilöt</h2>
+        <div class="row"><span class="ic">📞</span><div><b>Myynti</b><small>045 7832 5070</small></div></div>
+        <div class="row"><span class="ic">🛠️</span><div><b>Asennus</b><small>045 7830 4746</small></div></div>
+      </div>
+      <div class="note">Ennen asennusta: siirrä huonekalut noin metrin päähän ikkunoista ja irrota verhot. <a href="#" onclick="go('dok');return false">Lue valmistautumisohje</a></div>
+    </section>
+
+    <!-- SOPIMUS -->
+    <section class="view" id="v-sopimus">
+      <div class="card">
+        <h2>Urakkasopimus</h2>
+        <dl class="kv">
+          <dt>Sopimusnumero</dt><dd>N-2026-0142</dd>
+          <dt>Tuotteet</dt><dd>9 × Skaala Aukea, 1 × Skaala Aika-ovi</dd>
+          <dt>Työ</dt><dd>Purku, asennus, viimeistely, jätteet</dd>
+          <dt>Kokonaishinta</dt><dd>18 450 €</dd>
+          <dt>josta työn osuus</dt><dd>4 980 €</dd>
+          <dt>Maksuehto</dt><dd>30 % tilattaessa, 70 % luovutuksessa</dd>
+          <dt>Takuu</dt><dd>Tuotteet ja asennus Skaalan ehtojen mukaan</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <div class="row"><span class="ic">📄</span><div><b>Urakkasopimus.pdf</b><small>Sopimusehdot, peruutusohjeet ja -lomake</small></div><button class="dl" onclick="toast('PDF ladattu')">Lataa</button></div>
+        <div class="row"><span class="ic">📄</span><div><b>Tarjous_N-2026-0142.pdf</b><small>Hyväksytty 2.10.2026</small></div><button class="dl" onclick="toast('PDF ladattu')">Lataa</button></div>
+      </div>
+      <div id="acceptBox">
+        <div class="note" style="margin-bottom:10px">Lue sopimus ja hyväksy se. Hyväksynnästä tallentuu aikaleima, ja saat vahvistuksen sähköpostiisi.</div>
+        <button class="btn" onclick="accept()">Hyväksyn sopimuksen</button>
+      </div>
+    </section>
+
+    <!-- DOKUMENTIT -->
+    <section class="view" id="v-dok">
+      <div class="card">
+        <h2>Dokumentit</h2>
+        <div class="row"><span class="ic">📐</span><div><b>Mittauspöytäkirja</b><small>6.10.2026 · 10 aukkoa</small></div><button class="dl" onclick="toast('Avattu')">Avaa</button></div>
+        <div class="row"><span class="ic">📋</span><div><b>Näin valmistaudut asennukseen</b><small>Ohje ennen asennuspäivää</small></div><button class="dl" onclick="toast('Avattu')">Avaa</button></div>
+        <div class="row"><span class="ic">🧾</span><div><b>Lasku 1/2 (ennakko)</b><small>Työn osuus eritelty kotitalousvähennystä varten</small></div><button class="dl" onclick="toast('Avattu')">Avaa</button></div>
+        <div class="row"><span class="ic">🛡️</span><div><b>Takuutodistus</b><small>Lisätään luovutuksessa</small></div><span class="pill g">Tulossa</span></div>
+        <div class="row"><span class="ic">🧰</span><div><b>Skaalan huolto-ohjeet</b><small>Ikkunat ja ulko-ovi</small></div><button class="dl" onclick="toast('Avattu')">Avaa</button></div>
+      </div>
+      <div class="card">
+        <h2>Kuvat kohteesta</h2>
+        <div class="photos"><div class="ph b">Ennen</div><div class="ph b">Ennen</div><div class="ph b">Ennen</div><div class="ph">Mittaus</div><div class="ph">Mittaus</div><div class="ph" style="opacity:.35">Asennus</div></div>
+        <p class="small muted" style="margin:10px 0 0">Asentajat lisäävät kuvat asennuksen jälkeen. Kuvat näkyvät vain sinulle ja meille.</p>
+      </div>
+    </section>
+
+    <!-- VIESTIT -->
+    <section class="view" id="v-viestit">
+      <div class="chat" id="chat">
+        <div class="msg them">Hei! Mittaukset on tehty ja tilaus lähti Skaalalle. Toimitus on arviolta viikolla 47.<small>Myynti · 6.10. klo 15.12</small></div>
+        <div class="msg me">Kiitos! Voiko asennuksen siirtää viikon myöhemmäksi, olemme lomalla 23.11. asti?<small>Sinä · 8.10. klo 9.40</small></div>
+        <div class="msg them">Onnistuu. Merkitsin alustavaksi asennusajaksi 30.11.–2.12. Vahvistamme sen viikkoa ennen.<small>Asennus · 8.10. klo 11.05</small></div>
+      </div>
+      <div class="compose"><input id="msgIn" placeholder="Kirjoita viesti…"><button onclick="send()">Lähetä</button></div>
+      <p class="small muted">📎 Voit liittää kuvia. Saat ilmoituksen uusista viesteistä sähköpostiin.</p>
+    </section>
+
+    <!-- NORDIC: KOHTEET -->
+    <section class="view" id="v-nordic">
+      <div class="card list">
+        <h2>Kohteet</h2>
+        <div class="row" onclick="role('asiakas')"><span class="ic">🏠</span><div><b>Esimerkkitie 4, Masku</b><small>9 ikkunaa, 1 ovi · valmistus</small></div><span class="pill">1 uusi viesti</span></div>
+        <div class="row"><span class="ic">🏠</span><div><b>Mallikatu 12 B, Turku</b><small>Ulko-ovi · asennus 21.10.</small></div><span class="pill g">Sopimus hyväksymättä</span></div>
+        <div class="row" onclick="role('tarjous')"><span class="ic">🏠</span><div><b>Koetie 7, Raisio</b><small>Tarjous lähetetty 18.10. · avattu</small></div><span class="pill g">Odottaa hyväksyntää</span></div>
+      </div>
+      <div class="card">
+        <h2>Tarjous odottaa · Koetie 7, Raisio</h2>
+        <ul class="rem">
+          <li class="done"><b>18.10.</b><span>Tarjous lähetetty asiakkaalle</span></li>
+          <li class="done"><b>18.10.</b><span>Asiakas avasi tarjouksen</span></li>
+          <li class="done"><b>21.10.</b><span>Muistutus 1: "Ehditkö katsoa tarjousta?"</span></li>
+          <li><b>25.10.</b><span>Muistutus 2 sähköpostilla</span></li>
+          <li><b>27.10.</b><span>Tehtävä myyjälle: soita asiakkaalle</span></li>
+          <li><b>12.11.</b><span>Muistutus: tarjous voimassa 17.11. asti</span></li>
+        </ul>
+        <p class="small muted" style="margin:8px 0 0">Muistutukset loppuvat automaattisesti, kun asiakas hyväksyy, kieltäytyy tai pyytää lopettamaan.</p>
+      </div>
+      <div class="card">
+        <h2>Asentajan pikatoiminnot</h2>
+        <button class="btn" onclick="toast('Kamera avautuu – kuvat liitetään kohteeseen')">📷 Lisää kuvia työmaalta</button>
+        <div style="height:8px"></div>
+        <button class="btn o" onclick="toast('Asiakas saa ilmoituksen: vaihe päivitetty')">Siirrä vaiheeseen: Asennus</button>
+      </div>
+      <div class="card">
+        <h2>Uusi kohde</h2>
+        <p class="small muted" style="margin:0 0 10px">Luo kohde suoraan tarjouspyynnöstä. Asiakas saa sähköpostiinsa kirjautumislinkin, joten salasanaa ei tarvita.</p>
+        <button class="btn o" onclick="toast('Kohde luotu ja kutsu lähetetty asiakkaalle')">+ Luo kohde tarjouspyynnöstä</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabs" id="tabs">
+    <button class="on" data-v="kohde"><span>🏠</span>Kohde</button>
+    <button data-v="sopimus"><span>✍️</span>Sopimus</button>
+    <button data-v="dok"><span>📁</span>Dokumentit</button>
+    <button data-v="viestit"><span>💬</span>Viestit<i class="badge">1</i></button>
+  </nav>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),2400)}
+function go(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(v==='viestit'){const b=document.querySelector('.badge');if(b)b.remove()}}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+function accept(){const d=new Date();$('#acceptBox').innerHTML='<div class="ok">✓ Hyväksytty '+d.toLocaleDateString('fi-FI')+' klo '+d.toLocaleTimeString('fi-FI',{hour:'2-digit',minute:'2-digit'})+'. Vahvistus lähetetty sähköpostiisi.</div>';toast('Sopimus hyväksytty')}
+function send(){const i=$('#msgIn');if(!i.value.trim())return;const d=new Date();$('#chat').insertAdjacentHTML('beforeend','<div class="msg me">'+i.value.replace(/</g,'&lt;')+'<small>Sinä · nyt</small></div>');i.value='';toast('Viesti lähetetty – Nordic saa ilmoituksen')}
+$('#msgIn').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+let rows=[['Skaala Aukea 3-lasinen, 1190 × 1390',6,1290],['Skaala Aukea 3-lasinen, 790 × 1390',4,940],['Skaala Aava kiinteä, 1790 × 1190',2,1150],['Skaala Aika-ovi, 1090 × 2090',1,3480]];
+const eur=n=>Math.round(n).toLocaleString('fi-FI')+' €';
+function drawRows(){$('#otab tbody').innerHTML=rows.map((r,i)=>`<tr class="pr"><td colspan="3"><input aria-label="Tuote ja koko" value="${r[0].replace(/"/g,'&quot;')}" oninput="rows[${i}][0]=this.value;calc()"></td></tr><tr><td class="small muted">Rivi ${i+1}</td><td style="width:64px"><input aria-label="Kappalemäärä" class="n" type="number" value="${r[1]}" oninput="rows[${i}][1]=+this.value;calc()"></td><td style="width:96px"><input aria-label="Hinta €/kpl" class="n" type="number" value="${r[2]}" oninput="rows[${i}][2]=+this.value;calc()"></td></tr>`).join('');calc()}
+function addRow(){rows.push(['Uusi tuote',1,0]);drawRows()}
+function calc(){const tyo=+$('#otyo').value||0;const sum=rows.reduce((a,r)=>a+r[1]*r[2],0)+tyo;$('#osum').textContent=eur(sum);$('#otyoshow').textContent=eur(tyo);
+  $('#ctab tbody').innerHTML=rows.map(r=>`<tr><td>${r[0].replace(/</g,'&lt;')}</td><td class="n">${r[1]}</td><td class="n">${eur(r[1]*r[2])}</td></tr>`).join('')+`<tr><td>Asennustyö, purku ja jätteet</td><td class="n">1</td><td class="n">${eur(tyo)}</td></tr>`;
+  $('#csum').textContent=eur(sum);$('#ctyo').textContent=eur(tyo)}
+function sendOffer(){toast('Tarjous lähetetty – asiakas sai linkin sähköpostiin');setTimeout(()=>role('tarjous'),900)}
+function chk(){$('#acceptOffer').disabled=!$('#c1').checked}
+function acceptOffer(){const now=$('#c2').checked;$('#offerAccept').innerHTML='<div class="ok">✓ Tarjous hyväksytty. '+(now?'Tilaamme ikkunat tehtaalta heti.':'Tilaamme ikkunat, kun 14 päivän peruutusaika on päättynyt.')+' Vahvistus ja sopimus lähetettiin sähköpostiisi.</div>';toast('Projekti käynnistyi')}
+const VIEWS={asentaja:['Tarjous mittauksen jälkeen','Asentajan näkymä puhelimessa','v-asentaja'],tarjous:['Ikkunaremontti','Koetie 7, Raisio · tarjous odottaa vastaustasi','v-tarjous'],nordic:['Kohteet','Nordic Ikkunat & Ovet Oy · 3 avointa kohdetta','v-nordic']};
+function role(r){document.querySelectorAll('.switch button').forEach(b=>b.classList.toggle('on',b.dataset.role===r));
+  if(VIEWS[r]){const v=VIEWS[r];$('#tabs').style.display='none';$('#title').textContent=v[0];$('#sub').textContent=v[1];$('#statusPill').style.display=r==='tarjous'?'':'none';$('#statusPill').textContent='● Tarjous voimassa 17.11.2026 asti';document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id===v[2]));window.scrollTo(0,0);return}
+  $('#statusPill').textContent='● Tilattu tehtaalta – toimitus viikolla 47';
+  {$('#tabs').style.display='';$('#title').textContent='Ikkunaremontti';$('#sub').textContent='Esimerkkitie 4, Masku · 9 ikkunaa ja 1 ulko-ovi';$('#statusPill').style.display='';go('kohde')}}
+document.querySelectorAll('.switch button').forEach(b=>b.onclick=()=>role(b.dataset.role));
+drawRows();
+</script>
