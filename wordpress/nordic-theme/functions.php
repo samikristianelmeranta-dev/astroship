@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.6.1' );
+define( 'NORDIC_VERSION', '2.6.2' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle

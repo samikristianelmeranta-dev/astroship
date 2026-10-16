@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.6.1
+Version: 2.6.2
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -352,14 +352,24 @@ body:not(.page-type-article) .scroll-progress { display: none; }
   body.nav-open .site-nav li:nth-child(8) { animation-delay: 0.21s; }
 }
 @media (max-width: 560px) {
+  .site-header-inner { gap: 10px; }
   .header-cta { padding: 10px 14px; min-height: 42px; font-size: 14px; }
   .header-cta .i { display: none; }
+  /* Lyhyt teksti kaikilla puhelimilla: pitkä teksti työnsi valikkopainikkeen ruudun ulkopuolelle (Android 401–560 px) */
+  .header-cta span { font-size: 0; }
+  .header-cta span::before { content: 'Tarjous'; font-size: 14px; }
   .site-logo-text { font-size: 17px; }
   .site-logo-mark { width: 26px; height: 26px; }
 }
-@media (max-width: 400px) {
-  .header-cta span { font-size: 0; }
-  .header-cta span::before { content: 'Tarjous'; font-size: 14px; }
+@media (max-width: 960px) {
+  /* Valikkopainike ei saa koskaan kutistua tai jäädä näkymättömiin */
+  .nav-toggle { flex: none; }
+  .site-logo { min-width: 0; }
+}
+@media (max-width: 360px) {
+  .site-logo-text { font-size: 15px; }
+  .site-logo-mark { width: 22px; height: 22px; }
+  .header-cta { padding: 9px 11px; }
 }
 @keyframes navItemIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
