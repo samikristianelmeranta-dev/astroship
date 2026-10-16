@@ -156,7 +156,7 @@ label.chk input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var
       </div>
       <div class="card" id="giftCard">
         <h2>Kiitos, kun valitsit meidät</h2>
-        <p class="small" style="margin:0">Valitse kiitoslahjaksi 50 euron lahjakortti. Lähetämme sen sinulle heti.</p>
+        <p class="small" style="margin:0">Valitse kiitoslahjaksi 50 euron lahjakortti. Lähetämme sen sähköpostiisi.</p>
         <div class="gifts">
           <button class="gift" onclick="pickGift('Kotipizza')"><b>Kotipizza</b><div class="amt">50 €</div><small>Sähköinen lahjakortti</small></button>
           <button class="gift" onclick="pickGift('S-ryhmä')"><b>S-ryhmä</b><div class="amt">50 €</div><small>Sähköinen lahjakortti</small></button>
@@ -268,6 +268,12 @@ label.chk input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var
         <p class="small muted" style="margin:8px 0 0">Muistutukset loppuvat automaattisesti, kun asiakas hyväksyy, kieltäytyy tai pyytää lopettamaan.</p>
       </div>
       <div class="card">
+        <h2>Lahjat lähetettävänä</h2>
+        <p class="small muted" style="margin:0 0 4px">Jokaisesta valinnasta tulee myös sähköposti osoitteeseen suosittelu@ikkunakauppias.fi.</p>
+        <div class="row"><span class="ic">🎁</span><div><b>Anna Esimerkki · S-ryhmä 50 €</b><small>Kiitoslahja · Esimerkkitie 4, Masku · valittu 2.12.</small></div><button class="dl" onclick="this.outerHTML='&lt;span class=&quot;pill&quot;&gt;Lähetetty&lt;/span&gt;';toast('Merkitty lähetetyksi – asiakas saa vahvistuksen')">Merkitse lähetetyksi</button></div>
+        <div class="row"><span class="ic">🎁</span><div><b>Mikko Malli · Kotipizza 50 €</b><small>Suosittelupalkkio · suositteli Koetie 7, Raisio</small></div><button class="dl" onclick="this.outerHTML='&lt;span class=&quot;pill&quot;&gt;Lähetetty&lt;/span&gt;';toast('Merkitty lähetetyksi – asiakas saa vahvistuksen')">Merkitse lähetetyksi</button></div>
+      </div>
+      <div class="card">
         <h2>Asentajan pikatoiminnot</h2>
         <button class="btn" onclick="toast('Kamera avautuu – kuvat liitetään kohteeseen')">📷 Lisää kuvia työmaalta</button>
         <div style="height:8px"></div>
@@ -305,8 +311,8 @@ function addRow(){rows.push(['Uusi tuote',1,0]);drawRows()}
 function calc(){const tyo=+$('#otyo').value||0;const sum=rows.reduce((a,r)=>a+r[1]*r[2],0)+tyo;$('#osum').textContent=eur(sum);$('#otyoshow').textContent=eur(tyo);
   $('#ctab tbody').innerHTML=rows.map(r=>`<tr><td>${r[0].replace(/</g,'&lt;')}</td><td class="n">${r[1]}</td><td class="n">${eur(r[1]*r[2])}</td></tr>`).join('')+`<tr><td>Asennustyö, purku ja jätteet</td><td class="n">1</td><td class="n">${eur(tyo)}</td></tr>`;
   $('#csum').textContent=eur(sum);$('#ctyo').textContent=eur(tyo)}
-function pickGift(n){const code=(n==='Kotipizza'?'KP':'S')+'-'+Math.random().toString(36).slice(2,6).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
-  $('#giftCard').innerHTML='<h2>Kiitos, kun valitsit meidät</h2><div class="ok">✓ Valitsit '+n+'-lahjakortin (50 €). Koodi on lähetetty myös sähköpostiisi.</div><div class="code">'+code+'</div><p class="small muted" style="margin:8px 0 0">Esimerkkikoodi. Oikeassa palvelussa koodi tulee lahjakortin myyjältä.</p>';toast('Lahjakortti valittu')}
+function pickGift(n){
+  $('#giftCard').innerHTML='<h2>Kiitos, kun valitsit meidät</h2><div class="ok">✓ Valitsit '+n+'-lahjakortin (50 €). Lähetämme lahjakortin sähköpostiisi muutaman arkipäivän kuluessa.</div><p class="small muted" style="margin:8px 0 0">Valintasi meni tiedoksi osoitteeseen suosittelu@ikkunakauppias.fi, ja henkilökuntamme hoitaa lahjan.</p>';toast('Valinta lähetetty Nordicille')}
 function sendOffer(){toast('Tarjous lähetetty – asiakas sai linkin sähköpostiin');setTimeout(()=>role('tarjous'),900)}
 function chk(){$('#acceptOffer').disabled=!$('#c1').checked}
 function acceptOffer(){const now=$('#c2').checked;$('#offerAccept').innerHTML='<div class="ok">✓ Tarjous hyväksytty. '+(now?'Tilaamme ikkunat tehtaalta heti.':'Tilaamme ikkunat, kun 14 päivän peruutusaika on päättynyt.')+' Vahvistus ja sopimus lähetettiin sähköpostiisi.</div>';toast('Projekti käynnistyi')}
