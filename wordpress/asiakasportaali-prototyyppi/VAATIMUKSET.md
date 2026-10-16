@@ -34,3 +34,12 @@ kirjautuminen sähköpostin kertakäyttölinkillä. Prototyyppi: `oma-kohde-arti
 - Joiner: mihin käytössä ja onko API/webhookit.
 - Sopimuksen hyväksyntä: painike + aikaleima vai sähköinen allekirjoitus.
 - Laskutusohjelma.
+
+## Maksutapa (asiakas valitsee tarjouksen hyväksynnässä)
+- **Lasku (Holvi):** 30 % tilattaessa, 70 % luovutuksessa.
+  - Holvilla ei löytynyt julkista laskutusrajapintaa (vain kirjanpito- ja PSD2-rajapinnat). Ratkaisu: portaali kokoaa laskun tiedot
+    (asiakas, osoite, rivit, työn osuus, viite) "Laskutus"-listaan, henkilökunta kopioi ne Holviin ja merkitsee laskun maksetuksi.
+    Maksetuksi merkintä vie projektia eteenpäin. Kysytään Holvilta laskutusrajapinnasta; jos sellainen on, laskut luodaan automaattisesti.
+- **Skaala-rahoitus (OP):** valinnasta tulee myyjälle tehtävä tehdä rahoitushakemus asiakkaan kanssa OP:n järjestelmässä.
+  Henkilökunta merkitsee rahoituksen myönnetyksi, jolloin asiakas saa ilmoituksen ja projekti etenee.
+  OP:n kuluttajarahoitukselle ei löytynyt julkista rajapintaa; kysytään Skaalalta/OP:lta.

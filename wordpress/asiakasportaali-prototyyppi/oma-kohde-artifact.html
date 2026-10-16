@@ -136,6 +136,10 @@ label.chk input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var
         <div class="row"><span class="ic">📄</span><div><b>Tarjous ja sopimusehdot.pdf</b><small>Sisältää peruutusohjeet ja -lomakkeen</small></div><button class="dl" onclick="toast('PDF ladattu')">Lataa</button></div>
       </div>
       <div class="card" id="offerAccept">
+        <h2>Miten haluat maksaa?</h2>
+        <label class="chk"><input type="radio" name="pay" id="payInv" value="lasku" checked><span><b>Laskulla</b><br><span class="muted">30 % tilattaessa, 70 % luovutuksessa. Lasku tulee sähköpostiisi.</span></span></label>
+        <label class="chk"><input type="radio" name="pay" id="payOp" value="op"><span><b>Skaala-rahoituksella (OP)</b><br><span class="muted">Kiinteät kuukausierät jopa 10 vuoden maksuajalla. Haemme rahoituksen kanssasi tilauksen yhteydessä, ja OP tekee luottopäätöksen.</span></span></label>
+        <hr style="border:0;border-top:1px solid var(--line);margin:12px 0">
         <label class="chk"><input type="checkbox" id="c1" onchange="chk()"><span>Olen lukenut tarjouksen ja sopimusehdot ja hyväksyn ne.</span></label>
         <label class="chk"><input type="checkbox" id="c2"><span>Pyydän, että ikkunat tilataan tehtaalta heti. Ymmärrän, että jos peruutan kaupan 14 päivän peruutusaikana, joudun maksamaan jo tehdystä työstä ja mittatilaustuotteista sopimusehtojen mukaisesti.</span></label>
         <button class="btn" id="acceptOffer" disabled onclick="acceptOffer()">Hyväksyn tarjouksen</button>
@@ -268,6 +272,12 @@ label.chk input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var
         <p class="small muted" style="margin:8px 0 0">Muistutukset loppuvat automaattisesti, kun asiakas hyväksyy, kieltäytyy tai pyytää lopettamaan.</p>
       </div>
       <div class="card">
+        <h2>Laskutus ja rahoitus</h2>
+        <div class="row"><span class="ic">🧾</span><div><b>Esimerkkitie 4 · ennakkolasku 30 %</b><small>5 535 € · laskulla · tiedot valmiina Holviin</small></div><button class="dl" onclick="toast('Laskun tiedot kopioitu: asiakas, osoite, rivit, työn osuus, viite')">Kopioi Holviin</button></div>
+        <div class="row"><span class="ic">✅</span><div><b>Esimerkkitie 4 · ennakkolasku</b><small>Merkitty maksetuksi 9.10. · projekti eteni tilaukseen</small></div><span class="pill">Maksettu</span></div>
+        <div class="row"><span class="ic">🏦</span><div><b>Mallikatu 12 B · Skaala-rahoitus (OP)</b><small>Tehtävä: tee rahoitushakemus asiakkaan kanssa</small></div><button class="dl" onclick="this.outerHTML='&lt;span class=&quot;pill&quot;&gt;Myönnetty&lt;/span&gt;';toast('Rahoitus merkitty myönnetyksi – asiakas saa ilmoituksen')">Merkitse myönnetyksi</button></div>
+      </div>
+      <div class="card">
         <h2>Lahjat lähetettävänä</h2>
         <p class="small muted" style="margin:0 0 4px">Jokaisesta valinnasta tulee myös sähköposti osoitteeseen suosittelu@ikkunakauppias.fi.</p>
         <div class="row"><span class="ic">🎁</span><div><b>Anna Esimerkki · S-ryhmä 50 €</b><small>Kiitoslahja · Esimerkkitie 4, Masku · valittu 2.12.</small></div><button class="dl" onclick="this.outerHTML='&lt;span class=&quot;pill&quot;&gt;Lähetetty&lt;/span&gt;';toast('Merkitty lähetetyksi – asiakas saa vahvistuksen')">Merkitse lähetetyksi</button></div>
@@ -315,7 +325,7 @@ function pickGift(n){
   $('#giftCard').innerHTML='<h2>Kiitos, kun valitsit meidät</h2><div class="ok">✓ Valitsit '+n+'-lahjakortin (50 €). Lähetämme lahjakortin sähköpostiisi muutaman arkipäivän kuluessa.</div><p class="small muted" style="margin:8px 0 0">Valintasi meni tiedoksi osoitteeseen suosittelu@ikkunakauppias.fi, ja henkilökuntamme hoitaa lahjan.</p>';toast('Valinta lähetetty Nordicille')}
 function sendOffer(){toast('Tarjous lähetetty – asiakas sai linkin sähköpostiin');setTimeout(()=>role('tarjous'),900)}
 function chk(){$('#acceptOffer').disabled=!$('#c1').checked}
-function acceptOffer(){const now=$('#c2').checked;$('#offerAccept').innerHTML='<div class="ok">✓ Tarjous hyväksytty. '+(now?'Tilaamme ikkunat tehtaalta heti.':'Tilaamme ikkunat, kun 14 päivän peruutusaika on päättynyt.')+' Vahvistus ja sopimus lähetettiin sähköpostiisi.</div>';toast('Projekti käynnistyi')}
+function acceptOffer(){const now=$('#c2').checked,op=$('#payOp').checked;$('#offerAccept').innerHTML='<div class="ok">✓ Tarjous hyväksytty. '+(op?'Valitsit Skaala-rahoituksen: myyjämme ottaa sinuun yhteyttä rahoitushakemuksen tekemiseksi. ':'Ennakkolasku (30 %) tulee sähköpostiisi. ')+(now?'Tilaamme ikkunat tehtaalta heti.':'Tilaamme ikkunat, kun 14 päivän peruutusaika on päättynyt.')+' Vahvistus ja sopimus lähetettiin sähköpostiisi.</div>';toast('Projekti käynnistyi')}
 const VIEWS={asentaja:['Tarjous mittauksen jälkeen','Asentajan näkymä puhelimessa','v-asentaja'],tarjous:['Ikkunaremontti','Koetie 7, Raisio · tarjous odottaa vastaustasi','v-tarjous'],luovutus:['Ikkunaremontti valmis','Esimerkkitie 4, Masku · luovutettu 2.12.2026','v-luovutus'],nordic:['Kohteet','Nordic Ikkunat & Ovet Oy · 3 avointa kohdetta','v-nordic']};
 function role(r){document.querySelectorAll('.switch button').forEach(b=>b.classList.toggle('on',b.dataset.role===r));
   if(VIEWS[r]){const v=VIEWS[r];$('#tabs').style.display='none';$('#title').textContent=v[0];$('#sub').textContent=v[1];$('#statusPill').style.display=r==='tarjous'?'':'none';$('#statusPill').textContent='● Tarjous voimassa 17.11.2026 asti';document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id===v[2]));window.scrollTo(0,0);return}
