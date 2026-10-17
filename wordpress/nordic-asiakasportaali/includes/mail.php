@@ -64,7 +64,7 @@ function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'as
 			$lines[] = $terms;
 		}
 		$lines[] = 'Oma kohde -sivulta näet tilauksesi vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.';
-		$lines[] = 'Jos mitat ovat jo valmiina, voit lähettää ne vastaamalla suoraan tähän viestiin.';
+		$lines[] = 'Jos mitat ovat jo valmiina, voit lähettää ne vastaamalla suoraan tähän viestiin. Voit lähettää mitat ja muut tiedot myös erikseen osoitteeseen ' . ( nap_settings()['reply_to'] ?: 'info@ikkunakauppias.fi' ) . '.';
 	} else {
 		$subject = 'Tarjouspyyntösi on perillä';
 		$lines   = array(
