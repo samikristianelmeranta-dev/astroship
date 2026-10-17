@@ -7,7 +7,9 @@ kirjautuminen sähköpostin kertakäyttölinkillä. Prototyyppi: `oma-kohde-arti
 1. Tarjouspyyntö → kohde luodaan automaattisesti, asiakas saa linkin.
 2. Mittauskäynti → asentaja tekee tarjouksen puhelimella TAI tarjous tuodaan Skaalan tarjoustyökalusta (selvitettävä: API/vienti, muuten PDF:n tuonti).
 3. Asiakas saa tarjouksen linkkiin: hyväksy / kysy tarkennusta / en ole kiinnostunut.
-   - Hyväksynnässä valinta "Pyydän, että ikkunat tilataan heti" (14 vrk peruutusoikeus, erillinen pyyntö).
+   - Peruutusoikeus: ei lakisääteistä peruutusoikeutta, koska ikkunat ja ovet valmistetaan mittatilaustyönä (KSL:n poikkeus
+     koskee myös etä- ja kotimyyntiä). Ehto näytetään tarjouksessa ja hyväksynnän vahvistuksessa (teksti asetuksissa).
+   - Henkilökunta voi kirjata hyväksynnän asiakkaan puolesta (toteutettu 0.5.0).
    - Muistutukset: 3 pv (sähköposti), 7 pv (sähköposti/tekstiviesti), soittotehtävä myyjälle, muistutus ennen voimassaolon päättymistä. Loppuvat, kun asiakas vastaa.
 4. Projekti: tilaus Skaalalle, valmistus, toimitus, asennus, luovutus. Dokumentit (sopimus, mittauspöytäkirja, laskut työn osuus eriteltynä, takuutodistus, huolto-ohjeet, kuvat) ja viestit.
 5. Luovutus: kiitoslahja ja suosittelu.

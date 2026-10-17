@@ -17,6 +17,7 @@ function nap_settings_defaults() {
 		'auto_tasks'     => 1,
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
+		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
 	);
 }
 
@@ -121,6 +122,7 @@ add_action( 'admin_init', function () {
 				'auto_tasks'    => empty( $in['auto_tasks'] ) ? 0 : 1,
 				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
 				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
+				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
 			);
 		},
 	) );
@@ -155,6 +157,9 @@ function nap_settings_page() {
 					<label><input type="checkbox" name="nap_settings[auto_watch]" value="1" <?php checked( $s['auto_watch'] ); ?>> Liidivahti: muistutus, jos tarjouspyyntöön ei ole reagoitu 24 tunnissa, ja 48 tunnin jälkeen muille osakkaille</label><br>
 					<label><input type="checkbox" name="nap_settings[auto_digest]" value="1" <?php checked( $s['auto_digest'] ); ?>> Aamukooste arkiaamuisin klo 7 (omat tehtävät, uudet tarjouspyynnöt, maanantaisin jumissa olevat kohteet)</label>
 					<p class="description">Tarkka ajoitus: cPanel → Cron Jobs → kerran tunnissa <code>wget -q -O /dev/null <?php echo esc_html( site_url( 'wp-cron.php?doing_wp_cron' ) ); ?></code></p></td></tr>
+				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
+					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>
+					<p class="description">Näkyy asiakkaalle lähtevässä vahvistuksessa, kun tarjous merkitään hyväksytyksi. Tyhjänä ei näytetä.</p></td></tr>
 				<tr><th scope="row"><label for="nap_from">Lähettäjän nimi</label></th>
 					<td><input id="nap_from" name="nap_settings[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>" class="regular-text"></td></tr>
 				<tr><th scope="row"><label for="nap_reply">Vastausosoite</label></th>

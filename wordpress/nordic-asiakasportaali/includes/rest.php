@@ -471,7 +471,6 @@ function nap_api_approve( WP_REST_Request $req ) {
 		'how_label' => $methods[ $how ],
 		'payment'   => $payment,
 		'pay_label' => $pays[ $payment ],
-		'order_now' => (bool) $req->get_param( 'order_now' ),
 		'value'     => $value,
 		'note'      => sanitize_textarea_field( (string) $req->get_param( 'note' ) ),
 	);
@@ -487,7 +486,7 @@ function nap_api_approve( WP_REST_Request $req ) {
 
 	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty (' . $eur . ')', true );
 	nap_log( $c['id'], $p['id'], 'approval', 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $me->display_name
-		. '. Maksutapa: ' . $pays[ $payment ] . '. Tilataan heti: ' . ( $approval['order_now'] ? 'kyllä' : 'ei' ) . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
+		. '. Maksutapa: ' . $pays[ $payment ] . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
 	if ( $old < 3 ) {
 		nap_on_stage_change( $p, $old );
 	}

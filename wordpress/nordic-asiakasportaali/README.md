@@ -40,11 +40,12 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 ## Tarjouksen hyväksyntä asiakkaan puolesta
 Kun asiakas hyväksyy tarjouksen puhelimessa, paikan päällä, sähköpostilla, viestillä tai allekirjoittamalla paperin,
 myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaan puolesta**.
-- Kirjataan hyväksytty hinta, miten asiakas hyväksyi, maksutapa (Holvi-lasku / Skaala-rahoitus OP / ei vielä sovittu),
-  pyysikö asiakas tilaamaan heti ja lisätiedot. Kirjaajan nimi ja aika tallentuvat.
+- Kirjataan hyväksytty hinta, miten asiakas hyväksyi, maksutapa (Holvi-lasku / Skaala-rahoitus OP / ei vielä sovittu)
+  ja lisätiedot. Kirjaajan nimi ja aika tallentuvat.
 - Kohde siirtyy vaiheeseen Hyväksytty, ja tehtävä "Tilaa tuotteet Skaalalta" syntyy (rahoituksessa myös
   "Hoida Skaala-rahoituksen hakemus (OP)").
-- Asiakas saa halutessa sähköpostivahvistuksen (hinta, maksutapa, Oma kohde -linkki). Vastaukset menevät kirjaajalle.
+- Asiakas saa halutessa sähköpostivahvistuksen (hinta, maksutapa, peruutusehdot, Oma kohde -linkki).
+  Peruutusehtojen teksti muokataan asetuksissa. Vastaukset menevät kirjaajalle.
 - Asentaja voi hyväksyä vain omia kohteitaan. Myyntiputken nuoli ja vaihevalikko avaavat hyväksyntälomakkeen,
   jotta jokaisesta hyväksytystä kaupasta jää merkintä.
 
@@ -53,7 +54,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.5.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.5.1.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

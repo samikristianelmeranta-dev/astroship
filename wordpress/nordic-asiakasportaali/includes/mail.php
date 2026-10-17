@@ -63,11 +63,12 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 			. 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)'
 			. ( 'auki' !== $a['payment'] ? "\nMaksutapa: " . $a['pay_label'] : '' ),
 	);
-	if ( $a['order_now'] ) {
-		$lines[] = 'Pyysit, että tuotteet tilataan valmistajalta heti.';
-	}
 	$lines[] = 'Seuraavaksi tilaamme tuotteet Skaalalta ja sovimme kanssasi asennuspäivän. Voit seurata kohdetta Oma kohde -sivulla.';
 	$lines[] = 'Jos tiedoissa on virhe, vastaa tähän viestiin tai soita: myynti 045 7832 5070.';
+	$terms   = trim( (string) nap_settings()['cancel_terms'] );
+	if ( $terms ) {
+		$lines[] = $terms;
+	}
 	return nap_mail( $customer['email'], 'Vahvistus: tarjous hyväksytty', 'Kiitos tilauksestasi', $lines,
 		array( 'Avaa Oma kohde', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
 }

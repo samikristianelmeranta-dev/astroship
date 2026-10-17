@@ -177,7 +177,7 @@
   function apprBox(p, c) {
     var a = p.approval;
     if (a) return '<div class="appr"><b>✓ Tarjous hyväksytty ' + esc(fdate(a.at)) + '</b> · ' + esc(eur(a.value)) + '<div class="small">Asiakas hyväksyi ' + esc(a.how_label) + ' · kirjasi ' + esc(a.by_name) +
-      ' · ' + esc(a.pay_label) + (a.order_now ? ' · tilataan heti' : '') + '</div>' + (a.note ? '<div class="small muted">' + esc(a.note) + '</div>' : '') + '</div>';
+      ' · ' + esc(a.pay_label) + '</div>' + (a.note ? '<div class="small muted">' + esc(a.note) + '</div>' : '') + '</div>';
     if (p.stage >= 3) return '';
     return '<div class="apprw" data-apprw="' + p.id + '"><button type="button" class="btn sm" data-approve="' + p.id + '">✓ Hyväksy tarjous asiakkaan puolesta</button></div>';
   }
@@ -189,7 +189,7 @@
       '<label class="fld">Miten asiakas hyväksyi *<select name="how" required><option value="">Valitse</option>' + HOW.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld">Maksutapa<select name="payment">' + PAY.map(function (h) { return '<option value="' + h[0] + '"' + (h[0] === 'auki' ? ' selected' : '') + '>' + h[1] + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld wide">Lisätiedot<textarea name="note" rows="2" placeholder="esim. sovittu, että ulko-ovi vaihdetaan malliin X"></textarea></label></div>' +
-      '<div class="choices"><label><input type="checkbox" name="order_now"><span>Asiakas pyysi tilaamaan tuotteet heti</span></label>' +
+      '<div class="choices">' +
       '<label><input type="checkbox" name="confirm"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle vahvistus sähköpostilla' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia)') + '</span></label></div>' +
       '<div class="actions"><button class="btn p">Merkitse hyväksytyksi</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
     var f = w.querySelector('form');
@@ -199,7 +199,7 @@
       e.preventDefault();
       if (!f.how.value) { toast('Valitse, miten asiakas hyväksyi', true); return; }
       f.querySelector('.btn.p').disabled = true;
-      api('projects/' + pid + '/approve', { method: 'POST', body: { value: f.value.value, how: f.how.value, payment: f.payment.value, note: f.note.value, order_now: f.order_now.checked, confirm: f.confirm.checked } })
+      api('projects/' + pid + '/approve', { method: 'POST', body: { value: f.value.value, how: f.how.value, payment: f.payment.value, note: f.note.value, confirm: f.confirm.checked } })
         .then(function (np) {
           S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
           return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
