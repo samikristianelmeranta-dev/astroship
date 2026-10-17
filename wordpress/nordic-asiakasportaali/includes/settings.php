@@ -13,6 +13,7 @@ function nap_settings_defaults() {
 		'from_name'      => 'Nordic Ikkunat & Ovet Oy',
 		'reply_to'       => 'info@ikkunakauppias.fi',
 		'staff_notify'   => '',
+		'twofa'          => 1,
 	);
 }
 
@@ -113,6 +114,7 @@ add_action( 'admin_init', function () {
 				'from_name'     => sanitize_text_field( $in['from_name'] ?? $d['from_name'] ),
 				'reply_to'      => sanitize_email( $in['reply_to'] ?? $d['reply_to'] ),
 				'staff_notify'  => sanitize_text_field( $in['staff_notify'] ?? '' ),
+				'twofa'         => empty( $in['twofa'] ) ? 0 : 1,
 			);
 		},
 	) );
@@ -139,6 +141,9 @@ function nap_settings_page() {
 					<p class="description">Saa tehtävän "Soita ja sovi mittaus" jokaisesta uudesta tarjouspyynnöstä.</p></td></tr>
 				<tr><th scope="row">Ilmoitukset asiakkaalle</th>
 					<td><label><input type="checkbox" name="nap_settings[notify_stage]" value="1" <?php checked( $s['notify_stage'] ); ?>> Lähetä asiakkaalle sähköposti, kun kohde siirtyy seuraavaan vaiheeseen</label></td></tr>
+				<tr><th scope="row">Kaksivaiheinen kirjautuminen</th>
+					<td><label><input type="checkbox" name="nap_settings[twofa]" value="1" <?php checked( $s['twofa'] ); ?>> Henkilökunta ja ylläpitäjät vahvistavat kirjautumisen sähköpostiin tulevalla koodilla</label>
+					<p class="description">Ei asennettavaa eikä erillistä sovellusta. "Muista tämä laite" ohittaa koodin samalla selaimella <?php echo (int) NAP_2FA_TRUST_DAYS; ?> päivän ajan. Jos sähköposti ei jostain syystä lähde, kirjautuminen onnistuu ilman koodia, jotta ketään ei lukita ulos.</p></td></tr>
 				<tr><th scope="row"><label for="nap_from">Lähettäjän nimi</label></th>
 					<td><input id="nap_from" name="nap_settings[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>" class="regular-text"></td></tr>
 				<tr><th scope="row"><label for="nap_reply">Vastausosoite</label></th>
@@ -169,11 +174,11 @@ function nap_settings_page() {
 			<p class="description">Jokainen saa sähköpostiin linkin oman salasanan asettamiseen. Olemassa olevaan tunnukseen lisätään vain osakkaan rooli.</p>
 		</form>
 		<?php endif; ?>
-		<p>Lisää osakkaat ja asentajat kohdassa Käyttäjät → Lisää uusi ja valitse rooli <b>Nordic: osakas</b> tai <b>Nordic: asentaja</b>. Ota kaikille käyttöön kaksivaiheinen tunnistautuminen (esim. lisäosa Two-Factor).</p>
+		<p>Lisää osakkaat ja asentajat kohdassa Käyttäjät → Lisää uusi ja valitse rooli <b>Nordic: osakas</b> tai <b>Nordic: asentaja</b>.</p>
 		<table class="widefat striped" style="max-width:720px"><thead><tr><th>Nimi</th><th>Rooli</th><th>Kaksivaiheinen</th></tr></thead><tbody>
 		<?php foreach ( $staff as $u ) : ?>
 			<tr><td><?php echo esc_html( $u['name'] ); ?></td><td><?php echo esc_html( 'osakas' === $u['role'] ? 'Osakas' : 'Asentaja' ); ?></td>
-			<td><?php echo null === $u['twofa'] ? 'Ei tiedossa (asenna Two-Factor)' : ( $u['twofa'] ? 'Käytössä' : '<b style="color:#b23b2e">Ei käytössä</b>' ); // phpcs:ignore ?></td></tr>
+			<td><?php echo $u['twofa'] ? 'Käytössä (2FA-lisäosa)' : ( $s['twofa'] ? 'Käytössä (sähköpostikoodi)' : '<b style="color:#b23b2e">Ei käytössä</b>' ); // phpcs:ignore ?></td></tr>
 		<?php endforeach; ?>
 		</tbody></table>
 	</div>
