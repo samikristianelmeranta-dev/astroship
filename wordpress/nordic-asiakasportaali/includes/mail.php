@@ -37,29 +37,50 @@ function nap_mail( $to, $subject, $heading, $paragraphs, $button = null, $reply_
 	return $ok;
 }
 
-function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'asennus' ) {
-	if ( 'omat_mitat' === $delivery ) {
-		$lines = array(
-			'Hei ' . nap_first_name( $customer['name'] ) . ',',
-			'Olemme vastaanottaneet tarjouspyyntösi. Toivoit tuotteet ilman asennusta ja mittaat ikkunat ja ovet itse. Otamme sinuun yhteyttä ja sovimme, miten toimitat mitat meille. Teemme tarjouksen niiden perusteella.',
+/**
+ * Kiitosviesti tarjouspyynnöstä. Korvaa myös Nordic CRM:n (FluentCRM) vahvistusviestin, joten sisältö on sama
+ * ja lisäksi Oma kohde -linkki. Vastaukset menevät asetusten vastausosoitteeseen.
+ */
+function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'asennus', $taloyhtio = false ) {
+	$hi    = 'Hei ' . nap_first_name( $customer['name'] ) . ',';
+	$terms = trim( (string) nap_settings()['measure_terms'] );
+	if ( $taloyhtio ) {
+		$subject = 'Tarjouspyyntönne on perillä';
+		$lines   = array(
+			$hi,
+			'kiitos taloyhtiönne tarjouspyynnöstä. Otamme yhteyttä viimeistään seuraavana arkipäivänä.',
+			'Taloyhtiön remontti etenee yleensä eri tahtiin kuin omakotitalon, koska päätökset tehdään hallituksessa ja yhtiökokouksessa. Kertokaa siis mielellään, missä vaiheessa hanke on: onko kyseessä alustava hinta-arvio esimerkiksi PTS:ää varten vai jo varsinainen tarjous.',
+			'Oma kohde -sivulta näette hankkeen vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.',
+			'Voitte vastata suoraan tähän viestiin.',
 		);
-		$terms = trim( (string) nap_settings()['measure_terms'] );
+	} elseif ( 'omat_mitat' === $delivery ) {
+		$subject = 'Tarjouspyyntösi on perillä';
+		$lines   = array(
+			$hi,
+			'kiitos tarjouspyynnöstä. Se tuli perille, ja otamme sinuun yhteyttä viimeistään seuraavana arkipäivänä.',
+			'Toivoit tuotteet ilman asennusta ja mittaat ikkunat ja ovet itse. Sovimme, miten toimitat mitat meille, ja teemme tarjouksen niiden perusteella.',
+		);
 		if ( $terms ) {
 			$lines[] = $terms;
 		}
+		$lines[] = 'Oma kohde -sivulta näet tilauksesi vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.';
+		$lines[] = 'Jos mitat ovat jo valmiina, voit lähettää ne vastaamalla suoraan tähän viestiin.';
 	} else {
-		$lines = array(
-			'Hei ' . nap_first_name( $customer['name'] ) . ',',
+		$subject = 'Tarjouspyyntösi on perillä';
+		$lines   = array(
+			$hi,
+			'kiitos tarjouspyynnöstä. Se tuli perille, ja otamme sinuun yhteyttä viimeistään seuraavana arkipäivänä.',
 			$measure_date
-				? 'Olemme vastaanottaneet tarjouspyyntösi. Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '.'
-				: 'Olemme vastaanottaneet tarjouspyyntösi. Otamme sinuun yhteyttä ja sovimme maksuttoman mittauskäynnin.',
+				? 'Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '. Käymme paikan päällä, mittaamme karmit ja katsomme, mitkä mallit sopivat taloosi. Sen jälkeen saat kirjallisen tarjouksen.'
+				: 'Ensimmäiseksi sovimme mittauskäynnin. Se on maksuton, eikä se sido sinua mihinkään. Käymme paikan päällä, mittaamme karmit ja katsomme, mitkä mallit sopivat taloosi. Sen jälkeen saat kirjallisen tarjouksen.',
 		);
 		if ( 'ilman_asennusta' === $delivery ) {
 			$lines[] = 'Toivoit tuotteet ilman asennusta: mittaamme kohteen, ja toimitamme tuotteet asennettaviksi itse.';
 		}
+		$lines[] = 'Oma kohde -sivulta näet ' . ( 'asennus' === $delivery ? 'remonttisi' : 'tilauksesi' ) . ' vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.';
+		$lines[] = 'Jos haluat kertoa jo nyt jotain lisää, kuten montako ikkunaa tai ovea on kyseessä tai mikä aikataulu sinulla on mielessä, vastaa suoraan tähän viestiin.';
 	}
-	$lines[] = 'Oma kohde -sivulta näet ' . ( 'asennus' === $delivery ? 'remonttisi' : 'tilauksesi' ) . ' vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.';
-	return nap_mail( $customer['email'], 'Kiitos tarjouspyynnöstä – seuraa kohdettasi', 'Kiitos tarjouspyynnöstäsi', $lines, array( 'Avaa Oma kohde', $link ) );
+	return nap_mail( $customer['email'], $subject, 'Kiitos tarjouspyynnöstä' . ( $taloyhtio ? 'nne' : 'si' ), $lines, array( 'Avaa Oma kohde', $link ) );
 }
 
 /** Vahvistus, kun henkilökunta on kirjannut asiakkaan hyväksynnän (puhelimessa, paikan päällä tms.). */

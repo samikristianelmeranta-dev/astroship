@@ -110,6 +110,14 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 			}
 		}
 
+		/**
+		 * Palveluviestin voi hoitaa toinen lisäosa (Nordic Asiakasportaali lähettää tarjouspyynnön
+		 * kiitosviestin Oma kohde -linkillä), jolloin asiakas ei saa kahta kiitosta.
+		 */
+		if ( 'all' === $audience && apply_filters( 'nordic_crm_skip_service_emails', false, $lead, $subscriber ) ) {
+			return;
+		}
+
 		// Jo sarjassa?
 		if ( FunnelHelper::ifAlreadyInFunnel( $funnel->id, $subscriber->id ) ) {
 			$run_multiple = ( ( (array) $funnel->conditions )['run_only_one'] ?? 'yes' ) === 'no';

@@ -14,9 +14,24 @@ defined( 'ABSPATH' ) || exit;
 
 add_action( 'fluentform/submission_inserted', 'nap_on_fluentform', 30, 3 );
 
-function nap_on_fluentform( $insert_id, $form_data, $form ) {
+function nap_is_intake_form( $form ) {
 	$ids = array_filter( array_map( 'absint', explode( ',', (string) nap_settings()['form_ids'] ) ) );
-	if ( ! $form || ! in_array( (int) $form->id, $ids, true ) ) {
+	return $form && in_array( (int) $form->id, $ids, true );
+}
+
+/*
+ * Yksi kiitosviesti: portaalin viesti (Oma kohde -linkillä) korvaa Nordic CRM:n (FluentCRM)
+ * vahvistusviestin. Nordic CRM käsittelee lomakkeen ensin (prioriteetti 20), joten merkintä tehdään ennen sitä.
+ */
+add_action( 'fluentform/submission_inserted', function ( $insert_id, $form_data, $form ) {
+	$GLOBALS['nap_sends_ack'] = nap_is_intake_form( $form ) && nap_extract_lead( (array) $form_data )['email'];
+}, 5, 3 );
+add_filter( 'nordic_crm_skip_service_emails', function ( $skip, $lead ) {
+	return ! empty( $GLOBALS['nap_sends_ack'] ) && in_array( $lead['type'] ?? '', array( 'tarjous', 'taloyhtio', 'tuotteet' ), true ) ? true : $skip;
+}, 10, 2 );
+
+function nap_on_fluentform( $insert_id, $form_data, $form ) {
+	if ( ! nap_is_intake_form( $form ) ) {
 		return;
 	}
 	$lead = nap_extract_lead( (array) $form_data );
@@ -98,6 +113,12 @@ function nap_extract_lead( $data ) {
 }
 
 /** Ensimmäinen tehtävä uudesta tarjouspyynnöstä toimitustavan mukaan. */
+/** Taloyhtiösivulta lähetetty (sama tunniste kuin Nordic CRM:n asetuksissa). */
+function nap_is_taloyhtio_page( $url ) {
+	$match = function_exists( 'nordic_crm_settings' ) ? trim( (string) nordic_crm_settings()['taloyhtio_match'] ) : 'taloyhtio';
+	return $match && $url && false !== stripos( $url, $match );
+}
+
 function nap_first_task_title( $delivery ) {
 	return 'omat_mitat' === $delivery ? 'Soita ja pyydä mitat' : 'Soita ja sovi mittaus';
 }
@@ -169,7 +190,7 @@ function nap_intake( $lead ) {
 		'due_date'    => nap_next_workday(),
 	) );
 
-	nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus' );
+	nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus', nap_is_taloyhtio_page( $lead['page'] ?? '' ) );
 	nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 
 	if ( $s['staff_notify'] ) {
