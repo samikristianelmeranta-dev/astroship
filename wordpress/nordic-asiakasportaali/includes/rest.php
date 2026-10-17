@@ -185,36 +185,97 @@ function nap_api_customer( WP_REST_Request $req ) {
 	);
 }
 
+/**
+ * Käsin syötetty tarjouspyyntö (puhelu, messut, paikan päällä, sähköposti).
+ * Uusi asiakas tai uusi kohde olemassa olevalle asiakkaalle (customer_id tai sama sähköposti).
+ */
 function nap_api_create_customer( WP_REST_Request $req ) {
 	$email = sanitize_email( (string) $req->get_param( 'email' ) );
 	$name  = sanitize_text_field( (string) $req->get_param( 'name' ) );
-	if ( ! $name ) {
+	$me    = get_current_user_id();
+	$all   = current_user_can( 'nap_all' );
+
+	$customer = null;
+	if ( $req->get_param( 'customer_id' ) ) {
+		$customer = nap_get_customer( (int) $req->get_param( 'customer_id' ) );
+		if ( ! nap_can_see_customer( $customer ) ) {
+			return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
+		}
+	} elseif ( $email ) {
+		if ( ! is_email( $email ) ) {
+			return nap_err( 'Sähköpostiosoite ei kelpaa.', 400 );
+		}
+		$customer = nap_find_customer_by_email( $email );
+		if ( $customer && ! nap_can_see_customer( $customer ) && ! $all ) {
+			return nap_err( 'Tällä sähköpostilla on jo asiakas. Pyydä osakasta lisäämään kohde.', 409 );
+		}
+	}
+	if ( ! $customer && ! $name ) {
 		return nap_err( 'Anna asiakkaan nimi.', 400 );
 	}
-	if ( $email && nap_find_customer_by_email( $email ) ) {
-		return nap_err( 'Tällä sähköpostilla on jo asiakas.', 409 );
+	if ( ! $customer && ! $email && ! $req->get_param( 'phone' ) ) {
+		return nap_err( 'Anna puhelinnumero tai sähköposti.', 400 );
 	}
-	$me    = get_current_user_id();
-	$owner = current_user_can( 'nap_all' ) ? ( (int) $req->get_param( 'owner_id' ) ?: $me ) : $me;
-	$cid   = nap_create_customer( array(
-		'name'     => $name,
-		'email'    => $email,
-		'phone'    => $req->get_param( 'phone' ),
-		'address'  => $req->get_param( 'address' ),
-		'city'     => $req->get_param( 'city' ),
-		'source'   => $req->get_param( 'source' ) ?: 'Muu',
-		'owner_id' => $owner,
-	) );
-	$c   = nap_get_customer( $cid );
-	$pid = nap_create_project( array(
+
+	$source   = sanitize_text_field( (string) $req->get_param( 'source' ) ) ?: 'Muu';
+	$owner    = $all ? ( (int) $req->get_param( 'owner_id' ) ?: $me ) : ( (int) nap_settings()['default_owner'] ?: $me );
+	$referrer = null;
+	if ( $req->get_param( 'referrer_id' ) ) {
+		$referrer = nap_get_customer( (int) $req->get_param( 'referrer_id' ) );
+		if ( ! nap_can_see_customer( $referrer ) || ( $customer && (int) $referrer['id'] === (int) $customer['id'] ) ) {
+			$referrer = null;
+		}
+	}
+
+	$existing = (bool) $customer;
+	if ( $customer ) {
+		$cid = (int) $customer['id'];
+	} else {
+		$cid = nap_create_customer( array(
+			'name'        => $name,
+			'email'       => $email,
+			'phone'       => $req->get_param( 'phone' ),
+			'address'     => $req->get_param( 'address' ),
+			'city'        => $req->get_param( 'city' ),
+			'source'      => $referrer ? 'Suosittelu' : $source,
+			'referred_by' => $referrer ? (int) $referrer['id'] : null,
+			'owner_id'    => $owner,
+		) );
+	}
+	$c       = nap_get_customer( $cid );
+	$address = trim( (string) $req->get_param( 'address' ) . ', ' . (string) $req->get_param( 'city' ), ', ' );
+	$message = sanitize_textarea_field( (string) $req->get_param( 'message' ) );
+	$measure = sanitize_text_field( (string) $req->get_param( 'measure_date' ) );
+	$measure = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $measure ) ? $measure : '';
+	$pid     = nap_create_project( array(
 		'customer_id'  => $cid,
-		'title'        => $req->get_param( 'title' ) ?: 'Ikkuna- ja oviremontti',
-		'address'      => trim( $c['address'] . ', ' . $c['city'], ', ' ),
-		'owner_id'     => $owner,
-		'installer_id' => current_user_can( 'nap_all' ) ? null : $me,
+		'title'        => sanitize_text_field( (string) $req->get_param( 'title' ) ) ?: 'Ikkuna- ja oviremontti',
+		'address'      => $address ?: trim( $c['address'] . ', ' . $c['city'], ', ' ),
+		'stage'        => $measure ? 1 : 0,
+		'owner_id'     => $existing && $c['owner_id'] ? (int) $c['owner_id'] : $owner,
+		'installer_id' => $all ? null : $me,
+		'details'      => $message,
 	) );
-	nap_log( $cid, $pid, 'request', 'Asiakas lisätty käsin (' . $c['source'] . ')', true );
-	return array( 'id' => $cid, 'project_id' => $pid );
+	$by = wp_get_current_user()->display_name;
+	nap_log( $cid, $pid, 'request', 'Tarjouspyyntö vastaanotettu (' . $source . ')' . ( $referrer ? ', suositteli ' . $referrer['name'] : '' ), true );
+	nap_log( $cid, $pid, 'note', 'Kirjattu käsin: ' . $by . ( $message ? '. ' . $message : '' ) );
+
+	$assignee = $all ? ( $existing && $c['owner_id'] ? (int) $c['owner_id'] : $owner ) : $me;
+	$label    = $c['name'] ?: $c['email'];
+	if ( $measure ) {
+		nap_log( $cid, $pid, 'stage', 'Vaihe: ' . NAP_STAGES[1], true );
+		nap_create_task( array( 'project_id' => $pid, 'customer_id' => $cid, 'title' => 'Mittauskäynti: ' . $label, 'assignee_id' => $assignee, 'due_date' => $measure ) );
+	} elseif ( 'none' !== $req->get_param( 'task' ) ) {
+		nap_create_task( array( 'project_id' => $pid, 'customer_id' => $cid, 'title' => 'Soita ja sovi mittaus: ' . $label, 'assignee_id' => $assignee, 'due_date' => nap_next_workday() ) );
+	}
+
+	$sent = false;
+	if ( $req->get_param( 'send_link' ) && $c['email'] ) {
+		nap_mail_welcome( $c, nap_create_login_link( $cid ), $measure );
+		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
+		$sent = true;
+	}
+	return array( 'id' => $cid, 'project_id' => $pid, 'existing' => $existing, 'mailed' => $sent );
 }
 
 function nap_api_update_customer( WP_REST_Request $req ) {

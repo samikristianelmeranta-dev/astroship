@@ -33,9 +33,9 @@
     ['putki', 'Myyntiputki', 'M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z'],
     ['asiakkaat', 'Asiakkaat', 'M16 11a4 4 0 10-8 0 4 4 0 008 0zM4 21c1-4 4-6 8-6s7 2 8 6'],
     ['tehtavat', 'Tehtävät', 'M4 6l2 2 4-4M4 14l2 2 4-4M13 6h7M13 14h7'],
-    ['uusi', 'Uusi asiakas', 'M12 5v14M5 12h14']
+    ['uusi', 'Uusi tarjouspyyntö', 'M12 5v14M5 12h14']
   ];
-  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); return m ? { v: 'asiakkaat', id: +m[1] } : { v: h || 'paiva' }; }
+  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); if (m) return { v: 'asiakkaat', id: +m[1] }; m = /^uusi-(\d+)$/.exec(h); return m ? { v: 'uusi', id: +m[1] } : { v: h || 'paiva' }; }
   function drawNav(v) {
     var open = S.tasks.filter(function (t) { return t.assignee_id === S.me.id && !t.done; }).length;
     document.getElementById('nav').innerHTML = VIEWS.map(function (x) {
@@ -124,7 +124,7 @@
     var srcs = []; S.customers.forEach(function (c) { if (c.source && srcs.indexOf(c.source) < 0) srcs.push(c.source); });
     var list = S.customers.filter(function (c) { return !S.src || c.source === S.src; });
     if (!id && list[0] && window.innerWidth > 860) id = list[0].id;
-    main.innerHTML = head('Asiakkaat', 'Yhteystiedot, kohteet ja koko historia', '<a class="btn p" href="#uusi">+ Uusi asiakas</a>') +
+    main.innerHTML = head('Asiakkaat', 'Yhteystiedot, kohteet ja koko historia', '<a class="btn p" href="#uusi">+ Uusi tarjouspyyntö</a>') +
       '<div class="cust"><div class="card"><div class="search"><input id="q" type="search" placeholder="Hae nimellä, osoitteella tai puhelimella" aria-label="Hae asiakasta" value="' + esc(S.q) + '">' +
       '<select id="src" aria-label="Lähde"><option value="">Kaikki lähteet</option>' + srcs.map(function (s) { return '<option ' + (s === S.src ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></div>' +
       '<div class="clist">' + (list.length ? list.map(function (c) {
@@ -166,7 +166,7 @@
         '<div class="sect"><h3>Historia</h3><form class="form" id="cnote" style="margin:0 0 12px"><input class="grow" name="text" placeholder="Kirjaa muistiinpano, esim. puhelu tai sovittu asia" aria-label="Muistiinpano" required><button class="btn">Tallenna</button></form>' +
         (c.events.length ? '<ul class="hist">' + c.events.map(function (e) { return '<li><div class="d">' + esc(ftime(e.at)) + (e.by ? ' · ' + esc(e.by) : '') + (e.for_customer ? ' · näkyy asiakkaalle' : '') + '</div>' + esc(e.text) + '</li>'; }).join('') + '</ul>' : '<p class="muted small">Ei tapahtumia.</p>') + '</div>' +
         '<div class="sect"><h3>Suosittelut</h3>' + (c.referrals.length ? c.referrals.map(function (r) { return '<div class="small"><a href="#asiakas-' + r.id + '">' + esc(r.name) + '</a> · <span class="pill ' + (r.stage === 6 ? 'good' : '') + '">' + esc(S.stages[r.stage]) + '</span></div>'; }).join('') : '<p class="muted small">Ei vielä suositeltuja asiakkaita.</p>') + '</div>' +
-        '<div class="actions"><button class="btn p" id="invite">Lähetä Oma kohde -linkki</button><button class="btn" id="editc">Muokkaa yhteystietoja</button></div><div id="editbox"></div>';
+        '<div class="actions"><a class="btn" href="#uusi-' + c.id + '">+ Uusi kohde</a><button class="btn p" id="invite">Lähetä Oma kohde -linkki</button><button class="btn" id="editc">Muokkaa yhteystietoja</button></div><div id="editbox"></div>';
       bindCard(c);
     }).catch(function (e) { var b = document.getElementById('ccard'); if (b) b.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
   }
@@ -229,24 +229,56 @@
     });
   }
 
-  function viewNew() {
+  var SOURCES = ['Puhelin', 'Sähköposti', 'Messut', 'Paikan päällä', 'Roll-up tai kyltti', 'Suosittelu', 'Google-haku', 'Facebook', 'Isännöitsijä', 'Muu'];
+  function viewNew(cid) {
+    if (cid && (!S.newFor || S.newFor.id !== cid)) {
+      main.innerHTML = head('Uusi tarjouspyyntö', 'Ladataan…');
+      api('customers/' + cid).then(function (c) { S.newFor = c; viewNew(cid); }).catch(fail);
+      return;
+    }
+    var c = cid ? S.newFor : null;
     var owners = S.users.filter(function (u) { return u.role === 'osakas'; });
-    main.innerHTML = head('Uusi asiakas', 'Esimerkiksi puhelimessa, messuilla tai paikan päällä saatu asiakas. Verkkosivun tarjouspyynnöt tulevat automaattisesti.') +
-      '<form class="card" id="nc"><div class="fields">' +
-      [['name', 'Nimi *', 'text', 'required'], ['email', 'Sähköposti', 'email', ''], ['phone', 'Puhelin', 'tel', ''], ['address', 'Katuosoite', 'text', ''], ['city', 'Paikkakunta', 'text', ''], ['title', 'Kohde', 'text', 'placeholder="esim. 8 ikkunaa ja ulko-ovi"']].map(function (f) {
-        return '<label class="fld">' + f[1] + '<input name="' + f[0] + '" type="' + f[2] + '" ' + f[3] + '></label>';
-      }).join('') +
-      '<label class="fld">Lähde<select name="source">' + ['Puhelin', 'Messut', 'Roll-up tai kyltti', 'Suosittelu', 'Google-haku', 'Facebook', 'Isännöitsijä', 'Muu'].map(function (s) { return '<option>' + s + '</option>'; }).join('') + '</select></label>' +
-      (isOwner() ? '<label class="fld">Vastuumyyjä<select name="owner_id">' + opt(owners, S.me.id) + '</select></label>' : '') +
-      '</div><div class="actions"><button class="btn p">Tallenna asiakas</button></div></form>';
-    document.getElementById('nc').addEventListener('submit', function (e) {
-      e.preventDefault(); var f = e.target, body = {};
-      ['name', 'email', 'phone', 'address', 'city', 'title', 'source'].forEach(function (k) { body[k] = f[k].value; });
-      if (f.owner_id) body.owner_id = +f.owner_id.value;
+    var f2 = function (name, label, type, extra) { return '<label class="fld">' + label + '<input name="' + name + '" type="' + type + '" ' + (extra || '') + '></label>'; };
+    main.innerHTML = head('Uusi tarjouspyyntö', c ? 'Uusi kohde asiakkaalle ' + c.name + '.' : 'Puhelimessa, sähköpostilla, messuilla tai paikan päällä saatu tarjouspyyntö. Verkkosivun lomakkeelta ne tulevat automaattisesti.') +
+      '<form class="card" id="nc">' +
+      (c ? '<p><b>' + esc(c.name) + '</b><br><span class="muted">' + esc([c.phone, c.email].filter(Boolean).join(' · ')) + '</span></p>' :
+        '<h2>Asiakas</h2><div class="fields">' + f2('name', 'Nimi *', 'text', 'required autocomplete="off"') + f2('phone', 'Puhelin', 'tel') + f2('email', 'Sähköposti', 'email') + '</div>') +
+      '<h2 class="mt">Kohde</h2><div class="fields">' +
+      f2('address', 'Kohteen katuosoite', 'text', c ? 'value="' + esc(c.address) + '"' : '') + f2('city', 'Paikkakunta', 'text', c ? 'value="' + esc(c.city) + '"' : '') +
+      f2('title', 'Tuotteet', 'text', 'placeholder="esim. 8 ikkunaa ja ulko-ovi"') +
+      '<label class="fld wide">Mitä asiakas tarvitsee<textarea name="message" rows="3" placeholder="Talon ikä, ikkunoiden määrä, toiveet, aikataulu…"></textarea></label>' +
+      '<label class="fld">Mistä asiakas tuli<select name="source">' + SOURCES.map(function (x) { return '<option>' + x + '</option>'; }).join('') + '</select></label>' +
+      '<label class="fld" id="refw" hidden>Suosittelija<select name="referrer_id"><option value="">Valitse asiakas</option>' +
+        S.customers.filter(function (x) { return !c || x.id !== c.id; }).map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + (x.city ? ', ' + esc(x.city) : '') + '</option>'; }).join('') + '</select></label>' +
+      (isOwner() && !c ? '<label class="fld">Vastuumyyjä<select name="owner_id">' + opt(owners, S.me.id) + '</select></label>' : '') +
+      '</div><h2 class="mt">Seuraava askel</h2><div class="choices">' +
+      '<label><input type="radio" name="task" value="call" checked><span>Soita ja sovi mittaus (tehtävä seuraavalle arkipäivälle)</span></label>' +
+      '<label><input type="radio" name="task" value="measure"><span>Mittauskäynti on jo sovittu</span></label>' +
+      '<input class="date" type="date" name="measure_date" aria-label="Mittauspäivä">' +
+      '<label><input type="radio" name="task" value="none"><span>Ei tehtävää</span></label>' +
+      '<label class="mt"><input type="checkbox" name="send_link" checked><span>Lähetä asiakkaalle kiitosviesti ja Oma kohde -linkki <span class="muted small">(vaatii sähköpostin)</span></span></label>' +
+      '</div><div class="actions"><button class="btn p">Tallenna tarjouspyyntö</button>' + (c ? '<a class="btn" href="#asiakas-' + c.id + '">Peruuta</a>' : '') + '</div></form>';
+    var form = document.getElementById('nc');
+    form.source.addEventListener('change', function () { document.getElementById('refw').hidden = form.source.value !== 'Suosittelu'; });
+    form.measure_date.addEventListener('focus', function () { form.task.value = 'measure'; });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var body = { customer_id: c ? c.id : 0, task: form.task.value, send_link: form.send_link.checked };
+      ['address', 'city', 'title', 'message', 'source'].forEach(function (k) { body[k] = form[k].value; });
+      if (!c) ['name', 'phone', 'email'].forEach(function (k) { body[k] = form[k].value.trim(); });
+      if (!c && !body.phone && !body.email) { toast('Anna puhelinnumero tai sähköposti', true); return; }
+      if (body.source === 'Suosittelu' && form.referrer_id.value) body.referrer_id = +form.referrer_id.value;
+      if (body.task === 'measure') {
+        if (!form.measure_date.value) { toast('Valitse mittauspäivä', true); return; }
+        body.measure_date = form.measure_date.value;
+      }
+      if (form.owner_id) body.owner_id = +form.owner_id.value;
+      form.querySelector('button.p').disabled = true;
       api('customers', { method: 'POST', body: body }).then(function (r) {
-        toast('Asiakas tallennettu');
-        return Promise.all([api('board').then(function (b) { S.board = b; }), loadCustomers()]).then(function () { location.hash = 'asiakas-' + r.id; });
-      }).catch(fail);
+        toast(r.existing ? 'Kohde lisätty olemassa olevalle asiakkaalle' : 'Tarjouspyyntö tallennettu' + (r.mailed ? ', linkki lähetetty' : ''));
+        S.newFor = null;
+        return Promise.all([api('board').then(function (b) { S.board = b; }), api('tasks').then(function (t) { S.tasks = t; }), loadCustomers()]).then(function () { location.hash = 'asiakas-' + r.id; });
+      }).catch(function (err) { form.querySelector('button.p').disabled = false; fail(err); });
     });
   }
 
@@ -256,7 +288,7 @@
     if (r.v === 'putki') return viewBoard();
     if (r.v === 'asiakkaat') return viewCustomers(r.id);
     if (r.v === 'tehtavat') return viewTasks();
-    if (r.v === 'uusi') return viewNew();
+    if (r.v === 'uusi') return viewNew(r.id);
     return viewDay();
   }
   window.addEventListener('hashchange', function () { render(); window.scrollTo(0, 0); });

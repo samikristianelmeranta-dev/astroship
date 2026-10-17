@@ -107,6 +107,9 @@ function nap_get_customer( $id ) {
 
 function nap_find_customer_by_email( $email ) {
 	global $wpdb;
+	if ( '' === trim( (string) $email ) ) {
+		return null;
+	}
 	return $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'customers' ) . ' WHERE email = %s ORDER BY id ASC LIMIT 1', strtolower( $email ) ), ARRAY_A );
 }
 

@@ -35,14 +35,16 @@ function nap_mail( $to, $subject, $heading, $paragraphs, $button = null ) {
 	return $ok;
 }
 
-function nap_mail_welcome( $customer, $link ) {
+function nap_mail_welcome( $customer, $link, $measure_date = '' ) {
 	return nap_mail(
 		$customer['email'],
 		'Kiitos tarjouspyynnöstä – seuraa kohdettasi',
 		'Kiitos tarjouspyynnöstäsi',
 		array(
 			'Hei ' . nap_first_name( $customer['name'] ) . ',',
-			'Olemme vastaanottaneet tarjouspyyntösi. Otamme sinuun yhteyttä ja sovimme maksuttoman mittauskäynnin.',
+			$measure_date
+				? 'Olemme vastaanottaneet tarjouspyyntösi. Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '.'
+				: 'Olemme vastaanottaneet tarjouspyyntösi. Otamme sinuun yhteyttä ja sovimme maksuttoman mittauskäynnin.',
 			'Oma kohde -sivulta näet remonttisi vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.',
 		),
 		array( 'Avaa Oma kohde', $link )

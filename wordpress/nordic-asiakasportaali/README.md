@@ -10,8 +10,12 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 - Tarjouspyyntölomake (Fluent Forms) luo automaattisesti asiakkaan ja kohteen vaiheeseen *Tarjouspyyntö*,
   tehtävän "Soita ja sovi mittaus" seuraavalle arkipäivälle vastuumyyjälle, kiitosviestin asiakkaalle
   Oma kohde -linkillä ja ilmoituksen henkilökunnalle.
-- Nordic CRM (`/crm/`): Oma päivä, Myyntiputki, Asiakkaat ja asiakaskortti, Tehtävät, Uusi asiakas.
+- Nordic CRM (`/crm/`): Oma päivä, Myyntiputki, Asiakkaat ja asiakaskortti, Tehtävät, Uusi tarjouspyyntö.
   Toimii myös puhelimella.
+- **Uusi tarjouspyyntö käsin** (puhelu, sähköposti, messut, paikan päällä): asiakas, kohde, tuotteet, asiakkaan tarve,
+  lähde ja suosittelija, vastuumyyjä. Seuraava askel valitaan: soittotehtävä, jo sovittu mittauskäynti (kohde menee suoraan
+  vaiheeseen Mittaus) tai ei tehtävää. Kiitosviestin ja Oma kohde -linkin voi lähettää, jos sähköposti on tiedossa.
+  Jos sähköpostilla on jo asiakas, kohde lisätään hänelle. Asiakaskortin **+ Uusi kohde** lisää kohteen suoraan olemassa olevalle asiakkaalle.
 - Vaiheen siirto kirjautuu historiaan ja lähettää asiakkaalle ilmoituksen (voi kytkeä pois).
 - Asiakkaan kirjautuminen ilman salasanaa: kertakäyttöinen linkki sähköpostiin (voimassa 7 vrk).
   Linkin voi pyytää uudelleen Oma kohde -sivulta. Pyynnöt on rajoitettu, eikä sivu paljasta, onko osoite asiakkaana.
@@ -23,7 +27,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.1.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.1.1.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,
