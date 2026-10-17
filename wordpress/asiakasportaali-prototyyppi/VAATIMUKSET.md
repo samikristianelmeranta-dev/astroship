@@ -57,3 +57,19 @@ Ei erillistä CRM-ohjelmaa: portaalin Nordic-puoli toimii myynnin ja projektien 
 6. Raportit: myynti kuukausittain, tarjoukset/kaupat/hyväksymis-%, asiakkaiden lähteet, suosittelut ja lähetetyt lahjat.
 7. Käyttäjät: 4 osakasta (näkevät kaiken) ja asentajat (omat kohteet, oma kalenteri; ei laskutusta, raportteja eikä käyttäjähallintaa).
    Kaksivaiheinen tunnistautuminen kaikille.
+
+## Yleinen muistutus meistä (korvaa vuoden päästä lähtevän huoltomuistutuksen)
+- Ei erillistä huoltomuistutusta. Sen sijaan valmiille asiakkaille lähtee harvakseltaan yleinen "muistathan meidät" -viesti:
+  kiitos, ajankohtaista (esim. ulko-ovet, kotitalousvähennys), suosittelulinkki ja yhteystiedot.
+- Lähetetään FluentCRM:n kautta asiakkaille, joiden kohde on Valmis (tagi), aikaisintaan noin 6 kk luovutuksesta, enintään 1–2 kertaa vuodessa.
+- Peruste: olemassa oleva asiakassuhde (sähköinen suoramarkkinointi omille asiakkaille vastaavista tuotteista). Jokaisessa viestissä
+  helppo peruutuslinkki, ja tieto mahdollisuudesta kieltäytyä annetaan jo luovutuksessa.
+
+## Toteutusvaiheet
+1. **Valmis (lisäosa 0.1.0):** tietokantataulut, osakas- ja asentajaroolit (2FA-tarkistus asetuksissa), osakastunnukset
+   (anton@, sami@, matias@, jussi@ikkunakauppias.fi), asiakkaan kertakäyttölinkkikirjautuminen, kohde tarjouspyyntölomakkeesta,
+   myyntiputki, asiakaskortti, tehtävät, muistiinpanot, suosittelulinkki /s/KOODI.
+2. Tarjous linkkiin, hyväksyntä, maksutavan valinta (Holvi-lasku / Skaala-rahoitus OP), tarjousmuistutukset.
+3. Dokumentit, viestit, kuvat, kalenteri.
+4. Luovutus, kiitoslahja ja suosittelulahjat (suosittelu@), yleinen muistutus meistä, FluentCRM-synkronointi, raportit.
+5. Integraatiot (Skaalan tarjoustyökalu, Tavoittaja, Joiner) kun rajapinnat on selvitetty.
