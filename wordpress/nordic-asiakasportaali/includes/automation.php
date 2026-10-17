@@ -38,7 +38,7 @@ function nap_on_stage_change( $p, $old_stage ) {
 	$new = (int) $p['stage'];
 	$t   = nap_table( 'tasks' );
 	// Mittaus sovittu tai pidemmällä → avoin "Soita ja sovi mittaus" on hoidettu.
-	if ( 0 === (int) $old_stage && $new > 0 ) {
+	if ( $new > 0 ) {
 		$wpdb->query( $wpdb->prepare( "UPDATE $t SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND title LIKE %s", nap_now(), $p['id'], 'Soita ja sovi mittaus%' ) ); // phpcs:ignore
 	}
 	if ( $new <= (int) $old_stage || ! nap_settings()['auto_tasks'] ) {
@@ -161,12 +161,11 @@ function nap_digest_for( WP_User $u ) {
 	}
 	if ( user_can( $u, 'nap_all' ) ) {
 		$since = gmdate( 'Y-m-d H:i:s', current_time( 'timestamp' ) - ( 1 === (int) current_time( 'N' ) ? 3 : 1 ) * DAY_IN_SECONDS );
-		$new   = $wpdb->get_results( $wpdb->prepare( "SELECT p.title, p.address, p.ai, c.name FROM $p_t p JOIN $c_t c ON c.id = p.customer_id WHERE p.created_at >= %s ORDER BY p.created_at DESC LIMIT 20", $since ), ARRAY_A ); // phpcs:ignore
+		$new   = $wpdb->get_results( $wpdb->prepare( "SELECT p.title, p.address, c.name FROM $p_t p JOIN $c_t c ON c.id = p.customer_id WHERE p.created_at >= %s ORDER BY p.created_at DESC LIMIT 20", $since ), ARRAY_A ); // phpcs:ignore
 		if ( $new ) {
 			$out[] = 'Uudet tarjouspyynnöt (' . count( $new ) . '):';
 			foreach ( $new as $n ) {
-				$ai    = $n['ai'] ? json_decode( $n['ai'], true ) : null;
-				$out[] = '• ' . $n['name'] . ' – ' . ( ! empty( $ai['tiivistelma'] ) ? $ai['tiivistelma'] : $n['title'] . ( $n['address'] ? ', ' . $n['address'] : '' ) );
+				$out[] = '• ' . $n['name'] . ' – ' . $n['title'] . ( $n['address'] ? ', ' . $n['address'] : '' );
 			}
 		}
 		if ( 1 === (int) current_time( 'N' ) ) {

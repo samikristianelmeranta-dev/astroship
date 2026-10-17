@@ -106,6 +106,7 @@
     if (mv) {
       e.stopPropagation();
       var p = S.board.filter(function (x) { return x.id === +mv.getAttribute('data-mv'); })[0];
+      if (p.stage === 2 && !p.approval) { S.openApprove = p.id; location.hash = 'asiakas-' + p.customer_id; return; }
       mv.disabled = true;
       api('projects/' + p.id, { method: 'POST', body: { stage: p.stage + 1 } }).then(function (np) {
         p.stage = np.stage; toast(p.customer + ' → ' + S.stages[np.stage]); render();
@@ -153,16 +154,13 @@
         '<dt>Suosittelukoodi</dt><dd>' + esc(c.ref_code) + '</dd></dl>' +
         '<div class="sect"><h3>Kohteet</h3>' + (c.projects.length ? c.projects.map(function (p) {
           return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b><span class="pill ' + (p.stage === 6 ? 'good' : '') + '">' + esc(S.stages[p.stage]) + '</span></div>' +
-            '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') + aiBox(p) +
+            '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') +
+            apprBox(p, c) +
             '<div class="fields" style="margin-top:10px">' +
             '<label class="fld">Vaihe<select data-f="stage">' + S.stages.map(function (s, i) { return '<option value="' + i + '" ' + (i === p.stage ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></label>' +
             '<label class="fld">Arvo (€, sis. alv)<input data-f="value" type="number" min="0" step="10" value="' + (p.value || '') + '"></label>' +
             '<label class="fld">Asentaja<select data-f="installer_id">' + opt(S.users, p.installer_id, 'Ei valittu') + '</select></label></div></div>';
         }).join('') : '<div class="empty">Ei kohteita.</div>') + '</div>' +
-        (S.ai ? '<div class="sect"><h3>Vastausluonnos</h3><form class="form" id="draftf">' +
-          '<select name="channel" aria-label="Kanava"><option value="email"' + (c.email ? '' : ' disabled') + '>Sähköposti</option><option value="whatsapp"' + (c.email ? '' : ' selected') + '>WhatsApp</option><option value="sms">Tekstiviesti</option></select>' +
-          '<input class="grow" name="instruction" placeholder="Ohje (valinnainen), esim. ehdota mittausta ensi viikolle" aria-label="Ohje tekoälylle">' +
-          '<button class="btn p">Luonnostele</button></form><div id="draftbox"></div></div>' : '') +
         '<div class="sect"><h3>Avoimet tehtävät</h3>' + (c.tasks.length ? c.tasks.map(taskRow).join('') : '<p class="muted small">Ei avoimia tehtäviä.</p>') +
         '<form class="form" id="ctask"><input class="grow" name="title" placeholder="Uusi tehtävä, esim. Soita ' + esc(c.name.split(' ')[0]) + 'lle" aria-label="Tehtävä" required>' +
         (isOwner() ? '<select name="assignee_id" aria-label="Vastuuhenkilö">' + opt(S.users, S.me.id) + '</select>' : '') +
@@ -174,72 +172,55 @@
       bindCard(c);
     }).catch(function (e) { var b = document.getElementById('ccard'); if (b) b.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
   }
-  function aiBox(p) {
-    if (!S.ai && !p.ai) return '';
-    var a = p.ai;
-    if (!a) return '<div class="ai"><button class="btn sm" data-analyze="' + p.id + '">Analysoi tekoälyllä</button></div>';
-    var chips = [a.kohdetyyppi, a.koko !== 'ei tiedossa' ? 'koko: ' + a.koko : '', a.kiireellisyys !== 'ei tiedossa' ? a.kiireellisyys : ''].filter(function (x) { return x && x !== 'ei tiedossa'; });
-    return '<div class="ai"><div class="ai-h"><span class="ai-badge">Tekoäly</span><b>' + esc(a.tiivistelma) + '</b></div>' +
-      (chips.length ? '<div class="ai-chips">' + chips.map(function (x) { return '<span class="pill' + (x === 'kiireellinen' ? ' warn' : '') + '">' + esc(x) + '</span>'; }).join('') + (a.sopii_meille === false ? '<span class="pill crit">ei ehkä meidän alaa</span>' : '') + '</div>' : '') +
-      (a.huomio ? '<div class="small"><b>Huomio:</b> ' + esc(a.huomio) + '</div>' : '') +
-      (a.puuttuvat_tiedot && a.puuttuvat_tiedot.length ? '<div class="small"><b>Kysy puhelimessa:</b><ul>' + a.puuttuvat_tiedot.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' : '') +
-      (a.seuraava_askel ? '<div class="small"><b>Seuraava askel:</b> ' + esc(a.seuraava_askel) + '</div>' : '') +
-      (S.ai ? '<button class="linkbtn small" data-analyze="' + p.id + '">Analysoi uudelleen</button>' : '') + '</div>';
+  var HOW = [['puhelin', 'Puhelimessa'], ['paikan', 'Paikan päällä'], ['sahkoposti', 'Sähköpostilla'], ['viesti', 'WhatsAppissa tai tekstiviestillä'], ['paperi', 'Allekirjoitti paperisen tarjouksen']];
+  var PAY = [['holvi', 'Lasku (Holvi)'], ['rahoitus', 'Skaala-rahoitus (OP)'], ['auki', 'Ei vielä sovittu']];
+  function apprBox(p, c) {
+    var a = p.approval;
+    if (a) return '<div class="appr"><b>✓ Tarjous hyväksytty ' + esc(fdate(a.at)) + '</b> · ' + esc(eur(a.value)) + '<div class="small">Asiakas hyväksyi ' + esc(a.how_label) + ' · kirjasi ' + esc(a.by_name) +
+      ' · ' + esc(a.pay_label) + (a.order_now ? ' · tilataan heti' : '') + '</div>' + (a.note ? '<div class="small muted">' + esc(a.note) + '</div>' : '') + '</div>';
+    if (p.stage >= 3) return '';
+    return '<div class="apprw" data-apprw="' + p.id + '"><button type="button" class="btn sm" data-approve="' + p.id + '">✓ Hyväksy tarjous asiakkaan puolesta</button></div>';
   }
-  function waLink(phone, text) {
-    var d = String(phone || '').replace(/[^\d+]/g, '').replace(/^\+/, '').replace(/^00/, '').replace(/^0/, '358');
-    return 'https://wa.me/' + d + '?text=' + encodeURIComponent(text);
-  }
-  function bindDraft(c) {
-    var f = document.getElementById('draftf'); if (!f) return;
+  function openApprove(c, pid) {
+    var w = document.querySelector('[data-apprw="' + pid + '"]'); if (!w) return;
+    var p = c.projects.filter(function (x) { return x.id === pid; })[0];
+    w.innerHTML = '<form class="apprf"><h3>Tarjouksen hyväksyntä asiakkaan puolesta</h3><div class="fields">' +
+      '<label class="fld">Hyväksytty hinta (€, sis. alv) *<input name="value" type="number" min="1" step="1" required value="' + (p.value || '') + '"></label>' +
+      '<label class="fld">Miten asiakas hyväksyi *<select name="how" required><option value="">Valitse</option>' + HOW.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('') + '</select></label>' +
+      '<label class="fld">Maksutapa<select name="payment">' + PAY.map(function (h) { return '<option value="' + h[0] + '"' + (h[0] === 'auki' ? ' selected' : '') + '>' + h[1] + '</option>'; }).join('') + '</select></label>' +
+      '<label class="fld wide">Lisätiedot<textarea name="note" rows="2" placeholder="esim. sovittu, että ulko-ovi vaihdetaan malliin X"></textarea></label></div>' +
+      '<div class="choices"><label><input type="checkbox" name="order_now"><span>Asiakas pyysi tilaamaan tuotteet heti</span></label>' +
+      '<label><input type="checkbox" name="confirm"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle vahvistus sähköpostilla' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia)') + '</span></label></div>' +
+      '<div class="actions"><button class="btn p">Merkitse hyväksytyksi</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
+    var f = w.querySelector('form');
+    f.value.focus();
+    w.querySelector('[data-cancel]').addEventListener('click', function () { loadCard(c.id); });
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      var btn = f.querySelector('button'), box = document.getElementById('draftbox'), ch = f.channel.value;
-      btn.disabled = true; btn.textContent = 'Kirjoitetaan…';
-      box.innerHTML = '<p class="muted small">Tekoäly kirjoittaa luonnosta, tämä kestää yleensä 10–30 sekuntia.</p>';
-      api('customers/' + c.id + '/draft', { method: 'POST', body: { channel: ch, instruction: f.instruction.value, project_id: c.projects[0] ? c.projects[0].id : null } }).then(function (d) {
-        box.innerHTML = '<div class="draft">' + (ch === 'email' ? '<label class="fld">Aihe<input id="dsub" value="' + esc(d.subject) + '"></label>' : '') +
-          '<label class="fld">Viesti<textarea id="dbody" rows="' + (ch === 'email' ? 12 : 6) + '">' + esc(d.body) + '</textarea></label>' +
-          '<p class="small muted">Luonnos: tarkista ja muokkaa ennen lähettämistä.</p><div class="actions">' +
-          (ch === 'email' ? '<button class="btn p" id="dsend">Lähetä sähköposti (' + esc(c.email) + ')</button>' :
-            (ch === 'whatsapp' && c.phone ? '<a class="btn p" id="dwa" target="_blank" rel="noopener" href="#">Avaa WhatsAppissa</a>' : '') +
-            (ch === 'sms' && c.phone ? '<a class="btn p" id="dsms" href="#">Avaa tekstiviestinä</a>' : '')) +
-          '<button class="btn" id="dcopy">Kopioi</button></div></div>';
-        var body = function () { return document.getElementById('dbody').value; };
-        var logSent = function (how) { api('customers/' + c.id + '/note', { method: 'POST', body: { text: how + ': ' + body() } }).then(function () { loadCard(c.id); }); };
-        var s = document.getElementById('dsend');
-        if (s) s.addEventListener('click', function () {
-          s.disabled = true;
-          api('customers/' + c.id + '/send', { method: 'POST', body: { subject: document.getElementById('dsub').value, body: body(), project_id: c.projects[0] ? c.projects[0].id : null } })
-            .then(function () { toast('Sähköposti lähetetty'); loadCard(c.id); }).catch(function (err) { s.disabled = false; fail(err); });
-        });
-        var wa = document.getElementById('dwa');
-        if (wa) wa.addEventListener('click', function () { wa.href = waLink(c.phone, body()); logSent('WhatsApp-viesti avattu lähetettäväksi'); });
-        var sm = document.getElementById('dsms');
-        if (sm) sm.addEventListener('click', function () { sm.href = 'sms:' + String(c.phone).replace(/[^\d+]/g, '') + '?&body=' + encodeURIComponent(body()); logSent('Tekstiviesti avattu lähetettäväksi'); });
-        document.getElementById('dcopy').addEventListener('click', function () {
-          var t = (ch === 'email' ? document.getElementById('dsub').value + '\n\n' : '') + body();
-          (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast('Kopioitu leikepöydälle'); }).catch(function () { document.getElementById('dbody').select(); toast('Valitse ja kopioi teksti'); });
-        });
-      }).catch(function (err) { box.innerHTML = ''; fail(err); }).then(function () { btn.disabled = false; btn.textContent = 'Luonnostele'; });
+      if (!f.how.value) { toast('Valitse, miten asiakas hyväksyi', true); return; }
+      f.querySelector('.btn.p').disabled = true;
+      api('projects/' + pid + '/approve', { method: 'POST', body: { value: f.value.value, how: f.how.value, payment: f.payment.value, note: f.note.value, order_now: f.order_now.checked, confirm: f.confirm.checked } })
+        .then(function (np) {
+          S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
+          return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
+        }).then(function () { toast('Tarjous merkitty hyväksytyksi'); loadCard(c.id); })
+        .catch(function (err) { f.querySelector('.btn.p').disabled = false; fail(err); });
     });
   }
   function bindCard(c) {
     var box = document.getElementById('ccard');
-    bindDraft(c);
-    box.querySelectorAll('[data-analyze]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        b.disabled = true; b.textContent = 'Analysoidaan…';
-        api('projects/' + b.getAttribute('data-analyze') + '/analyze', { method: 'POST' }).then(function () { toast('Analyysi valmis'); loadCard(c.id); })
-          .catch(function (err) { b.disabled = false; b.textContent = 'Analysoi tekoälyllä'; fail(err); });
-      });
-    });
+    box.querySelectorAll('[data-approve]').forEach(function (b) { b.addEventListener('click', function () { openApprove(c, +b.getAttribute('data-approve')); }); });
+    if (S.openApprove) { var oa = S.openApprove; S.openApprove = null; openApprove(c, oa); var w = document.querySelector('[data-apprw="' + oa + '"]'); if (w) w.scrollIntoView({ block: 'center' }); }
     var ow = document.getElementById('owner');
     if (ow) ow.addEventListener('change', function () { api('customers/' + c.id, { method: 'POST', body: { owner_id: +ow.value } }).then(function () { toast('Vastuumyyjä vaihdettu'); }).catch(fail); });
     box.querySelectorAll('[data-proj]').forEach(function (el) {
       var pid = +el.getAttribute('data-proj');
       el.querySelectorAll('[data-f]').forEach(function (f) {
         f.addEventListener('change', function () {
+          var proj = c.projects.filter(function (x) { return x.id === pid; })[0];
+          if (f.getAttribute('data-f') === 'stage' && +f.value >= 3 && proj.stage < 3 && !proj.approval) {
+            f.value = proj.stage; openApprove(c, pid); toast('Kirjaa ensin asiakkaan hyväksyntä'); return;
+          }
           var body = {}; body[f.getAttribute('data-f')] = f.value;
           api('projects/' + pid, { method: 'POST', body: body }).then(function (np) {
             S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
@@ -435,7 +416,7 @@
   window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
 
   api('bootstrap').then(function (b) {
-    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.ai = b.ai;
+    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today;
     return Promise.all([api('board'), api('tasks'), api('customers')]);
   }).then(function (r) {
     S.board = r[0]; S.tasks = r[1]; S.customers = r[2];

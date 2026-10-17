@@ -53,6 +53,25 @@ function nap_mail_welcome( $customer, $link, $measure_date = '' ) {
 	);
 }
 
+/** Vahvistus, kun henkilökunta on kirjannut asiakkaan hyväksynnän (puhelimessa, paikan päällä tms.). */
+function nap_mail_approval( $customer, $project, $a, $link ) {
+	$me    = get_userdata( (int) $a['by'] );
+	$lines = array(
+		'Hei ' . nap_first_name( $customer['name'] ) . ',',
+		'kiitos! Vahvistamme, että hyväksyit tarjouksemme ' . $a['how_label'] . ' ' . date_i18n( 'j.n.Y', strtotime( $a['at'] ) ) . '.',
+		'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ) . "\n"
+			. 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)'
+			. ( 'auki' !== $a['payment'] ? "\nMaksutapa: " . $a['pay_label'] : '' ),
+	);
+	if ( $a['order_now'] ) {
+		$lines[] = 'Pyysit, että tuotteet tilataan valmistajalta heti.';
+	}
+	$lines[] = 'Seuraavaksi tilaamme tuotteet Skaalalta ja sovimme kanssasi asennuspäivän. Voit seurata kohdetta Oma kohde -sivulla.';
+	$lines[] = 'Jos tiedoissa on virhe, vastaa tähän viestiin tai soita: myynti 045 7832 5070.';
+	return nap_mail( $customer['email'], 'Vahvistus: tarjous hyväksytty', 'Kiitos tilauksestasi', $lines,
+		array( 'Avaa Oma kohde', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
+}
+
 function nap_mail_login_link( $customer, $link ) {
 	return nap_mail(
 		$customer['email'],

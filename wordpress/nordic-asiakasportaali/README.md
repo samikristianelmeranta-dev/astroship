@@ -37,24 +37,23 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 - Ajastus käyttää WordPressin cronia. Täsmällisyyttä varten cPanel → Cron Jobs → kerran tunnissa:
   `wget -q -O /dev/null https://ikkunakauppias.fi/wp-cron.php?doing_wp_cron`
 
-## Tekoälyavustaja (Claude, otetaan käyttöön asetuksista)
-- **Liidin esikäsittely:** jokainen uusi tarjouspyyntö (lomake tai käsin kirjattu) analysoidaan taustalla. Kohteen kortille
-  tulee tiivistelmä, kohdetyyppi, koko, kiireellisyys, huomiot, mitä kysyä puhelimessa ja ehdotettu seuraava askel.
-  Tuotteet ja puuttuva osoite täydentyvät. Analyysin voi ajaa uudelleen painikkeella.
-- **Vastausluonnos:** asiakaskortilla valitaan kanava (sähköposti, WhatsApp, tekstiviesti) ja halutessa ohje.
-  Luonnos tarkistetaan ja lähetetään itse: sähköposti lähtee CRM:stä (vastaukset tulevat lähettäjälle),
-  WhatsApp ja tekstiviesti avautuvat puhelimen sovellukseen valmiiksi kirjoitettuina.
-- Asiakkaalle ei lähetetä mitään ilman henkilökunnan hyväksyntää. Tekoälylle ei lähetetä sähköpostia eikä puhelinnumeroa
-  erikseen. Tietosuojaselosteeseen on lisätty maininta.
-- Käyttöönotto: API-avain osoitteesta console.anthropic.com → Asetukset → Asiakasportaali → Tekoälyavustaja.
-  Nordic Chatin avain käy myös. Vaatii PHP 8.1:n.
+## Tarjouksen hyväksyntä asiakkaan puolesta
+Kun asiakas hyväksyy tarjouksen puhelimessa, paikan päällä, sähköpostilla, viestillä tai allekirjoittamalla paperin,
+myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaan puolesta**.
+- Kirjataan hyväksytty hinta, miten asiakas hyväksyi, maksutapa (Holvi-lasku / Skaala-rahoitus OP / ei vielä sovittu),
+  pyysikö asiakas tilaamaan heti ja lisätiedot. Kirjaajan nimi ja aika tallentuvat.
+- Kohde siirtyy vaiheeseen Hyväksytty, ja tehtävä "Tilaa tuotteet Skaalalta" syntyy (rahoituksessa myös
+  "Hoida Skaala-rahoituksen hakemus (OP)").
+- Asiakas saa halutessa sähköpostivahvistuksen (hinta, maksutapa, Oma kohde -linkki). Vastaukset menevät kirjaajalle.
+- Asentaja voi hyväksyä vain omia kohteitaan. Myyntiputken nuoli ja vaihevalikko avaavat hyväksyntälomakkeen,
+  jotta jokaisesta hyväksytystä kaupasta jää merkintä.
 
 Tulossa seuraavissa vaiheissa: tarjous linkkiin ja hyväksyntä, maksutapa (Holvi / Skaala-rahoitus OP), dokumentit
 ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meistä, raportit. Katso
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.4.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.5.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

@@ -25,6 +25,11 @@ add_filter( 'query_vars', function ( $v ) {
 	return $v;
 } );
 
+// /crm/sw.js ja /crm/manifest.webmanifest eivät saa saada kauttaviivaa perään (service worker ei salli uudelleenohjausta).
+add_filter( 'redirect_canonical', function ( $url ) {
+	return get_query_var( 'nap_route' ) ? false : $url;
+} );
+
 add_action( 'template_redirect', function () {
 	$route = get_query_var( 'nap_route' );
 	if ( ! $route ) {

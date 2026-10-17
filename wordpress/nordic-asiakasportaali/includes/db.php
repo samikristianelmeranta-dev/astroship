@@ -52,7 +52,7 @@ function nap_install_db() {
 		owner_id bigint(20) unsigned DEFAULT NULL,
 		installer_id bigint(20) unsigned DEFAULT NULL,
 		details text NULL,
-		ai longtext NULL,
+		approval text NULL,
 		created_at datetime NOT NULL,
 		updated_at datetime NOT NULL,
 		PRIMARY KEY  (id),
@@ -218,15 +218,13 @@ function nap_update_project( $id, $data ) {
 			$row[ $k ] = $data[ $k ] ? (int) $data[ $k ] : null;
 		}
 	}
-	if ( array_key_exists( 'ai', $data ) ) {
-		$row['ai'] = $data['ai'] ? wp_json_encode( $data['ai'], JSON_UNESCAPED_UNICODE ) : null;
+	if ( array_key_exists( 'approval', $data ) ) {
+		$row['approval'] = $data['approval'] ? wp_json_encode( $data['approval'], JSON_UNESCAPED_UNICODE ) : null;
 	}
 	if ( ! $row ) {
 		return false;
 	}
-	if ( array( 'ai' ) !== array_keys( $row ) ) { // tekoälyn analyysi ei ole "edistymistä" (jumissa-vahti)
-		$row['updated_at'] = nap_now();
-	}
+	$row['updated_at'] = nap_now();
 	return false !== $wpdb->update( nap_table( 'projects' ), $row, array( 'id' => (int) $id ) );
 }
 

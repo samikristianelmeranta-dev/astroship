@@ -24,9 +24,7 @@ add_action( 'rest_api_init', function () {
 	$r( '/customers/(?P<id>\d+)', 'POST', 'nap_api_update_customer' );
 	$r( '/customers/(?P<id>\d+)/note', 'POST', 'nap_api_note' );
 	$r( '/customers/(?P<id>\d+)/invite', 'POST', 'nap_api_invite' );
-	$r( '/customers/(?P<id>\d+)/draft', 'POST', 'nap_api_draft' );
-	$r( '/customers/(?P<id>\d+)/send', 'POST', 'nap_api_send' );
-	$r( '/projects/(?P<id>\d+)/analyze', 'POST', 'nap_api_analyze' );
+	$r( '/projects/(?P<id>\d+)/approve', 'POST', 'nap_api_approve' );
 	$r( '/tasks', 'GET', 'nap_api_tasks' );
 	$r( '/tasks', 'POST', 'nap_api_create_task' );
 	$r( '/tasks/(?P<id>\d+)', 'POST', 'nap_api_update_task' );
@@ -56,7 +54,7 @@ function nap_project_out( $p, $customer = null ) {
 		'owner_id'     => $p['owner_id'] ? (int) $p['owner_id'] : null,
 		'installer_id' => $p['installer_id'] ? (int) $p['installer_id'] : null,
 		'details'      => (string) $p['details'],
-		'ai'           => ! empty( $p['ai'] ) ? json_decode( $p['ai'], true ) : null,
+		'approval'     => ! empty( $p['approval'] ) ? json_decode( $p['approval'], true ) : null,
 		'updated_at'   => $p['updated_at'],
 	);
 }
@@ -68,7 +66,6 @@ function nap_api_bootstrap() {
 		'users'  => nap_staff_users(),
 		'stages' => NAP_STAGES,
 		'today'  => current_time( 'Y-m-d' ),
-		'ai'     => nap_ai_ready(),
 	);
 }
 
@@ -281,7 +278,6 @@ function nap_api_create_customer( WP_REST_Request $req ) {
 		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 		$sent = true;
 	}
-	nap_ai_queue_triage( $pid );
 	return array( 'id' => $cid, 'project_id' => $pid, 'existing' => $existing, 'mailed' => $sent );
 }
 
@@ -423,60 +419,91 @@ function nap_api_update_task( WP_REST_Request $req ) {
 	return nap_task_out( nap_get_task( (int) $t['id'] ) );
 }
 
-/* ---------- Tekoälyavustaja ---------- */
+/* ---------- Tarjouksen hyväksyntä asiakkaan puolesta ---------- */
 
-function nap_api_analyze( WP_REST_Request $req ) {
+function nap_approval_methods() {
+	return array(
+		'puhelin'    => 'puhelimessa',
+		'paikan'     => 'paikan päällä',
+		'sahkoposti' => 'sähköpostilla',
+		'viesti'     => 'WhatsAppissa tai tekstiviestillä',
+		'paperi'     => 'allekirjoittamalla paperisen tarjouksen',
+	);
+}
+
+function nap_payment_methods() {
+	return array(
+		'holvi'    => 'Lasku (Holvi)',
+		'rahoitus' => 'Skaala-rahoitus (OP)',
+		'auki'     => 'Ei vielä sovittu',
+	);
+}
+
+/**
+ * Myyjä tai asentaja kirjaa, että asiakas hyväksyi tarjouksen (puhelimessa, paikan päällä tms.).
+ * Kohde siirtyy vaiheeseen Hyväksytty, hyväksynnän tiedot tallentuvat ja asiakas saa halutessaan vahvistuksen.
+ */
+function nap_api_approve( WP_REST_Request $req ) {
 	$p = nap_get_project( (int) $req['id'] );
 	if ( ! nap_can_see_project( $p ) ) {
 		return nap_err( 'Ei oikeutta tähän kohteeseen.' );
 	}
-	$ai = nap_ai_triage( (int) $p['id'] );
-	if ( is_wp_error( $ai ) ) {
-		return nap_err( $ai->get_error_message(), 503 );
+	if ( ! empty( $p['approval'] ) ) {
+		return nap_err( 'Tarjous on jo merkitty hyväksytyksi.', 409 );
 	}
-	return nap_project_out( nap_get_project( (int) $p['id'] ) );
-}
+	$value   = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'value' ) );
+	$how     = (string) $req->get_param( 'how' );
+	$payment = (string) $req->get_param( 'payment' );
+	$methods = nap_approval_methods();
+	$pays    = nap_payment_methods();
+	if ( $value <= 0 ) {
+		return nap_err( 'Anna hyväksytty hinta.', 400 );
+	}
+	if ( ! isset( $methods[ $how ] ) || ! isset( $pays[ $payment ] ) ) {
+		return nap_err( 'Valitse, miten asiakas hyväksyi ja maksutapa.', 400 );
+	}
+	$me       = wp_get_current_user();
+	$approval = array(
+		'at'        => nap_now(),
+		'by'        => (int) $me->ID,
+		'by_name'   => $me->display_name,
+		'how'       => $how,
+		'how_label' => $methods[ $how ],
+		'payment'   => $payment,
+		'pay_label' => $pays[ $payment ],
+		'order_now' => (bool) $req->get_param( 'order_now' ),
+		'value'     => $value,
+		'note'      => sanitize_textarea_field( (string) $req->get_param( 'note' ) ),
+	);
+	$old = (int) $p['stage'];
+	nap_update_project( (int) $p['id'], array(
+		'value'    => $value,
+		'stage'    => max( 3, $old ),
+		'approval' => $approval,
+	) );
+	$p   = nap_get_project( (int) $p['id'] );
+	$c   = nap_get_customer( (int) $p['customer_id'] );
+	$eur = number_format( $value, 0, ',', ' ' ) . ' €';
 
-function nap_api_draft( WP_REST_Request $req ) {
-	$c = nap_get_customer( (int) $req['id'] );
-	if ( ! nap_can_see_customer( $c ) ) {
-		return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
+	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty (' . $eur . ')', true );
+	nap_log( $c['id'], $p['id'], 'approval', 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $me->display_name
+		. '. Maksutapa: ' . $pays[ $payment ] . '. Tilataan heti: ' . ( $approval['order_now'] ? 'kyllä' : 'ei' ) . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
+	if ( $old < 3 ) {
+		nap_on_stage_change( $p, $old );
 	}
-	$p = $req->get_param( 'project_id' ) ? nap_get_project( (int) $req->get_param( 'project_id' ) ) : null;
-	if ( $p && (int) $p['customer_id'] !== (int) $c['id'] ) {
-		$p = null;
+	if ( 'rahoitus' === $payment ) {
+		nap_create_task( array(
+			'project_id'  => $p['id'],
+			'customer_id' => $c['id'],
+			'title'       => 'Hoida Skaala-rahoituksen hakemus (OP)',
+			'assignee_id' => $p['owner_id'] ?: $me->ID,
+			'due_date'    => nap_next_workday(),
+		) );
 	}
-	$channel = in_array( $req->get_param( 'channel' ), array( 'email', 'whatsapp', 'sms' ), true ) ? $req->get_param( 'channel' ) : 'email';
-	if ( function_exists( 'set_time_limit' ) ) {
-		@set_time_limit( 120 ); // phpcs:ignore
+	if ( $req->get_param( 'confirm' ) && $c['email'] ) {
+		if ( nap_mail_approval( $c, $p, $approval, nap_create_login_link( (int) $c['id'] ) ) ) {
+			nap_log( $c['id'], $p['id'], 'mail', 'Vahvistus hyväksynnästä lähetetty asiakkaalle' );
+		}
 	}
-	$d = nap_ai_draft( $c, $p, $channel, sanitize_textarea_field( (string) $req->get_param( 'instruction' ) ) );
-	if ( is_wp_error( $d ) ) {
-		return nap_err( $d->get_error_message(), 503 );
-	}
-	return array( 'subject' => (string) $d['aihe'], 'body' => (string) $d['viesti'], 'channel' => $channel );
-}
-
-/** Henkilökunnan tarkistaman viestin lähetys sähköpostilla. Vastaukset tulevat lähettäjälle. */
-function nap_api_send( WP_REST_Request $req ) {
-	$c = nap_get_customer( (int) $req['id'] );
-	if ( ! nap_can_see_customer( $c ) ) {
-		return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
-	}
-	if ( ! $c['email'] ) {
-		return nap_err( 'Asiakkaalla ei ole sähköpostiosoitetta.', 400 );
-	}
-	$subject = sanitize_text_field( (string) $req->get_param( 'subject' ) );
-	$body    = sanitize_textarea_field( (string) $req->get_param( 'body' ) );
-	if ( ! $subject || ! $body ) {
-		return nap_err( 'Viestistä puuttuu aihe tai teksti.', 400 );
-	}
-	$me    = wp_get_current_user();
-	$paras = array_values( array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', $body ) ) ) );
-	if ( ! nap_mail( $c['email'], $subject, '', $paras, null, $me->display_name . ' <' . $me->user_email . '>' ) ) {
-		return nap_err( 'Sähköpostin lähetys epäonnistui.', 500 );
-	}
-	$pid = (int) $req->get_param( 'project_id' ) ?: null;
-	nap_log( $c['id'], $pid, 'mail', 'Sähköposti asiakkaalle: ' . $subject . "\n" . $body );
-	return array( 'ok' => true );
+	return nap_project_out( $p );
 }
