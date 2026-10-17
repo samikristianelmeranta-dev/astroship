@@ -17,6 +17,8 @@ function nap_settings_defaults() {
 		'auto_tasks'     => 1,
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
+		'offer_reminders' => 1,
+		'offer_days'     => 30,
 		'measure_terms'  => 'Asiakkaan omat mitat: Kun asiakas mittaa itse tai toimittaa mitat meille, tuotteet valmistetaan asiakkaan ilmoittamien mittojen mukaan, ja vastuu mittojen oikeellisuudesta on aina asiakkaalla. Vääristä mitoista johtuvat muutokset ja uudet tuotteet ovat asiakkaan kustannuksella.',
 		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
 	);
@@ -123,6 +125,8 @@ add_action( 'admin_init', function () {
 				'auto_tasks'    => empty( $in['auto_tasks'] ) ? 0 : 1,
 				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
 				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
+				'offer_reminders' => empty( $in['offer_reminders'] ) ? 0 : 1,
+				'offer_days'    => max( 1, min( 365, absint( $in['offer_days'] ?? 30 ) ) ),
 				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
 				'measure_terms' => sanitize_textarea_field( $in['measure_terms'] ?? $d['measure_terms'] ),
 			);
@@ -159,6 +163,9 @@ function nap_settings_page() {
 					<label><input type="checkbox" name="nap_settings[auto_watch]" value="1" <?php checked( $s['auto_watch'] ); ?>> Liidivahti: muistutus, jos tarjouspyyntöön ei ole reagoitu 24 tunnissa, ja 48 tunnin jälkeen muille osakkaille</label><br>
 					<label><input type="checkbox" name="nap_settings[auto_digest]" value="1" <?php checked( $s['auto_digest'] ); ?>> Aamukooste arkiaamuisin klo 7 (omat tehtävät, uudet tarjouspyynnöt, maanantaisin jumissa olevat kohteet)</label>
 					<p class="description">Tarkka ajoitus: cPanel → Cron Jobs → kerran tunnissa <code>wget -q -O /dev/null <?php echo esc_html( site_url( 'wp-cron.php?doing_wp_cron' ) ); ?></code></p></td></tr>
+				<tr><th scope="row">Tarjoukset</th>
+					<td><label>Voimassa oletuksena <input type="number" min="1" max="365" name="nap_settings[offer_days]" value="<?php echo (int) $s['offer_days']; ?>" style="width:70px"> päivää</label><br>
+					<label><input type="checkbox" name="nap_settings[offer_reminders]" value="1" <?php checked( $s['offer_reminders'] ); ?>> Muistuta asiakasta avoimesta tarjouksesta 3 ja 7 päivän kohdalla sekä 2 päivää ennen voimassaolon päättymistä</label></td></tr>
 				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
 					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>
 					<p class="description">Näkyy asiakkaalle lähtevässä vahvistuksessa, kun tarjous merkitään hyväksytyksi. Tyhjänä ei näytetä.</p></td></tr>

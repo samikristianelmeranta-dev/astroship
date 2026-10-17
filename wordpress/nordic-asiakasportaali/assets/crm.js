@@ -17,7 +17,8 @@
   function api(path, opts) {
     opts = opts || {};
     var init = { method: opts.method || 'GET', credentials: 'same-origin', headers: { 'X-WP-Nonce': C.nonce } };
-    if (opts.body) { init.headers['Content-Type'] = 'application/json'; init.body = JSON.stringify(opts.body); }
+    if (opts.form) init.body = opts.form; // tiedostot (FormData)
+    else if (opts.body) { init.headers['Content-Type'] = 'application/json'; init.body = JSON.stringify(opts.body); }
     return fetch(C.root + path, init).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) {
         if (!r.ok) { var e = new Error((j && j.message) || 'Toiminto epäonnistui (' + r.status + ').'); throw e; }
@@ -107,6 +108,7 @@
       e.stopPropagation();
       var p = S.board.filter(function (x) { return x.id === +mv.getAttribute('data-mv'); })[0];
       if (p.stage === 2 && !p.approval) { S.openApprove = p.id; location.hash = 'asiakas-' + p.customer_id; return; }
+      if (p.stage === 1 && !p.offer) { S.openOffer = p.id; location.hash = 'asiakas-' + p.customer_id; return; }
       mv.disabled = true;
       api('projects/' + p.id, { method: 'POST', body: { stage: p.stage + 1 } }).then(function (np) {
         p.stage = np.stage; toast(p.customer + ' → ' + S.stages[np.stage]); render();
@@ -155,7 +157,7 @@
         '<div class="sect"><h3>Kohteet</h3>' + (c.projects.length ? c.projects.map(function (p) {
           return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b><span style="display:flex;gap:6px;flex-wrap:wrap">' + (p.delivery !== 'asennus' ? '<span class="pill gold">' + esc(S.deliveries[p.delivery]) + '</span>' : '') + '<span class="pill ' + (p.stage === 6 ? 'good' : '') + '">' + esc(S.stages[p.stage]) + '</span></span></div>' +
             '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') +
-            apprBox(p, c) +
+            offerBox(p, c) + apprBox(p, c) +
             '<div class="fields" style="margin-top:10px">' +
             '<label class="fld">Vaihe<select data-f="stage">' + S.stages.map(function (s, i) { return '<option value="' + i + '" ' + (i === p.stage ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></label>' +
             '<label class="fld">Arvo (€, sis. alv)<input data-f="value" type="number" min="0" step="10" value="' + (p.value || '') + '"></label>' +
@@ -210,8 +212,51 @@
         .catch(function (err) { f.querySelector('.btn.p').disabled = false; fail(err); });
     });
   }
+  function addDays(n) { var d = new Date(S.today + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
+  function offerBox(p, c) {
+    var o = p.offer;
+    if (!o) return p.stage < 3 && !p.approval ? '<div class="offw" data-offw="' + p.id + '"><button type="button" class="btn sm p" data-offer="' + p.id + '">Lähetä tarjous asiakkaalle</button></div>' : '';
+    var expired = o.valid_until && o.valid_until < S.today && o.status === 'sent';
+    var st = o.status === 'accepted' ? '<span class="pill good">Hyväksytty</span>' : o.status === 'declined' ? '<span class="pill crit">Ei kiinnostunut</span>' :
+      expired ? '<span class="pill crit">Vanhentunut</span>' : (o.viewed_at ? '<span class="pill">Asiakas avasi ' + esc(fdate(o.viewed_at)) + '</span>' : '<span class="pill gold">Ei vielä avattu</span>');
+    return '<div class="offer" data-offw="' + p.id + '"><div class="offer-h"><b>' + (o.version > 1 ? 'Tarjous (versio ' + o.version + ')' : 'Tarjous') + ' · ' + esc(eur(o.sum)) + '</b>' + st + '</div>' +
+      '<div class="small muted">Lähetetty ' + esc(fdate(o.sent_at)) + ' · ' + esc(o.sent_name) + (o.valid_until ? ' · voimassa ' + esc(fdate(o.valid_until)) + ' asti' : '') + (o.labor ? ' · työn osuus ' + esc(eur(o.labor)) : '') +
+      ((o.reminders || []).length ? ' · muistutuksia ' + o.reminders.length : '') + '</div>' +
+      (o.content ? '<div class="small" style="white-space:pre-line;margin-top:4px">' + esc(o.content) + '</div>' : '') +
+      '<div class="actions" style="margin-top:6px">' + (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') +
+      (!p.approval ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button>' : '') + '</div></div>';
+  }
+  function openOffer(c, pid) {
+    var w = document.querySelector('[data-offw="' + pid + '"]'); if (!w) return;
+    var p = c.projects.filter(function (x) { return x.id === pid; })[0], o = p.offer || {};
+    w.innerHTML = '<form class="apprf" enctype="multipart/form-data"><h3>' + (p.offer ? 'Päivitetty tarjous' : 'Tarjous asiakkaalle') + '</h3>' +
+      '<p class="small muted" style="margin:0">Asiakas näkee tarjouksen Oma kohde -sivulla ja voi hyväksyä sen, valita maksutavan tai kysyä tarkennusta.</p><div class="fields">' +
+      '<label class="fld wide">Tarjous PDF:nä (Skaalan tarjoustyökalusta)' + (o.file ? ' <span class="muted small">– jätä tyhjäksi, niin edellinen PDF säilyy</span>' : '') + '<input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
+      '<label class="fld">Hinta yhteensä (€, sis. alv) *<input name="sum" type="number" min="1" step="1" required value="' + (o.sum || p.value || '') + '"></label>' +
+      '<label class="fld">Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
+      '<label class="fld">Voimassa asti<input name="valid_until" type="date" value="' + esc(addDays(S.offerDays)) + '"></label>' +
+      '<label class="fld wide">Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
+      '<label class="fld wide">Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
+      '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
+      '<div class="actions"><button class="btn p">Lähetä tarjous</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
+    var f = w.querySelector('form');
+    f.sum.focus();
+    w.querySelector('[data-cancel]').addEventListener('click', function () { loadCard(c.id); });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fd = new FormData(f); fd.set('notify', f.notify.checked ? '1' : '');
+      f.querySelector('.btn.p').disabled = true;
+      api('projects/' + pid + '/offer', { method: 'POST', form: fd }).then(function (np) {
+        S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
+        return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
+      }).then(function () { toast('Tarjous lähetetty'); loadCard(c.id); })
+        .catch(function (err) { f.querySelector('.btn.p').disabled = false; fail(err); });
+    });
+  }
   function bindCard(c) {
     var box = document.getElementById('ccard');
+    box.querySelectorAll('[data-offer]').forEach(function (b) { b.addEventListener('click', function () { openOffer(c, +b.getAttribute('data-offer')); }); });
+    if (S.openOffer) { var of = S.openOffer; S.openOffer = null; openOffer(c, of); var ow = document.querySelector('[data-offw="' + of + '"]'); if (ow) ow.scrollIntoView({ block: 'center' }); }
     box.querySelectorAll('[data-approve]').forEach(function (b) { b.addEventListener('click', function () { openApprove(c, +b.getAttribute('data-approve')); }); });
     if (S.openApprove) { var oa = S.openApprove; S.openApprove = null; openApprove(c, oa); var w = document.querySelector('[data-apprw="' + oa + '"]'); if (w) w.scrollIntoView({ block: 'center' }); }
     var ow = document.getElementById('owner');
@@ -221,6 +266,9 @@
       el.querySelectorAll('[data-f]').forEach(function (f) {
         f.addEventListener('change', function () {
           var proj = c.projects.filter(function (x) { return x.id === pid; })[0];
+          if (f.getAttribute('data-f') === 'stage' && +f.value === 2 && proj.stage < 2 && !proj.offer) {
+            f.value = proj.stage; openOffer(c, pid); toast('Lisää tarjouksen tiedot, niin asiakas näkee sen'); return;
+          }
           if (f.getAttribute('data-f') === 'stage' && +f.value >= 3 && proj.stage < 3 && !proj.approval) {
             f.value = proj.stage; openApprove(c, pid); toast('Kirjaa ensin asiakkaan hyväksyntä'); return;
           }
@@ -432,7 +480,7 @@
   window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
 
   api('bootstrap').then(function (b) {
-    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || '';
+    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.offerDays = b.offer_days || 30; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || '';
     return Promise.all([api('board'), api('tasks'), api('customers')]);
   }).then(function (r) {
     S.board = r[0]; S.tasks = r[1]; S.customers = r[2];

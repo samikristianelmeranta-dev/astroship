@@ -79,6 +79,7 @@ function nap_install_db() {
 		installer_id bigint(20) unsigned DEFAULT NULL,
 		details text NULL,
 		approval text NULL,
+		offer text NULL,
 		delivery varchar(20) NOT NULL DEFAULT 'asennus',
 		created_at datetime NOT NULL,
 		updated_at datetime NOT NULL,
@@ -248,6 +249,9 @@ function nap_update_project( $id, $data ) {
 	}
 	if ( array_key_exists( 'delivery', $data ) ) {
 		$row['delivery'] = nap_delivery( $data );
+	}
+	if ( array_key_exists( 'offer', $data ) ) {
+		$row['offer'] = $data['offer'] ? wp_json_encode( $data['offer'], JSON_UNESCAPED_UNICODE ) : null;
 	}
 	if ( array_key_exists( 'approval', $data ) ) {
 		$row['approval'] = $data['approval'] ? wp_json_encode( $data['approval'], JSON_UNESCAPED_UNICODE ) : null;

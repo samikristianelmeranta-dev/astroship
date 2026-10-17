@@ -41,6 +41,10 @@ function nap_on_stage_change( $p, $old_stage ) {
 	if ( $new > 0 ) {
 		$wpdb->query( $wpdb->prepare( "UPDATE $t SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND (title LIKE %s OR title LIKE %s)", nap_now(), $p['id'], 'Soita ja sovi mittaus%', 'Soita ja pyydä mitat%' ) ); // phpcs:ignore
 	}
+	// Tarjoukseen vastattu (hyväksytty tai pidemmällä) → "Seuraa tarjousta" on hoidettu.
+	if ( $new >= 3 ) {
+		$wpdb->query( $wpdb->prepare( "UPDATE $t SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND title LIKE %s", nap_now(), $p['id'], 'Seuraa tarjousta%' ) ); // phpcs:ignore
+	}
 	if ( $new <= (int) $old_stage || ! nap_settings()['auto_tasks'] ) {
 		return;
 	}

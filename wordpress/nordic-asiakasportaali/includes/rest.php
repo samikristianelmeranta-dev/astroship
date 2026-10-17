@@ -55,6 +55,7 @@ function nap_project_out( $p, $customer = null ) {
 		'installer_id' => $p['installer_id'] ? (int) $p['installer_id'] : null,
 		'details'      => (string) $p['details'],
 		'delivery'     => nap_delivery( $p ),
+		'offer'        => nap_get_offer( $p ),
 		'approval'     => ! empty( $p['approval'] ) ? json_decode( $p['approval'], true ) : null,
 		'updated_at'   => $p['updated_at'],
 	);
@@ -66,6 +67,7 @@ function nap_api_bootstrap() {
 		'me'     => array( 'id' => (int) $me->ID, 'name' => $me->display_name, 'role' => current_user_can( 'nap_all' ) ? 'osakas' : 'asentaja', 'twofa' => nap_user_has_2fa( $me->ID ) ),
 		'users'  => nap_staff_users(),
 		'stages' => NAP_STAGES,
+		'offer_days' => (int) nap_settings()['offer_days'],
 		'deliveries' => nap_deliveries(),
 		'measure_terms' => (string) nap_settings()['measure_terms'],
 		'today'  => current_time( 'Y-m-d' ),
@@ -110,7 +112,8 @@ function nap_api_update_project( WP_REST_Request $req ) {
 	if ( isset( $data['stage'] ) && (int) $p['stage'] !== $old_stage ) {
 		$c = nap_get_customer( (int) $p['customer_id'] );
 		nap_log( $c['id'], $p['id'], 'stage', 'Vaihe: ' . nap_stage_names( nap_delivery( $p ) )[ (int) $p['stage'] ], true );
-		if ( nap_settings()['notify_stage'] && (int) $p['stage'] > $old_stage && $c['email'] ) {
+		// Vaihe 2 (tarjous) ilmoitetaan tarjouksen omalla viestillä, kun tarjous lähetetään.
+		if ( nap_settings()['notify_stage'] && (int) $p['stage'] > $old_stage && 2 !== (int) $p['stage'] && $c['email'] ) {
 			if ( nap_mail_stage( $c, $p, home_url( '/oma-kohde/' ) ) ) {
 				nap_log( $c['id'], $p['id'], 'mail', 'Asiakkaalle ilmoitettu vaiheesta: ' . NAP_STAGES[ (int) $p['stage'] ] );
 			}
@@ -436,6 +439,7 @@ function nap_approval_methods() {
 		'sahkoposti' => 'sähköpostilla',
 		'viesti'     => 'WhatsAppissa tai tekstiviestillä',
 		'paperi'     => 'allekirjoittamalla paperisen tarjouksen',
+		'portaali'   => 'Oma kohde -sivulla',
 	);
 }
 
@@ -456,44 +460,69 @@ function nap_api_approve( WP_REST_Request $req ) {
 	if ( ! nap_can_see_project( $p ) ) {
 		return nap_err( 'Ei oikeutta tähän kohteeseen.' );
 	}
+	$me = wp_get_current_user();
+	$r  = nap_record_approval( $p, array(
+		'value'   => $req->get_param( 'value' ),
+		'how'     => (string) $req->get_param( 'how' ),
+		'payment' => (string) $req->get_param( 'payment' ),
+		'note'    => (string) $req->get_param( 'note' ),
+		'by'      => (int) $me->ID,
+		'by_name' => $me->display_name,
+		'confirm' => (bool) $req->get_param( 'confirm' ),
+	) );
+	return is_wp_error( $r ) ? nap_err( $r->get_error_message(), (int) $r->get_error_data() ?: 400 ) : nap_project_out( $r );
+}
+
+/**
+ * Tallentaa tarjouksen hyväksynnän: henkilökunta asiakkaan puolesta (by > 0) tai asiakas itse Oma kohde -sivulla (by = 0).
+ * Palauttaa päivitetyn kohteen tai WP_Errorin.
+ */
+function nap_record_approval( $p, $args ) {
 	if ( ! empty( $p['approval'] ) ) {
-		return nap_err( 'Tarjous on jo merkitty hyväksytyksi.', 409 );
+		return new WP_Error( 'nap', 'Tarjous on jo merkitty hyväksytyksi.', 409 );
 	}
-	$value   = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'value' ) );
-	$how     = (string) $req->get_param( 'how' );
-	$payment = (string) $req->get_param( 'payment' );
+	$value   = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $args['value'] );
+	$how     = (string) $args['how'];
+	$payment = (string) $args['payment'];
 	$methods = nap_approval_methods();
 	$pays    = nap_payment_methods();
 	if ( $value <= 0 ) {
-		return nap_err( 'Anna hyväksytty hinta.', 400 );
+		return new WP_Error( 'nap', 'Anna hyväksytty hinta.', 400 );
 	}
 	if ( ! isset( $methods[ $how ] ) || ! isset( $pays[ $payment ] ) ) {
-		return nap_err( 'Valitse, miten asiakas hyväksyi ja maksutapa.', 400 );
+		return new WP_Error( 'nap', 'Valitse, miten asiakas hyväksyi ja maksutapa.', 400 );
 	}
-	$me       = wp_get_current_user();
+	$staff    = (int) $args['by'] > 0;
 	$approval = array(
 		'at'        => nap_now(),
-		'by'        => (int) $me->ID,
-		'by_name'   => $me->display_name,
+		'by'        => (int) $args['by'],
+		'by_name'   => (string) $args['by_name'],
 		'how'       => $how,
 		'how_label' => $methods[ $how ],
 		'payment'   => $payment,
 		'pay_label' => $pays[ $payment ],
 		'value'     => $value,
-		'note'      => sanitize_textarea_field( (string) $req->get_param( 'note' ) ),
+		'note'      => sanitize_textarea_field( (string) ( $args['note'] ?? '' ) ),
 	);
-	$old = (int) $p['stage'];
-	nap_update_project( (int) $p['id'], array(
+	$old  = (int) $p['stage'];
+	$data = array(
 		'value'    => $value,
 		'stage'    => max( 3, $old ),
 		'approval' => $approval,
-	) );
+	);
+	$offer = nap_get_offer( $p );
+	if ( $offer ) {
+		$offer['status']      = 'accepted';
+		$offer['answered_at'] = nap_now();
+		$data['offer']        = $offer;
+	}
+	nap_update_project( (int) $p['id'], $data );
 	$p   = nap_get_project( (int) $p['id'] );
 	$c   = nap_get_customer( (int) $p['customer_id'] );
 	$eur = number_format( $value, 0, ',', ' ' ) . ' €';
 
 	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty (' . $eur . ')', true );
-	nap_log( $c['id'], $p['id'], 'approval', 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $me->display_name
+	nap_log( $c['id'], $p['id'], 'approval', ( $staff ? 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $approval['by_name'] : 'Asiakas hyväksyi tarjouksen Oma kohde -sivulla' )
 		. '. Maksutapa: ' . $pays[ $payment ] . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
 	if ( $old < 3 ) {
 		nap_on_stage_change( $p, $old );
@@ -503,14 +532,18 @@ function nap_api_approve( WP_REST_Request $req ) {
 			'project_id'  => $p['id'],
 			'customer_id' => $c['id'],
 			'title'       => 'Hoida Skaala-rahoituksen hakemus (OP)',
-			'assignee_id' => $p['owner_id'] ?: $me->ID,
+			'assignee_id' => $p['owner_id'] ?: ( $staff ? (int) $args['by'] : (int) nap_settings()['default_owner'] ),
 			'due_date'    => nap_next_workday(),
 		) );
 	}
-	if ( $req->get_param( 'confirm' ) && $c['email'] ) {
+	if ( ! empty( $args['confirm'] ) && $c['email'] ) {
 		if ( nap_mail_approval( $c, $p, $approval, nap_create_login_link( (int) $c['id'] ) ) ) {
 			nap_log( $c['id'], $p['id'], 'mail', 'Vahvistus hyväksynnästä lähetetty asiakkaalle' );
 		}
 	}
-	return nap_project_out( $p );
+	if ( ! $staff ) {
+		nap_notify_owner( $p, 'Tarjous hyväksytty: ' . $c['name'], 'Asiakas hyväksyi tarjouksen',
+			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), 'Hinta: ' . $eur . ' · Maksutapa: ' . $pays[ $payment ] ) );
+	}
+	return $p;
 }

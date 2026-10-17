@@ -59,6 +59,19 @@ verkkosivun lomakkeelta tai myöhemmin kohteen kortilta.
    *Conditional Logic*: näytä, kun `toimitustapa` = `Vain tuotteet, mittaan itse`.
 3. Tallenna ja lähetä testi: CRM:ssä kohteen kortilla näkyy toimitustapa.
 
+## Tarjous asiakkaalle
+Kohteen kortilla **Lähetä tarjous asiakkaalle** (myös kun vaiheeksi valitaan *Tarjous lähetetty* tai myyntiputken nuoli):
+- Liitetään Skaalan tarjoustyökalun PDF, hinta (sis. alv), työn osuus, voimassaolo (oletus asetuksista, 30 pv),
+  asiakkaalle näkyvä sisältö ja lisätiedot. Asiakas saa sähköpostiin linkin (vastaukset menevät lähettäjälle).
+- Asiakas näkee Oma kohde -sivulla hinnan, sisällön, PDF:n, peruutusehdot (ja omat mitat -ehdon) ja voi
+  **hyväksyä** (valitsee maksutavaksi laskun tai Skaala-rahoituksen ja vahvistaa ehdot), **kysyä tarkennusta** tai kertoa,
+  ettei ole kiinnostunut. Myyjä saa ilmoituksen ja tarvittaessa tehtävän; CRM näyttää, milloin asiakas avasi tarjouksen.
+- Hyväksyntä toimii kuten henkilökunnan kirjaama: vaihe Hyväksytty, tehtävät ja vahvistusviesti.
+- Muistutukset asiakkaalle 3 ja 7 päivän kohdalla ja 2 päivää ennen voimassaolon päättymistä (yksi kerrallaan).
+- Päivitetyn tarjouksen voi lähettää, kunnes tarjous on hyväksytty.
+- PDF:t tallentuvat kansioon `wp-content/uploads/nap-private/`, joka on suljettu suoralta lataukselta;
+  niitä näytetään vain kirjautuneelle asiakkaalle ja henkilökunnalle.
+
 ## Tarjouksen hyväksyntä asiakkaan puolesta
 Kun asiakas hyväksyy tarjouksen puhelimessa, paikan päällä, sähköpostilla, viestillä tai allekirjoittamalla paperin,
 myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaan puolesta**.
@@ -71,12 +84,12 @@ myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaa
 - Asentaja voi hyväksyä vain omia kohteitaan. Myyntiputken nuoli ja vaihevalikko avaavat hyväksyntälomakkeen,
   jotta jokaisesta hyväksytystä kaupasta jää merkintä.
 
-Tulossa seuraavissa vaiheissa: tarjous linkkiin ja hyväksyntä, maksutapa (Holvi / Skaala-rahoitus OP), dokumentit
+Tulossa seuraavissa vaiheissa: dokumentit
 ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meistä, raportit. Katso
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.6.2.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.7.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

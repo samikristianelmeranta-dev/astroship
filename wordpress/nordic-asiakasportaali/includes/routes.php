@@ -70,6 +70,13 @@ add_action( 'template_redirect', function () {
 		if ( ! current_user_can( 'nap_access' ) ) {
 			wp_die( 'Sinulla ei ole oikeutta Nordicin CRM:ään. Pyydä osakasta lisäämään sinulle rooli.', 'Ei oikeutta', array( 'response' => 403 ) );
 		}
+		if ( isset( $_GET['tarjous_pdf'] ) ) { // phpcs:ignore
+			$p = nap_get_project( absint( $_GET['tarjous_pdf'] ) ); // phpcs:ignore
+			if ( ! nap_can_see_project( $p ) ) {
+				wp_die( 'Ei oikeutta.', '', array( 'response' => 403 ) );
+			}
+			nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-' . $p['id'] . '.pdf' );
+		}
 		include NAP_DIR . '/templates/crm.php';
 		exit;
 	}
@@ -101,11 +108,30 @@ function nap_handle_customer_route() {
 			wp_safe_redirect( add_query_arg( 'lahetetty', '1', home_url( '/oma-kohde/' ) ) );
 			exit;
 		}
+		if ( in_array( $action, array( 'offer_accept', 'offer_question', 'offer_decline' ), true ) ) {
+			$c = nap_current_customer();
+			if ( ! $c ) {
+				wp_safe_redirect( home_url( '/oma-kohde/' ) );
+				exit;
+			}
+			$msg = nap_customer_offer_action( $c, $action );
+			wp_safe_redirect( add_query_arg( 'tarjous', $msg, home_url( '/oma-kohde/' ) ) . '#tarjous' );
+			exit;
+		}
 		if ( 'logout' === $action && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ?? '' ) ), 'nap_logout' ) ) {
 			nap_logout_customer();
 			wp_safe_redirect( home_url( '/oma-kohde/' ) );
 			exit;
 		}
+	}
+	if ( isset( $_GET['tarjous_pdf'] ) ) { // phpcs:ignore
+		$c = nap_current_customer();
+		$p = $c ? nap_get_project( absint( $_GET['tarjous_pdf'] ) ) : null; // phpcs:ignore
+		if ( ! $p || (int) $p['customer_id'] !== (int) $c['id'] ) {
+			wp_safe_redirect( home_url( '/oma-kohde/' ) );
+			exit;
+		}
+		nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-nordic-ikkunat.pdf' );
 	}
 	include NAP_DIR . '/templates/oma-kohde.php';
 	exit;

@@ -76,7 +76,7 @@ Ei erillistä CRM-ohjelmaa: portaalin Nordic-puoli toimii myynnin ja projektien 
 1. **Valmis (lisäosa 0.1.0):** tietokantataulut, osakas- ja asentajaroolit (2FA-tarkistus asetuksissa), osakastunnukset
    (anton@, sami@, matias@, jussi@ikkunakauppias.fi), asiakkaan kertakäyttölinkkikirjautuminen, kohde tarjouspyyntölomakkeesta,
    myyntiputki, asiakaskortti, tehtävät, muistiinpanot, suosittelulinkki /s/KOODI.
-2. Tarjous linkkiin, hyväksyntä, maksutavan valinta (Holvi-lasku / Skaala-rahoitus OP), tarjousmuistutukset.
+2. **Valmis (0.7.0):** tarjous linkkiin, hyväksyntä, maksutavan valinta (Holvi-lasku / Skaala-rahoitus OP), tarjousmuistutukset.
 3. Dokumentit, viestit, kuvat, kalenteri.
 4. Luovutus, kiitoslahja ja suosittelulahjat (suosittelu@), yleinen muistutus meistä, FluentCRM-synkronointi, raportit.
 5. Integraatiot (Skaalan tarjoustyökalu, Tavoittaja, Joiner) kun rajapinnat on selvitetty.

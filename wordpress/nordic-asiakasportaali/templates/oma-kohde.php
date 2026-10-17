@@ -1,11 +1,24 @@
 <?php
-/** Asiakkaan Oma kohde -sivu (vaihe 1: kohteen vaiheet, historia ja yhteystiedot). */
+/** Asiakkaan Oma kohde -sivu: tarjous ja sen hyväksyntä, kohteen vaiheet, historia ja yhteystiedot. */
 defined( 'ABSPATH' ) || exit;
 $c        = nap_current_customer();
 $projects = $c ? nap_customer_projects( (int) $c['id'] ) : array();
 $events   = $c ? nap_customer_events( (int) $c['id'], true ) : array();
 $sent     = isset( $_GET['lahetetty'] ); // phpcs:ignore
 $bad      = isset( $_GET['virhe'] ); // phpcs:ignore
+$omsg     = sanitize_key( $_GET['tarjous'] ?? '' ); // phpcs:ignore
+$omsgs    = array(
+	'hyvaksytty' => array( 'ok', 'Kiitos! Tarjous on hyväksytty. Lähetimme vahvistuksen sähköpostiisi, ja otamme sinuun yhteyttä tilauksen ja toimituksen aikataulusta.' ),
+	'kysytty'    => array( 'ok', 'Kiitos kysymyksestä! Vastaamme sinulle mahdollisimman pian, yleensä saman tai seuraavan arkipäivän aikana.' ),
+	'kiitos'     => array( 'ok', 'Kiitos, että kerroit. Jos mielesi muuttuu tai haluat uuden tarjouksen, ota meihin yhteyttä.' ),
+	'ehdot'      => array( 'warn', 'Valitse maksutapa ja vahvista, että olet lukenut tarjouksen ehdot.' ),
+	'tyhja'      => array( 'warn', 'Kirjoita kysymyksesi ennen lähettämistä.' ),
+	'suljettu'   => array( 'warn', 'Tähän tarjoukseen on jo vastattu tai sen voimassaolo on päättynyt. Ota yhteyttä, niin autamme.' ),
+	'virhe'      => array( 'warn', 'Toiminto ei onnistunut. Päivitä sivu ja yritä uudelleen, tai ota meihin yhteyttä.' ),
+);
+function nap_eur( $n ) {
+	return number_format( (float) $n, 0, ',', ' ' ) . ' €';
+}
 function nap_fi_date( $dt ) {
 	return $dt ? date_i18n( 'j.n.Y', strtotime( $dt ) ) : '';
 }
@@ -37,12 +50,19 @@ h2{font-size:17px;margin:0 0 10px}h3{font-size:15px;margin:0}
 .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
 .hist{list-style:none;margin:0;padding:0}.hist li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.hist li:last-child{border:0}.hist .d{font-size:12px;color:var(--muted)}
 label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
-input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:16px;background:var(--surface);color:var(--ink)}
+input[type=email],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:16px;background:var(--surface);color:var(--ink)}
 .btn{display:block;width:100%;border:0;border-radius:12px;padding:13px;font-weight:700;font-size:15px;cursor:pointer;background:var(--gold);color:#16303B;margin-top:10px}
 .btn.o{background:transparent;border:1px solid var(--line);color:var(--ink)}
 .ok{background:var(--pinesoft);color:var(--pine);border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:12px}
 .warn{background:var(--goldsoft);border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:12px}
 .hp{position:absolute;left:-9999px}
+.offer{border:2px solid var(--gold)}.price{font-size:28px;font-weight:800;letter-spacing:-.01em;margin:4px 0 2px}
+.terms{background:var(--goldsoft);border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+.pre{white-space:pre-line}.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-weight:600;cursor:pointer}
+.opt input{margin-top:4px}.opt small{display:block;font-weight:400;color:var(--muted)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px;margin:12px 0 0}.chk input{margin-top:4px}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}summary{cursor:pointer;font-weight:600;color:var(--pine)}
+a.btn{text-align:center;text-decoration:none}textarea{font-family:inherit;margin-top:6px}
 </style>
 </head>
 <body>
@@ -72,7 +92,57 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
     </form>
   </div>
 <?php else : ?>
-  <?php foreach ( $projects as $p ) : $st = (int) $p['stage']; ?>
+  <?php if ( isset( $omsgs[ $omsg ] ) ) : ?><div class="<?php echo esc_attr( $omsgs[ $omsg ][0] ); ?>" id="tarjous"><?php echo esc_html( $omsgs[ $omsg ][1] ); ?></div><?php endif; ?>
+  <?php foreach ( $projects as $p ) : $st = (int) $p['stage']; $offer = nap_get_offer( $p ); $ap = ! empty( $p['approval'] ) ? json_decode( $p['approval'], true ) : null; ?>
+  <?php if ( $offer ) : nap_mark_offer_viewed( $p ); $n = nap_customer_nonce( $c, 'offer' . $p['id'] ); $mterms = 'omat_mitat' === nap_delivery( $p ) ? trim( (string) nap_settings()['measure_terms'] ) : ''; $cterms = trim( (string) nap_settings()['cancel_terms'] ); ?>
+  <div class="card offer" id="tarjous-<?php echo (int) $p['id']; ?>">
+    <h2><?php echo $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjous'; ?></h2>
+    <p class="small muted" style="margin:-6px 0 6px"><?php echo esc_html( $p['title'] ); ?> · <?php echo esc_html( nap_deliveries()[ nap_delivery( $p ) ] ); ?></p>
+    <div class="price"><?php echo esc_html( nap_eur( $offer['sum'] ) ); ?></div>
+    <div class="small muted">sis. alv<?php if ( $offer['labor'] > 0 ) echo ' · josta työn osuus ' . esc_html( nap_eur( $offer['labor'] ) ) . ' (kotitalousvähennyskelpoinen)'; ?></div>
+    <?php if ( $offer['content'] ) : ?><p class="pre"><?php echo esc_html( $offer['content'] ); ?></p><?php endif; ?>
+    <?php if ( $offer['notes'] ) : ?><p class="small pre muted"><?php echo esc_html( $offer['notes'] ); ?></p><?php endif; ?>
+    <div class="row"><span>Päivätty</span><b><?php echo esc_html( nap_fi_date( $offer['sent_at'] ) ); ?></b></div>
+    <?php if ( $offer['valid_until'] ) : ?><div class="row"><span>Voimassa</span><b><?php echo esc_html( nap_fi_date( $offer['valid_until'] ) ); ?> asti</b></div><?php endif; ?>
+    <div class="row"><span>Tarjouksen tekijä</span><b><?php echo esc_html( $offer['sent_name'] ); ?></b></div>
+    <?php if ( $offer['file'] ) : ?><a class="btn o" href="<?php echo esc_url( add_query_arg( 'tarjous_pdf', (int) $p['id'], home_url( '/oma-kohde/' ) ) ); ?>" target="_blank" rel="noopener">Avaa tarjous (PDF)</a><?php endif; ?>
+    <?php if ( $mterms ) : ?><div class="terms"><?php echo esc_html( $mterms ); ?></div><?php endif; ?>
+    <?php if ( $cterms ) : ?><div class="terms"><?php echo esc_html( $cterms ); ?></div><?php endif; ?>
+
+    <?php if ( $ap ) : ?>
+      <div class="ok" style="margin:12px 0 0">✓ Tarjous hyväksytty <?php echo esc_html( nap_fi_date( $ap['at'] ) ); ?> · <?php echo esc_html( nap_eur( $ap['value'] ) ); ?> · <?php echo esc_html( $ap['pay_label'] ); ?></div>
+    <?php elseif ( 'declined' === $offer['status'] ) : ?>
+      <div class="warn" style="margin:12px 0 0">Kerroit, ettet ole kiinnostunut tästä tarjouksesta. Jos mielesi muuttuu, ota yhteyttä.</div>
+    <?php elseif ( nap_offer_expired( $offer ) ) : ?>
+      <div class="warn" style="margin:12px 0 0">Tarjouksen voimassaolo on päättynyt. Ota yhteyttä, niin päivitämme sen.</div>
+    <?php else : ?>
+      <form method="post" style="margin-top:14px">
+        <input type="hidden" name="nap_action" value="offer_accept"><input type="hidden" name="project_id" value="<?php echo (int) $p['id']; ?>"><input type="hidden" name="nap_n" value="<?php echo esc_attr( $n ); ?>">
+        <h3 style="margin-bottom:8px">Hyväksy tarjous</h3>
+        <label class="opt"><input type="radio" name="payment" value="holvi" required><span>Lasku<small>Maksat laskulla.</small></span></label>
+        <label class="opt"><input type="radio" name="payment" value="rahoitus"><span>Skaala-rahoitus (OP)<small>Maksat erissä. Hoidamme rahoitushakemuksen kanssasi.</small></span></label>
+        <label class="chk"><input type="checkbox" name="terms" value="1" required><span>Olen lukenut tarjouksen ja sen ehdot<?php echo $mterms ? ', ja vastaan itse ilmoittamieni mittojen oikeellisuudesta' : ''; ?>.</span></label>
+        <button class="btn" type="submit">Hyväksy tarjous <?php echo esc_html( nap_eur( $offer['sum'] ) ); ?></button>
+      </form>
+      <details>
+        <summary>Kysy tarjouksesta</summary>
+        <form method="post">
+          <input type="hidden" name="nap_action" value="offer_question"><input type="hidden" name="project_id" value="<?php echo (int) $p['id']; ?>"><input type="hidden" name="nap_n" value="<?php echo esc_attr( $n ); ?>">
+          <textarea name="question" rows="4" maxlength="2000" required placeholder="Esim. voiko ulko-oven värin vaihtaa tai miten asennuspäivä sovitaan?"></textarea>
+          <button class="btn o" type="submit">Lähetä kysymys</button>
+        </form>
+      </details>
+      <details>
+        <summary>En ole kiinnostunut</summary>
+        <form method="post">
+          <input type="hidden" name="nap_action" value="offer_decline"><input type="hidden" name="project_id" value="<?php echo (int) $p['id']; ?>"><input type="hidden" name="nap_n" value="<?php echo esc_attr( $n ); ?>">
+          <textarea name="reason" rows="3" maxlength="1000" placeholder="Voit halutessasi kertoa syyn (vapaaehtoinen)"></textarea>
+          <button class="btn o" type="submit">Lähetä</button>
+        </form>
+      </details>
+    <?php endif; ?>
+  </div>
+  <?php endif; ?>
   <div class="card">
     <h2><?php echo esc_html( $p['title'] ); ?></h2>
     <p class="small muted" style="margin-top:-6px"><?php echo esc_html( $p['address'] ); ?><?php if ( 'asennus' !== nap_delivery( $p ) ) echo ' · ' . esc_html( nap_deliveries()[ nap_delivery( $p ) ] ); ?></p>
