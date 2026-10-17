@@ -24,6 +24,9 @@ add_action( 'rest_api_init', function () {
 	$r( '/customers/(?P<id>\d+)', 'POST', 'nap_api_update_customer' );
 	$r( '/customers/(?P<id>\d+)/note', 'POST', 'nap_api_note' );
 	$r( '/customers/(?P<id>\d+)/invite', 'POST', 'nap_api_invite' );
+	$r( '/customers/(?P<id>\d+)/draft', 'POST', 'nap_api_draft' );
+	$r( '/customers/(?P<id>\d+)/send', 'POST', 'nap_api_send' );
+	$r( '/projects/(?P<id>\d+)/analyze', 'POST', 'nap_api_analyze' );
 	$r( '/tasks', 'GET', 'nap_api_tasks' );
 	$r( '/tasks', 'POST', 'nap_api_create_task' );
 	$r( '/tasks/(?P<id>\d+)', 'POST', 'nap_api_update_task' );
@@ -53,6 +56,7 @@ function nap_project_out( $p, $customer = null ) {
 		'owner_id'     => $p['owner_id'] ? (int) $p['owner_id'] : null,
 		'installer_id' => $p['installer_id'] ? (int) $p['installer_id'] : null,
 		'details'      => (string) $p['details'],
+		'ai'           => ! empty( $p['ai'] ) ? json_decode( $p['ai'], true ) : null,
 		'updated_at'   => $p['updated_at'],
 	);
 }
@@ -64,6 +68,7 @@ function nap_api_bootstrap() {
 		'users'  => nap_staff_users(),
 		'stages' => NAP_STAGES,
 		'today'  => current_time( 'Y-m-d' ),
+		'ai'     => nap_ai_ready(),
 	);
 }
 
@@ -110,6 +115,7 @@ function nap_api_update_project( WP_REST_Request $req ) {
 				nap_log( $c['id'], $p['id'], 'mail', 'Asiakkaalle ilmoitettu vaiheesta: ' . NAP_STAGES[ (int) $p['stage'] ] );
 			}
 		}
+		nap_on_stage_change( $p, $old_stage );
 	}
 	if ( isset( $data['value'] ) ) {
 		nap_log( $p['customer_id'], $p['id'], 'edit', 'Kohteen arvo päivitetty: ' . number_format( (float) $p['value'], 0, ',', ' ' ) . ' €' );
@@ -275,6 +281,7 @@ function nap_api_create_customer( WP_REST_Request $req ) {
 		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 		$sent = true;
 	}
+	nap_ai_queue_triage( $pid );
 	return array( 'id' => $cid, 'project_id' => $pid, 'existing' => $existing, 'mailed' => $sent );
 }
 
@@ -414,4 +421,62 @@ function nap_api_update_task( WP_REST_Request $req ) {
 		}
 	}
 	return nap_task_out( nap_get_task( (int) $t['id'] ) );
+}
+
+/* ---------- Tekoälyavustaja ---------- */
+
+function nap_api_analyze( WP_REST_Request $req ) {
+	$p = nap_get_project( (int) $req['id'] );
+	if ( ! nap_can_see_project( $p ) ) {
+		return nap_err( 'Ei oikeutta tähän kohteeseen.' );
+	}
+	$ai = nap_ai_triage( (int) $p['id'] );
+	if ( is_wp_error( $ai ) ) {
+		return nap_err( $ai->get_error_message(), 503 );
+	}
+	return nap_project_out( nap_get_project( (int) $p['id'] ) );
+}
+
+function nap_api_draft( WP_REST_Request $req ) {
+	$c = nap_get_customer( (int) $req['id'] );
+	if ( ! nap_can_see_customer( $c ) ) {
+		return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
+	}
+	$p = $req->get_param( 'project_id' ) ? nap_get_project( (int) $req->get_param( 'project_id' ) ) : null;
+	if ( $p && (int) $p['customer_id'] !== (int) $c['id'] ) {
+		$p = null;
+	}
+	$channel = in_array( $req->get_param( 'channel' ), array( 'email', 'whatsapp', 'sms' ), true ) ? $req->get_param( 'channel' ) : 'email';
+	if ( function_exists( 'set_time_limit' ) ) {
+		@set_time_limit( 120 ); // phpcs:ignore
+	}
+	$d = nap_ai_draft( $c, $p, $channel, sanitize_textarea_field( (string) $req->get_param( 'instruction' ) ) );
+	if ( is_wp_error( $d ) ) {
+		return nap_err( $d->get_error_message(), 503 );
+	}
+	return array( 'subject' => (string) $d['aihe'], 'body' => (string) $d['viesti'], 'channel' => $channel );
+}
+
+/** Henkilökunnan tarkistaman viestin lähetys sähköpostilla. Vastaukset tulevat lähettäjälle. */
+function nap_api_send( WP_REST_Request $req ) {
+	$c = nap_get_customer( (int) $req['id'] );
+	if ( ! nap_can_see_customer( $c ) ) {
+		return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
+	}
+	if ( ! $c['email'] ) {
+		return nap_err( 'Asiakkaalla ei ole sähköpostiosoitetta.', 400 );
+	}
+	$subject = sanitize_text_field( (string) $req->get_param( 'subject' ) );
+	$body    = sanitize_textarea_field( (string) $req->get_param( 'body' ) );
+	if ( ! $subject || ! $body ) {
+		return nap_err( 'Viestistä puuttuu aihe tai teksti.', 400 );
+	}
+	$me    = wp_get_current_user();
+	$paras = array_values( array_filter( array_map( 'trim', preg_split( '/\n\s*\n/', $body ) ) ) );
+	if ( ! nap_mail( $c['email'], $subject, '', $paras, null, $me->display_name . ' <' . $me->user_email . '>' ) ) {
+		return nap_err( 'Sähköpostin lähetys epäonnistui.', 500 );
+	}
+	$pid = (int) $req->get_param( 'project_id' ) ?: null;
+	nap_log( $c['id'], $pid, 'mail', 'Sähköposti asiakkaalle: ' . $subject . "\n" . $body );
+	return array( 'ok' => true );
 }

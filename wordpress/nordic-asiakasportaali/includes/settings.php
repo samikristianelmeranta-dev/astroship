@@ -14,6 +14,11 @@ function nap_settings_defaults() {
 		'reply_to'       => 'info@ikkunakauppias.fi',
 		'staff_notify'   => '',
 		'twofa'          => 1,
+		'auto_tasks'     => 1,
+		'auto_watch'     => 1,
+		'auto_digest'    => 1,
+		'ai_enabled'     => 0,
+		'ai_key'         => '',
 	);
 }
 
@@ -115,6 +120,12 @@ add_action( 'admin_init', function () {
 				'reply_to'      => sanitize_email( $in['reply_to'] ?? $d['reply_to'] ),
 				'staff_notify'  => sanitize_text_field( $in['staff_notify'] ?? '' ),
 				'twofa'         => empty( $in['twofa'] ) ? 0 : 1,
+				'auto_tasks'    => empty( $in['auto_tasks'] ) ? 0 : 1,
+				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
+				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
+				'ai_enabled'    => empty( $in['ai_enabled'] ) ? 0 : 1,
+				// Tyhjä kenttä säilyttää tallennetun avaimen; "poista" tyhjentää sen.
+				'ai_key'        => 'poista' === trim( (string) ( $in['ai_key'] ?? '' ) ) ? '' : ( '' !== trim( (string) ( $in['ai_key'] ?? '' ) ) ? sanitize_text_field( $in['ai_key'] ) : (string) nap_settings()['ai_key'] ),
 			);
 		},
 	) );
@@ -144,6 +155,17 @@ function nap_settings_page() {
 				<tr><th scope="row">Kaksivaiheinen kirjautuminen</th>
 					<td><label><input type="checkbox" name="nap_settings[twofa]" value="1" <?php checked( $s['twofa'] ); ?>> Henkilökunta ja ylläpitäjät vahvistavat kirjautumisen sähköpostiin tulevalla koodilla</label>
 					<p class="description">Ei asennettavaa eikä erillistä sovellusta. "Muista tämä laite" ohittaa koodin samalla selaimella <?php echo (int) NAP_2FA_TRUST_DAYS; ?> päivän ajan. Jos sähköposti ei jostain syystä lähde, kirjautuminen onnistuu ilman koodia, jotta ketään ei lukita ulos.</p></td></tr>
+				<tr><th scope="row">Automaatiot</th>
+					<td><label><input type="checkbox" name="nap_settings[auto_tasks]" value="1" <?php checked( $s['auto_tasks'] ); ?>> Vaiheen vaihto luo seuraavat tehtävät (esim. Hyväksytty → "Tilaa tuotteet Skaalalta")</label><br>
+					<label><input type="checkbox" name="nap_settings[auto_watch]" value="1" <?php checked( $s['auto_watch'] ); ?>> Liidivahti: muistutus, jos tarjouspyyntöön ei ole reagoitu 24 tunnissa, ja 48 tunnin jälkeen muille osakkaille</label><br>
+					<label><input type="checkbox" name="nap_settings[auto_digest]" value="1" <?php checked( $s['auto_digest'] ); ?>> Aamukooste arkiaamuisin klo 7 (omat tehtävät, uudet tarjouspyynnöt, maanantaisin jumissa olevat kohteet)</label>
+					<p class="description">Tarkka ajoitus: cPanel → Cron Jobs → kerran tunnissa <code>wget -q -O /dev/null <?php echo esc_html( site_url( 'wp-cron.php?doing_wp_cron' ) ); ?></code></p></td></tr>
+				<tr><th scope="row">Tekoälyavustaja</th>
+					<td><label><input type="checkbox" name="nap_settings[ai_enabled]" value="1" <?php checked( $s['ai_enabled'] ); ?>> Analysoi uudet tarjouspyynnöt ja kirjoita vastausluonnoksia (Claude)</label>
+					<p style="margin-top:8px"><label for="nap_ai_key">Anthropic API -avain</label><br>
+					<input id="nap_ai_key" name="nap_settings[ai_key]" type="password" autocomplete="off" class="regular-text" placeholder="<?php echo esc_attr( nap_ai_key() ? 'Tallennettu (••••' . substr( nap_ai_key(), -4 ) . '). Jätä tyhjäksi, niin avain säilyy.' : 'sk-ant-...' ); ?>"></p>
+					<p class="description">Avain: console.anthropic.com → API Keys. Vaihtoehtoisesti wp-config.php: <code>define( 'NAP_ANTHROPIC_KEY', '...' );</code> Nordic Chatin avain käy myös. Asiakkaalle ei lähetetä mitään ilman henkilökunnan hyväksyntää.</p>
+					<?php if ( ! file_exists( NAP_DIR . '/vendor/autoload.php' ) ) : ?><p><b style="color:#b23b2e">Kirjastot puuttuvat (vendor-kansio).</b></p><?php endif; ?></td></tr>
 				<tr><th scope="row"><label for="nap_from">Lähettäjän nimi</label></th>
 					<td><input id="nap_from" name="nap_settings[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>" class="regular-text"></td></tr>
 				<tr><th scope="row"><label for="nap_reply">Vastausosoite</label></th>

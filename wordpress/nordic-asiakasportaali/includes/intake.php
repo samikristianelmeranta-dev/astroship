@@ -156,5 +156,6 @@ function nap_intake( $lead ) {
 			array( 'Avaa CRM', home_url( '/crm/#asiakas-' . $cid ) )
 		);
 	}
+	nap_ai_queue_triage( $pid );
 	return array( $cid, $pid );
 }

@@ -2,18 +2,18 @@
 /**
  * Plugin Name:       Nordic Asiakasportaali
  * Description:       Asiakasportaali "Oma kohde" ja Nordicin myynnin ja projektien hallinta (CRM): asiakkaat, kohteet, myyntiputki, tehtävät ja käyttöoikeudet. Vaihe 1.
- * Version:           0.3.0
+ * Version:           0.4.0
  * Author:            Nordic Ikkunat & Ovet Oy
  * Requires at least: 6.2
- * Requires PHP:      7.4
+ * Requires PHP:      8.1
  * License:           GPL-2.0-or-later
  * Text Domain:       nordic-asiakasportaali
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NAP_VERSION', '0.3.0' );
-define( 'NAP_DB_VERSION', '1' );
+define( 'NAP_VERSION', '0.4.0' );
+define( 'NAP_DB_VERSION', '2' );
 define( 'NAP_FILE', __FILE__ );
 define( 'NAP_DIR', __DIR__ );
 define( 'NAP_URL', plugin_dir_url( __FILE__ ) );
@@ -25,6 +25,8 @@ require_once NAP_DIR . '/includes/mail.php';
 require_once NAP_DIR . '/includes/customer-auth.php';
 require_once NAP_DIR . '/includes/twofa.php';
 require_once NAP_DIR . '/includes/intake.php';
+require_once NAP_DIR . '/includes/automation.php';
+require_once NAP_DIR . '/includes/agent.php';
 require_once NAP_DIR . '/includes/rest.php';
 require_once NAP_DIR . '/includes/routes.php';
 
@@ -36,6 +38,7 @@ register_activation_hook( __FILE__, function () {
 } );
 
 register_deactivation_hook( __FILE__, function () {
+	wp_clear_scheduled_hook( 'nap_hourly' );
 	flush_rewrite_rules();
 } );
 

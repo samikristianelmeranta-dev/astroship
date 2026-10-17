@@ -6,15 +6,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-function nap_mail( $to, $subject, $heading, $paragraphs, $button = null ) {
+function nap_mail( $to, $subject, $heading, $paragraphs, $button = null, $reply_to = null ) {
 	$s    = nap_settings();
 	$body = '<div style="background:#F3F6F7;padding:24px 12px;font-family:Arial,Helvetica,sans-serif;color:#16303B">'
 		. '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden">'
 		. '<div style="background:#16303B;color:#ffffff;padding:18px 24px;font-weight:bold;font-size:18px">Ikkunakauppias<span style="color:#FFD866">.fi</span></div>'
 		. '<div style="padding:24px">'
-		. '<h1 style="font-size:20px;margin:0 0 12px">' . esc_html( $heading ) . '</h1>';
+		. ( '' !== $heading ? '<h1 style="font-size:20px;margin:0 0 12px">' . esc_html( $heading ) . '</h1>' : '' );
 	foreach ( (array) $paragraphs as $p ) {
-		$body .= '<p style="font-size:15px;line-height:1.55;margin:0 0 12px">' . esc_html( $p ) . '</p>';
+		$body .= '<p style="font-size:15px;line-height:1.55;margin:0 0 12px">' . nl2br( esc_html( $p ) ) . '</p>';
 	}
 	if ( $button ) {
 		$body .= '<p style="margin:20px 0"><a href="' . esc_url( $button[1] ) . '" style="display:inline-block;background:#FFD866;color:#16303B;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:999px">' . esc_html( $button[0] ) . '</a></p>'
@@ -23,7 +23,9 @@ function nap_mail( $to, $subject, $heading, $paragraphs, $button = null ) {
 	$body .= '</div><div style="padding:16px 24px;border-top:1px solid #E3EAEE;font-size:12.5px;color:#647A84">Nordic Ikkunat &amp; Ovet Oy · Myynti 045 7832 5070 · Asennus 045 7830 4746 · ikkunakauppias.fi</div></div></div>';
 
 	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-	if ( $s['reply_to'] ) {
+	if ( $reply_to ) {
+		$headers[] = 'Reply-To: ' . $reply_to;
+	} elseif ( $s['reply_to'] ) {
 		$headers[] = 'Reply-To: ' . $s['from_name'] . ' <' . $s['reply_to'] . '>';
 	}
 	$from = function () use ( $s ) {

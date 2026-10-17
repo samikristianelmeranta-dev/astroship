@@ -118,3 +118,11 @@ main{min-width:0;padding-block:22px 48px;padding-left:max(24px,env(safe-area-ins
   .cust{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.ai{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--gold-soft);display:flex;flex-direction:column;gap:6px}
+.ai-h{display:flex;gap:8px;align-items:flex-start}.ai-h b{font-size:14px}
+.ai-badge{flex:none;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--surface);border-radius:6px;padding:2px 6px;margin-top:1px}
+.ai-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ai-chips .pill{line-height:1.6}.pill.warn{background:var(--crit-soft);color:var(--crit)}
+.ai ul{margin:2px 0 0;padding-left:18px}
+.btn.sm{padding:5px 10px;font-size:13px;align-self:flex-start}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer;align-self:flex-start}
+.draft{margin-top:10px;display:flex;flex-direction:column;gap:8px}.draft textarea{line-height:1.5}
