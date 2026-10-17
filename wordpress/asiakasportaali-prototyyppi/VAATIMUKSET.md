@@ -43,3 +43,17 @@ kirjautuminen sähköpostin kertakäyttölinkillä. Prototyyppi: `oma-kohde-arti
 - **Skaala-rahoitus (OP):** valinnasta tulee myyjälle tehtävä tehdä rahoitushakemus asiakkaan kanssa OP:n järjestelmässä.
   Henkilökunta merkitsee rahoituksen myönnetyksi, jolloin asiakas saa ilmoituksen ja projekti etenee.
   OP:n kuluttajarahoitukselle ei löytynyt julkista rajapintaa; kysytään Skaalalta/OP:lta.
+
+## Nordicin CRM-näkymä (prototyyppi: nordic-crm-artifact.html)
+Ei erillistä CRM-ohjelmaa: portaalin Nordic-puoli toimii myynnin ja projektien hallintana, FluentCRM hoitaa markkinoinnin
+(portaali päivittää asiakkaan vaiheen FluentCRM:ään tageina).
+1. Oma päivä: omat tehtävät, tämän päivän ja huomisen käynnit, tunnusluvut.
+2. Myyntiputki: Tarjouspyyntö → Mittaus → Tarjous lähetetty → Hyväksytty → Tilaus → Asennus → Valmis. Sarakkeiden summat,
+   siirto seuraavaan vaiheeseen lähettää asiakkaalle ilmoituksen.
+3. Asiakaskortti: yhteystiedot, lähde (verkkosivu, suosittelu, Google, Facebook, messut, isännöitsijä), vastuumyyjä, asentaja,
+   maksutapa, kohteet, avoimet tehtävät, historia, suosittelut. Haku ja lähdesuodatin.
+4. Tehtävät: vastuuhenkilö + päivämäärä, suodatus Omat / Kaikki / Myöhässä, myöhässä-merkintä.
+5. Kalenteri: viikkonäkymä asentajittain, mittauskäynti (katkoviiva) ja asennus (täytetty).
+6. Raportit: myynti kuukausittain, tarjoukset/kaupat/hyväksymis-%, asiakkaiden lähteet, suosittelut ja lähetetyt lahjat.
+7. Käyttäjät: 4 osakasta (näkevät kaiken) ja asentajat (omat kohteet, oma kalenteri; ei laskutusta, raportteja eikä käyttäjähallintaa).
+   Kaksivaiheinen tunnistautuminen kaikille.

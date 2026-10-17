@@ -1,0 +1,470 @@
+<title>Nordic CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap">
+<style>
+/* Layout: vasen sivupalkki (työpöytä) / vaakavalikko (puhelin); sisältö kortteina, Nordicin brändivärit */
+:root{
+  --bg:#F3F6F7; --surface:#FFFFFF; --surface2:#F7FAFB; --ink:#16303B; --ink2:#41575F; --muted:#6A7E87; --line:#DCE4E8;
+  --accent:#1D5E79; --accent-ink:#FFFFFF; --accent-soft:#E2EEF3; --gold:#F4C64A; --gold-ink:#16303B; --gold-soft:#FDF3D3;
+  --good:#2C7A4E; --good-soft:#E3F2EA; --warn:#8A5F00; --warn-soft:#FBF0D5; --crit:#B23B2E; --crit-soft:#F8E3E0;
+  --side:#16303B; --side-ink:#D7E4E9; --side-on:#FFD866;
+  --display:"Space Grotesk",Inter,system-ui,sans-serif; --body:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D191F; --surface:#14242C; --surface2:#182C35; --ink:#E5EEF1; --ink2:#B7C7CE; --muted:#8FA3AC; --line:#253A44;
+  --accent:#62B3D2; --accent-ink:#0D191F; --accent-soft:#183746; --gold:#F4C64A; --gold-ink:#16303B; --gold-soft:#3A311B;
+  --good:#63C68F; --good-soft:#173527; --warn:#E6B24C; --warn-soft:#3A2F17; --crit:#F08070; --crit-soft:#3D1F1B;
+  --side:#0A141A; --side-ink:#B7C7CE; --side-on:#FFD866; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D191F; --surface:#14242C; --surface2:#182C35; --ink:#E5EEF1; --ink2:#B7C7CE; --muted:#8FA3AC; --line:#253A44;
+  --accent:#62B3D2; --accent-ink:#0D191F; --accent-soft:#183746; --gold:#F4C64A; --gold-ink:#16303B; --gold-soft:#3A311B;
+  --good:#63C68F; --good-soft:#173527; --warn:#E6B24C; --warn-soft:#3A2F17; --crit:#F08070; --crit-soft:#3D1F1B;
+  --side:#0A141A; --side-ink:#B7C7CE; --side-on:#FFD866; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.5}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1{font-size:22px}h2{font-size:16px}h3{font-size:14.5px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}.small{font-size:13px}
+
+.app{display:grid;grid-template-columns:224px minmax(0,1fr);min-height:100%}
+.side{background:var(--side);color:var(--side-ink);padding:18px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+.brand{display:flex;align-items:center;gap:9px;color:#fff;font-family:var(--display);font-weight:700;font-size:16px;padding:4px 10px 16px}
+.brand b{color:var(--side-on)}.brand svg{width:22px;height:22px;flex:none}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{display:flex;align-items:center;gap:10px;border:0;background:none;color:var(--side-ink);text-align:left;padding:9px 10px;border-radius:9px;cursor:pointer;font-weight:500;white-space:nowrap}
+.nav button:hover{background:rgba(255,255,255,.06)}
+.nav button.on{background:rgba(255,216,102,.14);color:#fff}
+.nav button.on .ico{color:var(--side-on)}
+.nav .cnt{margin-left:auto;background:var(--side-on);color:#16303B;border-radius:99px;font-size:11px;font-weight:700;padding:1px 7px}
+.ico{width:18px;height:18px;flex:none}
+.who{margin-top:auto;padding:12px 10px 4px;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px}
+.who label{display:block;color:var(--side-ink);margin-bottom:4px}
+.who select{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:7px;color:#fff}
+.who select option{color:#16303B}
+
+main{min-width:0;padding-block:22px 48px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.head p{margin:2px 0 0;color:var(--muted)}
+.proto{font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:99px;padding:3px 10px;font-weight:600}
+.view{display:none}.view.on{display:block}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;min-width:0}
+.card>h2{margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card>h2 .muted{font-family:var(--body);font-size:12.5px;font-weight:500;margin-left:auto}
+.tile .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.tile .val{font-family:var(--display);font-size:clamp(20px,5vw,26px);font-weight:700;margin-top:2px}
+.tile .sub{font-size:12.5px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:7px 12px;cursor:pointer;font-weight:600;font-size:13.5px}
+.btn:hover{border-color:var(--muted)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:2px 9px;font-size:12px;font-weight:600;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.crit{background:var(--crit-soft);color:var(--crit)}.pill.gold{background:var(--gold-soft);color:var(--warn)}
+
+/* Tehtävät */
+.task{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--line)}
+.task:last-child{border:0}
+.task input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent)}
+.task.done .t{text-decoration:line-through;color:var(--muted)}
+.task .t{font-weight:600}.task .m{font-size:12.5px;color:var(--muted)}
+.task .r{text-align:right;font-size:12.5px;white-space:nowrap}
+.addtask{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.addtask input,.addtask select{border:1px solid var(--line);background:var(--surface2);border-radius:9px;padding:8px 10px;min-width:0}
+.addtask input{flex:1 1 220px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{border:0;background:var(--surface);padding:6px 12px;cursor:pointer;font-weight:600;font-size:13px;color:var(--ink2)}
+.seg button.on{background:var(--accent-soft);color:var(--accent)}
+
+/* Putki */
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:12px;overflow-x:auto;padding-bottom:8px}
+.col{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-height:200px;display:flex;flex-direction:column;gap:8px}
+.col h3{display:flex;justify-content:space-between;gap:6px;font-size:13.5px}
+.col .sum{font-size:12px;color:var(--muted);margin-top:-6px}
+.deal{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;cursor:pointer}
+.deal:hover{border-color:var(--accent)}
+.deal b{display:block;font-size:13.5px}.deal .m{font-size:12px;color:var(--muted)}
+.deal .f{display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:6px}
+.deal .mv{border:1px solid var(--line);background:var(--surface2);border-radius:7px;padding:2px 8px;cursor:pointer;font-weight:700}
+.av{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:10.5px;font-weight:700;flex:none}
+
+/* Asiakkaat */
+.cust{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:14px;align-items:start}
+.search{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.search input,.search select{border:1px solid var(--line);background:var(--surface2);border-radius:9px;padding:8px 10px;min-width:0}
+.search input{flex:1 1 160px}
+.clist .row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;padding:10px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+.clist .row:hover{background:var(--surface2)}
+.clist .row.on{border-color:var(--accent);background:var(--accent-soft)}
+.clist .row b{display:block}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:13.5px}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.hist{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:6px}
+.hist li{position:relative;padding:0 0 12px 16px;font-size:13.5px}
+.hist li::before{content:"";position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.hist li .d{font-size:12px;color:var(--muted)}
+.sect{margin-top:16px}.sect h3{margin-bottom:8px}
+
+/* Kalenteri */
+.calwrap{overflow-x:auto}
+.cal{display:grid;grid-template-columns:130px repeat(5,minmax(130px,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-width:780px;background:var(--surface)}
+.cal>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px;min-height:84px}
+.cal .hd{min-height:auto;background:var(--surface2);font-weight:600;font-size:13px}
+.cal .who2{background:var(--surface2);font-weight:600;font-size:13px}
+.ev{border-radius:8px;padding:6px 8px;font-size:12px;margin-bottom:6px;line-height:1.35}
+.ev b{display:block;font-size:12.5px}
+.ev.mit{border:1.5px dashed var(--accent);color:var(--ink);background:var(--surface)}
+.ev.as{background:var(--accent);color:var(--accent-ink)}
+.ev .tag{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;opacity:.85}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin-bottom:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:18px;height:12px;border-radius:4px;display:inline-block}
+.sw.mit{border:1.5px dashed var(--accent)}.sw.as{background:var(--accent)}
+
+/* Raportit */
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;padding:6px 8px;border-radius:7px;white-space:nowrap;transform:translate(-50%,-110%);opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+.hbar{display:grid;grid-template-columns:150px minmax(0,1fr) 48px;gap:10px;align-items:center;font-size:13px;padding:5px 0}
+.hbar .tr{height:12px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.hbar .fl{height:100%;background:var(--accent);border-radius:0 4px 4px 0}
+.hbar .v{text-align:right}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+table.t th,table.t td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+table.t th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+details summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:13px;margin-top:10px}
+
+/* Käyttäjät */
+.perm td:nth-child(n+3){text-align:center}
+.yes{color:var(--good);font-weight:700}.no{color:var(--muted)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,calc(100% + 60px));visibility:hidden;background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:10px;font-size:13.5px;transition:transform .25s,visibility .25s;z-index:20;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0);visibility:visible}
+.drawer-hint{display:none}
+
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:10;padding:10px max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px));flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:11;background:var(--side)}
+  .brand{padding:2px 6px}
+  .nav{flex-direction:row;overflow-x:auto;width:100%;order:3;gap:4px;padding-bottom:2px}
+  .nav button{padding:7px 10px;font-size:13px}
+  .who{margin:0 0 0 auto;padding:0;border:0;min-width:0;flex:0 1 200px}
+  .who label{display:none}
+  main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 40px}
+  .cust{grid-template-columns:minmax(0,1fr)}
+  .hbar{grid-template-columns:110px minmax(0,1fr) 40px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="app">
+  <aside class="side">
+    <div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="12" y="2" width="10" height="10" fill="#FFD866"/><rect x="2.6" y="2.6" width="18.8" height="18.8" fill="none" stroke="#fff" stroke-width="1.8"/><line x1="12" y1="2" x2="12" y2="22" stroke="#fff" stroke-width="1.6"/><line x1="2" y1="12" x2="22" y2="12" stroke="#fff" stroke-width="1.6"/></svg><span>Nordic<b> CRM</b></span></div>
+    <nav class="nav" id="nav" aria-label="Päävalikko"></nav>
+    <div class="who">
+      <label for="user">Kirjautunut käyttäjä</label>
+      <select id="user"></select>
+    </div>
+  </aside>
+
+  <main>
+    <div class="head">
+      <div><h1 id="vtitle">Oma päivä</h1><p id="vsub"></p></div>
+      <span class="proto">Prototyyppi · esimerkkitiedot</span>
+    </div>
+
+    <!-- OMA PÄIVÄ -->
+    <section class="view" id="v-paiva">
+      <div class="grid g4" id="dayTiles"></div>
+      <div class="grid g2" style="margin-top:14px">
+        <div class="card"><h2>Omat tehtävät <span class="muted" id="myTaskCount"></span></h2><div id="myTasks"></div></div>
+        <div class="card"><h2>Tänään ja huomenna</h2><div id="myEvents"></div></div>
+      </div>
+    </section>
+
+    <!-- PUTKI -->
+    <section class="view" id="v-putki">
+      <div class="board" id="board"></div>
+      <p class="small muted">Siirrä kohdetta nuolella seuraavaan vaiheeseen. Asiakas saa automaattisesti ilmoituksen vaiheen vaihtumisesta.</p>
+    </section>
+
+    <!-- ASIAKKAAT -->
+    <section class="view" id="v-asiakkaat">
+      <div class="cust">
+        <div class="card">
+          <div class="search"><input id="q" type="search" placeholder="Hae nimellä tai osoitteella" aria-label="Hae asiakasta"><select id="src" aria-label="Lähde"><option value="">Kaikki lähteet</option></select></div>
+          <div class="clist" id="clist"></div>
+        </div>
+        <div class="card" id="ccard"></div>
+      </div>
+    </section>
+
+    <!-- TEHTÄVÄT -->
+    <section class="view" id="v-tehtavat">
+      <div class="card">
+        <h2>Tehtävät <span class="muted"><span class="seg" id="tfilter"><button data-f="omat" class="on">Omat</button><button data-f="kaikki">Kaikki</button><button data-f="myohassa">Myöhässä</button></span></span></h2>
+        <div id="allTasks"></div>
+        <form class="addtask" id="addTask">
+          <input id="ntitle" placeholder="Uusi tehtävä, esim. Soita Annalle" aria-label="Tehtävä" required>
+          <select id="nwho" aria-label="Vastuuhenkilö"></select>
+          <input id="ndate" type="date" aria-label="Päivämäärä" value="2026-10-19" style="flex:0 0 auto">
+          <button class="btn p" type="submit">Lisää</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- KALENTERI -->
+    <section class="view" id="v-kalenteri">
+      <div class="legend"><span><i class="sw mit"></i>Mittauskäynti</span><span><i class="sw as"></i>Asennus</span></div>
+      <div class="calwrap"><div class="cal" id="cal"></div></div>
+    </section>
+
+    <!-- RAPORTIT -->
+    <section class="view" id="v-raportit">
+      <div class="grid g4" id="repTiles"></div>
+      <div class="grid g2" style="margin-top:14px">
+        <div class="card"><h2>Myynti kuukausittain <span class="muted">toteutuneet kaupat, € sis. alv</span></h2>
+          <div class="chart" id="salesChart"></div>
+          <details><summary>Näytä taulukkona</summary><div id="salesTable"></div></details>
+        </div>
+        <div class="card"><h2>Tarjoukset ja kaupat <span class="muted">kpl / kk</span></h2>
+          <div id="funnelTable"></div>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:14px">
+        <div class="card"><h2>Mistä asiakkaat tulevat <span class="muted">tarjouspyynnöt 2026</span></h2><div id="sources"></div></div>
+        <div class="card"><h2>Suosittelut</h2><div id="refs"></div></div>
+      </div>
+    </section>
+
+    <!-- KÄYTTÄJÄT -->
+    <section class="view" id="v-kayttajat">
+      <div class="card">
+        <h2>Käyttäjät ja oikeudet</h2>
+        <div style="overflow-x:auto"><table class="t" id="users"></table></div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h2>Mitä kukin näkee</h2>
+        <div style="overflow-x:auto"><table class="t perm">
+          <thead><tr><th>Toiminto</th><th>Rooli</th><th>Osakas</th><th>Asentaja</th></tr></thead>
+          <tbody>
+            <tr><td>Myyntiputki</td><td></td><td class="yes">Kaikki kohteet</td><td>Omat kohteet</td></tr>
+            <tr><td>Asiakaskortit ja viestit</td><td></td><td class="yes">Kaikki</td><td>Omien kohteiden asiakkaat</td></tr>
+            <tr><td>Tarjouksen teko ja lähetys</td><td></td><td class="yes">Kyllä</td><td class="yes">Kyllä</td></tr>
+            <tr><td>Kalenteri</td><td></td><td class="yes">Kaikki asentajat</td><td>Oma kalenteri</td></tr>
+            <tr><td>Laskutus, rahoitus ja lahjat</td><td></td><td class="yes">Kyllä</td><td class="no">Ei</td></tr>
+            <tr><td>Raportit ja käyttäjähallinta</td><td></td><td class="yes">Kyllä</td><td class="no">Ei</td></tr>
+          </tbody>
+        </table></div>
+        <p class="small muted" style="margin:10px 0 0">Kokeile vaihtamalla kirjautunut käyttäjä vasemmalta alhaalta asentajaksi. Jokainen kirjautuu omalla sähköpostillaan ja kaksivaiheisella tunnistautumisella.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="tip" id="tip"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const eur=n=>Math.round(n).toLocaleString('fi-FI')+' €';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),2400)}
+
+const USERS=[
+  {id:'sami',name:'Sami Elmeranta',role:'osakas',ini:'SE'},
+  {id:'matias',name:'Matias Sirkiä',role:'osakas',ini:'MS'},
+  {id:'jussi',name:'Jussi Henriksson',role:'osakas',ini:'JH'},
+  {id:'anton',name:'Anton Hörkkö',role:'osakas',ini:'AH'},
+  {id:'teemu',name:'Teemu (asentaja)',role:'asentaja',ini:'TE'},
+  {id:'joni',name:'Joni (asentaja)',role:'asentaja',ini:'JO'}
+];
+const U=id=>USERS.find(u=>u.id===id);
+const STAGES=['Tarjouspyyntö','Mittaus','Tarjous lähetetty','Hyväksytty','Tilaus','Asennus','Valmis'];
+let me='sami';
+
+const CUSTOMERS=[
+  {id:1,name:'Anna Esimerkki',addr:'Esimerkkitie 4, Masku',tel:'040 000 0001',email:'anna@esimerkki.fi',src:'Suosittelu',refBy:3,stage:4,sum:18450,owner:'sami',inst:'teemu',what:'9 ikkunaa, 1 ulko-ovi',pay:'Lasku'},
+  {id:2,name:'Pekka Malli',addr:'Mallikatu 12 B, Turku',tel:'040 000 0002',email:'pekka@esimerkki.fi',src:'Verkkosivu',stage:3,sum:3980,owner:'matias',inst:'joni',what:'Ulko-ovi',pay:'Skaala-rahoitus (OP)'},
+  {id:3,name:'Liisa Koe',addr:'Koetie 7, Raisio',tel:'040 000 0003',email:'liisa@esimerkki.fi',src:'Roll-up messuilla',stage:2,sum:21480,owner:'sami',inst:'teemu',what:'12 ikkunaa, 1 ulko-ovi'},
+  {id:4,name:'Matti Testi',addr:'Testikuja 2, Kaarina',tel:'040 000 0004',email:'matti@esimerkki.fi',src:'Verkkosivu',stage:1,sum:0,owner:'jussi',inst:'joni',what:'14 ikkunaa (mittaus 21.10.)'},
+  {id:5,name:'Sari Demo',addr:'Demopolku 9, Naantali',tel:'040 000 0005',email:'sari@esimerkki.fi',src:'Google-haku',stage:0,sum:0,owner:'anton',inst:null,what:'Parvekeovi'},
+  {id:6,name:'As Oy Näyte',addr:'Näytekatu 1, Turku',tel:'040 000 0006',email:'isannointi@esimerkki.fi',src:'Suositteli isännöitsijä',stage:2,sum:46900,owner:'matias',inst:'joni',what:'Porraskäytävän ovet, 4 kpl'},
+  {id:7,name:'Jari Esim',addr:'Rantatie 33, Lieto',tel:'040 000 0007',email:'jari@esimerkki.fi',src:'Facebook',stage:5,sum:12760,owner:'jussi',inst:'teemu',what:'7 ikkunaa'},
+  {id:8,name:'Tiina Malli',addr:'Puistotie 5, Salo',tel:'040 000 0008',email:'tiina@esimerkki.fi',src:'Suosittelu',refBy:1,stage:0,sum:0,owner:'sami',inst:null,what:'Ulko-ovi ja 2 ikkunaa'},
+  {id:9,name:'Kalle Koe',addr:'Kuusitie 18, Paimio',tel:'040 000 0009',email:'kalle@esimerkki.fi',src:'Verkkosivu',stage:6,sum:15320,owner:'anton',inst:'joni',what:'10 ikkunaa'},
+  {id:10,name:'Mökki Esimerkki',addr:'Saaritie 2, Parainen',tel:'040 000 0010',email:'mokki@esimerkki.fi',src:'Google-haku',stage:3,sum:8640,owner:'anton',inst:'teemu',what:'Mökin 6 ikkunaa',pay:'Lasku'}
+];
+const HIST={
+  1:[['2.10.','Tarjous hyväksytty · laskulla'],['6.10.','Mittauskäynti, Teemu'],['8.10.','Asiakas: "Voiko asennuksen siirtää viikolla?"'],['9.10.','Ennakkolasku maksettu (Holvi)'],['10.10.','Tilaus lähetetty Skaalalle']],
+  3:[['14.10.','Tarjouspyyntö messuilta'],['18.10.','Mittaus ja tarjous puhelimella'],['18.10.','Asiakas avasi tarjouksen'],['21.10.','Muistutus 1 lähetetty']],
+  2:[['3.10.','Tarjouspyyntö verkkosivulta'],['7.10.','Tarjous hyväksytty · Skaala-rahoitus'],['8.10.','Tehtävä: rahoitushakemus']],
+};
+let TASKS=[
+  {id:1,t:'Soita Liisalle tarjouksesta',c:3,who:'sami',due:'2026-10-17'},
+  {id:2,t:'Tee rahoitushakemus OP:lle',c:2,who:'matias',due:'2026-10-16'},
+  {id:3,t:'Lähetä lahjakortti (S-ryhmä 50 €)',c:9,who:'anton',due:'2026-10-18'},
+  {id:4,t:'Vahvista asennusaika asiakkaalle',c:1,who:'sami',due:'2026-10-20'},
+  {id:5,t:'Kuvaa aukot ja tee tarjous',c:4,who:'joni',due:'2026-10-21'},
+  {id:6,t:'Lähetä loppulasku Holvista',c:7,who:'jussi',due:'2026-10-23'},
+  {id:7,t:'Soita Sarille ja sovi mittaus',c:5,who:'anton',due:'2026-10-17'},
+  {id:8,t:'Kysy isännöitsijältä päätöksen aikataulu',c:6,who:'matias',due:'2026-10-24'},
+  {id:9,t:'Asennuksen viimeistely ja kuvat',c:7,who:'teemu',due:'2026-10-22'}
+];
+const TODAY='2026-10-17';
+const EVENTS=[
+  {d:0,who:'teemu',type:'as',c:7,time:'7.30–15'},{d:1,who:'teemu',type:'as',c:7,time:'7.30–14'},
+  {d:2,who:'teemu',type:'mit',c:3,time:'10.00'},{d:3,who:'teemu',type:'as',c:1,time:'7.30–15'},{d:4,who:'teemu',type:'as',c:1,time:'7.30–12'},
+  {d:0,who:'joni',type:'mit',c:5,time:'13.00'},{d:2,who:'joni',type:'mit',c:4,time:'9.00'},{d:3,who:'joni',type:'as',c:10,time:'8.00–16'},
+  {d:1,who:'joni',type:'mit',c:8,time:'16.00'}
+];
+const DAYS=['Ma 19.10.','Ti 20.10.','Ke 21.10.','To 22.10.','Pe 23.10.'];
+const SALES=[['Tammi',0],['Helmi',0],['Maalis',0],['Huhti',0],['Touko',8640],['Kesä',22300],['Heinä',31750],['Elo',41980],['Syys',54320],['Loka',46940]];
+const FUNNEL=[['Kesä',9,3],['Heinä',12,4],['Elo',15,5],['Syys',18,7],['Loka',14,5]];
+const SOURCES=[['Verkkosivu',23],['Suosittelu',11],['Google-haku',9],['Facebook',6],['Roll-up messuilla',4],['Suositteli isännöitsijä',2]];
+
+const VIEWS=[
+  ['paiva','Oma päivä','M3 12l9-8 9 8M5 10v10h14V10'],
+  ['putki','Myyntiputki','M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z'],
+  ['asiakkaat','Asiakkaat','M16 11a4 4 0 10-8 0 4 4 0 008 0zM4 21c1-4 4-6 8-6s7 2 8 6'],
+  ['tehtavat','Tehtävät','M4 6l2 2 4-4M4 14l2 2 4-4M13 6h7M13 14h7'],
+  ['kalenteri','Kalenteri','M4 6h16v14H4zM4 10h16M8 3v4M16 3v4'],
+  ['raportit','Raportit','M4 20V10M10 20V4M16 20v-7M22 20H2'],
+  ['kayttajat','Käyttäjät','M9 11a3 3 0 100-6 3 3 0 000 6zM3 20c.7-3 3-5 6-5s5.3 2 6 5M17 11a3 3 0 100-6M21 20c-.4-2-1.6-3.6-3.4-4.4']
+];
+const SUB={paiva:'Tehtävät, tämän päivän käynnit ja tilanne yhdellä silmäyksellä',putki:'Kohteet vaiheen mukaan',asiakkaat:'Yhteystiedot, kohteet ja koko historia',tehtavat:'Soitot, hakemukset, lahjat ja muut muistettavat',kalenteri:'Mittauskäynnit ja asennukset, viikko 43',raportit:'Tarjoukset, kaupat ja asiakkaiden lähteet',kayttajat:'Osakkaat ja asentajat'};
+let view='paiva',selCust=1,tf='omat';
+
+const isOwner=()=>U(me).role==='osakas';
+const visible=c=>isOwner()||c.inst===me||c.owner===me;
+const custOf=id=>CUSTOMERS.find(c=>c.id===id);
+
+function drawNav(){
+  const allowed=VIEWS.filter(v=>isOwner()||!['raportit','kayttajat'].includes(v[0]));
+  if(!allowed.find(v=>v[0]===view))view='paiva';
+  const open=TASKS.filter(t=>t.who===me&&!t.done).length;
+  $('#nav').innerHTML=allowed.map(v=>`<button data-v="${v[0]}" class="${v[0]===view?'on':''}" aria-current="${v[0]===view?'page':'false'}"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${v[2]}"/></svg>${v[1]}${v[0]==='tehtavat'&&open?`<span class="cnt">${open}</span>`:''}</button>`).join('');
+}
+function show(v){view=v;drawNav();$$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));const V=VIEWS.find(x=>x[0]===v);$('#vtitle').textContent=v==='paiva'?'Hei, '+U(me).name.split(' ')[0]:V[1];$('#vsub').textContent=SUB[v];render();window.scrollTo(0,0)}
+$('#nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.v)});
+
+$('#user').innerHTML=USERS.map(u=>`<option value="${u.id}">${esc(u.name)} · ${u.role}</option>`).join('');
+$('#user').addEventListener('change',e=>{me=e.target.value;const first=CUSTOMERS.find(visible);selCust=first?first.id:null;show(view);toast('Kirjautunut: '+U(me).name)});
+
+function taskRow(t){const c=custOf(t.c);const late=!t.done&&t.due<TODAY;const today=t.due===TODAY;const d=t.due.split('-');
+  return `<div class="task ${t.done?'done':''}"><input type="checkbox" ${t.done?'checked':''} data-t="${t.id}" aria-label="Merkitse tehdyksi: ${esc(t.t)}"><div><div class="t">${esc(t.t)}</div><div class="m">${c?esc(c.name)+' · '+esc(c.addr):''}</div></div><div class="r"><div>${late?'<span class="pill crit">Myöhässä</span>':today?'<span class="pill gold">Tänään</span>':(+d[2])+'.'+(+d[1])+'.'}</div><div class="muted" style="margin-top:3px">${esc(U(t.who).name.split(' ')[0])}</div></div></div>`}
+document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.t){const t=TASKS.find(x=>x.id==e.target.dataset.t);t.done=e.target.checked;toast(t.done?'Tehtävä merkitty tehdyksi':'Tehtävä palautettu');drawNav();render()}});
+
+function renderDay(){
+  const vis=CUSTOMERS.filter(visible);
+  const open=vis.filter(c=>c.stage===2);const won=vis.filter(c=>c.stage>=3);
+  const mine=TASKS.filter(t=>t.who===me&&!t.done).sort((a,b)=>a.due.localeCompare(b.due));
+  const late=mine.filter(t=>t.due<TODAY).length;
+  $('#dayTiles').innerHTML=[
+    ['Omat tehtävät',mine.length,late?late+' myöhässä':'ei myöhässä olevia'],
+    ['Avoimet tarjoukset',open.length,eur(open.reduce((a,c)=>a+c.sum,0))+' odottaa'],
+    ['Käynnissä olevat',vis.filter(c=>c.stage>=3&&c.stage<6).length,'hyväksytty → asennus'],
+    ['Lokakuun kaupat',isOwner()?eur(46940):vis.filter(c=>c.stage===6).length+' valmista',isOwner()?'5 kauppaa':'omat kohteet']
+  ].map(x=>`<div class="card tile"><div class="lbl">${x[0]}</div><div class="val num">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+  $('#myTaskCount').textContent=mine.length+' avointa';
+  $('#myTasks').innerHTML=mine.length?mine.map(taskRow).join(''):'<p class="muted">Ei avoimia tehtäviä. Hyvä!</p>';
+  const ev=EVENTS.filter(e=>(isOwner()||e.who===me)&&e.d<=1);
+  $('#myEvents').innerHTML=ev.length?ev.map(e=>{const c=custOf(e.c);return `<div class="task" style="grid-template-columns:86px minmax(0,1fr)"><div class="small"><b>${DAYS[e.d].split(' ')[0]}</b> ${e.time}</div><div><div class="t">${e.type==='as'?'Asennus':'Mittauskäynti'} · ${esc(c.name)}</div><div class="m">${esc(c.addr)} · ${esc(U(e.who).name)}</div></div></div>`}).join(''):'<p class="muted">Ei käyntejä.</p>';
+}
+
+function renderBoard(){
+  const vis=CUSTOMERS.filter(visible);
+  $('#board').innerHTML=STAGES.map((s,i)=>{const items=vis.filter(c=>c.stage===i);const sum=items.reduce((a,c)=>a+c.sum,0);
+    return `<div class="col"><h3><span>${s}</span><span class="muted num">${items.length}</span></h3><div class="sum num">${sum?eur(sum):'&nbsp;'}</div>${items.map(c=>`<div class="deal" data-c="${c.id}"><b>${esc(c.name)}</b><div class="m">${esc(c.addr)}</div><div class="m">${esc(c.what)}</div><div class="f"><span class="num small">${c.sum?eur(c.sum):'–'}</span><span style="display:flex;gap:4px;align-items:center"><span class="av" title="${esc(U(c.owner).name)}">${U(c.owner).ini}</span>${i<6?`<button class="mv" data-mv="${c.id}" aria-label="Siirrä vaiheeseen ${STAGES[i+1]}">→</button>`:''}</span></div></div>`).join('')}</div>`}).join('');
+}
+$('#board').addEventListener('click',e=>{const mv=e.target.closest('[data-mv]');if(mv){e.stopPropagation();const c=custOf(+mv.dataset.mv);c.stage++;toast(c.name+' → '+STAGES[c.stage]+'. Asiakas sai ilmoituksen.');renderBoard();return}
+  const d=e.target.closest('.deal');if(d){selCust=+d.dataset.c;show('asiakkaat')}});
+
+function renderCust(){
+  const srcs=[...new Set(CUSTOMERS.map(c=>c.src))];const cur=$('#src').value;
+  $('#src').innerHTML='<option value="">Kaikki lähteet</option>'+srcs.map(s=>`<option ${s===cur?'selected':''}>${esc(s)}</option>`).join('');
+  const q=$('#q').value.toLowerCase();
+  const list=CUSTOMERS.filter(visible).filter(c=>(!q||(c.name+c.addr).toLowerCase().includes(q))&&(!cur||c.src===cur));
+  if(!list.find(c=>c.id===selCust)&&list[0])selCust=list[0].id;
+  $('#clist').innerHTML=list.map(c=>`<div class="row ${c.id===selCust?'on':''}" data-c="${c.id}" tabindex="0"><div><b>${esc(c.name)}</b><span class="small muted">${esc(c.addr)}</span></div><span class="pill ${c.stage===6?'good':c.stage===2?'gold':''}">${STAGES[c.stage]}</span></div>`).join('')||'<p class="muted">Ei hakutuloksia.</p>';
+  const c=custOf(selCust);
+  if(!c){$('#ccard').innerHTML='<p class="muted">Valitse asiakas.</p>';return}
+  const refs=CUSTOMERS.filter(x=>x.refBy===c.id);const by=c.refBy?custOf(c.refBy):null;
+  const h=(HIST[c.id]||[['–','Tarjouspyyntö vastaanotettu ('+c.src+')']]);
+  const ct=TASKS.filter(t=>t.c===c.id&&!t.done);
+  $('#ccard').innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start"><div><h2>${esc(c.name)}</h2><div class="muted small">${esc(c.addr)}</div></div><span class="pill ${c.stage===6?'good':''}">${STAGES[c.stage]}</span></div>
+  <dl class="kv" style="margin:14px 0 0"><dt>Puhelin</dt><dd class="num">${esc(c.tel)}</dd><dt>Sähköposti</dt><dd>${esc(c.email)}</dd><dt>Lähde</dt><dd>${esc(c.src)}${by?' · suositteli '+esc(by.name):''}</dd><dt>Vastuumyyjä</dt><dd>${esc(U(c.owner).name)}</dd><dt>Asentaja</dt><dd>${c.inst?esc(U(c.inst).name):'Ei vielä'}</dd>${c.pay?`<dt>Maksutapa</dt><dd>${esc(c.pay)}</dd>`:''}</dl>
+  <div class="sect"><h3>Kohteet</h3><div class="task" style="grid-template-columns:minmax(0,1fr) auto"><div><div class="t">${esc(c.what)}</div><div class="m">${esc(c.addr)}</div></div><div class="r num">${c.sum?eur(c.sum):'Tarjous tekemättä'}</div></div></div>
+  <div class="sect"><h3>Avoimet tehtävät</h3>${ct.length?ct.map(taskRow).join(''):'<p class="muted small">Ei avoimia tehtäviä.</p>'}</div>
+  <div class="sect"><h3>Historia</h3><ul class="hist">${h.map(x=>`<li><div class="d">${x[0]}</div>${esc(x[1])}</li>`).join('')}</ul></div>
+  <div class="sect"><h3>Suosittelut</h3>${refs.length?refs.map(r=>`<div class="small">${esc(r.name)} · <span class="pill ${r.stage===6?'good':''}">${STAGES[r.stage]}</span></div>`).join(''):'<p class="muted small">Ei vielä suositeltuja asiakkaita.</p>'}</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn p" data-act="msg">Lähetä viesti</button><button class="btn" data-act="task">+ Tehtävä</button><button class="btn" data-act="portal">Avaa asiakkaan portaali</button></div>`;
+}
+$('#clist').addEventListener('click',e=>{const r=e.target.closest('.row');if(r){selCust=+r.dataset.c;renderCust()}});
+$('#clist').addEventListener('keydown',e=>{if(e.key==='Enter'){const r=e.target.closest('.row');if(r){selCust=+r.dataset.c;renderCust()}}});
+$('#q').addEventListener('input',renderCust);$('#src').addEventListener('change',renderCust);
+$('#ccard').addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const c=custOf(selCust);
+  if(b.dataset.act==='task'){$('#ntitle').value='Soita: '+c.name;show('tehtavat');$('#ntitle').focus()}
+  else toast(b.dataset.act==='msg'?'Viesti näkyy asiakkaan portaalissa ja sähköpostissa':'Asiakkaan portaali avautuisi uuteen välilehteen')});
+
+function renderTasks(){
+  $$('#tfilter button').forEach(b=>b.classList.toggle('on',b.dataset.f===tf));
+  let l=TASKS.filter(t=>visible(custOf(t.c))||t.who===me);
+  if(tf==='omat')l=l.filter(t=>t.who===me);
+  if(tf==='myohassa')l=l.filter(t=>!t.done&&t.due<TODAY);
+  l=l.sort((a,b)=>(a.done-b.done)||a.due.localeCompare(b.due));
+  $('#allTasks').innerHTML=l.length?l.map(taskRow).join(''):'<p class="muted">Ei tehtäviä tällä rajauksella.</p>';
+  $('#nwho').innerHTML=USERS.filter(u=>isOwner()||u.id===me).map(u=>`<option value="${u.id}" ${u.id===me?'selected':''}>${esc(u.name)}</option>`).join('');
+}
+$('#tfilter').addEventListener('click',e=>{const b=e.target.closest('button');if(b){tf=b.dataset.f;renderTasks()}});
+$('#addTask').addEventListener('submit',e=>{e.preventDefault();const t=$('#ntitle').value.trim();if(!t)return;TASKS.push({id:Date.now(),t,c:selCust||1,who:$('#nwho').value,due:$('#ndate').value||TODAY});$('#ntitle').value='';toast('Tehtävä lisätty – vastuuhenkilö saa ilmoituksen');drawNav();renderTasks()});
+
+function renderCal(){
+  const ins=USERS.filter(u=>u.role==='asentaja'&&(isOwner()||u.id===me));
+  let h='<div class="hd">Asentaja</div>'+DAYS.map(d=>`<div class="hd">${d}</div>`).join('');
+  ins.forEach(u=>{h+=`<div class="who2">${esc(u.name)}</div>`;DAYS.forEach((d,i)=>{h+='<div>'+EVENTS.filter(e=>e.who===u.id&&e.d===i).map(e=>{const c=custOf(e.c);return `<div class="ev ${e.type}"><span class="tag">${e.type==='as'?'Asennus':'Mittaus'}</span><b>${esc(c.name)}</b>${e.time} · ${esc(c.addr.split(', ')[1])}</div>`}).join('')+'</div>'})});
+  $('#cal').innerHTML=h;
+}
+
+function renderRep(){
+  const tot=SALES.reduce((a,s)=>a+s[1],0);const off=FUNNEL.reduce((a,f)=>a+f[1],0),won=FUNNEL.reduce((a,f)=>a+f[2],0);
+  $('#repTiles').innerHTML=[['Myynti 2026',eur(tot),'toteutuneet kaupat'],['Tarjouksia',off,'kesä–lokakuu'],['Kauppoja',won,'kesä–lokakuu'],['Hyväksymis-%',Math.round(won/off*100)+' %','tarjouksista kaupaksi']]
+    .map(x=>`<div class="card tile"><div class="lbl">${x[0]}</div><div class="val num">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+  // pylväskaavio
+  const W=560,H=240,L=54,R=12,T=16,B=28,max=60000,step=20000,data=SALES,bw=(W-L-R)/data.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Myynti kuukausittain">`;
+  for(let v=0;v<=max;v+=step){const y=T+(H-T-B)*(1-v/max);s+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v/1000} t€</text>`}
+  data.forEach((d,i)=>{const x=L+i*bw+bw*.18,w=bw*.64,h=(H-T-B)*d[1]/max,y=H-B-h,r=Math.min(4,h);
+    if(h>0)s+=`<path d="M${x},${H-B} V${y+r} Q${x},${y} ${x+r},${y} H${x+w-r} Q${x+w},${y} ${x+w},${y+r} V${H-B} Z" fill="var(--accent)"/>`;
+    s+=`<rect class="hit" x="${L+i*bw}" y="${T}" width="${bw}" height="${H-T-B}" fill="transparent" data-i="${i}"/>`;
+    s+=`<text x="${x+w/2}" y="${H-B+16}" text-anchor="middle" font-size="11" fill="var(--muted)">${d[0].slice(0,3)}</text>`});
+  const li=data.length-1,ld=data[li],lh=(H-T-B)*ld[1]/max;s+=`<text x="${L+li*bw+bw/2}" y="${H-B-lh-6}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink)">${Math.round(ld[1]/1000)} t€</text>`;
+  s+=`<line x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}" stroke="var(--muted)" stroke-width="1"/></svg>`;
+  $('#salesChart').innerHTML=s;
+  const tip=$('#tip');
+  $$('#salesChart .hit').forEach(r=>{r.addEventListener('mouseenter',ev=>{const d=data[+r.dataset.i];const bb=r.getBoundingClientRect();tip.innerHTML=`<b>${d[0]}kuu</b> · ${eur(d[1])}`;tip.style.left=(bb.left+bb.width/2+window.scrollX)+'px';tip.style.top=(bb.top+window.scrollY+bb.height*(1-d[1]/max))+'px';tip.classList.add('on')});r.addEventListener('mouseleave',()=>tip.classList.remove('on'))});
+  $('#salesTable').innerHTML=`<table class="t"><thead><tr><th>Kuukausi</th><th class="n">Myynti</th></tr></thead><tbody>${data.map(d=>`<tr><td>${d[0]}kuu</td><td class="n">${eur(d[1])}</td></tr>`).join('')}</tbody></table>`;
+  $('#funnelTable').innerHTML=`<table class="t"><thead><tr><th>Kuukausi</th><th class="n">Tarjouksia</th><th class="n">Kauppoja</th><th class="n">Hyväksytty</th></tr></thead><tbody>${FUNNEL.map(f=>`<tr><td>${f[0]}kuu</td><td class="n">${f[1]}</td><td class="n">${f[2]}</td><td class="n">${Math.round(f[2]/f[1]*100)} %</td></tr>`).join('')}<tr><td><b>Yhteensä</b></td><td class="n"><b>${off}</b></td><td class="n"><b>${won}</b></td><td class="n"><b>${Math.round(won/off*100)} %</b></td></tr></tbody></table>`;
+  const sm=Math.max(...SOURCES.map(s=>s[1]));
+  $('#sources').innerHTML=SOURCES.map(s=>`<div class="hbar"><span>${esc(s[0])}</span><div class="tr"><div class="fl" style="width:${s[1]/sm*100}%"></div></div><span class="v num">${s[1]}</span></div>`).join('');
+  $('#refs').innerHTML=`<div class="grid g4" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">${[['Suosittelulinkkejä jaettu','27'],['Tarjouspyyntöjä','11'],['Toteutuneita','4'],['Lahjoja lähetetty','8 × 50 €']].map(x=>`<div class="tile"><div class="lbl">${x[0]}</div><div class="val num" style="font-size:22px">${x[1]}</div></div>`).join('')}</div><p class="small muted" style="margin:10px 0 0">Kiitoslahjat ja suosittelupalkkiot (Kotipizza / S-ryhmä 50 €) käsitellään osoitteessa suosittelu@ikkunakauppias.fi.</p>`;
+}
+
+function renderUsers(){
+  $('#users').innerHTML=`<thead><tr><th>Nimi</th><th>Rooli</th><th>Kohteita</th><th>Avoimia tehtäviä</th><th>Kaksivaiheinen</th></tr></thead><tbody>${USERS.map(u=>`<tr><td><span class="av" style="margin-right:6px">${u.ini}</span>${esc(u.name)}</td><td><span class="pill ${u.role==='osakas'?'':'gold'}">${u.role==='osakas'?'Osakas':'Asentaja'}</span></td><td class="num">${CUSTOMERS.filter(c=>c.owner===u.id||c.inst===u.id).length}</td><td class="num">${TASKS.filter(t=>t.who===u.id&&!t.done).length}</td><td><span class="pill good">Käytössä</span></td></tr>`).join('')}</tbody>`;
+}
+
+function render(){({paiva:renderDay,putki:renderBoard,asiakkaat:renderCust,tehtavat:renderTasks,kalenteri:renderCal,raportit:renderRep,kayttajat:renderUsers})[view]()}
+const h=(location.hash||'').slice(1);show(VIEWS.find(v=>v[0]===h)?h:'paiva');
+})();
+</script>
