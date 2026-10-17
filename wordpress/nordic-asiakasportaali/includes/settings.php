@@ -17,6 +17,7 @@ function nap_settings_defaults() {
 		'auto_tasks'     => 1,
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
+		'measure_terms'  => 'Asiakkaan omat mitat: Kun asiakas mittaa itse tai toimittaa mitat meille, tuotteet valmistetaan asiakkaan ilmoittamien mittojen mukaan, ja vastuu mittojen oikeellisuudesta on aina asiakkaalla. Vääristä mitoista johtuvat muutokset ja uudet tuotteet ovat asiakkaan kustannuksella.',
 		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
 	);
 }
@@ -123,6 +124,7 @@ add_action( 'admin_init', function () {
 				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
 				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
 				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
+				'measure_terms' => sanitize_textarea_field( $in['measure_terms'] ?? $d['measure_terms'] ),
 			);
 		},
 	) );
@@ -160,6 +162,9 @@ function nap_settings_page() {
 				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
 					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>
 					<p class="description">Näkyy asiakkaalle lähtevässä vahvistuksessa, kun tarjous merkitään hyväksytyksi. Tyhjänä ei näytetä.</p></td></tr>
+				<tr><th scope="row"><label for="nap_mterms">Ehto: asiakkaan omat mitat</label></th>
+					<td><textarea id="nap_mterms" name="nap_settings[measure_terms]" rows="3" class="large-text"><?php echo esc_textarea( $s['measure_terms'] ); ?></textarea>
+					<p class="description">Näkyy kiitosviestissä ja hyväksynnän vahvistuksessa, kun toimitustapa on "Vain tuotteet, asiakas mittaa itse".</p></td></tr>
 				<tr><th scope="row"><label for="nap_from">Lähettäjän nimi</label></th>
 					<td><input id="nap_from" name="nap_settings[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>" class="regular-text"></td></tr>
 				<tr><th scope="row"><label for="nap_reply">Vastausosoite</label></th>

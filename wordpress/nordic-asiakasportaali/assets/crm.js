@@ -95,7 +95,7 @@
         return '<div class="col"><h3><span>' + esc(s) + '</span><span class="muted num">' + items.length + '</span></h3><div class="sum num">' + (sum ? eur(sum) : '') + '</div>' +
           items.map(function (p) {
             var o = user(p.owner_id);
-            return '<div class="deal" data-cust="' + p.customer_id + '" tabindex="0" role="link"><b>' + esc(p.customer) + '</b><div class="m">' + esc(p.address) + '</div><div class="m">' + esc(p.title) + '</div>' +
+            return '<div class="deal" data-cust="' + p.customer_id + '" tabindex="0" role="link"><b>' + esc(p.customer) + '</b><div class="m">' + esc(p.address) + '</div><div class="m">' + esc(p.title) + '</div>' + (p.delivery && p.delivery !== 'asennus' ? '<div class="m"><span class="pill gold">' + esc(p.delivery === 'omat_mitat' ? 'Omat mitat' : 'Ilman asennusta') + '</span></div>' : '') +
               '<div class="f"><span class="num small">' + (p.value ? eur(p.value) : '–') + '</span><span style="display:flex;gap:4px;align-items:center">' + (o ? '<span class="av" title="' + esc(o.name) + '">' + esc(o.ini) + '</span>' : '') +
               (i < 6 ? '<button class="mv" data-mv="' + p.id + '" aria-label="Siirrä vaiheeseen ' + esc(S.stages[i + 1]) + '">→</button>' : '') + '</span></div></div>';
           }).join('') + (items.length ? '' : '<div class="muted small" style="padding:6px">Ei kohteita</div>') + '</div>';
@@ -153,13 +153,15 @@
         '<dt>Vastuumyyjä</dt><dd>' + (isOwner() ? '<select id="owner" aria-label="Vastuumyyjä">' + opt(owners, c.owner_id, 'Ei valittu') + '</select>' : esc(uname(c.owner_id) || '–')) + '</dd>' +
         '<dt>Suosittelukoodi</dt><dd>' + esc(c.ref_code) + '</dd></dl>' +
         '<div class="sect"><h3>Kohteet</h3>' + (c.projects.length ? c.projects.map(function (p) {
-          return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b><span class="pill ' + (p.stage === 6 ? 'good' : '') + '">' + esc(S.stages[p.stage]) + '</span></div>' +
+          return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b><span style="display:flex;gap:6px;flex-wrap:wrap">' + (p.delivery !== 'asennus' ? '<span class="pill gold">' + esc(S.deliveries[p.delivery]) + '</span>' : '') + '<span class="pill ' + (p.stage === 6 ? 'good' : '') + '">' + esc(S.stages[p.stage]) + '</span></span></div>' +
             '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') +
             apprBox(p, c) +
             '<div class="fields" style="margin-top:10px">' +
             '<label class="fld">Vaihe<select data-f="stage">' + S.stages.map(function (s, i) { return '<option value="' + i + '" ' + (i === p.stage ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></label>' +
             '<label class="fld">Arvo (€, sis. alv)<input data-f="value" type="number" min="0" step="10" value="' + (p.value || '') + '"></label>' +
-            '<label class="fld">Asentaja<select data-f="installer_id">' + opt(S.users, p.installer_id, 'Ei valittu') + '</select></label></div></div>';
+            '<label class="fld">Asentaja<select data-f="installer_id">' + opt(S.users, p.installer_id, 'Ei valittu') + '</select></label>' +
+            '<label class="fld">Toimitustapa<select data-f="delivery">' + Object.keys(S.deliveries).map(function (k) { return '<option value="' + k + '"' + (k === p.delivery ? ' selected' : '') + '>' + esc(S.deliveries[k]) + '</option>'; }).join('') + '</select></label></div>' +
+            (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small">' + esc(S.measureTerms) + '</div>' : '') + '</div>';
         }).join('') : '<div class="empty">Ei kohteita.</div>') + '</div>' +
         '<div class="sect"><h3>Avoimet tehtävät</h3>' + (c.tasks.length ? c.tasks.map(taskRow).join('') : '<p class="muted small">Ei avoimia tehtäviä.</p>') +
         '<form class="form" id="ctask"><input class="grow" name="title" placeholder="Uusi tehtävä, esim. Soita ' + esc(c.name.split(' ')[0]) + 'lle" aria-label="Tehtävä" required>' +
@@ -189,6 +191,7 @@
       '<label class="fld">Miten asiakas hyväksyi *<select name="how" required><option value="">Valitse</option>' + HOW.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld">Maksutapa<select name="payment">' + PAY.map(function (h) { return '<option value="' + h[0] + '"' + (h[0] === 'auki' ? ' selected' : '') + '>' + h[1] + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld wide">Lisätiedot<textarea name="note" rows="2" placeholder="esim. sovittu, että ulko-ovi vaihdetaan malliin X"></textarea></label></div>' +
+      (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small"><b>Asiakas mittaa itse.</b> Kerro asiakkaalle ennen hyväksyntää: ' + esc(S.measureTerms) + '</div>' : '') +
       '<div class="choices">' +
       '<label><input type="checkbox" name="confirm"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle vahvistus sähköpostilla' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia)') + '</span></label></div>' +
       '<div class="actions"><button class="btn p">Merkitse hyväksytyksi</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
@@ -317,6 +320,8 @@
     if (/autotalli/i.test(text)) prod.push('autotallin ovi');
     if (!prod.length && /\bov(i|ia|et|en)\b/i.test(text)) prod.push('ovet');
     if (prod.length) out.title = prod.join(', ').replace(/, ([^,]*)$/, ' ja $1');
+    if (/mittaa[a-zä]* (ne )?itse|omat mitat|itse mitat|mitat itse|olen mitannut|mitannut itse/i.test(text)) out.delivery = 'omat_mitat';
+    else if (/ilman asennusta|asennan itse|asennamme itse|asennus itse|pelkät (ikkunat|ovet|tuotteet)/i.test(text)) out.delivery = 'ilman_asennusta';
     return out;
   }
   function digits(s) { return String(s || '').replace(/\D/g, '').replace(/^358/, '0').slice(-9); }
@@ -345,14 +350,16 @@
       '<h2 class="mt">Kohde</h2><div class="fields">' +
       f2('address', 'Kohteen katuosoite', 'text', c ? 'value="' + esc(c.address) + '"' : '') + f2('city', 'Paikkakunta', 'text', c ? 'value="' + esc(c.city) + '"' : '') +
       f2('title', 'Tuotteet', 'text', 'placeholder="esim. 8 ikkunaa ja ulko-ovi"') +
+      '<label class="fld">Toimitustapa<select name="delivery">' + Object.keys(S.deliveries).map(function (k) { return '<option value="' + k + '">' + esc(S.deliveries[k]) + '</option>'; }).join('') + '</select></label>' +
+      '<div class="terms small wide" id="mterms" hidden>' + esc(S.measureTerms) + '</div>' +
       '<label class="fld wide">Mitä asiakas tarvitsee<textarea name="message" rows="3" placeholder="Talon ikä, ikkunoiden määrä, toiveet, aikataulu…"></textarea></label>' +
       '<label class="fld">Mistä asiakas tuli<select name="source">' + SOURCES.map(function (x) { return '<option>' + x + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld" id="refw" hidden>Suosittelija<select name="referrer_id"><option value="">Valitse asiakas</option>' +
         S.customers.filter(function (x) { return !c || x.id !== c.id; }).map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + (x.city ? ', ' + esc(x.city) : '') + '</option>'; }).join('') + '</select></label>' +
       (isOwner() && !c ? '<label class="fld">Vastuumyyjä<select name="owner_id">' + opt(owners, S.me.id) + '</select></label>' : '') +
       '</div><h2 class="mt">Seuraava askel</h2><div class="choices">' +
-      '<label><input type="radio" name="task" value="call" checked><span>Soita ja sovi mittaus (tehtävä seuraavalle arkipäivälle)</span></label>' +
-      '<label><input type="radio" name="task" value="measure"><span>Mittauskäynti on jo sovittu</span></label>' +
+      '<label><input type="radio" name="task" value="call" checked><span id="calltxt">Soita ja sovi mittaus (tehtävä seuraavalle arkipäivälle)</span></label>' +
+      '<label id="measw"><input type="radio" name="task" value="measure"><span>Mittauskäynti on jo sovittu</span></label>' +
       '<input class="date" type="date" name="measure_date" aria-label="Mittauspäivä">' +
       '<label><input type="radio" name="task" value="none"><span>Ei tehtävää</span></label>' +
       '<label class="mt"><input type="checkbox" name="send_link" checked><span>Lähetä asiakkaalle kiitosviesti ja Oma kohde -linkki <span class="muted small">(vaatii sähköpostin)</span></span></label>' +
@@ -367,6 +374,7 @@
       };
       if (!c) { set('name', 'nimi'); set('phone', 'puhelin'); set('email', 'sähköposti'); }
       set('address', 'osoite'); set('city', 'paikkakunta'); set('title', 'tuotteet');
+      if (p.delivery) { form.delivery.value = p.delivery; onDelivery(); got.push('toimitustapa'); }
       if (p.message && (!form.message.value || form.message.dataset.auto)) { form.message.value = p.message; form.message.dataset.auto = '1'; }
       if (p.whatsapp || fromShare) form.source.value = 'WhatsApp';
       else if (p.email && !p.phone) form.source.value = 'Sähköposti';
@@ -382,11 +390,19 @@
     form.addEventListener('input', function (e) { if (e.target !== form.paste && e.target.dataset) delete e.target.dataset.auto; });
     if (S.prefill) { var pf = S.prefill; S.prefill = null; form.paste.value = pf.text; applyParsed(pf.text, pf.share); }
     form.source.addEventListener('change', function () { document.getElementById('refw').hidden = form.source.value !== 'Suosittelu'; });
+    function onDelivery() {
+      var own = form.delivery.value === 'omat_mitat';
+      document.getElementById('mterms').hidden = !own || !S.measureTerms;
+      document.getElementById('measw').hidden = own; form.measure_date.hidden = own;
+      if (own && form.task.value === 'measure') form.task.value = 'call';
+      document.getElementById('calltxt').textContent = (own ? 'Soita ja pyydä mitat' : 'Soita ja sovi mittaus') + ' (tehtävä seuraavalle arkipäivälle)';
+    };
+    form.delivery.addEventListener('change', onDelivery);
     form.measure_date.addEventListener('focus', function () { form.task.value = 'measure'; });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var body = { customer_id: c ? c.id : 0, task: form.task.value, send_link: form.send_link.checked };
-      ['address', 'city', 'title', 'message', 'source'].forEach(function (k) { body[k] = form[k].value; });
+      ['address', 'city', 'title', 'message', 'source', 'delivery'].forEach(function (k) { body[k] = form[k].value; });
       if (!c) ['name', 'phone', 'email'].forEach(function (k) { body[k] = form[k].value.trim(); });
       if (!c && !body.phone && !body.email) { toast('Anna puhelinnumero tai sähköposti', true); return; }
       if (body.source === 'Suosittelu' && form.referrer_id.value) body.referrer_id = +form.referrer_id.value;
@@ -416,7 +432,7 @@
   window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
 
   api('bootstrap').then(function (b) {
-    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today;
+    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || '';
     return Promise.all([api('board'), api('tasks'), api('customers')]);
   }).then(function (r) {
     S.board = r[0]; S.tasks = r[1]; S.customers = r[2];

@@ -37,20 +37,29 @@ function nap_mail( $to, $subject, $heading, $paragraphs, $button = null, $reply_
 	return $ok;
 }
 
-function nap_mail_welcome( $customer, $link, $measure_date = '' ) {
-	return nap_mail(
-		$customer['email'],
-		'Kiitos tarjouspyynnöstä – seuraa kohdettasi',
-		'Kiitos tarjouspyynnöstäsi',
-		array(
+function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'asennus' ) {
+	if ( 'omat_mitat' === $delivery ) {
+		$lines = array(
+			'Hei ' . nap_first_name( $customer['name'] ) . ',',
+			'Olemme vastaanottaneet tarjouspyyntösi. Toivoit tuotteet ilman asennusta ja mittaat ikkunat ja ovet itse. Otamme sinuun yhteyttä ja sovimme, miten toimitat mitat meille. Teemme tarjouksen niiden perusteella.',
+		);
+		$terms = trim( (string) nap_settings()['measure_terms'] );
+		if ( $terms ) {
+			$lines[] = $terms;
+		}
+	} else {
+		$lines = array(
 			'Hei ' . nap_first_name( $customer['name'] ) . ',',
 			$measure_date
 				? 'Olemme vastaanottaneet tarjouspyyntösi. Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '.'
 				: 'Olemme vastaanottaneet tarjouspyyntösi. Otamme sinuun yhteyttä ja sovimme maksuttoman mittauskäynnin.',
-			'Oma kohde -sivulta näet remonttisi vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.',
-		),
-		array( 'Avaa Oma kohde', $link )
-	);
+		);
+		if ( 'ilman_asennusta' === $delivery ) {
+			$lines[] = 'Toivoit tuotteet ilman asennusta: mittaamme kohteen, ja toimitamme tuotteet asennettaviksi itse.';
+		}
+	}
+	$lines[] = 'Oma kohde -sivulta näet ' . ( 'asennus' === $delivery ? 'remonttisi' : 'tilauksesi' ) . ' vaiheet ja myöhemmin myös tarjouksen, sopimuksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.';
+	return nap_mail( $customer['email'], 'Kiitos tarjouspyynnöstä – seuraa kohdettasi', 'Kiitos tarjouspyynnöstäsi', $lines, array( 'Avaa Oma kohde', $link ) );
 }
 
 /** Vahvistus, kun henkilökunta on kirjannut asiakkaan hyväksynnän (puhelimessa, paikan päällä tms.). */
@@ -63,7 +72,12 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 			. 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)'
 			. ( 'auki' !== $a['payment'] ? "\nMaksutapa: " . $a['pay_label'] : '' ),
 	);
-	$lines[] = 'Seuraavaksi tilaamme tuotteet Skaalalta ja sovimme kanssasi asennuspäivän. Voit seurata kohdetta Oma kohde -sivulla.';
+	$delivery = nap_delivery( $project );
+	$lines[]  = 'Toimitustapa: ' . nap_deliveries()[ $delivery ] . '.';
+	$lines[]  = 'Seuraavaksi tilaamme tuotteet Skaalalta ja sovimme kanssasi ' . ( 'asennus' === $delivery ? 'asennuspäivän' : 'toimituksen' ) . '. Voit seurata kohdetta Oma kohde -sivulla.';
+	if ( 'omat_mitat' === $delivery && trim( (string) nap_settings()['measure_terms'] ) ) {
+		$lines[] = trim( (string) nap_settings()['measure_terms'] );
+	}
 	$lines[] = 'Jos tiedoissa on virhe, vastaa tähän viestiin tai soita: myynti 045 7832 5070.';
 	$terms   = trim( (string) nap_settings()['cancel_terms'] );
 	if ( $terms ) {
@@ -92,14 +106,22 @@ function nap_mail_stage( $customer, $project, $link ) {
 		5 => 'Asennus on aikataulutettu. Ohjeet valmistautumiseen löydät Oma kohde -sivulta.',
 		6 => 'Remonttisi on valmis. Kiitos, että valitsit meidät! Takuutodistuksen ja huolto-ohjeet saat luovutuksen yhteydessä.',
 	);
+	$delivery = nap_delivery( $project );
+	if ( 'asennus' !== $delivery ) {
+		$texts[1] = 'omat_mitat' === $delivery ? 'Odotamme mittojasi. Kun saamme ne, teemme tarjouksen niiden perusteella.' : 'Sovimme kanssasi mittauskäynnin. Edustajamme mittaa ikkunat ja ovet ja käy vaihtoehdot läpi kanssasi.';
+		$texts[4] = 'Ikkunat ja ovet on tilattu Skaalan tehtaalta. Ilmoitamme toimitusajasta.';
+		$texts[5] = 'Toimitus on aikataulutettu. Sovimme kanssasi toimituksen tai noudon yksityiskohdat.';
+		$texts[6] = 'Tilauksesi on toimitettu. Kiitos, että valitsit meidät!';
+	}
 	$stage = (int) $project['stage'];
 	if ( empty( $texts[ $stage ] ) ) {
 		return false;
 	}
+	$names = nap_stage_names( $delivery );
 	return nap_mail(
 		$customer['email'],
-		'Kohteesi eteni: ' . NAP_STAGES[ $stage ],
-		NAP_STAGES[ $stage ],
+		'Kohteesi eteni: ' . $names[ $stage ],
+		$names[ $stage ],
 		array( 'Hei ' . nap_first_name( $customer['name'] ) . ',', $texts[ $stage ] ),
 		array( 'Avaa Oma kohde', $link )
 	);

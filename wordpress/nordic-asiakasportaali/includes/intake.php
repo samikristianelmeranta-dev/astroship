@@ -28,12 +28,31 @@ function nap_on_fluentform( $insert_id, $form_data, $form ) {
 }
 
 /** Poimii lomakkeelta yhteystiedot, osoitteen ja viestin, vaikka kenttien nimet vaihtelisivat. */
+/** Lomakkeen valinnan teksti tai arvo → toimitustapa. */
+function nap_delivery_from_text( $t ) {
+	$t = mb_strtolower( $t );
+	if ( preg_match( '/omat[_ ]mitat|mittaa[a-zä]* itse|itse mita|asiakas mittaa|vain tuotteet|vain toimitus/u', $t ) ) {
+		return 'omat_mitat';
+	}
+	if ( preg_match( '/ilman[_ ]asennus/u', $t ) ) {
+		return 'ilman_asennusta';
+	}
+	return 'asennus';
+}
+
 function nap_extract_lead( $data ) {
-	$lead = array( 'email' => '', 'name' => '', 'phone' => '', 'address' => '', 'city' => '', 'products' => '', 'message' => '', 'source' => '' );
+	$lead = array( 'email' => '', 'name' => '', 'phone' => '', 'address' => '', 'city' => '', 'products' => '', 'message' => '', 'source' => '', 'delivery' => 'asennus' );
 	$first = $last = '';
 	foreach ( $data as $key => $value ) {
 		$k = strtolower( (string) $key );
 		if ( 0 === strpos( $k, '_' ) ) {
+			continue;
+		}
+		if ( preg_match( '/toimitus|asennus|delivery/', $k ) ) { // Fluent Formsin "Toimitustapa"-valinta
+			$lead['delivery'] = nap_delivery_from_text( is_array( $value ) ? implode( ' ', array_filter( $value, 'is_scalar' ) ) : (string) $value );
+			continue;
+		}
+		if ( preg_match( '/mittavastuu|omat_mitat|hyvaksyn_mitat/', $k ) ) { // vahvistus mittavastuusta
 			continue;
 		}
 		if ( is_array( $value ) ) {
@@ -76,6 +95,11 @@ function nap_extract_lead( $data ) {
 	}
 	$lead['name'] = trim( $first . ' ' . $last );
 	return $lead;
+}
+
+/** Ensimmäinen tehtävä uudesta tarjouspyynnöstä toimitustavan mukaan. */
+function nap_first_task_title( $delivery ) {
+	return 'omat_mitat' === $delivery ? 'Soita ja pyydä mitat' : 'Soita ja sovi mittaus';
 }
 
 function nap_next_workday( $from = null ) {
@@ -130,6 +154,7 @@ function nap_intake( $lead ) {
 		'stage'       => 0,
 		'owner_id'    => $customer['owner_id'] ?: $owner,
 		'details'     => $details,
+		'delivery'    => $lead['delivery'] ?? 'asennus',
 	) );
 
 	nap_log( $cid, $pid, 'request', 'Tarjouspyyntö vastaanotettu (' . $source . ')' . ( $referrer ? ', suositteli ' . $referrer['name'] : '' ), true );
@@ -139,12 +164,12 @@ function nap_intake( $lead ) {
 	nap_create_task( array(
 		'project_id'  => $pid,
 		'customer_id' => $cid,
-		'title'       => 'Soita ja sovi mittaus: ' . ( $customer['name'] ?: $customer['email'] ),
+		'title'       => nap_first_task_title( $lead['delivery'] ?? 'asennus' ) . ': ' . ( $customer['name'] ?: $customer['email'] ),
 		'assignee_id' => $customer['owner_id'] ?: $owner,
 		'due_date'    => nap_next_workday(),
 	) );
 
-	nap_mail_welcome( $customer, nap_create_login_link( $cid ) );
+	nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus' );
 	nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 
 	if ( $s['staff_notify'] ) {
@@ -152,7 +177,7 @@ function nap_intake( $lead ) {
 			array_filter( array_map( 'trim', explode( ',', $s['staff_notify'] ) ) ),
 			'Uusi tarjouspyyntö: ' . ( $customer['name'] ?: $customer['email'] ),
 			'Uusi tarjouspyyntö',
-			array_filter( array( $customer['name'] . ' · ' . $customer['email'] . ' · ' . $customer['phone'], $address, $details, 'Lähde: ' . $source ) ),
+			array_filter( array( $customer['name'] . ' · ' . $customer['email'] . ' · ' . $customer['phone'], $address, 'Toimitustapa: ' . nap_deliveries()[ nap_delivery( $lead ) ], $details, 'Lähde: ' . $source ) ),
 			array( 'Avaa CRM', home_url( '/crm/#asiakas-' . $cid ) )
 		);
 	}

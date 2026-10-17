@@ -19,6 +19,7 @@ function nordic_crm_tag_names() {
 	return array(
 		'tarjous'   => 'Lähde: Tarjouspyyntö',
 		'taloyhtio' => 'Lähde: Taloyhtiö',
+		'tuotteet'  => 'Lähde: Tarjouspyyntö, vain tuotteet',
 		'esite'     => 'Lähde: Esite',
 		'laskuri'   => 'Lähde: Laskuri',
 		'opas'      => 'Lähde: Opas',
@@ -197,9 +198,26 @@ function nordic_crm_on_fluentform( $insert_id, $form_data, $form ) {
 	$lead['source_url'] = $source;
 	$match             = trim( (string) $s['taloyhtio_match'] );
 	$lead['type']      = ( $match && $source && stripos( $source, $match ) !== false ) ? 'taloyhtio' : 'tarjous';
+	// Tuotteet ilman asennusta / asiakas mittaa itse: ei mittauskäyntiä lupaavia viestejä (oma tagi ilman automaatiota).
+	if ( 'tarjous' === $lead['type'] && nordic_crm_products_only( $form_data ) ) {
+		$lead['type'] = 'tuotteet';
+	}
 	$lead['consent']   = nordic_crm_truthy( isset( $form_data[ $s['consent_field'] ] ) ? $form_data[ $s['consent_field'] ] : '' );
 
 	nordic_crm_process_lead( $lead );
+}
+
+/** Onko lomakkeen Toimitustapa-valinta "ilman asennusta" tai "mittaan itse". */
+function nordic_crm_products_only( $data ) {
+	foreach ( $data as $key => $value ) {
+		if ( strpos( (string) $key, '_' ) !== 0 && preg_match( '/toimitus|asennus|delivery/', strtolower( (string) $key ) ) ) {
+			$v = mb_strtolower( is_array( $value ) ? implode( ' ', array_filter( $value, 'is_scalar' ) ) : (string) $value );
+			if ( preg_match( '/ilman[_ ]asennus|omat[_ ]mitat|mittaa[a-zä]* itse|vain tuotteet|vain toimitus/u', $v ) ) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 /**

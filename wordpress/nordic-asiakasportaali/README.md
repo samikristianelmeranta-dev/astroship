@@ -37,6 +37,28 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 - Ajastus käyttää WordPressin cronia. Täsmällisyyttä varten cPanel → Cron Jobs → kerran tunnissa:
   `wget -q -O /dev/null https://ikkunakauppias.fi/wp-cron.php?doing_wp_cron`
 
+## Toimitustapa
+Jokaisella kohteella on toimitustapa: **Asennettuna** (oletus), **Tuotteet ilman asennusta (mittaamme)** tai
+**Vain tuotteet, asiakas mittaa itse**. Valitaan Uusi tarjouspyyntö -lomakkeella (tai poimitaan liitetystä viestistä),
+verkkosivun lomakkeelta tai myöhemmin kohteen kortilta.
+- *Asiakas mittaa itse:* ensimmäinen tehtävä on "Soita ja pyydä mitat", kiitosviesti kertoo, että tarjous tehdään asiakkaan
+  mitoilla, ja **mittavastuuehto** näkyy kiitosviestissä, kohteen kortilla, hyväksyntälomakkeella ja vahvistuksessa.
+  Ehdon teksti muokataan asetuksissa.
+- *Ilman asennusta:* asennustehtävien tilalle tulevat "Sovi toimitus tai nouto" ja "Toimita tuotteet asiakkaalle".
+  Asiakkaan sivulla ja viesteissä vaihe *Asennus* näkyy nimellä *Toimitus*.
+- Nordic CRM (FluentCRM) ei lähetä näille mittauskäyntiä lupaavia viestejä (vaatii nordic-crm 1.2.4).
+
+### Verkkosivun tarjouslomakkeeseen (Fluent Forms, lomake 3)
+1. Fluent Forms → lomake 3 → lisää kenttä **Radio** ja anna sille *Name Attribute* `toimitustapa`.
+   Otsikko: "Toimitustapa". Vaihtoehdot (Label ja Value samat):
+   - `Asennettuna` (oletusvalinta)
+   - `Tuotteet ilman asennusta`
+   - `Vain tuotteet, mittaan itse`
+2. Lisää kenttä **Checkbox**, *Name Attribute* `mittavastuu`, vaihtoehto
+   "Vastaan itse ilmoittamieni mittojen oikeellisuudesta." Merkitse pakolliseksi ja laita
+   *Conditional Logic*: näytä, kun `toimitustapa` = `Vain tuotteet, mittaan itse`.
+3. Tallenna ja lähetä testi: CRM:ssä kohteen kortilla näkyy toimitustapa.
+
 ## Tarjouksen hyväksyntä asiakkaan puolesta
 Kun asiakas hyväksyy tarjouksen puhelimessa, paikan päällä, sähköpostilla, viestillä tai allekirjoittamalla paperin,
 myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaan puolesta**.
@@ -54,7 +76,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.5.1.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.6.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

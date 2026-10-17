@@ -15,8 +15,8 @@ function nap_stage_tasks() {
 	return apply_filters( 'nap_stage_tasks', array(
 		2 => array( array( 'Seuraa tarjousta: soita asiakkaalle', 3, 'owner' ) ),
 		3 => array( array( 'Tilaa tuotteet Skaalalta', 1, 'owner' ) ),
-		4 => array( array( 'Sovi asennuspäivä asiakkaan kanssa', 2, 'installer' ) ),
-		5 => array( array( 'Luovutus: käy työ läpi asiakkaan kanssa', 1, 'installer' ) ),
+		4 => array( array( 'Sovi asennuspäivä asiakkaan kanssa', 2, 'installer', 'Sovi toimitus tai nouto asiakkaan kanssa' ) ),
+		5 => array( array( 'Luovutus: käy työ läpi asiakkaan kanssa', 1, 'installer', 'Toimita tuotteet asiakkaalle ja kuittaa toimitus' ) ),
 		6 => array(
 			array( 'Laskuta työ (Holvi) tai tarkista rahoitus', 1, 'owner' ),
 			array( 'Kiitoslahja ja suosittelupyyntö asiakkaalle', 1, 'owner' ),
@@ -39,7 +39,7 @@ function nap_on_stage_change( $p, $old_stage ) {
 	$t   = nap_table( 'tasks' );
 	// Mittaus sovittu tai pidemmällä → avoin "Soita ja sovi mittaus" on hoidettu.
 	if ( $new > 0 ) {
-		$wpdb->query( $wpdb->prepare( "UPDATE $t SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND title LIKE %s", nap_now(), $p['id'], 'Soita ja sovi mittaus%' ) ); // phpcs:ignore
+		$wpdb->query( $wpdb->prepare( "UPDATE $t SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND (title LIKE %s OR title LIKE %s)", nap_now(), $p['id'], 'Soita ja sovi mittaus%', 'Soita ja pyydä mitat%' ) ); // phpcs:ignore
 	}
 	if ( $new <= (int) $old_stage || ! nap_settings()['auto_tasks'] ) {
 		return;
@@ -48,7 +48,12 @@ function nap_on_stage_change( $p, $old_stage ) {
 	if ( empty( $map[ $new ] ) ) {
 		return;
 	}
+	$titles = array();
 	foreach ( $map[ $new ] as $def ) {
+		if ( 'asennus' !== nap_delivery( $p ) && isset( $def[3] ) ) {
+			$def[0] = $def[3]; // toimitus ilman asennusta
+		}
+		$titles[] = $def[0];
 		$exists = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $t WHERE project_id = %d AND title = %s AND done_at IS NULL", $p['id'], $def[0] ) ); // phpcs:ignore
 		if ( $exists ) {
 			continue;
@@ -62,7 +67,7 @@ function nap_on_stage_change( $p, $old_stage ) {
 			'due_date'    => nap_add_workdays( $def[1] ),
 		) );
 	}
-	nap_log( $p['customer_id'], $p['id'], 'auto', 'Automaattiset tehtävät: ' . implode( ', ', array_column( $map[ $new ], 0 ) ) );
+	nap_log( $p['customer_id'], $p['id'], 'auto', 'Automaattiset tehtävät: ' . implode( ', ', $titles ) );
 }
 
 /* ---------- Ajastus ---------- */

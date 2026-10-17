@@ -123,3 +123,5 @@ main{min-width:0;padding-block:22px 48px;padding-left:max(24px,env(safe-area-ins
 .appr{margin-top:10px;padding:9px 12px;border-radius:10px;background:var(--good-soft);color:var(--ink)}.appr b{color:var(--good)}
 .apprw{margin-top:10px}
 .apprf{margin-top:4px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);display:flex;flex-direction:column;gap:10px}
+.terms{margin-top:8px;padding:8px 10px;border-radius:9px;background:var(--gold-soft);border-left:3px solid var(--warn)}
+.fields .terms{grid-column:1/-1;margin-top:0}

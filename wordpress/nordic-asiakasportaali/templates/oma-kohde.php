@@ -75,9 +75,9 @@ input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;pad
   <?php foreach ( $projects as $p ) : $st = (int) $p['stage']; ?>
   <div class="card">
     <h2><?php echo esc_html( $p['title'] ); ?></h2>
-    <p class="small muted" style="margin-top:-6px"><?php echo esc_html( $p['address'] ); ?></p>
+    <p class="small muted" style="margin-top:-6px"><?php echo esc_html( $p['address'] ); ?><?php if ( 'asennus' !== nap_delivery( $p ) ) echo ' · ' . esc_html( nap_deliveries()[ nap_delivery( $p ) ] ); ?></p>
     <ul class="tl">
-      <?php foreach ( NAP_STAGES as $i => $name ) : ?>
+      <?php foreach ( nap_stage_names( nap_delivery( $p ) ) as $i => $name ) : ?>
         <li class="<?php echo $i < $st || 6 === $st ? 'done' : ( $i === $st ? 'now' : '' ); ?>"><span class="dot"><?php echo $i < $st || 6 === $st ? '✓' : (int) ( $i + 1 ); ?></span><div><h3><?php echo esc_html( $name ); ?></h3></div></li>
       <?php endforeach; ?>
     </ul>

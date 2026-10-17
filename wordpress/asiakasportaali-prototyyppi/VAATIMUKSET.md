@@ -3,6 +3,11 @@
 Toteutus: WordPress-lisäosa `nordic-asiakasportaali` ikkunakauppias.fi:hin, puhelimeen asennettava verkkosovellus (PWA),
 kirjautuminen sähköpostin kertakäyttölinkillä. Prototyyppi: `oma-kohde-artifact.html`.
 
+## Toimitustapa (toteutettu 0.6.0)
+- Asennettuna / tuotteet ilman asennusta (mittaamme) / vain tuotteet, asiakas mittaa itse.
+- Ehto: jos asiakas mittaa itse tai toimittaa mitat, vastuu mitoista on aina asiakkaalla. Näytetään lomakkeella
+  (pakollinen vahvistus), kiitosviestissä, tarjouksessa ja hyväksynnän vahvistuksessa.
+
 ## Vaiheet
 1. Tarjouspyyntö → kohde luodaan automaattisesti, asiakas saa linkin.
 2. Mittauskäynti → asentaja tekee tarjouksen puhelimella TAI tarjous tuodaan Skaalan tarjoustyökalusta (selvitettävä: API/vienti, muuten PDF:n tuonti).

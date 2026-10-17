@@ -54,6 +54,7 @@ function nap_project_out( $p, $customer = null ) {
 		'owner_id'     => $p['owner_id'] ? (int) $p['owner_id'] : null,
 		'installer_id' => $p['installer_id'] ? (int) $p['installer_id'] : null,
 		'details'      => (string) $p['details'],
+		'delivery'     => nap_delivery( $p ),
 		'approval'     => ! empty( $p['approval'] ) ? json_decode( $p['approval'], true ) : null,
 		'updated_at'   => $p['updated_at'],
 	);
@@ -65,6 +66,8 @@ function nap_api_bootstrap() {
 		'me'     => array( 'id' => (int) $me->ID, 'name' => $me->display_name, 'role' => current_user_can( 'nap_all' ) ? 'osakas' : 'asentaja', 'twofa' => nap_user_has_2fa( $me->ID ) ),
 		'users'  => nap_staff_users(),
 		'stages' => NAP_STAGES,
+		'deliveries' => nap_deliveries(),
+		'measure_terms' => (string) nap_settings()['measure_terms'],
 		'today'  => current_time( 'Y-m-d' ),
 	);
 }
@@ -87,7 +90,7 @@ function nap_api_update_project( WP_REST_Request $req ) {
 		return nap_err( 'Ei oikeutta tähän kohteeseen.' );
 	}
 	$data = array();
-	foreach ( array( 'title', 'address', 'details', 'value', 'stage', 'installer_id', 'owner_id' ) as $k ) {
+	foreach ( array( 'title', 'address', 'details', 'value', 'stage', 'installer_id', 'owner_id', 'delivery' ) as $k ) {
 		if ( null !== $req->get_param( $k ) ) {
 			$data[ $k ] = $req->get_param( $k );
 		}
@@ -106,7 +109,7 @@ function nap_api_update_project( WP_REST_Request $req ) {
 
 	if ( isset( $data['stage'] ) && (int) $p['stage'] !== $old_stage ) {
 		$c = nap_get_customer( (int) $p['customer_id'] );
-		nap_log( $c['id'], $p['id'], 'stage', 'Vaihe: ' . NAP_STAGES[ (int) $p['stage'] ], true );
+		nap_log( $c['id'], $p['id'], 'stage', 'Vaihe: ' . nap_stage_names( nap_delivery( $p ) )[ (int) $p['stage'] ], true );
 		if ( nap_settings()['notify_stage'] && (int) $p['stage'] > $old_stage && $c['email'] ) {
 			if ( nap_mail_stage( $c, $p, home_url( '/oma-kohde/' ) ) ) {
 				nap_log( $c['id'], $p['id'], 'mail', 'Asiakkaalle ilmoitettu vaiheesta: ' . NAP_STAGES[ (int) $p['stage'] ] );
@@ -116,6 +119,9 @@ function nap_api_update_project( WP_REST_Request $req ) {
 	}
 	if ( isset( $data['value'] ) ) {
 		nap_log( $p['customer_id'], $p['id'], 'edit', 'Kohteen arvo päivitetty: ' . number_format( (float) $p['value'], 0, ',', ' ' ) . ' €' );
+	}
+	if ( isset( $data['delivery'] ) ) {
+		nap_log( $p['customer_id'], $p['id'], 'edit', 'Toimitustapa: ' . nap_deliveries()[ nap_delivery( $p ) ] );
 	}
 	if ( array_key_exists( 'installer_id', $data ) ) {
 		nap_log( $p['customer_id'], $p['id'], 'edit', 'Asentaja: ' . ( nap_user_name( $p['installer_id'] ) ?: 'ei valittu' ) );
@@ -249,12 +255,14 @@ function nap_api_create_customer( WP_REST_Request $req ) {
 	$address = trim( (string) $req->get_param( 'address' ) . ', ' . (string) $req->get_param( 'city' ), ', ' );
 	$message = sanitize_textarea_field( (string) $req->get_param( 'message' ) );
 	$measure = sanitize_text_field( (string) $req->get_param( 'measure_date' ) );
+	$delivery = nap_delivery( array( 'delivery' => (string) $req->get_param( 'delivery' ) ) );
 	$measure = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $measure ) ? $measure : '';
 	$pid     = nap_create_project( array(
 		'customer_id'  => $cid,
 		'title'        => sanitize_text_field( (string) $req->get_param( 'title' ) ) ?: 'Ikkuna- ja oviremontti',
 		'address'      => $address ?: trim( $c['address'] . ', ' . $c['city'], ', ' ),
 		'stage'        => $measure ? 1 : 0,
+		'delivery'     => $delivery,
 		'owner_id'     => $existing && $c['owner_id'] ? (int) $c['owner_id'] : $owner,
 		'installer_id' => $all ? null : $me,
 		'details'      => $message,
@@ -269,12 +277,12 @@ function nap_api_create_customer( WP_REST_Request $req ) {
 		nap_log( $cid, $pid, 'stage', 'Vaihe: ' . NAP_STAGES[1], true );
 		nap_create_task( array( 'project_id' => $pid, 'customer_id' => $cid, 'title' => 'Mittauskäynti: ' . $label, 'assignee_id' => $assignee, 'due_date' => $measure ) );
 	} elseif ( 'none' !== $req->get_param( 'task' ) ) {
-		nap_create_task( array( 'project_id' => $pid, 'customer_id' => $cid, 'title' => 'Soita ja sovi mittaus: ' . $label, 'assignee_id' => $assignee, 'due_date' => nap_next_workday() ) );
+		nap_create_task( array( 'project_id' => $pid, 'customer_id' => $cid, 'title' => nap_first_task_title( $delivery ) . ': ' . $label, 'assignee_id' => $assignee, 'due_date' => nap_next_workday() ) );
 	}
 
 	$sent = false;
 	if ( $req->get_param( 'send_link' ) && $c['email'] ) {
-		nap_mail_welcome( $c, nap_create_login_link( $cid ), $measure );
+		nap_mail_welcome( $c, nap_create_login_link( $cid ), $measure, $delivery );
 		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 		$sent = true;
 	}

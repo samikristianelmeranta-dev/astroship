@@ -10,6 +10,32 @@ defined( 'ABSPATH' ) || exit;
 
 const NAP_STAGES = array( 'Tarjouspyyntö', 'Mittaus', 'Tarjous lähetetty', 'Hyväksytty', 'Tilaus', 'Asennus', 'Valmis' );
 
+/** Toimitustapa: asennettuna (oletus), tuotteet ilman asennusta (me mittaamme) tai vain toimitus asiakkaan omilla mitoilla. */
+function nap_deliveries() {
+	return array(
+		'asennus'         => 'Asennettuna',
+		'ilman_asennusta' => 'Tuotteet ilman asennusta (mittaamme)',
+		'omat_mitat'      => 'Vain tuotteet, asiakas mittaa itse',
+	);
+}
+
+function nap_delivery( $p ) {
+	$d = is_array( $p ) && ! empty( $p['delivery'] ) ? $p['delivery'] : 'asennus';
+	return isset( nap_deliveries()[ $d ] ) ? $d : 'asennus';
+}
+
+/** Vaiheiden nimet asiakkaalle toimitustavan mukaan. */
+function nap_stage_names( $delivery = 'asennus' ) {
+	$n = NAP_STAGES;
+	if ( 'asennus' !== $delivery ) {
+		$n[5] = 'Toimitus';
+	}
+	if ( 'omat_mitat' === $delivery ) {
+		$n[1] = 'Mitat';
+	}
+	return $n;
+}
+
 function nap_table( $name ) {
 	global $wpdb;
 	return $wpdb->prefix . 'nap_' . $name;
@@ -53,6 +79,7 @@ function nap_install_db() {
 		installer_id bigint(20) unsigned DEFAULT NULL,
 		details text NULL,
 		approval text NULL,
+		delivery varchar(20) NOT NULL DEFAULT 'asennus',
 		created_at datetime NOT NULL,
 		updated_at datetime NOT NULL,
 		PRIMARY KEY  (id),
@@ -193,6 +220,7 @@ function nap_create_project( $data ) {
 		'owner_id'     => ! empty( $data['owner_id'] ) ? (int) $data['owner_id'] : null,
 		'installer_id' => ! empty( $data['installer_id'] ) ? (int) $data['installer_id'] : null,
 		'details'      => sanitize_textarea_field( $data['details'] ?? '' ),
+		'delivery'     => nap_delivery( $data ),
 		'created_at'   => $now,
 		'updated_at'   => $now,
 	) );
@@ -217,6 +245,9 @@ function nap_update_project( $id, $data ) {
 		if ( array_key_exists( $k, $data ) ) {
 			$row[ $k ] = $data[ $k ] ? (int) $data[ $k ] : null;
 		}
+	}
+	if ( array_key_exists( 'delivery', $data ) ) {
+		$row['delivery'] = nap_delivery( $data );
 	}
 	if ( array_key_exists( 'approval', $data ) ) {
 		$row['approval'] = $data['approval'] ? wp_json_encode( $data['approval'], JSON_UNESCAPED_UNICODE ) : null;
