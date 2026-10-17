@@ -15,7 +15,11 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 - **Uusi tarjouspyyntö käsin** (puhelu, sähköposti, messut, paikan päällä): asiakas, kohde, tuotteet, asiakkaan tarve,
   lähde ja suosittelija, vastuumyyjä. Seuraava askel valitaan: soittotehtävä, jo sovittu mittauskäynti (kohde menee suoraan
   vaiheeseen Mittaus) tai ei tehtävää. Kiitosviestin ja Oma kohde -linkin voi lähettää, jos sähköposti on tiedossa.
-  Jos sähköpostilla on jo asiakas, kohde lisätään hänelle. Asiakaskortin **+ Uusi kohde** lisää kohteen suoraan olemassa olevalle asiakkaalle.
+  Jos sähköpostilla on jo asiakas, kohde lisätään hänelle.
+- **Liitä asiakkaan viesti** (WhatsApp, tekstiviesti, Messenger, sähköposti): lomake poimii viestistä nimen, puhelimen,
+  sähköpostin, osoitteen, paikkakunnan ja tuotteet valmiiksi kenttiin ja kertoo, jos numero tai sähköposti on jo asiakkaalla.
+- **Androidin Jaa-valikko:** kun CRM on lisätty kotinäytölle (Chrome → ⋮ → Lisää aloitusnäyttöön / Asenna sovellus),
+  WhatsApp-viestin voi jakaa suoraan Nordic CRM:ään, ja Uusi tarjouspyyntö aukeaa täytettynä. iPhonella kopioi ja liitä. Asiakaskortin **+ Uusi kohde** lisää kohteen suoraan olemassa olevalle asiakkaalle.
 - Vaiheen siirto kirjautuu historiaan ja lähettää asiakkaalle ilmoituksen (voi kytkeä pois).
 - Asiakkaan kirjautuminen ilman salasanaa: kertakäyttöinen linkki sähköpostiin (voimassa 7 vrk).
   Linkin voi pyytää uudelleen Oma kohde -sivulta. Pyynnöt on rajoitettu, eikä sivu paljasta, onko osoite asiakkaana.
@@ -27,7 +31,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.2.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.3.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

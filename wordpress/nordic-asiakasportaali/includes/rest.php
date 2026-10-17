@@ -139,7 +139,7 @@ function nap_api_customers( WP_REST_Request $req ) {
 		}
 		$projects = nap_customer_projects( (int) $c['id'] );
 		$stage    = $projects ? max( array_map( function ( $p ) { return (int) $p['stage']; }, $projects ) ) : 0;
-		$out[]    = array( 'id' => (int) $c['id'], 'name' => $c['name'], 'address' => trim( $c['address'] . ', ' . $c['city'], ', ' ), 'source' => $c['source'], 'stage' => $stage );
+		$out[]    = array( 'id' => (int) $c['id'], 'name' => $c['name'], 'address' => trim( $c['address'] . ', ' . $c['city'], ', ' ), 'phone' => $c['phone'], 'email' => $c['email'], 'source' => $c['source'], 'stage' => $stage );
 	}
 	return $out;
 }

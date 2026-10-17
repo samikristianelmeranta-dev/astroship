@@ -15,6 +15,9 @@ $nap_cfg = array(
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Nordic CRM</title>
+<link rel="manifest" href="<?php echo esc_url( home_url( '/crm/manifest.webmanifest' ) ); ?>">
+<meta name="theme-color" content="#16303B">
+<link rel="apple-touch-icon" href="<?php echo esc_url( NAP_URL . 'assets/icon-192.png' ); ?>">
 <link rel="stylesheet" href="<?php echo esc_url( NAP_URL . 'assets/crm.css?v=' . NAP_VERSION ); ?>">
 </head>
 <body>
@@ -29,5 +32,6 @@ $nap_cfg = array(
 <div class="toast" id="toast" role="status"></div>
 <script>window.NAP = <?php echo wp_json_encode( $nap_cfg ); ?>;</script>
 <script src="<?php echo esc_url( NAP_URL . 'assets/crm.js?v=' . NAP_VERSION ); ?>"></script>
+<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register(<?php echo wp_json_encode( home_url( '/crm/sw.js' ) ); ?>, { scope: <?php echo wp_json_encode( wp_parse_url( home_url( '/crm/' ), PHP_URL_PATH ) ); ?> }).catch(function () {});</script>
 </body>
 </html>

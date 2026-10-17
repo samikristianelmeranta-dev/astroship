@@ -2,6 +2,7 @@
 /**
  * Osoitteet:
  *  /crm/          Nordicin henkilökunnan sovellus (vaatii kirjautumisen ja roolin)
+ *  /crm/manifest.webmanifest ja /crm/sw.js  kotinäytölle asennus ja Androidin Jaa-valikko
  *  /oma-kohde/    asiakkaan portaali (kirjautuminen sähköpostilinkillä)
  *  /s/KOODI/      suosittelulinkki: tallentaa suosittelijan ja ohjaa etusivulle
  * Sivut eivät näy hakukoneille eikä niitä tallenneta välimuistiin.
@@ -11,6 +12,8 @@ defined( 'ABSPATH' ) || exit;
 
 function nap_add_rewrites() {
 	add_rewrite_rule( '^crm/?$', 'index.php?nap_route=crm', 'top' );
+	add_rewrite_rule( '^crm/manifest\\.webmanifest$', 'index.php?nap_route=manifest', 'top' );
+	add_rewrite_rule( '^crm/sw\\.js$', 'index.php?nap_route=sw', 'top' );
 	add_rewrite_rule( '^oma-kohde/?$', 'index.php?nap_route=oma', 'top' );
 	add_rewrite_rule( '^s/([A-Za-z0-9]{4,12})/?$', 'index.php?nap_route=ref&nap_ref=$matches[1]', 'top' );
 }
@@ -39,6 +42,19 @@ add_action( 'template_redirect', function () {
 			setcookie( 'nap_ref', $code, array( 'expires' => time() + 90 * DAY_IN_SECONDS, 'path' => '/', 'secure' => is_ssl(), 'httponly' => true, 'samesite' => 'Lax' ) );
 		}
 		wp_safe_redirect( add_query_arg( 'suositus', '1', home_url( '/' ) ) );
+		exit;
+	}
+
+	if ( 'manifest' === $route ) {
+		nap_send_manifest();
+	}
+	if ( 'sw' === $route ) {
+		header( 'Content-Type: application/javascript; charset=utf-8' );
+		header( 'Service-Worker-Allowed: /crm/' );
+		// Ei välimuistia: sovellus hakee aina tuoreet tiedot. Fetch-käsittelijä tarvitaan asennettavuuteen.
+		echo "self.addEventListener('install',function(){self.skipWaiting();});\n"
+			. "self.addEventListener('activate',function(e){e.waitUntil(self.clients.claim());});\n"
+			. "self.addEventListener('fetch',function(){});\n";
 		exit;
 	}
 
@@ -87,5 +103,30 @@ function nap_handle_customer_route() {
 		}
 	}
 	include NAP_DIR . '/templates/oma-kohde.php';
+	exit;
+}
+
+/** Kotinäytölle asennettava sovellus. share_target tuo sovelluksen Androidin Jaa-valikkoon. */
+function nap_send_manifest() {
+	header( 'Content-Type: application/manifest+json; charset=utf-8' );
+	echo wp_json_encode( array(
+		'name'             => 'Nordic CRM',
+		'short_name'       => 'Nordic CRM',
+		'start_url'        => home_url( '/crm/' ),
+		'scope'            => home_url( '/crm/' ),
+		'display'          => 'standalone',
+		'background_color' => '#16303B',
+		'theme_color'      => '#16303B',
+		'lang'             => 'fi',
+		'icons'            => array(
+			array( 'src' => NAP_URL . 'assets/icon-192.png', 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any maskable' ),
+			array( 'src' => NAP_URL . 'assets/icon-512.png', 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any maskable' ),
+		),
+		'share_target'     => array(
+			'action' => home_url( '/crm/' ),
+			'method' => 'GET',
+			'params' => array( 'title' => 'jaa_otsikko', 'text' => 'jaa_teksti', 'url' => 'jaa_linkki' ),
+		),
+	), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 	exit;
 }

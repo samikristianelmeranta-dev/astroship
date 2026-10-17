@@ -229,7 +229,61 @@
     });
   }
 
-  var SOURCES = ['Puhelin', 'Sähköposti', 'Messut', 'Paikan päällä', 'Roll-up tai kyltti', 'Suosittelu', 'Google-haku', 'Facebook', 'Isännöitsijä', 'Muu'];
+  /* ---------- Viestin jäsennys: puhelin, sähköposti, osoite, nimi ja tuotteet liitetystä viestistä ---------- */
+  var CITIES = ['Turku', 'Masku', 'Raisio', 'Naantali', 'Kaarina', 'Lieto', 'Rusko', 'Nousiainen', 'Mynämäki', 'Taivassalo', 'Kustavi', 'Uusikaupunki',
+    'Laitila', 'Vehmaa', 'Pyhäranta', 'Salo', 'Paimio', 'Sauvo', 'Parainen', 'Aura', 'Pöytyä', 'Marttila', 'Koski Tl', 'Loimaa', 'Oripää', 'Somero',
+    'Rauma', 'Eura', 'Säkylä', 'Pori', 'Kemiönsaari', 'Tampere', 'Helsinki', 'Espoo', 'Vantaa', 'Hämeenlinna', 'Forssa'];
+  var CITY_FORMS = { Turussa: 'Turku', Turusta: 'Turku', Turkuun: 'Turku', Liedossa: 'Lieto', Liedosta: 'Lieto', 'Mynämäellä': 'Mynämäki', 'Mynämäeltä': 'Mynämäki',
+    Uudessakaupungissa: 'Uusikaupunki', Tampereella: 'Tampere', Tampereelta: 'Tampere', Helsingissä: 'Helsinki', Helsingistä: 'Helsinki', Kemiönsaarella: 'Kemiönsaari',
+    Pöytyällä: 'Pöytyä', Marttilassa: 'Marttila', Somerolla: 'Somero', Kaarinassa: 'Kaarina', Paraisilla: 'Parainen', Paraisten: 'Parainen' };
+  var STREET = '(?:tie|katu|kuja|polku|väylä|ranta|kaari|rinne|mäki|puisto|tanhua|kaarre|raitti|aukio|piha|kulma|linja|niitty|vainio|pelto|ahde|tori|kallio|laakso|lenkki|reitti|haka|nummi|kumpu|kangas|kylä|tanhuantie|gatan|vägen|stigen)';
+  function parseMessage(raw) {
+    var out = {}, text = String(raw || '').replace(/\r/g, '').trim();
+    if (!text) return out;
+    // WhatsAppin kopioimat viestit: "[17.10.2026 14.32] Nimi: viesti" tai vienti "17.10.2026 klo 14.32 - Nimi: viesti"
+    var wa = /^\s*(?:\[[^\]]{6,30}\]|\d{1,2}[./]\d{1,2}[./]\d{2,4},?\s+(?:klo\s+)?\d{1,2}[.:]\d{2}(?:[.:]\d{2})?\s+-)\s*([^:\n]{2,40}):\s?/;
+    var lines = text.split('\n').map(function (l) {
+      var m = wa.exec(l);
+      if (m) { if (!out.name && !/^\+?\d[\d\s-]+$/.test(m[1])) out.name = m[1].trim(); out.whatsapp = true; return l.slice(m[0].length); }
+      return l;
+    });
+    text = lines.join('\n').trim();
+    out.message = text;
+    var em = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/.exec(text);
+    if (em) out.email = em[0].toLowerCase();
+    var ph = /(?:\+358|00358|(?:^|[^\d])0)[\s-]?\(?\d{1,3}\)?(?:[\s-]?\d){5,8}(?!\d)/.exec(text);
+    if (ph) out.phone = ph[0].replace(/^[^\d+]+/, '').replace(/\s{2,}/g, ' ').trim();
+    var st = new RegExp('([A-ZÅÄÖ][a-zåäöA-ZÅÄÖ-]*' + STREET + ')\\s+(\\d+(?:\\s?[A-Za-z]{1,2})?(?:\\s?\\d+)?(?:-\\d+)?)\\b').exec(text) ||
+      new RegExp('([A-ZÅÄÖ][a-zåäö-]+\\s(?:' + STREET.slice(3, -1) + '))\\s+(\\d+[A-Za-z]?)\\b').exec(text);
+    if (st) out.address = (st[1] + ' ' + st[2]).trim();
+    var pc = /\b\d{5}\s+([A-ZÅÄÖ][a-zåäö-]+)/.exec(text);
+    if (pc) out.city = pc[1];
+    if (!out.city && st) { var after = /^,?\s*([A-ZÅÄÖ][a-zåäö-]+)/.exec(text.slice(st.index + st[0].length)); if (after && /^,/.test(text.slice(st.index + st[0].length).trim())) out.city = after[1]; }
+    if (!out.city) Object.keys(CITY_FORMS).some(function (f) { if (new RegExp('(^|[^\\wåäö])' + f + '(?![\\wåäö])').test(text)) { out.city = CITY_FORMS[f]; return true; } return false; });
+    if (!out.city) CITIES.some(function (c) { if (new RegExp('(^|[^\\wåäö])' + c + '(ssa|ssä|sta|stä|lla|llä|lta|ltä|an|en|in|un|ön|än)?(?![\\wåäö])', 'i').test(text)) { out.city = c; return true; } return false; });
+    if (!out.name) {
+      var sig = /(?:[Tt]erveisin|[Tt]erv\.|\b[Tt]\.|[Yy]st\.\s*terv\.?)\s*,?\s*\n?\s*([A-ZÅÄÖ][a-zåäö-]+(?:\s[A-ZÅÄÖ][a-zåäö-]+)?)/.exec(text) ||
+        /(?:[Oo]len|[Nn]imeni on|[Tt]äällä)\s+([A-ZÅÄÖ][a-zåäö-]+(?:\s[A-ZÅÄÖ][a-zåäö-]+)?)/.exec(text);
+      if (sig) out.name = sig[1];
+    }
+    var prod = [], w = /(\d+)\s*(?:kpl\s*|kappaletta\s*)?(?:uut\w*\s*)?ikkun/i.exec(text);
+    if (w) prod.push(w[1] + ' ikkunaa'); else if (/ikkun/i.test(text)) prod.push('ikkunat');
+    if (/ulko-?ov/i.test(text)) prod.push('ulko-ovi');
+    if (/parveke-?ov/i.test(text)) prod.push('parvekeovi');
+    if (/terassi-?ov|terassin ov/i.test(text)) prod.push('terassiovi');
+    if (/autotalli/i.test(text)) prod.push('autotallin ovi');
+    if (!prod.length && /\bov(i|ia|et|en)\b/i.test(text)) prod.push('ovet');
+    if (prod.length) out.title = prod.join(', ').replace(/, ([^,]*)$/, ' ja $1');
+    return out;
+  }
+  function digits(s) { return String(s || '').replace(/\D/g, '').replace(/^358/, '0').slice(-9); }
+  function findExisting(p) {
+    return S.customers.filter(function (c) {
+      return (p.email && c.email && c.email.toLowerCase() === p.email) || (p.phone && c.phone && digits(c.phone).length >= 7 && digits(c.phone) === digits(p.phone));
+    })[0];
+  }
+
+  var SOURCES = ['Puhelin', 'WhatsApp', 'Tekstiviesti', 'Messenger', 'Sähköposti', 'Messut', 'Paikan päällä', 'Roll-up tai kyltti', 'Suosittelu', 'Google-haku', 'Facebook', 'Isännöitsijä', 'Muu'];
   function viewNew(cid) {
     if (cid && (!S.newFor || S.newFor.id !== cid)) {
       main.innerHTML = head('Uusi tarjouspyyntö', 'Ladataan…');
@@ -241,6 +295,8 @@
     var f2 = function (name, label, type, extra) { return '<label class="fld">' + label + '<input name="' + name + '" type="' + type + '" ' + (extra || '') + '></label>'; };
     main.innerHTML = head('Uusi tarjouspyyntö', c ? 'Uusi kohde asiakkaalle ' + c.name + '.' : 'Puhelimessa, sähköpostilla, messuilla tai paikan päällä saatu tarjouspyyntö. Verkkosivun lomakkeelta ne tulevat automaattisesti.') +
       '<form class="card" id="nc">' +
+      '<label class="fld wide paste">Liitä asiakkaan viesti <span class="muted small">(WhatsApp, tekstiviesti, Messenger, sähköposti: puhelin, sähköposti, osoite ja tuotteet poimitaan kenttiin)</span>' +
+        '<textarea name="paste" rows="4" placeholder="Pitkä painallus viestiin → Kopioi, ja liitä tähän"></textarea></label><div id="parsed" class="parsed" hidden></div>' +
       (c ? '<p><b>' + esc(c.name) + '</b><br><span class="muted">' + esc([c.phone, c.email].filter(Boolean).join(' · ')) + '</span></p>' :
         '<h2>Asiakas</h2><div class="fields">' + f2('name', 'Nimi *', 'text', 'required autocomplete="off"') + f2('phone', 'Puhelin', 'tel') + f2('email', 'Sähköposti', 'email') + '</div>') +
       '<h2 class="mt">Kohde</h2><div class="fields">' +
@@ -259,6 +315,29 @@
       '<label class="mt"><input type="checkbox" name="send_link" checked><span>Lähetä asiakkaalle kiitosviesti ja Oma kohde -linkki <span class="muted small">(vaatii sähköpostin)</span></span></label>' +
       '</div><div class="actions"><button class="btn p">Tallenna tarjouspyyntö</button>' + (c ? '<a class="btn" href="#asiakas-' + c.id + '">Peruuta</a>' : '') + '</div></form>';
     var form = document.getElementById('nc');
+    function applyParsed(text, fromShare) {
+      var p = parseMessage(text), got = [];
+      var set = function (k, label) {
+        if (!form[k] || !p[k]) return;
+        if (form[k].value && !form[k].dataset.auto) return; // käsin kirjoitettua ei ylikirjoiteta
+        form[k].value = p[k]; form[k].dataset.auto = '1'; got.push(label);
+      };
+      if (!c) { set('name', 'nimi'); set('phone', 'puhelin'); set('email', 'sähköposti'); }
+      set('address', 'osoite'); set('city', 'paikkakunta'); set('title', 'tuotteet');
+      if (p.message && (!form.message.value || form.message.dataset.auto)) { form.message.value = p.message; form.message.dataset.auto = '1'; }
+      if (p.whatsapp || fromShare) form.source.value = 'WhatsApp';
+      else if (p.email && !p.phone) form.source.value = 'Sähköposti';
+      var box = document.getElementById('parsed'), ex = !c && findExisting(p);
+      box.hidden = false;
+      box.innerHTML = (got.length ? 'Poimittiin: <b>' + esc(got.join(', ')) + '</b>. Tarkista kentät ennen tallennusta.' : 'Viestistä ei löytynyt yhteystietoja. Täydennä kentät käsin.') +
+        (fromShare ? ' Lähteeksi valittiin WhatsApp, vaihda tarvittaessa.' : '') +
+        (ex ? '<br>Sama ' + (p.email && ex.email && ex.email.toLowerCase() === p.email ? 'sähköposti' : 'puhelinnumero') + ' on jo asiakkaalla <b>' + esc(ex.name) + '</b>. <a href="#uusi-' + ex.id + '" id="useex">Lisää kohde hänelle</a>' : '');
+      var u = document.getElementById('useex');
+      if (u) u.addEventListener('click', function () { S.prefill = { text: form.paste.value, share: fromShare }; });
+    }
+    form.paste.addEventListener('input', function () { applyParsed(form.paste.value, false); });
+    form.addEventListener('input', function (e) { if (e.target !== form.paste && e.target.dataset) delete e.target.dataset.auto; });
+    if (S.prefill) { var pf = S.prefill; S.prefill = null; form.paste.value = pf.text; applyParsed(pf.text, pf.share); }
     form.source.addEventListener('change', function () { document.getElementById('refw').hidden = form.source.value !== 'Suosittelu'; });
     form.measure_date.addEventListener('focus', function () { form.task.value = 'measure'; });
     form.addEventListener('submit', function (e) {
@@ -291,11 +370,20 @@
     if (r.v === 'uusi') return viewNew(r.id);
     return viewDay();
   }
-  window.addEventListener('hashchange', function () { render(); window.scrollTo(0, 0); });
+  window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
 
   api('bootstrap').then(function (b) {
     S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today;
     return Promise.all([api('board'), api('tasks'), api('customers')]);
-  }).then(function (r) { S.board = r[0]; S.tasks = r[1]; S.customers = r[2]; render(); })
+  }).then(function (r) {
+    S.board = r[0]; S.tasks = r[1]; S.customers = r[2];
+    // Androidin Jaa-valikko: /crm/?jaa_teksti=... → Uusi tarjouspyyntö viesti valmiiksi liitettynä
+    var q = new URLSearchParams(location.search), shared = [q.get('jaa_otsikko'), q.get('jaa_teksti'), q.get('jaa_linkki')].filter(Boolean).join('\n');
+    if (shared) {
+      S.prefill = { text: shared, share: true };
+      history.replaceState(null, '', location.pathname + '#uusi');
+    }
+    render();
+  })
     .catch(function (e) { main.innerHTML = '<div class="empty">CRM:n lataus epäonnistui: ' + esc(e.message) + ' Päivitä sivu tai kirjaudu uudelleen.</div>'; });
 })();
