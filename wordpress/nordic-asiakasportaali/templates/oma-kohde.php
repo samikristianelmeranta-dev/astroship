@@ -108,6 +108,14 @@ a.btn{text-align:center;text-decoration:none}textarea{font-family:inherit;margin
   <div class="card">
     <h2><?php echo esc_html( $p['title'] ); ?></h2>
     <p class="small muted" style="margin-top:-6px"><?php echo esc_html( $p['address'] ); ?><?php if ( 'asennus' !== nap_delivery( $p ) ) echo ' · ' . esc_html( nap_deliveries()[ nap_delivery( $p ) ] ); ?></p>
+    <?php
+    global $wpdb;
+    $upcoming = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'visits' ) . " WHERE project_id = %d AND status = 'planned' AND end_at >= %s ORDER BY start_at ASC LIMIT 5", $p['id'], current_time( 'mysql' ) ), ARRAY_A ); // phpcs:ignore
+    if ( $upcoming ) : ?>
+    <div class="ok" style="margin:6px 0 14px">
+      <?php foreach ( $upcoming as $uv ) : ?><div><b><?php echo esc_html( nap_visit_label( $uv ) ); ?>:</b> <?php echo esc_html( nap_visit_when( $uv, true ) ); ?><?php echo $uv['installer_id'] ? ' · ' . esc_html( nap_user_name( $uv['installer_id'] ) ) : ''; ?></div><?php endforeach; ?>
+    </div>
+    <?php endif; ?>
     <ul class="tl">
       <?php foreach ( nap_stage_names( nap_delivery( $p ) ) as $i => $name ) : ?>
         <li class="<?php echo $i < $st || 6 === $st ? 'done' : ( $i === $st ? 'now' : '' ); ?>"><span class="dot"><?php echo $i < $st || 6 === $st ? '✓' : (int) ( $i + 1 ); ?></span><div><h3><?php echo esc_html( $name ); ?></h3></div></li>

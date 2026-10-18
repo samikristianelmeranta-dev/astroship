@@ -193,6 +193,9 @@ function nap_api_customer( WP_REST_Request $req ) {
 		'projects'    => $projects,
 		'tasks'       => array_map( 'nap_task_out', $tasks ),
 		'events'      => $events,
+		'visits'      => array_values( array_filter( array_map( function ( $v ) {
+			return nap_can_see_visit( $v ) ? nap_visit_out( $v ) : null;
+		}, $wpdb->get_results( $wpdb->prepare( 'SELECT v.* FROM ' . nap_table( 'visits' ) . ' v JOIN ' . nap_table( 'projects' ) . ' p ON p.id = v.project_id WHERE p.customer_id = %d ORDER BY v.start_at DESC LIMIT 50', $c['id'] ), ARRAY_A ) ) ) ),
 		'created_at'  => $c['created_at'],
 	);
 }

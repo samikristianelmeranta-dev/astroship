@@ -138,6 +138,56 @@ function nap_mail_offer_reminder( $customer, $project, $offer, $kind, $link ) {
 		array( 'Avaa tarjous', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
 }
 
+/** Käynnin vahvistus, muutos, peruutus tai muistutus. */
+function nap_mail_visit( $customer, $project, $v, $kind, $link ) {
+	$label = nap_visit_label( $v );
+	$when  = nap_visit_when( $v, true );
+	$inst  = $v['installer_id'] ? nap_user_name( $v['installer_id'] ) : '';
+	$addr  = $project['address'] ?: trim( $customer['address'] . ', ' . $customer['city'], ', ' );
+	$head  = array(
+		'confirm'  => array( $label . ' vahvistettu: ' . $when, $label . ' on sovittu' ),
+		'update'   => array( $label . ': uusi aika ' . $when, $label . ' – aika muuttui' ),
+		'cancel'   => array( $label . ' peruttu', $label . ' on peruttu' ),
+		'reminder' => array( 'Muistutus: ' . mb_strtolower( $label ) . ' huomenna', 'Huomenna: ' . mb_strtolower( $label ) ),
+	);
+	$lines = array( 'Hei ' . nap_first_name( $customer['name'] ) . ',' );
+	if ( 'cancel' === $kind ) {
+		$lines[] = $label . ' ' . $when . ' on peruttu. Otamme yhteyttä ja sovimme uuden ajan.';
+	} else {
+		$lines[] = ( 'reminder' === $kind ? 'muistutamme huomisesta käynnistä.' : ( 'update' === $kind ? 'käynnin aika on muuttunut. Uusi aika:' : 'vahvistamme sovitun käynnin.' ) );
+		$lines[] = $label . "\n" . ucfirst( $when ) . "\n" . $addr . ( $inst ? "\n" . 'Tulossa: ' . $inst : '' );
+		$tips    = array(
+			'mittaus'  => 'Käynti kestää yleensä noin tunnin. Mittaamme ikkunat ja ovet ja käymme vaihtoehdot läpi kanssasi.',
+			'asennus'  => 'Valmistaudu asennukseen: tyhjennä ikkunalaudat ja ovien edustat, ota verhot ja kaihtimet pois ja varmista, että pääsemme kohteeseen sovittuun aikaan.',
+			'toimitus' => 'Varmista, että toimitukselle on esteetön pääsy ja tuotteille tilaa.',
+			'huolto'   => 'Huoltokäynti kestää yleensä noin tunnin.',
+		);
+		if ( isset( $tips[ $v['type'] ] ) ) {
+			$lines[] = $tips[ $v['type'] ];
+		}
+		$lines[] = 'Jos aika ei sovi, soita tai vastaa tähän viestiin: myynti 045 7832 5070, asennus 045 7830 4746.';
+	}
+	$owner = $project['owner_id'] ? get_userdata( (int) $project['owner_id'] ) : null;
+	return nap_mail( $customer['email'], $head[ $kind ][0], $head[ $kind ][1], $lines, array( 'Avaa Oma kohde', $link ), $owner ? $owner->display_name . ' <' . $owner->user_email . '>' : null );
+}
+
+/** Kuitattu luovutus: yhteenveto asiakkaalle. */
+function nap_mail_handover( $customer, $project, $v, $h, $link ) {
+	$lines = array(
+		'Hei ' . nap_first_name( $customer['name'] ) . ',',
+		'kiitos! Kuittasit ' . ( 'asennus' === nap_delivery( $project ) ? 'työn' : 'toimituksen' ) . ' vastaanotetuksi ' . date_i18n( 'j.n.Y \k\l\o G.i', strtotime( $h['at'] ) ) . ' (' . $h['name'] . ').',
+		'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ),
+		"Tarkistettu:\n" . implode( "\n", array_map( function ( $i ) use ( $h ) {
+			return ( in_array( $i, $h['checklist'], true ) ? '✓ ' : '– ' ) . $i;
+		}, $h['items'] ) ),
+	);
+	if ( $h['remarks'] ) {
+		$lines[] = "Huomautukset:\n" . $h['remarks'] . "\nHoidamme huomautukset ja olemme sinuun yhteydessä.";
+	}
+	$lines[] = 'Takuutodistuksen ja huolto-ohjeet saat erikseen. Jos jokin askarruttaa, soita: asennus 045 7830 4746.';
+	return nap_mail( $customer['email'], 'Kiitos – työ on luovutettu', 'Työ on luovutettu', $lines, array( 'Avaa Oma kohde', $link ) );
+}
+
 function nap_mail_login_link( $customer, $link ) {
 	return nap_mail(
 		$customer['email'],

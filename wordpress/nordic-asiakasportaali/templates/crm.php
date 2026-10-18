@@ -32,6 +32,7 @@ $nap_cfg = array(
 <div class="toast" id="toast" role="status"></div>
 <script>window.NAP = <?php echo wp_json_encode( $nap_cfg ); ?>;</script>
 <script src="<?php echo esc_url( NAP_URL . 'assets/crm.js?v=' . NAP_VERSION ); ?>"></script>
+<script src="<?php echo esc_url( NAP_URL . 'assets/crm-visits.js?v=' . NAP_VERSION ); ?>"></script>
 <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register(<?php echo wp_json_encode( home_url( '/crm/sw.js' ) ); ?>, { scope: <?php echo wp_json_encode( wp_parse_url( home_url( '/crm/' ), PHP_URL_PATH ) ); ?> }).catch(function () {});</script>
 </body>
 </html>

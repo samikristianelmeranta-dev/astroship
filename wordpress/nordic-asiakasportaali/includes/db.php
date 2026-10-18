@@ -106,6 +106,47 @@ function nap_install_db() {
 		KEY customer_id (customer_id)
 	) $c;" );
 
+	dbDelta( "CREATE TABLE " . nap_table( 'visits' ) . " (
+		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		project_id bigint(20) unsigned NOT NULL,
+		type varchar(20) NOT NULL DEFAULT 'mittaus',
+		start_at datetime NOT NULL,
+		end_at datetime NOT NULL,
+		all_day tinyint(1) NOT NULL DEFAULT 0,
+		installer_id bigint(20) unsigned DEFAULT NULL,
+		notes text NULL,
+		status varchar(12) NOT NULL DEFAULT 'planned',
+		protocol longtext NULL,
+		handover text NULL,
+		confirmed_at datetime DEFAULT NULL,
+		reminded_at datetime DEFAULT NULL,
+		created_by bigint(20) unsigned DEFAULT NULL,
+		created_at datetime NOT NULL,
+		updated_at datetime NOT NULL,
+		PRIMARY KEY  (id),
+		KEY project_id (project_id),
+		KEY start_at (start_at),
+		KEY installer_id (installer_id)
+	) $c;" );
+
+	dbDelta( "CREATE TABLE " . nap_table( 'files' ) . " (
+		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		project_id bigint(20) unsigned NOT NULL,
+		customer_id bigint(20) unsigned NOT NULL,
+		visit_id bigint(20) unsigned DEFAULT NULL,
+		kind varchar(12) NOT NULL DEFAULT 'muu',
+		file varchar(64) NOT NULL,
+		name varchar(190) NOT NULL DEFAULT '',
+		type varchar(60) NOT NULL DEFAULT '',
+		size int(10) unsigned NOT NULL DEFAULT 0,
+		caption varchar(255) NOT NULL DEFAULT '',
+		uploaded_by bigint(20) unsigned DEFAULT NULL,
+		created_at datetime NOT NULL,
+		PRIMARY KEY  (id),
+		KEY project_id (project_id),
+		KEY visit_id (visit_id)
+	) $c;" );
+
 	dbDelta( "CREATE TABLE " . nap_table( 'inbox' ) . " (
 		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 		msg_id varchar(255) NOT NULL DEFAULT '',

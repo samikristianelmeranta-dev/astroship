@@ -32,12 +32,15 @@
   var VIEWS = [
     ['paiva', 'Oma päivä', 'M3 12l9-8 9 8M5 10v10h14V10'],
     ['putki', 'Myyntiputki', 'M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z'],
+    ['kalenteri', 'Kalenteri', 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4'],
     ['asiakkaat', 'Asiakkaat', 'M16 11a4 4 0 10-8 0 4 4 0 008 0zM4 21c1-4 4-6 8-6s7 2 8 6'],
     ['tehtavat', 'Tehtävät', 'M4 6l2 2 4-4M4 14l2 2 4-4M13 6h7M13 14h7'],
     ['saapuneet', 'Saapuneet', 'M3 6h18v12H3zM3 7l9 6 9-6'],
     ['uusi', 'Uusi tarjouspyyntö', 'M12 5v14M5 12h14']
   ];
-  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); if (m) return { v: 'asiakkaat', id: +m[1] }; m = /^uusi-(\d+)$/.exec(h); if (m) return { v: 'uusi', id: +m[1] }; m = /^saapunut-(\d+)$/.exec(h); return m ? { v: 'saapuneet', id: +m[1] } : { v: h || 'paiva' }; }
+  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); if (m) return { v: 'asiakkaat', id: +m[1] }; m = /^uusi-(\d+)$/.exec(h); if (m) return { v: 'uusi', id: +m[1] }; m = /^saapunut-(\d+)$/.exec(h); if (m) return { v: 'saapuneet', id: +m[1] };
+    m = /^kalenteri-(\d{4}-\d{2}-\d{2})$/.exec(h); if (m) return { v: 'kalenteri', week: m[1] };
+    m = /^kaynti-(\d+)$/.exec(h); return m ? { v: 'kalenteri', visit: +m[1] } : { v: h || 'paiva' }; }
   function drawNav(v) {
     var open = S.tasks.filter(function (t) { return t.assignee_id === S.me.id && !t.done; }).length;
     document.getElementById('nav').innerHTML = VIEWS.filter(function (x) { return x[0] !== 'saapuneet' || isOwner(); }).map(function (x) {
@@ -80,7 +83,9 @@
       ['Käynnissä', running.length, 'hyväksytty → asennus']
     ];
     var warn = S.me.twofa === false ? '<div class="warn">Kaksivaiheinen tunnistautuminen ei ole käytössä tunnuksellasi. Ota se käyttöön profiilistasi.</div>' : '';
-    main.innerHTML = head('Hei, ' + S.me.name.split(' ')[0], 'Tehtävät ja tilanne yhdellä silmäyksellä') + warn +
+    var VV = window.NAPV.visits;
+    if (VV && !S.visitsToday) { S.visitsToday = []; VV.loadToday().then(function () { if (route().v === 'paiva') viewDay(); }).catch(function () {}); }
+    main.innerHTML = head('Hei, ' + S.me.name.split(' ')[0], 'Tehtävät ja tilanne yhdellä silmäyksellä') + warn + (VV ? VV.todayBlock() : '') +
       '<div class="grid g4">' + tiles.map(function (x) { return '<div class="card tile"><div class="lbl">' + x[0] + '</div><div class="val num">' + x[1] + '</div><div class="sub">' + esc(x[2]) + '</div></div>'; }).join('') + '</div>' +
       '<div class="grid g2" style="margin-top:14px"><div class="card"><h2>Omat tehtävät <span class="r muted">' + mine.length + ' avointa</span></h2>' +
       (mine.length ? mine.map(taskRow).join('') : '<div class="empty">Ei avoimia tehtäviä.</div>') + '</div>' +
@@ -166,6 +171,7 @@
             '<label class="fld">Toimitustapa<select data-f="delivery">' + Object.keys(S.deliveries).map(function (k) { return '<option value="' + k + '"' + (k === p.delivery ? ' selected' : '') + '>' + esc(S.deliveries[k]) + '</option>'; }).join('') + '</select></label></div>' +
             (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small">' + esc(S.measureTerms) + '</div>' : '') + '</div>';
         }).join('') : '<div class="empty">Ei kohteita.</div>') + '</div>' +
+        (window.NAPV.visits ? window.NAPV.visits.cardBlock(c) : '') +
         '<div class="sect"><h3>Avoimet tehtävät</h3>' + (c.tasks.length ? c.tasks.map(taskRow).join('') : '<p class="muted small">Ei avoimia tehtäviä.</p>') +
         '<form class="form" id="ctask"><input class="grow" name="title" placeholder="Uusi tehtävä, esim. Soita ' + esc(c.name.split(' ')[0]) + 'lle" aria-label="Tehtävä" required>' +
         (isOwner() ? '<select name="assignee_id" aria-label="Vastuuhenkilö">' + opt(S.users, S.me.id) + '</select>' : '') +
@@ -271,6 +277,7 @@
   }
   function bindCard(c) {
     var box = document.getElementById('ccard');
+    if (window.NAPV.visits) window.NAPV.visits.bindCard(c);
     box.querySelectorAll('[data-offer]').forEach(function (b) { b.addEventListener('click', function () { openOffer(c, +b.getAttribute('data-offer')); }); });
     if (S.openOffer) { var of = S.openOffer; S.openOffer = null; openOffer(c, of); var ow = document.querySelector('[data-offw="' + of + '"]'); if (ow) ow.scrollIntoView({ block: 'center' }); }
     box.querySelectorAll('[data-approve]').forEach(function (b) { b.addEventListener('click', function () { openApprove(c, +b.getAttribute('data-approve')); }); });
@@ -576,10 +583,15 @@
     if (r.v === 'asiakkaat') return viewCustomers(r.id);
     if (r.v === 'tehtavat') return viewTasks();
     if (r.v === 'uusi') return viewNew(r.id);
+    if (r.v === 'kalenteri' && window.NAPV.visits) return r.visit ? window.NAPV.visits.viewVisit(r.visit) : window.NAPV.visits.viewCalendar(r.week);
     if (r.v === 'saapuneet' && isOwner()) return viewInbox(r.id);
     return viewDay();
   }
   window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
+
+  window.NAPV = { S: S, esc: esc, api: api, toast: toast, fail: fail, head: head, fdate: fdate, isOwner: isOwner, user: user, uname: uname, opt: opt,
+    main: function () { return main; }, render: function () { render(); },
+    reloadBoard: function () { return Promise.all([api('board'), api('tasks')]).then(function (r) { S.board = r[0]; S.tasks = r[1]; drawNav(route().v); }); } };
 
   api('bootstrap').then(function (b) {
     S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.offerDays = b.offer_days || 30; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || '';

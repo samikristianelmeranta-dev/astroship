@@ -114,8 +114,18 @@ Tulossa seuraavissa vaiheissa: dokumentit
 ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meistä, raportit. Katso
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
+## Kalenteri ja käynnit
+- **Kalenteri** (CRM-valikko): viikkonäkymä asentajittain, puhelimessa päivälista. Klikkaa tyhjää kohtaa tai "+ Uusi käynti". Käynnin voi varata myös asiakaskortilta.
+- Käyntityypit: mittaus (1 h), asennus (8 h), toimitus, huolto, muu. Kesto ja asentaja valitaan lomakkeella.
+- **Asiakkaalle**: vahvistus heti varattaessa, uusi viesti siirrosta tai perumisesta ja muistutus edellisenä päivänä (lähtee klo 12 jälkeen). Tulevat käynnit näkyvät myös Oma kohde -sivulla.
+- **Vaiheet etenevät itse**: mittaus varattu → Mittaus, asennus/toimitus varattu → Asennus, luovutus kuitattu → Valmis.
+- **Asentajan puhelinnäkymä**: Oma päivä näyttää päivän käynnit. Käynnillä: Navigoi (Google Maps / karttasovellus), Soita, tilanapit (Matkalla, Aloitettu, Tehty).
+- **Kuvat**: Ennen, Jälkeen, Mittaus ja Muut. "Ota kuva" avaa kameran. Kuvat pienennetään puhelimessa (1600 px) ja tallennetaan suojattuun kansioon `uploads/nap-private/files`.
+- **Mittauspöytäkirja**: rivit (paikka, tuote, leveys × korkeus, kpl, huomio) + yleiset huomiot ja mittauskuvat; Tulosta / PDF.
+- **Luovutuskuittaus**: tarkistuslista, huomautukset, asiakkaan nimi ja allekirjoitus sormella näytölle. Kuittaus merkitsee kohteen valmiiksi, lähettää asiakkaalle kiitosviestin ja luo laskutus- ja kiitoslahjatehtävät (huomautuksista oma tehtävä).
+
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.10.1.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.11.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,
