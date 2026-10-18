@@ -68,7 +68,7 @@ add_action( 'template_redirect', function () {
 
 	if ( 'crm' === $route ) {
 		if ( ! is_user_logged_in() ) {
-			auth_redirect();
+			nap_crm_login_page(); // oma kirjautumissivu: käyttäjänimi + salasana
 		}
 		if ( ! current_user_can( 'nap_access' ) ) {
 			wp_die( 'Sinulla ei ole oikeutta Nordicin CRM:ään. Pyydä osakasta lisäämään sinulle rooli.', 'Ei oikeutta', array( 'response' => 403 ) );

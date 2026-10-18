@@ -13,7 +13,7 @@ function nap_settings_defaults() {
 		'from_name'      => 'Nordic Ikkunat & Ovet Oy',
 		'reply_to'       => 'info@ikkunakauppias.fi',
 		'staff_notify'   => '',
-		'twofa'          => 1,
+		'twofa'          => 0,
 		'auto_tasks'     => 1,
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
@@ -156,7 +156,7 @@ function nap_settings_page() {
 				<tr><th scope="row">Ilmoitukset asiakkaalle</th>
 					<td><label><input type="checkbox" name="nap_settings[notify_stage]" value="1" <?php checked( $s['notify_stage'] ); ?>> Lähetä asiakkaalle sähköposti, kun kohde siirtyy seuraavaan vaiheeseen</label></td></tr>
 				<tr><th scope="row">Kaksivaiheinen kirjautuminen</th>
-					<td><label><input type="checkbox" name="nap_settings[twofa]" value="1" <?php checked( $s['twofa'] ); ?>> Henkilökunta ja ylläpitäjät vahvistavat kirjautumisen sähköpostiin tulevalla koodilla</label>
+					<td><label><input type="checkbox" name="nap_settings[twofa]" value="1" <?php checked( $s['twofa'] ); ?>> Lisäturva: henkilökunta ja ylläpitäjät vahvistavat kirjautumisen sähköpostiin tulevalla koodilla</label>
 					<p class="description">Ei asennettavaa eikä erillistä sovellusta. "Muista tämä laite" ohittaa koodin samalla selaimella <?php echo (int) NAP_2FA_TRUST_DAYS; ?> päivän ajan. Jos sähköposti ei jostain syystä lähde, kirjautuminen onnistuu ilman koodia, jotta ketään ei lukita ulos.</p></td></tr>
 				<tr><th scope="row">Automaatiot</th>
 					<td><label><input type="checkbox" name="nap_settings[auto_tasks]" value="1" <?php checked( $s['auto_tasks'] ); ?>> Vaiheen vaihto luo seuraavat tehtävät (esim. Hyväksytty → "Tilaa tuotteet Skaalalta")</label><br>
@@ -206,7 +206,7 @@ function nap_settings_page() {
 		<table class="widefat striped" style="max-width:720px"><thead><tr><th>Nimi</th><th>Rooli</th><th>Kaksivaiheinen</th></tr></thead><tbody>
 		<?php foreach ( $staff as $u ) : ?>
 			<tr><td><?php echo esc_html( $u['name'] ); ?></td><td><?php echo esc_html( 'osakas' === $u['role'] ? 'Osakas' : 'Asentaja' ); ?></td>
-			<td><?php echo $u['twofa'] ? 'Käytössä (2FA-lisäosa)' : ( $s['twofa'] ? 'Käytössä (sähköpostikoodi)' : '<b style="color:#b23b2e">Ei käytössä</b>' ); // phpcs:ignore ?></td></tr>
+			<td><?php echo $u['twofa'] ? 'Käytössä (2FA-lisäosa)' : ( $s['twofa'] ? 'Käytössä (sähköpostikoodi)' : 'Ei käytössä (käyttäjänimi + salasana)' ); // phpcs:ignore ?></td></tr>
 		<?php endforeach; ?>
 		</tbody></table>
 	</div>

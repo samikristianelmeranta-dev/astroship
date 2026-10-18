@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Nordic Asiakasportaali
  * Description:       Asiakasportaali "Oma kohde" ja Nordicin myynnin ja projektien hallinta (CRM): asiakkaat, kohteet, myyntiputki, tehtävät ja käyttöoikeudet. Vaihe 1.
- * Version:           0.8.0
+ * Version:           0.9.0
  * Author:            Nordic Ikkunat & Ovet Oy
  * Requires at least: 6.2
  * Requires PHP:      7.4
@@ -13,7 +13,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define( 'NAP_VERSION', '0.5.1' );
-define( 'NAP_DB_VERSION', '6' );
+define( 'NAP_DB_VERSION', '7' );
 define( 'NAP_FILE', __FILE__ );
 define( 'NAP_DIR', __DIR__ );
 define( 'NAP_URL', plugin_dir_url( __FILE__ ) );
@@ -24,6 +24,7 @@ require_once NAP_DIR . '/includes/settings.php';
 require_once NAP_DIR . '/includes/mail.php';
 require_once NAP_DIR . '/includes/customer-auth.php';
 require_once NAP_DIR . '/includes/twofa.php';
+require_once NAP_DIR . '/includes/staff-login.php';
 require_once NAP_DIR . '/includes/intake.php';
 require_once NAP_DIR . '/includes/automation.php';
 require_once NAP_DIR . '/includes/offer.php';
@@ -45,6 +46,13 @@ register_deactivation_hook( __FILE__, function () {
 /* Tietokanta päivitetään automaattisesti, kun lisäosan versio vaihtuu. */
 add_action( 'plugins_loaded', function () {
 	if ( get_option( 'nap_db_version' ) !== NAP_DB_VERSION ) {
+		if ( (int) get_option( 'nap_db_version' ) < 7 ) { // kirjautuminen käyttäjänimellä ja salasanalla: sähköpostikoodi pois
+			$s = get_option( 'nap_settings' );
+			if ( is_array( $s ) ) {
+				$s['twofa'] = 0;
+				update_option( 'nap_settings', $s );
+			}
+		}
 		if ( (int) get_option( 'nap_db_version' ) < 6 ) { // tarjoukset voimassa 14 pv (aiempi oletus 30)
 			$s = get_option( 'nap_settings' );
 			if ( is_array( $s ) && isset( $s['offer_days'] ) && 30 === (int) $s['offer_days'] ) {

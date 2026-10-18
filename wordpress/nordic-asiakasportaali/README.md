@@ -94,7 +94,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.8.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.9.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,
@@ -103,11 +103,11 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
    - Paina **Luo puuttuvat osakastunnukset**: luo tunnukset anton@, sami@, matias@ ja jussi@ikkunakauppias.fi.
      Kukin saa sähköpostiin linkin oman salasanan asettamiseen.
 4. Asentajat: Käyttäjät → Lisää uusi → rooli **Nordic: asentaja**.
-5. Kaksivaiheinen kirjautuminen on valmiina päällä, eikä mitään tarvitse asentaa: osakkaat, asentajat ja ylläpitäjät
-   saavat salasanan jälkeen sähköpostiin 6-numeroisen koodin. "Muista tämä laite 30 päivää" ohittaa koodin samalla
-   selaimella, ja salasanan vaihto nollaa muistetut laitteet. Jos jollakulla on jo Two Factor- tai Wordfence-2FA
-   käytössä, koodia ei kysytä kahteen kertaan. Hätätilassa (esim. sähköposti rikki) koodin saa pois lisäämällä
-   wp-config.php:hen rivin `define( 'NAP_2FA_DISABLE', true );`.
+5. **Kirjautuminen:** henkilökunta kirjautuu osoitteessa `ikkunakauppias.fi/crm/` käyttäjänimellä (tai sähköpostilla)
+   ja salasanalla. "Pysy kirjautuneena" pitää kirjautumisen voimassa 90 päivää samalla laitteella. Arvausesto:
+   5 väärää salasanaa samalle tunnukselle tai 10 samasta osoitteesta → 15 minuutin tauko (koskee myös wp-login.php:tä).
+   Lisäturvaksi voi asetuksista ottaa käyttöön sähköpostiin tulevan kirjautumiskoodin (oletuksena pois). Hätätilassa
+   koodin saa pois wp-config.php:n rivillä `define( 'NAP_2FA_DISABLE', true );`.
 6. Jos käytössä on välimuisti (WP-Optimize, LiteSpeed tms.), lisää poikkeuksiin `/crm/`, `/oma-kohde/` ja `/s/`.
    Lisäosa merkitsee sivut myös itse ei-välimuistettaviksi.
 
