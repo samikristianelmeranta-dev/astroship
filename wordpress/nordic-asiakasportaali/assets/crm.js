@@ -416,7 +416,7 @@
     var shown = Object.keys(cats).filter(function (k) { return r.hidden.indexOf(k) < 0; });
     if (!id && r.items[0] && window.innerWidth > 860) id = r.items[0].id;
     main.innerHTML = head('Saapuneet', 'myynti@ ja info@ – viestit tunnistettuina', '<button class="btn" id="ibfetch">Hae uudet</button>') +
-      (!r.ready ? '<div class="card" style="margin-bottom:14px"><b>Saapuneet ei ole vielä käytössä.</b> <span class="muted">Täytä keräyslaatikon tiedot kohdassa Asetukset → Asiakasportaali.</span></div>' : '') +
+      (!r.ready ? '<div class="card" style="margin-bottom:14px"><b>Saapuneet ei ole vielä käytössä.</b> <span class="muted">Asetukset → Asiakasportaali → Saapuneet: puuttuu ' + esc((r.missing || []).join(', ')) + '. Täytä ja paina Tallenna muutokset.</span>' + (C.admin ? ' <a href="' + esc(C.admin) + '">Avaa asetukset</a>' : '') + '</div>' : '') +
       (r.status && !r.status.ok ? '<div class="card" style="margin-bottom:14px;border-color:var(--crit)"><b style="color:var(--crit)">Viimeisin haku epäonnistui:</b> ' + esc(r.status.msg) + '</div>' : '') +
       '<div class="ibchips">' + chip('', 'Kaikki') + shown.map(function (k) { return chip(k, cats[k]); }).join('') +
       '<span class="ibsep">Piilotetut:</span>' + r.hidden.map(function (k) { return chip(k, cats[k]); }).join('') + '</div>' +

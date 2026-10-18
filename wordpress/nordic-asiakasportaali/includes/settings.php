@@ -193,6 +193,7 @@ function nap_settings_page() {
 					<label><input type="checkbox" name="nap_settings[inbox_ssl]" value="1" <?php checked( $s['inbox_ssl'] ); ?>> SSL</label></p>
 					<p><label>Toimittajien verkkotunnukset <input name="nap_settings[inbox_suppliers]" value="<?php echo esc_attr( $s['inbox_suppliers'] ); ?>" class="regular-text" placeholder="esim. tukku.fi, kuljetus.fi"></label></p>
 					<p><label>Säilytä viestit <input name="nap_settings[inbox_months]" type="number" min="1" max="60" value="<?php echo (int) $s['inbox_months']; ?>" style="width:70px"> kuukautta</label> <span class="description">Roskaposti, uutiskirjeet ja sivuston ilmoitukset poistetaan 30 päivän jälkeen.</span></p>
+					<?php if ( nap_inbox_missing() && ( $s['inbox_enabled'] || $s['inbox_user'] ) ) : ?><p><b style="color:#b23b2e">Puuttuu: <?php echo esc_html( implode( ', ', nap_inbox_missing() ) ); ?></b></p><?php elseif ( nap_inbox_ready() ) : ?><p style="color:#2c7a4e"><b>✓ Saapuneet on käytössä.</b></p><?php endif; ?>
 					<?php $ist = get_option( 'nap_inbox_status' ); if ( $ist ) : ?><p class="description">Viimeisin haku <?php echo esc_html( mysql2date( 'j.n. H:i', $ist['at'] ) ); ?>: <?php echo $ist['ok'] ? esc_html( $ist['msg'] ) : '<b style="color:#b23b2e">' . esc_html( $ist['msg'] ) . '</b>'; // phpcs:ignore ?></p><?php endif; ?></td></tr>
 				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
 					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>

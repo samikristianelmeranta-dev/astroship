@@ -397,14 +397,29 @@ function nap_inbox_password() {
 }
 
 function nap_inbox_ready() {
-	$s = nap_settings();
-	return ! empty( $s['inbox_enabled'] ) && $s['inbox_user'] && '' !== nap_inbox_password();
+	return ! nap_inbox_missing();
+}
+
+/** Mitä asetuksista puuttuu (tyhjä = valmis). */
+function nap_inbox_missing() {
+	$s    = nap_settings();
+	$miss = array();
+	if ( empty( $s['inbox_enabled'] ) ) {
+		$miss[] = 'ruksi kohdassa "Hae keräyslaatikon viestit"';
+	}
+	if ( ! $s['inbox_user'] ) {
+		$miss[] = 'keräyslaatikon osoite (esim. crm@ikkunakauppias.fi)';
+	}
+	if ( '' === nap_inbox_password() ) {
+		$miss[] = 'keräyslaatikon salasana';
+	}
+	return $miss;
 }
 
 /** Hakee uudet viestit. Palauttaa array( 'haettu' => n ) tai WP_Error. */
 function nap_inbox_fetch() {
 	if ( ! nap_inbox_ready() ) {
-		return new WP_Error( 'nap', 'Saapuneet ei ole käytössä. Täytä keräyslaatikon tiedot asetuksissa.' );
+		return new WP_Error( 'nap', 'Saapuneet ei ole käytössä. Asetuksista (Asetukset → Asiakasportaali) puuttuu: ' . implode( ', ', nap_inbox_missing() ) . '. Täytä ja paina Tallenna muutokset.' );
 	}
 	if ( get_transient( 'nap_inbox_lock' ) ) {
 		return array( 'haettu' => 0, 'kesken' => true );
@@ -634,6 +649,7 @@ function nap_api_inbox( WP_REST_Request $req ) {
 		'categories' => nap_inbox_categories(),
 		'hidden'     => $hidden,
 		'ready'      => nap_inbox_ready(),
+		'missing'    => nap_inbox_missing(),
 		'status'     => get_option( 'nap_inbox_status' ) ?: null,
 	);
 }
