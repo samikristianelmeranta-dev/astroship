@@ -18,7 +18,7 @@ function nap_settings_defaults() {
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
 		'offer_reminders' => 1,
-		'offer_days'     => 30,
+		'offer_days'     => 14,
 		'measure_terms'  => 'Asiakkaan omat mitat: Kun asiakas mittaa itse tai toimittaa mitat meille, tuotteet valmistetaan asiakkaan ilmoittamien mittojen mukaan, ja vastuu mittojen oikeellisuudesta on aina asiakkaalla. Vääristä mitoista johtuvat muutokset ja uudet tuotteet ovat asiakkaan kustannuksella.',
 		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
 	);
@@ -126,7 +126,7 @@ add_action( 'admin_init', function () {
 				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
 				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
 				'offer_reminders' => empty( $in['offer_reminders'] ) ? 0 : 1,
-				'offer_days'    => max( 1, min( 365, absint( $in['offer_days'] ?? 30 ) ) ),
+				'offer_days'    => max( 1, min( 365, absint( $in['offer_days'] ?? 14 ) ) ),
 				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
 				'measure_terms' => sanitize_textarea_field( $in['measure_terms'] ?? $d['measure_terms'] ),
 			);

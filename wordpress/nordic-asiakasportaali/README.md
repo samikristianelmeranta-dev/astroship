@@ -21,8 +21,8 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
 - **Androidin Jaa-valikko:** kun CRM on lisätty kotinäytölle (Chrome → ⋮ → Lisää aloitusnäyttöön / Asenna sovellus),
   WhatsApp-viestin voi jakaa suoraan Nordic CRM:ään, ja Uusi tarjouspyyntö aukeaa täytettynä. iPhonella kopioi ja liitä. Asiakaskortin **+ Uusi kohde** lisää kohteen suoraan olemassa olevalle asiakkaalle.
 - Vaiheen siirto kirjautuu historiaan ja lähettää asiakkaalle ilmoituksen (voi kytkeä pois).
-- Asiakkaan kirjautuminen ilman salasanaa: kertakäyttöinen linkki sähköpostiin (voimassa 7 vrk).
-  Linkin voi pyytää uudelleen Oma kohde -sivulta. Pyynnöt on rajoitettu, eikä sivu paljasta, onko osoite asiakkaana.
+- Asiakkaan kirjautuminen ilman salasanaa: linkki sähköpostiin (voimassa 7 vrk).
+  Linkkiin voi palata voimassaolon aikana. Uuden linkin voi pyytää Oma kohde -sivulta. Pyynnöt on rajoitettu, eikä sivu paljasta, onko osoite asiakkaana.
 - Suosittelulinkki `ikkunakauppias.fi/s/KOODI`: uusi tarjouspyyntö merkitään suositelluksi ja näkyy
   suosittelijan asiakaskortilla.
 
@@ -63,9 +63,11 @@ verkkosivun lomakkeelta tai myöhemmin kohteen kortilta.
 Kohteen kortilla **Lähetä tarjous asiakkaalle** (myös kun vaiheeksi valitaan *Tarjous lähetetty* tai myyntiputken nuoli):
 - **Valmis PDF-tarjous** (oletus): liitetään vain Skaalan tarjoustyökalun PDF. Erittely, hinta ja voimassaolo ovat PDF:ssä,
   eikä muita kenttiä käytetä. Hinnan voi halutessaan kirjata myyntiputkeen; se ei näy asiakkaalle.
-- **Täytä tiedot**: hinta (sis. alv), työn osuus, voimassaolo (oletus asetuksista, 30 pv), asiakkaalle näkyvä sisältö
-  ja lisätiedot; PDF on valinnainen.
-- Asiakas saa sähköpostiin linkin (vastaukset menevät lähettäjälle).
+- **Täytä tiedot**: hinta (sis. alv), työn osuus, asiakkaalle näkyvä sisältö ja lisätiedot; PDF on valinnainen.
+- Tarjous on voimassa **14 päivää** lähetyspäivästä (asetuksissa muutettavissa).
+- Asiakas saa sähköpostiin **suoran linkin tarjoukseen** (`/tarjous/…`): ei kirjautumista, ja samaan linkkiin voi palata
+  90 päivän ajan millä tahansa laitteella. Tarjoussivulla avataan PDF, valitaan maksutapa, vahvistetaan ehdot ja
+  hyväksytään, tai kysytään / kerrotaan, ettei tarjous ole ajankohtainen. Vastaukset sähköpostiin menevät lähettäjälle.
 - Asiakas näkee Oma kohde -sivulla hinnan, sisällön, PDF:n, peruutusehdot (ja omat mitat -ehdon) ja voi
   **hyväksyä** (valitsee maksutavaksi laskun tai Skaala-rahoituksen ja vahvistaa ehdot), **kysyä tarkennusta** tai kertoa,
   ettei ole kiinnostunut. Myyjä saa ilmoituksen ja tarvittaessa tehtävän; CRM näyttää, milloin asiakas avasi tarjouksen.
@@ -92,7 +94,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.7.1.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.8.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

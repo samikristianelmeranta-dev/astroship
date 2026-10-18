@@ -106,6 +106,19 @@ function nap_install_db() {
 		KEY customer_id (customer_id)
 	) $c;" );
 
+	dbDelta( "CREATE TABLE " . nap_table( 'tokens' ) . " (
+		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		customer_id bigint(20) unsigned NOT NULL,
+		project_id bigint(20) unsigned DEFAULT NULL,
+		kind varchar(10) NOT NULL DEFAULT 'login',
+		token_hash char(64) NOT NULL,
+		expires_at datetime NOT NULL,
+		created_at datetime NOT NULL,
+		PRIMARY KEY  (id),
+		KEY token_hash (token_hash),
+		KEY customer_id (customer_id)
+	) $c;" );
+
 	dbDelta( "CREATE TABLE " . nap_table( 'events' ) . " (
 		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 		customer_id bigint(20) unsigned DEFAULT NULL,

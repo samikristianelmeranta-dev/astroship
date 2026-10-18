@@ -110,7 +110,7 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 
 function nap_offer_mail_lines( $project, $offer ) {
 	return 'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ) . "\n"
-		. ( 'pdf' === ( $offer['mode'] ?? '' ) ? 'Tarjous erittelyineen on PDF-tiedostona Oma kohde -sivulla.' : 'Hinta: ' . number_format( (float) $offer['sum'], 0, ',', ' ' ) . ' € (sis. alv)' )
+		. ( 'pdf' === ( $offer['mode'] ?? '' ) ? 'Tarjous erittelyineen on PDF-tiedostona linkin takana.' : 'Hinta: ' . number_format( (float) $offer['sum'], 0, ',', ' ' ) . ' € (sis. alv)' )
 		. ( ! empty( $offer['valid_until'] ) ? "\nVoimassa: " . date_i18n( 'j.n.Y', strtotime( $offer['valid_until'] ) ) . ' asti' : '' );
 }
 
@@ -120,9 +120,9 @@ function nap_mail_offer( $customer, $project, $offer, $link ) {
 	return nap_mail( $customer['email'], ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjouksesi on valmis' ) . ' – Nordic Ikkunat & Ovet', ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjouksesi on valmis' ),
 		array(
 			'Hei ' . nap_first_name( $customer['name'] ) . ',',
-			'kiitos odottamisesta! ' . ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjouksesi' ) . ' on nyt luettavissa Oma kohde -sivulla.',
+			'kiitos odottamisesta! ' . ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjouksesi' ) . ' on valmis.',
 			nap_offer_mail_lines( $project, $offer ),
-			'Sivulla voit avata tarjouksen, hyväksyä sen ja valita maksutavan tai kysyä tarkennusta. Kirjautumiseen ei tarvita salasanaa.',
+			'Painike avaa tarjouksen suoraan, eikä kirjautumista tarvita. Voit hyväksyä tarjouksen ja valita maksutavan tai kysyä tarkennusta, ja palata samaan linkkiin myöhemmin.',
 			'Jos haluat käydä tarjouksen läpi puhelimessa, vastaa tähän viestiin tai soita: myynti 045 7832 5070.',
 		),
 		array( 'Avaa tarjous', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
@@ -131,8 +131,8 @@ function nap_mail_offer( $customer, $project, $offer, $link ) {
 function nap_mail_offer_reminder( $customer, $project, $offer, $kind, $link ) {
 	$me    = get_userdata( (int) $offer['sent_by'] );
 	$first = 'exp' === $kind
-		? 'tarjouksesi on voimassa ' . date_i18n( 'j.n.Y', strtotime( $offer['valid_until'] ) ) . ' asti. Jos haluat, että tarjouksen hinnat pysyvät, hyväksy tarjous sitä ennen Oma kohde -sivulla.'
-		: 'muistutamme, että tarjouksesi odottaa Oma kohde -sivulla. Siellä voit hyväksyä sen tai kysyä tarkennusta, jos jokin askarruttaa.';
+		? 'tarjouksesi on voimassa ' . date_i18n( 'j.n.Y', strtotime( $offer['valid_until'] ) ) . ' asti. Jos haluat, että tarjouksen hinnat pysyvät, hyväksy tarjous sitä ennen.'
+		: 'muistutamme, että tarjouksesi odottaa. Painikkeesta pääset suoraan tarjoukseen: voit hyväksyä sen tai kysyä tarkennusta, jos jokin askarruttaa.';
 	return nap_mail( $customer['email'], 'exp' === $kind ? 'Tarjouksesi voimassaolo päättyy pian' : 'Muistutus: tarjouksesi odottaa', 'exp' === $kind ? 'Tarjous päättyy pian' : 'Tarjouksesi odottaa',
 		array( 'Hei ' . nap_first_name( $customer['name'] ) . ',', $first, nap_offer_mail_lines( $project, $offer ), 'Jos et ole enää kiinnostunut, voit kertoa sen samalla sivulla, niin emme muistuta enempää.' ),
 		array( 'Avaa tarjous', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
@@ -143,7 +143,7 @@ function nap_mail_login_link( $customer, $link ) {
 		$customer['email'],
 		'Kirjautumislinkki: Oma kohde',
 		'Kirjaudu Oma kohde -sivulle',
-		array( 'Pyysit kirjautumislinkkiä. Linkki on voimassa 7 päivää ja toimii kerran.', 'Jos et pyytänyt linkkiä, voit jättää tämän viestin huomiotta.' ),
+		array( 'Pyysit kirjautumislinkkiä. Linkki on voimassa 7 päivää, ja voit käyttää sitä useamman kerran.', 'Jos et pyytänyt linkkiä, voit jättää tämän viestin huomiotta.' ),
 		array( 'Kirjaudu', $link )
 	);
 }

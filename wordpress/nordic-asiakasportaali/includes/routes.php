@@ -4,6 +4,7 @@
  *  /crm/          Nordicin henkilökunnan sovellus (vaatii kirjautumisen ja roolin)
  *  /crm/manifest.webmanifest ja /crm/sw.js  kotinäytölle asennus ja Androidin Jaa-valikko
  *  /oma-kohde/    asiakkaan portaali (kirjautuminen sähköpostilinkillä)
+ *  /tarjous/AVAIN/ tarjous suoraan linkistä ilman kirjautumista (linkkiin voi palata)
  *  /s/KOODI/      suosittelulinkki: tallentaa suosittelijan ja ohjaa etusivulle
  * Sivut eivät näy hakukoneille eikä niitä tallenneta välimuistiin.
  */
@@ -15,6 +16,7 @@ function nap_add_rewrites() {
 	add_rewrite_rule( '^crm/manifest\\.webmanifest$', 'index.php?nap_route=manifest', 'top' );
 	add_rewrite_rule( '^crm/sw\\.js$', 'index.php?nap_route=sw', 'top' );
 	add_rewrite_rule( '^oma-kohde/?$', 'index.php?nap_route=oma', 'top' );
+	add_rewrite_rule( '^tarjous/([a-f0-9]{64})/?$', 'index.php?nap_route=offer&nap_tok=$matches[1]', 'top' );
 	add_rewrite_rule( '^s/([A-Za-z0-9]{4,12})/?$', 'index.php?nap_route=ref&nap_ref=$matches[1]', 'top' );
 }
 add_action( 'init', 'nap_add_rewrites' );
@@ -22,6 +24,7 @@ add_action( 'init', 'nap_add_rewrites' );
 add_filter( 'query_vars', function ( $v ) {
 	$v[] = 'nap_route';
 	$v[] = 'nap_ref';
+	$v[] = 'nap_tok';
 	return $v;
 } );
 
@@ -84,6 +87,19 @@ add_action( 'template_redirect', function () {
 	if ( 'oma' === $route ) {
 		nap_handle_customer_route();
 	}
+	if ( 'offer' === $route ) {
+		$tok = (string) get_query_var( 'nap_tok' );
+		$r   = nap_check_token( $tok, 'offer' );
+		$p   = $r ? nap_get_project( (int) $r[1]['project_id'] ) : null;
+		if ( ! $p || (int) $p['customer_id'] !== (int) $r[0]['id'] || ! nap_get_offer( $p ) ) {
+			wp_safe_redirect( add_query_arg( 'virhe', 'linkki', home_url( '/oma-kohde/' ) ) );
+			exit;
+		}
+		if ( ! nap_current_customer() ) {
+			nap_set_session( $r[0] ); // samalla pääsee Oma kohde -sivulle ilman uutta linkkiä
+		}
+		nap_offer_page( $r[0], $p, home_url( '/tarjous/' . $tok . '/' ) );
+	}
 } );
 
 function nap_handle_customer_route() {
@@ -124,6 +140,13 @@ function nap_handle_customer_route() {
 			exit;
 		}
 	}
+	if ( isset( $_GET['nayta'] ) ) { // phpcs:ignore
+		$c = nap_current_customer();
+		$p = $c ? nap_get_project( absint( $_GET['nayta'] ) ) : null; // phpcs:ignore
+		if ( $p && (int) $p['customer_id'] === (int) $c['id'] && nap_get_offer( $p ) ) {
+			nap_offer_page( $c, $p, add_query_arg( 'nayta', (int) $p['id'], home_url( '/oma-kohde/' ) ) );
+		}
+	}
 	if ( isset( $_GET['tarjous_pdf'] ) ) { // phpcs:ignore
 		$c = nap_current_customer();
 		$p = $c ? nap_get_project( absint( $_GET['tarjous_pdf'] ) ) : null; // phpcs:ignore
@@ -159,5 +182,22 @@ function nap_send_manifest() {
 			'params' => array( 'title' => 'jaa_otsikko', 'text' => 'jaa_teksti', 'url' => 'jaa_linkki' ),
 		),
 	), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+	exit;
+}
+
+/** Tarjoussivu: PDF, asiakkaan toiminnot ja näkymä. $base = sivun oma osoite (tarjouslinkki tai Oma kohde). */
+function nap_offer_page( $c, $p, $base ) {
+	if ( isset( $_GET['pdf'] ) ) { // phpcs:ignore
+		nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-nordic-ikkunat.pdf' );
+	}
+	if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) { // phpcs:ignore
+		$action = sanitize_key( $_POST['nap_action'] ?? '' ); // phpcs:ignore
+		$msg    = in_array( $action, array( 'offer_accept', 'offer_question', 'offer_decline' ), true ) ? nap_customer_offer_action( $c, $action ) : 'virhe';
+		wp_safe_redirect( add_query_arg( 'tila', $msg, $base ) );
+		exit;
+	}
+	nap_mark_offer_viewed( $p );
+	$p = nap_get_project( (int) $p['id'] );
+	include NAP_DIR . '/templates/tarjous.php';
 	exit;
 }

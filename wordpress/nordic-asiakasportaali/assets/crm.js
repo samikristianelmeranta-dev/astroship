@@ -239,9 +239,9 @@
       '<label class="fld" data-pdfonly>Hinta myyntiputkeen (€, valinnainen)<input name="sum_pdf" type="number" min="0" step="1" value="' + (o.sum || p.value || '') + '"><span class="muted small" style="font-weight:400">Ei näy asiakkaalle.</span></label>' +
       '<label class="fld" data-fieldsonly>Hinta yhteensä (€, sis. alv) *<input name="sum" type="number" min="1" step="1" value="' + (o.sum || p.value || '') + '"></label>' +
       '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
-      '<label class="fld" data-fieldsonly>Voimassa asti<input name="valid_until" type="date" value="' + esc(addDays(S.offerDays)) + '"></label>' +
       '<label class="fld wide" data-fieldsonly>Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
       '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
+      '<p class="small muted" style="margin:0">Tarjous on voimassa ' + S.offerDays + ' päivää lähetyksestä (' + esc(fdate(addDays(S.offerDays))) + ' asti). Asiakas avaa sen suoraan sähköpostin linkistä ilman kirjautumista.</p>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
       '<div class="actions"><button class="btn p">Lähetä tarjous</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
     var f = w.querySelector('form');

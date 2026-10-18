@@ -101,7 +101,8 @@ function nap_api_offer( WP_REST_Request $req ) {
 	if ( 'pdf' === $mode && ! $file ) {
 		return nap_err( 'Liitä tarjous PDF-tiedostona.', 400 );
 	}
-	$valid = 'pdf' === $mode ? '' : sanitize_text_field( (string) $req->get_param( 'valid_until' ) );
+	// Voimassa asetuksen mukaan (oletus 14 pv) siitä päivästä, kun tarjous lähetetään.
+	$valid = gmdate( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' +' . (int) nap_settings()['offer_days'] . ' days' ) );
 	$pdf   = 'pdf' === $mode;
 	$me    = wp_get_current_user();
 	$offer = array(
@@ -110,7 +111,7 @@ function nap_api_offer( WP_REST_Request $req ) {
 		'mode'        => $mode,
 		'sum'         => max( 0, $sum ), // PDF-tilassa vain myyntiputkeen, ei näy asiakkaalle
 		'labor'       => $pdf ? 0 : max( 0, (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'labor' ) ) ),
-		'valid_until' => preg_match( '/^\d{4}-\d{2}-\d{2}$/', $valid ) ? $valid : '',
+		'valid_until' => $valid,
 		'content'     => $pdf ? '' : sanitize_textarea_field( (string) $req->get_param( 'content' ) ),
 		'notes'       => $pdf ? '' : sanitize_textarea_field( (string) $req->get_param( 'notes' ) ),
 		'file'        => $file,
@@ -139,7 +140,7 @@ function nap_api_offer( WP_REST_Request $req ) {
 		nap_on_stage_change( $p, $prev );
 	}
 	if ( $req->get_param( 'notify' ) && 'false' !== $req->get_param( 'notify' ) && $c['email'] ) {
-		if ( nap_mail_offer( $c, $p, $offer, nap_create_login_link( (int) $c['id'] ) ) ) {
+		if ( nap_mail_offer( $c, $p, $offer, nap_create_offer_link( (int) $c['id'], (int) $p['id'] ) ) ) {
 			nap_log( $c['id'], $p['id'], 'mail', 'Tarjous lähetetty asiakkaalle sähköpostilla (Oma kohde -linkki)' );
 		}
 	}
@@ -281,7 +282,7 @@ function nap_offer_reminders() {
 		$sent  = array_values( array_unique( array_merge( $sent, array_slice( $order, 0, array_search( $due, $order, true ) + 1 ) ) ) );
 		$offer['reminders'] = $sent;
 		nap_update_project( (int) $p['id'], array( 'offer' => $offer ) );
-		if ( nap_mail_offer_reminder( $c, $p, $offer, $due, nap_create_login_link( (int) $c['id'] ) ) ) {
+		if ( nap_mail_offer_reminder( $c, $p, $offer, $due, nap_create_offer_link( (int) $c['id'], (int) $p['id'] ) ) ) {
 			nap_log( $c['id'], $p['id'], 'mail', 'Muistutus tarjouksesta lähetetty asiakkaalle' );
 		}
 	}
