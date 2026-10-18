@@ -98,19 +98,25 @@ a.btn{text-align:center;text-decoration:none}textarea{font-family:inherit;margin
   <div class="card offer" id="tarjous-<?php echo (int) $p['id']; ?>">
     <h2><?php echo $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjous'; ?></h2>
     <p class="small muted" style="margin:-6px 0 6px"><?php echo esc_html( $p['title'] ); ?> · <?php echo esc_html( nap_deliveries()[ nap_delivery( $p ) ] ); ?></p>
+    <?php $is_pdf = 'pdf' === ( $offer['mode'] ?? '' ); $pdf_url = add_query_arg( 'tarjous_pdf', (int) $p['id'], home_url( '/oma-kohde/' ) ); ?>
+    <?php if ( $is_pdf ) : ?>
+    <p style="margin:6px 0 0">Tarjouksen erittely, hinta ja voimassaolo ovat PDF-tiedostossa.</p>
+    <a class="btn" href="<?php echo esc_url( $pdf_url ); ?>" target="_blank" rel="noopener">Avaa tarjous (PDF)</a>
+    <?php else : ?>
     <div class="price"><?php echo esc_html( nap_eur( $offer['sum'] ) ); ?></div>
     <div class="small muted">sis. alv<?php if ( $offer['labor'] > 0 ) echo ' · josta työn osuus ' . esc_html( nap_eur( $offer['labor'] ) ) . ' (kotitalousvähennyskelpoinen)'; ?></div>
+    <?php endif; ?>
     <?php if ( $offer['content'] ) : ?><p class="pre"><?php echo esc_html( $offer['content'] ); ?></p><?php endif; ?>
     <?php if ( $offer['notes'] ) : ?><p class="small pre muted"><?php echo esc_html( $offer['notes'] ); ?></p><?php endif; ?>
     <div class="row"><span>Päivätty</span><b><?php echo esc_html( nap_fi_date( $offer['sent_at'] ) ); ?></b></div>
     <?php if ( $offer['valid_until'] ) : ?><div class="row"><span>Voimassa</span><b><?php echo esc_html( nap_fi_date( $offer['valid_until'] ) ); ?> asti</b></div><?php endif; ?>
     <div class="row"><span>Tarjouksen tekijä</span><b><?php echo esc_html( $offer['sent_name'] ); ?></b></div>
-    <?php if ( $offer['file'] ) : ?><a class="btn o" href="<?php echo esc_url( add_query_arg( 'tarjous_pdf', (int) $p['id'], home_url( '/oma-kohde/' ) ) ); ?>" target="_blank" rel="noopener">Avaa tarjous (PDF)</a><?php endif; ?>
+    <?php if ( $offer['file'] && ! $is_pdf ) : ?><a class="btn o" href="<?php echo esc_url( add_query_arg( 'tarjous_pdf', (int) $p['id'], home_url( '/oma-kohde/' ) ) ); ?>" target="_blank" rel="noopener">Avaa tarjous (PDF)</a><?php endif; ?>
     <?php if ( $mterms ) : ?><div class="terms"><?php echo esc_html( $mterms ); ?></div><?php endif; ?>
     <?php if ( $cterms ) : ?><div class="terms"><?php echo esc_html( $cterms ); ?></div><?php endif; ?>
 
     <?php if ( $ap ) : ?>
-      <div class="ok" style="margin:12px 0 0">✓ Tarjous hyväksytty <?php echo esc_html( nap_fi_date( $ap['at'] ) ); ?> · <?php echo esc_html( nap_eur( $ap['value'] ) ); ?> · <?php echo esc_html( $ap['pay_label'] ); ?></div>
+      <div class="ok" style="margin:12px 0 0">✓ Tarjous hyväksytty <?php echo esc_html( nap_fi_date( $ap['at'] ) ); ?><?php if ( empty( $ap['price_in_pdf'] ) && $ap['value'] > 0 ) echo ' · ' . esc_html( nap_eur( $ap['value'] ) ); ?> · <?php echo esc_html( $ap['pay_label'] ); ?></div>
     <?php elseif ( 'declined' === $offer['status'] ) : ?>
       <div class="warn" style="margin:12px 0 0">Kerroit, ettet ole kiinnostunut tästä tarjouksesta. Jos mielesi muuttuu, ota yhteyttä.</div>
     <?php elseif ( nap_offer_expired( $offer ) ) : ?>
@@ -121,8 +127,8 @@ a.btn{text-align:center;text-decoration:none}textarea{font-family:inherit;margin
         <h3 style="margin-bottom:8px">Hyväksy tarjous</h3>
         <label class="opt"><input type="radio" name="payment" value="holvi" required><span>Lasku<small>Maksat laskulla.</small></span></label>
         <label class="opt"><input type="radio" name="payment" value="rahoitus"><span>Skaala-rahoitus (OP)<small>Maksat erissä. Hoidamme rahoitushakemuksen kanssasi.</small></span></label>
-        <label class="chk"><input type="checkbox" name="terms" value="1" required><span>Olen lukenut tarjouksen ja sen ehdot<?php echo $mterms ? ', ja vastaan itse ilmoittamieni mittojen oikeellisuudesta' : ''; ?>.</span></label>
-        <button class="btn" type="submit">Hyväksy tarjous <?php echo esc_html( nap_eur( $offer['sum'] ) ); ?></button>
+        <label class="chk"><input type="checkbox" name="terms" value="1" required><span>Olen lukenut tarjouksen<?php echo $is_pdf ? ' (PDF)' : ''; ?> ja sen ehdot<?php echo $mterms ? ', ja vastaan itse ilmoittamieni mittojen oikeellisuudesta' : ''; ?>.</span></label>
+        <button class="btn" type="submit">Hyväksy tarjous<?php echo $is_pdf ? '' : ' ' . esc_html( nap_eur( $offer['sum'] ) ); ?></button>
       </form>
       <details>
         <summary>Kysy tarjouksesta</summary>

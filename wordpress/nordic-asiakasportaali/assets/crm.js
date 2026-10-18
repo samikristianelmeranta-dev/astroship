@@ -219,7 +219,8 @@
     var expired = o.valid_until && o.valid_until < S.today && o.status === 'sent';
     var st = o.status === 'accepted' ? '<span class="pill good">Hyväksytty</span>' : o.status === 'declined' ? '<span class="pill crit">Ei kiinnostunut</span>' :
       expired ? '<span class="pill crit">Vanhentunut</span>' : (o.viewed_at ? '<span class="pill">Asiakas avasi ' + esc(fdate(o.viewed_at)) + '</span>' : '<span class="pill gold">Ei vielä avattu</span>');
-    return '<div class="offer" data-offw="' + p.id + '"><div class="offer-h"><b>' + (o.version > 1 ? 'Tarjous (versio ' + o.version + ')' : 'Tarjous') + ' · ' + esc(eur(o.sum)) + '</b>' + st + '</div>' +
+    var pdfMode = o.mode === 'pdf';
+    return '<div class="offer" data-offw="' + p.id + '"><div class="offer-h"><b>' + (o.version > 1 ? 'Tarjous (versio ' + o.version + ')' : 'Tarjous') + (pdfMode ? ' · PDF' : '') + (o.sum ? ' · ' + esc(eur(o.sum)) : '') + '</b>' + st + '</div>' +
       '<div class="small muted">Lähetetty ' + esc(fdate(o.sent_at)) + ' · ' + esc(o.sent_name) + (o.valid_until ? ' · voimassa ' + esc(fdate(o.valid_until)) + ' asti' : '') + (o.labor ? ' · työn osuus ' + esc(eur(o.labor)) : '') +
       ((o.reminders || []).length ? ' · muistutuksia ' + o.reminders.length : '') + '</div>' +
       (o.content ? '<div class="small" style="white-space:pre-line;margin-top:4px">' + esc(o.content) + '</div>' : '') +
@@ -229,22 +230,36 @@
   function openOffer(c, pid) {
     var w = document.querySelector('[data-offw="' + pid + '"]'); if (!w) return;
     var p = c.projects.filter(function (x) { return x.id === pid; })[0], o = p.offer || {};
+    var pdfFirst = o.mode ? o.mode === 'pdf' : true;
     w.innerHTML = '<form class="apprf" enctype="multipart/form-data"><h3>' + (p.offer ? 'Päivitetty tarjous' : 'Tarjous asiakkaalle') + '</h3>' +
-      '<p class="small muted" style="margin:0">Asiakas näkee tarjouksen Oma kohde -sivulla ja voi hyväksyä sen, valita maksutavan tai kysyä tarkennusta.</p><div class="fields">' +
-      '<label class="fld wide">Tarjous PDF:nä (Skaalan tarjoustyökalusta)' + (o.file ? ' <span class="muted small">– jätä tyhjäksi, niin edellinen PDF säilyy</span>' : '') + '<input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
-      '<label class="fld">Hinta yhteensä (€, sis. alv) *<input name="sum" type="number" min="1" step="1" required value="' + (o.sum || p.value || '') + '"></label>' +
-      '<label class="fld">Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
-      '<label class="fld">Voimassa asti<input name="valid_until" type="date" value="' + esc(addDays(S.offerDays)) + '"></label>' +
-      '<label class="fld wide">Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
-      '<label class="fld wide">Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
+      '<p class="small muted" style="margin:0">Asiakas näkee tarjouksen Oma kohde -sivulla ja voi hyväksyä sen, valita maksutavan tai kysyä tarkennusta.</p>' +
+      '<div class="choices"><label><input type="radio" name="mode" value="pdf"' + (pdfFirst ? ' checked' : '') + '><span><b>Valmis PDF-tarjous</b> – erittely, hinta ja voimassaolo ovat PDF:ssä</span></label>' +
+      '<label><input type="radio" name="mode" value="fields"' + (pdfFirst ? '' : ' checked') + '><span><b>Täytä tiedot</b> – hinta, työn osuus ja sisältö näkyvät asiakkaalle sivulla (PDF valinnainen)</span></label></div><div class="fields">' +
+      '<label class="fld wide">Tarjous PDF:nä (Skaalan tarjoustyökalusta)<span class="muted small" data-pdfhint>' + (o.file ? ' – jätä tyhjäksi, niin edellinen PDF säilyy' : '') + '</span><input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
+      '<label class="fld" data-pdfonly>Hinta myyntiputkeen (€, valinnainen)<input name="sum_pdf" type="number" min="0" step="1" value="' + (o.sum || p.value || '') + '"><span class="muted small" style="font-weight:400">Ei näy asiakkaalle.</span></label>' +
+      '<label class="fld" data-fieldsonly>Hinta yhteensä (€, sis. alv) *<input name="sum" type="number" min="1" step="1" value="' + (o.sum || p.value || '') + '"></label>' +
+      '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
+      '<label class="fld" data-fieldsonly>Voimassa asti<input name="valid_until" type="date" value="' + esc(addDays(S.offerDays)) + '"></label>' +
+      '<label class="fld wide" data-fieldsonly>Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
+      '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
       '<div class="actions"><button class="btn p">Lähetä tarjous</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
     var f = w.querySelector('form');
-    f.sum.focus();
+    function onMode() {
+      var pdf = f.mode.value === 'pdf';
+      f.querySelectorAll('[data-fieldsonly]').forEach(function (el) { el.hidden = pdf; });
+      f.querySelectorAll('[data-pdfonly]').forEach(function (el) { el.hidden = !pdf; });
+      f.sum.required = !pdf;
+      f.pdf.required = pdf && !o.file;
+    }
+    f.querySelectorAll('[name=mode]').forEach(function (r) { r.addEventListener('change', onMode); });
+    onMode();
     w.querySelector('[data-cancel]').addEventListener('click', function () { loadCard(c.id); });
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var fd = new FormData(f); fd.set('notify', f.notify.checked ? '1' : '');
+      if (f.mode.value === 'pdf') fd.set('sum', f.sum_pdf.value || '0');
+      fd.delete('sum_pdf');
       f.querySelector('.btn.p').disabled = true;
       api('projects/' + pid + '/offer', { method: 'POST', form: fd }).then(function (np) {
         S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });

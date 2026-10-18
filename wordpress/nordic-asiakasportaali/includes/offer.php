@@ -80,8 +80,10 @@ function nap_api_offer( WP_REST_Request $req ) {
 	if ( ! empty( $p['approval'] ) ) {
 		return nap_err( 'Tarjous on jo hyväksytty.', 409 );
 	}
-	$sum = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'sum' ) );
-	if ( $sum <= 0 ) {
+	// pdf = valmis PDF-tarjous (erittely ja hinta PDF:ssä), fields = tiedot täytetään CRM:ssä
+	$mode = 'pdf' === $req->get_param( 'mode' ) ? 'pdf' : 'fields';
+	$sum  = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'sum' ) );
+	if ( $sum <= 0 && 'fields' === $mode ) {
 		return nap_err( 'Anna tarjouksen hinta.', 400 );
 	}
 	$old   = nap_get_offer( $p );
@@ -96,16 +98,21 @@ function nap_api_offer( WP_REST_Request $req ) {
 		$file  = $stored;
 		$fname = sanitize_file_name( $files['pdf']['name'] );
 	}
-	$valid = sanitize_text_field( (string) $req->get_param( 'valid_until' ) );
+	if ( 'pdf' === $mode && ! $file ) {
+		return nap_err( 'Liitä tarjous PDF-tiedostona.', 400 );
+	}
+	$valid = 'pdf' === $mode ? '' : sanitize_text_field( (string) $req->get_param( 'valid_until' ) );
+	$pdf   = 'pdf' === $mode;
 	$me    = wp_get_current_user();
 	$offer = array(
 		'version'     => (int) ( $old['version'] ?? 0 ) + 1,
 		'status'      => 'sent',
-		'sum'         => $sum,
-		'labor'       => max( 0, (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'labor' ) ) ),
+		'mode'        => $mode,
+		'sum'         => max( 0, $sum ), // PDF-tilassa vain myyntiputkeen, ei näy asiakkaalle
+		'labor'       => $pdf ? 0 : max( 0, (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $req->get_param( 'labor' ) ) ),
 		'valid_until' => preg_match( '/^\d{4}-\d{2}-\d{2}$/', $valid ) ? $valid : '',
-		'content'     => sanitize_textarea_field( (string) $req->get_param( 'content' ) ),
-		'notes'       => sanitize_textarea_field( (string) $req->get_param( 'notes' ) ),
+		'content'     => $pdf ? '' : sanitize_textarea_field( (string) $req->get_param( 'content' ) ),
+		'notes'       => $pdf ? '' : sanitize_textarea_field( (string) $req->get_param( 'notes' ) ),
 		'file'        => $file,
 		'file_name'   => $fname,
 		'sent_at'     => nap_now(),
@@ -115,11 +122,18 @@ function nap_api_offer( WP_REST_Request $req ) {
 		'reminders'   => array(),
 	);
 	$prev = (int) $p['stage'];
-	nap_update_project( (int) $p['id'], array( 'offer' => $offer, 'value' => $sum, 'stage' => max( 2, $prev ) ) );
+	$upd = array( 'offer' => $offer, 'stage' => max( 2, $prev ) );
+	if ( $sum > 0 ) {
+		$upd['value'] = $sum;
+	}
+	nap_update_project( (int) $p['id'], $upd );
 	$p   = nap_get_project( (int) $p['id'] );
 	$c   = nap_get_customer( (int) $p['customer_id'] );
 	$eur = number_format( $sum, 0, ',', ' ' ) . ' €';
-	nap_log( $c['id'], $p['id'], 'offer', ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjous' ) . ' lähetetty (' . $eur . ')', true );
+	nap_log( $c['id'], $p['id'], 'offer', ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjous' ) . ' lähetetty (' . ( $pdf ? 'PDF' : $eur ) . ')', true );
+	if ( $pdf && $sum > 0 ) {
+		nap_log( $c['id'], $p['id'], 'offer', 'Tarjouksen hinta CRM:ään: ' . $eur );
+	}
 	if ( $prev < 2 ) {
 		nap_log( $c['id'], $p['id'], 'stage', 'Vaihe: ' . nap_stage_names( nap_delivery( $p ) )[2], true );
 		nap_on_stage_change( $p, $prev );
@@ -175,7 +189,7 @@ function nap_customer_offer_action( $c, $action ) {
 		if ( empty( $_POST['terms'] ) || ! in_array( $pay, array( 'holvi', 'rahoitus' ), true ) ) { // phpcs:ignore
 			return 'ehdot';
 		}
-		$r = nap_record_approval( $p, array( 'value' => $offer['sum'], 'how' => 'portaali', 'payment' => $pay, 'note' => '', 'by' => 0, 'by_name' => $c['name'], 'confirm' => true ) );
+		$r = nap_record_approval( $p, array( 'value' => $offer['sum'] > 0 ? $offer['sum'] : $p['value'], 'price_in_pdf' => 'pdf' === ( $offer['mode'] ?? '' ), 'how' => 'portaali', 'payment' => $pay, 'note' => '', 'by' => 0, 'by_name' => $c['name'], 'confirm' => true ) );
 		return is_wp_error( $r ) ? 'virhe' : 'hyvaksytty';
 	}
 	if ( 'offer_question' === $action ) {

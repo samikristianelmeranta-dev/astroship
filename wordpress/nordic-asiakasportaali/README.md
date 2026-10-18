@@ -61,8 +61,11 @@ verkkosivun lomakkeelta tai myöhemmin kohteen kortilta.
 
 ## Tarjous asiakkaalle
 Kohteen kortilla **Lähetä tarjous asiakkaalle** (myös kun vaiheeksi valitaan *Tarjous lähetetty* tai myyntiputken nuoli):
-- Liitetään Skaalan tarjoustyökalun PDF, hinta (sis. alv), työn osuus, voimassaolo (oletus asetuksista, 30 pv),
-  asiakkaalle näkyvä sisältö ja lisätiedot. Asiakas saa sähköpostiin linkin (vastaukset menevät lähettäjälle).
+- **Valmis PDF-tarjous** (oletus): liitetään vain Skaalan tarjoustyökalun PDF. Erittely, hinta ja voimassaolo ovat PDF:ssä,
+  eikä muita kenttiä käytetä. Hinnan voi halutessaan kirjata myyntiputkeen; se ei näy asiakkaalle.
+- **Täytä tiedot**: hinta (sis. alv), työn osuus, voimassaolo (oletus asetuksista, 30 pv), asiakkaalle näkyvä sisältö
+  ja lisätiedot; PDF on valinnainen.
+- Asiakas saa sähköpostiin linkin (vastaukset menevät lähettäjälle).
 - Asiakas näkee Oma kohde -sivulla hinnan, sisällön, PDF:n, peruutusehdot (ja omat mitat -ehdon) ja voi
   **hyväksyä** (valitsee maksutavaksi laskun tai Skaala-rahoituksen ja vahvistaa ehdot), **kysyä tarkennusta** tai kertoa,
   ettei ole kiinnostunut. Myyjä saa ilmoituksen ja tarvittaessa tehtävän; CRM näyttää, milloin asiakas avasi tarjouksen.
@@ -89,7 +92,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.7.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.7.1.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

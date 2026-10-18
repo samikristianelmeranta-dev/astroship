@@ -486,7 +486,8 @@ function nap_record_approval( $p, $args ) {
 	$payment = (string) $args['payment'];
 	$methods = nap_approval_methods();
 	$pays    = nap_payment_methods();
-	if ( $value <= 0 ) {
+	$in_pdf = ! empty( $args['price_in_pdf'] ); // asiakas hyväksyi PDF-tarjouksen: hinta on PDF:ssä
+	if ( $value <= 0 && ! $in_pdf ) {
 		return new WP_Error( 'nap', 'Anna hyväksytty hinta.', 400 );
 	}
 	if ( ! isset( $methods[ $how ] ) || ! isset( $pays[ $payment ] ) ) {
@@ -501,15 +502,18 @@ function nap_record_approval( $p, $args ) {
 		'how_label' => $methods[ $how ],
 		'payment'   => $payment,
 		'pay_label' => $pays[ $payment ],
-		'value'     => $value,
+		'value'     => max( 0, $value ),
+		'price_in_pdf' => $in_pdf,
 		'note'      => sanitize_textarea_field( (string) ( $args['note'] ?? '' ) ),
 	);
 	$old  = (int) $p['stage'];
 	$data = array(
-		'value'    => $value,
 		'stage'    => max( 3, $old ),
 		'approval' => $approval,
 	);
+	if ( $value > 0 ) {
+		$data['value'] = $value;
+	}
 	$offer = nap_get_offer( $p );
 	if ( $offer ) {
 		$offer['status']      = 'accepted';
@@ -521,7 +525,7 @@ function nap_record_approval( $p, $args ) {
 	$c   = nap_get_customer( (int) $p['customer_id'] );
 	$eur = number_format( $value, 0, ',', ' ' ) . ' €';
 
-	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty (' . $eur . ')', true );
+	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty' . ( $in_pdf ? '' : ' (' . $eur . ')' ), true );
 	nap_log( $c['id'], $p['id'], 'approval', ( $staff ? 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $approval['by_name'] : 'Asiakas hyväksyi tarjouksen Oma kohde -sivulla' )
 		. '. Maksutapa: ' . $pays[ $payment ] . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
 	if ( $old < 3 ) {
@@ -543,7 +547,7 @@ function nap_record_approval( $p, $args ) {
 	}
 	if ( ! $staff ) {
 		nap_notify_owner( $p, 'Tarjous hyväksytty: ' . $c['name'], 'Asiakas hyväksyi tarjouksen',
-			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), 'Hinta: ' . $eur . ' · Maksutapa: ' . $pays[ $payment ] ) );
+			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), ( $value > 0 ? 'Hinta: ' . $eur . ' · ' : '' ) . 'Maksutapa: ' . $pays[ $payment ] ) );
 	}
 	return $p;
 }

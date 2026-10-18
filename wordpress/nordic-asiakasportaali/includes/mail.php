@@ -90,7 +90,7 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 		'Hei ' . nap_first_name( $customer['name'] ) . ',',
 		'kiitos! Vahvistamme, että hyväksyit tarjouksemme ' . $a['how_label'] . ' ' . date_i18n( 'j.n.Y', strtotime( $a['at'] ) ) . '.',
 		'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ) . "\n"
-			. 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)'
+			. ( ! empty( $a['price_in_pdf'] ) || $a['value'] <= 0 ? 'Hinta ja erittely: tarjouksen (PDF) mukaan' : 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)' )
 			. ( 'auki' !== $a['payment'] ? "\nMaksutapa: " . $a['pay_label'] : '' ),
 	);
 	$delivery = nap_delivery( $project );
@@ -110,7 +110,7 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 
 function nap_offer_mail_lines( $project, $offer ) {
 	return 'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ) . "\n"
-		. 'Hinta: ' . number_format( (float) $offer['sum'], 0, ',', ' ' ) . ' € (sis. alv)'
+		. ( 'pdf' === ( $offer['mode'] ?? '' ) ? 'Tarjous erittelyineen on PDF-tiedostona Oma kohde -sivulla.' : 'Hinta: ' . number_format( (float) $offer['sum'], 0, ',', ' ' ) . ' € (sis. alv)' )
 		. ( ! empty( $offer['valid_until'] ) ? "\nVoimassa: " . date_i18n( 'j.n.Y', strtotime( $offer['valid_until'] ) ) . ' asti' : '' );
 }
 
