@@ -12,7 +12,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NAP_VERSION', '0.5.1' );
+define( 'NAP_VERSION', '0.10.0' );
 define( 'NAP_DB_VERSION', '8' );
 define( 'NAP_FILE', __FILE__ );
 define( 'NAP_DIR', __DIR__ );
