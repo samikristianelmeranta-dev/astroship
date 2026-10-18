@@ -18,6 +18,14 @@ function nap_settings_defaults() {
 		'auto_watch'     => 1,
 		'auto_digest'    => 1,
 		'offer_reminders' => 1,
+		'inbox_enabled'  => 0,
+		'inbox_host'     => 'localhost',
+		'inbox_port'     => 993,
+		'inbox_ssl'      => 1,
+		'inbox_user'     => '',
+		'inbox_pass'     => '',
+		'inbox_suppliers' => '',
+		'inbox_months'   => 12,
 		'offer_days'     => 14,
 		'measure_terms'  => 'Asiakkaan omat mitat: Kun asiakas mittaa itse tai toimittaa mitat meille, tuotteet valmistetaan asiakkaan ilmoittamien mittojen mukaan, ja vastuu mittojen oikeellisuudesta on aina asiakkaalla. Vääristä mitoista johtuvat muutokset ja uudet tuotteet ovat asiakkaan kustannuksella.',
 		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
@@ -126,6 +134,15 @@ add_action( 'admin_init', function () {
 				'auto_watch'    => empty( $in['auto_watch'] ) ? 0 : 1,
 				'auto_digest'   => empty( $in['auto_digest'] ) ? 0 : 1,
 				'offer_reminders' => empty( $in['offer_reminders'] ) ? 0 : 1,
+				'inbox_enabled' => empty( $in['inbox_enabled'] ) ? 0 : 1,
+				'inbox_host'    => sanitize_text_field( $in['inbox_host'] ?? 'localhost' ) ?: 'localhost',
+				'inbox_port'    => absint( $in['inbox_port'] ?? 993 ) ?: 993,
+				'inbox_ssl'     => empty( $in['inbox_ssl'] ) ? 0 : 1,
+				'inbox_user'    => sanitize_email( $in['inbox_user'] ?? '' ),
+				// Tyhjä kenttä säilyttää tallennetun salasanan.
+				'inbox_pass'    => '' !== (string) ( $in['inbox_pass'] ?? '' ) ? (string) $in['inbox_pass'] : (string) nap_settings()['inbox_pass'],
+				'inbox_suppliers' => sanitize_text_field( $in['inbox_suppliers'] ?? '' ),
+				'inbox_months'  => max( 1, min( 60, absint( $in['inbox_months'] ?? 12 ) ) ),
 				'offer_days'    => max( 1, min( 365, absint( $in['offer_days'] ?? 14 ) ) ),
 				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
 				'measure_terms' => sanitize_textarea_field( $in['measure_terms'] ?? $d['measure_terms'] ),
@@ -166,6 +183,17 @@ function nap_settings_page() {
 				<tr><th scope="row">Tarjoukset</th>
 					<td><label>Voimassa oletuksena <input type="number" min="1" max="365" name="nap_settings[offer_days]" value="<?php echo (int) $s['offer_days']; ?>" style="width:70px"> päivää</label><br>
 					<label><input type="checkbox" name="nap_settings[offer_reminders]" value="1" <?php checked( $s['offer_reminders'] ); ?>> Muistuta asiakasta avoimesta tarjouksesta 3 ja 7 päivän kohdalla sekä 2 päivää ennen voimassaolon päättymistä</label></td></tr>
+				<tr><th scope="row">Saapuneet (sähköposti)</th>
+					<td><label><input type="checkbox" name="nap_settings[inbox_enabled]" value="1" <?php checked( $s['inbox_enabled'] ); ?>> Hae keräyslaatikon viestit CRM:ään viiden minuutin välein ja tunnista viestin tyyppi</label>
+					<p class="description">cPanel → Email Accounts: luo laatikko (esim. crm@ikkunakauppias.fi). cPanel → Forwarders: ohjaa myynti@ ja info@ myös tähän laatikkoon. CRM poistaa haetut viestit keräyslaatikosta; alkuperäiset jäävät myynti@- ja info@-laatikoihin.</p>
+					<p><label>Keräyslaatikko <input name="nap_settings[inbox_user]" type="email" value="<?php echo esc_attr( $s['inbox_user'] ); ?>" class="regular-text" placeholder="crm@ikkunakauppias.fi"></label></p>
+					<p><label>Salasana <input name="nap_settings[inbox_pass]" type="password" autocomplete="new-password" class="regular-text" placeholder="<?php echo esc_attr( $s['inbox_pass'] || defined( 'NAP_MAIL_PASS' ) ? 'Tallennettu – jätä tyhjäksi, niin salasana säilyy' : '' ); ?>"></label></p>
+					<p><label>Palvelin <input name="nap_settings[inbox_host]" value="<?php echo esc_attr( $s['inbox_host'] ); ?>" style="width:200px"></label>
+					<label>Portti <input name="nap_settings[inbox_port]" type="number" value="<?php echo (int) $s['inbox_port']; ?>" style="width:80px"></label>
+					<label><input type="checkbox" name="nap_settings[inbox_ssl]" value="1" <?php checked( $s['inbox_ssl'] ); ?>> SSL</label></p>
+					<p><label>Toimittajien verkkotunnukset <input name="nap_settings[inbox_suppliers]" value="<?php echo esc_attr( $s['inbox_suppliers'] ); ?>" class="regular-text" placeholder="esim. tukku.fi, kuljetus.fi"></label></p>
+					<p><label>Säilytä viestit <input name="nap_settings[inbox_months]" type="number" min="1" max="60" value="<?php echo (int) $s['inbox_months']; ?>" style="width:70px"> kuukautta</label> <span class="description">Roskaposti, uutiskirjeet ja sivuston ilmoitukset poistetaan 30 päivän jälkeen.</span></p>
+					<?php $ist = get_option( 'nap_inbox_status' ); if ( $ist ) : ?><p class="description">Viimeisin haku <?php echo esc_html( mysql2date( 'j.n. H:i', $ist['at'] ) ); ?>: <?php echo $ist['ok'] ? esc_html( $ist['msg'] ) : '<b style="color:#b23b2e">' . esc_html( $ist['msg'] ) . '</b>'; // phpcs:ignore ?></p><?php endif; ?></td></tr>
 				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
 					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>
 					<p class="description">Näkyy asiakkaalle lähtevässä vahvistuksessa, kun tarjous merkitään hyväksytyksi. Tyhjänä ei näytetä.</p></td></tr>

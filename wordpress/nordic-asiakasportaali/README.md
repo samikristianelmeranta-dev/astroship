@@ -89,12 +89,33 @@ myyjä tai asentaja kirjaa sen kohteen kortilta: **✓ Hyväksy tarjous asiakkaa
 - Asentaja voi hyväksyä vain omia kohteitaan. Myyntiputken nuoli ja vaihevalikko avaavat hyväksyntälomakkeen,
   jotta jokaisesta hyväksytystä kaupasta jää merkintä.
 
+## Saapuneet (myynti@ ja info@)
+CRM:n näkymä **Saapuneet** (vain osakkaat) kerää myynti@- ja info@-laatikoiden viestit ja tunnistaa ne säännöillä:
+Tarjouspyyntö, Asiakkaan viesti, Reklamaatio / takuu, Skaala, Lasku / kuitti, Toimittajat ja yhteistyö, Muut sekä
+piilotetut Uutiskirjeet, Sivuston ilmoitukset ja Roskaposti. Jokaisessa viestissä näkyy tunnistuksen syy, ja luokan voi vaihtaa.
+- Asiakkaan viesti ja reklamaatio liitetään asiakkaan historiaan ja vastuumyyjälle tulee tehtävä (reklamaatio samalle päivälle).
+- Skaalan viestit liitetään asiakkaaseen, jos asiakkaan nimi tai osoite mainitaan.
+- Tarjouspyynnöstä **Luo tarjouspyyntö** avaa lomakkeen täytettynä (nimi, sähköposti, puhelin, osoite, tuotteet).
+- Sama viesti molempiin laatikoihin tallentuu kerran. Liitteet tallentuvat suojattuun kansioon.
+- Viestit säilytetään 12 kk (asetus); roskaposti, uutiskirjeet ja sivuston ilmoitukset 30 päivää.
+
+**Käyttöönotto (cPanel, Polar55):**
+1. cPanel → **Email Accounts** → luo keräyslaatikko, esim. `crm@ikkunakauppias.fi` (vahva salasana).
+2. cPanel → **Forwarders** → *Add Forwarder*: osoite `myynti` → *Forward to Email Address* `crm@ikkunakauppias.fi`.
+   Toista osoitteelle `info`. Alkuperäiset viestit jäävät edelleen myynti@- ja info@-laatikoihin.
+3. WordPress → Asetukset → Asiakasportaali → **Saapuneet**: ruksi päälle, keräyslaatikko ja salasana
+   (palvelin `localhost`, portti 993, SSL). Tallenna ja paina CRM:n Saapuneet-näkymässä **Hae uudet**.
+4. CRM hakee viestit 5 minuutin välein ja poistaa haetut viestit keräyslaatikosta.
+   Täsmällistä ajoitusta varten cPanel → Cron Jobs → 5 minuutin välein:
+   `wget -q -O /dev/null https://ikkunakauppias.fi/wp-cron.php?doing_wp_cron`
+   Salasanan voi asetussivun sijaan antaa wp-config.php:ssä: `define( 'NAP_MAIL_PASS', '...' );`
+
 Tulossa seuraavissa vaiheissa: dokumentit
 ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meistä, raportit. Katso
 `../asiakasportaali-prototyyppi/VAATIMUKSET.md`.
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.9.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.10.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

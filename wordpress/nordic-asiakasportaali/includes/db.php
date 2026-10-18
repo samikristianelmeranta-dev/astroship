@@ -106,6 +106,28 @@ function nap_install_db() {
 		KEY customer_id (customer_id)
 	) $c;" );
 
+	dbDelta( "CREATE TABLE " . nap_table( 'inbox' ) . " (
+		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+		msg_id varchar(255) NOT NULL DEFAULT '',
+		mailbox varchar(255) NOT NULL DEFAULT '',
+		from_name varchar(190) NOT NULL DEFAULT '',
+		from_email varchar(190) NOT NULL DEFAULT '',
+		subject varchar(255) NOT NULL DEFAULT '',
+		body mediumtext NULL,
+		attachments text NULL,
+		received_at datetime NOT NULL,
+		category varchar(20) NOT NULL DEFAULT 'muu',
+		reason varchar(255) NOT NULL DEFAULT '',
+		customer_id bigint(20) unsigned DEFAULT NULL,
+		project_id bigint(20) unsigned DEFAULT NULL,
+		status varchar(10) NOT NULL DEFAULT 'new',
+		created_at datetime NOT NULL,
+		PRIMARY KEY  (id),
+		KEY msg_id (msg_id(191)),
+		KEY category (category),
+		KEY customer_id (customer_id)
+	) $c;" );
+
 	dbDelta( "CREATE TABLE " . nap_table( 'tokens' ) . " (
 		id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 		customer_id bigint(20) unsigned NOT NULL,

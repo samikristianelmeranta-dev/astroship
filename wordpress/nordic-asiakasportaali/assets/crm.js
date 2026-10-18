@@ -34,13 +34,14 @@
     ['putki', 'Myyntiputki', 'M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z'],
     ['asiakkaat', 'Asiakkaat', 'M16 11a4 4 0 10-8 0 4 4 0 008 0zM4 21c1-4 4-6 8-6s7 2 8 6'],
     ['tehtavat', 'Tehtävät', 'M4 6l2 2 4-4M4 14l2 2 4-4M13 6h7M13 14h7'],
+    ['saapuneet', 'Saapuneet', 'M3 6h18v12H3zM3 7l9 6 9-6'],
     ['uusi', 'Uusi tarjouspyyntö', 'M12 5v14M5 12h14']
   ];
-  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); if (m) return { v: 'asiakkaat', id: +m[1] }; m = /^uusi-(\d+)$/.exec(h); return m ? { v: 'uusi', id: +m[1] } : { v: h || 'paiva' }; }
+  function route() { var h = (location.hash || '#paiva').slice(1); var m = /^asiakas-(\d+)$/.exec(h); if (m) return { v: 'asiakkaat', id: +m[1] }; m = /^uusi-(\d+)$/.exec(h); if (m) return { v: 'uusi', id: +m[1] }; m = /^saapunut-(\d+)$/.exec(h); return m ? { v: 'saapuneet', id: +m[1] } : { v: h || 'paiva' }; }
   function drawNav(v) {
     var open = S.tasks.filter(function (t) { return t.assignee_id === S.me.id && !t.done; }).length;
-    document.getElementById('nav').innerHTML = VIEWS.map(function (x) {
-      return '<a href="#' + x[0] + '" class="' + (x[0] === v ? 'on' : '') + '"' + (x[0] === v ? ' aria-current="page"' : '') + '><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + x[2] + '"/></svg>' + x[1] + (x[0] === 'tehtavat' && open ? '<span class="cnt">' + open + '</span>' : '') + '</a>';
+    document.getElementById('nav').innerHTML = VIEWS.filter(function (x) { return x[0] !== 'saapuneet' || isOwner(); }).map(function (x) {
+      return '<a href="#' + x[0] + '" class="' + (x[0] === v ? 'on' : '') + '"' + (x[0] === v ? ' aria-current="page"' : '') + '><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + x[2] + '"/></svg>' + x[1] + (x[0] === 'tehtavat' && open ? '<span class="cnt">' + open + '</span>' : '') + (x[0] === 'saapuneet' && S.inboxNew ? '<span class="cnt">' + S.inboxNew + '</span>' : '') + '</a>';
     }).join('');
     document.getElementById('who').innerHTML = '<b>' + esc(S.me.name) + '</b>' + (isOwner() ? 'Osakas' : 'Asentaja') +
       (C.admin ? ' · <a href="' + esc(C.admin) + '">Asetukset</a>' : '') + ' · <a href="' + esc(C.logout) + '">Kirjaudu ulos</a>';
@@ -394,6 +395,84 @@
     })[0];
   }
 
+
+  /* ---------- Saapuneet (myynti@ ja info@) ---------- */
+  S.ib = { cat: '', onlyNew: false, q: '' };
+  function inboxNewCount(counts, hidden) {
+    var n = 0; Object.keys(counts || {}).forEach(function (k) { if ((hidden || []).indexOf(k) < 0) n += counts[k].new; }); return n;
+  }
+  function loadInbox() {
+    var qs = ['cat=' + encodeURIComponent(S.ib.cat), S.ib.onlyNew ? 'status=new' : '', S.ib.q ? 'q=' + encodeURIComponent(S.ib.q) : ''].filter(Boolean).join('&');
+    return api('inbox?' + qs).then(function (r) { S.inbox = r; S.inboxNew = inboxNewCount(r.counts, r.hidden); drawNav('saapuneet'); return r; });
+  }
+  function ibTime(dt) { return String(dt).slice(0, 10) === S.today ? 'klo ' + String(dt).slice(11, 16).replace(':', '.') : fdate(dt); }
+  function viewInbox(id) {
+    if (!S.inbox) { main.innerHTML = head('Saapuneet', 'Ladataan…'); loadInbox().then(function () { viewInbox(id); }).catch(fail); return; }
+    var r = S.inbox, cats = r.categories, cnt = r.counts || {};
+    var chip = function (k, label) {
+      var c = k ? (cnt[k] || { new: 0, total: 0 }) : null, n = k ? c.new : inboxNewCount(cnt, r.hidden);
+      return '<button class="ibchip' + (S.ib.cat === k ? ' on' : '') + '" data-cat="' + k + '">' + esc(label) + (n ? ' <b>' + n + '</b>' : (k && c.total ? ' <span>' + c.total + '</span>' : '')) + '</button>';
+    };
+    var shown = Object.keys(cats).filter(function (k) { return r.hidden.indexOf(k) < 0; });
+    if (!id && r.items[0] && window.innerWidth > 860) id = r.items[0].id;
+    main.innerHTML = head('Saapuneet', 'myynti@ ja info@ – viestit tunnistettuina', '<button class="btn" id="ibfetch">Hae uudet</button>') +
+      (!r.ready ? '<div class="card" style="margin-bottom:14px"><b>Saapuneet ei ole vielä käytössä.</b> <span class="muted">Täytä keräyslaatikon tiedot kohdassa Asetukset → Asiakasportaali.</span></div>' : '') +
+      (r.status && !r.status.ok ? '<div class="card" style="margin-bottom:14px;border-color:var(--crit)"><b style="color:var(--crit)">Viimeisin haku epäonnistui:</b> ' + esc(r.status.msg) + '</div>' : '') +
+      '<div class="ibchips">' + chip('', 'Kaikki') + shown.map(function (k) { return chip(k, cats[k]); }).join('') +
+      '<span class="ibsep">Piilotetut:</span>' + r.hidden.map(function (k) { return chip(k, cats[k]); }).join('') + '</div>' +
+      '<div class="cust"><div class="card"><div class="search"><input id="ibq" type="search" placeholder="Hae lähettäjällä tai sisällöllä" aria-label="Hae viestejä" value="' + esc(S.ib.q) + '">' +
+      '<label class="ibnew"><input type="checkbox" id="ibonly"' + (S.ib.onlyNew ? ' checked' : '') + '> Vain käsittelemättömät</label></div>' +
+      '<div class="clist iblist">' + (r.items.length ? r.items.map(function (m) {
+        return '<a href="#saapunut-' + m.id + '" class="' + (m.id === id ? 'on' : '') + (m.status === 'new' ? ' unread' : '') + '"><span><span class="ibrow"><b>' + esc(m.from_name || m.from_email) + '</b><span class="small muted">' + esc(ibTime(m.received_at)) + '</span></span>' +
+          '<span class="ibsubj">' + (m.files ? '📎 ' : '') + esc(m.subject) + '</span><span class="small muted ibsnip">' + esc(m.snippet) + '</span>' +
+          '<span class="ibrow"><span class="pill ' + ibPill(m.category) + '">' + esc(cats[m.category]) + '</span><span class="small muted">' + esc(m.customer || m.mailbox) + '</span></span></span></a>';
+      }).join('') : '<div class="empty">Ei viestejä tässä näkymässä.</div>') + '</div></div>' +
+      '<div class="card" id="ibcard">' + (id ? '<p class="muted">Ladataan…</p>' : '<div class="empty">Valitse viesti listasta.</div>') + '</div></div>';
+    main.querySelectorAll('[data-cat]').forEach(function (b) { b.addEventListener('click', function () { S.ib.cat = b.getAttribute('data-cat'); loadInbox().then(function () { viewInbox(); }).catch(fail); }); });
+    document.getElementById('ibonly').addEventListener('change', function (e) { S.ib.onlyNew = e.target.checked; loadInbox().then(function () { viewInbox(); }).catch(fail); });
+    var q = document.getElementById('ibq'), t;
+    q.addEventListener('input', function () { clearTimeout(t); t = setTimeout(function () { S.ib.q = q.value.trim(); loadInbox().then(function () { viewInbox(); var n = document.getElementById('ibq'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }); }, 300); });
+    document.getElementById('ibfetch').addEventListener('click', function (e) {
+      e.target.disabled = true; e.target.textContent = 'Haetaan…';
+      api('inbox/fetch', { method: 'POST' }).then(function (x) { toast(x.haettu ? 'Uusia viestejä: ' + x.haettu : 'Ei uusia viestejä'); return loadInbox(); })
+        .then(function () { viewInbox(route().id); }).catch(function (err) { fail(err); loadInbox().then(function () { viewInbox(route().id); }); });
+    });
+    if (id) loadInboxItem(id);
+  }
+  function ibPill(cat) { return cat === 'reklamaatio' ? 'crit' : cat === 'tarjouspyynto' ? 'gold' : cat === 'asiakas' ? 'good' : ''; }
+  function loadInboxItem(id) {
+    api('inbox/' + id).then(function (m) {
+      var box = document.getElementById('ibcard'); if (!box) return;
+      var cats = S.inbox.categories;
+      if (m.status === 'new' && m.category !== 'muu') { /* avaus ei kuittaa: käsittely merkitään itse */ }
+      box.innerHTML = '<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:flex-start"><h2 style="margin:0">' + esc(m.subject) + '</h2>' +
+        '<span class="pill ' + ibPill(m.category) + '">' + esc(cats[m.category]) + '</span></div>' +
+        '<dl class="kv" style="margin-top:10px"><dt>Lähettäjä</dt><dd>' + esc(m.from_name) + ' &lt;' + esc(m.from_email) + '&gt;</dd><dt>Saapui</dt><dd>' + esc(ftime(m.received_at)) + (m.mailbox ? ' · ' + esc(m.mailbox) : '') + '</dd>' +
+        '<dt>Tunnistus</dt><dd class="small muted">' + esc(m.reason) + '</dd>' +
+        '<dt>Asiakas</dt><dd>' + (m.customer_id ? '<a href="#asiakas-' + m.customer_id + '">' + esc(m.customer) + '</a>' : '<select id="iblink" aria-label="Liitä asiakkaaseen"><option value="">Ei liitetty – valitse asiakas</option>' + S.customers.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + '</option>'; }).join('') + '</select>') + '</dd></dl>' +
+        '<div class="actions" style="margin:10px 0">' +
+        (!m.customer_id ? '<button class="btn p" id="iblead">Luo tarjouspyyntö</button>' : '') +
+        '<a class="btn" href="mailto:' + esc(m.from_email) + '?subject=' + encodeURIComponent('Re: ' + m.subject) + '">Vastaa</a>' +
+        '<button class="btn" id="ibdone">' + (m.status === 'new' ? '✓ Merkitse käsitellyksi' : 'Palauta käsittelemättömäksi') + '</button>' +
+        '<select id="ibcat" aria-label="Vaihda luokka">' + Object.keys(cats).map(function (k) { return '<option value="' + k + '"' + (k === m.category ? ' selected' : '') + '>' + esc(cats[k]) + '</option>'; }).join('') + '</select></div>' +
+        (m.attachments.length ? '<div class="ibatt">' + m.attachments.map(function (a, i) { return '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?saapunut=' + m.id + '&liite=' + i) + '">📎 ' + esc(a.name) + ' <span class="muted">' + Math.max(1, Math.round(a.size / 1024)) + ' kt</span></a>'; }).join('') + '</div>' : '') +
+        '<div class="ibbody">' + esc(m.body || '(tyhjä viesti)') + '</div>';
+      if (window.innerWidth <= 860) box.scrollIntoView({ block: 'start' });
+      var upd = function (body, msg) {
+        return api('inbox/' + m.id, { method: 'POST', body: body }).then(function () { toast(msg); return loadInbox(); }).then(function () { viewInbox(m.id); }).catch(fail);
+      };
+      document.getElementById('ibdone').addEventListener('click', function () { upd({ status: m.status === 'new' ? 'done' : 'new' }, m.status === 'new' ? 'Merkitty käsitellyksi' : 'Palautettu'); });
+      document.getElementById('ibcat').addEventListener('change', function (e) { upd({ category: e.target.value }, 'Luokka vaihdettu'); });
+      var l = document.getElementById('iblink');
+      if (l) l.addEventListener('change', function () { if (l.value) upd({ customer_id: +l.value }, 'Viesti liitetty asiakkaaseen'); });
+      var nl = document.getElementById('iblead');
+      if (nl) nl.addEventListener('click', function () {
+        S.prefill = { text: m.subject + '\n\n' + m.body, share: false, name: m.from_name, email: m.from_email, inboxId: m.id };
+        location.hash = 'uusi';
+      });
+    }).catch(function (e) { var b = document.getElementById('ibcard'); if (b) b.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
+  }
+
   var SOURCES = ['Puhelin', 'WhatsApp', 'Tekstiviesti', 'Messenger', 'Sähköposti', 'Messut', 'Paikan päällä', 'Roll-up tai kyltti', 'Suosittelu', 'Google-haku', 'Facebook', 'Isännöitsijä', 'Muu'];
   function viewNew(cid) {
     if (cid && (!S.newFor || S.newFor.id !== cid)) {
@@ -451,7 +530,13 @@
     }
     form.paste.addEventListener('input', function () { applyParsed(form.paste.value, false); });
     form.addEventListener('input', function (e) { if (e.target !== form.paste && e.target.dataset) delete e.target.dataset.auto; });
-    if (S.prefill) { var pf = S.prefill; S.prefill = null; form.paste.value = pf.text; applyParsed(pf.text, pf.share); }
+    var fromInbox = null;
+    if (S.prefill) {
+      var pf = S.prefill; S.prefill = null; form.paste.value = pf.text; applyParsed(pf.text, pf.share);
+      if (pf.email && !c) { form.email.value = pf.email; form.source.value = 'Sähköposti'; }
+      if (pf.name && !c && !form.name.value) form.name.value = pf.name;
+      fromInbox = pf.inboxId || null;
+    }
     form.source.addEventListener('change', function () { document.getElementById('refw').hidden = form.source.value !== 'Suosittelu'; });
     function onDelivery() {
       var own = form.delivery.value === 'omat_mitat';
@@ -477,6 +562,7 @@
       form.querySelector('button.p').disabled = true;
       api('customers', { method: 'POST', body: body }).then(function (r) {
         toast(r.existing ? 'Kohde lisätty olemassa olevalle asiakkaalle' : 'Tarjouspyyntö tallennettu' + (r.mailed ? ', linkki lähetetty' : ''));
+        if (fromInbox) { api('inbox/' + fromInbox, { method: 'POST', body: { customer_id: r.id, status: 'done' } }).then(function () { S.inbox = null; }); }
         S.newFor = null;
         return Promise.all([api('board').then(function (b) { S.board = b; }), api('tasks').then(function (t) { S.tasks = t; }), loadCustomers()]).then(function () { location.hash = 'asiakas-' + r.id; });
       }).catch(function (err) { form.querySelector('button.p').disabled = false; fail(err); });
@@ -490,6 +576,7 @@
     if (r.v === 'asiakkaat') return viewCustomers(r.id);
     if (r.v === 'tehtavat') return viewTasks();
     if (r.v === 'uusi') return viewNew(r.id);
+    if (r.v === 'saapuneet' && isOwner()) return viewInbox(r.id);
     return viewDay();
   }
   window.addEventListener('hashchange', function () { if (!S.me) return; render(); window.scrollTo(0, 0); });
@@ -499,6 +586,7 @@
     return Promise.all([api('board'), api('tasks'), api('customers')]);
   }).then(function (r) {
     S.board = r[0]; S.tasks = r[1]; S.customers = r[2];
+    if (isOwner()) api('inbox?status=new').then(function (x) { S.inboxNew = inboxNewCount(x.counts, x.hidden); drawNav(route().v); }).catch(function () {});
     // Androidin Jaa-valikko: /crm/?jaa_teksti=... → Uusi tarjouspyyntö viesti valmiiksi liitettynä
     var q = new URLSearchParams(location.search), shared = [q.get('jaa_otsikko'), q.get('jaa_teksti'), q.get('jaa_linkki')].filter(Boolean).join('\n');
     if (shared) {

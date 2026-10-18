@@ -73,6 +73,9 @@ add_action( 'template_redirect', function () {
 		if ( ! current_user_can( 'nap_access' ) ) {
 			wp_die( 'Sinulla ei ole oikeutta Nordicin CRM:ään. Pyydä osakasta lisäämään sinulle rooli.', 'Ei oikeutta', array( 'response' => 403 ) );
 		}
+		if ( isset( $_GET['saapunut'], $_GET['liite'] ) && current_user_can( 'nap_all' ) ) { // phpcs:ignore
+			nap_inbox_send_attachment( absint( $_GET['saapunut'] ), absint( $_GET['liite'] ) ); // phpcs:ignore
+		}
 		if ( isset( $_GET['tarjous_pdf'] ) ) { // phpcs:ignore
 			$p = nap_get_project( absint( $_GET['tarjous_pdf'] ) ); // phpcs:ignore
 			if ( ! nap_can_see_project( $p ) ) {
