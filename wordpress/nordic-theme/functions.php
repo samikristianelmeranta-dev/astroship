@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.6.2' );
+define( 'NORDIC_VERSION', '2.7.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1428,3 +1428,172 @@ add_shortcode( 'nordic_artikkelit', function ( $atts ) {
 	$head = $atts['otsikko'] ? '<div class="section-head"><div class="eyebrow-line"></div><h2>' . esc_html( $atts['otsikko'] ) . '</h2></div>' : '';
 	return '<div class="nordic-articles">' . $head . '<div class="types-grid">' . $cards . '</div></div>';
 } );
+
+/* =========================================================================
+ * OP-rahoituslaskuri [nordic_rahoituslaskuri]
+ * Ehdot ja luottoesimerkki tulevat OP:lta. Kun OP-prime muuttuu, päivitä korko
+ * ja esimerkki: Ulkoasu → Mukauta → OP-rahoitus.
+ * ========================================================================= */
+
+const NORDIC_OP_EXAMPLE = '*Rahoitus on kertaluotto, jonka todellinen vuosikorko 7 500 euron luotolle on 11,55 %, kun luoton korko on OP-prime + 6,95 % (9,45 % 5/25), perustamismaksu 0 € ja laskutuspalkkio 7 €/kk. Arvioitu luoton kokonaiskustannus on 10 818,58 €. Laskelma on tehty olettaen, että luotto on nostettu kokonaan, luoton korko sekä maksut ja palkkiot pysyvät samana koko luottoajan ja luotto maksetaan takaisin 127,50 € minimilyhennyksin (1,70 % luoton määrästä) kuukauden välein, jolloin luottoaika on 85 kk. Luoton myöntää OP Yrityspankki Oyj, Gebhardinaukio 1, 00510 Helsinki.
+Huomioi korot ja kustannukset ennen kuin otat luoton.';
+
+function nordic_op() {
+	$num = function ( $key, $default ) {
+		$v = str_replace( ',', '.', (string) get_theme_mod( 'nordic_op_' . $key, '' ) );
+		return is_numeric( $v ) ? (float) $v : $default;
+	};
+	$example = trim( (string) get_theme_mod( 'nordic_op_example', '' ) );
+	return array(
+		'url'     => (string) get_theme_mod( 'nordic_op_url', '' ),
+		'rate'    => $num( 'rate', 9.45 ),
+		'fee'     => $num( 'fee', 7 ),
+		'min_pct' => $num( 'min_pct', 1.70 ),
+		'min'     => (int) $num( 'min', 2500 ),
+		'max'     => (int) $num( 'max', 50000 ),
+		'example' => '' !== $example ? $example : NORDIC_OP_EXAMPLE,
+	);
+}
+
+/**
+ * Kuukausierä ja kokonaiskustannus valitulla maksuajalla. Sama laskenta kuin
+ * laskurin JavaScriptissä: ensimmäinen kuukausi koroton, sitten tasaerä,
+ * erä sisältää laskutuspalkkion eikä alita minimilyhennystä.
+ *
+ * @return array{payment: float, total: float, months: int}
+ */
+function nordic_op_plan( $amount, $months ) {
+	$op     = nordic_op();
+	$r      = $op['rate'] / 1200;
+	$months = max( 2, (int) $months );
+	$amount = (float) $amount;
+	$k      = $r > 0 ? ( 1 - pow( 1 + $r, -( $months - 1 ) ) ) / $r : $months - 1;
+	$pay    = max( $amount / ( 1 + $k ) + $op['fee'], $amount * $op['min_pct'] / 100 );
+	$bal    = $amount;
+	$total  = 0;
+	$n      = 0;
+	while ( $bal > 0.005 && $n < 600 ) {
+		$n++;
+		if ( $n > 1 ) {
+			$bal += $bal * $r;
+		}
+		$part   = min( $pay - $op['fee'], $bal );
+		$bal   -= $part;
+		$total += $part + $op['fee'];
+	}
+	return array( 'payment' => round( $pay ), 'total' => round( $total ), 'months' => $n );
+}
+
+/** Arvioitu kuukausierä summalle (null, jos summa ei ole rahoituksen rajoissa). */
+function nordic_op_monthly( $amount, $years = 5 ) {
+	$op = nordic_op();
+	if ( $amount < $op['min'] || $amount > $op['max'] ) {
+		return null;
+	}
+	return nordic_op_plan( $amount, $years * 12 )['payment'];
+}
+
+function nordic_op_eur( $v ) {
+	return number_format( (float) $v, 0, ',', "\u{00A0}" ) . "\u{00A0}€";
+}
+
+function nordic_customize_op( $wp_customize ) {
+	$wp_customize->add_section( 'nordic_op', array(
+		'title'       => 'OP-rahoitus',
+		'priority'    => 31,
+		'description' => 'Rahoituslaskurin [nordic_rahoituslaskuri] luvut. Päivitä korko ja luottoesimerkki, kun OP ilmoittaa uudet. Tyhjä kenttä = oletus.',
+	) );
+	$fields = array(
+		'url'     => array( 'OP:n hakemuslinkki', 'Osoite, johon Hae rahoitusta -painike vie. Tyhjä = painike avaa tarjouspyynnön.', 'url' ),
+		'rate'    => array( 'Luoton korko % (OP-prime + 6,95)', 'Oletus 9,45', 'text' ),
+		'fee'     => array( 'Laskutuspalkkio €/kk', 'Oletus 7', 'text' ),
+		'min_pct' => array( 'Minimilyhennys % luoton määrästä', 'Oletus 1,70', 'text' ),
+		'min'     => array( 'Pienin rahoitus €', 'Oletus 2 500', 'text' ),
+		'max'     => array( 'Suurin rahoitus €', 'Oletus 50 000', 'text' ),
+		'example' => array( 'Luottoesimerkki (pakollinen teksti)', 'Tyhjä = OP:n esimerkki 5/2025.', 'textarea' ),
+	);
+	foreach ( $fields as $key => $f ) {
+		$wp_customize->add_setting( 'nordic_op_' . $key, array(
+			'default'           => '',
+			'sanitize_callback' => 'url' === $f[2] ? 'esc_url_raw' : ( 'textarea' === $f[2] ? 'sanitize_textarea_field' : 'sanitize_text_field' ),
+		) );
+		$wp_customize->add_control( 'nordic_op_' . $key, array( 'section' => 'nordic_op', 'label' => $f[0], 'description' => $f[1], 'type' => $f[2] ) );
+	}
+}
+add_action( 'customize_register', 'nordic_customize_op' );
+
+function nordic_op_calculator_html() {
+	$op   = nordic_op();
+	$init = (int) min( $op['max'], max( $op['min'], 10000 ) );
+	$plan = nordic_op_plan( $init, 60 );
+	$pct  = rtrim( rtrim( number_format( $op['rate'], 2, ',', '' ), '0' ), ',' );
+	wp_enqueue_script( 'nordic-op', nordic_asset_uri( 'js/op-laskuri.js' ), array(), NORDIC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+
+	$cta = $op['url']
+		? '<a class="btn btn-primary" href="' . esc_url( $op['url'] ) . '" target="_blank" rel="noopener">Hae rahoitusta <span class="screen-reader-text">(avautuu OP:n palveluun)</span></a>'
+		: '<a class="btn btn-primary" href="#tarjous" data-quote>Kysy rahoituksesta</a>';
+
+	ob_start();
+	?>
+<section class="op-calc" id="rahoituslaskuri" aria-labelledby="op-calc-h"
+  data-rate="<?php echo esc_attr( $op['rate'] ); ?>" data-fee="<?php echo esc_attr( $op['fee'] ); ?>" data-minpct="<?php echo esc_attr( $op['min_pct'] ); ?>">
+  <div class="op-calc-head">
+    <p class="op-calc-eyebrow">Rahoituslaskuri</p>
+    <h2 id="op-calc-h">Hoida hankintasi vaivatta OP:n rahoituksella.</h2>
+    <p>Laske itsellesi sopiva kuukausierä laskurilla ja täytä hakemus helposti.</p>
+  </div>
+  <div class="op-calc-grid">
+    <div class="op-calc-inputs">
+      <div class="op-field">
+        <div class="op-field-top"><label for="op-amount">Rahoitettava summa</label><span class="op-val"><input id="op-amount-n" type="number" inputmode="numeric" min="<?php echo (int) $op['min']; ?>" max="<?php echo (int) $op['max']; ?>" step="100" value="<?php echo (int) $init; ?>" aria-label="Rahoitettava summa euroina"> €</span></div>
+        <input id="op-amount" type="range" min="<?php echo (int) $op['min']; ?>" max="<?php echo (int) $op['max']; ?>" step="500" value="<?php echo (int) $init; ?>">
+        <div class="op-scale"><span><?php echo esc_html( nordic_op_eur( $op['min'] ) ); ?></span><span><?php echo esc_html( nordic_op_eur( $op['max'] ) ); ?></span></div>
+      </div>
+      <div class="op-field">
+        <div class="op-field-top"><label for="op-years">Maksuaika</label><span class="op-val"><output id="op-years-out" for="op-years">5 vuotta</output></span></div>
+        <input id="op-years" type="range" min="1" max="7" step="1" value="5">
+        <div class="op-scale"><span>1 v</span><span>7 v</span></div>
+      </div>
+    </div>
+    <div class="op-calc-result" aria-live="polite">
+      <p class="op-res-label">Kuukausierä noin</p>
+      <p class="op-res-pay"><span id="op-pay"><?php echo esc_html( number_format( $plan['payment'], 0, ',', "\u{00A0}" ) ); ?></span>&nbsp;€<small>/kk</small></p>
+      <p class="op-res-sub" id="op-sub">Maksat yhteensä arviolta <?php echo esc_html( nordic_op_eur( $plan['total'] ) ); ?></p>
+      <?php echo $cta; // phpcs:ignore ?>
+      <p class="op-res-note">Erä sisältää laskutuspalkkion <?php echo esc_html( str_replace( '.', ',', (string) $op['fee'] ) ); ?>&nbsp;€/kk. Laskelma on suuntaa-antava arvio korolla <?php echo esc_html( $pct ); ?>&nbsp;%. Lopulliset ehdot vahvistuvat OP:n luottopäätöksessä.</p>
+    </div>
+  </div>
+  <ul class="op-calc-points">
+    <li>Rahoitus <?php echo esc_html( nordic_op_eur( $op['min'] ) . '–' . nordic_op_eur( $op['max'] ) ); ?>.</li>
+    <li>Joustava takaisinmaksuaika.</li>
+    <li>Korko OP-prime + 6,95&nbsp;%*.</li>
+    <li>Laskutuspalkkio <?php echo esc_html( str_replace( '.', ',', (string) $op['fee'] ) ); ?>&nbsp;€/kk.</li>
+    <li>Kuukausi korotonta ja kulutonta maksuaikaa.</li>
+    <li>Voit maksaa koko luoton kerralla pois ilman lisäkuluja.</li>
+    <li>Osuuspankin omistaja-asiakkaana luotosta kertyy OP-bonuksia. Lue lisää <a href="https://www.op.fi/op-bonus" target="_blank" rel="noopener">op.fi/op-bonus</a>.</li>
+  </ul>
+  <p class="op-calc-example"><?php echo nl2br( esc_html( $op['example'] ) ); // phpcs:ignore ?></p>
+</section>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'nordic_rahoituslaskuri', 'nordic_op_calculator_html' );
+
+/** Laskuri rahoitussivuille automaattisesti, jos sivulla ei ole lyhytkoodia. */
+add_filter( 'the_content', function ( $html ) {
+	if ( ! is_page() || ! in_the_loop() || strpos( $html, 'op-calc' ) !== false ) {
+		return $html;
+	}
+	$slug = get_post_field( 'post_name', get_the_ID() );
+	if ( ! in_array( $slug, array( 'skaala-rahoitus', 'ikkunaremontin-rahoitus' ), true ) ) {
+		return $html;
+	}
+	$block = '<section class="op-calc-wrap"><div class="wrap">' . nordic_op_calculator_html() . '</div></section>';
+	foreach ( array( '<section class="article-body" id="kuukausiera"', '<section class="final-cta"' ) as $anchor ) {
+		$pos = strpos( $html, $anchor );
+		if ( false !== $pos ) {
+			return substr_replace( $html, $block, $pos, 0 );
+		}
+	}
+	return $html . $block;
+}, 25 );

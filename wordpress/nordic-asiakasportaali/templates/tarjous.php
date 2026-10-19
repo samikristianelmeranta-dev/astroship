@@ -156,6 +156,12 @@ textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12
     </ul>
   </section>
 
+  <?php
+  // Arvio OP-rahoituksen kuukausierästä (teeman laskuri; vain kun hinta näkyy sivulla).
+  $op_month = ! $is_pdf && function_exists( 'nordic_op_monthly' ) ? nordic_op_monthly( (float) $offer['sum'] ) : null;
+  $op_page  = get_page_by_path( 'skaala-rahoitus' );
+  $op_url   = $op_page && 'publish' === $op_page->post_status ? get_permalink( $op_page ) . '#rahoituslaskuri' : '';
+  ?>
   <?php if ( $open ) : ?>
   <section class="card" aria-labelledby="h-h" id="hyvaksy">
     <h2 id="h-h">Hyväksy tarjous</h2>
@@ -164,7 +170,7 @@ textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12
       <input type="hidden" name="nap_action" value="offer_accept"><?php echo $hidden; // phpcs:ignore ?>
       <p class="step">1. Maksutapa</p>
       <label class="opt"><input type="radio" name="payment" value="holvi" required><span><b>Lasku</b><small>Maksat laskulla.</small></span></label>
-      <label class="opt"><input type="radio" name="payment" value="rahoitus"><span><b>Skaala-rahoitus (OP)</b><small>Maksat erissä. Hoidamme rahoitushakemuksen kanssasi.</small></span></label>
+      <label class="opt"><input type="radio" name="payment" value="rahoitus"><span><b>Skaala-rahoitus (OP)</b><small>Maksat erissä<?php echo $op_month ? ' – esim. noin ' . esc_html( number_format( $op_month, 0, ',', ' ' ) ) . ' €/kk 5 vuoden maksuajalla' : ''; ?>. Hoidamme rahoitushakemuksen kanssasi.<?php if ( $op_url ) : ?> <a href="<?php echo esc_url( $op_url ); ?>" target="_blank" rel="noopener">Rahoituslaskuri ja ehdot</a><?php endif; ?></small></span></label>
       <p class="step">2. Vahvistus</p>
       <?php if ( $cterms || $mterms ) : ?>
       <details class="terms"><summary>Lue tarjouksen ehdot</summary><?php if ( $mterms ) : ?><p><?php echo esc_html( $mterms ); ?></p><?php endif; ?><?php if ( $cterms ) : ?><p><?php echo esc_html( $cterms ); ?></p><?php endif; ?></details>

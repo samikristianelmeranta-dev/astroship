@@ -125,7 +125,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - **Luovutuskuittaus**: tarkistuslista, huomautukset, asiakkaan nimi ja allekirjoitus sormella näytölle. Kuittaus merkitsee kohteen valmiiksi, lähettää asiakkaalle kiitosviestin ja luo laskutus- ja kiitoslahjatehtävät (huomautuksista oma tehtävä).
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.11.0.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.11.1.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

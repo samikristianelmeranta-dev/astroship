@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.6.2
+Version: 2.7.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -1453,3 +1453,40 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 /* 2.5.2: oppaat ja artikkelit -listaus [nordic_artikkelit] */
 .articles-hub { padding-top: 24px; }
 .nordic-articles .related-card h3 { margin-top: 6px; }
+
+/* 2.7.0: OP-rahoituslaskuri [nordic_rahoituslaskuri] */
+.op-calc-wrap { padding: var(--section-y) 0 0; }
+.op-calc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(22px, 4vw, 44px); box-shadow: 0 2px 10px rgba(22, 48, 59, .06); scroll-margin-top: 96px; }
+.op-calc-head { max-width: 720px; margin-bottom: 28px; }
+.op-calc-eyebrow { margin: 0 0 8px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--pine); }
+.op-calc-head h2 { margin: 0 0 8px; }
+.op-calc-head p:last-child { margin: 0; color: var(--ink-3); font-size: 1.075rem; }
+.op-calc-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 36px); align-items: stretch; }
+.op-calc-inputs { display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.op-field-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.op-field-top label { font-weight: 600; color: var(--ink); }
+.op-val { font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; color: var(--ink); white-space: nowrap; }
+.op-val input { width: 6.2ch; font: inherit; color: inherit; text-align: right; border: 0; border-bottom: 2px dashed var(--line-strong); background: transparent; padding: 0 2px; -moz-appearance: textfield; appearance: textfield; }
+.op-val input::-webkit-outer-spin-button, .op-val input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.op-val input:focus { outline: none; border-bottom-color: var(--pine); }
+.op-field input[type=range] { --fill: 50%; -webkit-appearance: none; appearance: none; width: 100%; height: 8px; margin: 10px 0; border-radius: 999px; background: linear-gradient(to right, var(--pine) var(--fill), var(--mist) var(--fill)); cursor: pointer; }
+.op-field input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 2px 8px rgba(22, 48, 59, .35); }
+.op-field input[type=range]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--gold); border: 3px solid #fff; box-shadow: 0 2px 8px rgba(22, 48, 59, .35); }
+.op-field input[type=range]:focus-visible { outline: 3px solid rgba(29, 94, 121, .35); outline-offset: 6px; }
+.op-scale { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-3); }
+.op-calc-result { background: var(--spruce); color: #fff; border-radius: var(--radius); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; align-items: flex-start; }
+.op-res-label { margin: 0; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
+.op-res-pay { margin: 4px 0 4px; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 6vw, 3.4rem); line-height: 1.05; color: var(--gold); }
+.op-res-pay small { font-size: .45em; color: rgba(255, 255, 255, .8); margin-left: 4px; }
+.op-res-sub { margin: 0 0 22px; color: rgba(255, 255, 255, .82); }
+.op-calc-result .btn { width: 100%; }
+.op-res-note { margin: 16px 0 0; font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, .66); }
+.op-calc-points { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px 28px; }
+.op-calc-points li { position: relative; padding-left: 28px; color: var(--ink-2); }
+.op-calc-points li::before { content: ''; position: absolute; left: 0; top: .3em; width: 18px; height: 18px; border-radius: 50%; background: var(--pine-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D5E79' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.op-calc-points a { color: var(--pine); }
+.op-calc-example { margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.6; color: var(--ink-3); }
+@media (max-width: 760px) {
+  .op-calc-grid { grid-template-columns: 1fr; }
+  .op-calc-result { align-items: stretch; }
+}
