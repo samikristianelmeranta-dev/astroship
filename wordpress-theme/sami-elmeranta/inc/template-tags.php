@@ -92,7 +92,7 @@ function se_post_card( $delay = 1 ) {
 	<article class="card group flex flex-col" data-reveal data-delay="<?php echo esc_attr( $delay ); ?>">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="-mx-7 -mt-7 mb-6 overflow-hidden rounded-t-3xl">
-				<?php the_post_thumbnail( 'medium_large', array( 'class' => 'aspect-[16/9] w-full object-cover transition duration-700 group-hover:scale-105', 'loading' => 'lazy' ) ); ?>
+				<?php the_post_thumbnail( 'medium_large', array( 'class' => 'aspect-[16/9] w-full bg-mist object-cover object-top transition duration-700 group-hover:scale-105', 'loading' => 'lazy' ) ); ?>
 			</div>
 		<?php endif; ?>
 		<div class="flex items-center gap-3 text-sm text-muted">

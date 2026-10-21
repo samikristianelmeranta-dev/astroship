@@ -11,6 +11,13 @@ const { post, delay = 1 } = Astro.props;
 ---
 
 <article class="card group flex flex-col" data-reveal data-delay={String(delay)}>
+  {
+    post.data.image && (
+      <div class="-mx-7 -mt-7 mb-6 overflow-hidden rounded-t-3xl bg-mist">
+        <img src={post.data.image.src} alt="" width="1000" height="563" loading="lazy" decoding="async" class="aspect-[16/9] w-full object-cover object-top transition duration-700 group-hover:scale-105" />
+      </div>
+    )
+  }
   <div class="flex items-center gap-3 text-sm text-muted">
     <span class="rounded-full bg-brand-soft px-3 py-1 font-semibold text-brand-dark">{post.data.category}</span>
     <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>

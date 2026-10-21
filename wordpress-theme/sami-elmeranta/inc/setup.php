@@ -28,7 +28,7 @@ add_action( 'after_setup_theme', function () {
 		'footer'  => 'Alavalikko',
 	) );
 
-	set_post_thumbnail_size( 1200, 630, true );
+	set_post_thumbnail_size( 1200, 630, array( 'center', 'top' ) ); // Some-kuva: kasvot säilyvät pystykuvissa.
 } );
 
 add_action( 'wp_enqueue_scripts', function () {

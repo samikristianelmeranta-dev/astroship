@@ -9,6 +9,9 @@ get_header();
 the_post();
 
 $url   = get_permalink();
+// Pystykuva näytetään otsikon vieressä, vaakakuva leveänä otsikon alla.
+$thumb_meta = has_post_thumbnail() ? wp_get_attachment_metadata( get_post_thumbnail_id() ) : array();
+$portrait   = ! empty( $thumb_meta['width'] ) && ! empty( $thumb_meta['height'] ) && $thumb_meta['height'] > $thumb_meta['width'];
 $title = get_the_title();
 $share = array(
 	array( 'Facebook', 'simple-icons:facebook', 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $url ) ),
@@ -24,7 +27,8 @@ $share = array(
 <article <?php post_class(); ?>>
 	<header class="relative -mt-20 overflow-hidden pb-10 pt-30 sm:pt-36">
 		<div class="pointer-events-none absolute -top-40 right-[-10%] -z-10 size-[30rem] rounded-full bg-brand/15 blur-3xl animate-blob" aria-hidden="true"></div>
-		<div class="container-site max-w-4xl">
+		<div class="container-site <?php echo $portrait ? 'grid max-w-6xl items-center gap-12 lg:grid-cols-[1.4fr_1fr]' : 'max-w-4xl'; ?>">
+			<div>
 			<nav aria-label="Murupolku" class="hero-word text-sm text-muted">
 				<ol class="flex flex-wrap items-center gap-2">
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="hover:text-brand-dark">Etusivu</a></li>
@@ -50,10 +54,17 @@ $share = array(
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
+			</div>
+			<?php if ( $portrait ) : ?>
+				<figure class="relative mx-auto w-full max-w-sm" data-reveal="zoom">
+					<div class="absolute -inset-3 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-brand to-ink-soft opacity-90" aria-hidden="true"></div>
+					<?php the_post_thumbnail( 'large', array( 'class' => 'relative aspect-[4/5] w-full rounded-[2rem] bg-white object-cover object-top shadow-2xl', 'fetchpriority' => 'high' ) ); ?>
+				</figure>
+			<?php endif; ?>
 		</div>
 	</header>
 
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( has_post_thumbnail() && ! $portrait ) : ?>
 		<div class="container-site mb-12 max-w-5xl">
 			<?php the_post_thumbnail( 'large', array( 'class' => 'w-full rounded-[2rem] object-cover shadow-xl', 'fetchpriority' => 'high' ) ); ?>
 		</div>

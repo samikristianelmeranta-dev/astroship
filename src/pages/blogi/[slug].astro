@@ -71,7 +71,8 @@ const share = [
   <article>
     <header class="relative -mt-20 overflow-hidden pb-10 pt-30 sm:pt-36">
       <div class="pointer-events-none absolute -top-40 right-[-10%] -z-10 size-[30rem] rounded-full bg-brand/15 blur-3xl animate-blob" aria-hidden="true"></div>
-      <Container class="max-w-4xl">
+      <Container class:list={[post.data.image ? "grid max-w-6xl items-center gap-12 lg:grid-cols-[1.4fr_1fr]" : "max-w-4xl"]}>
+        <div>
         <nav aria-label="Murupolku" class="hero-word text-sm text-muted">
           <ol class="flex flex-wrap items-center gap-2">
             <li><a href="/" class="hover:text-brand-dark">Etusivu</a></li>
@@ -94,6 +95,23 @@ const share = [
                 <li class="rounded-full bg-brand-soft px-3 py-1 text-sm font-medium text-brand-dark">#{t}</li>
               ))}
             </ul>
+          )
+        }
+        </div>
+        {
+          post.data.image && (
+            <figure class="relative mx-auto w-full max-w-sm" data-reveal="zoom">
+              <div class="absolute -inset-3 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-brand to-ink-soft opacity-90" aria-hidden="true" />
+              <img
+                src={post.data.image.src}
+                alt={post.data.image.alt}
+                width="1000"
+                height="1500"
+                fetchpriority="high"
+                decoding="async"
+                class="relative aspect-[4/5] w-full rounded-[2rem] bg-white object-cover object-top shadow-2xl"
+              />
+            </figure>
           )
         }
       </Container>
