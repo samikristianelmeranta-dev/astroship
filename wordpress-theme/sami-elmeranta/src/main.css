@@ -1,0 +1,243 @@
+@import 'tailwindcss';
+
+/* Skannataan teeman PHP-tiedostot luokkien löytämiseksi. */
+@source '../**/*.php';
+@source '../assets/js/*.js';
+
+@plugin '@tailwindcss/typography';
+
+/*
+  BRÄNDIVÄRIT – Liike Nyt
+  Kaikki värit määritellään vain tässä. Jos brändiohjeistuksen HEX-koodit
+  poikkeavat, vaihda arvot alle – koko sivusto päivittyy automaattisesti.
+*/
+@theme {
+  --color-brand: #e6007e;
+  --color-brand-dark: #b0005f;
+  --color-brand-light: #ff4fa7;
+  --color-brand-soft: #fde7f2;
+
+  --color-ink: #14102b;
+  --color-ink-soft: #2a2350;
+  --color-mist: #f7f5fb;
+  --color-line: #e7e3f0;
+  --color-muted: #5b5670;
+
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';
+  --font-display: 'Bricolage Grotesque Variable', 'Inter Variable', ui-sans-serif,
+    system-ui, sans-serif;
+
+  --animate-blob: blob 18s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-float: float 8s ease-in-out infinite;
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(6%, -8%) scale(1.12); }
+    66% { transform: translate(-6%, 6%) scale(0.92); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(1.25rem); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+}
+
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('../fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('../fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-line, currentColor);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+
+  ::selection {
+    @apply bg-brand text-white;
+  }
+
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-brand rounded-sm;
+  }
+
+  img {
+    content-visibility: auto;
+  }
+}
+
+@utility container-site {
+  @apply mx-auto w-full max-w-(--breakpoint-xl) px-5;
+}
+@utility bg-dots {
+  background-image: radial-gradient(var(--color-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition duration-300 will-change-transform;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-white shadow-lg shadow-brand/25 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-xl hover:shadow-brand/30;
+}
+@utility btn-light {
+  @apply btn bg-white text-ink ring-1 ring-line hover:-translate-y-0.5 hover:ring-brand hover:text-brand-dark;
+}
+@utility btn-ghost {
+  @apply btn text-white ring-1 ring-white/30 hover:bg-white/10;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-brand-dark;
+  &::before {
+    content: '';
+    @apply inline-block h-0.5 w-6 rounded-full bg-brand;
+  }
+}
+@utility card {
+  @apply relative rounded-3xl bg-white p-7 ring-1 ring-line transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-ink/10;
+}
+@utility text-gradient {
+  @apply bg-gradient-to-r from-brand via-brand-light to-brand bg-clip-text text-transparent;
+  background-size: 200% auto;
+}
+
+/* ---- Scroll-animaatiot ------------------------------------------------ */
+/* Elementit näkyvät aina ilman JS:ää. Bundlattu skripti lisää
+   html.reveal-ready -luokan vasta kun se on ladattu, joten sisältö ei jää
+   piiloon vaikka skripti estyisi (ei inline-skriptejä → tiukka CSP toimii). */
+.reveal-ready {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  [data-reveal='left'] { transform: translateX(-2rem); }
+  [data-reveal='right'] { transform: translateX(2rem); }
+  [data-reveal='zoom'] { transform: scale(0.94); }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+[data-delay='1'] { transition-delay: 80ms !important; }
+[data-delay='2'] { transition-delay: 160ms !important; }
+[data-delay='3'] { transition-delay: 240ms !important; }
+[data-delay='4'] { transition-delay: 320ms !important; }
+[data-delay='5'] { transition-delay: 400ms !important; }
+
+.hero-word { animation: var(--animate-rise); }
+.hero-word:nth-child(2) { animation-delay: 120ms; }
+.hero-word:nth-child(3) { animation-delay: 240ms; }
+.hero-word:nth-child(4) { animation-delay: 360ms; }
+.hero-word:nth-child(5) { animation-delay: 480ms; }
+.hero-word:nth-child(6) { animation-delay: 600ms; }
+
+.blob-delay { animation-delay: -6s; }
+.blob-delay-2 { animation-delay: -12s; }
+
+/* Lukemisen edistymispalkki */
+.progress-bar {
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- WordPress-sisältö ------------------------------------------------- */
+.entry-content {
+  @apply prose-headings:font-display prose-headings:tracking-tight prose-a:text-brand-dark prose-a:decoration-brand/40 prose-a:underline-offset-4 hover:prose-a:decoration-brand prose-blockquote:border-brand prose-strong:text-ink prose-li:marker:text-brand prose-img:rounded-2xl;
+}
+.entry-content .alignleft { @apply float-left mr-6 mb-4; }
+.entry-content .alignright { @apply float-right ml-6 mb-4; }
+.entry-content .aligncenter { @apply mx-auto block; }
+.entry-content .wp-caption { @apply max-w-full; }
+.entry-content .wp-caption-text { @apply mt-2 text-sm text-muted; }
+.entry-content .gallery { @apply grid grid-cols-2 gap-4 sm:grid-cols-3; }
+.entry-content .gallery img { @apply m-0 w-full; }
+.entry-content iframe, .entry-content video { @apply w-full max-w-full rounded-2xl; }
+.entry-content table { @apply block overflow-x-auto; }
+.screen-reader-text { @apply sr-only; }
+.screen-reader-text:focus { @apply not-sr-only; }
+
+/* Sivutus */
+.page-numbers { @apply flex flex-wrap items-center gap-2; }
+.page-numbers li > * { @apply grid min-w-11 place-items-center rounded-full px-4 py-2 font-semibold ring-1 ring-line transition; }
+.page-numbers li > a:hover { @apply bg-brand text-white ring-brand; }
+.page-numbers li > .current { @apply bg-ink text-white ring-ink; }
+
+/* Kommentit */
+.comment-list { @apply list-none pl-0; }
+.comment-body { @apply rounded-2xl bg-mist p-5; }
+.comment-form input:not([type='submit']):not([type='checkbox']), .comment-form textarea {
+  @apply block w-full rounded-2xl border-0 bg-mist px-4 py-3 ring-1 ring-line focus:outline-none focus:ring-2 focus:ring-brand;
+}

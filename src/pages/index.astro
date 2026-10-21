@@ -82,7 +82,7 @@ const stats = [
           height="960"
           fetchpriority="high"
           decoding="async"
-          class="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl"
+          class="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl"
         />
         <div class="absolute -left-6 bottom-10 rounded-2xl bg-white/90 px-4 py-3 shadow-xl ring-1 ring-line backdrop-blur animate-[blob_10s_ease-in-out_infinite]">
           <p class="text-xs font-semibold uppercase tracking-wider text-muted">Luottamustoimi</p>
@@ -151,23 +151,25 @@ const stats = [
           <Socials />
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-4" data-reveal="right">
-        {
-          [
-            ["lucide:landmark", "Kaupunginvaltuusto & -hallitus", "Kaarina"],
-            ["lucide:map", "Maakuntavaltuusto", "Varsinais-Suomi"],
-            ["lucide:trending-up", "Aluemyyntijohtaja", "Media-ala"],
-            ["lucide:trophy", "Jalkapallovalmentaja", "2014-syntyneet pojat"],
-          ].map(([icon, title, sub], i) => (
-            <div class:list={["card", i % 2 === 1 && "translate-y-8"]}>
-              <span class="grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand-dark">
-                <Icon name={icon} class="size-6" aria-hidden="true" />
-              </span>
-              <p class="mt-5 font-display text-lg font-bold leading-tight">{title}</p>
-              <p class="mt-1 text-sm text-muted">{sub}</p>
-            </div>
-          ))
-        }
+      <div class="relative mx-auto w-full max-w-md" data-reveal="right">
+        <div class="absolute -inset-3 -rotate-3 rounded-[2.5rem] bg-brand-soft" aria-hidden="true"></div>
+        <img
+          src={site.images.portraitAlt}
+          alt="Sami Elmeranta rennosti pehmolelun kanssa"
+          width="1000"
+          height="1500"
+          loading="lazy"
+          decoding="async"
+          class="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl"
+        />
+        <div class="absolute -right-5 bottom-16 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl ring-1 ring-line animate-[blob_10s_ease-in-out_infinite]">
+          <span class="grid size-10 place-items-center rounded-xl bg-brand-soft text-brand-dark"><Icon name="lucide:trophy" class="size-5" aria-hidden="true" /></span>
+          <span><span class="block text-xs font-semibold uppercase tracking-wider text-muted">Valmentaja</span><span class="block font-display font-bold">2014-syntyneet pojat</span></span>
+        </div>
+        <div class="absolute -left-5 top-10 flex items-center gap-3 rounded-2xl bg-ink px-4 py-3 text-white shadow-xl animate-[blob_12s_ease-in-out_infinite] blob-delay">
+          <span class="grid size-10 place-items-center rounded-xl bg-white/10"><Icon name="lucide:trending-up" class="size-5" aria-hidden="true" /></span>
+          <span><span class="block text-xs font-semibold uppercase tracking-wider text-white/60">Työ</span><span class="block font-display font-bold">Aluemyyntijohtaja</span></span>
+        </div>
       </div>
     </Container>
   </section>

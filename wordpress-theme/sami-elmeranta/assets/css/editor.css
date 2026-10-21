@@ -1,0 +1,26 @@
+/* Classic Editorin (TinyMCE) sisältötyylit – vastaavat sivuston artikkeleita. */
+@font-face { font-family: 'Inter Variable'; font-weight: 100 900; font-display: swap; src: url('../fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter Variable'; font-weight: 100 900; font-display: swap; src: url('../fonts/inter-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: 'Bricolage Grotesque Variable'; font-weight: 200 800; font-display: swap; src: url('../fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+
+body.mce-content-body, body {
+  max-width: 46rem;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  font-family: 'Inter Variable', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: #2a2350;
+}
+h1, h2, h3, h4 { font-family: 'Bricolage Grotesque Variable', 'Inter Variable', sans-serif; color: #14102b; line-height: 1.2; letter-spacing: -0.02em; }
+h2 { font-size: 1.75em; margin: 1.6em 0 0.6em; }
+h3 { font-size: 1.35em; margin: 1.4em 0 0.5em; }
+a { color: #b0005f; text-decoration-color: rgba(230, 0, 126, 0.4); text-underline-offset: 4px; }
+strong { color: #14102b; }
+blockquote { margin: 1.5em 0; padding-left: 1em; border-left: 4px solid #e6007e; font-style: italic; color: #5b5670; }
+ul li::marker, ol li::marker { color: #e6007e; }
+img { max-width: 100%; height: auto; border-radius: 16px; }
+.alignleft { float: left; margin: 0 1.5em 1em 0; }
+.alignright { float: right; margin: 0 0 1em 1.5em; }
+.aligncenter { display: block; margin: 0 auto; }
+.wp-caption-text { font-size: 0.85em; color: #5b5670; }

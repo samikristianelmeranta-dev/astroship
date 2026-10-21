@@ -37,7 +37,8 @@ export const site = {
   whatsapp: "https://wa.me/358503460444?text=Hei%20Sami!",
   /** Kuvat kansiossa public/images – korvaa omillasi samalla nimellä. */
   images: {
-    portrait: "/images/sami-portrait.svg",
+    portrait: "/images/sami-portrait.webp",
+    portraitAlt: "/images/sami-arki.webp",
     og: "/og.png",
   },
   social: [
