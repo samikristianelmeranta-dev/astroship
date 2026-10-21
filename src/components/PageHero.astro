@@ -1,0 +1,23 @@
+---
+import Container from "@/components/container.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+}
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="relative -mt-20 overflow-hidden pb-16 pt-32 sm:pt-40">
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute -top-32 right-[-10%] size-[32rem] rounded-full bg-brand/15 blur-3xl animate-blob"></div>
+    <div class="absolute top-20 left-[-10%] size-[26rem] rounded-full bg-ink-soft/10 blur-3xl animate-blob blob-delay"></div>
+  </div>
+  <Container>
+    <p class="eyebrow hero-word">{eyebrow}</p>
+    <h1 class="hero-word mt-4 max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl">{title}</h1>
+    {lead && <p class="hero-word mt-6 max-w-2xl text-xl text-muted">{lead}</p>}
+    <slot />
+  </Container>
+</section>

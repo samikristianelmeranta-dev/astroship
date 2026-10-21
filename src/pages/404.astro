@@ -1,14 +1,17 @@
 ---
-import Container from "@/components/container.astro";
 import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
 ---
 
-<Layout title="404 Not Found">
-  <Container>
-    <div class="min-h-[calc(100vh-16rem)] flex items-center justify-center">
-      <div class="mt-16 text-center">
-        <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">404</h1>
-        <p class="text-lg mt-4 text-slate-600">Page not found.</p>
+<Layout title="Sivua ei löytynyt" noindex>
+  <Container class="grid min-h-[60vh] place-items-center py-24 text-center">
+    <div>
+      <p class="hero-word font-display text-[8rem] font-extrabold leading-none text-gradient sm:text-[12rem]">404</p>
+      <h1 class="hero-word mt-4 text-4xl font-bold">Sivua ei löytynyt</h1>
+      <p class="hero-word mt-4 text-lg text-muted">Etsimääsi sivua ei ole – se on ehkä siirtynyt uuteen osoitteeseen.</p>
+      <div class="hero-word mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-primary">Etusivulle</a>
+        <a href="/blogi/" class="btn-light">Blogiin</a>
       </div>
     </div>
   </Container>

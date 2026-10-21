@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Testimonials from "@/components/Testimonials.astro";
+import { career, workTestimonials } from "@/data/content";
+---
+
+<Layout
+  title="Työelämä & yrittäjyys"
+  description="Sami Elmerannan työura: aluemyyntijohtaja Sanoma Media Finlandilla, yrittäjä ja myynnin konsultti. Yli 17 vuotta myynnin johtotehtävissä."
+  breadcrumbs={[{ name: "Työelämä & yrittäjyys", path: "/tyoelama/" }]}>
+  <PageHero
+    eyebrow="Työelämä & yrittäjyys"
+    title="Kassalta johtoryhmään"
+    lead="Työurani alkoi ruokavaraston kassalta ja jatkui rautakaupan myyjänä, kokoonpanolinjalla ja ravintola-alalla. Nykyään johdan myyntiä ja toimin osakkaana sekä freelancerina."
+  />
+
+  <section class="py-12" aria-labelledby="ura-title">
+    <Container class="max-w-4xl">
+      <SectionHead id="ura-title" eyebrow="Työura" title="Kokemusta myynnistä, johtamisesta ja yrittämisestä" />
+      <ol class="relative mt-14 space-y-10 before:absolute before:inset-y-2 before:left-[0.6rem] before:w-0.5 before:bg-gradient-to-b before:from-brand before:via-brand-light before:to-line sm:before:left-[9.6rem]">
+        {
+          career.map((c) => (
+            <li class="relative grid gap-2 pl-10 sm:grid-cols-[8rem_1fr] sm:gap-10 sm:pl-0" data-reveal>
+              <span class="absolute left-0 top-1.5 size-5 rounded-full border-4 border-white bg-brand shadow sm:left-[9rem]" aria-hidden="true" />
+              <p class="text-sm font-semibold text-muted sm:pt-1 sm:text-right">{c.period}</p>
+              <div class="sm:pl-10">
+                <h3 class="text-xl font-bold">{c.title}</h3>
+                <p class="font-semibold text-brand-dark">{c.org}</p>
+                <p class="mt-2 text-muted">{c.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-14 rounded-3xl bg-mist p-6 text-lg text-muted" data-reveal>
+        Edellä mainittujen lisäksi minulla on ollut useita osakasrooleja ja asiantuntijapositioita eri yrityksissä.
+        Nykyään toimin edelleen osakkaana yrityksessä ja teen freelancerina erilaisia asiantuntijatöitä.
+      </p>
+    </Container>
+  </section>
+
+  <section class="bg-mist py-24" aria-labelledby="kollegat-title">
+    <Container>
+      <SectionHead id="kollegat-title" eyebrow="Suosittelut" title="Kollegoiden sanoin" />
+      <div class="mt-12"><Testimonials items={workTestimonials} /></div>
+    </Container>
+  </section>
+</Layout>

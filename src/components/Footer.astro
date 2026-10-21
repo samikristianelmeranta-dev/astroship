@@ -1,0 +1,72 @@
+---
+import { Icon } from "astro-icon/components";
+import Container from "@/components/container.astro";
+import Socials from "@/components/Socials.astro";
+import { site } from "@/config/site";
+---
+
+<footer class="relative mt-24 overflow-hidden bg-ink text-white">
+  <div
+    class="pointer-events-none absolute -top-40 right-0 size-[28rem] rounded-full bg-brand/30 blur-3xl animate-blob"
+    aria-hidden="true">
+  </div>
+  <Container class="relative grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <p class="font-display text-3xl font-bold">{site.name}</p>
+      <p class="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-brand-light">
+        {site.tagline} · {site.party.name}
+      </p>
+      <p class="mt-5 max-w-md text-white/70">
+        Kaupunginvaltuutettu ja kaupunginhallituksen jäsen Kaarinasta. Teen töitä sen eteen, että tekeminen palkitsee,
+        yhteisö tukee ja jokainen voi vaikuttaa.
+      </p>
+      <Socials class="mt-6" dark />
+    </div>
+
+    <nav aria-label="Alavalikko">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/50">Sivusto</p>
+      <ul class="mt-4 space-y-2">
+        {
+          [...site.nav, { title: "Ota yhteyttä", path: "/yhteys/" }].map((item) => (
+            <li>
+              <a href={item.path} class="text-white/80 transition hover:text-brand-light">
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-white/50">Yhteys</p>
+      <ul class="mt-4 space-y-3 text-white/80">
+        <li>
+          <a href={`tel:${site.phone}`} class="inline-flex items-center gap-2 hover:text-brand-light">
+            <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
+            {site.phoneDisplay}
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`} class="inline-flex items-center gap-2 hover:text-brand-light">
+            <Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+            {site.email}
+          </a>
+        </li>
+        <li class="inline-flex items-center gap-2">
+          <Icon name="lucide:map-pin" class="size-4" aria-hidden="true" />
+          {site.location.district}, {site.location.locality}
+        </li>
+      </ul>
+    </div>
+  </Container>
+  <Container
+    class="relative flex flex-col gap-3 border-t border-white/10 py-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+    <p>© {new Date().getFullYear()} {site.name}</p>
+    <ul class="flex flex-wrap gap-x-5 gap-y-2">
+      <li><a href="/tietosuoja/" class="hover:text-white">Tietosuoja</a></li>
+      <li><a href="/rss.xml" class="hover:text-white">RSS</a></li>
+      <li><a href="/llms.txt" class="hover:text-white">llms.txt</a></li>
+    </ul>
+  </Container>
+</footer>

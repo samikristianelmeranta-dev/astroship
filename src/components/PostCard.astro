@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { formatDate, readingTime } from "@/lib/format";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  delay?: number;
+}
+const { post, delay = 1 } = Astro.props;
+---
+
+<article class="card group flex flex-col" data-reveal data-delay={String(delay)}>
+  <div class="flex items-center gap-3 text-sm text-muted">
+    <span class="rounded-full bg-brand-soft px-3 py-1 font-semibold text-brand-dark">{post.data.category}</span>
+    <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+  </div>
+  <h3 class="mt-5 text-2xl font-bold leading-snug">
+    <a href={`/blogi/${post.id}/`} class="after:absolute after:inset-0 after:rounded-3xl group-hover:text-brand-dark">
+      {post.data.title}
+    </a>
+  </h3>
+  <p class="mt-3 line-clamp-3 flex-1 text-muted">{post.data.snippet}</p>
+  <p class="mt-6 flex items-center justify-between text-sm font-semibold">
+    <span class="text-muted">{readingTime(post.body ?? "")} min lukuaika</span>
+    <span class="inline-flex items-center gap-1 text-brand-dark">
+      Lue
+      <Icon name="lucide:arrow-right" class="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+    </span>
+  </p>
+</article>

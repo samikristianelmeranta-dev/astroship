@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import PageHero from "@/components/PageHero.astro";
+import PostCard from "@/components/PostCard.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import { site } from "@/config/site";
+import { absolute } from "@/lib/schema";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+
+const blogSchema = {
+  "@type": "Blog",
+  "@id": absolute("/blogi/#blog"),
+  name: `${site.name} – blogi`,
+  inLanguage: site.lang,
+  author: { "@id": `${site.url}/#person` },
+  blogPost: posts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.data.title,
+    url: absolute(`/blogi/${p.id}/`),
+    datePublished: p.data.publishDate.toISOString(),
+  })),
+};
+---
+
+<Layout
+  title="Blogi"
+  description="Sami Elmerannan kirjoituksia Kaarinan kuntapolitiikasta, julkisesta taloudesta, yrittäjyydestä ja yhteiskunnasta."
+  breadcrumbs={[{ name: "Blogi", path: "/blogi/" }]}
+  schema={[blogSchema]}>
+  <PageHero
+    eyebrow="Blogi"
+    title="Mielipiteet & ajatukset"
+    lead="Kirjoituksia politiikasta ja yhteiskunnallisista asioista – selkokielellä ja ilman jargonia."
+  />
+  <section class="py-8">
+    <Container>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post, i) => <PostCard post={post} delay={(i % 3) + 1} />)}
+      </div>
+    </Container>
+  </section>
+  <Newsletter />
+</Layout>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 960" role="img" aria-label="Kuvan paikka – korvaa omalla potretilla">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2350"/><stop offset="1" stop-color="#14102b"/></linearGradient>
+    <radialGradient id="r" cx=".75" cy=".2" r=".7"><stop offset="0" stop-color="#e6007e" stop-opacity=".55"/><stop offset="1" stop-color="#e6007e" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="768" height="960" fill="url(#g)"/>
+  <rect width="768" height="960" fill="url(#r)"/>
+  <circle cx="384" cy="380" r="140" fill="#fff" fill-opacity=".12"/>
+  <path d="M144 960c0-150 108-260 240-260s240 110 240 260z" fill="#fff" fill-opacity=".12"/>
+  <text x="384" y="900" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#fff" fill-opacity=".55" text-anchor="middle">public/images/sami-portrait.jpg</text>
+</svg>

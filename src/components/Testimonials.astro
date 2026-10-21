@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  items: { quote: string; name: string; role: string }[];
+}
+const { items } = Astro.props;
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2);
+---
+
+<div class="grid gap-6 md:grid-cols-2">
+  {
+    items.map((t, i) => (
+      <figure class="card flex flex-col" data-reveal data-delay={String((i % 2) + 1)}>
+        <Icon name="lucide:quote" class="size-9 text-brand" aria-hidden="true" />
+        <blockquote class="mt-4 flex-1 text-lg leading-relaxed">
+          <p>{t.quote}</p>
+        </blockquote>
+        <figcaption class="mt-6 flex items-center gap-3">
+          <span
+            class="grid size-11 place-items-center rounded-full bg-brand-soft font-display font-bold text-brand-dark"
+            aria-hidden="true">
+            {initials(t.name)}
+          </span>
+          <span>
+            <span class="block font-semibold">{t.name}</span>
+            <span class="block text-sm text-muted">{t.role}</span>
+          </span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

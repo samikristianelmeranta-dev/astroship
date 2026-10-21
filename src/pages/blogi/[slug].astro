@@ -1,0 +1,171 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import PostCard from "@/components/PostCard.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import { site } from "@/config/site";
+import { absolute } from "@/lib/schema";
+import { formatDate, readingTime } from "@/lib/format";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const url = absolute(`/blogi/${post.id}/`);
+const toc = headings.filter((h) => h.depth === 2);
+
+const related = (await getCollection("blog", ({ data, id }) => !data.draft && id !== post.id))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+
+const articleSchema = {
+  "@type": "BlogPosting",
+  "@id": `${url}#article`,
+  headline: post.data.title,
+  description: post.data.snippet,
+  url,
+  mainEntityOfPage: { "@id": `${url}#webpage` },
+  datePublished: post.data.publishDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
+  inLanguage: site.lang,
+  articleSection: post.data.category,
+  keywords: post.data.tags.join(", "),
+  wordCount: (post.body ?? "").split(/\s+/).length,
+  author: { "@id": `${site.url}/#person` },
+  publisher: { "@id": `${site.url}/#person` },
+  image: absolute(post.data.image?.src ?? site.images.og),
+};
+
+const share = [
+  { name: "Facebook", icon: "simple-icons:facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}` },
+  { name: "LinkedIn", icon: "simple-icons:linkedin", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}` },
+  { name: "X", icon: "simple-icons:x", href: `https://x.com/intent/post?url=${encodeURIComponent(url)}&text=${encodeURIComponent(post.data.title)}` },
+  { name: "WhatsApp", icon: "simple-icons:whatsapp", href: `https://wa.me/?text=${encodeURIComponent(`${post.data.title} ${url}`)}` },
+];
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.snippet}
+  type="article"
+  image={post.data.image?.src}
+  publishedTime={post.data.publishDate}
+  modifiedTime={post.data.updatedDate}
+  breadcrumbs={[
+    { name: "Blogi", path: "/blogi/" },
+    { name: post.data.title, path: `/blogi/${post.id}/` },
+  ]}
+  schema={[articleSchema]}>
+  <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent" aria-hidden="true">
+    <div data-progress class="progress-bar h-full bg-gradient-to-r from-brand to-brand-light"></div>
+  </div>
+
+  <article>
+    <header class="relative -mt-20 overflow-hidden pb-10 pt-30 sm:pt-36">
+      <div class="pointer-events-none absolute -top-40 right-[-10%] -z-10 size-[30rem] rounded-full bg-brand/15 blur-3xl animate-blob" aria-hidden="true"></div>
+      <Container class="max-w-4xl">
+        <nav aria-label="Murupolku" class="hero-word text-sm text-muted">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-brand-dark">Etusivu</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/blogi/" class="hover:text-brand-dark">Blogi</a></li>
+          </ol>
+        </nav>
+        <h1 class="hero-word mt-5 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">{post.data.title}</h1>
+        <p class="hero-word mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-muted">
+          <span class="font-semibold text-ink">{site.name}</span>
+          <span aria-hidden="true">•</span>
+          <time datetime={post.data.publishDate.toISOString()}>{formatDate(post.data.publishDate)}</time>
+          <span aria-hidden="true">•</span>
+          <span>{readingTime(post.body ?? "")} min lukuaika</span>
+        </p>
+        {
+          post.data.tags.length > 0 && (
+            <ul class="hero-word mt-5 flex flex-wrap gap-2">
+              {post.data.tags.map((t) => (
+                <li class="rounded-full bg-brand-soft px-3 py-1 text-sm font-medium text-brand-dark">#{t}</li>
+              ))}
+            </ul>
+          )
+        }
+      </Container>
+    </header>
+
+    <Container class="grid max-w-6xl gap-12 lg:grid-cols-[1fr_16rem]">
+      <div
+        class="prose prose-lg max-w-none prose-headings:font-display prose-headings:tracking-tight prose-a:text-brand-dark prose-a:decoration-brand/40 prose-a:underline-offset-4 hover:prose-a:decoration-brand prose-blockquote:border-brand prose-strong:text-ink prose-li:marker:text-brand">
+        <Content />
+      </div>
+
+      <aside class="space-y-8 lg:sticky lg:top-24 lg:self-start">
+        {
+          toc.length > 1 && (
+            <nav aria-label="Sisällysluettelo" class="hidden rounded-3xl bg-mist p-6 lg:block">
+              <p class="text-sm font-semibold uppercase tracking-[0.15em] text-muted">Sisältö</p>
+              <ol class="mt-4 space-y-2 text-sm">
+                {toc.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`} class="text-ink/80 hover:text-brand-dark">{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )
+        }
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.15em] text-muted">Jaa artikkeli</p>
+          <ul class="mt-3 flex gap-2">
+            {
+              share.map((s) => (
+                <li>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="grid size-11 place-items-center rounded-full bg-mist ring-1 ring-line transition hover:-translate-y-1 hover:bg-brand hover:text-white">
+                    <Icon name={s.icon} class="size-5" aria-hidden="true" />
+                    <span class="sr-only">Jaa: {s.name}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </aside>
+    </Container>
+
+    <Container class="mt-16 max-w-4xl">
+      <div class="card flex flex-col gap-6 bg-ink text-white ring-0 sm:flex-row sm:items-center" data-reveal>
+        <img src={site.images.portrait} alt="" width="96" height="96" loading="lazy" class="size-24 rounded-2xl object-cover" />
+        <div class="flex-1">
+          <p class="font-display text-2xl font-bold">{site.name}</p>
+          <p class="mt-1 text-white/70">
+            {site.tagline} · {site.party.name}. Kaupunginvaltuutettu ja -hallituksen jäsen Kaarinasta.
+          </p>
+        </div>
+        <a href="/yhteys/" class="btn-primary shrink-0">
+          Ota yhteyttä <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+        </a>
+      </div>
+    </Container>
+  </article>
+
+  <section class="py-24" aria-labelledby="lisaa-title">
+    <Container>
+      <h2 id="lisaa-title" class="text-3xl font-bold" data-reveal>Lue myös</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {related.map((p, i) => <PostCard post={p} delay={i + 1} />)}
+      </div>
+    </Container>
+  </section>
+
+  <Newsletter />
+</Layout>

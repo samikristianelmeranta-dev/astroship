@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+import { site } from "@/config/site";
+
+interface Props {
+  class?: string;
+  dark?: boolean;
+}
+const { class: className, dark = false } = Astro.props;
+---
+
+<ul class:list={["flex flex-wrap gap-3", className]}>
+  {
+    site.social.map((s) => (
+      <li>
+        <a
+          href={s.url}
+          target="_blank"
+          rel="noopener noreferrer me"
+          class:list={[
+            "grid size-11 place-items-center rounded-full transition duration-300 hover:-translate-y-1 hover:bg-brand hover:text-white",
+            dark ? "bg-white/10 text-white" : "bg-mist text-ink ring-1 ring-line",
+          ]}>
+          <Icon name={s.icon} class="size-5" aria-hidden="true" />
+          <span class="sr-only">{s.name} (avautuu uuteen välilehteen)</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

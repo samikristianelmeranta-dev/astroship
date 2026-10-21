@@ -1,17 +1,300 @@
 ---
-import Container from "@/components/container.astro";
-import Cta from "@/components/cta.astro";
-import Features from "@/components/features.astro";
-import Hero from "@/components/hero.astro";
-import Logos from "@/components/logos.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Testimonials from "@/components/Testimonials.astro";
+import Newsletter from "@/components/Newsletter.astro";
+import PostCard from "@/components/PostCard.astro";
+import Socials from "@/components/Socials.astro";
+import { site } from "@/config/site";
+import { values, changes, testimonials, faq } from "@/data/content";
+import { faqSchema } from "@/lib/schema";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+
+const ribbon = [
+  "Työ ja toimeentulo",
+  "Yrittäjyys",
+  "Elinvoimainen Varsinais-Suomi",
+  "Lapset ja nuoret",
+  "Vastuullinen talous",
+  "Turvallinen koulu",
+  "Vähemmän hallintoa, enemmän tuloksia",
+];
+
+const stats = [
+  { value: 2021, label: "Kaarinan valtuustossa ja hallituksessa vuodesta", plain: true },
+  { value: 3, label: "aktiivista luottamustointa", suffix: "" },
+  { value: 17, label: "vuotta myynnin johtotehtävissä", suffix: "+" },
+  { value: 3, label: "lasta – tärkein tehtäväni", suffix: "" },
+];
 ---
 
-<Layout title="">
-  <Container>
-    <Hero />
-    <Features />
-    <Logos />
-    <Cta />
-  </Container>
+<Layout type="profile" schema={[faqSchema(faq)]}>
+  <!-- HERO -->
+  <section class="relative -mt-20 overflow-hidden pt-20" aria-labelledby="hero-title">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+      <div class="absolute -top-40 right-[-15%] size-[40rem] rounded-full bg-brand/20 blur-3xl animate-blob"></div>
+      <div class="absolute top-1/3 left-[-15%] size-[30rem] rounded-full bg-ink-soft/10 blur-3xl animate-blob blob-delay"></div>
+      <div class="absolute bottom-0 right-1/3 size-[22rem] rounded-full bg-brand-light/20 blur-3xl animate-blob blob-delay-2"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(var(--color-line)_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"></div>
+    </div>
+
+    <Container class="grid items-center gap-14 pb-20 pt-10 lg:grid-cols-[1.2fr_1fr] lg:pt-16">
+      <div>
+        <p class="hero-word inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-semibold ring-1 ring-line backdrop-blur">
+          <span class="relative flex size-2.5">
+            <span class="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-60"></span>
+            <span class="relative inline-flex size-2.5 rounded-full bg-brand"></span>
+          </span>
+          {site.party.name} · {site.location.locality}
+        </p>
+        <h1 id="hero-title" class="mt-6 text-5xl font-extrabold leading-[1.02] sm:text-6xl xl:text-7xl">
+          <span class="hero-word block">Hei, olen</span>
+          <span class="hero-word block">Sami Elmeranta.</span>
+          <span class="hero-word block text-gradient">Tolkun poliitikko.</span>
+        </h1>
+        <p class="hero-word mt-7 max-w-xl text-xl leading-relaxed text-muted">
+          Isä, myynnin ja markkinoinnin kokenut johtaja, yrittäjä, poliitikko ja seutuvaikuttaja. Haluan rakentaa
+          yhteiskuntaa, jossa <strong class="font-semibold text-ink">tekeminen palkitsee</strong>, yhteisö tukee ja
+          jokainen voi vaikuttaa.
+        </p>
+        <div class="hero-word mt-9 flex flex-wrap gap-3">
+          <a href="/politiikka/" class="btn-primary">
+            Politiikka
+            <Icon name="lucide:arrow-right" class="size-5" aria-hidden="true" />
+          </a>
+          <a href="/tyoelama/" class="btn-light">Työelämä</a>
+          <a href="#tutustu" class="btn-light">Tutustutaan</a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-md" data-reveal="zoom">
+        <div class="absolute -inset-4 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-brand to-ink-soft opacity-90" aria-hidden="true"></div>
+        <img
+          src={site.images.portrait}
+          alt="Sami Elmeranta"
+          width="768"
+          height="960"
+          fetchpriority="high"
+          decoding="async"
+          class="relative aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl"
+        />
+        <div class="absolute -left-6 bottom-10 rounded-2xl bg-white/90 px-4 py-3 shadow-xl ring-1 ring-line backdrop-blur animate-[blob_10s_ease-in-out_infinite]">
+          <p class="text-xs font-semibold uppercase tracking-wider text-muted">Luottamustoimi</p>
+          <p class="font-display font-bold">Kaupunginhallitus</p>
+        </div>
+        <div class="absolute -right-4 top-8 rounded-2xl bg-ink px-4 py-3 text-white shadow-xl animate-[blob_12s_ease-in-out_infinite] blob-delay">
+          <p class="text-xs font-semibold uppercase tracking-wider text-white/60">Maakuntavaltuusto</p>
+          <p class="font-display font-bold">Varsinais-Suomi</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- RIBBON -->
+  <div class="relative -rotate-1 overflow-hidden bg-ink py-5 text-white" aria-hidden="true">
+    <div class="flex w-max animate-marquee gap-10 whitespace-nowrap font-display text-2xl font-bold hover:[animation-play-state:paused]">
+      {
+        [...ribbon, ...ribbon].map((r) => (
+          <span class="flex items-center gap-10">
+            {r}
+            <span class="text-brand">✦</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section aria-label="Lukuina" class="py-20">
+    <Container>
+      <dl class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+        {
+          stats.map((s, i) => (
+            <div class="flex flex-col rounded-3xl bg-mist p-6 ring-1 ring-line" data-reveal data-delay={String(i + 1)}>
+              <dt class="text-sm text-muted">{s.label}</dt>
+              <dd class="order-first font-display text-5xl font-extrabold text-brand-dark">
+                {s.plain ? s.value : <><span data-count={s.value}>{s.value}</span>{s.suffix}</>}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </Container>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="tutustu" aria-labelledby="tutustu-title" class="py-16">
+    <Container class="grid items-center gap-12 lg:grid-cols-2">
+      <div data-reveal="left">
+        <p class="eyebrow">Mikä mies kyseessä?</p>
+        <h2 id="tutustu-title" class="mt-3 text-4xl font-bold sm:text-5xl">Isä, johtaja, yrittäjä – ja kaarinalainen</h2>
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-muted">
+          <p>
+            Olen 40-vuotias kolmen lapsen isä Kaarinan Piikkiöstä. Työskentelen myynnin johdollisissa tehtävissä
+            media-alalla ja lisäksi toimin sivutoimisena yrittäjänä. Poliittisesti olen hyvin aktiivinen, sekä toimin
+            useassa alueellisessa yhdistyksessä vapaaehtoisena. Vapaa-aikana minuun voi törmätä jalkapallo- ja
+            golfkentillä.
+          </p>
+          <p>
+            <strong class="text-ink">Puolueeni on {site.party.name}.</strong> Minun tärkein tehtäväni on olla isä kolmelle
+            ihanalle lapselle, toinen tärkeä tehtäväni on rakentaa parempaa huomista meille kaikille.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-6">
+          <a href="/arki/" class="btn-primary">Tutustutaan lisää</a>
+          <Socials />
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4" data-reveal="right">
+        {
+          [
+            ["lucide:landmark", "Kaupunginvaltuusto & -hallitus", "Kaarina"],
+            ["lucide:map", "Maakuntavaltuusto", "Varsinais-Suomi"],
+            ["lucide:trending-up", "Aluemyyntijohtaja", "Media-ala"],
+            ["lucide:trophy", "Jalkapallovalmentaja", "2014-syntyneet pojat"],
+          ].map(([icon, title, sub], i) => (
+            <div class:list={["card", i % 2 === 1 && "translate-y-8"]}>
+              <span class="grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand-dark">
+                <Icon name={icon} class="size-6" aria-hidden="true" />
+              </span>
+              <p class="mt-5 font-display text-lg font-bold leading-tight">{title}</p>
+              <p class="mt-1 text-sm text-muted">{sub}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- VALUES -->
+  <section aria-labelledby="arvot-title" class="py-24">
+    <Container>
+      <SectionHead
+        id="arvot-title"
+        eyebrow="Arvot & ajatukset"
+        title="Uskon tekemisen voimaan, vastuuseen ja yhteisöllisyyteen"
+        lead="Nämä arvot ohjaavat kaikkea sitä, mitä teen – niin työssä, politiikassa kuin arjessakin. Alla muutama minulle tärkeä asia, joita edistän."
+      />
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          values.map((v, i) => (
+            <article class="card group" data-reveal data-delay={String((i % 4) + 1)}>
+              <span class="grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand-dark transition duration-500 group-hover:rotate-6 group-hover:bg-brand group-hover:text-white">
+                <Icon name={v.icon} class="size-6" aria-hidden="true" />
+              </span>
+              <h3 class="mt-5 text-xl font-bold leading-snug">{v.title}</h3>
+              <p class="mt-3 text-muted">{v.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- CHANGES -->
+  <section aria-labelledby="muutos-title" class="relative overflow-hidden bg-ink py-24 text-white">
+    <div class="pointer-events-none absolute -left-32 top-10 size-[30rem] rounded-full bg-brand/25 blur-3xl animate-blob" aria-hidden="true"></div>
+    <Container class="relative">
+      <SectionHead
+        id="muutos-title"
+        dark
+        eyebrow="Muutos"
+        title="Asiat, joista en pidä ja mihin haluan muutosta"
+        lead="Muutama konkreettinen aihe, joita kritisoin ja joissa haluan vaikuttaa – selkeästi, vastuullisesti ja tuloksellisesti."
+      />
+      <div class="mt-14 space-y-4">
+        {
+          changes.map((c, i) => (
+            <details
+              class="group rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 transition open:bg-white/10 sm:p-8"
+              open={i === 0}
+              data-reveal
+              data-delay={String(i + 1)}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-6 [&::-webkit-details-marker]:hidden">
+                <h3 class="text-2xl font-bold">
+                  <span class="mr-3 font-display text-brand-light">0{i + 1}</span>
+                  {c.title}
+                </h3>
+                <span class="grid size-10 shrink-0 place-items-center rounded-full bg-white/10 transition duration-300 group-open:rotate-45 group-open:bg-brand">
+                  <Icon name="lucide:plus" class="size-5" aria-hidden="true" />
+                </span>
+              </summary>
+              <p class="mt-5 max-w-3xl text-lg text-white/75">{c.text}</p>
+              {c.items && (
+                <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {c.items.map(([t, d]) => (
+                    <li class="rounded-2xl border-l-4 border-brand bg-white/5 p-4">
+                      <p class="font-semibold">{t}</p>
+                      <p class="mt-1 text-sm text-white/65">{d}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </details>
+          ))
+        }
+      </div>
+      <p class="mt-12 font-display text-3xl font-bold sm:text-4xl" data-reveal>
+        Vähemmän hallintoa, <span class="text-brand-light">enemmän tuloksia.</span>
+      </p>
+    </Container>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section aria-labelledby="suosittelut-title" class="bg-mist py-24">
+    <Container>
+      <SectionHead id="suosittelut-title" eyebrow="Mitä muut sanovat" title="Yli puoluerajojen" />
+      <div class="mt-14">
+        <Testimonials items={testimonials} />
+      </div>
+    </Container>
+  </section>
+
+  <!-- BLOG -->
+  <section aria-labelledby="blogi-title" class="py-24">
+    <Container>
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHead id="blogi-title" eyebrow="Blogi" title="Uusimmat kirjoitukset" />
+        <a href="/blogi/" class="btn-light" data-reveal>
+          Kaikki kirjoitukset <Icon name="lucide:arrow-right" class="size-5" aria-hidden="true" />
+        </a>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {posts.map((post, i) => <PostCard post={post} delay={i + 1} />)}
+      </div>
+    </Container>
+  </section>
+
+  <!-- FAQ -->
+  <section aria-labelledby="ukk-title" class="py-16">
+    <Container class="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+      <SectionHead
+        id="ukk-title"
+        eyebrow="Usein kysyttyä"
+        title="Lyhyesti minusta"
+        lead="Nopeat vastaukset yleisimpiin kysymyksiin."
+      />
+      <div class="divide-y divide-line rounded-3xl ring-1 ring-line" data-reveal>
+        {
+          faq.map(({ q, a }) => (
+            <details class="group p-6">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold [&::-webkit-details-marker]:hidden">
+                <h3>{q}</h3>
+                <Icon name="lucide:chevron-down" class="size-5 shrink-0 text-brand transition duration-300 group-open:rotate-180" aria-hidden="true" />
+              </summary>
+              <p class="mt-3 text-muted">{a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <Newsletter />
 </Layout>

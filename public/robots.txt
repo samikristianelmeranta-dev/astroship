@@ -1,4 +1,19 @@
+# Hakukoneet ja tekoälyhaut ovat tervetulleita.
 User-agent: *
 Allow: /
 
-Sitemap: http://astroship.web3templates.com/sitemap-index.xml
+# Tekoälyhaut ja -avustajat (vastaukset, lähdeviitteet)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.samielmeranta.fi/sitemap-index.xml

@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import PageHero from "@/components/PageHero.astro";
+import { site } from "@/config/site";
+
+const updated = "21.10.2026";
+---
+
+<Layout
+  title="Tietosuojaseloste"
+  description="Sivuston samielmeranta.fi tietosuojaseloste: mitä tietoja kerätään, miksi ja miten voit käyttää oikeuksiasi."
+  breadcrumbs={[{ name: "Tietosuojaseloste", path: "/tietosuoja/" }]}>
+  <PageHero eyebrow="Tietosuoja" title="Tietosuojaseloste" lead={`Päivitetty ${updated}`} />
+  <Container class="max-w-3xl">
+    <div class="prose prose-lg prose-headings:font-display prose-a:text-brand-dark">
+      <h2>Rekisterinpitäjä</h2>
+      <p>
+        {site.name}, {site.location.locality}<br />
+        Puhelin: {site.phoneDisplay}<br />
+        Sähköposti: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Ei seurantaa, ei evästeitä</h2>
+      <p>
+        Sivusto on staattinen eikä käytä evästeitä, analytiikkaa, mainosseurantaa tai upotettua kolmannen osapuolen
+        sisältöä. Fontit ja kuvat ladataan suoraan tältä palvelimelta. Palvelinympäristö voi tallentaa tavanomaiset
+        tekniset lokit (esim. IP-osoite, aikaleima) tietoturvan ylläpitämiseksi.
+      </p>
+
+      <h2>Yhteydenotot</h2>
+      <p>
+        Kun otat yhteyttä lomakkeella, sähköpostilla, puhelimella tai WhatsAppilla, käsittelen antamiasi tietoja (nimi,
+        yhteystiedot, viestin sisältö) vain yhteydenottoosi vastaamiseksi. Käsittelyperuste on oikeutettu etu
+        (EU:n yleinen tietosuoja-asetus, art. 6.1 f). Viestit poistetaan, kun niitä ei enää tarvita asian hoitamiseen.
+      </p>
+
+      <h2>Uutiskirje</h2>
+      <p>
+        Uutiskirjeen tilaus tapahtuu Mailchimp-palvelun kautta, jonka sivuille siirryt tilauslinkistä. Tietojasi
+        käsitellään suostumuksesi perusteella, ja voit perua tilauksen milloin tahansa jokaisen viestin lopussa olevasta
+        linkistä. En luovuta tietojasi eteenpäin.
+      </p>
+
+      <h2>Ulkoiset linkit</h2>
+      <p>
+        Sivustolla on linkkejä sosiaalisen median palveluihin ja muille sivustoille. Niiden tietosuojakäytännöistä
+        vastaavat kyseiset palvelut.
+      </p>
+
+      <h2>Oikeutesi</h2>
+      <p>
+        Sinulla on oikeus tarkastaa itseäsi koskevat tiedot, pyytää niiden oikaisemista tai poistamista sekä vastustaa
+        käsittelyä. Voit tehdä pyynnön yllä olevilla yhteystiedoilla. Sinulla on myös oikeus tehdä valitus
+        tietosuojavaltuutetun toimistolle (<a href="https://tietosuoja.fi" rel="noopener noreferrer" target="_blank">tietosuoja.fi</a>).
+      </p>
+    </div>
+  </Container>
+</Layout>

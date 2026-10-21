@@ -1,70 +1,119 @@
 ---
-import { SEO } from "astro-seo";
-import Footer from "@/components/footer.astro";
-import Navbar from "@/components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
 import "../styles/global.css";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { site } from "@/config/site";
+import { absolute, personSchema, websiteSchema, breadcrumbSchema } from "@/lib/schema";
 
 export interface Props {
-  title: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article" | "profile";
+  breadcrumbs?: { name: string; path: string }[];
+  /** Lisärakenteet sivukohtaiseen JSON-LD-graafiin (Article, FAQPage …). */
+  schema?: Record<string, unknown>[];
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  noindex?: boolean;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const {
+  title,
+  description = site.description,
+  image = site.images.og,
+  type = "website",
+  breadcrumbs,
+  schema = [],
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+} = Astro.props;
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} – ${site.tagline} | ${site.party.name}`;
+const canonical = absolute(Astro.url.pathname);
+const ogImage = absolute(image);
 
-const { title } = Astro.props;
-
-const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    websiteSchema(),
+    personSchema(),
+    {
+      "@type": type === "profile" ? "ProfilePage" : "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: fullTitle,
+      description,
+      inLanguage: site.lang,
+      isPartOf: { "@id": `${site.url}/#website` },
+      about: { "@id": `${site.url}/#person` },
+      ...(type === "profile" ? { mainEntity: { "@id": `${site.url}/#person` } } : {}),
+    },
+    ...(breadcrumbs ? [breadcrumbSchema(breadcrumbs)] : []),
+    ...schema,
+  ],
+};
+// Estetään </script>-katkaisut JSON-LD:ssä
+const jsonLd = JSON.stringify(graph).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={site.lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"} />
+    <meta name="author" content={site.name} />
+    <meta name="theme-color" content="#14102b" />
+    <meta name="color-scheme" content="light" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
-      canonical={canonicalURL}
-      twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
-        card: "summary_large_image",
-      }}
-      openGraph={{
-        basic: {
-          url: canonicalURL,
-          type: "website",
-          title: `Astroship - Starter Template for Astro`,
-          image: resolvedImageWithDomain,
-        },
-        image: {
-          alt: "Astroship Homepage Screenshot",
-        },
-      }}
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} – blogi`} href="/rss.xml" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
+
+    <!-- Open Graph / some -->
+    <meta property="og:type" content={type === "article" ? "article" : "website"} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name} – ${site.tagline}`} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={jsonLd} is:inline />
   </head>
-  <body>
-    <Navbar />
-    <slot />
+  <body class="min-h-dvh flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-white"
+      >Siirry sisältöön</a
+    >
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
     <Footer />
-    <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
-      }
-    </style>
+
+    <script>
+      import "@/scripts/motion";
+    </script>
   </body>
 </html>

@@ -1,0 +1,127 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/container.astro";
+import PageHero from "@/components/PageHero.astro";
+import SectionHead from "@/components/SectionHead.astro";
+import Socials from "@/components/Socials.astro";
+import { site } from "@/config/site";
+
+/** Lisää kuvat kansioon public/images/arki/ ja päivitä polut. */
+const gallery = [
+  { src: "/images/placeholder.svg", caption: "Kuva kaupunginhallituksen kokoushuoneesta" },
+  { src: "/images/placeholder.svg", caption: "Lasten kanssa käydään säännöllisesti eri tapahtumissa" },
+  { src: "/images/placeholder.svg", caption: "Kuva meidän ”sunnuntaipalaverista”" },
+  { src: "/images/placeholder.svg", caption: "Sipilänmäen kesäteatteri on yksi vuoden kohokohdista" },
+  { src: "/images/placeholder.svg", caption: "Aina, kun pääsee golfkentälle, tuo se hymyn huulille" },
+  { src: "/images/placeholder.svg", caption: "Jäätelöä" },
+  { src: "/images/placeholder.svg", caption: "Kuva ”työmaalta”" },
+  { src: "/images/placeholder.svg", caption: "Yksi henkireikä, eli valmennushommat" },
+];
+---
+
+<Layout
+  title="Arki & vapaa-aika"
+  description="Sami Elmerannan arki Piikkiössä: perhe, jalkapallovalmennus, golf, Lions Club, MLL ja vapaaehtoistyö Kaarinassa."
+  breadcrumbs={[{ name: "Arki & vapaa-aika", path: "/arki/" }]}>
+  <PageHero
+    eyebrow="Arki & vapaa-aika"
+    title="Elämä lasten ehdoilla"
+    lead="Urheilua, yhdistystoimintaa ja yhteisöllisyyttä."
+  />
+
+  <section class="py-12">
+    <Container class="grid gap-6 lg:grid-cols-2">
+      <article class="card" data-reveal="left">
+        <span class="grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand-dark">
+          <Icon name="lucide:trophy" class="size-6" aria-hidden="true" />
+        </span>
+        <h2 class="mt-5 text-3xl font-bold">Vapaa-aika</h2>
+        <div class="mt-4 space-y-4 text-muted">
+          <p>
+            Arkeni on aivan tavallista perhe-elämää lasten ja läheisten kanssa, ja vapaa-aikani kuluu pitkälti lasten
+            ehdoilla. Urheilu on ollut minulle aina suuri intohimo – minut löytääkin usein futiskentältä, padelin parista
+            tai golfkentältä.
+          </p>
+          <p>
+            Olen ollut aktiivisesti mukana useissa seuroissa niin perustajajäsenenä kuin hallitustasolla. Valmennan tällä
+            hetkellä 2014-syntyneiden poikien jalkapallojoukkuetta.
+          </p>
+        </div>
+      </article>
+      <article class="card" data-reveal="right">
+        <span class="grid size-12 place-items-center rounded-2xl bg-brand-soft text-brand-dark">
+          <Icon name="lucide:hand-heart" class="size-6" aria-hidden="true" />
+        </span>
+        <h2 class="mt-5 text-3xl font-bold">Yhdistys- ja vapaaehtoistyö</h2>
+        <div class="mt-4 space-y-4 text-muted">
+          <p>
+            Kotiseutu on minulle tärkeä, joten olen pitkään osallistunut Piikkiö Päivän järjestelyihin. Olen toiminut
+            Mannerheimin Lastensuojeluliiton paikallistehtävissä ja olen mukana Lions Clubin sekä Piikkiön nuorison tuki
+            ry:n toiminnassa.
+          </p>
+          <p>
+            Joulu on minulle tärkeä auttamisen ajankohta. Olen vuosia järjestänyt ruokalahjoituskeräyksiä ja vuonna 2022
+            järjestin isomman tapahtuman yksinäisille ja vähävaraisille Kaarinassa. Olen pitänyt vapaaehtoisena pienten
+            lasten liikuntakerhoa 3–7-vuotiaille.
+          </p>
+        </div>
+      </article>
+    </Container>
+  </section>
+
+  <section class="py-20" aria-labelledby="kuvat-title">
+    <Container>
+      <SectionHead id="kuvat-title" eyebrow="Galleria" title="Muutamia kuvia arjestani" />
+      <ul class="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-4">
+        {
+          gallery.map((g, i) => (
+            <li class="mb-5 break-inside-avoid" data-reveal="zoom" data-delay={String((i % 4) + 1)}>
+              <figure class="group overflow-hidden rounded-3xl bg-mist ring-1 ring-line">
+                <img
+                  src={g.src}
+                  alt={g.caption}
+                  width="600"
+                  height={i % 3 === 0 ? 800 : 600}
+                  loading="lazy"
+                  decoding="async"
+                  class:list={["w-full object-cover transition duration-700 group-hover:scale-105", i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"]}
+                />
+                <figcaption class="p-4 text-sm text-muted">{g.caption}</figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </section>
+
+  <section class="py-12" aria-labelledby="kirjoitan-title">
+    <Container>
+      <div class="card grid gap-8 bg-mist lg:grid-cols-[1.4fr_1fr] lg:items-center" data-reveal>
+        <div>
+          <h2 id="kirjoitan-title" class="text-3xl font-bold">Vaikutan myös kirjoittamalla</h2>
+          <p class="mt-4 text-muted">
+            Olet mahdollisesti törmännyt minuun sosiaalisessa mediassa? Kirjoitan paljon mielipidekirjoituksia ja otan
+            kantaa yhteiskunnallisiin asioihin.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-3">
+            {
+              site.writing.map((w) => (
+                <li>
+                  <a href={w.url} target="_blank" rel="noopener noreferrer" class="btn-light !py-2">
+                    {w.name} <Icon name="lucide:external-link" class="size-4" aria-hidden="true" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold">Seuraa minua somessa</p>
+          <Socials class="mt-3" />
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
