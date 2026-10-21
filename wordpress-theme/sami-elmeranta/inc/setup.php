@@ -112,8 +112,19 @@ function se_nav( $location, $variant ) {
 	if ( ! $items ) {
 		$items = se_default_nav();
 	}
+	// Yhteyslinkki lisätään vain, jos valikossa ei jo ole sitä (ei tuplia).
 	if ( 'desktop' !== $variant ) {
-		$items[] = array( 'Ota yhteyttä', se_contact_url() );
+		$contact = se_contact_url();
+		$exists  = false;
+		foreach ( $items as $item ) {
+			if ( untrailingslashit( $item[1] ) === untrailingslashit( $contact ) || 0 === strcasecmp( trim( $item[0] ), 'Ota yhteyttä' ) ) {
+				$exists = true;
+				break;
+			}
+		}
+		if ( ! $exists ) {
+			$items[] = array( 'Ota yhteyttä', $contact );
+		}
 	}
 	$current = '';
 	if ( is_home() ) {

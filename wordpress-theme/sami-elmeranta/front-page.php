@@ -42,6 +42,7 @@ $stats  = array(
 			<p class="hero-word mt-7 max-w-xl text-xl leading-relaxed text-muted"><?php echo esc_html( se_opt( 'hero_lead' ) ); ?></p>
 			<div class="hero-word mt-9 flex flex-wrap gap-3">
 				<a href="<?php echo esc_url( se_page_url( 'politiikkaa' ) ); ?>" class="btn-primary">Politiikka <?php se_the_icon( 'lucide:arrow-right' ); ?></a>
+				<a href="<?php echo esc_url( se_page_url( 'tyoelamayrittajyys' ) ); ?>" class="btn-light">Työelämä</a>
 				<a href="#tutustu" class="btn-light">Tutustutaan</a>
 			</div>
 		</div>
