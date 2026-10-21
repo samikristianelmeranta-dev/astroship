@@ -26,6 +26,13 @@ const ribbon = [
   "Vähemmän hallintoa, enemmän tuloksia",
 ];
 
+// Kuvan päällä kelluvat teemamerkit
+const heroBadges = [
+  { icon: "lucide:scale", label: "Tolkun poliitikko", pos: "-right-2 top-8 sm:-right-4", look: "bg-ink text-white", chip: "bg-white/10 text-brand-light", delay: "" },
+  { icon: "lucide:flag", label: "Suomalaisen asialla", pos: "-left-2 top-1/2 -translate-y-1/2 sm:-left-6", look: "bg-white/90 ring-1 ring-line backdrop-blur", chip: "bg-brand-soft text-brand-dark", delay: "blob-delay" },
+  { icon: "lucide:briefcase", label: "Yrittäjyys & työpaikat", pos: "-right-2 bottom-10 sm:-right-4", look: "bg-brand text-white", chip: "bg-white/15 text-white", delay: "blob-delay-2" },
+];
+
 const stats = [
   { value: 2021, label: "Kaarinan valtuustossa ja hallituksessa vuodesta", plain: true },
   { value: 3, label: "aktiivista luottamustointa", suffix: "" },
@@ -84,14 +91,18 @@ const stats = [
           decoding="async"
           class="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl"
         />
-        <div class="absolute -left-6 bottom-10 rounded-2xl bg-white/90 px-4 py-3 shadow-xl ring-1 ring-line backdrop-blur animate-[blob_10s_ease-in-out_infinite]">
-          <p class="text-xs font-semibold uppercase tracking-wider text-muted">Luottamustoimi</p>
-          <p class="font-display font-bold">Kaupunginhallitus</p>
-        </div>
-        <div class="absolute -right-4 top-8 rounded-2xl bg-ink px-4 py-3 text-white shadow-xl animate-[blob_12s_ease-in-out_infinite] blob-delay">
-          <p class="text-xs font-semibold uppercase tracking-wider text-white/60">Maakuntavaltuusto</p>
-          <p class="font-display font-bold">Varsinais-Suomi</p>
-        </div>
+        {
+          heroBadges.map((b) => (
+            <div class:list={["absolute", b.pos]}>
+              <div class:list={["flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl animate-float", b.look, b.delay]}>
+                <span class:list={["grid size-9 place-items-center rounded-xl", b.chip]}>
+                  <Icon name={b.icon} class="size-5" aria-hidden="true" />
+                </span>
+                <span class="font-display font-bold">{b.label}</span>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </Container>
   </section>

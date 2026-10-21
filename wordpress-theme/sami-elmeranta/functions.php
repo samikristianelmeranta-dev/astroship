@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SE_VERSION', '1.1.0' );
+define( 'SE_VERSION', '1.2.0' );
 define( 'SE_DIR', get_template_directory() );
 
 require SE_DIR . '/inc/helpers.php';

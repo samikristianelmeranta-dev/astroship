@@ -50,14 +50,22 @@ $stats  = array(
 		<div class="relative mx-auto w-full max-w-md" data-reveal="zoom">
 			<div class="absolute -inset-4 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-brand to-ink-soft opacity-90" aria-hidden="true"></div>
 			<img src="<?php echo esc_url( se_image_url( 'portrait', 'sami-portrait.webp' ) ); ?>" alt="<?php echo esc_attr( se_opt( 'person_name' ) ); ?>" width="1000" height="1500" fetchpriority="high" decoding="async" class="relative aspect-[4/5] w-full rounded-[2rem] object-cover object-top shadow-2xl">
-			<div class="absolute -left-6 bottom-10 rounded-2xl bg-white/90 px-4 py-3 shadow-xl ring-1 ring-line backdrop-blur animate-float">
-				<p class="text-xs font-semibold uppercase tracking-wider text-muted">Luottamustoimi</p>
-				<p class="font-display font-bold">Kaupunginhallitus</p>
-			</div>
-			<div class="absolute -right-4 top-8 rounded-2xl bg-ink px-4 py-3 text-white shadow-xl animate-float blob-delay">
-				<p class="text-xs font-semibold uppercase tracking-wider text-white/60">Maakuntavaltuusto</p>
-				<p class="font-display font-bold"><?php echo esc_html( se_opt( 'region' ) ); ?></p>
-			</div>
+			<?php
+			// Kuvan päällä kelluvat teemamerkit.
+			$se_badges = array(
+				array( 'lucide:scale', 'Tolkun poliitikko', '-right-2 top-8 sm:-right-4', 'bg-ink text-white', 'bg-white/10 text-brand-light', '' ),
+				array( 'lucide:flag', 'Suomalaisen asialla', '-left-2 top-1/2 -translate-y-1/2 sm:-left-6', 'bg-white/90 ring-1 ring-line backdrop-blur', 'bg-brand-soft text-brand-dark', 'blob-delay' ),
+				array( 'lucide:briefcase', 'Yrittäjyys & työpaikat', '-right-2 bottom-10 sm:-right-4', 'bg-brand text-white', 'bg-white/15 text-white', 'blob-delay-2' ),
+			);
+			foreach ( $se_badges as $b ) :
+				?>
+				<div class="absolute <?php echo esc_attr( $b[2] ); ?>">
+					<div class="flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl animate-float <?php echo esc_attr( $b[3] . ' ' . $b[5] ); ?>">
+						<span class="grid size-9 place-items-center rounded-xl <?php echo esc_attr( $b[4] ); ?>"><?php se_the_icon( $b[0] ); ?></span>
+						<span class="font-display font-bold"><?php echo esc_html( $b[1] ); ?></span>
+					</div>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
