@@ -21,7 +21,7 @@ Liike Nyt on rakennettu samalle ajatukselle. Se on liike, jossa ratkaisut ratkai
 
 Työ luo hyvinvointia ja turvaa arjen. Jokaisella on oltava mahdollisuus rakentaa omaa tulevaisuuttaan työn kautta – tämä on ollut ensimmäinen arvoni alusta asti.
 
-Liike Nytin vaihtoehtobudjetin 2026 kärkitavoite on **200 000 uutta työpaikkaa yksityisiin yrityksiin ja 80 prosentin työllisyysaste**. Tavoite osuu suoraan siihen, mistä olen puhunut otsikolla *valtioriippuvuus*: liian moni asia pyörii tukien ja avustusten varassa. Vahva Suomi syntyy siitä, että ihmiset ja yritykset pärjäävät omalla työllään.
+Liike Nytin vaihtoehtobudjetin 2026 kärkitavoite on **200 000 uutta työpaikkaa yksityisiin yrityksiin ja 80 prosentin työllisyysaste**. Tavoite osuu suoraan huoleeni valtioriippuvuudesta: liian moni asia pyörii tukien ja avustusten varassa. Vahva Suomi syntyy siitä, että ihmiset ja yritykset pärjäävät omalla työllään.
 
 ## 2. Yrittäjyys: kolme ensimmäistä vuotta ilman yhteisöveroa
 
@@ -29,17 +29,19 @@ Olen itse yrittäjä ja olen perustanut ja johtanut yrityksiä. Tiedän, että y
 
 Liike Nytin vaihtoehtobudjetissa **uudet yritykset saisivat toimia kolme ensimmäistä tilikautta ilman yhteisöveroa**, ja sama koskisi Suomeen liiketoimintaa aloittavia ulkomaisia yrityksiä. Lisäksi **yhteisövero laskisi 15 prosenttiin, jos yritys investoi**.
 
-Tämä on juuri sitä, mitä olen toivonut myös Kaarinan elinvoimatyöhön: kannustetaan rakentamaan, investoimaan ja palkkaamaan. Kirjoitin aiemmin siitä, [miksi kunnan pitää investoida viisaasti, ei eniten](/blogi/miksi-kunnan-pitaa-investoida-viisaasti-ei-eniten/), ja [kolmesta virheestä, jotka kunta voi tehdä elinvoiman kehittämisessä](/blogi/kolme-suurinta-virhetta-joita-kunta-voi-tehda-elinvoiman-kehittamisessa-ja-miten-kaarina-voi-valttaa-ne/). Sama logiikka pätee valtion tasolla: investoinneista pitää palkita.
+Tämä on juuri sitä, mitä olen toivonut myös Kaarinan elinvoimatyöhön: kannustetaan rakentamaan, investoimaan ja palkkaamaan. Sama logiikka pätee valtion tasolla: investoinneista pitää palkita.
+
+Lue lisää: [miksi kunnan pitää investoida viisaasti, ei eniten](/blogi/miksi-kunnan-pitaa-investoida-viisaasti-ei-eniten/) ja [kolme suurinta virhettä, joita kunta voi tehdä elinvoiman kehittämisessä](/blogi/kolme-suurinta-virhetta-joita-kunta-voi-tehda-elinvoiman-kehittamisessa-ja-miten-kaarina-voi-valttaa-ne/).
 
 ## 3. YEL todellisiin tuloihin – yrittäjien valuvika korjattava
 
 Yksi selkeimmistä yhtäläisyyksistä löytyy yrittäjien sosiaaliturvasta. Liike Nyt vaatii, että **YEL-maksun on perustuttava yrittäjän todellisiin tuloihin** ja että YEL:n valuvika korjataan välittömästi.
 
-Olen kirjoittanut samasta ongelmasta toisesta suunnasta. [Positiivinen luottotietorekisteri](/blogi/positiivinen-luottorekisteri/) ei näe toiminimiyrittäjän todellista tulovirtaa, ja se voi vaikeuttaa lainansaantia väärin perustein. Pohdin myös [eläkejärjestelmää ja työelämässä olevien epävarmuutta](/blogi/elakejarjestelma-ja-tyoelamassa-olevien-epavarmuus/). Yhteinen nimittäjä on sama: järjestelmien pitää perustua todellisuuteen, ei oletuksiin. Yrittäjää ei saa rangaista siitä, että hän on yrittäjä.
+Sama ongelma näkyy muuallakin. Esimerkiksi positiivinen luottotietorekisteri ei näe toiminimiyrittäjän todellista tulovirtaa, ja se voi vaikeuttaa lainansaantia väärin perustein. Myös eläkejärjestelmä herättää työelämässä olevissa epävarmuutta. Yhteinen nimittäjä on sama: järjestelmien pitää perustua todellisuuteen, ei oletuksiin. Yrittäjää ei saa rangaista siitä, että hän on yrittäjä.
 
 ## 4. Vastuullinen julkinen talous – vähemmän hallintoa, enemmän tuloksia
 
-Olen listannut sivuillani asioita, joista en pidä: ylisuuriksi paisuneet hallintorakenteet, turhat konsulttiselvitykset, IT-hankkeiden kustannusylitykset, tehottomat tukimuodot ja ylisuuret johtajien palkkiot. [Vastuullinen julkinen talous](/blogi/vastuullinen-julkinen-talous/) on ollut minulle kärkiteema.
+En pidä ylisuuriksi paisuneista hallintorakenteista, turhista konsulttiselvityksistä, IT-hankkeiden kustannusylityksistä, tehottomista tukimuodoista enkä ylisuurista johtajien palkkioista. Vastuullinen julkinen talous on ollut minulle kärkiteema.
 
 Liike Nyt on vaatinut byrokratian purkamista isolla kädellä ja vähemmän sääntelyä yrityksille. Eduskunnan budjettikeskustelussa Harry Harkimo kertoi Liike Nytin vaihtoehdon **keventävän verotusta 921 miljoonalla eurolla** ja **kohdentavan palveluihin 829 miljoonaa euroa**. Hän myös kritisoi hallituksen budjettia ”vippaskonsteista ja silmänkääntötempuista”.
 
@@ -47,7 +49,7 @@ Tämä on minulle tuttua puhetta. Veronmaksajien rahoja on kunnioitettava – jo
 
 ## 5. Ei hillotolppia – politiikka on palvelutehtävä
 
-Olen kirjoittanut poliitikkojen hillotolpista: politiikka ei saa olla etuoikeuksien tai mukavuuksien tavoittelua. Poliitikon tehtävä on palvella ihmisiä, ei itseään.
+Poliitikkojen hillotolpille ei ole sijaa: politiikka ei saa olla etuoikeuksien tai mukavuuksien tavoittelua. Poliitikon tehtävä on palvella ihmisiä, ei itseään.
 
 Liike Nyt on syntynyt kansalaisliikkeenä ja haluaa tehdä politiikkaa avoimemmin ja läpinäkyvämmin. Se sopii minulle. Haluan olla poliitikko, joka näkee työnsä velvollisuutena, ei etuoikeutena.
 
@@ -55,9 +57,9 @@ Liike Nyt on syntynyt kansalaisliikkeenä ja haluaa tehdä politiikkaa avoimemmi
 
 Olen kolmen lapsen isä ja valmennan 2014-syntyneiden poikien jalkapallojoukkuetta. Tulevaisuus rakentuu lasten ja nuorten ympärille, ja panostus heihin on sijoitus tulevaisuuteen.
 
-Olen vaatinut koulumaailmaan ”kurinpalautusta”: turvallinen ja hallittu oppimisympäristö on oppimisen edellytys. Olen myös kirjoittanut siitä, [mitä pahaa moduulikouluissa oikeastaan on](/blogi/mita-pahaa-parakkikouluissa-oikeastaan-on/) – eli siitä, että tilat pitää rakentaa järkevästi ja kustannustehokkaasti, jotta rahat riittävät itse opetukseen. Ajatus sopii Liike Nytin linjaan, jossa julkinen raha ohjataan palveluihin eikä rakenteisiin.
+Olen vaatinut koulumaailmaan ”kurinpalautusta”: turvallinen ja hallittu oppimisympäristö on oppimisen edellytys. Koulutilat pitää rakentaa järkevästi ja kustannustehokkaasti – esimerkiksi moduulikouluilla – jotta rahat riittävät itse opetukseen. Ajatus sopii Liike Nytin linjaan, jossa julkinen raha ohjataan palveluihin eikä rakenteisiin.
 
-Arvostan myös suuresti [valmentajia ja seura-aktiiveja](/blogi/oodi-kaikille-valmentajille-ja-seura-aktiiveille/), jotka tekevät valtavan työn lasten ja nuorten hyväksi. Juuri tällainen yhteisöllisyys on suomalaisen yhteiskunnan selkäranka.
+Arvostan myös suuresti valmentajia ja seura-aktiiveja, jotka tekevät valtavan työn lasten ja nuorten hyväksi. Juuri tällainen yhteisöllisyys on suomalaisen yhteiskunnan selkäranka.
 
 ## 7. Suomalaisen asialla – maahanmuutto, perinteet ja aktiivinen eläkeikä
 
@@ -67,7 +69,7 @@ Uskon myös, että perinteet ja arvot ovat yhteisön kantavia voimia, ja että j
 
 ## Mitä tämä tarkoittaa Kaarinalle?
 
-Jatkan työtä Kaarinan ja Varsinais-Suomen hyväksi täsmälleen samoilla tavoitteilla kuin ennenkin. Kaarina tarvitsee [tulevaisuusohjelman](/blogi/kaarinantulevaisuus/), viisaita investointeja, yritysmyönteisyyttä ja tiukkaa taloudenpitoa. Liike Nytin linja – työtä, yrittäjyyttä, vähemmän byrokratiaa ja rehellistä taloudenpitoa – tukee juuri näitä tavoitteita.
+Jatkan työtä Kaarinan ja Varsinais-Suomen hyväksi täsmälleen samoilla tavoitteilla kuin ennenkin. Kaarina tarvitsee tulevaisuusohjelman, viisaita investointeja, yritysmyönteisyyttä ja tiukkaa taloudenpitoa. Liike Nytin linja – työtä, yrittäjyyttä, vähemmän byrokratiaa ja rehellistä taloudenpitoa – tukee juuri näitä tavoitteita.
 
 Vähemmän hallintoa, enemmän tuloksia. Se on ollut linjani ennenkin, ja se on sitä jatkossakin.
 
