@@ -7,21 +7,23 @@
 @plugin '@tailwindcss/typography';
 
 /*
-  BRÄNDIVÄRIT – Liike Nyt
+  BRÄNDIVÄRIT – Liike Nyt (graafinen ohjeistus)
+  Fuksia #B3125D · Vaalea fuksia #DE3478 · Sininen #5D538C · Liila #744668
   Kaikki värit määritellään vain tässä. Jos brändiohjeistuksen HEX-koodit
   poikkeavat, vaihda arvot alle – koko sivusto päivittyy automaattisesti.
 */
 @theme {
-  --color-brand: #e6007e;
-  --color-brand-dark: #b0005f;
-  --color-brand-light: #ff4fa7;
-  --color-brand-soft: #fde7f2;
+  --color-brand: #b3125d;
+  --color-brand-dark: #8c0e49;
+  --color-brand-light: #de3478;
+  --color-brand-soft: #fbe8f1;
 
-  --color-ink: #14102b;
-  --color-ink-soft: #2a2350;
-  --color-mist: #f7f5fb;
-  --color-line: #e7e3f0;
-  --color-muted: #5b5670;
+  --color-ink: #1d1934;
+  --color-ink-soft: #5d538c; /* Sininen */
+  --color-liila: #744668; /* Liila */
+  --color-mist: #f7f3ef;
+  --color-line: #ebe4e6;
+  --color-muted: #5c5468;
 
   --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';

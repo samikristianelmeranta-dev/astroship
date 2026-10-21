@@ -47,6 +47,11 @@ Poista tai siirrä luonnoksiksi Kokoomus-aiheiset sivut, esim. "Kokoomus Kaarina
 
 == Brändivärit ==
 
+Liike Nytin graafisen ohjeistuksen värit:
+  Fuksia #B3125D (pääväri, painikkeet, linkit)
+  Vaalea fuksia #DE3478 (korostukset, tummat taustat)
+  Sininen #5D538C · Liila #744668 (liukuvärit, kuvakehykset)
+
 Värit ja fontit määritellään tiedostossa src/main.css (@theme). Muutoksen jälkeen
 käännä CSS:
   npx @tailwindcss/cli -i src/main.css -o assets/css/main.css --minify

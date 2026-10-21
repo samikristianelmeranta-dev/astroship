@@ -10,17 +10,17 @@ body.mce-content-body, body {
   font-family: 'Inter Variable', system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.75;
-  color: #2a2350;
+  color: #5d538c;
 }
-h1, h2, h3, h4 { font-family: 'Bricolage Grotesque Variable', 'Inter Variable', sans-serif; color: #14102b; line-height: 1.2; letter-spacing: -0.02em; }
+h1, h2, h3, h4 { font-family: 'Bricolage Grotesque Variable', 'Inter Variable', sans-serif; color: #1d1934; line-height: 1.2; letter-spacing: -0.02em; }
 h2 { font-size: 1.75em; margin: 1.6em 0 0.6em; }
 h3 { font-size: 1.35em; margin: 1.4em 0 0.5em; }
-a { color: #b0005f; text-decoration-color: rgba(230, 0, 126, 0.4); text-underline-offset: 4px; }
-strong { color: #14102b; }
-blockquote { margin: 1.5em 0; padding-left: 1em; border-left: 4px solid #e6007e; font-style: italic; color: #5b5670; }
-ul li::marker, ol li::marker { color: #e6007e; }
+a { color: #8c0e49; text-decoration-color: rgba(179, 18, 93, 0.4); text-underline-offset: 4px; }
+strong { color: #1d1934; }
+blockquote { margin: 1.5em 0; padding-left: 1em; border-left: 4px solid #b3125d; font-style: italic; color: #5c5468; }
+ul li::marker, ol li::marker { color: #b3125d; }
 img { max-width: 100%; height: auto; border-radius: 16px; }
 .alignleft { float: left; margin: 0 1.5em 1em 0; }
 .alignright { float: right; margin: 0 0 1em 1.5em; }
 .aligncenter { display: block; margin: 0 auto; }
-.wp-caption-text { font-size: 0.85em; color: #5b5670; }
+.wp-caption-text { font-size: 0.85em; color: #5c5468; }

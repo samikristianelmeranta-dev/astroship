@@ -49,7 +49,7 @@ add_action( 'wp_head', function () {
 	foreach ( array( 'inter-latin-wght-normal.woff2', 'bricolage-grotesque-latin-wght-normal.woff2' ) as $font ) {
 		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( get_theme_file_uri( 'assets/fonts/' . $font ) ) );
 	}
-	echo '<meta name="theme-color" content="#14102b">' . "\n";
+	echo '<meta name="theme-color" content="#1d1934">' . "\n";
 }, 2 );
 
 // Ote-pituus ja -pääte.

@@ -120,7 +120,7 @@ function se_newsletter() {
 	?>
 	<section id="uutiskirje" aria-labelledby="uutiskirje-title" class="py-24">
 		<div class="container-site">
-			<div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand via-brand-dark to-ink px-8 py-16 text-white sm:px-16" data-reveal="zoom">
+			<div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand via-liila to-ink-soft px-8 py-16 text-white sm:px-16" data-reveal="zoom">
 				<div class="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full bg-white/10 blur-2xl animate-blob" aria-hidden="true"></div>
 				<div class="pointer-events-none absolute -bottom-24 left-1/3 size-80 rounded-full bg-brand-light/30 blur-3xl animate-blob blob-delay" aria-hidden="true"></div>
 				<div class="relative grid items-center gap-10 lg:grid-cols-[1.5fr_1fr]">
