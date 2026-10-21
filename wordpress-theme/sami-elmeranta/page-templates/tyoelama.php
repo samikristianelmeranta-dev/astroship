@@ -8,8 +8,18 @@
 get_header();
 the_post();
 
-se_page_hero( 'Työelämä & yrittäjyys', 'Kassalta johtoryhmään', 'Työurani alkoi ruokavaraston kassalta ja jatkui rautakaupan myyjänä, kokoonpanolinjalla ja ravintola-alalla. Nykyään johdan myyntiä ja toimin osakkaana sekä freelancerina.' );
+se_page_hero( 'Työelämä & yrittäjyys', 'Monipuolinen työkokemus ja yrittäjyystausta antaa hyvät eväät politiikkaan', 'Työurani alkoi ruokavaraston kassalta ja jatkui rautakaupan myyjänä, kokoonpanolinjalla ja ravintola-alalla. Nykyään johdan myyntiä ja toimin osakkaana sekä freelancerina.' );
 ?>
+
+<section class="pb-4" aria-label="Nosto">
+	<div class="container-site max-w-4xl">
+		<div class="relative flex items-center gap-4 overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-liila to-ink-soft p-5 sm:gap-5 text-white shadow-xl sm:p-8" data-reveal="zoom">
+			<div class="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-white/10 blur-2xl animate-blob" aria-hidden="true"></div>
+			<span class="relative grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15 sm:size-14"><?php se_the_icon( 'lucide:briefcase', 'size-7' ); ?></span>
+			<p class="relative font-display text-xl font-bold leading-snug sm:text-3xl">Toimin tällä hetkellä osakkaana kolmessa mikroyrityksessä</p>
+		</div>
+	</div>
+</section>
 
 <section class="py-12" aria-labelledby="ura-title">
 	<div class="container-site max-w-4xl">
@@ -27,7 +37,7 @@ se_page_hero( 'Työelämä & yrittäjyys', 'Kassalta johtoryhmään', 'Työurani
 				</li>
 			<?php endforeach; ?>
 		</ol>
-		<p class="mt-14 rounded-3xl bg-mist p-6 text-lg text-muted" data-reveal>Edellä mainittujen lisäksi minulla on ollut useita osakasrooleja ja asiantuntijapositioita eri yrityksissä. Nykyään toimin edelleen osakkaana yrityksessä ja teen freelancerina erilaisia asiantuntijatöitä.</p>
+		<p class="mt-14 rounded-3xl bg-mist p-6 text-lg text-muted" data-reveal>Edellä mainittujen lisäksi minulla on ollut useita osakasrooleja ja asiantuntijapositioita eri yrityksissä. Nykyään toimin osakkaana kolmessa mikroyrityksessä ja teen freelancerina erilaisia asiantuntijatöitä.</p>
 	</div>
 </section>
 

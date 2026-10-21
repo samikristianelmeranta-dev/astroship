@@ -47,7 +47,7 @@ function se_page_hero( $eyebrow, $title, $lead = '' ) {
 			<?php if ( $eyebrow ) : ?>
 				<p class="eyebrow hero-word"><?php echo esc_html( $eyebrow ); ?></p>
 			<?php endif; ?>
-			<h1 class="hero-word mt-4 max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl"><?php echo esc_html( $title ); ?></h1>
+			<h1 class="hero-word mt-4 max-w-4xl font-extrabold leading-[1.05] <?php echo mb_strlen( $title ) > 40 ? 'text-4xl sm:text-5xl lg:text-6xl' : 'text-5xl sm:text-6xl lg:text-7xl'; ?>"><?php echo esc_html( $title ); ?></h1>
 			<?php if ( $lead ) : ?>
 				<p class="hero-word mt-6 max-w-2xl text-xl text-muted"><?php echo esc_html( $lead ); ?></p>
 			<?php endif; ?>

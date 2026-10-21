@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
 import PageHero from "@/components/PageHero.astro";
@@ -13,9 +14,19 @@ import { career, workTestimonials } from "@/data/content";
   breadcrumbs={[{ name: "Työelämä & yrittäjyys", path: "/tyoelama/" }]}>
   <PageHero
     eyebrow="Työelämä & yrittäjyys"
-    title="Kassalta johtoryhmään"
+    title="Monipuolinen työkokemus ja yrittäjyystausta antaa hyvät eväät politiikkaan"
     lead="Työurani alkoi ruokavaraston kassalta ja jatkui rautakaupan myyjänä, kokoonpanolinjalla ja ravintola-alalla. Nykyään johdan myyntiä ja toimin osakkaana sekä freelancerina."
   />
+
+  <section class="pb-4" aria-label="Nosto">
+    <Container class="max-w-4xl">
+      <div class="relative flex items-center gap-4 overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-liila to-ink-soft p-5 sm:gap-5 text-white shadow-xl sm:p-8" data-reveal="zoom">
+        <div class="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-white/10 blur-2xl animate-blob" aria-hidden="true"></div>
+        <span class="relative grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15 sm:size-14"><Icon name="lucide:briefcase" class="size-7" aria-hidden="true" /></span>
+        <p class="relative font-display text-xl font-bold leading-snug sm:text-3xl">Toimin tällä hetkellä osakkaana kolmessa mikroyrityksessä</p>
+      </div>
+    </Container>
+  </section>
 
   <section class="py-12" aria-labelledby="ura-title">
     <Container class="max-w-4xl">
@@ -37,7 +48,7 @@ import { career, workTestimonials } from "@/data/content";
       </ol>
       <p class="mt-14 rounded-3xl bg-mist p-6 text-lg text-muted" data-reveal>
         Edellä mainittujen lisäksi minulla on ollut useita osakasrooleja ja asiantuntijapositioita eri yrityksissä.
-        Nykyään toimin edelleen osakkaana yrityksessä ja teen freelancerina erilaisia asiantuntijatöitä.
+        Nykyään toimin osakkaana kolmessa mikroyrityksessä ja teen freelancerina erilaisia asiantuntijatöitä.
       </p>
     </Container>
   </section>

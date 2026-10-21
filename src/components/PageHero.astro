@@ -16,7 +16,7 @@ const { eyebrow, title, lead } = Astro.props;
   </div>
   <Container>
     <p class="eyebrow hero-word">{eyebrow}</p>
-    <h1 class="hero-word mt-4 max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl">{title}</h1>
+    <h1 class:list={["hero-word mt-4 max-w-4xl font-extrabold leading-[1.05]", title.length > 40 ? "text-4xl sm:text-5xl lg:text-6xl" : "text-5xl sm:text-6xl lg:text-7xl"]}>{title}</h1>
     {lead && <p class="hero-word mt-6 max-w-2xl text-xl text-muted">{lead}</p>}
     <slot />
   </Container>
