@@ -106,7 +106,7 @@ $stats  = array(
 			<p class="eyebrow">Mikä mies kyseessä?</p>
 			<h2 id="tutustu-title" class="mt-3 text-4xl font-bold sm:text-5xl">Isä, johtaja, yrittäjä – ja kaarinalainen</h2>
 			<div class="mt-6 space-y-4 text-lg leading-relaxed text-muted">
-				<p>Olen 40-vuotias kolmen lapsen isä Kaarinan Piikkiöstä. Työskentelen myynnin johdollisissa tehtävissä media-alalla ja lisäksi toimin sivutoimisena yrittäjänä. Poliittisesti olen hyvin aktiivinen, sekä toimin useassa alueellisessa yhdistyksessä vapaaehtoisena. Vapaa-aikana minuun voi törmätä jalkapallo- ja golfkentillä.</p>
+				<p>Olen 41-vuotias kolmen lapsen isä Kaarinan Piikkiöstä. Työskentelen myynnin johdollisissa tehtävissä media-alalla ja lisäksi toimin sivutoimisena yrittäjänä. Poliittisesti olen hyvin aktiivinen, sekä toimin useassa alueellisessa yhdistyksessä vapaaehtoisena. Vapaa-aikana minuun voi törmätä jalkapallo- ja golfkentillä.</p>
 				<p><strong class="text-ink">Puolueeni on <?php echo esc_html( se_opt( 'party_name' ) ); ?>.</strong> Minun tärkein tehtäväni on olla isä kolmelle ihanalle lapselle, toinen tärkeä tehtäväni on rakentaa parempaa huomista meille kaikille.</p>
 			</div>
 			<div class="mt-8 flex flex-wrap items-center gap-6">
