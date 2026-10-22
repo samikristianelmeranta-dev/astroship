@@ -26,6 +26,33 @@ const related = (await getCollection("blog", ({ data, id }) => !data.draft && id
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
   .slice(0, 3);
 
+// FAQ-rakenne: "## Usein kysytyt kysymykset" + "### Kysymys" -parit
+const faqSection = (post.body ?? "").split(/^## /m).find((s) => /^(Usein kysyt|UKK)/i.test(s));
+const faq = faqSection
+  ? faqSection
+      .split(/^### /m)
+      .slice(1)
+      .map((block) => {
+        const [q, ...rest] = block.split("\n");
+        const a = rest
+          .join(" ")
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+          .replace(/[*_`]/g, "")
+          .replace(/\s+/g, " ")
+          .trim();
+        return { q: q.trim(), a };
+      })
+      .filter((f) => f.q && f.a)
+  : [];
+const faqSchema = faq.length
+  ? [
+      {
+        "@type": "FAQPage",
+        mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      },
+    ]
+  : [];
+
 const articleSchema = {
   "@type": "BlogPosting",
   "@id": `${url}#article`,
@@ -63,7 +90,7 @@ const share = [
     { name: "Blogi", path: "/blogi/" },
     { name: post.data.title, path: `/blogi/${post.id}/` },
   ]}
-  schema={[articleSchema]}>
+  schema={[articleSchema, ...faqSchema]}>
   <div class="fixed inset-x-0 top-0 z-[60] h-1 bg-transparent" aria-hidden="true">
     <div data-progress class="progress-bar h-full bg-gradient-to-r from-brand to-brand-light"></div>
   </div>

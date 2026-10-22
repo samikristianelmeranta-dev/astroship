@@ -84,3 +84,5 @@ Suositellaan lisäksi:
 * Metakuvaukset, Open Graph ja Twitter-kortit (jos Yoast/Rank Math on käytössä,
   ne hoitavat metatagit ja teema tuottaa vain Person/FAQ-rakenteen)
 * Artikkelin ote (Excerpt) = hakukoneiden ja somen kuvaus – kannattaa täyttää
+* FAQ-rakenne generoituu automaattisesti artikkeliin, jossa on H2-otsikko
+  "Usein kysytyt kysymykset" ja sen alla H3-kysymykset vastauksineen

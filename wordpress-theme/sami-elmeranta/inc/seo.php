@@ -171,6 +171,29 @@ function se_person_schema() {
 	} );
 }
 
+/**
+ * FAQ-rakenne artikkelista: H2 "Usein kysytyt kysymykset" ja sen alla
+ * H3-kysymykset vastauksineen.
+ *
+ * @param string $html Artikkelin sisältö.
+ * @return array Kysymys–vastaus-parit.
+ */
+function se_extract_faq( $html ) {
+	if ( ! preg_match( '/<h2[^>]*>\s*(?:Usein kysyt[^<]*|UKK[^<]*)<\/h2>(.*?)(?=<h2|$)/isu', $html, $m ) ) {
+		return array();
+	}
+	preg_match_all( '/<h3[^>]*>(.*?)<\/h3>(.*?)(?=<h3|$)/isu', $m[1], $pairs, PREG_SET_ORDER );
+	$faq = array();
+	foreach ( $pairs as $pair ) {
+		$q = trim( wp_strip_all_tags( $pair[1] ) );
+		$a = trim( preg_replace( '/\s+/u', ' ', wp_strip_all_tags( $pair[2] ) ) );
+		if ( $q && $a ) {
+			$faq[] = array( 'q' => $q, 'a' => $a );
+		}
+	}
+	return $faq;
+}
+
 // JSON-LD-graafi.
 add_action( 'wp_head', function () {
 	$home  = home_url( '/' );
@@ -204,6 +227,22 @@ add_action( 'wp_head', function () {
 				);
 			}, se_content( 'faq' ) ),
 		);
+	}
+
+	if ( is_singular( 'post' ) ) {
+		$faq = se_extract_faq( (string) get_post_field( 'post_content' ) );
+		if ( $faq ) {
+			$graph[] = array(
+				'@type'      => 'FAQPage',
+				'mainEntity' => array_map( function ( $f ) {
+					return array(
+						'@type'          => 'Question',
+						'name'           => $f['q'],
+						'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $f['a'] ),
+					);
+				}, $faq ),
+			);
+		}
 	}
 
 	if ( is_singular( 'post' ) && ! se_seo_plugin_active() ) {
