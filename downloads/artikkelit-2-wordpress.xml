@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- WordPress-tuontitiedosto: uudet artikkelit luonnoksina. Työkalut → Tuo → WordPress. -->
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>Sami Elmeranta</title>
+	<link>https://www.samielmeranta.fi</link>
+	<description>Tolkun poliitikko</description>
+	<language>fi</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>https://www.samielmeranta.fi</wp:base_site_url>
+	<wp:base_blog_url>https://www.samielmeranta.fi</wp:base_blog_url>
+	<wp:author><wp:author_id>2</wp:author_id><wp:author_login><![CDATA[Sami Elmeranta]]></wp:author_login><wp:author_display_name><![CDATA[Sami Elmeranta]]></wp:author_display_name><wp:author_first_name><![CDATA[Sami]]></wp:author_first_name><wp:author_last_name><![CDATA[Elmeranta]]></wp:author_last_name></wp:author>
+	<wp:category><wp:term_id>15</wp:term_id><wp:category_nicename><![CDATA[politiikka]]></wp:category_nicename><wp:category_parent><![CDATA[]]></wp:category_parent><wp:cat_name><![CDATA[Politiikka]]></wp:cat_name></wp:category>
+	<generator>https://wordpress.org/?v=6.8</generator>
+	<item>
+		<title><![CDATA[YEL-maksu 2027 – paljonko yrittäjän eläkemaksu on ja miten työtulo kannattaa valita?]]></title>
+		<link>https://www.samielmeranta.fi/yel-maksu-2027/</link>
+		<pubDate>Fri, 23 Oct 2026 08:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90101</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> YEL-maksu on vuonna 2027 <strong>24,4 prosenttia</strong> yrittäjän vahvistetusta työtulosta, eli maksutaso pysyy samana kuin vuonna 2026. Aloittava yrittäjä saa ensimmäisten 48 kuukauden ajalta 22 prosentin alennuksen. YEL-työtulo ei ratkaise vain eläkettä, vaan myös sairauspäivärahan, vanhempainpäivärahan ja työttömyysturvan tason. (<a href="https://www.sttinfo.fi/tiedote/72387781/tyoelakemaksut-vuonna-2027?publisherId=1922&amp;lang=fi" target="_blank" rel="noopener noreferrer">STT / Työeläkemaksut 2027</a>)</p>
+<p>Olen itse yrittäjä ja toimin osakkaana kolmessa mikroyrityksessä. YEL on asia, josta yrittäjät kysyvät minulta usein ja josta moni tietää yllättävän vähän. Kokosin tähän olennaisen: mitä YEL-maksu maksaa vuonna 2027, miten se lasketaan ja miten työtulo kannattaa valita.</p>
+<h2>Mikä on YEL?</h2>
+<p>YEL eli yrittäjän eläkelaki velvoittaa yrittäjän ottamaan itselleen eläkevakuutuksen. Palkansaajan eläkemaksut hoitaa työnantaja, mutta yrittäjä vastaa omasta eläketurvastaan itse.</p>
+<h3>Kenen pitää ottaa YEL-vakuutus?</h3>
+<p>YEL-vakuutus on pakollinen, jos:</p>
+<ul>
+<li>olet 18–68-vuotias yrittäjä (yläikäraja riippuu syntymävuodesta)</li>
+<li>yritystoimintasi on jatkunut yhtäjaksoisesti vähintään neljä kuukautta</li>
+<li>arvioitu YEL-työtulosi ylittää vuoden alarajan.</li>
+</ul>
+<p>Vakuutus pitää ottaa kuuden kuukauden kuluessa yritystoiminnan aloittamisesta. Tarkat ehdot löytyvät <a href="https://www.etk.fi" target="_blank" rel="noopener noreferrer">Eläketurvakeskuksen</a> ja työeläkeyhtiöiden sivuilta.</p>
+<h3>Koskeeko YEL osakeyhtiön osakasta?</h3>
+<p>Kyllä, jos osakas työskentelee yhtiössä johtavassa asemassa ja omistaa yksin yli 30 prosenttia osakkeista tai yhdessä perheensä kanssa yli 50 prosenttia. Muuten osakas vakuutetaan yleensä palkansaajana TyEL-vakuutuksella.</p>
+<h2>YEL-maksu 2027 lukuina</h2>
+<h3>Maksuprosentti</h3>
+<p>Työmarkkinoiden keskusjärjestöt hyväksyivät lokakuussa 2026 ehdotuksen, jonka mukaan yrittäjien YEL-maksu on vuonna 2027 <strong>24,4 prosenttia</strong> ilman alennuksia. Lopulliset maksut vahvistetaan asetuksella marraskuussa. (<a href="https://www.sttinfo.fi/tiedote/72387781/tyoelakemaksut-vuonna-2027?publisherId=1922&amp;lang=fi" target="_blank" rel="noopener noreferrer">STT</a>)</p>
+<h3>Alaraja ja yläraja</h3>
+<p>Vuonna 2026 YEL-työtulon alaraja on 9 423,09 euroa ja yläraja 214 000 euroa vuodessa. Vuoden 2027 rajat vahvistetaan loppuvuodesta, ja ne nousevat yleensä hieman palkkakertoimen mukana. (<a href="https://toiminimi.fi/yel-laskuri/" target="_blank" rel="noopener noreferrer">toiminimi.fi</a>, <a href="https://www.elo.fi/fi-fi/yrittaja/yel-vakuutus/yel-maksu" target="_blank" rel="noopener noreferrer">Elo</a>)</p>
+<h3>Esimerkkilaskelmia</h3>
+<p>Alla on suuntaa antavia esimerkkejä vuoden 2027 maksuprosentilla ilman alennuksia:</p>
+<table>
+<thead>
+<tr>
+<th>YEL-työtulo / vuosi</th>
+<th>YEL-maksu / vuosi</th>
+<th>Noin / kuukausi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15 000 €</td>
+<td>3 660 €</td>
+<td>305 €</td>
+</tr>
+<tr>
+<td>25 000 €</td>
+<td>6 100 €</td>
+<td>508 €</td>
+</tr>
+<tr>
+<td>35 000 €</td>
+<td>8 540 €</td>
+<td>712 €</td>
+</tr>
+<tr>
+<td>50 000 €</td>
+<td>12 200 €</td>
+<td>1 017 €</td>
+</tr>
+</tbody>
+</table>
+<p>YEL-maksut ovat verotuksessa kokonaan vähennyskelpoisia. Todellinen nettokustannus on siis pienempi kuin taulukon summa.</p>
+<h2>Aloittavan yrittäjän alennus</h2>
+<h3>Kuinka suuri alennus on?</h3>
+<p>Ensimmäistä kertaa YEL-vakuutuksen ottava yrittäjä saa <strong>22 prosentin alennuksen</strong> maksusta 48 kuukauden ajan. Vuonna 2026 alennettu maksu oli noin 19 prosenttia työtulosta. (<a href="https://www.elo.fi/fi-fi/yrittaja/yel-vakuutus/yel-maksu" target="_blank" rel="noopener noreferrer">Elo</a>)</p>
+<h3>Vaikuttaako alennus eläkkeeseen?</h3>
+<p>Ei. Eläke kertyy vahvistetun työtulon mukaan, vaikka maksu olisi alennettu. Alennus on siis aloittavalle yrittäjälle selvä etu.</p>
+<h2>Miksi YEL-työtulo on niin tärkeä?</h2>
+<h3>Työtulo ratkaisee koko sosiaaliturvan</h3>
+<p>Tämä on asia, jonka moni yrittäjä oppii vasta, kun jotain sattuu. YEL-työtulo ei vaikuta vain eläkkeeseen, vaan myös:</p>
+<ul>
+<li><strong>sairauspäivärahaan</strong></li>
+<li><strong>vanhempainpäivärahaan</strong></li>
+<li><strong>yrittäjän työttömyysturvaan</strong>, jos olet yrittäjän kassan jäsen</li>
+<li><strong>kuntoutusrahaan</strong>.</li>
+</ul>
+<p>Jos työtulo on vahvistettu liian matalaksi, myös nämä etuudet ovat pieniä. Ne määräytyvät työtulon, eivät todellisten tulojesi mukaan.</p>
+<h3>Miten työtulo kuuluisi määritellä?</h3>
+<p>YEL-työtulon pitäisi vastata palkkaa, joka pitäisi maksaa, jos työn tekisi joku muu. Moni yrittäjä pitää työtulon kuitenkin matalana, koska maksu on suuri kuluerä etenkin alussa. Säästö näkyy heti, mutta hinta maksetaan myöhemmin pienempänä eläkkeenä ja heikompana turvana.</p>
+<h2>Paljonko eläkettä YEL:stä kertyy?</h2>
+<h3>Karttuma on 1,5 prosenttia vuodessa</h3>
+<p>Yrittäjän eläkettä kertyy pääsääntöisesti 1,5 prosenttia vuodessa vahvistetusta työtulosta. Laskelmat ovat yksinkertaistettuja, eikä niissä ole huomioitu palkkakertoimen korotuksia tai elinaikakerrointa, mutta ne antavat hyvän kuvan mittakaavasta.</p>
+<h4>Esimerkki: työtulo 20 000 euroa</h4>
+<p>Yksi vuosi kerryttää eläkettä noin 300 euroa vuodessa. Kahdenkymmenen vuoden yrittäjyys kerryttää noin 6 000 euroa vuodessa eli noin 500 euroa kuukaudessa.</p>
+<h4>Esimerkki: työtulo 35 000 euroa</h4>
+<p>Yksi vuosi kerryttää eläkettä noin 525 euroa vuodessa. Kahdenkymmenen vuoden yrittäjyys kerryttää noin 10 500 euroa vuodessa eli noin 875 euroa kuukaudessa.</p>
+<p>Ero on suuri. Matala työtulo näyttää alussa säästöltä, mutta eläkkeellä se tuntuu joka kuukausi. Oman arvioidun eläkkeesi näet <a href="https://www.tyoelake.fi" target="_blank" rel="noopener noreferrer">Työeläke.fi-palvelusta</a>.</p>
+<h2>YEL-maksun maksaminen käytännössä</h2>
+<h3>Maksuerät</h3>
+<p>YEL-maksun voi yleensä maksaa yhdessä tai useammassa erässä vuoden aikana, esimerkiksi kuukausittain. Valitse maksutapa, joka sopii yrityksesi kassavirtaan.</p>
+<h3>Kevytyrittäjä ja YEL</h3>
+<p>Myös kevytyrittäjän on otettava YEL-vakuutus, jos yrittäjätoiminta täyttää vakuuttamisen ehdot ja työtulo ylittää alarajan. Kevytyrittäjyyspalvelut eivät hoida YEL:ää yrittäjän puolesta. (<a href="https://op-kevytyrittaja.fi/op-kevytyrittaja/tuki/tyottomyys-ja-elaketurva/mita-yel-vakuutus-maksaa" target="_blank" rel="noopener noreferrer">OP Kevytyrittäjä</a>)</p>
+<h3>Sivutoiminen yrittäjä</h3>
+<p>Jos teet yritystoimintaa palkkatyön ohella, YEL-velvollisuus syntyy samoin ehdoin kuin päätoimisella yrittäjällä. Ratkaisevaa on työtulon määrä, ei se, onko yrittäjyys pää- vai sivutoimista.</p>
+<h2>YEL:n valuvika – miksi tästä puhutaan?</h2>
+<h3>Työtulo ja todelliset tulot eivät kohtaa</h3>
+<p>Nykyjärjestelmässä YEL-maksu perustuu arvioituun työtuloon, ei siihen, mitä yrittäjä oikeasti tienaa. Hyvänä vuonna maksu voi olla liian pieni ja huonona vuonna liian suuri. Tämä on monelle pienyrittäjälle raskasta.</p>
+<h3>Liike Nytin linja</h3>
+<p>Liike Nyt on vaatinut, että <strong>YEL-maksun pitää perustua yrittäjän todellisiin tuloihin</strong> ja että YEL:n valuvika korjataan. Olen samaa mieltä. Järjestelmän pitäisi joustaa yrittäjän arjen mukaan, eikä toisin päin. Kirjoitin aiheesta lisää artikkelissa <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Vinkit YEL-työtulon valintaan</h2>
+<h3>1. Laske, millä tulolla pärjäisit sairauslomalla</h3>
+<p>Mieti, paljonko tarvitsisit kuukaudessa, jos et voisi tehdä töitä kahteen kuukauteen. Sairauspäiväraha lasketaan YEL-työtulosta.</p>
+<h3>2. Tarkista työtulo, kun yritys kasvaa</h3>
+<p>Työtuloa voi muuttaa, kun toiminta kasvaa tai pienenee. Moni unohtaa nostaa sitä, kun tulot paranevat.</p>
+<h3>3. Käytä laskuria</h3>
+<p>Työeläkeyhtiöillä ja esimerkiksi <a href="https://toiminimi.fi/yel-laskuri/" target="_blank" rel="noopener noreferrer">toiminimi.fi:llä</a> on YEL-laskureita, joilla näet maksun ja eläkkeen vaikutuksen.</p>
+<h3>4. Kysy neuvoa</h3>
+<p>Tilitoimisto ja työeläkeyhtiö auttavat työtulon arvioinnissa. Hyvä neuvo maksaa itsensä takaisin.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Paljonko YEL-maksu on vuonna 2027?</h3>
+<p>YEL-maksu on vuonna 2027 24,4 prosenttia vahvistetusta työtulosta ilman alennuksia. Maksutaso on sama kuin vuonna 2026.</p>
+<h3>Saako aloittava yrittäjä YEL-alennusta?</h3>
+<p>Kyllä. Ensimmäistä kertaa YEL-vakuutuksen ottava yrittäjä saa 22 prosentin alennuksen 48 kuukauden ajan. Alennus ei pienennä eläkettä.</p>
+<h3>Onko YEL-maksu verovähennyskelpoinen?</h3>
+<p>Kyllä. YEL-maksut voi vähentää verotuksessa kokonaan joko yrityksen tuloksesta tai omasta verotuksesta.</p>
+<h3>Mikä on YEL-työtulon alaraja?</h3>
+<p>Vuonna 2026 alaraja on 9 423,09 euroa vuodessa. Vuoden 2027 alaraja vahvistetaan loppuvuodesta 2026.</p>
+<h3>Mihin YEL-työtulo vaikuttaa?</h3>
+<p>Eläkkeen lisäksi YEL-työtulo vaikuttaa sairauspäivärahaan, vanhempainpäivärahaan, kuntoutusrahaan ja yrittäjän työttömyysturvaan.</p>
+<h3>Voiko YEL-työtuloa muuttaa?</h3>
+<p>Kyllä. Työtuloa voi muuttaa, jos yritystoiminta muuttuu. Muutosta haetaan omasta työeläkeyhtiöstä.</p>
+<h2>Lopuksi</h2>
+<p>YEL on yrittäjän sosiaaliturvan perusta, vaikka se tuntuu usein vain kululta. Oikein mitoitettu työtulo on vakuutus pahan päivän varalle.</p>
+<p>Jos haluat keskustella yrittäjien asemasta tai YEL-uudistuksesta, <a href="https://www.samielmeranta.fi/contact/">laita viestiä</a>. Lue myös: <a href="https://www.samielmeranta.fi/toiminimi-vai-osakeyhtio-2027/">Toiminimi vai osakeyhtiö 2027</a>.</p>
+<p><em>Tämä artikkeli on yleistä tietoa, ei henkilökohtaista talous- tai veroneuvontaa. Tarkista ajantasaiset luvut omasta työeläkeyhtiöstäsi.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[YEL-maksu on vuonna 2027 24,4 prosenttia työtulosta. Kerron, miten YEL-maksu lasketaan, mitä aloittava yrittäjä saa alennusta, miksi YEL-työtulo vaikuttaa koko sosiaaliturvaan ja miten oikea työtulo valitaan.]]></excerpt:encoded>
+		<wp:post_id>90101</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 08:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[yel-maksu-2027]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="yel"><![CDATA[YEL]]></category>
+		<category domain="post_tag" nicename="yrittajyys"><![CDATA[yrittäjyys]]></category>
+		<category domain="post_tag" nicename="elake"><![CDATA[eläke]]></category>
+		<category domain="post_tag" nicename="sosiaaliturva"><![CDATA[sosiaaliturva]]></category>
+		<category domain="post_tag" nicename="yrittajan-talous"><![CDATA[yrittäjän talous]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Toiminimi vai osakeyhtiö 2027 – kumpi kannattaa?]]></title>
+		<link>https://www.samielmeranta.fi/toiminimi-vai-osakeyhtio-2027/</link>
+		<pubDate>Fri, 23 Oct 2026 09:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90102</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Toiminimi eli yksityinen elinkeinonharjoittaja sopii yleensä pieneen ja aloittavaan yritystoimintaan, koska se on helppo ja edullinen perustaa. Osakeyhtiö kannattaa usein, kun tulos kasvaa, toimintaan liittyy riskejä tai yritykseen halutaan osakkaita. Hallitus on esittänyt, että yhteisövero laskee <strong>20 prosentista 18 prosenttiin vuoden 2027 alusta</strong>, mikä tekee osakeyhtiöstä entistä houkuttelevamman. (<a href="https://www.veronmaksajat.fi/tutkimus-ja-tilastot/suomen-verot-ja-menot/veromuutokset/veromuutoksia-2027/" target="_blank" rel="noopener noreferrer">Veronmaksajat</a>)</p>
+<p>Olen perustanut ja johtanut yrityksiä, ja olen nyt osakkaana kolmessa mikroyrityksessä. Kysymys "toiminimi vai osakeyhtiö?" on yksi yleisimmistä, joita aloittavat yrittäjät minulta kysyvät. Oikeaa vastausta ei ole kaikille, mutta oikeat kysymykset on. Käyn ne tässä läpi.</p>
+<h2>Toiminimi ja osakeyhtiö lyhyesti</h2>
+<h3>Mikä on toiminimi?</h3>
+<p>Toiminimellä tarkoitetaan arkikielessä yksityistä elinkeinonharjoittajaa. Yrittäjä ja yritys ovat juridisesti sama henkilö. Yrittäjä vastaa yrityksen veloista koko omalla omaisuudellaan.</p>
+<h3>Mikä on osakeyhtiö?</h3>
+<p>Osakeyhtiö on oma oikeushenkilönsä. Osakkaat vastaavat yhtiön veloista vain sijoittamallaan pääomalla. Osakeyhtiön voi perustaa yksinkin, eikä vähimmäisosakepääomaa enää vaadita.</p>
+<h3>Vertailutaulukko</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Toiminimi</th>
+<th>Osakeyhtiö</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perustaminen</td>
+<td>Nopea ja edullinen</td>
+<td>Hieman työläämpi ja kalliimpi</td>
+</tr>
+<tr>
+<td>Vastuu veloista</td>
+<td>Henkilökohtainen, koko omaisuudella</td>
+<td>Rajattu sijoitettuun pääomaan</td>
+</tr>
+<tr>
+<td>Verotus</td>
+<td>Tulos verotetaan yrittäjän tulona</td>
+<td>Yhteisövero, sitten palkka tai osingot</td>
+</tr>
+<tr>
+<td>Kirjanpito</td>
+<td>Kevyempi</td>
+<td>Raskaampi ja muodollisempi</td>
+</tr>
+<tr>
+<td>Rahan nostaminen</td>
+<td>Yksityisotot vapaasti</td>
+<td>Palkka, osinko tai pääoman palautus</td>
+</tr>
+<tr>
+<td>Osakkaat ja sijoittajat</td>
+<td>Ei mahdollista</td>
+<td>Mahdollista</td>
+</tr>
+</tbody>
+</table>
+<h2>Verotus vuonna 2027</h2>
+<h3>Toiminimen verotus</h3>
+<p>Toiminimen tulos jaetaan yrittäjän verotuksessa pääomatuloon ja ansiotuloon. Pääomatulon osuus lasketaan yrityksen nettovarallisuudesta, ja loput verotetaan ansiotulona yrittäjän progressiivisen veroasteikon mukaan. Kun tulot kasvavat, myös veroprosentti kasvaa nopeasti.</p>
+<p>Toiminimi ei maksa yhteisöveroa. (<a href="https://tuokko.fi/yhteisovero-18-prosenttiin-ja-elinkeinotappioiden-vahennysaika-25-vuoteen-mita-muutos-tarkoittaisi-yrityksille/" target="_blank" rel="noopener noreferrer">Tuokko</a>)</p>
+<h3>Osakeyhtiön verotus</h3>
+<p>Osakeyhtiö maksaa tuloksestaan yhteisöveroa. Hallituksen esityksen (HE 151/2026) mukaan yhteisövero laskee 20 prosentista <strong>18 prosenttiin 1.1.2027 alkaen</strong>. Esimerkiksi 20 000 euron verotettavasta tuloksesta yhtiö maksaisi veroa 3 600 euroa nykyisen 4 000 euron sijaan. (<a href="https://www.taukokirjanpito.com/blogi/veromuutokset-2027" target="_blank" rel="noopener noreferrer">Taukokirjanpito</a>)</p>
+<p>Esityksessä osakeyhtiön tappioiden vähennysaika pitenisi 10 vuodesta 25 vuoteen. Toiminimen tappioiden vähennysaika pysyisi kymmenessä vuodessa. (<a href="https://tuokko.fi/yhteisovero-18-prosenttiin-ja-elinkeinotappioiden-vahennysaika-25-vuoteen-mita-muutos-tarkoittaisi-yrityksille/" target="_blank" rel="noopener noreferrer">Tuokko</a>)</p>
+<p>Esitys on eduskunnan käsittelyssä, joten lopullinen sisältö voi vielä muuttua.</p>
+<h3>Miten rahat saa osakeyhtiöstä?</h3>
+<p>Osakas voi nostaa rahaa osakeyhtiöstä palkkana, osinkoina tai molempina. Listaamattoman yhtiön osingot verotetaan osittain kevyemmin kuin palkka, kun ne pysyvät tietyn rajan alla. Tämän takia osakeyhtiö on usein verotuksellisesti edullisempi, kun tulos kasvaa. Palkan ja osingon oikea suhde kannattaa laskea tilitoimiston kanssa joka vuosi.</p>
+<h2>Kumpi kannattaa sinulle?</h2>
+<h3>Toiminimi sopii, kun</h3>
+<ul>
+<li>aloitat pienesti tai testaat liikeideaa</li>
+<li>tulot ovat vielä pieniä tai epävarmoja</li>
+<li>toimintaan ei liity suuria taloudellisia riskejä</li>
+<li>haluat pitää paperityöt ja kustannukset mahdollisimman pieninä.</li>
+</ul>
+<h3>Osakeyhtiö sopii, kun</h3>
+<ul>
+<li>yrityksen tulos kasvaa ja haluat optimoida verotusta</li>
+<li>toimintaan liittyy riskejä, kuten suuria sopimuksia tai investointeja</li>
+<li>haluat yritykseen osakkaita tai sijoittajia</li>
+<li>suunnittelet palkkaavasi työntekijöitä ja kasvavasi.</li>
+</ul>
+<h3>Missä vaiheessa kannattaa vaihtaa?</h3>
+<p>Monet aloittavat toiminimellä ja muuttavat sen osakeyhtiöksi, kun liiketoiminta vakiintuu. Toiminimen voi muuttaa osakeyhtiöksi niin sanotulla liiketoimintasiirrolla. Raja, jossa osakeyhtiö alkaa kannattaa, riippuu yrittäjän muista tuloista, yrityksen varallisuudesta ja siitä, paljonko rahaa yrityksestä nostetaan. Yleistä euromäärää ei voi luotettavasti sanoa, joten laskelma kannattaa tehdä omilla luvuilla. (<a href="https://arvento.fi/toiminimi-vai-osakeyhtio" target="_blank" rel="noopener noreferrer">Arvento</a>)</p>
+<h2>Muista myös nämä</h2>
+<h3>YEL koskee molempia</h3>
+<p>Sekä toiminimiyrittäjä että osakeyhtiön pääosakas tarvitsevat yleensä YEL-vakuutuksen. YEL-työtulo vaikuttaa eläkkeen lisäksi sairauspäivärahaan ja muuhun sosiaaliturvaan. Lue lisää: <a href="https://www.samielmeranta.fi/yel-maksu-2027/">YEL-maksu 2027</a>.</p>
+<h3>Arvonlisävero</h3>
+<p>Jos liikevaihto ylittää arvonlisäveron vähäisen toiminnan rajan, yrityksen on rekisteröidyttävä alv-rekisteriin yritysmuodosta riippumatta. Tarkista ajantasainen raja <a href="https://www.vero.fi" target="_blank" rel="noopener noreferrer">Verohallinnosta</a>.</p>
+<h3>Kirjanpito ja tilitoimisto</h3>
+<p>Osakeyhtiön kirjanpito on aina kahdenkertainen ja tilinpäätös pitää tehdä vuosittain. Toiminimen kirjanpito voi olla kevyempi. Hyvä tilitoimisto säästää usein enemmän kuin maksaa.</p>
+<h3>Perustaminen</h3>
+<p>Molemmat yritysmuodot perustetaan Patentti- ja rekisterihallituksen ja Verohallinnon yhteisessä <a href="https://www.ytj.fi" target="_blank" rel="noopener noreferrer">YTJ-palvelussa</a>.</p>
+<h2>Näin perustat yrityksen askel askeleelta</h2>
+<h3>1. Kirjoita liiketoimintasuunnitelma</h3>
+<p>Suunnitelman ei tarvitse olla pitkä. Vastaa ainakin näihin: kenelle myyt, mitä myyt, millä hinnalla ja paljonko tarvitset myyntiä, jotta yritys kannattaa. Monet uusyrityskeskukset neuvovat maksutta.</p>
+<h3>2. Valitse yritysmuoto ja nimi</h3>
+<p>Tarkista ennen rekisteröintiä, ettei nimi ole jo käytössä. Nimen saatavuuden voi tarkistaa YTJ-palvelusta.</p>
+<h3>3. Tee perustamisilmoitus</h3>
+<p>Perustamisilmoitus tehdään sähköisesti <a href="https://www.ytj.fi" target="_blank" rel="noopener noreferrer">YTJ-palvelussa</a>. Samalla ilmoituksella yritys rekisteröidään kaupparekisteriin ja Verohallinnon rekistereihin, kuten ennakkoperintärekisteriin.</p>
+<h3>4. Hoida vakuutukset</h3>
+<p>Ota YEL-vakuutus, kun ehdot täyttyvät, ja harkitse vastuu- ja tapaturmavakuutusta. Jos palkkaat työntekijöitä, tarvitset myös työntekijöiden lakisääteiset vakuutukset.</p>
+<h3>5. Avaa yritystili ja valitse tilitoimisto</h3>
+<p>Pidä yrityksen ja omat rahat erillään alusta asti. Se helpottaa kirjanpitoa ja säästää rahaa.</p>
+<h2>Yleisimmät virheet yritysmuodon valinnassa</h2>
+<h3>Valitaan yritysmuoto vain verojen perusteella</h3>
+<p>Verotus on tärkeä, mutta vastuu veloista, rahoitus ja kasvusuunnitelmat ovat yhtä tärkeitä.</p>
+<h3>Unohdetaan henkilökohtainen vastuu</h3>
+<p>Toiminimiyrittäjä vastaa yrityksen veloista omalla omaisuudellaan, myös kodillaan. Jos toimintaan liittyy suuria riskejä, tämä kannattaa ottaa vakavasti.</p>
+<h3>Ei lasketa omia lukuja</h3>
+<p>Nettikeskustelujen nyrkkisäännöt eivät sovi kaikille. Tee laskelma omilla tuloillasi ja suunnitelmillasi.</p>
+<h2>Mitä yrittäjät tarvitsevat politiikalta?</h2>
+<p>Yritysmuodon valinta on usein yrittäjälle ensimmäinen kosketus byrokratiaan. Minusta yrittäjyyden pitäisi olla helppoa: selkeät säännöt, vähemmän paperia ja verotus, joka palkitsee kasvusta ja työllistämisestä.</p>
+<p>Liike Nyt on esittänyt vaihtoehtobudjetissaan, että uudet yritykset saisivat toimia kolme ensimmäistä tilikautta ilman yhteisöveroa. Se olisi selvä kannuste aloittaa yritystoiminta ja palkata ensimmäinen työntekijä. Kirjoitin aiheesta lisää artikkelissa <a href="https://www.samielmeranta.fi/yrittaminen-ja-tyonteko/">Yrittäminen ja työnteko ovat parhaita kavereita</a>.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Kumpi on halvempi perustaa, toiminimi vai osakeyhtiö?</h3>
+<p>Toiminimi on halvempi ja nopeampi perustaa. Osakeyhtiön perustaminen maksaa enemmän, ja sen kirjanpito ja hallinto ovat raskaampia.</p>
+<h3>Paljonko yhteisövero on vuonna 2027?</h3>
+<p>Hallituksen esityksen mukaan yhteisövero laskee 20 prosentista 18 prosenttiin 1.1.2027 alkaen. Esitys on eduskunnan käsittelyssä.</p>
+<h3>Maksaako toiminimi yhteisöveroa?</h3>
+<p>Ei. Toiminimen tulos verotetaan yrittäjän henkilökohtaisena tulona pääoma- ja ansiotulona.</p>
+<h3>Milloin osakeyhtiö kannattaa?</h3>
+<p>Osakeyhtiö kannattaa yleensä, kun yrityksen tulos kasvaa, toimintaan liittyy riskejä tai yritykseen halutaan osakkaita. Tarkka raja riippuu yrittäjän omista tuloista ja varallisuudesta.</p>
+<h3>Voiko toiminimen muuttaa osakeyhtiöksi?</h3>
+<p>Kyllä. Toiminimen liiketoiminta voidaan siirtää osakeyhtiölle, kun yritys kasvaa. Siirrossa kannattaa käyttää tilitoimiston apua.</p>
+<h3>Tarvitseeko osakeyhtiöön osakepääomaa?</h3>
+<p>Ei. Yksityisellä osakeyhtiöllä ei enää ole vähimmäisosakepääomaa.</p>
+<h2>Lopuksi</h2>
+<p>Toiminimi ja osakeyhtiö ovat molemmat hyviä yritysmuotoja. Tärkeintä on aloittaa. Yritysmuodon voi vaihtaa myöhemmin, mutta hyvää ideaa ei kannata jättää paperityön takia toteuttamatta.</p>
+<p>Jos haluat jutella yrittäjyydestä tai siitä, miten yrittämistä voisi helpottaa Kaarinassa ja koko Suomessa, <a href="https://www.samielmeranta.fi/contact/">laita viestiä</a>.</p>
+<p><em>Tämä artikkeli on yleistä tietoa, ei henkilökohtaista vero- tai talousneuvontaa. Tarkista ajantasaiset tiedot Verohallinnosta tai tilitoimistosta.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Toiminimi on helppo ja halpa perustaa, osakeyhtiö suojaa yrittäjän omaa omaisuutta ja verottuu kevyemmin suuremmilla tuloilla. Yhteisövero laskee 18 prosenttiin vuonna 2027. Näin valitset oikean yritysmuodon.]]></excerpt:encoded>
+		<wp:post_id>90102</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 09:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[toiminimi-vai-osakeyhtio-2027]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="toiminimi"><![CDATA[toiminimi]]></category>
+		<category domain="post_tag" nicename="osakeyhtio"><![CDATA[osakeyhtiö]]></category>
+		<category domain="post_tag" nicename="yrittajyys"><![CDATA[yrittäjyys]]></category>
+		<category domain="post_tag" nicename="verotus"><![CDATA[verotus]]></category>
+		<category domain="post_tag" nicename="yhteisovero"><![CDATA[yhteisövero]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Vaalikone 2027 – näin käytät vaalikonetta fiksusti eduskuntavaaleissa]]></title>
+		<link>https://www.samielmeranta.fi/vaalikone-2027/</link>
+		<pubDate>Fri, 23 Oct 2026 10:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90103</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Vaalikone vertaa vastauksiasi ehdokkaiden vastauksiin ja näyttää, kenen kanssa olet eniten samaa mieltä. Eduskuntavaalit pidetään <strong>18.4.2027</strong>, ja suuret mediat avaavat vaalikoneensa yleensä muutamaa viikkoa ennen vaaleja. Vaalikone on hyvä lähtökohta, mutta ei korvaa ehdokkaaseen tutustumista. Kokeile useampaa vaalikonetta, painota itsellesi tärkeitä kysymyksiä ja tarkista lopuksi ehdokkaan oma toiminta ja puolue.</p>
+<p>Vaalikone on monelle tärkein tapa löytää ehdokas. Olen itse vastannut vaalikoneisiin kuntavaaliehdokkaana, ja tiedän, että koneen antama prosenttiluku kertoo paljon mutta ei kaikkea. Tässä kirjoituksessa kerron, miten vaalikone toimii ja miten sitä kannattaa käyttää.</p>
+<h2>Mikä vaalikone on?</h2>
+<p>Vaalikone on verkkopalvelu, joka auttaa äänestäjää löytämään ehdokkaan, jonka mielipiteet vastaavat omia. Ehdokkaat vastaavat ennen vaaleja samoihin kysymyksiin kuin äänestäjät. Kone laskee vastausten perusteella, kuinka hyvin näkemykset osuvat yhteen.</p>
+<h3>Kuka vaalikoneita tekee?</h3>
+<p>Suomessa vaalikoneita julkaisevat erityisesti suuret mediat, kuten Yle, Helsingin Sanomat, MTV Uutiset ja iltapäivälehdet, sekä monet maakuntalehdet. Kysymykset ja laskentatavat vaihtelevat koneesta toiseen, joten eri koneet voivat antaa erilaisia tuloksia.</p>
+<h3>Milloin vaalikoneet avautuvat vuonna 2027?</h3>
+<p>Vaalikoneet avautuvat yleensä muutamaa viikkoa ennen vaaleja, kun ehdokasasettelu on vahvistettu. Vuoden 2027 eduskuntavaaleissa ehdokasasettelu vahvistetaan 18.3.2027, ja ennakkoäänestys on 7.–13.4.2027. Vaalikoneet ovat siis todennäköisesti auki viimeistään maaliskuun lopulla. Lue tarkemmin vaalien aikataulusta artikkelista <a href="https://www.samielmeranta.fi/eduskuntavaaliehdokkaat-2027/">Eduskuntavaaliehdokkaat 2027</a>.</p>
+<h2>Miten vaalikone toimii?</h2>
+<h3>Kysymykset ja vastausvaihtoehdot</h3>
+<p>Vaalikoneessa on yleensä 20–40 väitettä tai kysymystä. Vastaat jokaiseen asteikolla, esimerkiksi "täysin samaa mieltä" – "täysin eri mieltä". Usein voit myös ohittaa kysymyksen.</p>
+<h3>Painotukset</h3>
+<p>Useimmissa koneissa voit merkitä kysymyksen itsellesi erityisen tärkeäksi. <strong>Käytä tätä.</strong> Painotus on vaalikoneen tärkein ominaisuus, koska se kertoo koneelle, mitkä asiat ratkaisevat sinun äänesi.</p>
+<h3>Mitä prosenttiluku tarkoittaa?</h3>
+<p>Prosenttiluku kertoo, kuinka lähellä vastauksesi ovat ehdokkaan vastauksia. 80 prosenttia tarkoittaa, että olette useimmista asioista samaa mieltä. Se ei kuitenkaan kerro, onko teillä sama näkemys juuri sinulle tärkeimmistä asioista, ellei painotuksia ole käytetty.</p>
+<h2>Mihin vaalikone ei pysty?</h2>
+<h3>Se ei kerro, mitä ehdokas on tehnyt</h3>
+<p>Vaalikone mittaa mielipiteitä, ei tekoja. Jos ehdokas on ollut jo päättäjänä kunnassa tai eduskunnassa, hänen äänestyksensä ja aloitteensa kertovat enemmän kuin vaalikonevastaukset.</p>
+<h3>Se ei tunne paikallisia asioita</h3>
+<p>Eduskuntavaalien vaalikoneet keskittyvät valtakunnallisiin kysymyksiin. Oman alueesi asiat, kuten liikenneyhteydet, sairaalat tai työpaikat, voivat jäädä vähälle.</p>
+<h3>Kysymykset yksinkertaistavat</h3>
+<p>Monimutkaiset asiat pitää tiivistää yhteen väitteeseen. Moni ehdokas olisi vastannut "riippuu", mutta vaalikoneessa pitää valita puoli. Lue siksi aina myös ehdokkaan perustelut, jos kone näyttää ne.</p>
+<h3>Se ei näytä vaaliliittoja</h3>
+<p>Vaalikone näyttää yksittäisen ehdokkaan, mutta äänesi lasketaan myös hänen puolueensa ja mahdollisen vaaliliiton hyväksi. Lue lisää: <a href="https://www.samielmeranta.fi/mita-tarkoittaa-vaaliliitto/">Mitä tarkoittaa vaaliliitto?</a></p>
+<h2>Vinkit vaalikoneen käyttöön</h2>
+<h3>1. Kokeile useampaa vaalikonetta</h3>
+<p>Eri koneissa on eri kysymykset. Jos sama ehdokas nousee kärkeen monessa koneessa, se on vahva merkki.</p>
+<h3>2. Vastaa rehellisesti, älä taktisesti</h3>
+<p>Vastaa niin kuin oikeasti ajattelet, älä niin kuin luulet "oikean" vastauksen olevan. Vain silloin tulos on hyödyllinen.</p>
+<h3>3. Painota itsellesi tärkeitä asioita</h3>
+<p>Jos sinulle tärkeintä on talous, työllisyys tai yrittäjyys, merkitse ne. Muuten kone antaa saman painon kaikille kysymyksille.</p>
+<h3>4. Katso kärkikolmikkoa, älä vain ykköstä</h3>
+<p>Prosenttierot kärjessä ovat usein pieniä. Tutustu ainakin kolmeen ensimmäiseen ehdokkaaseen.</p>
+<h3>5. Tarkista ehdokkaan oma toiminta</h3>
+<p>Lue ehdokkaan kotisivu, some ja haastattelut. Katso, mitä hän on tehnyt aiemmin ja millä tavalla hän perustelee näkemyksiään.</p>
+<h3>6. Selvitä puolueen linja</h3>
+<p>Kansanedustaja äänestää eduskunnassa yleensä ryhmänsä linjan mukaan. Puolueen ohjelma kertoo, mihin suuntaan ehdokas todennäköisesti vaikuttaa.</p>
+<h2>Vaalikone ehdokkaan näkökulmasta</h2>
+<h3>Miten ehdokkaat vastaavat?</h3>
+<p>Ehdokkaat vastaavat vaalikoneisiin ennen kuin ne avautuvat äänestäjille. Moni ehdokas vastaa useaan koneeseen, ja vastaamiseen menee helposti tunteja. Hyvä ehdokas kirjoittaa myös perustelut, koska ne auttavat äänestäjää ymmärtämään, mitä vastaus tarkoittaa.</p>
+<h3>Miksi vastaukset voivat erota koneiden välillä?</h3>
+<p>Kysymykset on muotoiltu eri tavoin, ja pienikin sanamuodon ero voi muuttaa vastausta. Jos ehdokkaan vastaukset näyttävät ristiriitaisilta, kannattaa katsoa perustelut.</p>
+<h2>Vaalikoneen jälkeen: näin äänestät</h2>
+<h3>Ennakkoäänestys</h3>
+<p>Ennakkoon voi äänestää Suomessa 7.–13.4.2027 missä tahansa yleisessä ennakkoäänestyspaikassa, ja ulkomailla 7.–10.4.2027. Ennakkoäänestys on hyvä vaihtoehto, jos vaalipäivänä on muuta menoa.</p>
+<h3>Vaalipäivä</h3>
+<p>Vaalipäivänä 18.4.2027 äänestetään omassa äänestyspaikassa, joka on merkitty kotiin tulevaan ilmoituskorttiin.</p>
+<h3>Muista mukaan</h3>
+<ul>
+<li><strong>henkilöllisyystodistus</strong>, esimerkiksi ajokortti, passi tai henkilökortti</li>
+<li><strong>ehdokkaasi numero</strong>, jonka löydät vaalikoneista, ehdokaslistoista ja ehdokkaan omista kanavista.</li>
+</ul>
+<p>Äänestyslippuun kirjoitetaan vain ehdokkaan numero. Jos numero on epäselvä tai lipussa on muita merkintöjä, ääni voidaan hylätä.</p>
+<h2>Ensimmäistä kertaa äänestämässä?</h2>
+<h3>Vaalikone on hyvä aloitus</h3>
+<p>Jos äänestät ensimmäistä kertaa, vaalikone on helppo tapa hahmottaa, mitä eri puolueet ja ehdokkaat ajavat. Aloita vastaamalla rauhassa ja lue kysymysten taustatiedot, jos kone tarjoaa niitä.</p>
+<h3>Kysy ehdokkailta suoraan</h3>
+<p>Ehdokkaat ovat vaalien alla tavattavissa toreilla, tapahtumissa ja somessa. Ei ole tyhmiä kysymyksiä. Jokainen ehdokas haluaa kuulla, mikä äänestäjiä mietityttää.</p>
+<h3>Jokainen ääni ratkaisee</h3>
+<p>Eduskuntavaaleissa viimeinen paikka vaalipiirissä ratkeaa usein pienellä äänimäärällä. Sinunkin äänesi voi olla ratkaiseva.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Milloin vaalikone 2027 avautuu?</h3>
+<p>Vaalikoneet avautuvat yleensä muutamaa viikkoa ennen vaaleja. Eduskuntavaalit pidetään 18.4.2027, joten vaalikoneet ovat todennäköisesti auki viimeistään maaliskuun lopulla 2027.</p>
+<h3>Mikä vaalikone on paras?</h3>
+<p>Yhtä parasta vaalikonetta ei ole. Kysymykset ja laskentatavat vaihtelevat, joten kannattaa kokeilla useampaa vaalikonetta ja verrata tuloksia.</p>
+<h3>Kuinka luotettava vaalikone on?</h3>
+<p>Vaalikone on hyvä apuväline, mutta se mittaa vain vastauksia valittuihin kysymyksiin. Se ei kerro ehdokkaan aiemmasta toiminnasta tai paikallisista näkemyksistä.</p>
+<h3>Pitääkö äänestää vaalikoneen ykköstä?</h3>
+<p>Ei. Vaalikone on suuntaa antava. Tutustu ainakin kolmeen kärkiehdokkaaseen ja valitse se, jonka arvot ja teot vakuuttavat sinut.</p>
+<h3>Mitä vaalikoneen prosenttiluku tarkoittaa?</h3>
+<p>Prosenttiluku kertoo, kuinka paljon vastauksesi vastaavat ehdokkaan vastauksia. Mitä suurempi luku, sitä useammasta asiasta olette samaa mieltä.</p>
+<h3>Voiko vaalikoneeseen vastata nimettömästi?</h3>
+<p>Kyllä. Vaalikoneet eivät yleensä vaadi kirjautumista tai henkilötietoja. Tarkista kuitenkin kunkin palvelun tietosuojaseloste.</p>
+<h2>Lopuksi</h2>
+<p>Vaalikone on hyvä tapa aloittaa, mutta paras päätös syntyy, kun tutustut ehdokkaaseen myös koneen ulkopuolella. Kysy, kuuntele ja vertaile.</p>
+<p>Jos haluat tietää, mitä mieltä minä olen jostain asiasta, ei tarvitse odottaa vaalikonetta. <a href="https://www.samielmeranta.fi/contact/">Laita viestiä</a>, niin vastaan. Ajantasaiset vaalitiedot löydät oikeusministeriön <a href="https://vaalit.fi" target="_blank" rel="noopener noreferrer">vaalit.fi-palvelusta</a>.</p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Vaalikoneet avautuvat ennen eduskuntavaaleja 18.4.2027. Miten vaalikone toimii, mitä prosenttiluvut oikeasti kertovat, mihin vaalikone ei pysty ja miten löydät sen avulla itsellesi sopivan ehdokkaan?]]></excerpt:encoded>
+		<wp:post_id>90103</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 10:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[vaalikone-2027]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="vaalikone"><![CDATA[vaalikone]]></category>
+		<category domain="post_tag" nicename="eduskuntavaalit-2027"><![CDATA[eduskuntavaalit 2027]]></category>
+		<category domain="post_tag" nicename="aanestaminen"><![CDATA[äänestäminen]]></category>
+		<category domain="post_tag" nicename="ehdokkaat"><![CDATA[ehdokkaat]]></category>
+		<category domain="post_tag" nicename="vaalit"><![CDATA[vaalit]]></category>
+	</item>
+</channel>
+</rss>
