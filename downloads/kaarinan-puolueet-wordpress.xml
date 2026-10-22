@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- WordPress-tuontitiedosto: uudet artikkelit luonnoksina. Työkalut → Tuo → WordPress. -->
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>Sami Elmeranta</title>
+	<link>https://www.samielmeranta.fi</link>
+	<description>Tolkun poliitikko</description>
+	<language>fi</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>https://www.samielmeranta.fi</wp:base_site_url>
+	<wp:base_blog_url>https://www.samielmeranta.fi</wp:base_blog_url>
+	<wp:author><wp:author_id>2</wp:author_id><wp:author_login><![CDATA[Sami Elmeranta]]></wp:author_login><wp:author_display_name><![CDATA[Sami Elmeranta]]></wp:author_display_name><wp:author_first_name><![CDATA[Sami]]></wp:author_first_name><wp:author_last_name><![CDATA[Elmeranta]]></wp:author_last_name></wp:author>
+	<wp:category><wp:term_id>15</wp:term_id><wp:category_nicename><![CDATA[politiikka]]></wp:category_nicename><wp:category_parent><![CDATA[]]></wp:category_parent><wp:cat_name><![CDATA[Politiikka]]></wp:cat_name></wp:category>
+	<generator>https://wordpress.org/?v=6.8</generator>
+	<item>
+		<title><![CDATA[Kaarinan kokoomus – puolueen asema, valtuustoryhmä ja yhdistykset Kaarinassa]]></title>
+		<link>https://www.samielmeranta.fi/kaarinan-kokoomus/</link>
+		<pubDate>Fri, 23 Oct 2026 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90201</guid>
+		<description></description>
+		<content:encoded><![CDATA[<h2>Olen siirtynyt kokoomuksesta Liike Nytin riveihin</h2>
+<blockquote>
+<p>Kirjoittaja Sami Elmeranta on kaarinalainen kaupunginvaltuutettu, joka edustaa nykyään Liike Nytiä. Toimin aiemmin kokoomuksessa ja tunnen puolueen Kaarinan toiminnan sisältä päin. Tämä artikkeli on yleiskatsaus, ei kokoomuksen virallinen tiedote. Kokoomuksen omat tiedot löydät <a href="https://www.kokoomuskaarina.fi/yhdistys/" target="_blank" rel="noopener noreferrer">Kokoomuksen Kaarinan kunnallisjärjestön sivuilta</a>.</p>
+</blockquote>
+<p><strong>Lyhyesti:</strong> Kansallinen Kokoomus on Kaarinan suurin puolue. Huhtikuun 2025 kuntavaaleissa kokoomus sai Kaarinassa <strong>32,8 prosenttia</strong> äänistä ja <strong>17 paikkaa</strong> kaupunginvaltuuston 51 paikasta. Kaarinassa kokoomuksella on kunnallisjärjestö ja useita paikallisyhdistyksiä, kuten Kaarinan Kokoomus ry ja vuonna 1919 perustettu Piikkiön Kokoomus ry. (<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<p>Kaarinan kokoomus on kiinnostanut monia, ja kysymyksiä on tullut myös minulle. Kokosin tähän yleiskatsauksen siitä, millainen puolue kokoomus on Kaarinassa, miten se on menestynyt vaaleissa ja miten sen toiminta on järjestetty. Pyrin kirjoittamaan reilusti ja tosiasioihin perustuen, vaikka edustan nykyään toista puoluetta.</p>
+<h2>Kokoomus lyhyesti</h2>
+<h3>Puolueen tausta</h3>
+<p>Kansallinen Kokoomus on perustettu vuonna 1918. Se on Suomen suurimpia puolueita ja kuvaa itseään vapauden, vastuun ja sivistyksen puolueeksi. Kokoomuksen linjassa korostuvat markkinatalous, yrittäjyys, kilpailukyky ja vahva turvallisuuspolitiikka. (<a href="https://fi.wikipedia.org/wiki/Kansallinen_Kokoomus" target="_blank" rel="noopener noreferrer">Wikipedia: Kansallinen Kokoomus</a>, <a href="https://www.kokoomus.fi" target="_blank" rel="noopener noreferrer">kokoomus.fi</a>)</p>
+<h3>Kokoomus kuntapolitiikassa</h3>
+<p>Kuntatasolla kokoomus painottaa yleensä kunnan talouden tasapainoa, elinvoimaa, yritysmyönteisyyttä ja palveluiden tehokkuutta. Monissa Suomen kasvukunnissa, kuten Turun seudun kehyskunnissa, kokoomus on perinteisesti ollut vahva.</p>
+<h3>Kokoomus valtakunnan politiikassa</h3>
+<p>Kokoomus on ollut useissa hallituksissa, ja se on johtanut pääministeripuolueena vuodesta 2023 alkanutta hallitusta. Valtakunnallinen linja näkyy myös kuntapolitiikassa, esimerkiksi suhtautumisessa verotukseen ja julkisen talouden sopeuttamiseen.</p>
+<h2>Kokoomus Kaarinan kuntavaaleissa 2025</h2>
+<h3>Tulos</h3>
+<p>Kuntavaalit järjestettiin 13.4.2025 yhdessä aluevaalien kanssa. Kaarinassa kokoomus säilytti asemansa suurimpana puolueena. Kaarina-lehden mukaan valtuustopaikat jakautuivat näin:</p>
+<table>
+<thead>
+<tr>
+<th>Puolue</th>
+<th>Ääniosuus</th>
+<th>Paikat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoomus</td>
+<td>32,8 %</td>
+<td>17</td>
+</tr>
+<tr>
+<td>SDP</td>
+<td>26,2 %</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Vihreät</td>
+<td>15,3 %</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Perussuomalaiset</td>
+<td>7,0 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Keskusta</td>
+<td>6,3 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Vasemmistoliitto</td>
+<td>5,5 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Kristillisdemokraatit</td>
+<td>–</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RKP</td>
+<td>–</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>(<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://kaarina.fi/sites/default/files/media/files/kaarinan-kaupungin-tilinpaatos-2025.pdf" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin tilinpäätös 2025</a>)</p>
+<h3>Muutos edellisiin vaaleihin</h3>
+<p>Kokoomuksen kannatus ja paikkamäärä pysyivät lähes ennallaan vuoden 2021 kuntavaaleihin verrattuna. Suurin nousija oli SDP, joka sai kolme paikkaa lisää.</p>
+<h3>Mitä tulos tarkoittaa?</h3>
+<p>Valtuuston 51 paikasta kokoomuksella ja SDP:llä on yhteensä 31 paikkaa. Kahden suurimman puolueen yhteistyö tai vastakkainasettelu vaikuttaa siis paljon siihen, mihin suuntaan Kaarinaa viedään.</p>
+<h2>Kokoomuksen organisaatio Kaarinassa</h2>
+<h3>Kokoomuksen Kaarinan Kunnallisjärjestö ry</h3>
+<p>Kunnallisjärjestö kokoaa yhteen Kaarinan kokoomuslaiset yhdistykset ja vastaa puolueen kunnallispoliittisesta toiminnasta. Se muun muassa valmistelee kuntavaaleja ja päättää kokoomuksen luottamushenkilöpaikoista kaupungin toimielimissä. (<a href="https://www.kokoomuskaarina.fi/yhdistys/" target="_blank" rel="noopener noreferrer">kokoomuskaarina.fi</a>)</p>
+<h3>Paikallisyhdistykset</h3>
+<h4>Kaarinan Kokoomus ry</h4>
+<p>Kaarinan kokoomuslaisten paikallisyhdistys. (<a href="https://www.kokoomuskaarina.fi/yhdistys/paikallisjarjestot/kaarinan-kokoomus-ry/" target="_blank" rel="noopener noreferrer">kokoomuskaarina.fi</a>)</p>
+<h4>Piikkiön Kokoomus ry</h4>
+<p>Kaarinan vanhin kokoomusyhdistys, joka perustettiin tammikuussa 1919. Piikkiö liitettiin Kaarinaan vuonna 2009, ja yhdistys toimii edelleen piikkiöläisten kokoomuslaisten kotipesänä. (<a href="https://www.kokoomuskaarina.fi/yhdistys/paikallisjarjestot/piikkion-kokoomus-ry/" target="_blank" rel="noopener noreferrer">kokoomuskaarina.fi</a>)</p>
+<h4>Muut yhdistykset</h4>
+<p>Kaarinassa toimii myös muita kokoomuslaisia yhdistyksiä, kuten Kokoomuksen Nuorten paikallisyhdistys. Ajantasainen luettelo löytyy kunnallisjärjestön sivuilta.</p>
+<h3>Valtuustoryhmä</h3>
+<p>Kokoomuksen valtuustoryhmä on Kaarinan kaupunginvaltuuston suurin ryhmä. Kaupungin sivuilla on luettelo <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">kaikista valtuustoryhmistä</a> ja niiden yhteyshenkilöistä.</p>
+<h2>Kokoomuksen teemoja Kaarinassa</h2>
+<h3>Talous ja elinvoima</h3>
+<p>Kaarinan talous on ollut viime vuosina tiukalla, ja kaupungin talouden tervehdyttäminen on ollut kaikkien valtuustoryhmien yhteinen haaste. Kaarina-lehti kysyi syksyllä 2026 kaikilta valtuustoryhmiltä, miten kaupungin talous pitäisi tervehdyttää. (<a href="https://www.kaarina-lehti.fi/2026/09/kaarina-lehti-kysyi-valtuustoryhmilta-miten-kaupungin-talous-tervehdytetaan/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<h3>Yrittäjyys ja kaavoitus</h3>
+<p>Kokoomus on perinteisesti korostanut yritysmyönteisyyttä ja sujuvaa kaavoitusta. Nämä ovat teemoja, joista olen itsekin samaa mieltä, ja ne kulkevat mukanani myös Liike Nytissä.</p>
+<h2>Miksi siirryin Liike Nytiin?</h2>
+<p>Kokoomuksessa on paljon hyviä ihmisiä, ja tein siellä töitä Kaarinan hyväksi useita vuosia. Halusin kuitenkin jatkaa politiikkaa puolueessa, jossa ratkaisut ratkaisevat ideologian sijaan ja jossa yrittäjyys, työ ja vastuullinen talous ovat kaiken keskiössä. Siksi siirryin Liike Nytiin.</p>
+<p>Kerroin ratkaisustani tarkemmin artikkelissa <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Miten Kaarinan kaupunginvaltuusto toimii?</h2>
+<h3>Valtuusto, hallitus ja lautakunnat</h3>
+<p>Kaarinan kaupunginvaltuustossa on 51 valtuutettua, ja nykyinen valtuustokausi kestää vuoden 2029 kevääseen. Valtuusto on kaupungin ylin päättävä elin: se päättää muun muassa talousarviosta, veroprosentista, kaupunkistrategiasta ja suurista investoinneista.</p>
+<p>Kaupunginhallitus valmistelee valtuustolle tulevat asiat, panee päätökset täytäntöön ja johtaa kaupungin toimintaa. Lautakunnat vastaavat omista toimialoistaan, kuten sivistys- ja teknisistä palveluista. Paikat hallituksessa ja lautakunnissa jaetaan valtuustoryhmien kesken niiden koon mukaan.</p>
+<h3>Mitä valtuustoryhmä tekee?</h3>
+<p>Valtuustoryhmä kokoaa saman puolueen tai ryhmän valtuutetut yhteen. Ryhmä neuvottelee muiden ryhmien kanssa, muodostaa kantansa valtuuston asioihin ja sopii, ketkä edustavat ryhmää eri toimielimissä. Valtuutettu voi myös vaihtaa ryhmää kesken kauden, sillä mandaatti on henkilökohtainen.</p>
+<p>Lue lisää kunnallisen päätöksenteon perusteista: <a href="https://www.samielmeranta.fi/mita-kunnanvaltuusto-tekee/">Mitä kunnanvaltuusto tekee?</a></p>
+<h2>Miten voit vaikuttaa Kaarinassa?</h2>
+<h3>Lähde mukaan puolueen toimintaan</h3>
+<p>Puolueiden paikallisyhdistykset ottavat mielellään mukaan uusia jäseniä ja aktiiveja. Jäsenenä pääset vaikuttamaan ehdokasasetteluun ja puolueen linjauksiin. Seuraavat kuntavaalit ovat keväällä 2029, ja ehdokkaita aletaan etsiä yleensä jo vuotta aiemmin.</p>
+<h3>Tee kuntalaisaloite</h3>
+<p>Jokaisella kaarinalaisella on kuntalain mukaan oikeus tehdä aloite kaupungille sen toimintaa koskevissa asioissa. Aloitteen voi jättää esimerkiksi verkossa <a href="https://www.kuntalaisaloite.fi" target="_blank" rel="noopener noreferrer">kuntalaisaloite.fi-palvelussa</a>.</p>
+<h3>Ota yhteyttä valtuutettuun</h3>
+<p>Valtuutetut ovat kuntalaisia varten. Yhteystiedot löytyvät <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin sivuilta</a>. Voit ottaa yhteyttä myös minuun puolueesta riippumatta.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Kuinka monta valtuutettua kokoomuksella on Kaarinassa?</h3>
+<p>Kuntavaaleissa 2025 kokoomus sai Kaarinassa 17 paikkaa kaupunginvaltuuston 51 paikasta. Valtuustokauden aikana ryhmien koko voi muuttua, jos valtuutetut vaihtavat ryhmää.</p>
+<h3>Mikä on kokoomuksen kannatus Kaarinassa?</h3>
+<p>Kokoomus sai Kaarinan kuntavaaleissa 2025 32,8 prosenttia äänistä, ja se on Kaarinan suurin puolue.</p>
+<h3>Mitä kokoomuksen yhdistyksiä Kaarinassa toimii?</h3>
+<p>Kaarinassa toimivat Kokoomuksen Kaarinan Kunnallisjärjestö ry sekä paikallisyhdistykset, kuten Kaarinan Kokoomus ry ja Piikkiön Kokoomus ry.</p>
+<h3>Milloin ovat seuraavat kuntavaalit Kaarinassa?</h3>
+<p>Seuraavat kuntavaalit järjestetään keväällä 2029.</p>
+<h3>Miten voin ottaa yhteyttä Kaarinan kokoomukseen?</h3>
+<p>Yhteystiedot löytyvät Kokoomuksen Kaarinan kunnallisjärjestön sivuilta osoitteesta kokoomuskaarina.fi.</p>
+<h3>Edustaako kirjoittaja kokoomusta?</h3>
+<p>Ei. Kirjoittaja Sami Elmeranta on siirtynyt kokoomuksesta Liike Nytin riveihin.</p>
+<h2>Lue myös</h2>
+<ul>
+<li><a href="https://www.samielmeranta.fi/sdp-kaarina/">SDP Kaarina</a></li>
+<li><a href="https://www.samielmeranta.fi/kaarinan-keskusta/">Kaarinan keskusta</a></li>
+<li><a href="https://www.samielmeranta.fi/vasemmistoliitto-kaarina/">Vasemmistoliitto Kaarina</a></li>
+</ul>
+<p>Haluatko keskustella Kaarinan asioista? <a href="https://www.samielmeranta.fi/contact/">Laita viestiä</a>.</p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Kokoomus on Kaarinan suurin puolue: kuntavaaleissa 2025 se sai 32,8 prosenttia äänistä ja 17 paikkaa 51-paikkaisesta valtuustosta. Yleiskatsaus Kaarinan kokoomukseen, sen yhdistyksiin ja rooliin kaupungin päätöksenteossa.]]></excerpt:encoded>
+		<wp:post_id>90201</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[kaarinan-kokoomus]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="kaarina"><![CDATA[Kaarina]]></category>
+		<category domain="post_tag" nicename="kokoomus"><![CDATA[kokoomus]]></category>
+		<category domain="post_tag" nicename="kuntapolitiikka"><![CDATA[kuntapolitiikka]]></category>
+		<category domain="post_tag" nicename="kaupunginvaltuusto"><![CDATA[kaupunginvaltuusto]]></category>
+		<category domain="post_tag" nicename="kuntavaalit-2025"><![CDATA[kuntavaalit 2025]]></category>
+	</item>
+	<item>
+		<title><![CDATA[SDP Kaarina – sosialidemokraatit Kaarinan kaupunginvaltuustossa]]></title>
+		<link>https://www.samielmeranta.fi/sdp-kaarina/</link>
+		<pubDate>Fri, 23 Oct 2026 13:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90202</guid>
+		<description></description>
+		<content:encoded><![CDATA[<blockquote>
+<p><strong>Kirjoittaja edustaa Liike Nytiä.</strong> Sami Elmeranta on kaarinalainen kaupunginvaltuutettu, joka edustaa Liike Nytiä. Tämä artikkeli on yleiskatsaus Kaarinan SDP:hen, ei SDP:n virallinen tiedote. Puolueen omat tiedot löydät <a href="https://sdpkaarina.fi/" target="_blank" rel="noopener noreferrer">SDP Kaarinan sivuilta</a>.</p>
+</blockquote>
+<p><strong>Lyhyesti:</strong> Suomen Sosialidemokraattinen Puolue (SDP) on Kaarinan toiseksi suurin puolue. Huhtikuun 2025 kuntavaaleissa SDP sai Kaarinassa <strong>26,2 prosenttia</strong> äänistä ja <strong>14 paikkaa</strong> kaupunginvaltuuston 51 paikasta. SDP oli Kaarinan vaalien suurin nousija, sillä se sai kolme paikkaa enemmän kuin vuonna 2021. Valtuustoryhmän puheenjohtajana toimii Sari Hukkanen. (<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://www.kaarina-lehti.fi/2026/08/sdpn-pakka-menee-uusiksikaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti 2026</a>)</p>
+<p>Kaarinan politiikkaa ei voi ymmärtää ilman SDP:tä. Demarit ovat kokoomuksen ohella valtuuston suurin ryhmä, ja moni iso päätös syntyy näiden kahden ryhmän välisissä neuvotteluissa. Teen valtuustossa yhteistyötä kaikkien ryhmien kanssa, ja kokosin tähän yleiskatsauksen Kaarinan SDP:stä.</p>
+<h2>SDP lyhyesti</h2>
+<h3>Puolueen tausta</h3>
+<p>SDP on Suomen vanhin puolue. Se perustettiin vuonna 1899 nimellä Suomen Työväenpuolue. SDP on sosialidemokraattinen puolue, jonka linjassa korostuvat hyvinvointivaltio, työntekijöiden oikeudet, tasa-arvo ja vahvat julkiset palvelut. (<a href="https://fi.wikipedia.org/wiki/Suomen_Sosialidemokraattinen_Puolue" target="_blank" rel="noopener noreferrer">Wikipedia: SDP</a>, <a href="https://www.sdp.fi" target="_blank" rel="noopener noreferrer">sdp.fi</a>)</p>
+<h3>SDP kuntapolitiikassa</h3>
+<p>Kuntatasolla SDP painottaa yleensä toimivia peruspalveluita, varhaiskasvatusta ja koulutusta, kohtuuhintaista asumista sekä kuntatyöntekijöiden asemaa.</p>
+<h3>SDP valtakunnan politiikassa</h3>
+<p>SDP nousi kuntavaaleissa 2025 valtakunnallisesti suurimmaksi puolueeksi. Eduskunnassa SDP on vaalikaudella 2023–2027 suurin oppositiopuolue. Valtakunnallinen linja näkyy myös kuntapolitiikassa, esimerkiksi suhtautumisessa palveluiden rahoitukseen ja kuntatyöntekijöiden asemaan.</p>
+<h2>SDP Kaarinan kuntavaaleissa 2025</h2>
+<h3>Tulos</h3>
+<p>Kuntavaalit järjestettiin 13.4.2025 yhdessä aluevaalien kanssa. SDP:n kannatus nousi Kaarinassa selvästi.</p>
+<table>
+<thead>
+<tr>
+<th>Puolue</th>
+<th>Ääniosuus</th>
+<th>Paikat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoomus</td>
+<td>32,8 %</td>
+<td>17</td>
+</tr>
+<tr>
+<td><strong>SDP</strong></td>
+<td><strong>26,2 %</strong></td>
+<td><strong>14</strong></td>
+</tr>
+<tr>
+<td>Vihreät</td>
+<td>15,3 %</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Perussuomalaiset</td>
+<td>7,0 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Keskusta</td>
+<td>6,3 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Vasemmistoliitto</td>
+<td>5,5 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Kristillisdemokraatit</td>
+<td>–</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RKP</td>
+<td>–</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>(<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://kaarina.fi/sites/default/files/media/files/kaarinan-kaupungin-tilinpaatos-2025.pdf" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin tilinpäätös 2025</a>)</p>
+<h3>Vaalien suurin nousija</h3>
+<p>SDP kasvatti paikkamääräänsä kolmella. Samaan aikaan perussuomalaiset menettivät neljä paikkaa. SDP:n nousu Kaarinassa seurasi valtakunnallista trendiä, jossa demarit menestyivät kuntavaaleissa 2025 hyvin. (<a href="https://fi.wikipedia.org/wiki/Kuntavaalit_2025" target="_blank" rel="noopener noreferrer">Wikipedia: Kuntavaalit 2025</a>)</p>
+<h2>SDP:n organisaatio Kaarinassa</h2>
+<h3>Valtuustoryhmä</h3>
+<p>SDP:n valtuustoryhmä on Kaarinan kaupunginvaltuuston toiseksi suurin ryhmä. Kaarina-lehden mukaan ryhmä järjestäytyi uudelleen kesällä 2026: puheenjohtajana jatkaa <strong>Sari Hukkanen</strong>, varapuheenjohtajana toimii <strong>Essi Hiltunen</strong> ja sihteerinä <strong>Suvi Simelius-Nieminen</strong>. (<a href="https://www.kaarina-lehti.fi/2026/08/sdpn-pakka-menee-uusiksikaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<p>Kaupungin sivuilla on luettelo <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">kaikista valtuustoryhmistä</a>.</p>
+<h3>Paikallisyhdistykset</h3>
+<h4>SDP Kaarina</h4>
+<p>Kaarinan demareiden yhteinen verkkosivusto kokoaa yhteen paikallisyhdistysten ja valtuustoryhmän toiminnan. (<a href="https://sdpkaarina.fi/" target="_blank" rel="noopener noreferrer">sdpkaarina.fi</a>)</p>
+<h4>Piikkiön Sosialidemokraattinen Työväenyhdistys</h4>
+<p>Piikkiön demareiden yhdistys toimii Kaarinaan liitetyn Piikkiön alueella. Sen tavoitteena on koota sosialidemokraattisesti ajattelevat ihmiset vaikuttamaan erityisesti Kaarinan kaupungin päätöksentekoon. (<a href="https://www.sdppiikkio.fi/" target="_blank" rel="noopener noreferrer">Piikkiön SDP</a>)</p>
+<h3>Varsinais-Suomen SDP</h3>
+<p>Kaarinan yhdistykset kuuluvat SDP:n Varsinais-Suomen piiriin, joka koordinoi muun muassa eduskuntavaaliehdokkaiden asettamista. (<a href="https://sdpvs.fi/paikallisosastot/" target="_blank" rel="noopener noreferrer">Varsinais-Suomen SDP</a>)</p>
+<h2>SDP:n teemoja Kaarinassa</h2>
+<h3>Palvelut ja kaupungin talous</h3>
+<p>Kaarinan talous on ollut tiukalla, ja palveluiden turvaaminen on ollut kaikkien ryhmien yhteinen kysymys. Kaarina-lehti kysyi syksyllä 2026 kaikilta valtuustoryhmiltä, miten kaupungin talous pitäisi tervehdyttää. (<a href="https://www.kaarina-lehti.fi/2026/09/kaarina-lehti-kysyi-valtuustoryhmilta-miten-kaupungin-talous-tervehdytetaan/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<h3>Missä olemme samaa mieltä ja missä eri</h3>
+<p>Olen samaa mieltä demareiden kanssa siitä, että lasten, nuorten ja ikäihmisten palveluiden pitää olla kunnossa. Eroa on usein keinoissa. Minusta palvelut rahoitetaan parhaiten kasvattamalla työtä ja yrittäjyyttä sekä karsimalla hallintoa, ei nostamalla veroja. Tällaisista eroista huolimatta yhteistyö sujuu, kun keskustelu pysyy asiallisena.</p>
+<h2>Liike Nyt ja SDP</h2>
+<p>Liike Nyt ja SDP ovat monessa asiassa eri linjoilla, etenkin talous- ja veropolitiikassa. Yhteistä on kuitenkin tavoite siitä, että jokainen voi elää työllään ja palvelut toimivat. Kerroin omista lähtökohdistani artikkelissa <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Miten Kaarinan kaupunginvaltuusto toimii?</h2>
+<h3>Valtuusto, hallitus ja lautakunnat</h3>
+<p>Kaarinan kaupunginvaltuustossa on 51 valtuutettua, ja nykyinen valtuustokausi kestää vuoden 2029 kevääseen. Valtuusto on kaupungin ylin päättävä elin: se päättää muun muassa talousarviosta, veroprosentista, kaupunkistrategiasta ja suurista investoinneista.</p>
+<p>Kaupunginhallitus valmistelee valtuustolle tulevat asiat, panee päätökset täytäntöön ja johtaa kaupungin toimintaa. Lautakunnat vastaavat omista toimialoistaan, kuten sivistys- ja teknisistä palveluista. Paikat hallituksessa ja lautakunnissa jaetaan valtuustoryhmien kesken niiden koon mukaan.</p>
+<h3>Mitä valtuustoryhmä tekee?</h3>
+<p>Valtuustoryhmä kokoaa saman puolueen tai ryhmän valtuutetut yhteen. Ryhmä neuvottelee muiden ryhmien kanssa, muodostaa kantansa valtuuston asioihin ja sopii, ketkä edustavat ryhmää eri toimielimissä. Valtuutettu voi myös vaihtaa ryhmää kesken kauden, sillä mandaatti on henkilökohtainen.</p>
+<p>Lue lisää kunnallisen päätöksenteon perusteista: <a href="https://www.samielmeranta.fi/mita-kunnanvaltuusto-tekee/">Mitä kunnanvaltuusto tekee?</a></p>
+<h2>Miten voit vaikuttaa Kaarinassa?</h2>
+<h3>Lähde mukaan puolueen toimintaan</h3>
+<p>Puolueiden paikallisyhdistykset ottavat mielellään mukaan uusia jäseniä ja aktiiveja. Jäsenenä pääset vaikuttamaan ehdokasasetteluun ja puolueen linjauksiin. Seuraavat kuntavaalit ovat keväällä 2029, ja ehdokkaita aletaan etsiä yleensä jo vuotta aiemmin.</p>
+<h3>Tee kuntalaisaloite</h3>
+<p>Jokaisella kaarinalaisella on kuntalain mukaan oikeus tehdä aloite kaupungille sen toimintaa koskevissa asioissa. Aloitteen voi jättää esimerkiksi verkossa <a href="https://www.kuntalaisaloite.fi" target="_blank" rel="noopener noreferrer">kuntalaisaloite.fi-palvelussa</a>.</p>
+<h3>Ota yhteyttä valtuutettuun</h3>
+<p>Valtuutetut ovat kuntalaisia varten. Yhteystiedot löytyvät <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin sivuilta</a>. Voit ottaa yhteyttä myös minuun puolueesta riippumatta.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Kuinka monta valtuutettua SDP:llä on Kaarinassa?</h3>
+<p>Kuntavaaleissa 2025 SDP sai Kaarinassa 14 paikkaa kaupunginvaltuuston 51 paikasta.</p>
+<h3>Mikä on SDP:n kannatus Kaarinassa?</h3>
+<p>SDP sai Kaarinan kuntavaaleissa 2025 26,2 prosenttia äänistä, ja se on Kaarinan toiseksi suurin puolue.</p>
+<h3>Kuka on SDP:n valtuustoryhmän puheenjohtaja Kaarinassa?</h3>
+<p>Kaarina-lehden mukaan SDP:n valtuustoryhmän puheenjohtajana jatkaa Sari Hukkanen.</p>
+<h3>Mitä SDP:n yhdistyksiä Kaarinassa toimii?</h3>
+<p>Kaarinassa toimivat muun muassa SDP Kaarina ja Piikkiön Sosialidemokraattinen Työväenyhdistys. Ajantasaiset tiedot löytyvät osoitteesta sdpkaarina.fi.</p>
+<h3>Milloin ovat seuraavat kuntavaalit Kaarinassa?</h3>
+<p>Seuraavat kuntavaalit järjestetään keväällä 2029.</p>
+<h3>Edustaako kirjoittaja SDP:tä?</h3>
+<p>Ei. Kirjoittaja Sami Elmeranta edustaa Liike Nytiä.</p>
+<h2>Lue myös</h2>
+<ul>
+<li><a href="https://www.samielmeranta.fi/kaarinan-kokoomus/">Kaarinan kokoomus</a></li>
+<li><a href="https://www.samielmeranta.fi/kaarinan-keskusta/">Kaarinan keskusta</a></li>
+<li><a href="https://www.samielmeranta.fi/vasemmistoliitto-kaarina/">Vasemmistoliitto Kaarina</a></li>
+</ul>
+<p>Haluatko keskustella Kaarinan asioista? <a href="https://www.samielmeranta.fi/contact/">Laita viestiä</a>.</p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[SDP on Kaarinan toiseksi suurin puolue: kuntavaaleissa 2025 se sai 26,2 prosenttia äänistä ja 14 valtuustopaikkaa, kolme enemmän kuin edellisissä vaaleissa. Yleiskatsaus Kaarinan demareihin, heidän yhdistyksiinsä ja rooliinsa kaupungin päätöksenteossa.]]></excerpt:encoded>
+		<wp:post_id>90202</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 13:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[sdp-kaarina]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="kaarina"><![CDATA[Kaarina]]></category>
+		<category domain="post_tag" nicename="sdp"><![CDATA[SDP]]></category>
+		<category domain="post_tag" nicename="kuntapolitiikka"><![CDATA[kuntapolitiikka]]></category>
+		<category domain="post_tag" nicename="kaupunginvaltuusto"><![CDATA[kaupunginvaltuusto]]></category>
+		<category domain="post_tag" nicename="kuntavaalit-2025"><![CDATA[kuntavaalit 2025]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Kaarinan keskusta – keskustan asema ja valtuutetut Kaarinassa]]></title>
+		<link>https://www.samielmeranta.fi/kaarinan-keskusta/</link>
+		<pubDate>Fri, 23 Oct 2026 14:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90203</guid>
+		<description></description>
+		<content:encoded><![CDATA[<blockquote>
+<p><strong>Kirjoittaja edustaa Liike Nytiä.</strong> Sami Elmeranta on kaarinalainen kaupunginvaltuutettu, joka edustaa Liike Nytiä. Tämä artikkeli on yleiskatsaus Kaarinan keskustaan, ei keskustan virallinen tiedote. Puolueen omat tiedot löydät <a href="https://www.keskusta.fi" target="_blank" rel="noopener noreferrer">keskusta.fi-sivustolta</a>.</p>
+</blockquote>
+<p><strong>Lyhyesti:</strong> Suomen Keskusta on Kaarinan kaupunginvaltuustossa kolmen valtuutetun ryhmä. Huhtikuun 2025 kuntavaaleissa keskusta sai Kaarinassa <strong>6,3 prosenttia</strong> äänistä ja <strong>3 paikkaa</strong> valtuuston 51 paikasta, yhden enemmän kuin vuonna 2021. Keskustan Sanna Tähkämaa on kaupunginhallituksen jäsen. (<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://kaarina.fi/fi/uutiset/uusi-kaupunki-ja-luottamushenkiloorganisaatio" target="_blank" rel="noopener noreferrer">Kaarinan kaupunki</a>)</p>
+<p>Keskusta mielletään usein maaseudun puolueeksi, mutta sillä on paikkansa myös Turun kaupunkiseudulla. Kaarinassa on sekä kaupunkimaisia asuinalueita että maaseutua, erityisesti Piikkiön suunnalla. Kokosin tähän yleiskatsauksen Kaarinan keskustasta ja sen roolista kaupungin politiikassa.</p>
+<h2>Keskusta lyhyesti</h2>
+<h3>Puolueen tausta</h3>
+<p>Suomen Keskusta perustettiin vuonna 1906 nimellä Maalaisliitto. Keskusta on perinteisesti korostanut koko Suomen pitämistä elinvoimaisena, alueiden tasapuolista kehittämistä, maaseudun ja yrittäjien asemaa sekä perheiden hyvinvointia. (<a href="https://fi.wikipedia.org/wiki/Suomen_Keskusta" target="_blank" rel="noopener noreferrer">Wikipedia: Suomen Keskusta</a>, <a href="https://www.keskusta.fi" target="_blank" rel="noopener noreferrer">keskusta.fi</a>)</p>
+<h3>Keskusta kuntapolitiikassa</h3>
+<p>Kuntatasolla keskusta painottaa yleensä lähipalveluita, kyläkouluja ja kylien elinvoimaa, pienyrittäjyyttä ja maaseudun liikenneyhteyksiä.</p>
+<h3>Keskusta valtakunnan politiikassa</h3>
+<p>Keskusta on historiallisesti ollut yksi Suomen johtavista puolueista, ja sen riveistä on noussut useita pääministereitä ja presidenttejä. Puolue on perinteisesti ollut erityisen vahva maaseutukunnissa, ja monissa kunnissa se on edelleen suurin puolue.</p>
+<h2>Keskusta Kaarinan kuntavaaleissa 2025</h2>
+<h3>Tulos</h3>
+<p>Kuntavaalit järjestettiin 13.4.2025 yhdessä aluevaalien kanssa.</p>
+<table>
+<thead>
+<tr>
+<th>Puolue</th>
+<th>Ääniosuus</th>
+<th>Paikat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoomus</td>
+<td>32,8 %</td>
+<td>17</td>
+</tr>
+<tr>
+<td>SDP</td>
+<td>26,2 %</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Vihreät</td>
+<td>15,3 %</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Perussuomalaiset</td>
+<td>7,0 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Keskusta</strong></td>
+<td><strong>6,3 %</strong></td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Vasemmistoliitto</td>
+<td>5,5 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Kristillisdemokraatit</td>
+<td>–</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RKP</td>
+<td>–</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>(<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://kaarina.fi/sites/default/files/media/files/kaarinan-kaupungin-tilinpaatos-2025.pdf" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin tilinpäätös 2025</a>)</p>
+<h3>Paikkamäärä kasvoi</h3>
+<p>Keskusta kasvatti paikkamääräänsä kahdesta kolmeen. Pienelle ryhmälle yksikin lisäpaikka on merkittävä, koska se näkyy myös lautakuntien ja muiden toimielinten paikkajaossa.</p>
+<h2>Keskustan edustajat Kaarinassa</h2>
+<h3>Valtuustoryhmä</h3>
+<p>Keskustalla on Kaarinan kaupunginvaltuustossa kolmen valtuutetun ryhmä. Kaupungin tilinpäätöksen 2025 luottamushenkilöluetteloissa keskustan edustajina mainitaan muun muassa <strong>Sanna Tähkämaa</strong> ja <strong>Tiina Tuomarila</strong>. Ajantasainen luettelo kaikista valtuutetuista ja <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">valtuustoryhmistä</a> löytyy kaupungin sivuilta.</p>
+<h3>Kaupunginhallitus</h3>
+<p>Kaupungin tiedotteen mukaan keskustan Sanna Tähkämaa kuuluu Kaarinan kaupunginhallitukseen. Kaupunginhallitus valmistelee valtuustolle tulevat asiat ja johtaa kaupungin toimintaa. (<a href="https://kaarina.fi/fi/uutiset/uusi-kaupunki-ja-luottamushenkiloorganisaatio" target="_blank" rel="noopener noreferrer">Kaarinan kaupunki</a>)</p>
+<p>Kaupunginhallituksessa pienetkin ryhmät voivat vaikuttaa paljon, kun ne tuovat pöytään hyviä perusteluja.</p>
+<h3>Paikallisyhdistys</h3>
+<p>Keskustan paikallisyhdistysten ajantasaiset yhteystiedot löytyvät <a href="https://www.keskusta.fi" target="_blank" rel="noopener noreferrer">keskustan valtakunnallisilta sivuilta</a>.</p>
+<h2>Keskustan teemoja Kaarinassa</h2>
+<h3>Piikkiö ja maaseutu</h3>
+<p>Kaarinan maaseutualueet, kuten Piikkiön kylät, ovat keskustalle luonteva painopiste. Liikenneyhteydet, lähipalvelut ja maankäyttö ovat kysymyksiä, joissa maaseudun näkökulma on tärkeä.</p>
+<p>Asun itse Piikkiössä, joten nämä asiat ovat minulle tuttuja arjesta.</p>
+<h3>Kaupungin talous</h3>
+<p>Kaarinan talous on ollut tiukalla, ja talouden tervehdyttäminen koskee kaikkia ryhmiä. Kaarina-lehti kysyi syksyllä 2026 jokaiselta valtuustoryhmältä, miten kaupungin talous pitäisi saada kuntoon. (<a href="https://www.kaarina-lehti.fi/2026/09/kaarina-lehti-kysyi-valtuustoryhmilta-miten-kaupungin-talous-tervehdytetaan/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<h2>Liike Nyt ja keskusta</h2>
+<p>Liike Nytillä ja keskustalla on yhteisiä tavoitteita etenkin yrittäjyyden ja pienyrittäjien aseman parantamisessa. Molemmat haluavat vähentää byrokratiaa, joka hankaloittaa pienten yritysten arkea. Eroja on esimerkiksi aluepolitiikan painotuksissa. Kerroin omista lähtökohdistani artikkelissa <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Miten Kaarinan kaupunginvaltuusto toimii?</h2>
+<h3>Valtuusto, hallitus ja lautakunnat</h3>
+<p>Kaarinan kaupunginvaltuustossa on 51 valtuutettua, ja nykyinen valtuustokausi kestää vuoden 2029 kevääseen. Valtuusto on kaupungin ylin päättävä elin: se päättää muun muassa talousarviosta, veroprosentista, kaupunkistrategiasta ja suurista investoinneista.</p>
+<p>Kaupunginhallitus valmistelee valtuustolle tulevat asiat, panee päätökset täytäntöön ja johtaa kaupungin toimintaa. Lautakunnat vastaavat omista toimialoistaan, kuten sivistys- ja teknisistä palveluista. Paikat hallituksessa ja lautakunnissa jaetaan valtuustoryhmien kesken niiden koon mukaan.</p>
+<h3>Mitä valtuustoryhmä tekee?</h3>
+<p>Valtuustoryhmä kokoaa saman puolueen tai ryhmän valtuutetut yhteen. Ryhmä neuvottelee muiden ryhmien kanssa, muodostaa kantansa valtuuston asioihin ja sopii, ketkä edustavat ryhmää eri toimielimissä. Valtuutettu voi myös vaihtaa ryhmää kesken kauden, sillä mandaatti on henkilökohtainen.</p>
+<p>Lue lisää kunnallisen päätöksenteon perusteista: <a href="https://www.samielmeranta.fi/mita-kunnanvaltuusto-tekee/">Mitä kunnanvaltuusto tekee?</a></p>
+<h2>Miten voit vaikuttaa Kaarinassa?</h2>
+<h3>Lähde mukaan puolueen toimintaan</h3>
+<p>Puolueiden paikallisyhdistykset ottavat mielellään mukaan uusia jäseniä ja aktiiveja. Jäsenenä pääset vaikuttamaan ehdokasasetteluun ja puolueen linjauksiin. Seuraavat kuntavaalit ovat keväällä 2029, ja ehdokkaita aletaan etsiä yleensä jo vuotta aiemmin.</p>
+<h3>Tee kuntalaisaloite</h3>
+<p>Jokaisella kaarinalaisella on kuntalain mukaan oikeus tehdä aloite kaupungille sen toimintaa koskevissa asioissa. Aloitteen voi jättää esimerkiksi verkossa <a href="https://www.kuntalaisaloite.fi" target="_blank" rel="noopener noreferrer">kuntalaisaloite.fi-palvelussa</a>.</p>
+<h3>Ota yhteyttä valtuutettuun</h3>
+<p>Valtuutetut ovat kuntalaisia varten. Yhteystiedot löytyvät <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin sivuilta</a>. Voit ottaa yhteyttä myös minuun puolueesta riippumatta.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Kuinka monta valtuutettua keskustalla on Kaarinassa?</h3>
+<p>Kuntavaaleissa 2025 keskusta sai Kaarinassa 3 paikkaa kaupunginvaltuuston 51 paikasta.</p>
+<h3>Mikä on keskustan kannatus Kaarinassa?</h3>
+<p>Keskusta sai Kaarinan kuntavaaleissa 2025 6,3 prosenttia äänistä.</p>
+<h3>Onko keskustalla edustaja Kaarinan kaupunginhallituksessa?</h3>
+<p>Kyllä. Kaupungin tiedotteen mukaan keskustan Sanna Tähkämaa on kaupunginhallituksen jäsen.</p>
+<h3>Kasvoiko keskustan kannatus Kaarinassa?</h3>
+<p>Kyllä. Keskustan paikkamäärä kasvoi kahdesta kolmeen vuoden 2021 kuntavaaleihin verrattuna.</p>
+<h3>Milloin ovat seuraavat kuntavaalit Kaarinassa?</h3>
+<p>Seuraavat kuntavaalit järjestetään keväällä 2029.</p>
+<h3>Edustaako kirjoittaja keskustaa?</h3>
+<p>Ei. Kirjoittaja Sami Elmeranta edustaa Liike Nytiä.</p>
+<h2>Lue myös</h2>
+<ul>
+<li><a href="https://www.samielmeranta.fi/kaarinan-kokoomus/">Kaarinan kokoomus</a></li>
+<li><a href="https://www.samielmeranta.fi/sdp-kaarina/">SDP Kaarina</a></li>
+<li><a href="https://www.samielmeranta.fi/vasemmistoliitto-kaarina/">Vasemmistoliitto Kaarina</a></li>
+</ul>
+<p>Haluatko keskustella Kaarinan asioista? <a href="https://www.samielmeranta.fi/contact/">Laita viestiä</a>.</p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Keskusta sai Kaarinan kuntavaaleissa 2025 6,3 prosenttia äänistä ja kolme paikkaa kaupunginvaltuustosta, yhden enemmän kuin edellisissä vaaleissa. Yleiskatsaus Kaarinan keskustaan ja sen rooliin kaupungin päätöksenteossa.]]></excerpt:encoded>
+		<wp:post_id>90203</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 14:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[kaarinan-keskusta]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="kaarina"><![CDATA[Kaarina]]></category>
+		<category domain="post_tag" nicename="keskusta"><![CDATA[keskusta]]></category>
+		<category domain="post_tag" nicename="kuntapolitiikka"><![CDATA[kuntapolitiikka]]></category>
+		<category domain="post_tag" nicename="kaupunginvaltuusto"><![CDATA[kaupunginvaltuusto]]></category>
+		<category domain="post_tag" nicename="kuntavaalit-2025"><![CDATA[kuntavaalit 2025]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Vasemmistoliitto Kaarina – vasemmistoliiton asema Kaarinan politiikassa]]></title>
+		<link>https://www.samielmeranta.fi/vasemmistoliitto-kaarina/</link>
+		<pubDate>Fri, 23 Oct 2026 15:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90204</guid>
+		<description></description>
+		<content:encoded><![CDATA[<blockquote>
+<p><strong>Kirjoittaja edustaa Liike Nytiä.</strong> Sami Elmeranta on kaarinalainen kaupunginvaltuutettu, joka edustaa Liike Nytiä. Tämä artikkeli on yleiskatsaus Kaarinan vasemmistoliittoon, ei vasemmistoliiton virallinen tiedote. Puolueen omat tiedot löydät <a href="https://vasemmisto.fi" target="_blank" rel="noopener noreferrer">vasemmisto.fi-sivustolta</a>.</p>
+</blockquote>
+<p><strong>Lyhyesti:</strong> Vasemmistoliitto on Kaarinan kaupunginvaltuustossa kolmen valtuutetun ryhmä. Huhtikuun 2025 kuntavaaleissa vasemmistoliitto sai Kaarinassa <strong>5,5 prosenttia</strong> äänistä ja <strong>3 paikkaa</strong> valtuuston 51 paikasta. Paikkamäärä pysyi samana kuin vuonna 2021. Kaarinan Vasemmistoliitto ry on perustettu vuonna 1990. (<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="http://kaarinanvasemmisto.blogspot.com/" target="_blank" rel="noopener noreferrer">Kaarinan Vasemmistoliitto</a>)</p>
+<p>Olen itse oikealla puolella poliittista kenttää, mutta olen aina sanonut, että kuuntelen myös vasemman laidan kulkijoita. Monessa Kaarinan asiassa tavoite on sama, vaikka keinoista olisimmekin eri mieltä. Kokosin tähän yleiskatsauksen Kaarinan vasemmistoliitosta.</p>
+<h2>Vasemmistoliitto lyhyesti</h2>
+<h3>Puolueen tausta</h3>
+<p>Vasemmistoliitto perustettiin vuonna 1990. Puolueen linjassa korostuvat tasa-arvo, työntekijöiden oikeudet, vahvat julkiset palvelut, ympäristö ja ilmastonmuutoksen torjunta. (<a href="https://fi.wikipedia.org/wiki/Vasemmistoliitto" target="_blank" rel="noopener noreferrer">Wikipedia: Vasemmistoliitto</a>, <a href="https://vasemmisto.fi" target="_blank" rel="noopener noreferrer">vasemmisto.fi</a>)</p>
+<h3>Vasemmistoliitto kuntapolitiikassa</h3>
+<p>Kuntatasolla vasemmistoliitto painottaa yleensä julkisia palveluita, kuten varhaiskasvatusta, koulutusta ja vanhuspalveluita, sekä kohtuuhintaista asumista, joukkoliikennettä ja ympäristöasioita.</p>
+<h3>Vasemmistoliitto valtakunnan politiikassa</h3>
+<p>Vasemmistoliitto syntyi vuonna 1990, kun aiemmat vasemmistolaiset järjestöt, kuten SKDL, yhdistivät toimintansa uudeksi puolueeksi. Vasemmistoliitto on ollut mukana useissa hallituksissa, ja vaalikaudella 2023–2027 se on oppositiossa.</p>
+<h2>Vasemmistoliitto Kaarinan kuntavaaleissa 2025</h2>
+<h3>Tulos</h3>
+<p>Kuntavaalit järjestettiin 13.4.2025 yhdessä aluevaalien kanssa.</p>
+<table>
+<thead>
+<tr>
+<th>Puolue</th>
+<th>Ääniosuus</th>
+<th>Paikat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoomus</td>
+<td>32,8 %</td>
+<td>17</td>
+</tr>
+<tr>
+<td>SDP</td>
+<td>26,2 %</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Vihreät</td>
+<td>15,3 %</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Perussuomalaiset</td>
+<td>7,0 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Keskusta</td>
+<td>6,3 %</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Vasemmistoliitto</strong></td>
+<td><strong>5,5 %</strong></td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Kristillisdemokraatit</td>
+<td>–</td>
+<td>2</td>
+</tr>
+<tr>
+<td>RKP</td>
+<td>–</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>(<a href="https://www.kaarina-lehti.fi/2025/04/kuntavaalien-lopullinen-tulos-kannatusprosentit-valtuustopaikat-ja-aaniharavat-kaarinassa/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>, <a href="https://kaarina.fi/sites/default/files/media/files/kaarinan-kaupungin-tilinpaatos-2025.pdf" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin tilinpäätös 2025</a>)</p>
+<h3>Vakaa kannatus</h3>
+<p>Vasemmistoliiton paikkamäärä pysyi Kaarinassa ennallaan. Tasainen kannatus kertoo vakiintuneesta kannattajapohjasta.</p>
+<h2>Vasemmistoliiton organisaatio Kaarinassa</h2>
+<h3>Kaarinan Vasemmistoliitto ry</h3>
+<p>Kaarinan Vasemmistoliitto ry on perustettu vuonna 1990, samana vuonna kuin valtakunnallinen puolue. Yhdistys kokoaa yhteen Kaarinan vasemmistolaiset ja asettaa ehdokkaat kuntavaaleihin. (<a href="http://kaarinanvasemmisto.blogspot.com/" target="_blank" rel="noopener noreferrer">Kaarinan Vasemmistoliitto</a>)</p>
+<h3>Valtuustoryhmä</h3>
+<p>Vasemmistoliitolla on Kaarinan kaupunginvaltuustossa kolmen valtuutetun ryhmä. Ryhmän ajantasaiset yhteystiedot löytyvät kaupungin sivuilta <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">valtuustoryhmien luettelosta</a>.</p>
+<h3>Varsinais-Suomen Vasemmistoliitto</h3>
+<p>Kaarinan yhdistys kuuluu Varsinais-Suomen Vasemmistoliittoon, joka on jo nimennyt ehdokkaitaan vuoden 2027 eduskuntavaaleihin. (<a href="https://varsinais-suomi.vasemmisto.fi/varsinais-suomen-vasemmistoliitto-asetti-kaksi-uutta-eduskuntavaaliehdokasta-vuoden-2027-vaaleihin/" target="_blank" rel="noopener noreferrer">Varsinais-Suomen Vasemmistoliitto</a>)</p>
+<h2>Vasemmistoliiton teemoja Kaarinassa</h2>
+<h3>Palvelut ja kaupungin talous</h3>
+<p>Kaarinan talous on ollut tiukalla, ja palveluiden rahoitus on yksi suurimmista kysymyksistä. Kaarina-lehti kysyi syksyllä 2026 kaikilta valtuustoryhmiltä, miten kaupungin talous pitäisi tervehdyttää. (<a href="https://www.kaarina-lehti.fi/2026/09/kaarina-lehti-kysyi-valtuustoryhmilta-miten-kaupungin-talous-tervehdytetaan/" target="_blank" rel="noopener noreferrer">Kaarina-lehti</a>)</p>
+<h3>Missä olemme samaa mieltä ja missä eri</h3>
+<p>Olen samaa mieltä vasemmistoliiton kanssa siitä, että lasten ja nuorten palveluihin ja hyvinvointiin pitää panostaa. Eroa on keinoissa: minusta palvelut rahoitetaan kestävimmin kasvattamalla työtä ja yrittäjyyttä sekä karsimalla hallintoa, kun taas vasemmistoliitto painottaa useammin julkisen sektorin roolia ja verotusta.</p>
+<p>Tärkeintä on, että keskustelu pysyy asiallisena. Kaarinan valtuustossa olemme pystyneet tekemään yhteistyötä yli puoluerajojen, ja niin pitää jatkossakin olla.</p>
+<h2>Liike Nyt ja vasemmistoliitto</h2>
+<p>Liike Nyt ja vasemmistoliitto ovat talouspolitiikassa eri linjoilla. Liike Nyt korostaa yrittäjyyttä, kevyempää verotusta ja byrokratian purkamista. Yhteistä on kuitenkin halu tehdä politiikkaa avoimesti ja ihmisten arjesta käsin. Kerroin omista lähtökohdistani artikkelissa <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Miten Kaarinan kaupunginvaltuusto toimii?</h2>
+<h3>Valtuusto, hallitus ja lautakunnat</h3>
+<p>Kaarinan kaupunginvaltuustossa on 51 valtuutettua, ja nykyinen valtuustokausi kestää vuoden 2029 kevääseen. Valtuusto on kaupungin ylin päättävä elin: se päättää muun muassa talousarviosta, veroprosentista, kaupunkistrategiasta ja suurista investoinneista.</p>
+<p>Kaupunginhallitus valmistelee valtuustolle tulevat asiat, panee päätökset täytäntöön ja johtaa kaupungin toimintaa. Lautakunnat vastaavat omista toimialoistaan, kuten sivistys- ja teknisistä palveluista. Paikat hallituksessa ja lautakunnissa jaetaan valtuustoryhmien kesken niiden koon mukaan.</p>
+<h3>Mitä valtuustoryhmä tekee?</h3>
+<p>Valtuustoryhmä kokoaa saman puolueen tai ryhmän valtuutetut yhteen. Ryhmä neuvottelee muiden ryhmien kanssa, muodostaa kantansa valtuuston asioihin ja sopii, ketkä edustavat ryhmää eri toimielimissä. Valtuutettu voi myös vaihtaa ryhmää kesken kauden, sillä mandaatti on henkilökohtainen.</p>
+<p>Lue lisää kunnallisen päätöksenteon perusteista: <a href="https://www.samielmeranta.fi/mita-kunnanvaltuusto-tekee/">Mitä kunnanvaltuusto tekee?</a></p>
+<h2>Miten voit vaikuttaa Kaarinassa?</h2>
+<h3>Lähde mukaan puolueen toimintaan</h3>
+<p>Puolueiden paikallisyhdistykset ottavat mielellään mukaan uusia jäseniä ja aktiiveja. Jäsenenä pääset vaikuttamaan ehdokasasetteluun ja puolueen linjauksiin. Seuraavat kuntavaalit ovat keväällä 2029, ja ehdokkaita aletaan etsiä yleensä jo vuotta aiemmin.</p>
+<h3>Tee kuntalaisaloite</h3>
+<p>Jokaisella kaarinalaisella on kuntalain mukaan oikeus tehdä aloite kaupungille sen toimintaa koskevissa asioissa. Aloitteen voi jättää esimerkiksi verkossa <a href="https://www.kuntalaisaloite.fi" target="_blank" rel="noopener noreferrer">kuntalaisaloite.fi-palvelussa</a>.</p>
+<h3>Ota yhteyttä valtuutettuun</h3>
+<p>Valtuutetut ovat kuntalaisia varten. Yhteystiedot löytyvät <a href="https://kaarina.fi/fi/valtuustoryhmat" target="_blank" rel="noopener noreferrer">Kaarinan kaupungin sivuilta</a>. Voit ottaa yhteyttä myös minuun puolueesta riippumatta.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Kuinka monta valtuutettua vasemmistoliitolla on Kaarinassa?</h3>
+<p>Kuntavaaleissa 2025 vasemmistoliitto sai Kaarinassa 3 paikkaa kaupunginvaltuuston 51 paikasta.</p>
+<h3>Mikä on vasemmistoliiton kannatus Kaarinassa?</h3>
+<p>Vasemmistoliitto sai Kaarinan kuntavaaleissa 2025 5,5 prosenttia äänistä.</p>
+<h3>Milloin Kaarinan Vasemmistoliitto on perustettu?</h3>
+<p>Kaarinan Vasemmistoliitto ry on perustettu vuonna 1990.</p>
+<h3>Muuttuiko vasemmistoliiton paikkamäärä Kaarinassa vuonna 2025?</h3>
+<p>Ei. Vasemmistoliiton paikkamäärä pysyi kolmessa vuoden 2021 kuntavaaleihin verrattuna.</p>
+<h3>Milloin ovat seuraavat kuntavaalit Kaarinassa?</h3>
+<p>Seuraavat kuntavaalit järjestetään keväällä 2029.</p>
+<h3>Edustaako kirjoittaja vasemmistoliittoa?</h3>
+<p>Ei. Kirjoittaja Sami Elmeranta edustaa Liike Nytiä.</p>
+<h2>Lue myös</h2>
+<ul>
+<li><a href="https://www.samielmeranta.fi/kaarinan-kokoomus/">Kaarinan kokoomus</a></li>
+<li><a href="https://www.samielmeranta.fi/sdp-kaarina/">SDP Kaarina</a></li>
+<li><a href="https://www.samielmeranta.fi/kaarinan-keskusta/">Kaarinan keskusta</a></li>
+</ul>
+<p>Haluatko keskustella Kaarinan asioista? <a href="https://www.samielmeranta.fi/contact/">Laita viestiä</a>.</p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Vasemmistoliitto sai Kaarinan kuntavaaleissa 2025 5,5 prosenttia äänistä ja kolme paikkaa kaupunginvaltuustosta. Yleiskatsaus Kaarinan vasemmistoliittoon, sen historiaan ja rooliin kaupungin päätöksenteossa.]]></excerpt:encoded>
+		<wp:post_id>90204</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-23 15:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[vasemmistoliitto-kaarina]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="kaarina"><![CDATA[Kaarina]]></category>
+		<category domain="post_tag" nicename="vasemmistoliitto"><![CDATA[vasemmistoliitto]]></category>
+		<category domain="post_tag" nicename="kuntapolitiikka"><![CDATA[kuntapolitiikka]]></category>
+		<category domain="post_tag" nicename="kaupunginvaltuusto"><![CDATA[kaupunginvaltuusto]]></category>
+		<category domain="post_tag" nicename="kuntavaalit-2025"><![CDATA[kuntavaalit 2025]]></category>
+	</item>
+</channel>
+</rss>
