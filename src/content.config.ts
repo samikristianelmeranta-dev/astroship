@@ -15,6 +15,9 @@ const blog = defineCollection({
       .object({
         src: z.string(),
         alt: z.string(),
+        caption: z.string().optional(),
+        /** Vaakakuva: näytetään leveänä otsikon alla. */
+        wide: z.boolean().default(false),
       })
       .optional(),
   }),

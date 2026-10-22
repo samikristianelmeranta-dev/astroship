@@ -98,7 +98,7 @@ const share = [
   <article>
     <header class="relative -mt-20 overflow-hidden pb-10 pt-30 sm:pt-36">
       <div class="pointer-events-none absolute -top-40 right-[-10%] -z-10 size-[30rem] rounded-full bg-brand/15 blur-3xl animate-blob" aria-hidden="true"></div>
-      <Container class:list={[post.data.image ? "grid max-w-6xl items-center gap-12 lg:grid-cols-[1.4fr_1fr]" : "max-w-4xl"]}>
+      <Container class:list={[post.data.image && !post.data.image.wide ? "grid max-w-6xl items-center gap-12 lg:grid-cols-[1.4fr_1fr]" : "max-w-4xl"]}>
         <div>
         <nav aria-label="Murupolku" class="hero-word text-sm text-muted">
           <ol class="flex flex-wrap items-center gap-2">
@@ -126,7 +126,7 @@ const share = [
         }
         </div>
         {
-          post.data.image && (
+          post.data.image && !post.data.image.wide && (
             <figure class="relative mx-auto w-full max-w-sm" data-reveal="zoom">
               <div class="absolute -inset-3 rotate-3 rounded-[2.5rem] bg-gradient-to-br from-brand to-ink-soft opacity-90" aria-hidden="true" />
               <img
@@ -143,6 +143,25 @@ const share = [
         }
       </Container>
     </header>
+
+    {
+      post.data.image?.wide && (
+        <Container class="mb-12 max-w-5xl">
+          <figure data-reveal="zoom">
+            <img
+              src={post.data.image.src}
+              alt={post.data.image.alt}
+              width="1200"
+              height="630"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full rounded-[2rem] object-cover shadow-xl"
+            />
+            {post.data.image.caption && <figcaption class="mt-3 text-sm text-muted">{post.data.image.caption}</figcaption>}
+          </figure>
+        </Container>
+      )
+    }
 
     <Container class="grid max-w-6xl gap-12 lg:grid-cols-[1fr_16rem]">
       <div

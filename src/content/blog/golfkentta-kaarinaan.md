@@ -5,9 +5,14 @@ snippet: "Kaarinan Lemunniemeen suunnitellaan yhdeksän reiän golfkenttää, mi
 publishDate: "2026-10-23 16:00"
 category: "Politiikka"
 tags: ["Kaarina", "golf", "Lemunniemi", "elinvoima", "liikunta", "yrittäjyys"]
+image:
+  src: "/images/golfpuisto-lemunniemi-havainnekuva.webp"
+  alt: "Havainnekuva Lemunniemen golfpuistosta: parkkipaikka, terassi, klubirakennus ja lyöntikatokset"
+  caption: "Havainnekuva: Arkkitehtitoimisto Ark Takala Oy. Range ja lähipelialue on tarkoitus rakentaa ensimmäisessä vaiheessa. Kuvassa näkyvät myös suunnitellut lyöntikatokset ja oleskelutilat."
+  wide: true
 ---
 
-**Lyhyesti:** Kaarinan Lemunniemeen suunnitellaan golfpuistoa. Nordic GHV Oy on hakenut kaupungilta suunnitteluvarausta noin 15 hehtaarin alueelle, ja kaupunginhallituksen oli määrä päättää varaussopimuksesta kesäkuussa 2026. Suunnitelmissa on **yhdeksän reiän golfkenttä**, harjoitusalue, minigolf, tenniskenttiä ja myymälärakennus. Kenttä on tarkoitus avata **vuonna 2029**. Alueella on myös Suomen sodan aikainen **Lemunniemen taistelupaikka vuodelta 1808**, joka pitää huomioida suunnittelussa. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/06/toteutuuko-kaarinan-golfkentta-vihdoin-lemunniemelle-haetaan-suunnitteluvarausta/), [Kaarina-lehti](https://www.kaarina-lehti.fi/2026/09/golfratahankkeen-matkassa-arkeologisia-mutkia/))
+**Lyhyesti:** Kaarinan Lemunniemeen suunnitellaan golfpuistoa. Nordic GHV Oy on hakenut kaupungilta suunnitteluvarausta noin 15 hehtaarin alueelle, ja kaupunginhallitus hyväksyi suunnitteluvarauksen kesäkuussa 2026. Sopimus allekirjoitettiin alkusyksystä. Suunnitelmissa on **yhdeksän reiän golfkenttä**, harjoitusalue, minigolf, tenniskenttiä ja myymälärakennus. Kenttä on tarkoitus avata **vuonna 2029**. Alueella on myös Suomen sodan aikainen **Lemunniemen taistelupaikka vuodelta 1808**, joka pitää huomioida suunnittelussa. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/06/toteutuuko-kaarinan-golfkentta-vihdoin-lemunniemelle-haetaan-suunnitteluvarausta/), [Kaarina-lehti](https://www.kaarina-lehti.fi/2026/09/golfratahankkeen-matkassa-arkeologisia-mutkia/))
 
 Olen toivonut golfkenttää Kaarinaan pitkään. Kirjoitin aiheesta jo vuonna 2024 [Uuden Suomen blogissani](https://puheenvuoro.uusisuomi.fi/sami-elmeranta/olisiko-mahdollista-etta-kaarinassa-olisi-tulevaisuudessa-golfkentta/): Kaarinaan on yritetty saada golfkenttää vuosien ajan, mutta hankkeet eivät ole toteutuneet. Nyt näyttää siltä, että tilanne voi vihdoin muuttua. Tässä kirjoituksessa kerron, mitä hankkeesta tiedetään ja miksi pidän sitä aidosti hyvänä asiana Kaarinalle.
 
@@ -18,16 +23,17 @@ Olen toivonut golfkenttää Kaarinaan pitkään. Kirjoitin aiheesta jo vuonna 20
 Kaarina-lehden mukaan Lemunniemen golfpuisto rakennettaisiin vaiheittain. Varsinaisen golfkentän lisäksi alueelle suunnitellaan:
 
 - **yhdeksän reiän golfkenttä**
-- **harjoitusalue** ja lyöntipaikat
+- **range eli harjoitusalue** lyöntikatoksineen
+- **lähipelialue**
 - **minigolf**
 - **tenniskenttiä**
 - **myymälärakennus**.
 
-Ensimmäisenä valmistuisivat lyöntipaikat ja pieni harjoitusalue, mahdollisesti jo ensi kesänä. Varsinainen kenttä on tarkoitus avata vuonna 2029. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/09/golfratahankkeen-matkassa-arkeologisia-mutkia/))
+Ensimmäisessä vaiheessa on tarkoitus rakentaa **range ja lähipelialue**, mahdollisesti jo ensi kesänä. Arkkitehtitoimisto Ark Takala Oy:n havainnekuvassa näkyvät myös suunnitellut lyöntikatokset ja oleskelutilat. Varsinainen kenttä on tarkoitus avata vuonna 2029. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/09/golfratahankkeen-matkassa-arkeologisia-mutkia/))
 
 ### Kuka hanketta vie eteenpäin?
 
-Hanketta vie eteenpäin yksityinen yritys, Nordic GHV Oy, joka on hakenut kaupungilta suunnitteluvarausta noin 15 hehtaarin maa-alueelle Lemunniemestä. Suunnitteluvaraus antaa yritykselle ajan selvittää hankkeen edellytykset ennen varsinaisia sopimuksia. Valmisteltu varaussopimus on voimassa vuoden allekirjoituksesta. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/06/toteutuuko-kaarinan-golfkentta-vihdoin-lemunniemelle-haetaan-suunnitteluvarausta/))
+Hanketta vie eteenpäin yksityinen yritys, Nordic GHV Oy, joka on hakenut kaupungilta suunnitteluvarausta noin 15 hehtaarin maa-alueelle Lemunniemestä. Suunnitteluvaraus antaa yritykselle ajan selvittää hankkeen edellytykset ennen varsinaisia sopimuksia. Kaupunginhallitus hyväksyi suunnitteluvarauksen kesäkuussa 2026, ja varaussopimus allekirjoitettiin alkusyksystä. Sopimus on voimassa vuoden allekirjoituksesta. ([Kaarina-lehti](https://www.kaarina-lehti.fi/2026/06/toteutuuko-kaarinan-golfkentta-vihdoin-lemunniemelle-haetaan-suunnitteluvarausta/))
 
 Golf-alan media [Golfpiste](https://golfpiste.com/ajankohtaista/kaverukset-puuhaavat-kaarinaan-golfkenttaa-mutta-suomen-sota-saattaa-sotkea-suunnitelmia/) on kertonut hankkeesta otsikolla "Kaverukset puuhaavat Kaarinaan golfkenttää, mutta Suomen sota saattaa sotkea suunnitelmia".
 
@@ -42,6 +48,18 @@ Yksityinen rahoitus tarkoittaa, että kaupunki ei ota kentästä taloudellista r
 Golf on laji, jota voi pelata lapsesta eläkeikään. Se on erinomaista hyötyliikuntaa: kierroksen aikana kävellään useita kilometrejä raikkaassa ulkoilmassa. Minigolf ja tenniskentät tuovat alueelle lisäksi koko perheen tekemistä.
 
 Golf on minulle itselleni rakas harrastus. Aina kun pääsee golfkentälle, se tuo hymyn huulille, ja olisi hienoa, jos sen voisi tehdä kotikaupungissa.
+
+### Golf tuottaa yhteiskunnalle selvää hyötyä
+
+Itä-Suomen yliopiston tutkimuksen mukaan golf tuottaa Suomessa **lähes 630 miljoonan euron yhteiskunnalliset hyödyt** vuodessa. Suomalaiset golfarit käyttävät lajiin noin 330 miljoonaa euroa vuodessa, joten hyöty on lähes kaksinkertainen kulutukseen verrattuna. ([Itä-Suomen yliopisto](https://www.uef.fi/fi/artikkeli/tutkimus-golf-tuottaa-suomessa-lahes-630-miljoonan-euron-yhteiskunnalliset-hyodyt), [Suomen Golfliitto](https://golf.fi/golf-tuottaa-suomelle-lahes-630-miljoonaa-euroa-vuodessa/))
+
+#### Miten hyöty on laskettu?
+
+Tutkimus julkaistiin vertaisarvioidussa Frontiers in Sports and Active Living -lehdessä, ja se perustuu SROI-menetelmään (Social Return on Investment). Tutkimuksessa jokainen golfiin käytetty euro tuotti noin 1,9 euron hyödyn, ja kerrannaisvaikutukset huomioiden suhde nousi 2,4:ään. Hyödyistä noin 81 miljoonaa euroa arvioitiin vuotuisiksi säästöiksi ja lisätuloiksi, joista suurin osa tulee verotuloina. Aineistona käytettiin 1 052 Golfliiton jäsenen kyselyä, golfkenttien tilinpäätöksiä ja kansallisia talouslukuja. ([Golfpiste](https://golfpiste.com/ajankohtaista/golf-tuottaa-suomelle-lahes-630-miljoonan-euron-yhteiskunnalliset-hyodyt/))
+
+#### Mitä tämä tarkoittaa Kaarinalle?
+
+Kun Kaarinaan tulee golfpuisto, osa näistä hyödyistä jää Kaarinaan: paikallisina työpaikkoina, palveluiden asiakkaina, verotuloina ja terveempinä asukkaina.
 
 ### Elinvoimaa ja yrittäjyyttä
 
@@ -99,11 +117,15 @@ Golfpuistoa suunnitellaan noin 15 hehtaarin alueelle Lemunniemeen Kaarinassa.
 
 ### Kuka rakentaa Kaarinan golfkentän?
 
-Hanketta vie eteenpäin yksityinen yritys Nordic GHV Oy, joka on hakenut kaupungilta suunnitteluvarausta alueelle.
+Hanketta vie eteenpäin yksityinen yritys Nordic GHV Oy. Kaarinan kaupunginhallitus hyväksyi sille suunnitteluvarauksen kesäkuussa 2026, ja sopimus allekirjoitettiin alkusyksystä.
 
 ### Mitä muuta golfpuistoon tulee?
 
-Suunnitelmissa on golfkentän lisäksi harjoitusalue, minigolf, tenniskenttiä ja myymälärakennus.
+Suunnitelmissa on golfkentän lisäksi range lyöntikatoksineen, lähipelialue, minigolf, tenniskenttiä, myymälärakennus ja oleskelutiloja.
+
+### Mitä hyötyä golfista on yhteiskunnalle?
+
+Itä-Suomen yliopiston tutkimuksen mukaan golf tuottaa Suomessa lähes 630 miljoonan euron yhteiskunnalliset hyödyt vuodessa, mikä on lähes kaksinkertainen määrä golfiin käytettyyn rahaan verrattuna.
 
 ### Mikä on Lemunniemen taistelupaikka?
 
@@ -111,7 +133,7 @@ Lemunniemessä käytiin Suomen sodan aikana taistelu 19.–20.6.1808. Kohde on M
 
 ### Milloin Kaarinan golfkenttä avataan?
 
-Kaarina-lehden mukaan kenttä on tarkoitus avata vuonna 2029. Ensimmäiset lyöntipaikat ja pieni harjoitusalue voisivat valmistua jo aiemmin.
+Kaarina-lehden mukaan kenttä on tarkoitus avata vuonna 2029. Ensimmäisessä vaiheessa rakennetaan range ja lähipelialue, jotka voisivat valmistua jo aiemmin.
 
 ## Lopuksi
 
