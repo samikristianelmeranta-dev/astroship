@@ -17,7 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Onko SEO-lisäosa käytössä.
  */
 function se_seo_plugin_active() {
-	return defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'SEOPRESS_VERSION' ) || defined( 'AIOSEO_VERSION' );
+	return defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'SEOPRESS_VERSION' ) || defined( 'AIOSEO_VERSION' )
+		|| defined( 'SURERANK_VERSION' ) || defined( 'SURERANK_FILE' );
 }
 
 /**
@@ -355,3 +356,24 @@ add_action( 'template_redirect', function () {
 	echo html_entity_decode( $out, ENT_QUOTES, 'UTF-8' ); // phpcs:ignore -- text/plain.
 	exit;
 }, 0 );
+
+/**
+ * Poistettujen vanhojen sivujen pysyvät uudelleenohjaukset (301).
+ * Ohjaus tehdään vain, jos osoitteessa ei ole enää sisältöä (404).
+ */
+add_action( 'template_redirect', function () {
+	if ( ! is_404() ) {
+		return;
+	}
+	$map  = array(
+		'kokoomus-kaarinassa'         => 'politiikkaa',
+		'kokoomus-on-tyovaen-puolue'  => 'politiikkaa',
+		'mielipiteetajatukset'        => '',
+	);
+	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+	if ( isset( $map[ $path ] ) ) {
+		$target = '' === $map[ $path ] ? se_blog_url() : se_page_url( $map[ $path ] );
+		wp_safe_redirect( $target, 301 );
+		exit;
+	}
+}, 1 );
