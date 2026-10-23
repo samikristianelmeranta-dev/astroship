@@ -18,6 +18,8 @@ Pohjan voi valita myös tavallisessa "Lisää uusi" -näkymässä oikean reunan 
 
 Pääkäyttäjät voivat muokata pohjia ja lisätä uusia kohdassa **Korjauspartnerit → Sisältöpohjat**.
 
+**Etusivun Ajankohtaista-nostot:** etusivulla näkyvät kategorian **Ajankohtaista footer** uusimmat artikkelit (6 kpl), kuten vanhan sivuston alatunnisteessa. Kun haluat nostaa artikkelin etusivulle, rastita sille tämä kategoria. Kategorian ja määrän voi vaihtaa kohdassa Ulkoasu → Mukauta → Etusivu.
+
 ## 2. Editorin työkalut
 
 - **Kappale / Otsikko 2 / Otsikko 3**: käytä otsikoita järjestyksessä. Sivun pääotsikko tulee automaattisesti otsikkokentästä, joten älä kirjoita sitä tekstiin uudelleen.

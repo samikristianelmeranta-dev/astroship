@@ -22,6 +22,8 @@ function kp_front_defaults() {
 		'kp_cta_teksti'     => 'Kerro tarpeestasi, niin ohjaamme sinut oikealle asiantuntijalle. Palvelulupauksemme on, että yhteistyö kanssamme on helppoa ja nopeaa.',
 		'kp_nayta_referenssit'   => true,
 		'kp_nayta_ajankohtaiset' => true,
+		'kp_ajankohtaiset_kategoria' => 'ajankohtaista-footer',
+		'kp_ajankohtaiset_maara'     => '6',
 	);
 }
 
@@ -52,6 +54,8 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'kp_cta_teksti'    => array( 'Yhteydenotto – teksti', 'textarea' ),
 		'kp_nayta_referenssit'   => array( 'Näytä referenssit', 'checkbox' ),
 		'kp_nayta_ajankohtaiset' => array( 'Näytä ajankohtaiset', 'checkbox' ),
+		'kp_ajankohtaiset_kategoria' => array( 'Ajankohtaiset – kategorian tunniste (slug), jonka artikkelit nostetaan etusivulle', 'text' ),
+		'kp_ajankohtaiset_maara'     => array( 'Ajankohtaiset – artikkeleiden määrä', 'number' ),
 	);
 	$defaults = kp_front_defaults();
 	foreach ( $fields as $key => $f ) {

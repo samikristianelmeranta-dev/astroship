@@ -135,7 +135,15 @@ $page_link = function ( $slug, $fallback = '' ) {
 					<a class="kp-nuolilinkki" href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>">Kaikki artikkelit</a>
 				<?php endif; ?>
 			</header>
-			<?php echo kp_sc_ajankohtaiset( array( 'maara' => 3 ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php
+			// Etusivulla näytetään kategorian "Ajankohtaista footer" artikkelit, kuten vanhan sivuston alatunnisteessa.
+			// Jos kategoriassa ei ole artikkeleita, näytetään uusimmat.
+			$news = kp_sc_ajankohtaiset( array( 'maara' => absint( kp_mod( 'kp_ajankohtaiset_maara' ) ), 'kategoria' => kp_mod( 'kp_ajankohtaiset_kategoria' ) ) );
+			if ( ! $news ) {
+				$news = kp_sc_ajankohtaiset( array( 'maara' => absint( kp_mod( 'kp_ajankohtaiset_maara' ) ) ) );
+			}
+			echo $news; // phpcs:ignore WordPress.Security.EscapeOutput
+			?>
 		</div>
 	</section>
 <?php endif; ?>

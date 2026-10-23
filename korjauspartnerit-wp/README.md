@@ -120,6 +120,7 @@ Lisäosa ohjaa vanhat osoitteet uusiin (301):
 - **Henkilökunta:** 9 henkilöllä on toimipiste (vanhan henkilökuntasivun mukaan). Muille toimipiste on lisättävä, jotta toimipistesuodatus kattaa kaikki. Vanhan sivun "Johto"-osio oli piilotettu, joten johto-merkintää ei asetettu kenellekään. Rasti "Kuuluu johtoon" näyttää henkilön henkilökuntasivulla ensimmäisenä. Osalta henkilöistä puuttuu kuva.
 - **Työpaikat:** tarkista, ovatko tuodut ilmoitukset yhä ajankohtaisia, ja lisää niille haun päättymispäivä.
 - **Koneturvallisuus**-palvelun sivulla on jo vanhalla sivustolla täytetekstiä (lorem ipsum).
+- **Etusivun Ajankohtaista-osio** näyttää kategorian *Ajankohtaista footer* artikkelit (kuten vanhan sivuston alatunniste). Kategorian ja määrän voi vaihtaa kohdassa Ulkoasu → Mukauta → Etusivu.
 - **Etusivun luvut** (2017 / 40+ / AAA) ovat vanhan sivuston tekstien pohjalta. Muokattavissa kohdassa Ulkoasu → Mukauta → Etusivu.
 - Lomakkeen vastaanottaja on oletuksena `toimisto@korjauspartnerit.fi`.
 - Tarkista tietosuojaseloste uuden lomakkeen osalta: lomakeviestit tallennetaan myös hallintaan.
