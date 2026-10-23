@@ -1,0 +1,2289 @@
+/*
+ * Korjauspartnerit – sivupohjien ja komponenttien tyylit.
+ * Muuttujat: perus.css. Sisällön tyylit: sisalto.css.
+ */
+
+/* ---------- Perusta ---------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 100px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+body {
+	margin: 0;
+	background: var(--kp-valkoinen);
+	color: var(--kp-teksti);
+	font-family: var(--kp-fontti);
+	font-size: 16px;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--kp-turkoosi);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	overflow-wrap: break-word;
+	hyphens: auto;
+	font-family: var(--kp-fontti);
+	color: inherit;
+	line-height: 1.2;
+	margin: 0 0 0.5em;
+}
+
+:focus-visible {
+	outline: 3px solid var(--kp-tiili);
+	outline-offset: 3px;
+}
+
+input,
+select,
+textarea,
+button {
+	font: inherit;
+	color: inherit;
+}
+
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.kp-ohita {
+	position: absolute;
+	left: 16px;
+	top: -100px;
+	z-index: 1000;
+	padding: 12px 18px;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+	font-weight: 600;
+	border-radius: var(--kp-sade);
+}
+
+.kp-ohita:focus {
+	top: 16px;
+}
+
+.kp-paa:focus {
+	outline: 0;
+}
+
+.kp-kehys {
+	width: 100%;
+	max-width: calc(var(--kp-sisalto-leveys) + 2 * var(--kp-reunus));
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--kp-reunus);
+	padding-right: var(--kp-reunus);
+}
+
+.kp-kehys--levea {
+	max-width: calc(var(--kp-leveys) + 2 * var(--kp-reunus));
+}
+
+.kp-kehys--kapea {
+	max-width: calc(820px + 2 * var(--kp-reunus));
+}
+
+.kp-svg {
+	width: 1.25em;
+	height: 1.25em;
+	flex: none;
+}
+
+/* ---------- Ylätunniste ---------- */
+
+.kp-ylatunniste {
+	--kp-yt-tausta: var(--kp-valkoinen);
+	--kp-yt-vari: var(--kp-musta-90);
+	--kp-yt-logo: var(--kp-turkoosi);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: var(--kp-yt-tausta);
+	color: var(--kp-yt-vari);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+	transition: background-color 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.admin-bar .kp-ylatunniste {
+	top: 32px;
+}
+
+@media (max-width: 782px) {
+	.admin-bar .kp-ylatunniste {
+		top: 46px;
+	}
+}
+
+@media (max-width: 600px) {
+	.admin-bar .kp-ylatunniste {
+		top: 0;
+	}
+}
+
+/* Kuvallinen yläosa: läpinäkyvä tunniste valkoisella logolla (ohjeistuksen verkkosivuesimerkki). */
+.kp-has-image-hero .kp-ylatunniste {
+	position: fixed;
+	left: 0;
+	right: 0;
+	--kp-yt-tausta: transparent;
+	--kp-yt-vari: var(--kp-valkoinen);
+	--kp-yt-logo: var(--kp-valkoinen);
+	border-bottom-color: transparent;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+}
+
+.kp-has-image-hero .kp-ylatunniste.is-vieritetty,
+.kp-has-image-hero.kp-valikko-auki .kp-ylatunniste,
+.kp-has-image-hero.kp-haku-auki .kp-ylatunniste {
+	--kp-yt-tausta: var(--kp-valkoinen);
+	--kp-yt-vari: var(--kp-musta-90);
+	--kp-yt-logo: var(--kp-turkoosi);
+	background: var(--kp-valkoinen);
+	border-bottom-color: rgba(0, 0, 0, 0.06);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.kp-ylatunniste.is-vieritetty {
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.kp-ylatunniste__sisus {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 84px;
+}
+
+.kp-ylatunniste__logo {
+	display: inline-flex;
+	color: var(--kp-yt-logo);
+	flex: none;
+	margin-right: auto;
+	/* Turva-alue ja minimikoko 30 px ohjeistuksen mukaan */
+	padding: 8px 0;
+}
+
+.kp-ylatunniste__logo .kp-logo {
+	height: 38px;
+	width: auto;
+	display: block;
+}
+
+.kp-ylatunniste__puhelin {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--kp-yt-vari);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.kp-ylatunniste__toiminnot {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.kp-ikonipainike {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--kp-yt-vari);
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.kp-ikonipainike:hover {
+	background: rgba(127, 127, 127, 0.14);
+}
+
+.kp-valikkopainike__kiinni,
+.kp-valikko-auki .kp-valikkopainike__auki {
+	display: none;
+}
+
+.kp-valikko-auki .kp-valikkopainike__kiinni {
+	display: inline-flex;
+}
+
+.kp-valikkopainike__auki {
+	display: inline-flex;
+}
+
+/* Päävalikko */
+.kp-paavalikko__lista {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.kp-paavalikko__lista a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.kp-paavalikko__haku {
+	display: none;
+}
+
+@media (min-width: 1100px) {
+	.kp-valikkopainike {
+		display: none !important;
+	}
+
+	.kp-paavalikko__lista {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.kp-paavalikko__lista > li {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	.kp-paavalikko__lista > li > a {
+		position: relative;
+		display: block;
+		padding: 30px 12px;
+		font-size: 0.95rem;
+		font-weight: 500;
+		color: var(--kp-yt-vari);
+	}
+
+	.kp-paavalikko__lista > li.menu-item-has-children > a {
+		padding-right: 4px;
+	}
+
+	.kp-paavalikko__lista > li > a::after {
+		content: "";
+		position: absolute;
+		left: 12px;
+		right: 12px;
+		bottom: 22px;
+		height: 2px;
+		background: var(--kp-tiili);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.2s;
+	}
+
+	.kp-paavalikko__lista > li > a:hover::after,
+	.kp-paavalikko__lista > li.current-menu-item > a::after,
+	.kp-paavalikko__lista > li.current-menu-ancestor > a::after,
+	.kp-paavalikko__lista > li.current-menu-parent > a::after {
+		transform: scaleX(1);
+	}
+
+	.kp-alavalikko-avaa {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 28px;
+		padding: 0;
+		border: 0;
+		background: none;
+		color: var(--kp-yt-vari);
+		cursor: pointer;
+	}
+
+	.kp-alavalikko-avaa .kp-svg {
+		width: 16px;
+		height: 16px;
+		transition: transform 0.2s;
+	}
+
+	.kp-paavalikko__lista > li.is-open > .kp-alavalikko-avaa .kp-svg {
+		transform: rotate(180deg);
+	}
+
+	.kp-paavalikko .sub-menu {
+		position: absolute;
+		top: calc(100% - 12px);
+		left: 0;
+		min-width: 270px;
+		margin: 0;
+		padding: 10px;
+		list-style: none;
+		background: var(--kp-valkoinen);
+		border-radius: var(--kp-sade-iso);
+		box-shadow: var(--kp-varjo-iso);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(8px);
+		transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+	}
+
+	.kp-paavalikko .sub-menu::before {
+		content: "";
+		position: absolute;
+		top: -12px;
+		left: 0;
+		right: 0;
+		height: 12px;
+	}
+
+	.kp-paavalikko__lista > li:hover > .sub-menu,
+	.kp-paavalikko__lista > li:focus-within > .sub-menu,
+	.kp-paavalikko__lista > li.is-open > .sub-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+	}
+
+	.kp-paavalikko .sub-menu a {
+		display: block;
+		padding: 10px 14px;
+		border-radius: var(--kp-sade);
+		color: var(--kp-musta-90);
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	.kp-paavalikko .sub-menu a:hover,
+	.kp-paavalikko .sub-menu .current-menu-item > a {
+		background: var(--kp-hiekka-vaalea);
+		color: var(--kp-turkoosi);
+	}
+}
+
+@media (max-width: 1099.98px) {
+	.kp-paavalikko {
+		position: fixed;
+		inset: 84px 0 0 0;
+		z-index: 99;
+		overflow-y: auto;
+		padding: 16px var(--kp-reunus) 40px;
+		background: var(--kp-valkoinen);
+		color: var(--kp-musta-90);
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-8px);
+		transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+	}
+
+	.admin-bar .kp-paavalikko {
+		top: calc(84px + 46px);
+	}
+
+	.kp-valikko-auki {
+		overflow: hidden;
+	}
+
+	.kp-valikko-auki .kp-paavalikko {
+		visibility: visible;
+		opacity: 1;
+		transform: none;
+	}
+
+	.kp-paavalikko__lista > li {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		border-bottom: 1px solid var(--kp-reuna);
+	}
+
+	.kp-paavalikko__lista > li > a {
+		flex: 1;
+		padding: 16px 0;
+		font-size: 1.15rem;
+		font-weight: 600;
+	}
+
+	.kp-alavalikko-avaa {
+		width: 48px;
+		height: 48px;
+		border: 0;
+		background: none;
+		color: var(--kp-turkoosi);
+		cursor: pointer;
+	}
+
+	.kp-alavalikko-avaa .kp-svg {
+		transition: transform 0.2s;
+	}
+
+	li.is-open > .kp-alavalikko-avaa .kp-svg {
+		transform: rotate(180deg);
+	}
+
+	.kp-paavalikko .sub-menu {
+		display: none;
+		flex-basis: 100%;
+		list-style: none;
+		margin: 0 0 12px;
+		padding: 0 0 0 14px;
+		border-left: 2px solid var(--kp-tiili);
+	}
+
+	.kp-paavalikko li.is-open > .sub-menu {
+		display: block;
+	}
+
+	.kp-paavalikko .sub-menu a {
+		display: block;
+		padding: 10px 0;
+		font-weight: 500;
+	}
+
+	.kp-paavalikko__haku {
+		display: flex;
+		margin-top: 24px;
+		border: 1px solid var(--kp-reuna);
+		border-radius: 999px;
+		overflow: hidden;
+	}
+
+	.kp-paavalikko__haku input {
+		flex: 1;
+		min-width: 0;
+		padding: 14px 18px;
+		border: 0;
+		font-size: 1rem;
+	}
+
+	.kp-paavalikko__haku button {
+		width: 54px;
+		border: 0;
+		background: var(--kp-turkoosi);
+		color: var(--kp-valkoinen);
+	}
+
+	.kp-hakupainike {
+		display: none;
+	}
+}
+
+/* Hakupaneeli */
+.kp-hakupaneeli {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 100%;
+	padding: 24px 0;
+	background: var(--kp-valkoinen);
+	border-top: 1px solid var(--kp-reuna);
+	box-shadow: var(--kp-varjo);
+}
+
+.kp-hakupaneeli__lomake {
+	display: flex;
+	gap: 12px;
+}
+
+.kp-hakupaneeli__lomake input,
+.kp-pikahaku__lomake input {
+	flex: 1;
+	min-width: 0;
+	padding: 0.85em 1.2em;
+	border: 1px solid var(--kp-musta-20);
+	border-radius: 999px;
+	background: var(--kp-valkoinen);
+	color: var(--kp-musta-90);
+	font-size: 1rem;
+}
+
+.kp-hakupaneeli__lomake input:focus,
+.kp-pikahaku__lomake input:focus {
+	outline: 2px solid var(--kp-turkoosi);
+	outline-offset: 1px;
+	border-color: var(--kp-turkoosi);
+}
+
+/* ---------- Yläosat (hero) ---------- */
+
+.kp-hero {
+	position: relative;
+	overflow: hidden;
+	padding: clamp(40px, 6vw, 80px) 0 clamp(48px, 7vw, 96px);
+}
+
+.kp-hero__sisus {
+	position: relative;
+	z-index: 2;
+}
+
+.kp-hero .kp-kehys {
+	max-width: calc(var(--kp-leveys) + 2 * var(--kp-reunus));
+}
+
+.kp-hero__otsikko {
+	max-width: 22ch;
+	margin: 0;
+	font-size: clamp(1.75rem, 1.1rem + 2.6vw, 3.6rem);
+	font-weight: 500;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+}
+
+.kp-hero__ylaotsikko,
+.kp-ylaotsikko {
+	margin: 0 0 14px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.kp-ylaotsikko {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--kp-turkoosi);
+}
+
+.kp-ylaotsikko::before {
+	content: "";
+	width: 0.6em;
+	height: 0.7em;
+	background: var(--kp-tiili);
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.kp-ylaotsikko--vaalea {
+	color: var(--kp-valkoinen);
+}
+
+.kp-hero__ingressi {
+	max-width: 62ch;
+	margin: 22px 0 0;
+	font-size: clamp(1.05rem, 1rem + 0.4vw, 1.3rem);
+	line-height: 1.55;
+}
+
+.kp-hero__painikkeet {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 32px;
+}
+
+.kp-hero--turkoosi {
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+/* Suuri liikemerkin muotoinen kolmio taustalla */
+.kp-hero--turkoosi::after,
+.kp-teesi::after,
+.kp-etusivu-hero--ilman-kuvaa::after {
+	content: "";
+	position: absolute;
+	right: -6vw;
+	top: 50%;
+	width: clamp(260px, 36vw, 560px);
+	aspect-ratio: 213 / 246;
+	transform: translateY(-50%);
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 12%;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	pointer-events: none;
+}
+
+.kp-hero--hiekka {
+	background: var(--kp-hiekka);
+	color: var(--kp-musta);
+}
+
+.kp-hero--ei {
+	padding-bottom: 8px;
+	color: var(--kp-musta);
+}
+
+.kp-hero--kuva {
+	display: flex;
+	align-items: flex-end;
+	min-height: clamp(420px, 62vh, 680px);
+	padding-top: 140px;
+	color: var(--kp-valkoinen);
+	background: var(--kp-musta);
+}
+
+.kp-hero__kuva,
+.kp-etusivu-hero__kuva {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.kp-hero__kuva img,
+.kp-etusivu-hero__kuva img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.kp-hero__kuva::after,
+.kp-etusivu-hero__kuva::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.1) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) 55%);
+}
+
+/* Murupolku */
+.kp-murupolku ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 0 0 26px;
+	padding: 0;
+	list-style: none;
+	font-size: 0.85rem;
+}
+
+.kp-murupolku li {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	opacity: 0.85;
+}
+
+.kp-murupolku li + li::before {
+	content: "/";
+	opacity: 0.6;
+}
+
+.kp-murupolku a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.kp-murupolku a:hover {
+	text-decoration: underline;
+}
+
+.kp-murupolku [aria-current] {
+	max-width: 40ch;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---------- Etusivu ---------- */
+
+.kp-etusivu-hero {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: min(92vh, 860px);
+	padding: 160px 0 clamp(64px, 9vw, 120px);
+	overflow: hidden;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+	margin-top: 0;
+}
+
+.kp-etusivu-hero--ilman-kuvaa {
+	min-height: min(80vh, 720px);
+}
+
+.kp-etusivu-hero__sisus {
+	position: relative;
+	z-index: 2;
+}
+
+.kp-etusivu-hero__otsikko {
+	max-width: 20ch;
+	margin: 0;
+	font-size: clamp(1.75rem, 0.9rem + 4.6vw, 5rem);
+	font-weight: 500;
+	line-height: 1.05;
+	letter-spacing: -0.025em;
+}
+
+@media (max-width: 600px) {
+	.kp-etusivu-hero__otsikko,
+	.kp-hero__otsikko {
+		max-width: none;
+	}
+}
+
+.kp-etusivu-hero__teksti {
+	max-width: 56ch;
+	margin: 26px 0 0;
+	font-size: clamp(1.05rem, 1rem + 0.45vw, 1.35rem);
+	line-height: 1.55;
+}
+
+.kp-pikahaku {
+	position: relative;
+	z-index: 3;
+	margin-top: -48px;
+}
+
+.kp-pikahaku__sisus {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 1.1fr);
+	align-items: center;
+	gap: 24px 48px;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	background: var(--kp-valkoinen);
+	border-radius: var(--kp-sade-iso);
+	box-shadow: var(--kp-varjo-iso);
+	max-width: calc(var(--kp-leveys) - 80px);
+}
+
+.kp-pikahaku__otsikko {
+	margin: 0 0 6px;
+	font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+	font-weight: 600;
+	color: var(--kp-musta);
+}
+
+.kp-pikahaku__sisus p {
+	margin: 0;
+	color: var(--kp-teksti-heikko);
+	font-size: 0.95rem;
+}
+
+.kp-pikahaku__lomake {
+	display: flex;
+	gap: 10px;
+}
+
+.kp-pikahaku__lomake--hero {
+	max-width: 640px;
+	margin-top: 28px;
+}
+
+.kp-pikahaku__lomake--hero input {
+	border-color: transparent;
+}
+
+@media (max-width: 800px) {
+	.kp-pikahaku {
+		margin-top: -32px;
+	}
+
+	.kp-pikahaku__sisus {
+		grid-template-columns: minmax(0, 1fr);
+		width: calc(100% - 2 * var(--kp-reunus));
+		padding: 24px;
+	}
+}
+
+.kp-kohderyhmat {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+@media (max-width: 1100px) {
+	.kp-kohderyhmat {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.kp-kohderyhmat {
+		grid-template-columns: 1fr;
+	}
+}
+
+.kp-kohderyhma {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-height: 260px;
+	padding: 28px 26px;
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+	color: var(--kp-musta-90);
+	text-decoration: none;
+	overflow: hidden;
+	transition: background-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.kp-kohderyhma::after {
+	content: "";
+	position: absolute;
+	right: -40px;
+	bottom: -50px;
+	width: 140px;
+	height: 160px;
+	background: var(--kp-turkoosi);
+	opacity: 0.06;
+	border-radius: 18px;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	transition: opacity 0.25s;
+}
+
+.kp-kohderyhma:hover,
+.kp-kohderyhma:focus-visible {
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+	transform: translateY(-4px);
+}
+
+.kp-kohderyhma:hover::after {
+	background: var(--kp-valkoinen);
+	opacity: 0.1;
+}
+
+.kp-kohderyhma__numero {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--kp-tiili);
+}
+
+.kp-kohderyhma__otsikko {
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.kp-kohderyhma__teksti {
+	font-size: 0.95rem;
+	line-height: 1.55;
+	opacity: 0.85;
+}
+
+.kp-kohderyhma .kp-nuolilinkki {
+	margin-top: auto;
+	color: inherit;
+}
+
+/* Arvolupaus */
+.kp-teesi {
+	position: relative;
+	overflow: hidden;
+	padding: var(--kp-osio) 0;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+.kp-teesi::after {
+	left: -8vw;
+	right: auto;
+}
+
+.kp-teesi__sisus {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1.4fr 1fr;
+	gap: 48px;
+	align-items: center;
+}
+
+@media (max-width: 900px) {
+	.kp-teesi__sisus {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.kp-teesi__otsikko {
+	font-size: clamp(1.7rem, 1.2rem + 2vw, 2.8rem);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.015em;
+}
+
+.kp-teesi__teksti p {
+	max-width: 60ch;
+	font-size: 1.05rem;
+	line-height: 1.7;
+	opacity: 0.92;
+}
+
+.kp-luvut {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+}
+
+.kp-luku {
+	display: flex;
+	flex-direction: column-reverse;
+	padding: 20px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.kp-luku dd {
+	margin: 0;
+	font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.02em;
+}
+
+.kp-luku dt {
+	margin-top: 8px;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	opacity: 0.8;
+}
+
+/* ---------- Osiot ---------- */
+
+.kp-osio {
+	padding: var(--kp-osio) 0;
+}
+
+.kp-osio--tiivis {
+	padding-bottom: calc(var(--kp-osio) / 2);
+}
+
+.kp-osio--tiivis + .kp-osio {
+	padding-top: calc(var(--kp-osio) / 2);
+}
+
+.kp-osio--sisalto + .kp-osio--yhteyshenkilot {
+	padding-top: 0;
+}
+
+.kp-osio--hiekka {
+	background: var(--kp-hiekka);
+}
+
+.kp-osio__yla {
+	margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.kp-osio__yla--rivi {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 16px 32px;
+}
+
+.kp-osio__otsikko {
+	margin: 0 0 24px;
+	font-size: clamp(1.6rem, 1.25rem + 1.4vw, 2.4rem);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	color: var(--kp-musta);
+}
+
+.kp-osio__yla .kp-osio__otsikko {
+	margin-bottom: 0;
+	max-width: 26ch;
+}
+
+.kp-osio__otsikko--pieni {
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+.kp-osio__johdanto {
+	max-width: 70ch;
+	margin: -8px 0 28px;
+	color: var(--kp-musta-80);
+}
+
+.kp-osio__lisa {
+	margin-top: 28px;
+}
+
+.kp-sisalto--levea {
+	max-width: calc(var(--kp-leveys) + 2 * var(--kp-reunus));
+}
+
+.kp-artikkelikuva {
+	margin: 0 0 2em;
+}
+
+.kp-artikkelikuva img {
+	width: 100%;
+	border-radius: var(--kp-sade-iso);
+}
+
+/* Sivupalkillinen asettelu */
+.kp-sivupalkillinen {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 340px;
+	gap: clamp(32px, 5vw, 80px);
+	align-items: start;
+}
+
+.kp-sivupalkillinen > .kp-sisalto {
+	max-width: var(--kp-sisalto-leveys);
+}
+
+@media (max-width: 960px) {
+	.kp-sivupalkillinen {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.kp-sivupalkki {
+	position: sticky;
+	top: 110px;
+	display: grid;
+	gap: 20px;
+}
+
+@media (max-width: 960px) {
+	.kp-sivupalkki {
+		position: static;
+	}
+}
+
+.kp-sivupalkki__laatikko {
+	position: relative;
+	overflow: hidden;
+	padding: 28px;
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+}
+
+.kp-sivupalkki__laatikko h2 {
+	margin: 0 0 14px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.kp-sivupalkki__laatikko p:last-child {
+	margin-bottom: 0;
+}
+
+.kp-sivupalkki__laatikko--turkoosi {
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+.kp-sivupalkki__laatikko--turkoosi a:not(.kp-button) {
+	color: var(--kp-valkoinen);
+}
+
+.kp-sivupalkki__henkilo {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 12px;
+}
+
+.kp-sivupalkki__henkilo img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.kp-sivupalkki__henkilo p {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.4;
+}
+
+.kp-sivupalkki__yhteys {
+	list-style: none;
+	margin: 0 0 20px;
+	padding: 0;
+	display: grid;
+	gap: 10px;
+}
+
+.kp-sivupalkki__yhteys a {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.kp-sivupalkki__linkit {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.kp-sivupalkki__linkit li + li {
+	border-top: 1px solid var(--kp-reuna);
+}
+
+.kp-sivupalkki__linkit a {
+	position: relative;
+	display: block;
+	padding: 11px 22px 11px 0;
+	color: var(--kp-musta-90);
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 0.95rem;
+}
+
+.kp-sivupalkki__linkit a::after {
+	content: "";
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	width: 7px;
+	height: 8px;
+	margin-top: -4px;
+	background: var(--kp-tiili);
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.kp-sivupalkki__linkit a:hover {
+	color: var(--kp-turkoosi);
+}
+
+.kp-faktat {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 10px 16px;
+	margin: 0 0 16px;
+	font-size: 0.95rem;
+}
+
+.kp-faktat dt {
+	font-weight: 600;
+	color: var(--kp-musta-60);
+}
+
+.kp-faktat dd {
+	margin: 0;
+}
+
+/* ---------- Kortit ---------- */
+
+.kp-kortisto {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: clamp(16px, 2vw, 28px);
+}
+
+.kp-kortisto--referenssit,
+.kp-kortisto--artikkelit {
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+@media (max-width: 400px) {
+	.kp-kortisto--referenssit,
+	.kp-kortisto--artikkelit {
+		grid-template-columns: 1fr;
+	}
+}
+
+.kp-osio--hiekka .kp-kortti-linkki__kuva {
+	background: var(--kp-hiekka-vaalea);
+}
+
+.kp-kortti-linkki {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	background: var(--kp-valkoinen);
+	border-radius: var(--kp-sade-iso);
+	color: var(--kp-musta-90);
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 0 1px var(--kp-reuna);
+	transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.kp-osio--hiekka .kp-kortti-linkki {
+	box-shadow: none;
+}
+
+.kp-kortti-linkki:hover,
+.kp-kortti-linkki:focus-visible {
+	transform: translateY(-4px);
+	box-shadow: var(--kp-varjo-iso);
+}
+
+.kp-kortti-linkki[hidden] {
+	display: none;
+}
+
+.kp-kortti-linkki__kuva {
+	position: relative;
+	display: block;
+	aspect-ratio: 3 / 2;
+	overflow: hidden;
+	background: var(--kp-hiekka);
+}
+
+.kp-kortti-linkki__kuva img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+
+.kp-kortti-linkki:hover .kp-kortti-linkki__kuva img {
+	transform: scale(1.04);
+}
+
+.kp-kortti-linkki__paikkamerkki {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--kp-turkoosi);
+	opacity: 0.18;
+}
+
+.kp-kortti-linkki__paikkamerkki svg {
+	width: 22%;
+	height: auto;
+}
+
+.kp-kortti-linkki__sisalto {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex: 1;
+	padding: 22px 24px 24px;
+}
+
+.kp-kortti-linkki__ylaotsikko {
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--kp-turkoosi);
+}
+
+.kp-kortti-linkki__otsikko {
+	font-size: 1.15rem;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--kp-musta);
+}
+
+.kp-kortti-linkki__teksti {
+	font-size: 0.95rem;
+	line-height: 1.55;
+	color: var(--kp-musta-80);
+}
+
+.kp-kortti-linkki .kp-nuolilinkki {
+	margin-top: auto;
+	padding-top: 6px;
+	font-size: 0.9rem;
+}
+
+.kp-kortti-linkki--palvelu {
+	border-top: 4px solid var(--kp-turkoosi);
+}
+
+.kp-kortti-linkki--palvelu .kp-kortti-linkki__kuva {
+	display: none;
+}
+
+.kp-palveluryhma + .kp-palveluryhma {
+	margin-top: clamp(40px, 5vw, 64px);
+}
+
+.kp-palveluryhma__otsikko {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0 0 20px;
+	font-size: 1.35rem;
+	font-weight: 600;
+	color: var(--kp-musta);
+}
+
+.kp-palveluryhma__otsikko::before {
+	content: "";
+	width: 0.6em;
+	height: 0.7em;
+	background: var(--kp-tiili);
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* Suodatinpainikkeet */
+.kp-suodatin,
+.kp-henkilohaku__chipit,
+.kp-avainsanat {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 32px;
+}
+
+.kp-chip,
+.kp-sisalto a.kp-chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.5em 1.05em;
+	border: 1px solid var(--kp-musta-20);
+	border-radius: 999px;
+	background: var(--kp-valkoinen);
+	color: var(--kp-musta-80);
+	font-size: 0.9rem;
+	font-weight: 500;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.kp-chip:hover {
+	border-color: var(--kp-turkoosi);
+	color: var(--kp-turkoosi);
+}
+
+.kp-chip.is-active {
+	background: var(--kp-turkoosi);
+	border-color: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+/* ---------- Henkilöt ---------- */
+
+.kp-henkilot {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 20px;
+}
+
+.kp-henkilot + .kp-henkilot__otsikko,
+.kp-sisalto .kp-henkilot {
+	margin-top: 1.5em;
+}
+
+.kp-henkilo {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--kp-valkoinen);
+	border-radius: var(--kp-sade-iso);
+	overflow: hidden;
+	box-shadow: 0 0 0 1px var(--kp-reuna);
+}
+
+.kp-osio--hiekka .kp-henkilo {
+	box-shadow: none;
+}
+
+.kp-henkilo__kuva {
+	position: relative;
+	aspect-ratio: 1 / 1;
+	background: var(--kp-hiekka);
+	overflow: hidden;
+}
+
+.kp-henkilo__kuva img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 25%;
+	border-radius: 0 !important;
+}
+
+.kp-henkilo__paikkamerkki {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--kp-turkoosi);
+	opacity: 0.2;
+}
+
+.kp-henkilo__paikkamerkki svg {
+	width: 34%;
+	height: auto;
+}
+
+.kp-henkilo__tiedot {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 20px 22px 22px;
+}
+
+.kp-henkilo__nimi,
+.kp-sisalto .kp-henkilo__nimi {
+	margin: 0 0 4px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--kp-musta);
+}
+
+.kp-henkilo__titteli,
+.kp-sisalto .kp-henkilo__titteli {
+	margin: 0;
+	font-size: 0.92rem;
+	line-height: 1.45;
+	color: var(--kp-musta-80);
+}
+
+.kp-henkilo__toimipiste,
+.kp-sisalto .kp-henkilo__toimipiste {
+	margin: 6px 0 0;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--kp-turkoosi);
+}
+
+.kp-henkilo__yhteys,
+.kp-sisalto ul.kp-henkilo__yhteys {
+	display: grid;
+	gap: 6px;
+	margin: auto 0 0;
+	padding: 16px 0 0;
+	list-style: none;
+	font-size: 0.88rem;
+}
+
+.kp-sisalto .kp-henkilo__yhteys li {
+	margin: 0;
+}
+
+.kp-henkilo__yhteys a,
+.kp-sisalto .kp-henkilo__yhteys a:not(.kp-button) {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--kp-turkoosi);
+	font-weight: 500;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.kp-henkilo__yhteys a:hover {
+	text-decoration: underline;
+}
+
+.kp-ikoni {
+	flex: none;
+	width: 16px;
+	height: 16px;
+	background: currentColor;
+	-webkit-mask: var(--ikoni) center / contain no-repeat;
+	mask: var(--ikoni) center / contain no-repeat;
+}
+
+.kp-ikoni--puhelin {
+	--ikoni: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2'/%3E%3C/svg%3E");
+}
+
+.kp-ikoni--email {
+	--ikoni: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E");
+}
+
+.kp-ikoni--linkedin {
+	--ikoni: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z'/%3E%3C/svg%3E");
+}
+
+/* Henkilöhaku */
+.kp-henkilohaku__ohjaimet {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	gap: 16px 20px;
+	margin-bottom: 20px;
+}
+
+.kp-henkilohaku__chipit {
+	grid-column: 1 / -1;
+	margin: 0;
+}
+
+@media (max-width: 700px) {
+	.kp-henkilohaku__ohjaimet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.kp-henkilohaku__kentta label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.kp-henkilohaku__kentta :is(input, select),
+.kp-lomake :is(input[type="text"], input[type="email"], input[type="tel"], select, textarea) {
+	width: 100%;
+	padding: 0.8em 1em;
+	border: 1px solid var(--kp-musta-20);
+	border-radius: var(--kp-sade);
+	background: var(--kp-valkoinen);
+	color: var(--kp-musta-90);
+	font-size: 1rem;
+	line-height: 1.4;
+}
+
+.kp-henkilohaku__kentta :is(input, select):focus,
+.kp-lomake :is(input, select, textarea):focus {
+	outline: 2px solid var(--kp-turkoosi);
+	outline-offset: 0;
+	border-color: var(--kp-turkoosi);
+}
+
+.kp-henkilohaku__tulos {
+	margin: 0 0 16px;
+	font-size: 0.9rem;
+	color: var(--kp-musta-60);
+}
+
+.kp-henkilohaku__rivi[hidden] {
+	display: none;
+}
+
+.kp-henkilohaku__eitulosta {
+	padding: 24px;
+	background: var(--kp-valkoinen);
+	border-radius: var(--kp-sade-iso);
+}
+
+/* Henkilön oma sivu */
+.kp-profiili {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	gap: clamp(24px, 4vw, 56px);
+	align-items: center;
+}
+
+@media (max-width: 700px) {
+	.kp-profiili {
+		grid-template-columns: 1fr;
+	}
+
+	.kp-profiili__kuva {
+		max-width: 220px;
+	}
+}
+
+.kp-profiili__kuva {
+	position: relative;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--kp-sade-iso);
+	overflow: hidden;
+	background: var(--kp-valkoinen);
+}
+
+.kp-profiili__kuva img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.kp-profiili__titteli {
+	margin: 12px 0 0;
+	font-size: 1.2rem;
+}
+
+.kp-profiili__toimipiste {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 10px 0 0;
+	color: var(--kp-turkoosi);
+	font-weight: 600;
+}
+
+/* ---------- Työpaikat ---------- */
+
+.kp-tyopaikat {
+	display: grid;
+	gap: 12px;
+}
+
+.kp-tyopaikka {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 6px 24px;
+	align-items: center;
+	padding: 22px 26px;
+	background: var(--kp-valkoinen);
+	border: 1px solid var(--kp-reuna);
+	border-left: 4px solid var(--kp-turkoosi);
+	border-radius: var(--kp-sade);
+	color: var(--kp-musta-90);
+	text-decoration: none;
+	transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.kp-tyopaikka:hover {
+	box-shadow: var(--kp-varjo);
+	transform: translateX(4px);
+}
+
+.kp-tyopaikka__otsikko {
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: var(--kp-musta);
+}
+
+.kp-tyopaikka__tiedot {
+	grid-column: 1;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 18px;
+	font-size: 0.9rem;
+	color: var(--kp-musta-60);
+}
+
+.kp-tyopaikka .kp-nuolilinkki {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+}
+
+@media (max-width: 600px) {
+	.kp-tyopaikka {
+		grid-template-columns: 1fr;
+	}
+
+	.kp-tyopaikka .kp-nuolilinkki {
+		grid-column: 1;
+		grid-row: auto;
+	}
+}
+
+.kp-tyhja {
+	padding: 28px;
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+}
+
+/* ---------- Lomake ---------- */
+
+.kp-lomake {
+	scroll-margin-top: 110px;
+}
+
+.kp-lomake h2 {
+	margin-top: 0;
+	font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+	font-weight: 500;
+}
+
+.kp-lomake__lomake p {
+	margin: 0 0 16px;
+}
+
+.kp-lomake label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.kp-lomake__rivi--2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 16px;
+}
+
+@media (max-width: 600px) {
+	.kp-lomake__rivi--2 {
+		grid-template-columns: 1fr;
+	}
+}
+
+.kp-lomake textarea {
+	resize: vertical;
+	min-height: 140px;
+}
+
+.kp-lomake__suostumus label {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	font-weight: 400;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.kp-lomake__suostumus input {
+	width: 18px;
+	height: 18px;
+	margin-top: 2px;
+	accent-color: var(--kp-turkoosi);
+	flex: none;
+}
+
+.kp-lomake__hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.kp-lomake__ilmoitus {
+	margin-bottom: 24px;
+	padding: 18px 22px;
+	border-radius: var(--kp-sade);
+	border-left: 4px solid;
+}
+
+.kp-lomake__ilmoitus--ok {
+	background: #e6f0f1;
+	border-color: var(--kp-turkoosi);
+}
+
+.kp-lomake__ilmoitus--virhe {
+	background: #fff0eb;
+	border-color: var(--kp-tiili);
+}
+
+.kp-osio--lomake .kp-osio__otsikko {
+	text-align: left;
+}
+
+/* ---------- Yhteystiedot ---------- */
+
+.kp-yhteystiedot {
+	display: grid;
+	grid-template-columns: 1fr 1.1fr;
+	gap: clamp(32px, 6vw, 96px);
+	align-items: start;
+}
+
+@media (max-width: 900px) {
+	.kp-yhteystiedot {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.kp-yhteystiedot__lista {
+	display: grid;
+	gap: 18px;
+	margin: 0 0 32px;
+	padding: 0;
+	list-style: none;
+}
+
+.kp-yhteystiedot__lista li {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+}
+
+.kp-yhteystiedot__lista .kp-svg {
+	width: 44px;
+	height: 44px;
+	padding: 11px;
+	border-radius: 50%;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+.kp-yhteystiedot__lista small {
+	display: block;
+	font-size: 0.8rem;
+	color: var(--kp-musta-60);
+}
+
+.kp-yhteystiedot__lista a {
+	overflow-wrap: anywhere;
+	font-size: 1.2rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.kp-yhteystiedot__lomake {
+	padding: clamp(24px, 4vw, 44px);
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+}
+
+.kp-laskutus {
+	margin-top: 40px;
+	padding-top: 32px;
+	border-top: 1px solid var(--kp-reuna);
+}
+
+.kp-laskutus dl {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 8px 20px;
+	margin: 0;
+}
+
+.kp-laskutus dt {
+	font-weight: 600;
+}
+
+.kp-laskutus dd {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+	.kp-laskutus dl {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2px;
+	}
+
+	.kp-laskutus dd {
+		margin-bottom: 10px;
+	}
+}
+
+.kp-toimipisteet {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 20px;
+}
+
+.kp-toimipiste {
+	padding: 28px;
+	background: var(--kp-valkoinen);
+	border-radius: var(--kp-sade-iso);
+}
+
+.kp-toimipiste h3 {
+	margin: 0 0 10px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.kp-toimipiste p {
+	margin: 0 0 6px;
+}
+
+.kp-toimipiste__osoite a {
+	color: var(--kp-musta-90);
+}
+
+/* ---------- Haku ---------- */
+
+.kp-hakutulokset {
+	display: grid;
+	gap: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.kp-hakutulos {
+	border-bottom: 1px solid var(--kp-reuna);
+}
+
+.kp-hakutulos a {
+	display: grid;
+	gap: 6px;
+	padding: 22px 0;
+	color: var(--kp-musta-90);
+	text-decoration: none;
+}
+
+.kp-hakutulos__tyyppi {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--kp-turkoosi);
+}
+
+.kp-hakutulos__otsikko {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: var(--kp-musta);
+}
+
+.kp-hakutulos a:hover .kp-hakutulos__otsikko {
+	color: var(--kp-turkoosi);
+	text-decoration: underline;
+}
+
+.kp-hakutulos__teksti {
+	color: var(--kp-musta-80);
+	font-size: 0.95rem;
+}
+
+/* Sivunumerointi */
+.pagination {
+	margin-top: 48px;
+}
+
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	justify-content: center;
+}
+
+.pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	height: 44px;
+	padding: 0 12px;
+	border-radius: 999px;
+	border: 1px solid var(--kp-reuna);
+	color: var(--kp-musta-90);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.pagination .page-numbers.current {
+	background: var(--kp-turkoosi);
+	border-color: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+/* Artikkelin jako */
+.kp-jaa {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 40px;
+	padding-top: 24px;
+	border-top: 1px solid var(--kp-reuna);
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.kp-jaa a:not(.kp-button) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--kp-hiekka-vaalea);
+	color: var(--kp-turkoosi);
+	text-decoration: none;
+}
+
+.kp-jaa a:hover {
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+/* ---------- Yhteydenottonosto ---------- */
+
+.kp-yhteysnosto {
+	padding: var(--kp-osio) 0;
+	background: var(--kp-hiekka);
+}
+
+.kp-osio--hiekka + .kp-yhteysnosto {
+	background: var(--kp-hiekka-vaalea);
+}
+
+.kp-yhteysnosto__sisus {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap: 32px 64px;
+	align-items: center;
+}
+
+@media (max-width: 900px) {
+	.kp-yhteysnosto__sisus {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.kp-yhteysnosto__otsikko {
+	font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.6rem);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	color: var(--kp-musta);
+}
+
+.kp-yhteysnosto__sisus p {
+	max-width: 56ch;
+	margin: 0;
+	font-size: 1.05rem;
+}
+
+.kp-yhteysnosto__toiminnot {
+	display: grid;
+	gap: 14px;
+	justify-items: start;
+}
+
+.kp-yhteysnosto__linkki {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	color: var(--kp-musta);
+	text-decoration: none;
+	font-size: 1.25rem;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.kp-yhteysnosto__linkki .kp-svg {
+	width: 46px;
+	height: 46px;
+	padding: 12px;
+	border-radius: 50%;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+.kp-yhteysnosto__linkki small {
+	display: block;
+	font-size: 0.78rem;
+	font-weight: 500;
+	color: var(--kp-musta-60);
+}
+
+.kp-yhteysnosto__linkki:hover span {
+	text-decoration: underline;
+}
+
+/* ---------- Alatunniste ---------- */
+
+.kp-alatunniste {
+	padding: clamp(56px, 7vw, 88px) 0 28px;
+	background: var(--kp-musta);
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 0.95rem;
+}
+
+.kp-alatunniste a {
+	color: var(--kp-valkoinen);
+	text-decoration: none;
+}
+
+.kp-alatunniste a:not(.kp-button):hover {
+	text-decoration: underline;
+	text-decoration-color: var(--kp-tiili);
+	text-underline-offset: 4px;
+}
+
+.kp-alatunniste__yla {
+	display: grid;
+	grid-template-columns: 1.4fr 1fr 1fr 1fr;
+	gap: 40px;
+}
+
+@media (max-width: 1000px) {
+	.kp-alatunniste__yla {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 560px) {
+	.kp-alatunniste__yla {
+		grid-template-columns: 1fr;
+	}
+}
+
+.kp-alatunniste__logo {
+	display: inline-block;
+	color: var(--kp-valkoinen);
+}
+
+.kp-alatunniste__logo .kp-logo {
+	height: 34px;
+	width: auto;
+	display: block;
+}
+
+.kp-alatunniste__lupaus {
+	max-width: 32ch;
+	margin: 22px 0;
+	font-size: 1.05rem;
+	line-height: 1.5;
+	color: var(--kp-valkoinen);
+}
+
+.kp-alatunniste__otsikko {
+	margin: 0 0 16px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--kp-musta-40);
+}
+
+.kp-alatunniste ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.kp-alatunniste__yhteys {
+	display: grid;
+	gap: 10px;
+	margin-bottom: 20px !important;
+}
+
+.kp-alatunniste__yhteys a {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.kp-alatunniste__toimipisteet li + li,
+.kp-alavalikko li + li {
+	margin-top: 12px;
+}
+
+.kp-alatunniste__toimipisteet strong {
+	color: var(--kp-valkoinen);
+	font-weight: 600;
+}
+
+.kp-some {
+	display: flex;
+	gap: 10px;
+}
+
+.kp-some a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 50%;
+	transition: background-color 0.2s, border-color 0.2s;
+}
+
+.kp-some a:hover {
+	background: var(--kp-valkoinen);
+	border-color: var(--kp-valkoinen);
+	color: var(--kp-musta);
+}
+
+.kp-some .kp-svg {
+	width: 18px;
+	height: 18px;
+}
+
+.kp-alatunniste__ala {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 12px 32px;
+	margin-top: 56px;
+	padding-top: 24px;
+	border-top: 1px solid rgba(255, 255, 255, 0.14);
+	font-size: 0.85rem;
+	color: var(--kp-musta-40);
+}
+
+.kp-alatunniste__ala p {
+	margin: 0;
+}
+
+.kp-alatunniste__ala a {
+	color: var(--kp-musta-20);
+}
+
+/* ---------- Laskeutumissivu ---------- */
+
+.kp-laskeutumissivu .kp-alatunniste__yla {
+	display: none;
+}
+
+.kp-laskeutumissivu .kp-alatunniste__ala {
+	margin-top: 0;
+	border-top: 0;
+}
+
+.kp-laskeutumissivu .kp-alatunniste {
+	padding-top: 28px;
+}
+
+/* ---------- Tulostus ---------- */
+
+@media print {
+	.kp-ylatunniste,
+	.kp-alatunniste,
+	.kp-yhteysnosto,
+	.kp-sivupalkki,
+	.kp-lomake,
+	.kp-jaa {
+		display: none !important;
+	}
+
+	.kp-hero {
+		background: none !important;
+		color: #000 !important;
+		padding: 0 0 20px;
+		min-height: 0;
+	}
+
+	.kp-hero__kuva {
+		display: none;
+	}
+}
+
+.kp-pikahaku__sisus > *,
+.kp-yhteystiedot > *,
+.kp-yhteysnosto__sisus > * {
+	min-width: 0;
+}
+
+/* Kuvagalleria (vanhan sivuston kuvarivit) */
+.kp-sisalto .kp-galleria {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 10px;
+}
+
+.kp-sisalto .kp-galleria img {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+}
+
+/* Sisältöalueen linkkityyli ei koske kortteja ja painikkeita, jotka lisätään lyhytkoodeilla. */
+.kp-sisalto a:is(.kp-tyopaikka, .kp-kortti-linkki, .kp-chip, .kp-nuolilinkki, .kp-kohderyhma) {
+	text-decoration: none;
+}
+
+.kp-kortti-linkki__otsikko,
+.kp-henkilo__nimi,
+.kp-tyopaikka__otsikko {
+	overflow-wrap: break-word;
+	hyphens: auto;
+}

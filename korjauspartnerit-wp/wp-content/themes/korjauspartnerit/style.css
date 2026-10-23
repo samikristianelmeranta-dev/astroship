@@ -1,0 +1,17 @@
+/*
+Theme Name:        Korjauspartnerit
+Theme URI:         https://korjauspartnerit.fi
+Description:       Korjauspartnereiden oma teema graafisen ohjeistuksen 2024 mukaan. Klassinen (ei-lohko) teema Classic Editor -käyttöön. Toiminnallisuus (henkilökunta, palvelut, referenssit, työpaikat, lomake, sisältöpohjat) tulee lisäosasta "Korjauspartnerit – Työkalut".
+Version:           1.0.0
+Requires at least: 6.2
+Requires PHP:      7.4
+Author:            Korjauspartnerit
+Text Domain:       korjauspartnerit
+License:           GPL-2.0-or-later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+
+Tyylit ovat kansiossa assets/css:
+  perus.css   – fontit ja brändivärit (CSS-muuttujat)
+  sisalto.css – sisällön tyylit, jaetaan klassisen editorin kanssa
+  main.css    – sivupohjat, ylä- ja alatunniste, komponentit
+*/

@@ -1,0 +1,482 @@
+/*
+ * Sisällön tyylit: kaikki mitä klassisella editorilla voi tehdä.
+ * Sama tiedosto ladataan editoriin, joten editori näyttää samalta kuin sivusto.
+ */
+
+:is(.kp-sisalto, .mce-content-body) {
+	font-family: var(--kp-fontti);
+	font-size: clamp(16px, 1.05rem + 0.1vw, 18px);
+	line-height: 1.7;
+	color: var(--kp-teksti);
+}
+
+:is(.kp-sisalto, .mce-content-body) > * {
+	margin-top: 0;
+	margin-bottom: 1.15em;
+}
+
+:is(.kp-sisalto, .mce-content-body) :is(h2, h3, h4) {
+	font-family: var(--kp-fontti);
+	color: var(--kp-musta);
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+}
+
+:is(.kp-sisalto, .mce-content-body) h2 {
+	font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem);
+	font-weight: 500;
+	margin-top: 1.9em;
+	margin-bottom: 0.6em;
+}
+
+:is(.kp-sisalto, .mce-content-body) h3 {
+	font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+	font-weight: 600;
+	margin-top: 1.6em;
+	margin-bottom: 0.5em;
+}
+
+:is(.kp-sisalto, .mce-content-body) h4 {
+	font-size: 1.05rem;
+	font-weight: 700;
+	margin-top: 1.4em;
+	margin-bottom: 0.4em;
+}
+
+:is(.kp-sisalto, .mce-content-body) > :first-child {
+	margin-top: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) a:not(.kp-button) {
+	color: var(--kp-turkoosi);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+:is(.kp-sisalto, .mce-content-body) a:not(.kp-button):hover {
+	text-decoration-color: var(--kp-tiili);
+	text-decoration-thickness: 2px;
+}
+
+:is(.kp-sisalto, .mce-content-body) strong {
+	font-weight: 600;
+}
+
+:is(.kp-sisalto, .mce-content-body) img {
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--kp-sade);
+}
+
+:is(.kp-sisalto, .mce-content-body) .alignleft {
+	float: left;
+	margin: 0.3em 1.5em 1em 0;
+	max-width: 50%;
+}
+
+:is(.kp-sisalto, .mce-content-body) .alignright {
+	float: right;
+	margin: 0.3em 0 1em 1.5em;
+	max-width: 50%;
+}
+
+:is(.kp-sisalto, .mce-content-body) .aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+:is(.kp-sisalto, .mce-content-body) .wp-caption {
+	max-width: 100%;
+}
+
+:is(.kp-sisalto, .mce-content-body) .wp-caption-text {
+	font-size: 0.85em;
+	color: var(--kp-teksti-heikko);
+	margin-top: 0.5em;
+}
+
+:is(.kp-sisalto, .mce-content-body) :is(ul, ol) {
+	padding-left: 1.4em;
+}
+
+:is(.kp-sisalto, .mce-content-body) li {
+	margin-bottom: 0.4em;
+}
+
+:is(.kp-sisalto, .mce-content-body) li::marker {
+	color: var(--kp-turkoosi);
+	font-weight: 600;
+}
+
+:is(.kp-sisalto, .mce-content-body) table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+}
+
+:is(.kp-sisalto, .mce-content-body) :is(th, td) {
+	text-align: left;
+	padding: 0.7em 0.9em;
+	border-bottom: 1px solid var(--kp-reuna);
+	vertical-align: top;
+}
+
+:is(.kp-sisalto, .mce-content-body) th {
+	background: var(--kp-hiekka-vaalea);
+	font-weight: 600;
+}
+
+:is(.kp-sisalto, .mce-content-body) hr {
+	border: 0;
+	height: 1px;
+	background: var(--kp-reuna);
+	margin: 2.5em 0;
+}
+
+/* Ingressi */
+:is(.kp-sisalto, .mce-content-body) .kp-ingressi,
+.kp-ingressi {
+	font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+	line-height: 1.55;
+	font-weight: 400;
+	color: var(--kp-musta);
+}
+
+.kp-pieni {
+	font-size: 0.85em;
+	color: var(--kp-teksti-heikko);
+}
+
+/* Painikkeet */
+.kp-button,
+:is(.kp-sisalto, .mce-content-body) a.kp-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6em;
+	padding: 0.85em 1.5em;
+	border: 2px solid var(--kp-turkoosi);
+	border-radius: 999px;
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+	font-family: var(--kp-fontti);
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.kp-button::after {
+	content: "";
+	width: 0.55em;
+	height: 0.65em;
+	background: currentColor;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	transition: transform 0.2s;
+}
+
+.kp-button:hover,
+.kp-button:focus-visible {
+	background: var(--kp-turkoosi-tumma);
+	border-color: var(--kp-turkoosi-tumma);
+	color: var(--kp-valkoinen);
+}
+
+.kp-button:hover::after {
+	transform: translateX(3px);
+}
+
+.kp-button--reuna,
+:is(.kp-sisalto, .mce-content-body) a.kp-button--reuna {
+	background: transparent;
+	color: var(--kp-turkoosi);
+}
+
+.kp-button--reuna:hover,
+.kp-button--reuna:focus-visible {
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+.kp-button--valkoinen,
+:is(.kp-sisalto, .mce-content-body) a.kp-button--valkoinen {
+	background: var(--kp-valkoinen);
+	border-color: var(--kp-valkoinen);
+	color: var(--kp-turkoosi);
+}
+
+.kp-button--valkoinen:hover,
+.kp-button--valkoinen:focus-visible {
+	background: transparent;
+	color: var(--kp-valkoinen);
+	border-color: var(--kp-valkoinen);
+}
+
+.kp-button--reuna-valkoinen {
+	background: transparent;
+	border-color: var(--kp-valkoinen);
+	color: var(--kp-valkoinen);
+}
+
+.kp-button--reuna-valkoinen:hover,
+.kp-button--reuna-valkoinen:focus-visible {
+	background: var(--kp-valkoinen);
+	border-color: var(--kp-valkoinen);
+	color: var(--kp-turkoosi);
+}
+
+/* Nuolilinkki – kolmio viittaa liikemerkkiin */
+.kp-nuolilinkki,
+:is(.kp-sisalto, .mce-content-body) a.kp-nuolilinkki {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55em;
+	font-weight: 600;
+	color: var(--kp-turkoosi);
+	text-decoration: none;
+}
+
+.kp-nuolilinkki::after {
+	content: "";
+	width: 0.5em;
+	height: 0.6em;
+	background: var(--kp-tiili);
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	transition: transform 0.2s;
+}
+
+a:hover .kp-nuolilinkki::after,
+.kp-nuolilinkki:hover::after {
+	transform: translateX(4px);
+}
+
+/* Listat */
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-check,
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-nuoli {
+	list-style: none;
+	padding-left: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-check li,
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-nuoli li {
+	position: relative;
+	padding-left: 2em;
+	margin-bottom: 0.6em;
+}
+
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-check li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.28em;
+	width: 1.25em;
+	height: 1.25em;
+	border-radius: 50%;
+	background: var(--kp-turkoosi) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3.2L15 7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 80% no-repeat;
+}
+
+:is(.kp-sisalto, .mce-content-body) ul.kp-lista-nuoli li::before {
+	content: "";
+	position: absolute;
+	left: 0.25em;
+	top: 0.5em;
+	width: 0.65em;
+	height: 0.75em;
+	background: var(--kp-turkoosi);
+	border-radius: 2px;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* Laatikot */
+:is(.kp-sisalto, .mce-content-body) .kp-laatikko {
+	padding: clamp(20px, 3vw, 32px);
+	border-left: 4px solid var(--kp-turkoosi);
+	background: var(--kp-hiekka-vaalea);
+	border-radius: 0 var(--kp-sade-iso) var(--kp-sade-iso) 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-laatikko--hiekka {
+	border-left: 0;
+	border-radius: var(--kp-sade-iso);
+	background: var(--kp-hiekka);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-laatikko > :first-child {
+	margin-top: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-laatikko > :last-child {
+	margin-bottom: 0;
+}
+
+/* Nostolainaus */
+:is(.kp-sisalto, .mce-content-body) blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 1.4em;
+	border-left: 3px solid var(--kp-turkoosi);
+	font-style: italic;
+}
+
+:is(.kp-sisalto, .mce-content-body) blockquote.kp-nosto {
+	position: relative;
+	padding: 1.2em 0 1.2em 2.2em;
+	border-left: 0;
+	font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.6rem);
+	line-height: 1.45;
+	color: var(--kp-turkoosi);
+}
+
+:is(.kp-sisalto, .mce-content-body) blockquote.kp-nosto::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 1.55em;
+	width: 0.9em;
+	height: 1.05em;
+	background: var(--kp-tiili);
+	border-radius: 3px;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+:is(.kp-sisalto, .mce-content-body) blockquote p {
+	margin: 0 0 0.6em;
+}
+
+:is(.kp-sisalto, .mce-content-body) blockquote cite {
+	display: block;
+	font-size: 0.95rem;
+	font-style: normal;
+	font-weight: 600;
+	color: var(--kp-musta-80);
+}
+
+/* Palstat ja kortit */
+:is(.kp-sisalto, .mce-content-body) .kp-palstat {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: clamp(20px, 3vw, 40px);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-kortit {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 20px;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-kortti {
+	padding: 26px 24px;
+	background: var(--kp-valkoinen);
+	border: 1px solid var(--kp-reuna);
+	border-top: 4px solid var(--kp-turkoosi);
+	border-radius: var(--kp-sade);
+}
+
+:is(.kp-sisalto, .mce-content-body) :is(.kp-palsta, .kp-kortti) > :first-child {
+	margin-top: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) :is(.kp-palsta, .kp-kortti) > :last-child {
+	margin-bottom: 0;
+}
+
+/* Yhteydenottonosto */
+:is(.kp-sisalto, .mce-content-body) .kp-cta {
+	position: relative;
+	overflow: hidden;
+	padding: clamp(28px, 5vw, 56px);
+	border-radius: var(--kp-sade-iso);
+	background: var(--kp-turkoosi);
+	color: var(--kp-valkoinen);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-cta::after {
+	content: "";
+	position: absolute;
+	right: -60px;
+	bottom: -80px;
+	width: 260px;
+	height: 300px;
+	background: rgba(255, 255, 255, 0.07);
+	border-radius: 30px;
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	pointer-events: none;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-cta :is(h2, h3) {
+	margin-top: 0;
+	color: var(--kp-valkoinen);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-cta > :last-child {
+	margin-bottom: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-cta a:not(.kp-button) {
+	color: var(--kp-valkoinen);
+}
+
+/* Usein kysytyt */
+:is(.kp-sisalto, .mce-content-body) .kp-ukk details {
+	border-bottom: 1px solid var(--kp-reuna);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk details:first-child {
+	border-top: 1px solid var(--kp-reuna);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk summary {
+	position: relative;
+	padding: 1em 2.5em 1em 0;
+	font-weight: 600;
+	cursor: pointer;
+	list-style: none;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk summary::-webkit-details-marker {
+	display: none;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk summary::after {
+	content: "";
+	position: absolute;
+	right: 0.4em;
+	top: 1.35em;
+	width: 0.6em;
+	height: 0.7em;
+	background: var(--kp-turkoosi);
+	clip-path: polygon(0 0, 100% 50%, 0 100%);
+	transform: rotate(90deg);
+	transition: transform 0.2s;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk details[open] summary::after {
+	transform: rotate(-90deg);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-ukk details > :not(summary) {
+	margin: 0 0 1em;
+}
+
+/* Upotukset */
+:is(.kp-sisalto, .mce-content-body) iframe {
+	max-width: 100%;
+}
+
+:is(.kp-sisalto, .mce-content-body) .wp-embed-responsive,
+:is(.kp-sisalto, .mce-content-body) .kp-upotus {
+	position: relative;
+	aspect-ratio: 16 / 9;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-upotus iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-radius: var(--kp-sade);
+}

@@ -1,0 +1,18 @@
+/* Klassisen editorin lisätyylit (ladataan perus.css:n ja sisalto.css:n lisäksi). */
+
+body.mce-content-body {
+	max-width: var(--kp-sisalto-leveys);
+	margin: 24px auto;
+	padding: 0 16px;
+	background: #fff;
+}
+
+/* Näytä palstat ja kortit editorissa rajattuina, jotta rakenne hahmottuu. */
+.mce-content-body :is(.kp-palsta) {
+	outline: 1px dashed var(--kp-musta-20);
+	outline-offset: 6px;
+}
+
+.mce-content-body .kp-ukk details > :not(summary) {
+	display: block;
+}
