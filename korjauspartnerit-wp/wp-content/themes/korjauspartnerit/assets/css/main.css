@@ -2287,3 +2287,217 @@ button {
 	overflow-wrap: break-word;
 	hyphens: auto;
 }
+
+/* ==========================================================================
+   Etusivun yläosa: kuva oikealla, vino reuna liikemerkin kolmion kulmassa
+   ========================================================================== */
+
+.kp-etusivu-hero {
+	align-items: center;
+	min-height: min(90vh, 840px);
+	padding: 150px 0 140px;
+	isolation: isolate;
+}
+
+.kp-etusivu-hero .kp-etusivu-hero__kuva {
+	inset: 0 0 0 auto;
+	width: 60%;
+	overflow: hidden;
+	clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+	background: var(--kp-turkoosi-tumma);
+}
+
+.kp-etusivu-hero .kp-etusivu-hero__kuva img {
+	object-position: 42% 40%;
+	transform-origin: 60% 40%;
+}
+
+/* Kevyt turkoosi sävy kuvan vasempaan reunaan ja tumma häivytys ylös ylätunnistetta varten */
+.kp-etusivu-hero .kp-etusivu-hero__kuva::after {
+	background:
+		linear-gradient(90deg, rgba(0, 75, 89, 0.55) 0%, rgba(0, 75, 89, 0) 38%),
+		linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 28%);
+}
+
+/* Ohut tiilenvärinen viiva vinoa reunaa pitkin */
+.kp-etusivu-hero::before {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 40%;
+	width: calc(60% * 0.22);
+	background: linear-gradient(to bottom right, transparent calc(50% - 1.5px), var(--kp-tiili) calc(50% - 1.5px), var(--kp-tiili) calc(50% + 1.5px), transparent calc(50% + 1.5px));
+	pointer-events: none;
+}
+
+.kp-etusivu-hero__tekstit {
+	position: relative;
+	max-width: 44%;
+}
+
+.kp-etusivu-hero .kp-etusivu-hero__otsikko {
+	max-width: none;
+	font-size: clamp(2rem, 0.3rem + 3vw, 3.6rem);
+	text-wrap: balance;
+}
+
+.kp-etusivu-hero .kp-etusivu-hero__teksti {
+	max-width: 40ch;
+}
+
+@media (max-width: 959.98px) {
+	.kp-etusivu-hero {
+		display: block;
+		min-height: 0;
+		padding: 0 0 96px;
+	}
+
+	.kp-etusivu-hero .kp-etusivu-hero__kuva {
+		position: relative;
+		inset: auto;
+		width: 100%;
+		height: clamp(320px, 72vw, 560px);
+		clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
+	}
+
+	.kp-etusivu-hero .kp-etusivu-hero__kuva img {
+		object-position: 55% 12%;
+	}
+
+	.kp-etusivu-hero::before {
+		display: none;
+	}
+
+	.kp-etusivu-hero__tekstit {
+		max-width: none;
+		padding-top: 28px;
+	}
+}
+
+/* ==========================================================================
+   Animaatiot (vain jos käyttäjä ei ole pyytänyt liikkeen vähentämistä)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes kp-nousu {
+		from {
+			opacity: 0;
+			transform: translateY(26px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@keyframes kp-zoom {
+		from {
+			transform: scale(1.12);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes kp-pyyhkaisy {
+		from {
+			clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+		}
+	}
+
+	@keyframes kp-kellunta {
+		0%,
+		100% {
+			transform: translateY(-50%) rotate(0deg);
+		}
+		50% {
+			transform: translateY(calc(-50% - 18px)) rotate(2deg);
+		}
+	}
+
+	.kp-etusivu-hero .kp-etusivu-hero__kuva {
+		animation: kp-pyyhkaisy 1.1s cubic-bezier(0.7, 0, 0.2, 1) both;
+	}
+
+	.kp-etusivu-hero .kp-etusivu-hero__kuva img {
+		animation: kp-zoom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	}
+
+	.kp-etusivu-hero::before {
+		animation: kp-nousu 0.8s 0.9s both;
+	}
+
+	.kp-etusivu-hero__tekstit > * {
+		animation: kp-nousu 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	}
+
+	.kp-etusivu-hero__tekstit > :nth-child(1) {
+		animation-delay: 0.25s;
+	}
+
+	.kp-etusivu-hero__tekstit > :nth-child(2) {
+		animation-delay: 0.42s;
+	}
+
+	.kp-etusivu-hero__tekstit > :nth-child(3) {
+		animation-delay: 0.58s;
+	}
+
+	.kp-pikahaku__sisus {
+		animation: kp-nousu 0.9s 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	}
+
+	.kp-hero__sisus > * {
+		animation: kp-nousu 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+	}
+
+	.kp-hero__sisus > :nth-child(2) {
+		animation-delay: 0.1s;
+	}
+
+	.kp-hero__sisus > :nth-child(3) {
+		animation-delay: 0.2s;
+	}
+
+	.kp-hero__sisus > :nth-child(n + 4) {
+		animation-delay: 0.3s;
+	}
+
+	/* Taustan suuret kolmiot kelluvat hitaasti */
+	.kp-hero--turkoosi::after,
+	.kp-teesi::after {
+		animation: kp-kellunta 14s ease-in-out infinite;
+	}
+
+	/* Vierityksessä esiin tulevat elementit. Piilotetaan vain näkymän alapuolella
+	   olevat (main.js lisää luokan), joten sivu on valmis heti latautuessaan. */
+	.kp-ilmesty {
+		transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+		transition-delay: var(--kp-viive, 0s);
+	}
+
+	.kp-ilmesty.kp-odottaa {
+		opacity: 0;
+		transform: translateY(32px);
+	}
+
+	.kp-kortti-linkki__kuva img,
+	.kp-henkilo__kuva img {
+		transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+	}
+
+	.kp-henkilo:hover .kp-henkilo__kuva img {
+		transform: scale(1.04);
+	}
+
+	.kp-button {
+		transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+	}
+
+	.kp-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+	}
+}

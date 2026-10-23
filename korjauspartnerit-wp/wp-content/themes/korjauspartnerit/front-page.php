@@ -3,7 +3,7 @@
  * Etusivu.
  *
  * Yläosan otsikko ja teksti: Etusivu-sivun kentät "Yläosan otsikko" ja "Ingressi"
- * (tai Mukauta → Etusivu). Kuva: Etusivu-sivun artikkelikuva.
+ * (tai Mukauta → Etusivu). Kuva: Etusivu-sivun artikkelikuva, oletuksena assets/img/etusivu-hero.webp.
  * Sivun editorisisältö näytetään kohderyhmäkorttien jälkeen.
  */
 defined( 'ABSPATH' ) || exit;
@@ -20,20 +20,29 @@ $page_link = function ( $slug, $fallback = '' ) {
 };
 ?>
 
-<section class="kp-etusivu-hero<?php echo $image_id ? '' : ' kp-etusivu-hero--ilman-kuvaa'; ?>">
+<section class="kp-etusivu-hero">
 	<div class="kp-etusivu-hero__kuva">
 		<?php
 		if ( $image_id ) {
-			echo wp_get_attachment_image( $image_id, 'kp-hero', false, array( 'loading' => 'eager', 'fetchpriority' => 'high', 'alt' => '', 'sizes' => '100vw' ) );
+			echo wp_get_attachment_image( $image_id, 'kp-hero', false, array( 'loading' => 'eager', 'fetchpriority' => 'high', 'alt' => '', 'sizes' => '(min-width: 960px) 62vw, 100vw' ) );
+		} else {
+			// Oletuskuva teemasta. Vaihdetaan asettamalla Etusivu-sivulle artikkelikuva.
+			$img = get_template_directory_uri() . '/assets/img/';
+			printf(
+				'<img src="%1$setusivu-hero.webp" srcset="%1$setusivu-hero-800.webp 800w, %1$setusivu-hero.webp 1536w" sizes="(min-width: 960px) 62vw, 100vw" width="1536" height="1024" alt="Korjauspartnereiden asiantuntijat kohteella" fetchpriority="high">',
+				esc_url( $img )
+			);
 		}
 		?>
 	</div>
 	<div class="kp-etusivu-hero__sisus kp-kehys kp-kehys--levea">
-		<h1 class="kp-etusivu-hero__otsikko"><?php echo esc_html( $title ? $title : kp_mod( 'kp_hero_otsikko' ) ); ?></h1>
-		<p class="kp-etusivu-hero__teksti"><?php echo esc_html( $lead ? $lead : kp_mod( 'kp_hero_teksti' ) ); ?></p>
-		<div class="kp-hero__painikkeet">
-			<a class="kp-button kp-button--valkoinen" href="<?php echo esc_url( get_post_type_archive_link( 'palvelu' ) ? get_post_type_archive_link( 'palvelu' ) : home_url( '/' ) ); ?>">Tutustu palveluihin</a>
-			<a class="kp-button kp-button--reuna-valkoinen" href="<?php echo esc_url( home_url( '/yhteystiedot/#viesti' ) ); ?>">Pyydä tarjous</a>
+		<div class="kp-etusivu-hero__tekstit">
+			<h1 class="kp-etusivu-hero__otsikko"><?php echo esc_html( $title ? $title : kp_mod( 'kp_hero_otsikko' ) ); ?></h1>
+			<p class="kp-etusivu-hero__teksti"><?php echo esc_html( $lead ? $lead : kp_mod( 'kp_hero_teksti' ) ); ?></p>
+			<div class="kp-hero__painikkeet">
+				<a class="kp-button kp-button--valkoinen" href="<?php echo esc_url( get_post_type_archive_link( 'palvelu' ) ? get_post_type_archive_link( 'palvelu' ) : home_url( '/' ) ); ?>">Tutustu palveluihin</a>
+				<a class="kp-button kp-button--reuna-valkoinen" href="<?php echo esc_url( home_url( '/yhteystiedot/#viesti' ) ); ?>">Pyydä tarjous</a>
+			</div>
 		</div>
 	</div>
 </section>
