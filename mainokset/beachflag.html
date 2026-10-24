@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Beach flag</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --liila: #744668; --ink: #1d1934; --cream: #fbf3ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  /* --u = 1 % lipun leveydestä */
+  body { --u: calc(var(--w) / 100); font-family: 'Inter', sans-serif; color: var(--cream); background: var(--ink); -webkit-font-smoothing: antialiased; }
+  .flag {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden;
+    background:
+      radial-gradient(ellipse 90% 25% at 80% 8%, rgba(222, 52, 120, .55), transparent 70%),
+      radial-gradient(ellipse 100% 30% at 10% 100%, rgba(116, 70, 104, .95), transparent 70%),
+      linear-gradient(170deg, var(--ink) 0%, #2b2552 50%, var(--sininen) 100%);
+  }
+  /* tankotasku vasemmassa reunassa: pidetään tärkeä sisältö sen ulkopuolella */
+  .logo { position: absolute; left: 50%; top: 5%; width: calc(var(--u) * 66); transform: translateX(-46%); }
+  .face {
+    position: absolute; left: 50%; top: 18%; width: calc(var(--u) * 76); aspect-ratio: 1; transform: translateX(-46%);
+    overflow: hidden; border-radius: 50%; background: linear-gradient(160deg, var(--vaalea), var(--fuksia));
+    box-shadow: 0 0 0 calc(var(--u) * 2) var(--cream), 0 calc(var(--u) * 3) calc(var(--u) * 6) rgba(0,0,0,.4);
+  }
+  .face img { position: absolute; display: block; width: 200%; left: -46%; top: 6%; }
+  /* nimi pystyyn: luetaan alhaalta ylös */
+  .name-wrap {
+    position: absolute; left: 54%; top: 69.5%; width: calc(var(--h) * .48);
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  .name { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .88; letter-spacing: -.01em; font-size: calc(var(--u) * 26.5); }
+  .tag { margin-top: calc(var(--u) * 4); font-family: 'Bricolage', sans-serif; font-weight: 800; color: var(--vaalea); font-size: calc(var(--u) * 14); line-height: 1; }
+  .payer { position: absolute; right: 6%; bottom: 1%; font-size: calc(var(--u) * 1.6); color: rgba(251,243,234,.6); }
+</style>
+</head>
+<body>
+<div class="flag">
+  <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
+  <div class="face"><img src="assets/sami.png" alt=""></div>
+  <div class="name-wrap">
+    <p class="name">Sami<br>Elmeranta</p>
+    <p class="tag">Tolkun poliitikko.</p>
+  </div>
+  <p class="payer">Maksaja: Sami Elmeranta</p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.documentElement.style.setProperty('--w', q.get('w') + 'px');
+  document.documentElement.style.setProperty('--h', q.get('h') + 'px');
+</script>
+</body>
+</html>
