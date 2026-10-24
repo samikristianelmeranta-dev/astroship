@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Pipomerkki</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --ink: #1d1934; --cream: #fbf3ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  /* läpinäkyvä tausta merkin ulkopuolella */
+  html, body { width: var(--w); height: var(--h); overflow: hidden; background: transparent; }
+  body { --u: calc(var(--h) / 100); -webkit-font-smoothing: antialiased; color: var(--cream); }
+  .badge {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(222, 52, 120, .6), transparent 55%),
+      linear-gradient(150deg, var(--ink) 0%, #2b2552 55%, var(--sininen) 100%);
+    box-shadow: inset 0 0 0 calc(var(--u) * 2.4) var(--fuksia);
+  }
+  .face { position: absolute; overflow: hidden; border-radius: 50%; background: linear-gradient(160deg, var(--vaalea), var(--fuksia)); box-shadow: 0 0 0 calc(var(--u) * 1.6) var(--cream); }
+  .face img { position: absolute; display: block; }
+  .name { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.01em; }
+  .logo { display: block; height: auto; }
+
+  /* vaaka: kuva vasemmalla, nimi ja logo oikealla */
+  .vaaka .badge { border-radius: calc(var(--u) * 18); }
+  .vaaka .face { left: 6%; top: 14%; height: 72%; aspect-ratio: 1; }
+  .vaaka .face img { width: 200%; left: -46%; top: 6%; }
+  .vaaka .text { position: absolute; left: 47%; right: 6%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: calc(var(--u) * 6); }
+  .vaaka .name { font-size: calc(var(--u) * 15); }
+  .vaaka .logo { width: calc(var(--u) * 44); }
+
+  /* pyöreä: kuva ylhäällä, nimi ja logo alla */
+  .pyorea .badge { border-radius: 50%; }
+  .pyorea .face { left: 50%; top: 8%; width: 48%; aspect-ratio: 1; transform: translateX(-50%); }
+  .pyorea .face img { width: 200%; left: -46%; top: 6%; }
+  .pyorea .text { position: absolute; left: 0; right: 0; top: 60%; display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3); text-align: center; }
+  .pyorea .name { font-size: calc(var(--u) * 9); }
+  .pyorea .logo { width: calc(var(--u) * 26); }
+</style>
+</head>
+<body>
+<div class="badge">
+  <div class="face"><img src="assets/sami.png" alt=""></div>
+  <div class="text">
+    <p class="name">Sami<br>Elmeranta</p>
+    <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
+  </div>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.documentElement.style.setProperty('--w', q.get('w') + 'px');
+  document.documentElement.style.setProperty('--h', q.get('h') + 'px');
+  document.body.classList.add(q.get('layout') || 'vaaka');
+</script>
+</body>
+</html>
