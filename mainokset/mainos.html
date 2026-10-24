@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Mainos</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root {
+    --fuksia: #b3125d;
+    --vaalea: #de3478;
+    --sininen: #5d538c;
+    --liila: #744668;
+    --ink: #1d1934;
+    --cream: #fbf3ea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  body {
+    /* --u = 1 % lyhyemmästä sivusta; kaikki mitat skaalautuvat sen mukana */
+    font-family: 'Inter', sans-serif;
+    color: var(--cream);
+    background: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .ad {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 85% 15%, rgba(222, 52, 120, .55), transparent 70%),
+      radial-gradient(ellipse 60% 70% at 10% 100%, rgba(116, 70, 104, .9), transparent 70%),
+      linear-gradient(150deg, var(--ink) 0%, #2b2552 45%, var(--sininen) 100%);
+  }
+  /* koristeellinen kivikuvio logon hengessä */
+  .orb { position: absolute; border-radius: 50%; background: var(--fuksia); filter: blur(calc(var(--u) * 6)); opacity: .45; }
+  .ring { position: absolute; border-radius: 50%; border: calc(var(--u) * .5) solid rgba(251, 243, 234, .12); }
+
+  .photo { position: absolute; z-index: 2; filter: drop-shadow(0 calc(var(--u) * 2) calc(var(--u) * 4) rgba(0,0,0,.45)); }
+  .photo img { display: block; width: 100%; height: auto; }
+
+  .content { position: absolute; z-index: 3; display: flex; flex-direction: column; }
+  .name { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; line-height: .92; }
+  .tag { font-family: 'Bricolage', sans-serif; font-weight: 800; color: var(--vaalea); line-height: 1; }
+  .facts { list-style: none; }
+  .facts li { position: relative; font-weight: 600; line-height: 1.25; }
+  .facts li::before { content: ''; position: absolute; left: 0; border-radius: 2px; background: var(--vaalea); }
+  .cta {
+    display: inline-block; align-self: flex-start; font-family: 'Bricolage', sans-serif; font-weight: 800; line-height: 1.1;
+    background: var(--fuksia); color: #fff; box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.3);
+  }
+  .foot { position: absolute; z-index: 4; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: block; height: auto; }
+  .url { font-weight: 700; letter-spacing: .04em; }
+  .payer { position: absolute; z-index: 4; color: rgba(251,243,234,.6); font-size: calc(var(--u) * 1.1); }
+
+  /* ---------- LAYOUT: leveä (bannerit, tienvarsikyltti) ---------- */
+  .wide .photo { right: 2%; bottom: -32%; height: auto; width: calc(var(--h) * .78); }
+  .wide .content { left: 5%; top: 9%; width: 60%; gap: calc(var(--u) * 2.6); }
+  .wide .name { font-size: calc(var(--u) * 14); }
+  .wide .tag { font-size: calc(var(--u) * 7.5); }
+  .wide .cta { font-size: calc(var(--u) * 5); padding: calc(var(--u) * 1.8) calc(var(--u) * 3); border-radius: calc(var(--u) * 2); margin-top: calc(var(--u) * 1); }
+  .wide .foot { left: 5%; bottom: 6%; gap: calc(var(--u) * 5); }
+  .wide .logo { width: calc(var(--u) * 22); }
+  .wide .url { font-size: calc(var(--u) * 4.2); }
+  .wide .facts { display: none; }
+  .wide .orb { width: calc(var(--h) * .9); height: calc(var(--h) * .9); right: 8%; top: -20%; }
+  .wide .ring.r1 { width: calc(var(--h) * 1.1); height: calc(var(--h) * 1.1); right: -2%; top: -5%; }
+  .wide .ring.r2 { display: none; }
+  /* hyvin matala banneri (LinkedIn, X): kaikki rivissä */
+  .slim .content { width: 64%; gap: calc(var(--u) * 2); top: 50%; transform: translateY(-50%); }
+  .slim .name { font-size: calc(var(--u) * 20); }
+  .slim .tag { font-size: calc(var(--u) * 11); }
+  .slim .cta { font-size: calc(var(--u) * 7); }
+  .slim .foot { left: auto; right: calc(var(--h) * 1.3); bottom: 10%; }
+  .slim .logo { width: calc(var(--u) * 30); }
+  .slim .url { display: none; }
+  .slim .photo { width: calc(var(--h) * 1.15); bottom: -88%; right: 2%; }
+  /* Facebook-kansi: turva-alue keskellä mobiilissa */
+  .fbcover .content { left: 22%; width: 48%; }
+  .fbcover .foot { left: 22%; }
+  .fbcover .photo { right: 18%; }
+
+  /* ---------- LAYOUT: neliö / pysty (some, juliste, flyer) ---------- */
+  .portrait .photo { right: -7%; bottom: 0; width: 52%; }
+  .portrait .content { left: 6.5%; top: 6%; width: 54%; gap: calc(var(--u) * 3); }
+  .portrait .name { font-size: calc(var(--u) * 9.5); }
+  .portrait .tag { font-size: calc(var(--u) * 6); margin-top: calc(var(--u) * -1); }
+  .portrait .facts { display: flex; flex-direction: column; gap: calc(var(--u) * 1.8); margin-top: calc(var(--u) * 1.5); }
+  .portrait .facts li { font-size: calc(var(--u) * 3.1); padding-left: calc(var(--u) * 3.2); }
+  .portrait .facts li::before { width: calc(var(--u) * 1.6); height: calc(var(--u) * .5); top: .6em; }
+  .portrait .cta { font-size: calc(var(--u) * 4.4); padding: calc(var(--u) * 2) calc(var(--u) * 2.8); border-radius: calc(var(--u) * 1.8); margin-top: calc(var(--u) * 2); max-width: calc(var(--w) * .55); }
+  .portrait .foot { left: 6.5%; bottom: 5%; gap: calc(var(--u) * 3); flex-direction: column; align-items: flex-start; }
+  .portrait .logo { width: calc(var(--u) * 22); }
+  .portrait .url { font-size: calc(var(--u) * 2.8); }
+  .portrait .orb { width: calc(var(--w) * .7); height: calc(var(--w) * .7); right: -15%; top: 25%; }
+  .portrait .ring.r1 { width: calc(var(--w) * .85); height: calc(var(--w) * .85); right: -25%; top: 18%; }
+  .portrait .ring.r2 { width: calc(var(--w) * .5); height: calc(var(--w) * .5); left: -20%; bottom: -15%; }
+  /* neliö: vähemmän tilaa pystyssä */
+  .square .photo { width: 46%; right: -5%; }
+  .square .content { width: 56%; }
+  .square .name { font-size: calc(var(--u) * 8.4); }
+  .square .tag { font-size: calc(var(--u) * 5.4); }
+  .square .content { gap: calc(var(--u) * 2.4); top: 5.5%; }
+  .square .facts li { font-size: calc(var(--u) * 2.7); }
+  .square .facts { gap: calc(var(--u) * 1.4); }
+  .square .cta { font-size: calc(var(--u) * 3.9); margin-top: calc(var(--u) * 1); }
+  .square .foot { bottom: 4%; }
+  .square .foot { flex-direction: row; align-items: center; }
+  .square .logo { width: calc(var(--u) * 19); }
+
+  /* ---------- LAYOUT: korkea (story, roll-up) ---------- */
+  .tall .photo { right: -9%; bottom: calc(var(--h) * .135); width: 60%; }
+  .tall .content { left: 7%; top: 5%; width: 86%; gap: calc(var(--u) * 2.6); }
+  .tall .name { font-size: calc(var(--u) * 13.5); }
+  .tall .tag { font-size: calc(var(--u) * 9); }
+  .tall .facts { display: flex; flex-direction: column; gap: calc(var(--u) * 2); margin-top: calc(var(--u) * 1.5); width: 52%; }
+  .tall .facts li { font-size: calc(var(--u) * 3.9); padding-left: calc(var(--u) * 4.5); }
+  .tall .facts li::before { width: calc(var(--u) * 2.4); height: calc(var(--u) * .7); top: .6em; }
+  .tall .cta-wrap { position: absolute; z-index: 5; left: 7%; right: 7%; bottom: 15.5%; }
+  .tall .cta { font-size: calc(var(--u) * 7); padding: calc(var(--u) * 3) calc(var(--u) * 4); border-radius: calc(var(--u) * 3); }
+  .tall .foot { left: 7%; right: 7%; bottom: 3.5%; }
+  .tall .logo { width: calc(var(--u) * 30); }
+  .tall .url { font-size: calc(var(--u) * 4.4); }
+  .tall .orb { width: calc(var(--w) * 1); height: calc(var(--w) * 1); left: 10%; top: 40%; }
+  .tall .ring.r1 { width: calc(var(--w) * 1.1); height: calc(var(--w) * 1.1); left: 5%; top: 35%; }
+  .tall .ring.r2 { display: none; }
+
+  /* tienvarsikyltti: matalampi suhde (3:2) */
+  .sign .photo { width: calc(var(--h) * .66); right: 1%; bottom: -36%; }
+  .sign .content { width: 56%; top: 8%; }
+  .sign .name { font-size: calc(var(--u) * 13); }
+  .sign .tag { font-size: calc(var(--u) * 8); }
+  .sign .cta { font-size: calc(var(--u) * 5.4); }
+  .sign .logo { width: calc(var(--u) * 24); }
+  .sign .url { font-size: calc(var(--u) * 4.6); }
+  /* juliste ja flyer: isommat tekstit, enemmän korkeutta */
+  .poster .name { font-size: calc(var(--u) * 10.5); }
+  .poster .tag { font-size: calc(var(--u) * 6.4); }
+  .poster .facts li { font-size: calc(var(--u) * 3.5); }
+  .poster .facts { gap: calc(var(--u) * 2.2); }
+  .poster .cta { font-size: calc(var(--u) * 5); }
+  .poster .photo { width: 56%; right: -9%; }
+
+  .short .facts { display: none !important; }
+</style>
+</head>
+<body>
+<div class="ad" id="ad">
+  <div class="orb"></div><div class="ring r1"></div><div class="ring r2"></div>
+  <div class="photo"><img src="assets/sami.png" alt=""></div>
+  <div class="content">
+    <h1 class="name">Sami<br>Elmeranta</h1>
+    <p class="tag">Tolkun poliitikko.</p>
+    <ul class="facts">
+      <li>Länsimaiden kallein julkinen sektori</li>
+      <li>EU:n korkein työttömyys</li>
+      <li>Yrityksiä menee konkurssiin</li>
+      <li>Talouskasvu on laahannut kohta 20 vuotta</li>
+      <li>Paljon maahanmuuttoa, joka ei ole laadukasta</li>
+    </ul>
+    <p class="cta in-content">Ehkä olisi aika kokeilla jotain uutta?</p>
+  </div>
+  <div class="cta-wrap"><p class="cta">Ehkä olisi aika kokeilla jotain uutta?</p></div>
+  <div class="foot">
+    <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
+    <span class="url">samielmeranta.fi</span>
+  </div>
+  <p class="payer">Maksaja: Sami Elmeranta</p>
+</div>
+<script>
+  // ?w=1080&h=1350&layout=portrait&extra=square&short=1&payer=1
+  const q = new URLSearchParams(location.search);
+  const w = +q.get('w') || 1080, h = +q.get('h') || 1350;
+  const root = document.documentElement.style;
+  root.setProperty('--w', w + 'px'); root.setProperty('--h', h + 'px');
+  root.setProperty('--u', Math.min(w, h) / 100 + 'px');
+  const ad = document.getElementById('ad');
+  const layout = q.get('layout') || 'portrait';
+  ad.classList.add(layout);
+  (q.get('extra') || '').split(',').filter(Boolean).forEach(c => ad.classList.add(c));
+  if (q.get('short')) ad.classList.add('short');
+  // CTA: korkeassa layoutissa oma lohko alhaalla, muuten tekstin jatkona
+  document.querySelector(layout === 'tall' ? '.cta.in-content' : '.cta-wrap').remove();
+  const payer = document.querySelector('.payer');
+  if (!q.get('payer')) payer.remove();
+  else { payer.style.right = '1.5%'; payer.style.bottom = '1.2%'; payer.style.fontSize = Math.min(w, h) / 100 * 1.4 + 'px'; }
+</script>
+</body>
+</html>
