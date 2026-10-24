@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Profiilikuva</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --liila: #744668; --ink: #1d1934; --cream: #fbf3ea; --s: 1080px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--s); height: var(--s); overflow: hidden; background: var(--ink); }
+  /* --u = 1 % kuvan sivusta */
+  .pic {
+    --u: calc(var(--s) / 100);
+    position: relative; width: var(--s); height: var(--s); overflow: hidden;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(222, 52, 120, .75), transparent 55%),
+      radial-gradient(circle at 15% 95%, rgba(116, 70, 104, .95), transparent 60%),
+      linear-gradient(150deg, var(--ink) 0%, #2b2552 45%, var(--sininen) 100%);
+  }
+  .ring { position: absolute; inset: 7%; border-radius: 50%; border: calc(var(--u) * .5) solid rgba(251, 243, 234, .14); }
+  /* rajattu niin, että kasvot ovat pyöreän rajauksen keskellä */
+  .photo { position: absolute; left: -4.5%; top: 7.8%; width: 140%; filter: drop-shadow(0 calc(var(--u) * 1.5) calc(var(--u) * 3) rgba(0,0,0,.45)); }
+  .photo img { display: block; width: 100%; height: auto; }
+
+  /* v2: brändikehys ja nimilaatta */
+  .frame { display: none; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 calc(var(--u) * 3.2) var(--fuksia); z-index: 3; }
+  .badge {
+    display: none; position: absolute; z-index: 4; left: 50%; bottom: 12%; transform: translateX(-50%);
+    font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; white-space: nowrap;
+    font-size: calc(var(--u) * 5.2); letter-spacing: .02em; color: #fff;
+    background: var(--fuksia); padding: calc(var(--u) * 1.2) calc(var(--u) * 3.6); border-radius: calc(var(--u) * 1.4);
+    box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.35);
+  }
+  .v2 .frame, .v2 .badge { display: block; }
+  .v2 .photo { left: -0.6%; top: 9%; width: 130%; }
+</style>
+</head>
+<body>
+<div class="pic" id="pic">
+  <div class="ring"></div>
+  <div class="photo"><img src="assets/sami.png" alt=""></div>
+  <div class="frame"></div>
+  <p class="badge">Liike Nyt</p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const s = +(q.get('s') || 1080);
+  document.documentElement.style.setProperty('--s', s + 'px');
+  if (q.get('v')) document.getElementById('pic').classList.add('v' + q.get('v'));
+</script>
+</body>
+</html>
