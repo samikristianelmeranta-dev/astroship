@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.8.1' );
+define( 'NORDIC_VERSION', '2.8.2' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -990,7 +990,7 @@ function nordic_head_meta() {
 	if ( 'utility' === $type && 'yhteystiedot' === $slug ) {
 		$webpage['@type'] = array( 'WebPage', 'ContactPage' );
 	}
-	if ( 'meista' === $slug ) {
+	if ( 'meista' === $slug || ( nordic_about_page() && (int) nordic_about_page()->ID === (int) $post_id ) ) {
 		$webpage['@type'] = array( 'WebPage', 'AboutPage' );
 	}
 
@@ -1664,11 +1664,61 @@ function nordic_team_faces( $class = '' ) {
 	return $out . '</span>';
 }
 
+/**
+ * Meistä-sivu: osoite voi olla /meista/ tai otsikosta muodostunut
+ * (esim. /meista-nordic-ikkunat-ovet/), joten tunnistetaan myös tiimikorteista.
+ */
+function nordic_about_page() {
+	static $found = null;
+	if ( null !== $found ) {
+		return $found ?: null;
+	}
+	$found = false;
+	foreach ( array( 'meista', 'tietoa-meista', 'meista-nordic-ikkunat-ovet' ) as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page && 'publish' === $page->post_status ) {
+			$found = $page;
+			return $page;
+		}
+	}
+	$pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 5, 's' => 'nordic_tiimi', 'fields' => 'all' ) );
+	foreach ( $pages as $page ) {
+		if ( 'yhteystiedot' !== $page->post_name && false !== strpos( $page->post_content, '[nordic_tiimi' ) ) {
+			$found = $page;
+			return $page;
+		}
+	}
+	return null;
+}
+
 /** Meistä-sivun osoite, jos sivu on julkaistu (muuten ''). */
 function nordic_about_url() {
-	$page = get_page_by_path( 'meista' );
-	return $page && 'publish' === $page->post_status ? get_permalink( $page ) : '';
+	$page = nordic_about_page();
+	return $page ? get_permalink( $page ) : '';
 }
+
+/** Luo Meistä-sivun kerran teeman mukana tulevasta sisällöstä, jos sitä ei vielä ole (pääsivusto). */
+add_action( 'admin_init', function () {
+	if ( get_option( 'nordic_about_created' ) || nordic_is_regional() || ! current_user_can( 'publish_pages' ) ) {
+		return;
+	}
+	update_option( 'nordic_about_created', 1 );
+	if ( nordic_about_page() || get_page_by_path( 'meista' ) ) {
+		return;
+	}
+	$html = (string) file_get_contents( get_template_directory() . '/content/meista.html' );
+	if ( '' === $html ) {
+		return;
+	}
+	wp_insert_post( array(
+		'post_type'    => 'page',
+		'post_status'  => 'publish',
+		'post_title'   => 'Meistä – Nordic Ikkunat & Ovet',
+		'post_name'    => 'meista',
+		'post_excerpt' => 'Neljän kokeneen yrittäjän yhteistyöyritys Maskusta. Valtuutettu Skaala-jälleenmyyjä: ikkunat ja ovet kohde kerrallaan paremman energiatehokkuuden puolesta.',
+		'post_content' => "<!-- wp:html -->\n" . $html . "\n<!-- /wp:html -->",
+	) );
+} );
 
 /** Etusivulle "Tekijät"-nosto Meistä-sivulle (pääsivusto). */
 add_filter( 'the_content', function ( $html ) {
