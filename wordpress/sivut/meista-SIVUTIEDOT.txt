@@ -1,0 +1,13 @@
+MEISTÄ – SIVUN TIEDOT WORDPRESSIIN
+
+Sivut → Lisää uusi
+  Otsikko (title):   Meistä – Nordic Ikkunat & Ovet
+  Osoite (slug):     /meista/
+  Ote (kuvaus):      Neljän osakkaan ikkuna- ja oviyritys Maskusta. Valtuutettu Skaala-jälleenmyyjä: mittaus, tarjous ja asennus saman tiimin hoitamana.
+  Sisältö:           Mukautettu HTML -lohko → tiedoston meista.html koko koodi
+
+Teema 2.8.0 tai uudempi:
+  - Tiimikortit kuvineen tulevat lyhytkoodista [nordic_tiimi] (on jo sivun koodissa).
+  - Meistä-linkki tulee alatunnisteeseen automaattisesti, kun sivu on julkaistu.
+  - Lisää sivu päävalikkoon: Ulkoasu → Valikot → Päävalikko → Sivut → Meistä.
+  - Yhteystiedot-sivulle tiimi lisätään automaattisesti (ei tarvitse muokata sivua).

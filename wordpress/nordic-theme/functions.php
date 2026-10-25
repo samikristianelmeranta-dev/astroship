@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.7.0' );
+define( 'NORDIC_VERSION', '2.8.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -928,6 +928,9 @@ function nordic_head_meta() {
 		'openingHours' => $business['openingHours'],
 		'brand'        => array( '@type' => 'Brand', 'name' => 'Skaala' ),
 		'knowsAbout'   => array( 'Ikkunaremontti', 'Oviremontti', 'Ikkunoiden asennus', 'Ulko-ovien asennus', 'Ikkunoiden huolto', 'Skaala-ikkunat', 'Skaala-ovet', 'Kotitalousvähennys' ),
+		'employee'     => array_map( function ( $m ) {
+			return array( '@type' => 'Person', 'name' => $m['name'], 'jobTitle' => $m['role'], 'image' => nordic_asset_uri( 'img/tiimi/' . $m['key'] . '.webp' ) );
+		}, nordic_team() ),
 		'hasOfferCatalog' => array(
 			'@type'           => 'OfferCatalog',
 			'name'            => 'Palvelut',
@@ -986,6 +989,9 @@ function nordic_head_meta() {
 	}
 	if ( 'utility' === $type && 'yhteystiedot' === $slug ) {
 		$webpage['@type'] = array( 'WebPage', 'ContactPage' );
+	}
+	if ( 'meista' === $slug ) {
+		$webpage['@type'] = array( 'WebPage', 'AboutPage' );
 	}
 
 	$graph = array( $org, $website );
@@ -1590,6 +1596,57 @@ add_filter( 'the_content', function ( $html ) {
 	}
 	$block = '<section class="op-calc-wrap"><div class="wrap">' . nordic_op_calculator_html() . '</div></section>';
 	foreach ( array( '<section class="article-body" id="kuukausiera"', '<section class="final-cta"' ) as $anchor ) {
+		$pos = strpos( $html, $anchor );
+		if ( false !== $pos ) {
+			return substr_replace( $html, $block, $pos, 0 );
+		}
+	}
+	return $html . $block;
+}, 25 );
+
+/* =========================================================================
+ * Tiimi [nordic_tiimi] – osakkaiden kortit Meistä- ja Yhteystiedot-sivuille.
+ * Kuvat: assets/img/tiimi/{key}.webp (600 px) ja {key}-300.webp.
+ * ========================================================================= */
+
+function nordic_team() {
+	return apply_filters( 'nordic_team', array(
+		array( 'key' => 'jussi', 'name' => 'Jussi Henriksson', 'role' => 'Asennus ja tarjouslaskenta', 'email' => 'jussi@ikkunakauppias.fi' ),
+		array( 'key' => 'anton', 'name' => 'Anton Hörkkö', 'role' => 'Asennus, tarjouslaskenta ja energiatehokkuus', 'email' => 'anton@ikkunakauppias.fi' ),
+		array( 'key' => 'matias', 'name' => 'Matias Sirkiä', 'role' => 'Asennus ja myynti', 'email' => 'matias@ikkunakauppias.fi' ),
+		array( 'key' => 'sami', 'name' => 'Sami Elmeranta', 'role' => 'Markkinointi ja asiakaspalvelu', 'email' => 'sami@ikkunakauppias.fi' ),
+	) );
+}
+
+function nordic_team_html( $atts = array() ) {
+	$atts = shortcode_atts( array( 'otsikko' => '', 'kuvaus' => '' ), $atts, 'nordic_tiimi' );
+	$out  = '';
+	if ( $atts['otsikko'] ) {
+		$out .= '<div class="section-head"><div class="eyebrow-line"></div><h2>' . esc_html( $atts['otsikko'] ) . '</h2>' . ( $atts['kuvaus'] ? '<p>' . esc_html( $atts['kuvaus'] ) . '</p>' : '' ) . '</div>';
+	}
+	$out .= '<ul class="team-grid">';
+	foreach ( nordic_team() as $m ) {
+		$img  = nordic_asset_uri( 'img/tiimi/' . $m['key'] . '.webp' );
+		$img2 = nordic_asset_uri( 'img/tiimi/' . $m['key'] . '-300.webp' );
+		$out .= '<li class="team-card">'
+			. '<img src="' . esc_url( $img ) . '" srcset="' . esc_url( $img2 ) . ' 300w, ' . esc_url( $img ) . ' 600w" sizes="(max-width: 600px) 45vw, 280px" width="600" height="799" loading="lazy" decoding="async" alt="' . esc_attr( $m['name'] ) . '">'
+			. '<div class="team-body"><h3>' . esc_html( $m['name'] ) . '</h3><p class="team-role">' . esc_html( $m['role'] ) . '</p>'
+			. '<a class="team-mail" href="mailto:' . esc_attr( $m['email'] ) . '"><span class="team-mail-full">' . esc_html( $m['email'] ) . '</span><span class="team-mail-short">Lähetä sähköpostia</span></a></div></li>';
+	}
+	return $out . '</ul>';
+}
+add_shortcode( 'nordic_tiimi', 'nordic_team_html' );
+
+/** Yhteystiedot-sivulle tiimi automaattisesti (pääsivusto), jos sivulla ei ole lyhytkoodia. */
+add_filter( 'the_content', function ( $html ) {
+	if ( ! is_page() || ! in_the_loop() || nordic_is_regional() || strpos( $html, 'team-grid' ) !== false ) {
+		return $html;
+	}
+	if ( 'yhteystiedot' !== get_post_field( 'post_name', get_the_ID() ) ) {
+		return $html;
+	}
+	$block = '<section class="team-wrap" id="tiimi"><div class="wrap">' . nordic_team_html( array( 'otsikko' => 'Tavoitat meidät myös suoraan', 'kuvaus' => 'Sama neljän hengen tiimi hoitaa mittauksen, tarjouksen ja asennuksen. Myynti 045 7832 5070 · Asennus 045 7830 4746.' ) ) . '</div></section>';
+	foreach ( array( '<section class="panel-alt"', '<section class="final-cta"' ) as $anchor ) {
 		$pos = strpos( $html, $anchor );
 		if ( false !== $pos ) {
 			return substr_replace( $html, $block, $pos, 0 );

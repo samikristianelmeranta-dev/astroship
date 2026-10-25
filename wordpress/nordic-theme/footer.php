@@ -46,6 +46,10 @@
         if ( $nordic_fin && 'publish' === $nordic_fin->post_status ) {
           echo '<li><a href="' . esc_url( get_permalink( $nordic_fin ) ) . '">Rahoitus</a></li>';
         }
+        $nordic_about = get_page_by_path( 'meista' );
+        if ( $nordic_about && 'publish' === $nordic_about->post_status ) {
+          echo '<li><a href="' . esc_url( get_permalink( $nordic_about ) ) . '">Meistä</a></li>';
+        }
         $nordic_hub = get_page_by_path( 'oppaat-ja-artikkelit' );
         if ( $nordic_hub && 'publish' === $nordic_hub->post_status ) {
           echo '<li><a href="' . esc_url( get_permalink( $nordic_hub ) ) . '">Oppaat ja artikkelit</a></li>';
