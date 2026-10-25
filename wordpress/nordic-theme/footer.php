@@ -13,6 +13,9 @@
         <span class="site-logo-text">Ikkunakauppias<b>.fi</b></span>
       </a>
       <p>Valtuutettu Skaala-jälleenmyyjä. Myymme ja asennamme energiatehokkaita ikkunoita ja ulko-ovia <?php echo esc_html( $nordic_region['in_text'] ); ?>.</p>
+      <?php $nordic_about_url = nordic_about_url(); if ( $nordic_about_url ) : ?>
+      <a class="footer-about" href="<?php echo esc_url( $nordic_about_url ); ?>"><?php echo nordic_team_faces( 'team-faces--sm' ); // phpcs:ignore ?><span><b>Tutustu meihin</b><small>Neljä yrittäjää, yksi tiimi</small></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <?php endif; ?>
     </div>
 
     <div class="footer-col">

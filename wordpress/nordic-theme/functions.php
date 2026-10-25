@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.8.0' );
+define( 'NORDIC_VERSION', '2.8.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1654,3 +1654,47 @@ add_filter( 'the_content', function ( $html ) {
 	}
 	return $html . $block;
 }, 25 );
+
+/** Pyöreät kasvokuvat päällekkäin (etusivun nosto ja alatunniste). */
+function nordic_team_faces( $class = '' ) {
+	$out = '<span class="team-faces ' . esc_attr( $class ) . '" aria-hidden="true">';
+	foreach ( nordic_team() as $m ) {
+		$out .= '<img src="' . esc_url( nordic_asset_uri( 'img/tiimi/' . $m['key'] . '-300.webp' ) ) . '" alt="" width="300" height="400" loading="lazy" decoding="async">';
+	}
+	return $out . '</span>';
+}
+
+/** Meistä-sivun osoite, jos sivu on julkaistu (muuten ''). */
+function nordic_about_url() {
+	$page = get_page_by_path( 'meista' );
+	return $page && 'publish' === $page->post_status ? get_permalink( $page ) : '';
+}
+
+/** Etusivulle "Tekijät"-nosto Meistä-sivulle (pääsivusto). */
+add_filter( 'the_content', function ( $html ) {
+	if ( ! in_the_loop() || nordic_is_regional() || strpos( $html, 'about-band' ) !== false ) {
+		return $html;
+	}
+	$slug = (string) get_post_field( 'post_name', get_the_ID() );
+	if ( ! is_front_page() && 'front' !== nordic_page_type( $slug ) ) {
+		return $html;
+	}
+	$url = nordic_about_url();
+	if ( ! $url ) {
+		return $html;
+	}
+	$block = '<section class="about-band-wrap"><div class="wrap"><a class="about-band" href="' . esc_url( $url ) . '">'
+		. nordic_team_faces()
+		. '<span class="about-band-text"><span class="about-band-eyebrow">Tekijät</span>'
+		. '<span class="about-band-title">Neljä kokenutta yrittäjää – sama tiimi mittauksesta asennukseen</span>'
+		. '<span class="about-band-sub">Vuosikymmenten kokemus rakentamisesta. Tutustu meihin ja tarinaamme.</span></span>'
+		. '<span class="btn btn-pine about-band-btn">Tutustu meihin <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
+		. '</a></div></section>';
+	foreach ( array( '<section class="seo-summary', '<section class="contact"', '<section class="final-cta"' ) as $anchor ) {
+		$pos = strpos( $html, $anchor );
+		if ( false !== $pos ) {
+			return substr_replace( $html, $block, $pos, 0 );
+		}
+	}
+	return $html . $block;
+}, 26 );
