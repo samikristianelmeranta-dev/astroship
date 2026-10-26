@@ -1,0 +1,172 @@
+GOOGLE-YRITYSPROFIILI (Google Business Profile) – KAIKKI TIEDOT
+Nordic Ikkunat & Ovet Oy · ikkunakauppias.fi
+==========================================================
+
+Aloitus: business.google.com → Lisää yritys → täytä alla olevat kohdat järjestyksessä.
+Profiilin omistaja: käytä yrityksen Google-tiliä (esim. info@ikkunakauppias.fi), ja lisää
+muut osakkaat ylläpitäjiksi (Asetukset → Ihmiset ja käyttöoikeudet).
+
+
+1. PERUSTIEDOT
+----------------------------------------------------------
+Yrityksen nimi
+  Nordic Ikkunat & Ovet
+  (Käytä täsmälleen yrityksen oikeaa nimeä. Älä lisää hakusanoja kuten "Ikkunat Turku" –
+  Google voi jäädyttää profiilin. Jos haluat nimeen verkko-osoitteen, se on
+  "Ikkunakauppias.fi – Nordic Ikkunat & Ovet" vain jos käytätte sitä nimeä myös kyltissä,
+  laskuissa ja autossa.)
+
+Pääluokka
+  Ikkunoiden asennuspalvelu   (englanniksi: Window installation service)
+
+Lisäluokat (enintään 9, valitse listasta lähin vastine)
+  Ikkunoiden toimittaja        (Window supplier)
+  Ovien toimittaja             (Door supplier)
+  Ovien asennuspalvelu / Oviliike (jos löytyy)
+  Remonttiurakoitsija          (Remodeler)
+  Rakennusurakoitsija          (Contractor)   – vain jos haluatte näkyä laajemmin
+
+Yrityksen tyyppi
+  Palvelualueyritys: "Toimitan tuotteita ja palveluja asiakkaille" = KYLLÄ
+  "Haluan lisätä sijainnin, jossa asiakkaat voivat käydä" = EI
+  → Katuosoite piilotetaan (Masku). Osoite pitää silti antaa vahvistusta varten.
+
+Palvelualueet (enintään 20)
+  Turku, Kaarina, Raisio, Naantali, Masku, Lieto, Nousiainen, Paimio, Salo, Halikko,
+  Parainen, Aura, Pöytyä, Uusikaupunki, Laitila, Mynämäki, Rusko, Sauvo, Marttila,
+  Varsinais-Suomi
+
+Puhelinnumero (ensisijainen)
+  045 7832 5070   (Myynti)
+Lisäpuhelinnumero
+  045 7830 4746   (Asennus)
+  ÄLÄ käytä mitään henkilökohtaista numeroa.
+
+Verkkosivusto
+  https://ikkunakauppias.fi/?utm_source=google&utm_medium=organic&utm_campaign=gbp
+
+Ajanvarauslinkki (Varaukset / Appointment)
+  https://ikkunakauppias.fi/yhteystiedot/?utm_source=google&utm_medium=organic&utm_campaign=gbp-varaus
+
+Aukioloajat
+  Maanantai–perjantai 8.00–17.00
+  Lauantai ja sunnuntai suljettu
+  (Lisää erikoisaukioloajat juhlapyhille: joulu, uusivuosi, pääsiäinen, juhannus.)
+
+Avauspäivä
+  [täytä yrityksen perustamispäivä]
+
+
+2. KUVAUS (max 750 merkkiä, ei linkkejä) – 725 merkkiä
+----------------------------------------------------------
+Nordic Ikkunat & Ovet on neljän kokeneen yrittäjän yhteistyöyritys ja valtuutettu Skaala-jälleenmyyjä. Myymme ja asennamme kotimaisia Skaala-ikkunoita ja -ulko-ovia omakotitaloihin, mökeille ja taloyhtiöihin Turussa ja koko Varsinais-Suomessa.
+
+Hoidamme ikkuna- ja oviremontin alusta loppuun: maksuton mittauskäynti, kirjallinen ja sitoumukseton tarjous, vanhojen ikkunoiden purku ja poisvienti, asennus ja viimeistely. Sama tiimi on mukana mittauksesta asennukseen, joten tiedät aina, kenen kanssa asioit.
+
+Skaalan ikkunat ja ovet valmistetaan mittatilaustyönä Ylihärmässä. Asennustyöstä saa kotitalousvähennystä, ja hankinnan voi maksaa myös OP:n rahoituksella kuukausierissä. Myymme myös pelkkiä tuotteita ilman asennusta.
+
+
+3. PALVELUT (Muokkaa palveluita → Lisää oma palvelu; kuvaus max 300 merkkiä)
+----------------------------------------------------------
+Ikkunaremontti
+  Vaihdamme vanhat ikkunat uusiin Skaala-ikkunoihin: mittaus, purku, asennus, viimeistely ja vanhojen ikkunoiden poisvienti. Omakotitalon ikkunat vaihdetaan tyypillisesti 1–3 päivässä.
+
+Ulko-oven vaihto
+  Uusi lämmin ja turvallinen Skaala-ulko-ovi asennettuna. Ovi vaihdetaan yleensä yhdessä päivässä, ja vanha ovi viedään pois.
+
+Ilmainen mittauskäynti
+  Tulemme paikan päälle, mittaamme aukot ja käymme vaihtoehdot läpi kanssasi. Kerromme suoraan, riittääkö huolto vai kannattaako vaihtaa. Käynti on maksuton eikä sido mihinkään.
+
+Ikkunoiden asennus uudiskohteeseen
+  Skaala-ikkunat ja -ovet uudiskohteisiin ja rakennusliikkeille mittatilauksena ja asennettuna aikataulussa.
+
+Taloyhtiön ikkunaremontti
+  Tarjous koko taloyhtiön tai yksittäisen osakkaan ikkunoista. Asennus sovitussa järjestyksessä ja asukkaille tiedottaen.
+
+Parveke- ja terassiovet
+  Parveke- ja terassiovien vaihto ja asennus samalla kertaa ikkunoiden kanssa tai erikseen.
+
+Ikkuna- ja ovihuolto
+  Säädöt, tiivisteet ja pienet korjaukset. Jos huolto riittää, sanomme sen suoraan.
+
+Pelkät tuotteet ilman asennusta
+  Skaala-ikkunat ja -ovet mittatilauksena myös ilman asennusta, jos teet työn itse. Mitoista vastaa tällöin asiakas.
+
+Rahoitus
+  Hankinnan voi maksaa OP:n rahoituksella kuukausierissä, 2 500–50 000 €. Laske kuukausierä verkkosivuiltamme.
+
+
+4. TUOTTEET (Tuotteet → Lisää tuote; kuva + nimi + kuvaus, hinta voi jäädä tyhjäksi)
+----------------------------------------------------------
+Skaala-ikkunat               – Kuva: nordic-theme/assets/img/kuvat/olohuone-maisemaikkuna.webp
+  Kotimaiset mittatilausikkunat Ylihärmästä, myös piilosaranoidut mallit ja energiatehokkaat lasit. Painike: "Lisätietoja" → https://ikkunakauppias.fi/ikkunat/
+Skaala-ulko-ovet             – Kuva: nordic-theme/assets/img/kuvat/ulko-ovi-terassi.webp
+  Kuusi mallistoa umpiovista lasiaukollisiin, myös alumiinipintainen Aika-mallisto. → https://ikkunakauppias.fi/ovet/
+Parveke- ja terassiovet      – Kuva: esite/img/ovi.jpg
+Ikkunat taloyhtiöille        – Kuva: nordic-theme/assets/img/kuvat/olohuone-puuikkunat.webp
+
+
+5. MÄÄRITTEET (Muokkaa profiilia → Lisää)
+----------------------------------------------------------
+Valitse soveltuvat, esimerkiksi:
+  ✔ Ilmaiset arviot / tarjoukset
+  ✔ Palvelut paikan päällä
+  ✔ Ajanvaraus verkossa
+  ✔ Maksutavat: lasku, rahoitus (jos listassa)
+
+
+6. KUVAT (lisää heti alkuun vähintään 10)
+----------------------------------------------------------
+Logo:          dist/some/profiilikuva.png (neliö, 1080 × 1080)
+Kansikuva:     dist/some/fb-kansikuva.png (tai oma kohdekuva vaakana)
+Tiimi:         dist/some/fb-1-tiimi.png + jokaisen muotokuva
+               (nordic-theme/assets/img/tiimi/jussi.webp, anton.webp, matias.webp, sami.webp)
+Työmaakuvat:   ennen–jälkeen-kuvat omista kohteista (asiakkaan luvalla, ei osoitteita/rekkareita)
+Auto ja kyltti: jos teipattu auto on, kuva siitä vahvistaa yritystä
+Vinkki: lisää 2–3 uutta omaa kuvaa joka kuukausi. Aidot kuvat toimivat paremmin kuin kuvapankki.
+
+
+7. ENSIMMÄISET PÄIVITYKSET (Lisää päivitys; kuva + teksti + painike)
+----------------------------------------------------------
+Päivitys 1 – Esittely (kuva: fb-1-tiimi.png, painike: Lisätietoja → /tietoa-meista/)
+  Hei! Me olemme Nordic Ikkunat & Ovet – neljän kokeneen yrittäjän yhteistyöyritys. Myymme ja asennamme Skaalan ikkunoita ja ulko-ovia Turussa ja koko Varsinais-Suomessa. Sama tiimi hoitaa mittauksen, tarjouksen ja asennuksen. Tervetuloa palveltavaksi!
+
+Päivitys 2 – Tarjous (kuva: fb-mainos-1-nelio.png, painike: Pyydä tarjous → /yhteystiedot/)
+  Ilmainen mittauskäynti: tulemme paikan päälle, mittaamme ikkunat ja ovet ja teemme kirjallisen, sitoumuksettoman tarjouksen. Asennustyöstä saa kotitalousvähennystä.
+
+Päivitys 3 – Vinkki (kuva: some-tarpeen-merkit.png, painike: Lisätietoja → /kannattaako-ikkunoiden-vaihto/)
+  Milloin ikkunat on syytä uusia? Vetoa vaikka tiivisteet on huollettu, huurua lasien välissä, jäykkä ovi tai noussut lämmityslasku. Tunnistatko jonkin näistä? Kerromme rehellisesti, riittääkö huolto.
+
+Julkaise uusi päivitys noin kerran viikossa (sama sisältö kuin Facebookissa käy hyvin).
+
+
+8. ARVOSTELUT
+----------------------------------------------------------
+Arvostelulinkki: Profiili → "Pyydä arvosteluja" → kopioi linkki.
+Lisää linkki CRM:n luovutusviestiin ja kiitossähköpostiin.
+
+Viesti asiakkaalle (tekstiviesti/sähköposti työn jälkeen):
+  Kiitos, että valitsit meidät! Jos olit tyytyväinen työhön, auttaisitko meitä kertomalla kokemuksesi Googlessa? Se vie minuutin ja auttaa muita löytämään meidät: [arvostelulinkki]
+  Terveisin [nimi], Nordic Ikkunat & Ovet
+
+Vastaus positiiviseen arvosteluun:
+  Kiitos paljon, [etunimi]! Oli mukava olla mukana remontissanne. Nauttikaa uusista ikkunoista, ja ollaan yhteydessä, jos tarvitsette jotain. – [nimi], Nordic Ikkunat & Ovet
+
+Vastaus kriittiseen arvosteluun:
+  Kiitos palautteesta, [etunimi]. Olemme pahoillamme, ettei kaikki mennyt odotetusti. Haluaisimme korjata asian – soitathan meille numeroon 045 7832 5070 tai laita viestiä info@ikkunakauppias.fi, niin katsotaan tilanne yhdessä. – [nimi]
+
+Vastaa jokaiseen arvosteluun muutaman päivän sisällä. Älä tarjoa etuja arvostelua vastaan
+(Googlen säännöt kieltävät).
+
+
+9. TARKISTUSLISTA
+----------------------------------------------------------
+[ ] Vahvistus tehty (video, postikortti tai puhelin – Google kertoo tavan)
+[ ] Nimi, luokat, palvelualueet, puhelin, sivusto, aukioloajat
+[ ] Kuvaus ja palvelut
+[ ] Logo, kansikuva ja vähintään 10 kuvaa
+[ ] 3 ensimmäistä päivitystä
+[ ] Osakkaat lisätty ylläpitäjiksi
+[ ] Viestit (chat) päälle, jos joku vastaa niihin päivittäin
+[ ] Arvostelulinkki CRM:n luovutusviestiin
+[ ] Sama nimi, puhelin ja sivusto myös Facebookissa, Fonectassa, Finderissä ja 020202:ssa
