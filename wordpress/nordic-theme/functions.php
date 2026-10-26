@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.8.2' );
+define( 'NORDIC_VERSION', '2.9.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1748,3 +1748,31 @@ add_filter( 'the_content', function ( $html ) {
 	}
 	return $html . $block;
 }, 26 );
+
+/* =========================================================================
+ * Poistumisikkuna (exit intent). Päälle/pois: Mukauta → Sivuston alue.
+ * ========================================================================= */
+
+function nordic_exit_popup_enabled() {
+	if ( ! get_theme_mod( 'nordic_exit_popup', 1 ) || is_user_logged_in() || ! is_singular( 'page' ) && ! is_front_page() ) {
+		return false;
+	}
+	$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+	return ! in_array( $slug, array( 'yhteystiedot', 'kiitos', 'tietosuojaseloste', 'evasteet' ), true );
+}
+
+add_action( 'wp_enqueue_scripts', function () {
+	if ( nordic_exit_popup_enabled() ) {
+		wp_enqueue_script( 'nordic-exit', nordic_asset_uri( 'js/exit-intent.js' ), array( 'nordic' ), NORDIC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	}
+}, 20 );
+
+add_action( 'customize_register', function ( $wp_customize ) {
+	$wp_customize->add_setting( 'nordic_exit_popup', array( 'default' => 1, 'sanitize_callback' => 'absint' ) );
+	$wp_customize->add_control( 'nordic_exit_popup', array(
+		'section'     => 'nordic_site',
+		'label'       => 'Poistumisikkuna (tiimin kuva ja maksuton käynti)',
+		'description' => 'Näytetään kävijälle enintään kerran 14 päivässä, kun hän on poistumassa sivulta. Ei näy kirjautuneille eikä yhteystieto- ja kiitossivuilla.',
+		'type'        => 'checkbox',
+	) );
+}, 20 );

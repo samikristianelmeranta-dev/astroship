@@ -140,6 +140,30 @@
   </div>
 </dialog>
 
+<?php if ( nordic_exit_popup_enabled() ) : ?>
+<?php /* Poistumisikkuna: aukeaa kerran, kun kävijä on lähdössä sivulta (exit-intent.js) */ ?>
+<dialog class="exit-modal" id="exit-modal" aria-labelledby="exit-modal-title" aria-describedby="exit-modal-text">
+  <div class="exit-modal-inner">
+    <button class="quote-modal-close exit-modal-close" type="button" data-exit-close aria-label="<?php esc_attr_e( 'Sulje', 'nordic' ); ?>"><?php echo nordic_icon( 'close' ); // phpcs:ignore ?></button>
+    <div class="exit-modal-photos" aria-hidden="true">
+      <?php foreach ( nordic_team() as $nordic_m ) : ?>
+      <img src="<?php echo esc_url( nordic_asset_uri( 'img/tiimi/' . $nordic_m['key'] . '-300.webp' ) ); ?>" alt="" width="300" height="400" loading="lazy" decoding="async">
+      <?php endforeach; ?>
+    </div>
+    <div class="exit-modal-body">
+      <p class="exit-modal-kicker">Ennen kuin lähdet</p>
+      <h2 id="exit-modal-title">Haluatko varmasti poistua sivuilta?</h2>
+      <p id="exit-modal-text">Voimme myös tulla luoksesi: ammattilaisemme katsoo yhdessä kanssasi ikkunoiden ja ovien kunnon ja kertoo suoraan, riittääkö huolto vai kannattaako vaihtaa. Käynti on maksuton eikä sido mihinkään.</p>
+      <div class="exit-modal-actions">
+        <a class="btn btn-primary" href="#tarjous" data-quote data-exit-yes autofocus>Kyllä, haluan maksuttoman käynnin</a>
+        <button class="exit-modal-no" type="button" data-exit-close>Ei kiitos, poistun sivulta</button>
+      </div>
+      <p class="exit-modal-team"><?php echo esc_html( implode( ', ', array_map( function ( $m ) { return strtok( $m['name'], ' ' ); }, array_slice( nordic_team(), 0, -1 ) ) ) . ' ja ' . strtok( nordic_team()[ count( nordic_team() ) - 1 ]['name'], ' ' ) ); ?> · vastaamme viimeistään seuraavana arkipäivänä</p>
+    </div>
+  </div>
+</dialog>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>
