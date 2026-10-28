@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- WordPress-tuontitiedosto: uudet artikkelit luonnoksina. Työkalut → Tuo → WordPress. -->
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>Sami Elmeranta</title>
+	<link>https://www.samielmeranta.fi</link>
+	<description>Tolkun poliitikko</description>
+	<language>fi</language>
+	<wp:wxr_version>1.2</wp:wxr_version>
+	<wp:base_site_url>https://www.samielmeranta.fi</wp:base_site_url>
+	<wp:base_blog_url>https://www.samielmeranta.fi</wp:base_blog_url>
+	<wp:author><wp:author_id>2</wp:author_id><wp:author_login><![CDATA[Sami Elmeranta]]></wp:author_login><wp:author_display_name><![CDATA[Sami Elmeranta]]></wp:author_display_name><wp:author_first_name><![CDATA[Sami]]></wp:author_first_name><wp:author_last_name><![CDATA[Elmeranta]]></wp:author_last_name></wp:author>
+	<wp:category><wp:term_id>15</wp:term_id><wp:category_nicename><![CDATA[politiikka]]></wp:category_nicename><wp:category_parent><![CDATA[]]></wp:category_parent><wp:cat_name><![CDATA[Politiikka]]></wp:cat_name></wp:category>
+	<generator>https://wordpress.org/?v=6.8</generator>
+	<item>
+		<title><![CDATA[Mikä on Liike Nyt? Puolue selitettynä ilman jargonia]]></title>
+		<link>https://www.samielmeranta.fi/mika-on-liike-nyt/</link>
+		<pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90401</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Liike Nyt on suomalainen puolue, jonka Harry "Hjallis" Harkimo perusti kansanliikkeenä keväällä 2018. Puoluerekisteriin se merkittiin vuonna 2019. Puolueen tunnuslause on "Jotta sinulla on varaa elää", ja sen kärkiteemoja ovat työllisyys, yrittäjyys, kevyempi verotus, byrokratian purkaminen ja avoimempi päätöksenteko. Eduskunnassa Liike Nytillä on yksi kansanedustaja, puheenjohtaja Harry Harkimo. Puolue on mukana eduskuntavaaleissa 18.4.2027.</p>
+<p>Kun kerroin liittyneeni Liike Nytiin, sain heti saman kysymyksen useammalta tutulta: "Ai se Hjalliksen juttu? Mitä se oikeastaan ajaa?" Kysymys on ihan reilu. Liike Nyt on pieni puolue, eikä siitä kirjoiteta lehdissä samalla tavalla kuin isoista. Siksi kokosin tähän sen, mitä puolueesta kannattaa tietää. Kerron myös, miksi itse päädyin sinne.</p>
+<h2>Mistä Liike Nyt on syntynyt?</h2>
+<p>Harry Harkimo erosi kokoomuksesta keväällä 2018 ja perusti Liike Nytin heti perään. Alussa se ei ollut edes puolue, vaan kansalaisliike. Ajatuksena oli, että politiikkaa voi tehdä toisin: ilman puoluekoneistoa ja niin, että tavalliset ihmiset pääsevät vaikuttamaan suoraan.</p>
+<p>Liike keräsi kuitenkin nopeasti kannatusta. Puolueena toimiminen toi käytännön etuja, kuten oikeuden asettaa ehdokkaita omalla nimellä ja puoluetuen, joten Liike Nyt keräsi tarvittavat 5 000 kannattajakorttia. Se merkittiin puoluerekisteriin vuonna 2019. Tästä tuli aikanaan myös kritiikkiä, koska liike oli aiemmin puhunut puoluetukia vastaan. (<a href="https://fi.wikipedia.org/wiki/Liike_Nyt" target="_blank" rel="noopener noreferrer">Wikipedia: Liike Nyt</a>)</p>
+<h3>Vaalimenestys tähän asti</h3>
+<ul>
+<li><strong>Eduskuntavaalit 2019:</strong> noin 2,3 prosenttia äänistä, yksi kansanedustaja (Harkimo, Uusimaa)</li>
+<li><strong>Eduskuntavaalit 2023:</strong> noin 2,4 prosenttia ja noin 75 000 ääntä, edelleen yksi kansanedustaja</li>
+<li><strong>Kunta- ja aluevaalit:</strong> valtuutettuja useissa kunnissa, mutta puolue on myöntänyt, että ehdokasmäärä jäi tavoitteesta</li>
+</ul>
+<p>Prosentit ovat pieniä, mutta ääniä on kymmeniätuhansia. Suomen vaalijärjestelmässä pienen puolueen ongelma ei ole äänimäärä vaan se, miten äänet jakautuvat vaalipiireihin. Kerron tästä lisää <a href="https://www.samielmeranta.fi/varsinais-suomen-vaalipiiri-2027/">Varsinais-Suomen vaalipiiriä käsittelevässä kirjoituksessa</a>.</p>
+<h2>Kuka johtaa Liike Nytiä?</h2>
+<p>Liike Nytin puoluekokous pidettiin Helsingissä 6.6.2026. Kokous valitsi yksimielisesti <strong>Harry Harkimon</strong> jatkamaan puheenjohtajana. Varapuheenjohtajiksi valittiin näyttelijänä ja yrittäjänä tunnettu <strong>Petteri Summanen</strong> ja <strong>Heidi Sukari</strong>. Puoluevaltuuston puheenjohtajaksi valittiin <strong>Mika Tunturi</strong>, joka vetää myös Liike Nytin Varsinais-Suomen toimintaa. (<a href="https://www.liikenyt.fi/ajankohtaista/liike-nyt-piti-puoluekokouksensa-lauantaina-662026-helsingissnbsp" target="_blank" rel="noopener noreferrer">liikenyt.fi</a>, <a href="https://www.suomenmaa.fi/uutiset/harkimo-jatkaa-liike-nytin-puheenjohtajana-nayttelijana-tunnettu-petteri-summanen-varapuheenjohtajaksi/" target="_blank" rel="noopener noreferrer">Suomenmaa</a>)</p>
+<p>Harkimo on kansanedustajana yhä puolueen tunnetuin kasvo. Moni tuntee hänet purjehtijana, Jokereiden omistajana tai Diili-ohjelmasta. Pitkällä aikavälillä puolueen pitää kuitenkin olla enemmän kuin yksi ihminen. Siksi uudet ehdokkaat ympäri Suomen ovat sille tärkeitä.</p>
+<h2>Mitä Liike Nyt ajaa?</h2>
+<p>Liike Nyt ei ole perinteinen oikeisto- tai vasemmistopuolue, vaikka talouspolitiikassa se on selvästi markkinamyönteinen. Itse kuvaisin sitä näin: <strong>ratkaisut ratkaisevat, ei ideologia.</strong> Alla puolueen keskeiset linjat niin kuin minä ne ymmärrän.</p>
+<h3>Työ ja työllisyys</h3>
+<p>Liike Nytin vaihtoehtobudjetin kärkitavoite on <strong>200 000 uutta työpaikkaa yksityiselle sektorille</strong> ja <strong>80 prosentin työllisyysaste</strong>. Lähtökohta on, että hyvinvointi rahoitetaan työllä eikä velalla. Kun Suomen työttömyys on noussut EU:n kärkeen, tavoite tuntuu ajankohtaisemmalta kuin koskaan.</p>
+<h3>Yrittäjyys</h3>
+<p>Puolue haluaa tehdä yrittämisestä helpompaa ja kannattavampaa. Vaihtoehtobudjetissa uudet yritykset toimisivat <strong>kolme ensimmäistä tilikautta ilman yhteisöveroa</strong>, ja investoivan yrityksen yhteisövero laskisi <strong>15 prosenttiin</strong>. Liike Nyt vaatii myös, että <strong>YEL-maksu perustuu yrittäjän todellisiin tuloihin</strong>. Tämä on minulle tuttu aihe, ja kirjoitin siitä erikseen: <a href="https://www.samielmeranta.fi/yel-maksu-2027/">YEL-maksu 2027</a>.</p>
+<h3>Kevyempi julkinen sektori ja veronkevennykset</h3>
+<p>Suomen julkiset menot ovat EU:n suurimpia suhteessa bruttokansantuotteeseen. Liike Nyt haluaa purkaa byrokratiaa, karsia päällekkäistä hallintoa ja keventää verotusta. Puolueen vaihtoehtobudjetissa verotus kevenisi 921 miljoonalla eurolla ja palveluihin kohdennettaisiin 829 miljoonaa euroa. Ajatuksena on, että rahaa siirretään hallinnosta palveluihin ja ihmisten omiin taskuihin.</p>
+<h3>Avoimuus ja suora vaikuttaminen</h3>
+<p>Kansanliikkeen juuret näkyvät yhä. Liike Nyt haluaa, että äänestäjät pääsevät vaikuttamaan myös vaalien välissä ja että päätöksenteko on läpinäkyvää. Ehdokkailta ei edellytetä puoluekirjaa, ja moni tulee mukaan yrittäjän tai työelämän taustalta, ei puolueen nuorisojärjestöstä.</p>
+<h3>Maahanmuutto ja turvallisuus</h3>
+<p>Liike Nyt katsoo maahanmuuttoa ensisijaisesti talouden ja työn kautta. Maahanmuuton pitää vahvistaa työllisyyttä ja julkista taloutta, ei kuormittaa niitä. Oma näkemykseni on sama: rasismille ei ole sijaa, mutta maahanmuutosta pitää voida puhua myös kriittisesti.</p>
+<h2>Onko Liike Nyt oikeisto- vai vasemmistopuolue?</h2>
+<p>Tätä kysytään paljon. Lyhyt vastaus: talouspolitiikassa Liike Nyt on oikealla, koska se korostaa yrittäjyyttä, veronkevennyksiä ja pienempää julkista sektoria. Arvokysymyksissä se on aika liberaali, eikä se halua lokeroitua.</p>
+<p>Itse en ole koskaan kokenut oikeisto–vasemmisto-akselia kovin hyödylliseksi. Kaarinan kaupunginvaltuustossa olen ollut monesti samaa mieltä vasemmistoliittolaisen kanssa, kun asia on ollut järkevä, ja eri mieltä oman silloisen puolueeni kanssa, kun se ei ole ollut. Minulle tolkku tarkoittaa juuri tätä.</p>
+<h2>Liike Nyt vai kokoomus? Mitä eroa niillä on?</h2>
+<p>Koska olen itse siirtynyt kokoomuksesta Liike Nytiin, tätä kysytään minulta usein. Talouslinjassa puolueilla on paljon yhteistä: molemmat puhuvat työn, yrittäjyyden ja tasapainoisen talouden puolesta. Erot löytyvät muualta:</p>
+<ul>
+<li><strong>Rakenne:</strong> Kokoomus on iso puolue, jolla on vahva organisaatio, nuorisojärjestöt ja pitkä historia. Liike Nyt on pieni ja ketterä, ja yksittäisen jäsenen ääni kuuluu siellä paremmin.</li>
+<li><strong>Hallitusvastuu:</strong> Kokoomus johtaa hallitusta ja joutuu tekemään kompromisseja. Liike Nyt voi sanoa asiat suoremmin, mutta sillä on vähemmän valtaa toteuttaa niitä.</li>
+<li><strong>Asenne:</strong> Liike Nyt suhtautuu puoluekoneistoihin ja niiden verkostoihin kriittisemmin. Kirjoitin poliittisten verkostojen vallasta tarkemmin täällä: <a href="https://www.samielmeranta.fi/poliittinen-ohjaus-laaja-alaisin-verkosto/">onko poliittisesta ohjauksesta tullut yhteiskunnan laaja-alaisin verkosto?</a></li>
+</ul>
+<p>Kokoomuksesta Kaarinassa kerroin enemmän kirjoituksessa <a href="https://www.samielmeranta.fi/kaarinan-kokoomus/">Kaarinan kokoomus</a>.</p>
+<h2>Miksi itse liityin Liike Nytiin?</h2>
+<p>Olen yrittäjä, kolmen lapsen isä ja Kaarinan kaupunginvaltuutettu. Kun kävin läpi asiat, joiden puolesta olen tehnyt töitä, ja vertasin niitä Liike Nytin linjaan, yhteneväisyyksiä oli enemmän kuin missään muualla. Työ, yrittäjyys, rehellinen taloudenpito ja politiikka palvelutehtävänä eikä etuoikeutena.</p>
+<p>Kirjoitin päätöksestä tarkemmin täällä: <a href="https://www.samielmeranta.fi/olen-liittynyt-liike-nytiin/">Olen liittynyt Liike Nytiin</a>.</p>
+<h2>Miten Liike Nytiin voi liittyä tai lähteä ehdolle?</h2>
+<p>Liike Nytin jäseneksi pääsee puolueen verkkosivuilla. Ehdokkaaksi voi hakea, vaikka ei olisi aiemmin ollut politiikassa mukana. Puolue on kertonut etsivänsä erityisesti yrittäjiä ja työelämän osaajia. Eduskuntavaalien ehdokkaat julkaistaan vaalipiireittäin <a href="https://www.liikenyt.fi/eduskuntavaalit2027" target="_blank" rel="noopener noreferrer">Liike Nytin vaalisivulla</a>.</p>
+<p>Jos haluat jutella Liike Nytistä ennen päätöstä, saat soittaa tai laittaa viestiä minulle. Kerron rehellisesti, millaista siellä on.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Mikä on Liike Nyt?</h3>
+<p>Liike Nyt on suomalainen puolue, jonka Harry Harkimo perusti kansanliikkeenä vuonna 2018. Puoluerekisteriin se merkittiin vuonna 2019. Se ajaa työllisyyttä, yrittäjyyttä, kevyempää verotusta, byrokratian purkamista ja avoimempaa päätöksentekoa.</p>
+<h3>Kuka on Liike Nytin puheenjohtaja?</h3>
+<p>Puheenjohtaja on Harry Harkimo, joka valittiin jatkokaudelle puoluekokouksessa 6.6.2026. Varapuheenjohtajat ovat Petteri Summanen ja Heidi Sukari.</p>
+<h3>Montako kansanedustajaa Liike Nytillä on?</h3>
+<p>Liike Nytillä on yksi kansanedustaja, Harry Harkimo Uudenmaan vaalipiiristä. Vuoden 2023 eduskuntavaaleissa puolue sai noin 2,4 prosenttia äänistä.</p>
+<h3>Onko Liike Nyt oikeistolainen puolue?</h3>
+<p>Talouspolitiikassa Liike Nyt on markkinamyönteinen ja sijoittuu oikealle. Arvokysymyksissä se on melko liberaali. Puolue itse korostaa, että ratkaisut ovat sille tärkeämpiä kuin ideologia.</p>
+<h3>Mikä on Liike Nytin tunnuslause?</h3>
+<p>Liike Nytin tunnuslause on "Jotta sinulla on varaa elää". Se kertoo puolueen pääviestin: työn pitää kannattaa ja ihmisille pitää jäädä enemmän rahaa käteen.</p>
+<h3>Onko Liike Nyt mukana eduskuntavaaleissa 2027?</h3>
+<p>On. Liike Nyt asettaa ehdokkaita eduskuntavaaleihin 18.4.2027, myös Varsinais-Suomen vaalipiiriin.</p>
+<h2>Lopuksi</h2>
+<p>Liike Nyt on pieni puolue, jolla on iso tavoite: tehdä Suomesta maa, jossa työ kannattaa ja yrittäminen on helppoa. Siitä voi olla mitä mieltä tahansa, mutta toivottavasti tämä kirjoitus auttoi ymmärtämään, mistä siinä on kyse.</p>
+<p>Jos jäi kysyttävää, <a href="https://www.samielmeranta.fi/contact/">ota yhteyttä</a>. Vastaan jokaiseen viestiin itse.</p>
+<p><em>Kirjoittaja Sami Elmeranta on kaarinalainen yrittäjä ja kaupunginvaltuutettu, joka edustaa Liike Nytiä.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Liike Nyt on Harry Harkimon vuonna 2018 perustama puolue, joka ajaa työtä, yrittäjyyttä, kevyempää julkista sektoria ja avoimempaa päätöksentekoa. Kerron, mistä puolue on syntynyt, mitä se ajaa, kuka sitä johtaa ja miksi itse liityin siihen.]]></excerpt:encoded>
+		<wp:post_id>90401</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-28 09:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[mika-on-liike-nyt]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="liike-nyt"><![CDATA[Liike Nyt]]></category>
+		<category domain="post_tag" nicename="puolueet"><![CDATA[puolueet]]></category>
+		<category domain="post_tag" nicename="harry-harkimo"><![CDATA[Harry Harkimo]]></category>
+		<category domain="post_tag" nicename="eduskuntavaalit-2027"><![CDATA[eduskuntavaalit 2027]]></category>
+		<category domain="post_tag" nicename="politiikka"><![CDATA[politiikka]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Eduskuntavaalit 2027: päivämäärät, ennakkoäänestys ja näin äänestät]]></title>
+		<link>https://www.samielmeranta.fi/eduskuntavaalit-2027-nain-aanestat/</link>
+		<pubDate>Wed, 28 Oct 2026 10:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90402</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Eduskuntavaalien varsinainen vaalipäivä on <strong>sunnuntai 18.4.2027</strong>, ja äänestyspaikat ovat auki <strong>klo 9–20</strong>. Ennakkoon voi äänestää kotimaassa <strong>7.–13.4.2027</strong> ja ulkomailla <strong>7.–10.4.2027</strong>. Äänestää saa jokainen Suomen kansalainen, joka täyttää 18 vuotta viimeistään vaalipäivänä. Mukaan tarvitaan kuvallinen henkilöllisyystodistus. Äänestyslippuun kirjoitetaan yhden ehdokkaan numero.</p>
+<p>Muistan oman ensimmäisen äänestyskertani. Jonotin koulun liikuntasalissa ja mietin koko ajan, kirjoitanko numeron oikeaan kohtaan ja taitanko lipun oikein. Nyt, kun olen itse ollut ehdolla, tiedän, että moni miettii samoja asioita, mutta harva kehtaa kysyä. Tähän oppaaseen olen koonnut kaiken olennaisen niin, että vaalipäivänä ei tarvitse jännittää.</p>
+<h2>Eduskuntavaalit 2027: tärkeimmät päivämäärät</h2>
+<table>
+<thead>
+<tr>
+<th>Mitä</th>
+<th>Milloin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kotikunta, joka ratkaisee äänestyspaikan</td>
+<td>26.2.2027</td>
+</tr>
+<tr>
+<td>Puolueiden ehdokasasettelu päättyy</td>
+<td>maaliskuun alussa 2027</td>
+</tr>
+<tr>
+<td>Ehdokasnumerot vahvistetaan</td>
+<td>18.3.2027</td>
+</tr>
+<tr>
+<td>Ilmoittautuminen kotiäänestykseen päättyy</td>
+<td>ti 6.4.2027 klo 16</td>
+</tr>
+<tr>
+<td>Ennakkoäänestys kotimaassa</td>
+<td>7.–13.4.2027</td>
+</tr>
+<tr>
+<td>Ennakkoäänestys ulkomailla</td>
+<td>7.–10.4.2027</td>
+</tr>
+<tr>
+<td><strong>Varsinainen vaalipäivä</strong></td>
+<td><strong>su 18.4.2027 klo 9–20</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Päivämäärät perustuvat oikeusministeriön ja kuntien vaalisivuihin. (<a href="https://www.hel.fi/fi/paatoksenteko-ja-hallinto/osallistu-ja-vaikuta/osallistu-paatoksentekoon/vaalit-ja-aanestaminen/eduskuntavaalit-2027" target="_blank" rel="noopener noreferrer">Helsingin kaupunki: Eduskuntavaalit 2027</a>, <a href="https://vaalit.fi/" target="_blank" rel="noopener noreferrer">vaalit.fi</a>)</p>
+<h3>Miksi vaalipäivä on juuri 18.4.?</h3>
+<p>Perustuslain mukaan eduskuntavaalit pidetään vaalivuoden huhtikuun kolmantena sunnuntaina. Vuonna 2027 se on 18. huhtikuuta. Pääsiäinen voi siirtää päivää, mutta tällä kertaa niin ei käy.</p>
+<h2>Kuka saa äänestää?</h2>
+<p>Eduskuntavaaleissa saa äänestää jokainen <strong>Suomen kansalainen, joka täyttää 18 vuotta viimeistään vaalipäivänä</strong>. Asuinmaalla ei ole väliä, joten myös ulkomailla asuvat Suomen kansalaiset voivat äänestää.</p>
+<p>Toisin kuin kunta- ja aluevaaleissa, eduskuntavaaleissa <strong>ulkomaan kansalaiset eivät voi äänestää</strong>, vaikka asuisivat Suomessa pysyvästi.</p>
+<h3>Pitääkö äänestämistä varten ilmoittautua?</h3>
+<p>Ei tarvitse. Kaikki äänioikeutetut ovat automaattisesti äänioikeusrekisterissä. Digi- ja väestötietovirasto lähettää ennen vaaleja ilmoituskortin tai sähköisen ilmoituksen, josta näet oman äänestyspaikkasi. Korttia ei tarvitse ottaa äänestämään mukaan.</p>
+<h2>Ennakkoäänestys: helpoin tapa äänestää</h2>
+<p>Valtaosa suomalaisista äänestää nykyään ennakkoon, eikä ihme. Ennakkoäänestys kestää viikon, ja sen voi tehdä <strong>missä tahansa yleisessä ennakkoäänestyspaikassa koko Suomessa</strong>. Esimerkiksi turkulainen voi äänestää ennakkoon Helsingissä, jos sattuu olemaan siellä työmatkalla.</p>
+<h3>Missä ennakkoon voi äänestää?</h3>
+<p>Ennakkoäänestyspaikkoja on kirjastoissa, kauppakeskuksissa, kunnantaloilla ja postin toimipaikoissa. Kaarinassa ennakkoäänestyspaikat ilmoitetaan kaupungin sivuilla, ja koko maan paikat löytyvät vaalit.fi-palvelusta lähempänä vaaleja.</p>
+<p>Vinkki omasta kokemuksesta: kauppakeskusten ennakkoäänestyspaikoilla on usein jonoa ennakkoäänestyksen viimeisinä päivinä. Jos haluat päästä nopeasti, mene viikon alussa tai keskellä päivää.</p>
+<h3>Ennakkoäänestys ulkomailla</h3>
+<p>Ulkomailla voi äänestää Suomen edustustoissa ja muissa ulkomaan äänestyspaikoissa <strong>7.–10.4.2027</strong>. Eduskuntavaaleissa ulkomailla asuva tai siellä oleskeleva voi äänestää myös <strong>kirjeitse</strong>. Kirjeäänestys pitää tilata ja postittaa hyvissä ajoin, koska äänen on ehdittävä Suomeen ennen vaalipäivää.</p>
+<h3>Kotiäänestys</h3>
+<p>Jos liikkuminen tai toimintakyky on niin heikentynyt, ettei äänestyspaikalle pääse ilman kohtuuttomia vaikeuksia, voi äänestää kotona. Kotiäänestykseen pitää ilmoittautua oman kunnan keskusvaalilautakunnalle viimeistään <strong>tiistaina 6.4.2027 klo 16</strong>. Sama mahdollisuus on omaishoitajalla, joka asuu samassa taloudessa.</p>
+<h3>Laitosäänestys</h3>
+<p>Sairaaloissa, hoivakodeissa ja vastaavissa laitoksissa järjestetään laitosäänestys ennakkoäänestyksen aikana. Laitoksen henkilökunta kertoo ajankohdan.</p>
+<h2>Varsinainen vaalipäivä su 18.4.2027</h2>
+<p>Vaalipäivänä äänestetään <strong>vain omassa äänestyspaikassa</strong>, joka määräytyy sen osoitteen mukaan, jossa olit kirjoilla <strong>26.2.2027</strong>. Äänestyspaikat ovat auki klo 9–20. Oman paikkasi näet ilmoituskortista tai vaalit.fi-palvelusta.</p>
+<p>Jos muutit maaliskuussa, vaalipäivän äänestyspaikkasi on siis vielä vanhan osoitteen mukainen. Silloin on usein helpompaa äänestää ennakkoon.</p>
+<h2>Mitä mukaan äänestämään?</h2>
+<p>Ota mukaan <strong>kuvallinen henkilöllisyystodistus</strong>. Kelpaavat esimerkiksi:</p>
+<ul>
+<li>henkilökortti</li>
+<li>passi</li>
+<li>ajokortti</li>
+<li>kuvallinen Kela-kortti</li>
+</ul>
+<p>Muuta ei tarvita. Ehdokkaan numero kannattaa kuitenkin katsoa valmiiksi esimerkiksi puhelimeen. Äänestyskopissa on ehdokaslista, mutta pitkän listan selaaminen kopissa ei ole kenenkään lempipuuhaa.</p>
+<h2>Näin äänestäminen etenee vaihe vaiheelta</h2>
+<h3>1. Vaalitoimitsija tarkistaa henkilöllisyyden</h3>
+<p>Näytät henkilöllisyystodistuksen, ja toimitsija tarkistaa, että olet äänioikeutettu. Saat äänestyslipun.</p>
+<h3>2. Kirjoitat ehdokkaan numeron</h3>
+<p>Menet äänestyskoppiin ja kirjoitat <strong>yhden ehdokkaan numeron</strong> lipussa olevan ympyrän sisään. Numero kannattaa kirjoittaa selvästi. Lippuun ei saa kirjoittaa mitään muuta, ei nimeä, ei puoluetta eikä hymiötä, koska muuten ääni voi mennä hukkaan.</p>
+<p>Eduskuntavaaleissa ehdokasnumerot alkavat numerosta 2, ja jokaisella ehdokkaalla on oma numeronsa koko vaalipiirissä.</p>
+<h3>3. Taitat lipun</h3>
+<p>Taita lippu niin, että kirjoittamasi numero jää sisäpuolelle eikä näy. Vaalisalaisuus on ehdoton: kenenkään ei kuulu nähdä, ketä äänestit.</p>
+<h3>4. Leimaus ja vaaliuurna</h3>
+<p>Toimitsija leimaa taitetun lipun, ja pudotat sen itse vaaliuurnaan. Siinä se. Koko homma kestää yleensä pari minuuttia.</p>
+<h3>Saako äänestyksessä olla avustaja?</h3>
+<p>Saa, jos oma kyky tehdä merkintä on olennaisesti heikentynyt. Avustajana voi olla oma valitsema henkilö tai vaaliavustaja. Ehdokas itse tai hänen lähiomaisensa ei kuitenkaan voi toimia avustajana. Avustajaa sitoo vaalisalaisuus.</p>
+<h2>Kenen numeron kirjoitan? Näin valitset ehdokkaan</h2>
+<p>Suomessa äänestetään aina ehdokasta, ei pelkkää puoluetta. Ääni menee kuitenkin ensin puolueelle tai vaaliliitolle, ja vasta sen jälkeen ratkaistaan, ketkä listalta pääsevät läpi henkilökohtaisten äänimäärien mukaan.</p>
+<p>Siksi kannattaa miettiä kahta asiaa:</p>
+<ol>
+<li><strong>Minkä puolueen linja on lähimpänä omaa ajatteluani?</strong></li>
+<li><strong>Kuka tämän puolueen ehdokkaista ajaa minulle tärkeitä asioita parhaiten?</strong></li>
+</ol>
+<p>Vaalikoneet auttavat alkuun. Kirjoitin niiden fiksusta käytöstä erillisen oppaan: <a href="https://www.samielmeranta.fi/vaalikone-2027/">Vaalikone 2027</a>. Kannattaa myös tarkistaa, onko puolueella vaaliliitto, koska silloin äänesi voi auttaa myös toisen puolueen ehdokasta. Tästä lisää: <a href="https://www.samielmeranta.fi/mita-tarkoittaa-vaaliliitto/">Mitä tarkoittaa vaaliliitto?</a></p>
+<h2>Mitä tapahtuu vaalien jälkeen?</h2>
+<h3>Ääntenlaskenta</h3>
+<p>Ennakkoäänten laskenta alkaa jo vaalipäivän iltapäivänä, ja ensimmäiset tulokset julkaistaan heti, kun äänestyspaikat sulkeutuvat klo 20. Vaali-illan aikana selviää jo melko tarkasti, ketkä pääsevät eduskuntaan. Vaalipiirilautakunnat tarkastavat ja vahvistavat tuloksen muutaman päivän kuluessa.</p>
+<h3>Hallitusneuvottelut</h3>
+<p>Kun tulos on selvillä, suurimman puolueen puheenjohtaja johtaa yleensä hallitusneuvotteluja. Neuvottelut kestävät tavallisesti viikoista pariin kuukauteen. Vuonna 2023 hallitus aloitti kesäkuussa, vaikka vaalit pidettiin huhtikuun alussa.</p>
+<h3>Uusi eduskunta aloittaa</h3>
+<p>Uudet kansanedustajat aloittavat työnsä, kun vaalitulos on vahvistettu ja eduskunta kokoontuu. Jos kiinnostaa, mitä kansanedustajan työ käytännössä on ja paljonko siitä maksetaan, lue <a href="https://www.samielmeranta.fi/kansanedustajan-palkka-ja-tyo/">Kuinka paljon kansanedustaja tienaa?</a></p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Milloin ovat eduskuntavaalit 2027?</h3>
+<p>Varsinainen vaalipäivä on sunnuntai 18.4.2027. Äänestyspaikat ovat auki klo 9–20.</p>
+<h3>Milloin on ennakkoäänestys 2027?</h3>
+<p>Ennakkoäänestys on kotimaassa 7.–13.4.2027 ja ulkomailla 7.–10.4.2027.</p>
+<h3>Voiko ennakkoon äänestää missä tahansa?</h3>
+<p>Voi. Ennakkoon voi äänestää missä tahansa yleisessä ennakkoäänestyspaikassa Suomessa, myös toisessa kunnassa. Vaalipäivänä äänestetään vain omassa äänestyspaikassa.</p>
+<h3>Mitä äänestämään pitää ottaa mukaan?</h3>
+<p>Kuvallinen henkilöllisyystodistus, esimerkiksi henkilökortti, passi, ajokortti tai kuvallinen Kela-kortti. Ilmoituskorttia ei tarvita.</p>
+<h3>Kuka saa äänestää eduskuntavaaleissa?</h3>
+<p>Jokainen Suomen kansalainen, joka täyttää 18 vuotta viimeistään vaalipäivänä, myös ulkomailla asuvat. Ulkomaan kansalaiset eivät voi äänestää eduskuntavaaleissa.</p>
+<h3>Miten kotiäänestykseen ilmoittaudutaan?</h3>
+<p>Ilmoittautuminen tehdään oman kunnan keskusvaalilautakunnalle viimeistään tiistaina 6.4.2027 klo 16. Yhteystiedot löytyvät oman kunnan verkkosivuilta.</p>
+<h3>Mitä äänestyslippuun kirjoitetaan?</h3>
+<p>Vain yhden ehdokkaan numero ympyrän sisään. Kaikki muut merkinnät voivat mitätöidä äänen.</p>
+<h2>Lopuksi</h2>
+<p>Äänestäminen on oikeasti helppoa: henkilöllisyystodistus mukaan, numero lippuun ja lippu uurnaan. Vaikein osa on päättää, kenen numeron kirjoittaa. Siihen kannattaa käyttää aikaa enemmän kuin itse äänestämiseen.</p>
+<p>Jos sinulla on kysyttävää vaaleista, äänestämisestä tai Liike Nytistä, <a href="https://www.samielmeranta.fi/contact/">laita viestiä</a>. Vastaan mielelläni.</p>
+<p><em>Kirjoittaja Sami Elmeranta on kaarinalainen yrittäjä ja kaupunginvaltuutettu, joka edustaa Liike Nytiä.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Eduskuntavaalit pidetään sunnuntaina 18.4.2027, ja ennakkoäänestys on kotimaassa 7.–13.4.2027. Tästä oppaasta näet kaikki tärkeät päivät, kuka saa äänestää, mitä mukaan otetaan ja miten äänestäminen käytännössä menee vaihe vaiheelta.]]></excerpt:encoded>
+		<wp:post_id>90402</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-28 10:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[eduskuntavaalit-2027-nain-aanestat]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="eduskuntavaalit-2027"><![CDATA[eduskuntavaalit 2027]]></category>
+		<category domain="post_tag" nicename="ennakkoaanestys"><![CDATA[ennakkoäänestys]]></category>
+		<category domain="post_tag" nicename="aanestaminen"><![CDATA[äänestäminen]]></category>
+		<category domain="post_tag" nicename="vaalipaiva"><![CDATA[vaalipäivä]]></category>
+		<category domain="post_tag" nicename="kotiaanestys"><![CDATA[kotiäänestys]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Miksi Suomen talous ei kasva? 5 syytä ja mitä asialle voisi tehdä]]></title>
+		<link>https://www.samielmeranta.fi/miksi-suomen-talous-ei-kasva/</link>
+		<pubDate>Wed, 28 Oct 2026 11:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90403</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Suomen talous ei ole kasvanut kunnolla sitten vuoden 2008 finanssikriisin. Bruttokansantuote kasvoi vuonna 2025 vain 0,2 prosenttia, työttömyys nousi EU:n korkeimmaksi ja julkiset menot ovat noin 57–58 prosenttia BKT:sta, mikä on EU:n suurin osuus. Taustalla on viisi pääsyytä: Nokian ja metsäteollisuuden murros, liian vähäiset investoinnit, työn kova verotus, paisunut julkinen sektori ja jäykkä työmarkkina. Ratkaisut ovat tiedossa, mutta niiden toteuttaminen vaatii rohkeutta.</p>
+<p>Kun kirjoitin vaalimainokseeni, että talouskasvu on laahannut kohta 20 vuotta, eräs tuttu kysyi, eikö se ole liioittelua. Valitettavasti ei ole. Suomalainen, joka aloitti työuransa finanssikriisin aikaan, on käytännössä elänyt koko työikänsä taloudessa, joka ei ole juuri kasvanut. Se näkyy palkoissa, palveluissa, kuntien budjeteissa ja yrittäjien arjessa.</p>
+<p>Yrittäjänä ja kaupunginvaltuutettuna näen saman ongelman kahdelta puolelta. Yrityksissä mietitään, kannattaako palkata. Kunnassa mietitään, mistä leikataan. Käyn tässä läpi, miksi näin on ja mitä asialle voisi tehdä.</p>
+<h2>Missä Suomen talous on nyt? Luvut lyhyesti</h2>
+<ul>
+<li><strong>Talouskasvu:</strong> BKT kasvoi vuonna 2025 vain 0,2 prosenttia (Tilastokeskus). Suomen Pankki ennustaa syyskuussa 2026 kasvuksi 1,7 prosenttia vuodelle 2026 ja 1,6 prosenttia vuodelle 2027. Suunta on parempi, mutta lähtötaso on matala. (<a href="https://www.sttinfo.fi/tiedote/72321420/suomen-pankin-valiennuste-suomen-talouden-hyva-vire-jatkuu?lang=fi" target="_blank" rel="noopener noreferrer">Suomen Pankki</a>)</li>
+<li><strong>Työttömyys:</strong> Eurostatin mukaan Suomen kausitasoitettu työttömyysaste nousi marraskuussa 2025 <strong>10,6 prosenttiin</strong>, ja Suomi ohitti Espanjan EU:n korkeimman työttömyyden maana. (<a href="https://www.kaleva.fi/suomen-tyottomyysaste-nousi-eun-korkeimmaksi/12481880" target="_blank" rel="noopener noreferrer">Kaleva</a>, <a href="https://stat.fi/fi/julkaisu/cmfp96le0a4mm07vyv0oyqv4n" target="_blank" rel="noopener noreferrer">Tilastokeskus: Työvoimatutkimus</a>)</li>
+<li><strong>Julkiset menot:</strong> Julkisyhteisöjen menot ovat noin <strong>57–58 prosenttia BKT:sta</strong>, ja ne ovat EU-maiden suurimmat. (<a href="https://www.verkkouutiset.fi/a/suomen-julkiset-menot-nyt-eun-suurimmat-menosaastoja-tarvitaan/" target="_blank" rel="noopener noreferrer">Verkkouutiset / Veronmaksajat</a>)</li>
+<li><strong>Velka:</strong> Valtiovarainministeriön mukaan julkisen velan suhde BKT:hen nousee lähelle 90 prosenttia ja jatkaa kasvuaan. (<a href="https://vm.fi/taloudellinen-katsaus-syksy-2025" target="_blank" rel="noopener noreferrer">VM: Taloudellinen katsaus</a>)</li>
+<li><strong>Konkurssit:</strong> Vuonna 2025 pantiin vireille <strong>3 906 konkurssia</strong>, kun vuotta aiemmin niitä oli 3 488. Tammikuussa 2025 konkursseja oli kuukausitasolla eniten sitten vuoden 1997. (<a href="https://stat.fi/julkaisu/cmfqnh6fk0vbx07w1laoa5xjl" target="_blank" rel="noopener noreferrer">Tilastokeskus</a>)</li>
+</ul>
+<p>Nämä eivät ole yksittäisen huonon vuoden lukuja. Ne kertovat rakenteellisesta ongelmasta.</p>
+<h2>Syy 1: Nokia ja metsäteollisuus jättivät aukon, jota ei ole täytetty</h2>
+<p>2000-luvun alussa Nokia vastasi yksin merkittävästä osasta Suomen talouskasvua ja viennistä. Kun matkapuhelinliiketoiminta romahti 2010-luvun alussa, samaan aikaan paperin kysyntä laski maailmalla ja metsäteollisuus sulki tehtaita. Suomi menetti kaksi vientimoottoriaan lähes kerralla.</p>
+<p>Moni muu maa olisi kärsinyt samasta. Ongelma on siinä, että tilalle ei ole syntynyt tarpeeksi uutta. Pelialalla, teknologiassa ja vihreässä siirtymässä on hienoja menestystarinoita, mutta ne eivät vielä riitä korvaamaan menetettyä.</p>
+<h3>Mitä tästä voi oppia?</h3>
+<p>Taloutta ei pidä rakentaa muutaman jättiläisen varaan. Tarvitaan tuhansia kasvavia pk-yrityksiä, jotka työllistävät ympäri Suomen. Juuri siksi yrittäjyyden helpottaminen on minulle niin tärkeää.</p>
+<h2>Syy 2: Investointeja on liian vähän</h2>
+<p>Talous kasvaa, kun yritykset investoivat koneisiin, tehtaisiin, ohjelmistoihin ja osaamiseen. Suomessa yksityiset investoinnit ovat jääneet jälkeen verrokkimaista, erityisesti Ruotsista.</p>
+<p>Syitä on monia: epävarma talousnäkymä, lupaprosessien hitaus, kallis työ ja pieni kotimarkkina. Yrittäjänä tunnistan tämän. Kun tulevaisuus näyttää sumuiselta, investointeja lykätään. Kun moni lykkää samaan aikaan, talous ei kasva.</p>
+<p>Positiivista on, että vihreän siirtymän ja datakeskusten investointeja on tulossa Suomeen miljardeja. Ne kannattaa ottaa vastaan nopeilla luvilla eikä haudata byrokratiaan.</p>
+<h2>Syy 3: Työn verotus on niin kovaa, ettei lisätyö kannata</h2>
+<p>Suomessa keskituloisen marginaaliveroaste on korkea. Moni kokee, että ylityö, sivutoimi tai palkankorotus ei käytännössä näy tilillä. Kun samaan aikaan sosiaaliturva ja asumistuki pienenevät tulojen kasvaessa, matalapalkkaisen työn vastaanottaminen voi jopa heikentää taloudellista tilannetta.</p>
+<p>Tämä on mielestäni yksi suurimmista syistä siihen, miksi työllisyys ei nouse. Kirjoitin aiheesta laajemmin: <a href="https://www.samielmeranta.fi/yrittaminen-ja-tyonteko/">Yrittäminen ja työnteko ovat parhaita kavereita</a>. Pääviesti on yksinkertainen: <strong>mitä enemmän ihmisille jää omasta työstään käteen, sitä paremmin meillä menee.</strong></p>
+<h2>Syy 4: Julkinen sektori on kasvanut yli kantokyvyn</h2>
+<p>Suomen julkiset menot ovat EU:n suurimmat suhteessa talouden kokoon. Tämä ei tarkoita, että palvelut olisivat Euroopan parhaat. Iso osa rahasta menee hallintoon, päällekkäisiin rakenteisiin, selvityksiin ja järjestelmiin, joita kukaan ei oikein omista.</p>
+<p>Hyvinvointialueuudistus on hyvä esimerkki. Tavoite oli hillitä kustannuksia, mutta alueet ovat painuneet alijäämälle ja palveluista leikataan. Kuntapuolella näen saman: rahaa kuluu rakenteisiin, kun sen pitäisi mennä palveluihin.</p>
+<h3>Onko kyse leikkaamisesta?</h3>
+<p>Ei pelkästään. Kyse on siitä, mihin rahat käytetään. Kirjoitin kuntatasolta esimerkkejä artikkeleissa <a href="https://www.samielmeranta.fi/vastuullinen-julkinen-talous/">Vastuullinen julkinen talous</a> ja <a href="https://www.samielmeranta.fi/miksi-kunnan-pitaa-investoida-viisaasti-ei-eniten/">Miksi kunnan pitää investoida viisaasti, ei eniten</a>. Samat periaatteet pätevät valtiolla.</p>
+<h2>Syy 5: Työmarkkinat ovat jäykät ja paikallinen sopiminen vaikeaa</h2>
+<p>Suomessa työehdoista sovitaan pitkälti keskitetysti. Malli toimi teollisuusvaltiossa, jossa isot tehtaat työllistivät tuhansia. Nykyään suurin osa uusista työpaikoista syntyy pieniin yrityksiin, joiden tilanteet vaihtelevat valtavasti.</p>
+<p>Pienen yrityksen on vaikea palkata, jos palkkaamiseen liittyy suuri riski ja vähän joustoa. Paikallisen sopimisen laajentaminen on edennyt, mutta hitaasti. Joustoa tarvitaan lisää niin, että työntekijän turva säilyy.</p>
+<h2>Entä maahanmuutto?</h2>
+<p>Maahanmuutolla on iso merkitys taloudelle, joko hyvässä tai huonossa. Työperäinen maahanmuutto, jossa ihminen tulee töihin ja maksaa veroja, vahvistaa julkista taloutta. Jos maahanmuutto ei johda työllistymiseen, se maksaa paljon.</p>
+<p>Suomeen on tullut paljon maahanmuuttoa, jonka työllisyysaste on matala. Siksi maahanmuuttopolitiikassa pitää katsoa ennen kaikkea sitä, johtaako se työhön. Tämä ei ole rasismia, vaan sitä, että julkisen talouden kestävyydestä huolehditaan.</p>
+<h2>Mitä pitäisi tehdä? 7 konkreettista keinoa</h2>
+<ol>
+<li><strong>Kevennetään työn verotusta erityisesti pieni- ja keskituloisilla</strong>, jotta lisätyö kannattaa.</li>
+<li><strong>Tehdään uuden yrityksen kolme ensimmäistä vuotta yhteisöverottomiksi</strong>, kuten Liike Nytin vaihtoehtobudjetti esittää.</li>
+<li><strong>Lasketaan investoivan yrityksen yhteisöveroa</strong> ja nopeutetaan lupaprosesseja.</li>
+<li><strong>Korjataan YEL-maksu vastaamaan yrittäjän todellisia tuloja</strong>, jotta yrittäminen ei rankaise. Lisää: <a href="https://www.samielmeranta.fi/yel-maksu-2027/">YEL-maksu 2027</a>.</li>
+<li><strong>Karsitaan hallintoa ja päällekkäisiä rakenteita</strong> ennen kuin leikataan palveluista.</li>
+<li><strong>Laajennetaan paikallista sopimista</strong> kaikenkokoisiin yrityksiin.</li>
+<li><strong>Ohjataan maahanmuuttoa työhön</strong>, ja edellytetään kotoutumiselta tuloksia.</li>
+</ol>
+<p>Liike Nytin tavoite on <strong>200 000 uutta yksityisen sektorin työpaikkaa ja 80 prosentin työllisyysaste</strong>. Se on kunnianhimoinen tavoite, mutta Ruotsi ja Tanska ovat jo lähellä sitä. Ei ole syytä, miksi Suomi ei pystyisi samaan. Lue lisää: <a href="https://www.samielmeranta.fi/mika-on-liike-nyt/">Mikä on Liike Nyt?</a></p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Miksi Suomen talous ei kasva?</h3>
+<p>Pääsyitä ovat Nokian ja metsäteollisuuden murroksen jättämä aukko, vähäiset yksityiset investoinnit, työn kova verotus, EU:n suurimpiin kuuluvat julkiset menot ja jäykät työmarkkinat. Yhdessä ne ovat pitäneet kasvun heikkona lähes 20 vuotta.</p>
+<h3>Paljonko Suomen talous kasvoi vuonna 2025?</h3>
+<p>Tilastokeskuksen mukaan BKT kasvoi vuonna 2025 noin 0,2 prosenttia. Suomen Pankki ennustaa syyskuussa 2026 kasvuksi 1,7 prosenttia vuodelle 2026.</p>
+<h3>Onko Suomessa EU:n korkein työttömyys?</h3>
+<p>Eurostatin vertailussa Suomen kausitasoitettu työttömyysaste nousi marraskuussa 2025 EU:n korkeimmaksi, 10,6 prosenttiin. Vuonna 2026 Suomi on ollut Espanjan kanssa kärkisijoilla.</p>
+<h3>Kuinka suuret Suomen julkiset menot ovat?</h3>
+<p>Julkiset menot ovat noin 57–58 prosenttia bruttokansantuotteesta, mikä on EU-maiden suurin osuus.</p>
+<h3>Miten Suomen talous saadaan kasvuun?</h3>
+<p>Kasvua tukevat työn verotuksen keventäminen, yrittäjyyden ja investointien helpottaminen, hallinnon karsiminen, paikallisen sopimisen laajentaminen ja työhön johtava maahanmuutto.</p>
+<h2>Lopuksi</h2>
+<p>Suomen talouden ongelmat eivät ratkea yhdellä päätöksellä tai yhdellä hallituskaudella. Suunta voidaan kuitenkin kääntää, jos uskalletaan tehdä asioita toisin kuin viimeiset 20 vuotta. Siksi kysyn myös vaalimainoksissani: <strong>ehkä olisi aika kokeilla jotain uutta?</strong></p>
+<p>Mitä mieltä sinä olet? Mikä on mielestäsi suurin syy siihen, ettei Suomi kasva? <a href="https://www.samielmeranta.fi/contact/">Kerro minulle</a>. Luen jokaisen viestin.</p>
+<p><em>Kirjoittaja Sami Elmeranta on kaarinalainen yrittäjä ja kaupunginvaltuutettu, joka edustaa Liike Nytiä.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Suomen talous on polkenut paikallaan lähes 20 vuotta, työttömyys on EU:n korkeimpia ja julkiset menot EU:n suurimpia. Käyn läpi viisi syytä kasvun puutteeseen ja konkreettiset keinot, joilla suunta voidaan kääntää.]]></excerpt:encoded>
+		<wp:post_id>90403</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-28 11:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[miksi-suomen-talous-ei-kasva]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="talous"><![CDATA[talous]]></category>
+		<category domain="post_tag" nicename="talouskasvu"><![CDATA[talouskasvu]]></category>
+		<category domain="post_tag" nicename="tyottomyys"><![CDATA[työttömyys]]></category>
+		<category domain="post_tag" nicename="julkinen-talous"><![CDATA[julkinen talous]]></category>
+		<category domain="post_tag" nicename="yrittajyys"><![CDATA[yrittäjyys]]></category>
+		<category domain="post_tag" nicename="liike-nyt"><![CDATA[Liike Nyt]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Kuinka paljon kansanedustaja tienaa? Palkkio, kulukorvaus ja mitä työ oikeasti on]]></title>
+		<link>https://www.samielmeranta.fi/kansanedustajan-palkka-ja-tyo/</link>
+		<pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90404</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Kansanedustajan palkkio on lokakuussa 2025 tehdyn korotuksen jälkeen noin <strong>7 637 euroa kuukaudessa</strong>. Kokemuksen myötä palkkio nousee noin <strong>7 944 euroon</strong> ja yli 12 vuotta edustajana olleilla noin <strong>8 393 euroon</strong>. Lisäksi edustaja saa kulukorvausta noin <strong>990–1 810 euroa kuukaudessa</strong> sen mukaan, missä hän asuu. Palkkiosta päättää eduskunnan palkkiotoimikunta, ei edustajat itse. Työ on paljon muutakin kuin täysistuntoja: valiokuntia, valmistelua, kenttätyötä ja yhteydenpitoa äänestäjiin.</p>
+<p>"Paljonko kansanedustaja oikeasti tienaa?" on yksi niistä kysymyksistä, joita kysytään vaalien alla aina. Yleensä kysymyksen sävy on vähän epäluuloinen, ja ymmärrän sen hyvin. Kun kunnissa leikataan ja ruokakaupassa jokainen euro lasketaan, poliitikkojen palkat kiinnostavat syystäkin.</p>
+<p>Kävin tätä varten läpi eduskunnan omat tiedot ja tuoreimmat uutiset palkkioista. Kerron myös, mitä mieltä itse olen palkan suuruudesta.</p>
+<h2>Kansanedustajan palkkio 2026</h2>
+<p>Kansanedustajan palkkiota kutsutaan virallisesti <strong>edustajanpalkkioksi</strong>. Se on veronalaista tuloa samalla tavalla kuin tavallinen palkka. Palkkio nousee sen mukaan, kuinka kauan edustaja on ollut eduskunnassa.</p>
+<table>
+<thead>
+<tr>
+<th>Kokemus kansanedustajana</th>
+<th>Palkkio (noin, €/kk)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ensimmäiset vuodet</td>
+<td>7 637</td>
+</tr>
+<tr>
+<td>Pidempi kokemus</td>
+<td>7 944</td>
+</tr>
+<tr>
+<td>Yli 12 vuotta</td>
+<td>8 393</td>
+</tr>
+</tbody>
+</table>
+<p>Luvut ovat lokakuussa 2025 voimaan tulleen korotuksen mukaisia. Ajantasaiset summat löytyvät aina <a href="https://www.eduskunta.fi/FI/kansanedustajat/palkkiot-ja-kulukorvaukset/Sivut/default.aspx" target="_blank" rel="noopener noreferrer">eduskunnan palkkiosivulta</a>. (<a href="https://www.verkkouutiset.fi/a/kansanedustajat-saavat-jopa-500-euron-palkankorotuksen/" target="_blank" rel="noopener noreferrer">Verkkouutiset</a>, <a href="https://duunitori.fi/tyoelama/kansanedustajan-palkka" target="_blank" rel="noopener noreferrer">Duunitori</a>)</p>
+<h3>Puhemiehistö ja valiokuntien puheenjohtajat</h3>
+<p>Puhemies, varapuhemiehet sekä valiokuntien ja eduskuntaryhmien puheenjohtajat saavat lisäpalkkiota, koska heidän tehtävänsä vievät enemmän aikaa. Ministeriksi nimitetty kansanedustaja saa ministerin palkkion, ja edustajanpalkkiosta maksetaan silloin vain osa.</p>
+<h3>Kuinka paljon kansanedustaja saa käteen?</h3>
+<p>Bruttopalkkiosta jää verojen jälkeen käteen yleensä noin 4 800–5 200 euroa kuukaudessa, riippuen kunnallisverosta ja muista tuloista. Summa on arvio, koska jokaisen verotus on erilainen.</p>
+<h2>Kulukorvaus: mitä se on ja paljonko sitä saa?</h2>
+<p>Palkkion lisäksi kansanedustajat saavat <strong>kulukorvausta</strong>, jonka tarkoitus on kattaa edustajantyöstä syntyviä kuluja, kuten matkoja vaalipiirissä, tilaisuuksia ja puhelinkuluja. Korvauksen suuruus riippuu siitä, asuuko edustaja pääkaupunkiseudulla vai kauempana.</p>
+<p>Eduskunnan asiakirjojen mukaan kulukorvaus on vuonna 2026 noin <strong>987, 1 316 tai 1 809 euroa kuukaudessa</strong>. Suurinta korvausta saavat ne, jotka joutuvat pitämään toista asuntoa Helsingissä. (<a href="https://www2.riksdagen.fi/valtiopaivaasiakirjat/EDK-2026-AK-35914" target="_blank" rel="noopener noreferrer">Eduskunta</a>)</p>
+<p>Kulukorvaus ei ole lisäpalkkaa, vaikka sitä joskus sellaiseksi kutsutaan. Esimerkiksi varsinaissuomalainen edustaja ajaa vaalipiirissä paljon, ja autokulut kertyvät nopeasti.</p>
+<h2>Kuka päättää kansanedustajien palkoista?</h2>
+<p>Moni luulee, että kansanedustajat päättävät itse omista palkoistaan. Näin ei ole. Palkkioista päättää <strong>eduskunnan palkkiotoimikunta</strong>, jossa on ulkopuolisia asiantuntijoita. Toimikunta vertaa palkkioita muiden vastuullisten tehtävien palkkoihin ja yleiseen ansiokehitykseen.</p>
+<p>Toki eduskunta voi halutessaan muuttaa lakia, mutta tavallisesti palkkiot päätetään erillään edustajista.</p>
+<h2>Mitä kansanedustajan työ käytännössä on?</h2>
+<p>Televisiossa näkyvät täysistunnot ja kyselytunnit, mutta ne ovat vain pieni osa työstä. Tavallinen viikko näyttää suunnilleen tältä.</p>
+<h3>Täysistunnot</h3>
+<p>Eduskunnan täysistunnot pidetään yleensä tiistaista perjantaihin. Niissä käsitellään lakiesityksiä, keskustellaan ja äänestetään. Torstaisin on kyselytunti, jota moni katsoo televisiosta.</p>
+<h3>Valiokunnat</h3>
+<p><strong>Varsinainen lainsäädäntötyö tehdään valiokunnissa.</strong> Eduskunnassa on 17 valiokuntaa, ja jokainen edustaja istuu yleensä yhdessä tai kahdessa niistä. Valiokunnissa kuullaan asiantuntijoita, luetaan satoja sivuja mietintöjä ja hiotaan lakiesityksiä. Tämä on se osa työstä, jota ei näy julkisuuteen, mutta joka ratkaisee eniten.</p>
+<h3>Eduskuntaryhmä</h3>
+<p>Jokainen edustaja kuuluu eduskuntaryhmään, joka sopii yhteisestä linjasta. Pienen puolueen edustaja joutuu perehtymään paljon laajempaan asiakirjojen kirjoon kuin ison puolueen edustaja, jolla on kollegoita jakamassa aiheita.</p>
+<h3>Työ vaalipiirissä</h3>
+<p>Kansanedustaja edustaa koko Suomea, mutta käytännössä hän tekee paljon työtä oman vaalipiirinsä hyväksi. Maanantait ja viikonloput kuluvat usein yrityskäynneillä, tilaisuuksissa, kuntien tapaamisissa ja ihmisten kohtaamisissa. Varsinais-Suomessa tämä tarkoittaa Turun lisäksi esimerkiksi Saloa, Uuttakaupunkia, Loimaata ja saaristoa.</p>
+<h3>Yhteydenpito ja viestintä</h3>
+<p>Sähköposteja, puheluita, somea ja kansalaisten yhteydenottoja tulee viikoittain satoja. Hyvä edustaja vastaa niihin, ja siihen menee enemmän aikaa kuin moni arvaa.</p>
+<h3>Avustaja</h3>
+<p>Jokaisella kansanedustajalla on oikeus henkilökohtaiseen avustajaan, jonka palkan eduskunta maksaa. Avustaja auttaa valmistelussa, aikataulujen hallinnassa ja viestinnässä.</p>
+<h2>Onko kansanedustajan palkka liian suuri?</h2>
+<p>Tähän ei ole yhtä oikeaa vastausta, mutta kerron oman näkemykseni.</p>
+<p>Kansanedustajan palkkio on noin kaksinkertainen kokoaikaisen palkansaajan mediaaniansioon verrattuna. Se on paljon rahaa. Toisaalta edustaja vastaa miljardien budjetista ja laeista, jotka koskettavat jokaista suomalaista. Yksityisellä sektorilla vastaavan vastuun tehtävistä maksetaan usein selvästi enemmän.</p>
+<p>Minua vaivaa enemmän kaksi muuta asiaa:</p>
+<ol>
+<li><strong>Hillotolpat.</strong> Ongelma ei ole edustajanpalkkio vaan se, että osa poliitikoista kerää lisäksi hallituspaikkoja ja palkkioita kunnallisista yhtiöistä, säätiöistä ja osuuskunnista. Kirjoitin tästä laajemmin: <a href="https://www.samielmeranta.fi/poliittinen-ohjaus-laaja-alaisin-verkosto/">Onko poliittisesta ohjauksesta tullut yhteiskunnan laaja-alaisin verkosto?</a></li>
+<li><strong>Tulokset.</strong> Palkkio on helpompi hyväksyä, kun eduskunta saa aikaan tuloksia. Kun työttömyys on EU:n korkein ja talous ei kasva, moni kysyy aiheesta, mistä edustajille oikeastaan maksetaan. Lue lisää: <a href="https://www.samielmeranta.fi/miksi-suomen-talous-ei-kasva/">Miksi Suomen talous ei kasva?</a></li>
+</ol>
+<p>Politiikka on minulle palvelutehtävä, ei etuoikeus. Palkkio on reilu korvaus vaativasta työstä, kunhan työ myös tehdään kunnolla.</p>
+<h2>Miten kansanedustajaksi pääsee?</h2>
+<p>Kansanedustajaksi pääsee voittamalla tarpeeksi henkilökohtaisia ääniä eduskuntavaaleissa. Ehdokkaaksi voi asettua puolueen, vaaliliiton tai valitsijayhdistyksen kautta. Seuraavat vaalit pidetään <strong>18.4.2027</strong>.</p>
+<p>Kerroin ehdokkuuden käytännöistä tarkemmin kirjoituksessa <a href="https://www.samielmeranta.fi/eduskuntavaaliehdokkaat-2027/">Eduskuntavaaliehdokkaat 2027</a>, ja itse äänestämisestä täällä: <a href="https://www.samielmeranta.fi/eduskuntavaalit-2027-nain-aanestat/">Eduskuntavaalit 2027: näin äänestät</a>.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Paljonko kansanedustaja tienaa kuukaudessa?</h3>
+<p>Lokakuusta 2025 alkaen edustajanpalkkio on noin 7 637 euroa kuukaudessa ja pitkään toimineilla noin 7 944 tai 8 393 euroa. Lisäksi maksetaan kulukorvausta noin 990–1 810 euroa kuukaudessa.</p>
+<h3>Paljonko kansanedustajalle jää käteen?</h3>
+<p>Verojen jälkeen käteen jää yleensä noin 4 800–5 200 euroa kuukaudessa riippuen kunnallisverosta ja muista tuloista.</p>
+<h3>Kuka päättää kansanedustajien palkoista?</h3>
+<p>Palkkioista päättää eduskunnan palkkiotoimikunta, jossa on ulkopuolisia asiantuntijoita. Edustajat eivät tavallisesti päätä omista palkkioistaan.</p>
+<h3>Mitä kulukorvaus on?</h3>
+<p>Kulukorvaus kattaa edustajantyöstä syntyviä kuluja, kuten matkoja vaalipiirissä ja tilaisuuksia. Sen suuruus riippuu siitä, asuuko edustaja pääkaupunkiseudulla vai kauempana.</p>
+<h3>Mitä kansanedustaja tekee?</h3>
+<p>Kansanedustaja säätää lakeja, päättää valtion budjetista ja valvoo hallitusta. Suurin osa työstä tehdään valiokunnissa, eduskuntaryhmässä ja omassa vaalipiirissä.</p>
+<h3>Kuinka monta kansanedustajaa Suomessa on?</h3>
+<p>Eduskunnassa on 200 kansanedustajaa, jotka valitaan neljäksi vuodeksi kerrallaan.</p>
+<h2>Lopuksi</h2>
+<p>Kansanedustajan palkka on hyvä, mutta niin pitääkin olla. Tärkeämpää on se, mitä sillä rahalla saadaan aikaan. Toivon, että seuraava eduskunta muistaa tämän.</p>
+<p>Jos haluat kysyä jotain, <a href="https://www.samielmeranta.fi/contact/">laita viestiä</a>. Vastaan itse.</p>
+<p><em>Kirjoittaja Sami Elmeranta on kaarinalainen yrittäjä ja kaupunginvaltuutettu, joka edustaa Liike Nytiä.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Kansanedustajan palkkio on noin 7 600–8 400 euroa kuukaudessa kokemuksesta riippuen, ja lisäksi maksetaan kulukorvaus. Kerron, miten palkkio määräytyy, mitä kansanedustajan työviikko pitää sisällään ja onko palkka mielestäni oikean kokoinen.]]></excerpt:encoded>
+		<wp:post_id>90404</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-28 12:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[kansanedustajan-palkka-ja-tyo]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="kansanedustaja"><![CDATA[kansanedustaja]]></category>
+		<category domain="post_tag" nicename="kansanedustajan-palkka"><![CDATA[kansanedustajan palkka]]></category>
+		<category domain="post_tag" nicename="eduskunta"><![CDATA[eduskunta]]></category>
+		<category domain="post_tag" nicename="eduskuntavaalit-2027"><![CDATA[eduskuntavaalit 2027]]></category>
+		<category domain="post_tag" nicename="politiikka"><![CDATA[politiikka]]></category>
+	</item>
+	<item>
+		<title><![CDATA[Varsinais-Suomen vaalipiiri 2027: paikat, puolueet ja miten ääni muuttuu kansanedustajaksi]]></title>
+		<link>https://www.samielmeranta.fi/varsinais-suomen-vaalipiiri-2027/</link>
+		<pubDate>Wed, 28 Oct 2026 13:00:00 +0000</pubDate>
+		<dc:creator><![CDATA[Sami Elmeranta]]></dc:creator>
+		<guid isPermaLink="false">https://www.samielmeranta.fi/?p=90405</guid>
+		<description></description>
+		<content:encoded><![CDATA[<p><strong>Lyhyesti:</strong> Varsinais-Suomen vaalipiiristä valitaan eduskuntavaaleissa 18.4.2027 <strong>18 kansanedustajaa</strong>, yksi enemmän kuin vuonna 2023. Lisäpaikka tuli väestönkasvun ansiosta, ja vastaavasti Hämeen vaalipiiri menettää yhden paikan. Vaalipiiriin kuuluvat kaikki Varsinais-Suomen maakunnan kunnat, kuten Turku, Kaarina, Salo, Raisio, Lieto, Naantali ja Uusikaupunki. Paikat jaetaan puolueille ja vaaliliitoille d'Hondtin menetelmällä, ja puolueiden sisällä läpi pääsevät eniten henkilökohtaisia ääniä saaneet ehdokkaat.</p>
+<p>Asun Kaarinassa, ja tämä on minun vaalipiirini. Moni varsinaissuomalainen tietää, kenet haluaa eduskuntaan, mutta harva tietää, miten ääni oikeasti muuttuu kansanedustajan paikaksi. Siksi kokosin tähän kaiken olennaisen omasta vaalipiiristämme.</p>
+<h2>Mikä vaalipiiri on?</h2>
+<p>Suomi on jaettu eduskuntavaaleissa <strong>13 vaalipiiriin</strong>. Jokaisesta valitaan väkilukuun suhteutettu määrä kansanedustajia, yhteensä 200. Äänestäjä voi äänestää vain oman vaalipiirinsä ehdokkaita. Varsinaissuomalainen ei siis voi äänestää esimerkiksi Helsingin tai Uudenmaan ehdokasta.</p>
+<p>Ahvenanmaa on oma vaalipiirinsä, josta valitaan yksi edustaja. Muiden vaalipiirien paikkamäärä tarkistetaan ennen jokaisia vaaleja väestötietojen perusteella. (<a href="https://stat.fi/fi/luokitukset/vaalipiiri/vaalipiiri_1_20260101" target="_blank" rel="noopener noreferrer">Tilastokeskus: Vaalipiirit</a>)</p>
+<h2>Varsinais-Suomi saa 18. paikan</h2>
+<p>Vuoden 2027 vaaleissa Varsinais-Suomesta valitaan <strong>18 kansanedustajaa</strong>, kun vuonna 2023 määrä oli 17. Muutos johtuu siitä, että Varsinais-Suomen väkiluku on kasvanut suhteessa muuhun maahan. Samalla Hämeen vaalipiiri menettää yhden paikan. (<a href="https://yle.fi/a/74-20243707" target="_blank" rel="noopener noreferrer">Yle</a>)</p>
+<p>Lisäpaikka on alueelle hyvä uutinen. Se tarkoittaa enemmän ääntä eduskunnassa Varsinais-Suomen asioille, kuten Turun telakalle, tunnin juna -hankkeelle, saariston palveluille ja maatalouden tulevaisuudelle.</p>
+<h3>Mitkä kunnat kuuluvat Varsinais-Suomen vaalipiiriin?</h3>
+<p>Vaalipiiriin kuuluvat kaikki Varsinais-Suomen maakunnan kunnat. Suurimmat ovat:</p>
+<ul>
+<li><strong>Turku</strong>, maakunnan keskus ja selvästi suurin kaupunki</li>
+<li><strong>Salo</strong></li>
+<li><strong>Kaarina</strong></li>
+<li><strong>Raisio</strong></li>
+<li><strong>Lieto</strong></li>
+<li><strong>Naantali</strong></li>
+<li><strong>Uusikaupunki</strong></li>
+<li><strong>Parainen</strong></li>
+<li><strong>Loimaa</strong></li>
+</ul>
+<p>Lisäksi mukana on parikymmentä pienempää kuntaa, kuten Masku, Mynämäki, Nousiainen, Rusko, Sauvo, Paimio, Laitila, Somero ja Kemiönsaari. Vaalipiiri ulottuu siis Turun keskustasta Saaristomeren ulkosaariin ja Loimaan peltoaukeille.</p>
+<h2>Näin paikat jakautuivat vuonna 2023</h2>
+<p>Vuoden 2023 eduskuntavaaleissa Varsinais-Suomesta valittiin 17 kansanedustajaa. Paikat jakautuivat seitsemälle puolueelle:</p>
+<table>
+<thead>
+<tr>
+<th>Puolue</th>
+<th>Paikat 2023</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kokoomus</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Perussuomalaiset</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SDP</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Vasemmistoliitto</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Keskusta</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Vihreät</td>
+<td>1</td>
+</tr>
+<tr>
+<td>RKP</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Kolme suurinta puoluetta olivat lähes tasoissa, ja vaali-illan tulos ratkesi vasta myöhään. (<a href="https://yle.fi/a/74-20025465" target="_blank" rel="noopener noreferrer">Yle</a>, <a href="https://stat.fi/fi/julkaisu/cl8lkinf9pwt30cvz5uvtgprk" target="_blank" rel="noopener noreferrer">Tilastokeskus</a>)</p>
+<p>Liike Nyt ei saanut Varsinais-Suomesta paikkaa vuonna 2023. Sen ainoa kansanedustaja, Harry Harkimo, valittiin Uudeltamaalta. Jos haluat tietää puolueesta lisää, lue <a href="https://www.samielmeranta.fi/mika-on-liike-nyt/">Mikä on Liike Nyt?</a></p>
+<h2>Miten ääni muuttuu kansanedustajan paikaksi?</h2>
+<p>Suomen vaalijärjestelmä on suhteellinen. Se tarkoittaa, että puolueet saavat paikkoja suunnilleen äänimääränsä suhteessa. Laskutapa on nimeltään <strong>d'Hondtin menetelmä</strong>, ja se kuulostaa monimutkaisemmalta kuin onkaan.</p>
+<h3>Vaihe 1: Äänet lasketaan puolueittain</h3>
+<p>Ensin lasketaan yhteen kaikkien puolueen (tai vaaliliiton) ehdokkaiden äänet. Jos puolueen ehdokkaat saivat yhteensä 60 000 ääntä, puolueen äänimäärä on 60 000.</p>
+<h3>Vaihe 2: Ehdokkaat järjestetään</h3>
+<p>Puolueen ehdokkaat järjestetään henkilökohtaisen äänimäärän mukaan. Eniten ääniä saanut on ensimmäinen, toiseksi eniten saanut toinen ja niin edelleen.</p>
+<h3>Vaihe 3: Vertausluvut</h3>
+<p>Jokaiselle ehdokkaalle lasketaan <strong>vertausluku</strong>:</p>
+<ul>
+<li>Listan ensimmäinen saa koko puolueen äänimäärän (60 000)</li>
+<li>toinen puolet siitä (30 000)</li>
+<li>kolmas kolmanneksen (20 000)</li>
+<li>neljäs neljänneksen (15 000) ja niin edelleen</li>
+</ul>
+<h3>Vaihe 4: Suurimmat vertausluvut voittavat</h3>
+<p>Kaikkien puolueiden ehdokkaat laitetaan yhteen jonoon vertausluvun mukaan. Vaalipiirin 18 suurinta vertauslukua saavat paikan.</p>
+<h3>Esimerkki kolmella puolueella</h3>
+<p>Kuvitellaan, että jaossa on viisi paikkaa ja kolme puoluetta:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Puolue A</th>
+<th>Puolue B</th>
+<th>Puolue C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Äänet yhteensä</td>
+<td>60 000</td>
+<td>45 000</td>
+<td>20 000</td>
+</tr>
+<tr>
+<td>1. ehdokas</td>
+<td><strong>60 000</strong></td>
+<td><strong>45 000</strong></td>
+<td><strong>20 000</strong></td>
+</tr>
+<tr>
+<td>2. ehdokas</td>
+<td><strong>30 000</strong></td>
+<td><strong>22 500</strong></td>
+<td>10 000</td>
+</tr>
+<tr>
+<td>3. ehdokas</td>
+<td>20 000</td>
+<td>15 000</td>
+<td>6 667</td>
+</tr>
+</tbody>
+</table>
+<p>Viisi suurinta vertauslukua ovat 60 000, 45 000, 30 000, 22 500 ja 20 000. Kun A:n kolmannella ja C:n ensimmäisellä on sama vertausluku, paikan ratkaisee arpa. Esimerkissä A saa siis kaksi tai kolme paikkaa, B kaksi ja C nolla tai yhden.</p>
+<p>Esimerkki näyttää, miksi pienen puolueen on vaikea saada paikkaa. Puolue tarvitsee koko vaalipiirissä niin paljon ääniä, että sen ensimmäisen ehdokkaan vertausluku nousee 18 suurimman joukkoon.</p>
+<h2>Kuinka monta ääntä tarvitaan läpimenoon?</h2>
+<p>Tähän ei ole kiinteää rajaa, koska kaikki riippuu siitä, miten äänet jakautuvat. Karkeasti voi sanoa, että 18 paikan vaalipiirissä puolue tarvitsee noin <strong>5 prosenttia</strong> äänistä ollakseen varma ensimmäisestä paikasta. Laskennallinen kynnys on 100 / (18 + 1), eli noin 5,3 prosenttia. Vaaliliitolla ja hyvällä tuurilla paikka voi irrota pienemmälläkin osuudella.</p>
+<p>Henkilökohtaisissa äänissä läpimenoraja vaihtelee paljon. Ison puolueen listalla voi päästä läpi muutamalla tuhannella äänellä, jos puolueen yhteinen äänimäärä on suuri. Pienen puolueen kärkiehdokas taas voi jäädä ulos, vaikka saisi enemmän henkilökohtaisia ääniä.</p>
+<h3>Siksi vaaliliitot ovat tärkeitä</h3>
+<p>Pienet puolueet tekevät usein vaaliliittoja, jotta äänet eivät mene "hukkaan". Vaaliliitossa puolueiden äänet lasketaan yhteen, ja d'Hondtin menetelmä kohtelee liittoa yhtenä listana. Kerroin aiheesta tarkemmin: <a href="https://www.samielmeranta.fi/mita-tarkoittaa-vaaliliitto/">Mitä tarkoittaa vaaliliitto?</a></p>
+<h2>Mitkä asiat ovat Varsinais-Suomessa esillä vuonna 2027?</h2>
+<p>Varsinais-Suomessa on omia kysymyksiään, jotka nousevat esiin jokaisissa vaaleissa. Omasta näkökulmastani tärkeimmät ovat:</p>
+<ul>
+<li><strong>Työpaikat ja yritykset:</strong> Meriteollisuus, autotehdas ja lääketeollisuus työllistävät tuhansia, mutta alihankintaketjuissa on paljon pieniä yrityksiä, joiden tilanne on tiukka. Konkurssien määrä on noussut koko maassa.</li>
+<li><strong>Liikenne:</strong> Tunnin juna Turusta Helsinkiin ja raideliikenteen kehittäminen vaikuttavat koko maakunnan elinvoimaan.</li>
+<li><strong>Hyvinvointialueen talous:</strong> Varsinais-Suomen hyvinvointialueen alijäämä näkyy jo palveluissa ja niiden saatavuudessa.</li>
+<li><strong>Kuntien talous:</strong> Moni kunta, Kaarina mukaan lukien, joutuu tasapainottamaan talouttaan samalla, kun väki kasvaa ja palveluita tarvitaan enemmän.</li>
+<li><strong>Saaristo ja maaseutu:</strong> Yhteysalusliikenne, maatalouden kannattavuus ja palveluiden saatavuus haja-asutusalueilla.</li>
+</ul>
+<p>Laajemmin Suomen talouden tilasta kirjoitin täällä: <a href="https://www.samielmeranta.fi/miksi-suomen-talous-ei-kasva/">Miksi Suomen talous ei kasva?</a></p>
+<h2>Mistä löydät Varsinais-Suomen ehdokkaat?</h2>
+<p>Puolueet julkaisevat ehdokkaitaan syksyn ja talven aikana. Ehdokaslistat vahvistetaan maaliskuussa, ja ehdokasnumerot julkaistaan <strong>18.3.2027</strong>. Sen jälkeen kaikki ehdokkaat löytyvät oikeusministeriön <a href="https://vaalit.fi/" target="_blank" rel="noopener noreferrer">vaalit.fi-palvelusta</a>.</p>
+<p>Kokosin ehdokasasettelusta lisää tietoa artikkeliin <a href="https://www.samielmeranta.fi/eduskuntavaaliehdokkaat-2027/">Eduskuntavaaliehdokkaat 2027</a>. Käytännön äänestysohjeet löydät täältä: <a href="https://www.samielmeranta.fi/eduskuntavaalit-2027-nain-aanestat/">Eduskuntavaalit 2027: näin äänestät</a>.</p>
+<h2>Usein kysytyt kysymykset</h2>
+<h3>Montako kansanedustajaa Varsinais-Suomesta valitaan 2027?</h3>
+<p>Varsinais-Suomen vaalipiiristä valitaan vuoden 2027 eduskuntavaaleissa 18 kansanedustajaa. Vuonna 2023 määrä oli 17.</p>
+<h3>Mitkä kunnat kuuluvat Varsinais-Suomen vaalipiiriin?</h3>
+<p>Kaikki Varsinais-Suomen maakunnan kunnat, esimerkiksi Turku, Salo, Kaarina, Raisio, Lieto, Naantali, Uusikaupunki, Parainen ja Loimaa sekä pienemmät kunnat.</p>
+<h3>Miten Varsinais-Suomen paikat jakautuivat 2023?</h3>
+<p>Kokoomus, perussuomalaiset ja SDP saivat kukin neljä paikkaa, vasemmistoliitto kaksi sekä keskusta, vihreät ja RKP kukin yhden.</p>
+<h3>Mikä on d'Hondtin menetelmä?</h3>
+<p>D'Hondtin menetelmä on tapa jakaa paikat puolueille. Puolueen ehdokkaat saavat vertausluvut, jotka ovat puolueen äänimäärä jaettuna 1:llä, 2:lla, 3:lla ja niin edelleen. Vaalipiirin suurimmat vertausluvut saavat paikan.</p>
+<h3>Kuinka monta ääntä tarvitaan, jotta pääsee eduskuntaan Varsinais-Suomesta?</h3>
+<p>Kiinteää rajaa ei ole. Puolue tarvitsee yleensä noin viisi prosenttia vaalipiirin äänistä saadakseen varmasti paikan, ja henkilökohtaisten äänten raja riippuu siitä, kuinka paljon ääniä koko puolue saa.</p>
+<h3>Voinko äänestää ehdokasta toisesta vaalipiiristä?</h3>
+<p>Et voi. Eduskuntavaaleissa voit äänestää vain sen vaalipiirin ehdokkaita, jossa olit kirjoilla 26.2.2027.</p>
+<h2>Lopuksi</h2>
+<p>Varsinais-Suomi saa nyt yhden edustajan lisää, ja se on mahdollisuus. Toivon, että vaalipiirin 18 kansanedustajaa ajavat eduskunnassa koko maakunnan asiaa, eivät vain oman puolueensa.</p>
+<p>Jos haluat kysyä jotain vaaleista tai Varsinais-Suomen asioista, <a href="https://www.samielmeranta.fi/contact/">ota yhteyttä</a>.</p>
+<p><em>Kirjoittaja Sami Elmeranta on kaarinalainen yrittäjä ja kaupunginvaltuutettu, joka edustaa Liike Nytiä.</em></p>]]></content:encoded>
+		<excerpt:encoded><![CDATA[Varsinais-Suomen vaalipiiristä valitaan eduskuntavaaleissa 2027 yksi kansanedustaja aiempaa enemmän, eli 18. Kerron, mitä kuntia vaalipiiriin kuuluu, miten paikat jakautuivat vuonna 2023 ja miten d'Hondtin menetelmä ratkaisee, kuka pääsee eduskuntaan.]]></excerpt:encoded>
+		<wp:post_id>90405</wp:post_id>
+		<wp:post_date><![CDATA[2026-10-28 13:00:00]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[0000-00-00 00:00:00]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[varsinais-suomen-vaalipiiri-2027]]></wp:post_name>
+		<wp:status><![CDATA[draft]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+		<category domain="category" nicename="politiikka"><![CDATA[Politiikka]]></category>
+		<category domain="post_tag" nicename="varsinais-suomi"><![CDATA[Varsinais-Suomi]]></category>
+		<category domain="post_tag" nicename="vaalipiiri"><![CDATA[vaalipiiri]]></category>
+		<category domain="post_tag" nicename="eduskuntavaalit-2027"><![CDATA[eduskuntavaalit 2027]]></category>
+		<category domain="post_tag" nicename="dhondt"><![CDATA[d'Hondt]]></category>
+		<category domain="post_tag" nicename="kaarina"><![CDATA[Kaarina]]></category>
+		<category domain="post_tag" nicename="turku"><![CDATA[Turku]]></category>
+	</item>
+</channel>
+</rss>

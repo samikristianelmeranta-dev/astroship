@@ -132,5 +132,4 @@ if ( $related->have_posts() ) :
 	<?php
 endif;
 
-se_newsletter();
 get_footer();

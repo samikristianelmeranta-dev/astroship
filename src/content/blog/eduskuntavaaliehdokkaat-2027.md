@@ -166,4 +166,4 @@ Ennen virallista ehdokasasettelua ehdokkaat löytyvät puolueiden ja piirijärje
 
 Eduskuntavaalit 2027 ratkaisevat Suomen suunnan seuraavaksi neljäksi vuodeksi. Mitä aiemmin tutustut ehdokkaisiin, sitä helpompi on tehdä valinta, joka tuntuu omalta.
 
-Jos haluat kysyä vaaleista, Liike Nytistä tai mistä tahansa muusta, [laita viestiä](/yhteys/). Ja jos haluat seurata, mitä politiikassa tapahtuu, [liity sisäpiiriin](/#uutiskirje).
+Jos haluat kysyä vaaleista, Liike Nytistä tai mistä tahansa muusta, [laita viestiä](/yhteys/).

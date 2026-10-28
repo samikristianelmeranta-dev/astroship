@@ -38,7 +38,6 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 			'phone_display'  => array( 'Puhelin näytettävässä muodossa', 'text' ),
 			'email'          => array( 'Julkinen sähköposti (tyhjä = ei näytetä sivulla)', 'email' ),
 			'form_recipient' => array( 'Lomakeviestien vastaanottaja (tyhjä = julkinen tai ylläpitäjän sähköposti)', 'email' ),
-			'newsletter_url' => array( 'Uutiskirjeen tilauslinkki (Mailchimp)', 'url' ),
 			'whatsapp_url'   => array( 'WhatsApp-linkki', 'url' ),
 		) ),
 		'se_social'  => array( 'Sosiaalinen media', array(

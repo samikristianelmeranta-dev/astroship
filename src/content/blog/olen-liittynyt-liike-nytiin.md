@@ -73,6 +73,6 @@ Jatkan työtä Kaarinan ja Varsinais-Suomen hyväksi täsmälleen samoilla tavoi
 
 Vähemmän hallintoa, enemmän tuloksia. Se on ollut linjani ennenkin, ja se on sitä jatkossakin.
 
-**Haluatko keskustella tai kysyä jotain?** Ota rohkeasti [yhteyttä](/yhteys/) – vastaan mielelläni. Ja jos haluat seurata työtäni, [liity sisäpiiriin](/#uutiskirje).
+**Haluatko keskustella tai kysyä jotain?** Ota rohkeasti [yhteyttä](/yhteys/) – vastaan mielelläni.
 
 *Liike Nytin vaihtoehtobudjetti 2026 ja kasvuohjelma löytyvät osoitteesta [liikenyt.fi](https://www.liikenyt.fi/ajankohtaista/liike-nyt-kasvuohjelma-2025).*

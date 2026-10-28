@@ -113,33 +113,3 @@ function se_post_card( $delay = 1 ) {
 	<?php
 }
 
-/**
- * Uutiskirje-CTA.
- */
-function se_newsletter() {
-	?>
-	<section id="uutiskirje" aria-labelledby="uutiskirje-title" class="py-24">
-		<div class="container-site">
-			<div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand via-liila to-ink-soft px-8 py-16 text-white sm:px-16" data-reveal="zoom">
-				<div class="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full bg-white/10 blur-2xl animate-blob" aria-hidden="true"></div>
-				<div class="pointer-events-none absolute -bottom-24 left-1/3 size-80 rounded-full bg-brand-light/30 blur-3xl animate-blob blob-delay" aria-hidden="true"></div>
-				<div class="relative grid items-center gap-10 lg:grid-cols-[1.5fr_1fr]">
-					<div>
-						<p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">Sisäpiiri</p>
-						<h2 id="uutiskirje-title" class="mt-3 text-4xl font-bold sm:text-5xl">Liity sisäpiiriin</h2>
-						<p class="mt-4 max-w-xl text-lg text-white/80">Saat minulta 1–2 sähköpostia kuukaudessa yhteiskunnallisista asioista – selkeästi ja ilman poliittista jargonia. En roskapostita, enkä luovuta tietojasi eteenpäin.</p>
-					</div>
-					<div class="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
-						<?php if ( se_opt( 'newsletter_url' ) ) : ?>
-							<a href="<?php echo esc_url( se_opt( 'newsletter_url' ) ); ?>" target="_blank" rel="noopener noreferrer" class="btn bg-white text-ink hover:-translate-y-0.5 hover:shadow-2xl"><?php se_the_icon( 'lucide:mail-plus' ); ?> Tilaa uutiskirje</a>
-						<?php endif; ?>
-						<?php if ( se_opt( 'whatsapp_url' ) ) : ?>
-							<a href="<?php echo esc_url( se_opt( 'whatsapp_url' ) ); ?>" target="_blank" rel="noopener noreferrer" class="btn-ghost"><?php se_the_icon( 'simple-icons:whatsapp' ); ?> Laita viestiä WhatsAppissa</a>
-						<?php endif; ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<?php
-}

@@ -96,5 +96,4 @@ se_page_hero( 'Sami & politiikka', 'Politiikkaa kunta- ja aluetasolla', 'Poliitt
 </section>
 
 <?php
-se_newsletter();
 get_footer();

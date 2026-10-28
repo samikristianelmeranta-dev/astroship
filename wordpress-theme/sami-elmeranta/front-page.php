@@ -242,5 +242,4 @@ if ( $latest->have_posts() ) :
 </section>
 
 <?php
-se_newsletter();
 get_footer();

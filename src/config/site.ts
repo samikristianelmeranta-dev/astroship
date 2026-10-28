@@ -33,7 +33,6 @@ export const site = {
    * Muista lisätä domain myös public/_headers -tiedoston form-action -sääntöön.
    */
   formEndpoint: "",
-  newsletterUrl: "http://eepurl.com/jrWeaI",
   whatsapp: "https://wa.me/358503460444?text=Hei%20Sami!",
   /** Kuvat kansiossa public/images – korvaa omillasi samalla nimellä. */
   images: {

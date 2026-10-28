@@ -51,5 +51,4 @@ se_page_hero( 'Ota yhteyttä', 'Jotain mielessä?', 'Älä epäröi olla yhteyde
 
 <?php
 get_template_part( 'template-parts/page-extra' );
-se_newsletter();
 get_footer();

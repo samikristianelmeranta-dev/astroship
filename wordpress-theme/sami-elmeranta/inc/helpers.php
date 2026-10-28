@@ -27,7 +27,6 @@ function se_defaults() {
 		'phone_display'  => '050 346 0444',
 		'email'          => '',
 		'form_recipient' => '',
-		'newsletter_url' => 'http://eepurl.com/jrWeaI',
 		'whatsapp_url'   => 'https://wa.me/358503460444?text=Hei%20Sami!',
 		'facebook'       => 'https://www.facebook.com/Elmeranta/',
 		'instagram'      => 'https://www.instagram.com/s.elmeranta/',

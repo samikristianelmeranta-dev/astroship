@@ -111,7 +111,7 @@ Kaupunginhallituksen linjaukset vaikuttavat siihen, valitsevatko yritykset:
 
 ## ****Haluatko ymmärtää paremmin Kaarinan päätöksentekoa?****
 
-**→ Tilaa uutiskirje, jossa avaan selkeästi ja ilman poliittista jargonia:** [Tilaa tästä!](/#uutiskirje)
+**→ Kysy minulta suoraan, avaan asiat selkeästi ja ilman poliittista jargonia:** [Ota yhteyttä](/yhteys/)
 
 **Pysy ajan tasalla – koska hyvin hoidettu Kaarina on meidän kaikkien etu.**
 

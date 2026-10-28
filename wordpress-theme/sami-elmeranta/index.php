@@ -46,5 +46,4 @@ if ( is_search() ) {
 	</div>
 </section>
 <?php
-se_newsletter();
 get_footer();
