@@ -67,10 +67,10 @@ add_action( 'wp_head', function () {
 } );
 
 /**
- * Meta description, jos SEO-lisäosaa (Yoast, Rank Math, SEOPress) ei ole käytössä.
+ * Meta description, jos SEO-lisäosaa tai Työkalut-lisäosan SEO-osaa ei ole käytössä.
  */
 add_action( 'wp_head', function () {
-	if ( defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'SEOPRESS_VERSION' ) ) {
+	if ( function_exists( 'kp_seo_graph' ) || defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'SEOPRESS_VERSION' ) ) {
 		return;
 	}
 	$desc = '';

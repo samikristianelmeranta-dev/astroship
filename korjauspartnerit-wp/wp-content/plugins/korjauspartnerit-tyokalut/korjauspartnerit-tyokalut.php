@@ -25,6 +25,7 @@ require_once KP_TYOKALUT_DIR . 'includes/shortcodes.php';
 require_once KP_TYOKALUT_DIR . 'includes/contact-form.php';
 require_once KP_TYOKALUT_DIR . 'includes/content-templates.php';
 require_once KP_TYOKALUT_DIR . 'includes/redirects.php';
+require_once KP_TYOKALUT_DIR . 'includes/seo.php';
 require_once KP_TYOKALUT_DIR . 'includes/admin.php';
 require_once KP_TYOKALUT_DIR . 'includes/setup.php';
 

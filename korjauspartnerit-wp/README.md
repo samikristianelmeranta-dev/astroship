@@ -7,6 +7,7 @@ Uusi WordPress-sivusto Korjauspartnereille, tehty graafisen ohjeistuksen 2024 (v
 | `wp-content/themes/korjauspartnerit/` | Teema: ulkoasu, sivupohjat, logo, fontit |
 | `wp-content/plugins/korjauspartnerit-tyokalut/` | Lisäosa: henkilökunta ja henkilöhaku, palvelut, referenssit, työpaikat, yhteydenottolomake, sisältöpohjat, Classic Editor -asetukset, uudelleenohjaukset ja asennusapuri |
 | `sisalto/korjauspartnerit-sisalto.xml` | Vanhan sivuston sisältö muunnettuna (WordPress-tuontitiedosto) |
+| `sisalto/artikkelit/` | Uudet asiantuntija-artikkelit samassa HTML-dokumenttimuodossa kuin vanhan sivuston artikkelisarja (esim. `parvekelasien-tarkastus.html`). Muunnos lisää ne tuontitiedostoon. |
 | `tyokalut/muunna_sisalto.py` | Skripti, jolla muunnos tehtiin. Sen voi ajaa uudelleen tuoreesta viennistä. |
 | `OHJE-SISALLONTUOTTAJILLE.md` | Käyttöohje henkilökunnalle |
 
@@ -95,6 +96,7 @@ Henkilökunnan tunnisteet ja kenttien nimet (`tehtavanimike`, `puhelinnumero`, `
 - Avadan portfoliot jaetaan 27 palveluun ja 61 referenssiin. Referenssit saavat hanketyypit (Kiinteistöt / Teollisuus ja alatyypit) ja asiakasryhmät. Palvelujen asiakasryhmät päätellään sivujen *Taloyhtiöille*, *Liike- ja toimitiloille* ja *Teollisuudelle* linkeistä.
 - Henkilökunta (32 henkilöä) siirtyy kenttineen. Puuttuvat tiedot (titteli, puhelin, kuva, toimipiste) täydennetään henkilökuntasivulta.
 - Työpaikat: RSS-syötteen 3 ilmoitusta ja työpaikkasivulla mainitut 2 avointa tehtävää.
+- Koodilohkoihin base64-muodossa tallennetut HTML-dokumentit (16 sivua ja 4 artikkelia, mm. PTS, linjasaneeraus, parveketurvallisuus ja parvekesarja) puretaan: leipäteksti sisällöksi, otsikko ja ingressi sivun yläosaan, title ja description Yoast-kenttiin ja JSON-LD kenttään `kp_jsonld`. Linkit vanhojen dokumenttien canonical-osoitteisiin korjataan todellisiin osoitteisiin.
 - Gravity Formsin lomake vaihtuu omaan `[kp_yhteydenotto]`-lomakkeeseen.
 - Pois jätetään Avadan rakenneosat, ACF-määrittelyt, vanhat valikot (asennusapuri luo uudet) ja lokit.
 
@@ -103,6 +105,11 @@ Uudelleenajo tuoreesta viennistä (Työkalut → Vie → Kaikki sisältö):
 ```
 python3 tyokalut/muunna_sisalto.py vanha-vienti.xml sisalto/korjauspartnerit-sisalto.xml
 ```
+
+## Hakukonenäkyvyys
+
+- Työkalut-lisäosa tulostaa sisällön rakenteisen datan (kenttä `kp_jsonld`: Article, FAQPage ja BreadcrumbList) headiin, osoitteet ja päivämäärät korjattuina sisällön todellisiin. Jos kenttää ei ole, FAQPage muodostetaan automaattisesti sisällön UKK-osiosta.
+- Ilman SEO-lisäosaa lisäosa tulostaa titlen (Yoast-kentästä, jos asetettu), meta descriptionin, Open Graphin ja Twitter-kortin. Etusivulle se tulostaa yrityksen tiedot (ProfessionalService). Kun Yoast on käytössä, Yoast hoitaa nämä ja lisäosa lisää vain FAQ-datan.
 
 ## Uudelleenohjaukset
 

@@ -19,6 +19,7 @@ pitää olla käytössä ennen tuontia, jotta sisältötyypit ovat olemassa).
 """
 
 import html
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -204,6 +205,140 @@ def first_paragraph(content, max_len=320):
             break
         out = (out + ' ' + p).strip()
     return out
+
+
+# ---------------------------------------------------------------------------
+# Koodilohkoihin (fusion_code, base64) tallennetut HTML-dokumentit
+# ---------------------------------------------------------------------------
+#
+# Osa vanhan sivuston sivuista ja artikkeleista on kirjoitettu kokonaisina
+# HTML-dokumentteina (head-meta, JSON-LD, <article class="kp-article">) ja
+# tallennettu Avadan koodilohkoon base64-muodossa. Ne puretaan tässä:
+# leipäteksti sisällöksi, otsikko ja ingressi sivun kenttiin, title/description
+# Yoast-kenttiin ja JSON-LD kenttään kp_jsonld, jonka Työkalut-lisäosa tulostaa.
+
+def code_docs(content):
+    import base64
+    docs = []
+    for m in re.finditer(r'\[fusion_code[^\]]*\](.*?)\[/fusion_code\]', content or '', flags=re.S):
+        raw = m.group(1).strip()
+        try:
+            h = base64.b64decode(raw).decode('utf-8')
+        except Exception:
+            continue
+        if '<' in h:
+            docs.append(h)
+    return docs
+
+
+def _inner_text(s):
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s or '')).strip()
+
+
+def doc_to_wp(h):
+    import json
+    out = {'content': '', 'lead': '', 'hero_title': '', 'seo_title': '', 'seo_desc': '', 'jsonld': None, 'canonical': ''}
+    m = re.search(r'<title>(.*?)</title>', h, flags=re.S)
+    if m:
+        out['seo_title'] = html.unescape(m.group(1).strip())
+    m = re.search(r'<meta name="description" content="([^"]*)"', h)
+    if m:
+        out['seo_desc'] = html.unescape(m.group(1).strip())
+    m = re.search(r'<link rel="canonical" href="([^"]+)"', h)
+    if m:
+        out['canonical'] = m.group(1)
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', h, flags=re.S):
+        try:
+            out['jsonld'] = json.loads(m.group(1))
+        except ValueError:
+            pass
+    body = h
+    m = re.search(r'<body[^>]*>(.*)</body>', h, flags=re.S)
+    if m:
+        body = m.group(1)
+    body = re.sub(r'<style[^>]*>.*?</style>', '', body, flags=re.S)
+    body = re.sub(r'<script[^>]*>.*?</script>', '', body, flags=re.S)
+    body = re.sub(r'<!--.*?-->', '', body, flags=re.S)
+    # Klassinen editori ei säilytä SVG-ikoneita; ikonit piirretään teeman CSS:llä.
+    body = re.sub(r'<svg[^>]*>.*?</svg>', '', body, flags=re.S)
+
+    # Artikkelin otsikko-osa → sivun yläosan kentät (otsikko näkyy teeman yläosassa).
+    m = re.search(r'<header class="kp-article__header">(.*?)</header>', body, flags=re.S)
+    if m:
+        hm = re.search(r'<h1[^>]*>(.*?)</h1>', m.group(1), flags=re.S)
+        im = re.search(r'<p class="kp-article__intro">(.*?)</p>', m.group(1), flags=re.S)
+        out['hero_title'] = _inner_text(hm.group(1)) if hm else ''
+        out['lead'] = _inner_text(im.group(1)) if im else ''
+        body = body[:m.start()] + body[m.end():]
+        body = re.sub(r'</div>\s*</div>\s*</article>\s*$', '', body.strip())
+        body = re.sub(r'<article class="kp-article"[^>]*>\s*<div class="kp-article__inner">\s*(<div class="kp-article__body">)?', '', body, count=1)
+    # Palvelusivujen intro-osa (kp-intro) → yläosan kentät.
+    for cls, key in (('kp-intro__h1', 'hero_title'), ('kp-intro__lead', 'lead'), ('kp-hero__title', 'hero_title'), ('kp-hero__lead', 'lead')):
+        m = re.search(r'<(h1|p) class="' + cls + r'"[^>]*>(.*?)</\1>', body, flags=re.S)
+        if m:
+            if not out[key]:
+                out[key] = _inner_text(m.group(2))
+            body = body[:m.start()] + body[m.end():]
+    body = re.sub(r'<p class="kp-(intro|hero)__eyebrow"[^>]*>.*?</p>', '', body, flags=re.S)
+    body = re.sub(r'<div class="kp-intro__highlight-icon"[^>]*>\s*</div>', '', body)
+    body = re.sub(r'^[ \t]+', '', body, flags=re.M)
+    body = re.sub(r'\n{3,}', '\n\n', body)
+    out['content'] = body.strip()
+    return out
+
+
+def apply_doc(d2, docs, other_content):
+    """Yhdistää puretut dokumentit sisällöksi ja kenttiin."""
+    import json
+    parts = [doc_to_wp(h) for h in docs]
+    content = '\n\n'.join([other_content] + [p['content'] for p in parts] if other_content else [p['content'] for p in parts])
+    first = parts[0]
+    meta = d2['meta']
+    if first['lead']:
+        meta['kp_ingressi'] = first['lead']
+    if first['hero_title'] and first['hero_title'].strip().lower() != d2['title'].strip().lower():
+        meta['kp_hero_otsikko'] = first['hero_title']
+    if first['seo_title'] and not meta.get('_yoast_wpseo_title'):
+        meta['_yoast_wpseo_title'] = first['seo_title']
+    if first['seo_desc'] and not meta.get('_yoast_wpseo_metadesc'):
+        meta['_yoast_wpseo_metadesc'] = first['seo_desc']
+    # Leveät palvelusivuosiot tarvitsevat leveän sivupohjan.
+    if d2.get('type') == 'page' and ('class="kp-intro' in content or 'class="kp-services' in content):
+        meta['_wp_page_template'] = 'templates/sivupohja-levea.php'
+    if first['jsonld']:
+        meta['kp_jsonld'] = json.dumps(first['jsonld'], ensure_ascii=False, separators=(',', ':'))
+    return content, first['canonical']
+
+
+# Vanhan sivuston rikkinäiset sisäiset linkit → oikeat osoitteet.
+LINK_FIXES = {
+    'palvelut/lampokamerakuvaukset/': 'palvelut/lampokuvaukset/',
+    'palvelut/yllapitopartnerit/': 'palvelut/yllapitopartneri/',
+    'korjauspartnerit-avainlippu/': 'korjauspartnerit/',
+}
+
+
+# Uudet artikkelit kansiosta sisalto/artikkelit/<slug>.html (sama dokumenttimuoto).
+NEW_ARTICLES = {
+    'parvekelasien-tarkastus': {
+        'date': '2026-10-28 08:00:00',
+        'date_gmt': '2026-10-28 06:00:00',
+        'author': 'sami',
+        'thumbnail': '20728',
+        'focuskw': 'parvekelasien tarkastus',
+        'seo_title': 'Parvekelasien tarkastus taloyhtiössä – sisältö, vastuut ja hinta %%sep%% %%sitename%%',
+        'cats': [('category', 'ajankohtaista', 'Ajankohtaista'), ('category', 'ajankohtaista-footer', 'Ajankohtaista footer'),
+                 ('category', 'parvekkeet', 'Parvekkeet'), ('category', 'lasikaiteet', 'lasikaiteet'),
+                 ('post_tag', 'parvekelasit', 'parvekelasit'), ('post_tag', 'lasikaiteet', 'lasikaiteet'),
+                 ('post_tag', 'parveketurvallisuus', 'parveketurvallisuus'), ('post_tag', 'taloyhtio', 'taloyhtiö')],
+        # Näihin sisältöihin lisätään "Lue myös" -linkki uuteen artikkeliin.
+        'link_from': ['parvekerakenteiden-turvallisuus', 'lasikaiteiden-turvallisuus', 'parvekkeenkuntotutkimus',
+                      'parvekekorjaus-taloyhtiolle', 'parvekkeiden-huolto-ja-kunnossapito',
+                      'parvekerakenteiden-turvallisuus-mita-taloyhtion-tulee-selvittaa-nyt',
+                      'parveketurvallisuus-parvekkeiden-kunto-ja-turvallisuus'],
+        'link_text': 'Parvekelasien tarkastus taloyhtiössä – mitä tarkastetaan, kuka vastaa ja milloin?',
+    },
+}
 
 
 # ---------------------------------------------------------------------------
@@ -397,6 +532,7 @@ def convert(src, dst):
 
     out_items = []
     new_terms = []
+    canonical_map = {}
     term_seen = set()
 
     def add_term(tax, slug, name, parent=''):
@@ -444,8 +580,14 @@ def convert(src, dst):
         if d['type'] != 'page' or d['status'] not in ('publish', 'draft', 'private'):
             continue
         d2 = dict(d)
+        d2['meta'] = keep_meta(d['meta'])
         c = clean(d['content'])
         c = strip_heading_dupe(c, d['title'])
+        docs = code_docs(d['content']) if d['id'] != '2' else []
+        if docs:
+            c, canonical = apply_doc(d2, docs, c)
+            if canonical:
+                canonical_map[canonical] = d['link']
         if d['id'] == '18795':  # Henkilökunta: johdanto, hakemisto tulee sivupohjasta
             intro = re.findall(r'(Tältä sivulta löydät.*?)(?:\n\n|$)|(Voit myös soittaa.*?)(?:\n\n|$)', c, flags=re.S)
             paras = [a or b for a, b in intro]
@@ -457,17 +599,16 @@ def convert(src, dst):
                 c += f'<p>{m.group(1).strip()}</p>\n'
         elif d['id'] == '18800':  # Työpaikkana: kovakoodatut työpaikat → dynaaminen listaus
             c = re.sub(r'<h3>Etsimme nyt:</h3>.*?(?=<h2>)', '<h2>Avoimet työpaikat</h2>\n\n[kp_tyopaikat]\n\n<p>Voit myös jättää <strong>avoimen hakemuksen</strong> tai ottaa meihin yhteyttä sähköpostilla <a href="mailto:hakemus@korjauspartnerit.fi">hakemus@korjauspartnerit.fi</a>.</p>\n\n', c, flags=re.S)
-        elif d['id'] == '19699':
+        elif d['id'] == '19699' and not docs:
             c += '\n\n<h2>Palvelumme taloyhtiöille</h2>\n\n[kp_palvelut asiakasryhma="taloyhtiot" ryhmittele="1"]'
-        elif d['id'] == '19702':
+        elif d['id'] == '19702' and not docs:
             c += '\n\n<h2>Palvelumme liike- ja toimitiloille</h2>\n\n[kp_palvelut asiakasryhma="liike-ja-toimitilat" ryhmittele="1"]'
         elif d['id'] == '18756':
             c += '\n\n[kp_referenssit tyyppi="kiinteistot" suodatin="1"]'
         d2['content'] = c
         d2.update(page_overrides.get(d['id'], {}))
-        d2['meta'] = keep_meta(d['meta'])
         lead = first_paragraph(d2['content'], 260) if d2['content'] else ''
-        if lead and d['id'] not in ('2', '20049', '18795', '18798'):
+        if lead and not d2['meta'].get('kp_ingressi') and d['id'] not in ('2', '20049', '18795', '18798'):
             d2['meta']['kp_ingressi'] = lead
         out_items.append(d2)
 
@@ -476,11 +617,48 @@ def convert(src, dst):
         if d['type'] != 'post' or d['status'] not in ('publish', 'draft', 'private', 'future'):
             continue
         d2 = dict(d)
-        d2['content'] = strip_heading_dupe(clean(d['content']), d['title'])
         d2['meta'] = keep_meta(d['meta'])
+        c = strip_heading_dupe(clean(d['content']), d['title'])
+        docs = code_docs(d['content'])
+        if docs:
+            c, canonical = apply_doc(d2, docs, c)
+            if canonical:
+                canonical_map[canonical] = d['link']
+        d2['content'] = c
         if not d2['slug']:
             d2['slug'] = slugify(d['title'])
         out_items.append(d2)
+
+    # --- Uudet artikkelit (sisalto/artikkelit) ---
+    art_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sisalto', 'artikkelit')
+    new_id = 995001
+    for slug, conf in NEW_ARTICLES.items():
+        path = os.path.join(art_dir, slug + '.html')
+        if not os.path.exists(path):
+            continue
+        h = open(path, encoding='utf-8').read()
+        title = _inner_text(re.search(r'<h1[^>]*>(.*?)</h1>', h, flags=re.S).group(1))
+        d2 = {
+            'id': str(new_id), 'type': 'post', 'status': 'publish', 'title': title, 'slug': slug,
+            'author': conf['author'], 'date': conf['date'], 'date_gmt': conf['date_gmt'], 'content': '',
+            'excerpt': '', 'parent': '0', 'order': '0', 'cats': conf['cats'],
+            'meta': OrderedDict([('_thumbnail_id', conf['thumbnail']), ('_yoast_wpseo_focuskw', conf['focuskw']), ('_yoast_wpseo_title', conf['seo_title'])]),
+            'link': f'https://korjauspartnerit.fi/{slug}/',
+        }
+        d2['content'], _ = apply_doc(d2, [h], '')
+        for dom, nice, name in conf['cats']:
+            if dom == 'post_tag' and not any(t['slug'] == nice for t in tags):
+                tags.append({'slug': nice, 'name': name})
+        out_items.append(d2)
+        new_id += 1
+        # Sisäiset linkit uuteen artikkeliin aiheeseen liittyvistä sisällöistä.
+        box = f'<div class="kp-article__highlight"><p><strong>Lue myös:</strong> <a href="https://korjauspartnerit.fi/{slug}/">{html.escape(conf["link_text"])}</a></p></div>'
+        for other in out_items:
+            if other['slug'] in conf['link_from'] and other['type'] in ('post', 'page') and box not in other['content']:
+                if '<section class="kp-article__faq"' in other['content']:
+                    other['content'] = other['content'].replace('<section class="kp-article__faq"', box + '\n\n<section class="kp-article__faq"', 1)
+                else:
+                    other['content'] += '\n\n' + box
 
     # --- Portfoliot → palvelut ja referenssit ---
     for d in items:
@@ -673,6 +851,13 @@ def convert(src, dst):
     ref_slugs = {d['slug'] for d in out_items if d['type'] == 'referenssi'}
     for d in out_items:
         if d['type'] in ('page', 'post', 'palvelu', 'referenssi'):
+            # Dokumenttien canonical-osoitteet → todelliset osoitteet, polut pienellä (ei kuvatiedostoja).
+            for canon, real in canonical_map.items():
+                if canon != real:
+                    d['content'] = d['content'].replace(f'href="{canon}"', f'href="{real}"')
+            d['content'] = re.sub(r'href="(https://korjauspartnerit\.fi/(?!wp-content/)[^"#?]*)', lambda m: 'href="' + m.group(1).lower(), d['content'])
+            for old, new in LINK_FIXES.items():
+                d['content'] = d['content'].replace(f'href="https://korjauspartnerit.fi/{old}', f'href="https://korjauspartnerit.fi/{new}')
             d['content'] = re.sub(r'(https?://korjauspartnerit\.fi)?/palvelut/([a-z0-9-]+)/', lambda m: (m.group(1) or '') + ('/referenssit/' if m.group(2) in ref_slugs else '/palvelut/') + m.group(2) + '/', d['content'])
 
     write_wxr(dst, title, authors, [c for c in cats if c['slug'] not in ('uncategorized',)], tags, new_terms, out_items)

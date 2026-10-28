@@ -78,8 +78,8 @@ function kp_run_setup() {
 	$templates = array(
 		'henkilokunta'  => 'templates/sivupohja-henkilokunta.php',
 		'yhteystiedot'  => 'templates/sivupohja-yhteystiedot.php',
-		'kiinteistojen-palvelut-taloyhtioille'        => 'templates/sivupohja-palvelu.php',
-		'kiinteistojen-palvelut-liike-ja-toimitiloille' => 'templates/sivupohja-palvelu.php',
+		'kiinteistojen-palvelut-taloyhtioille'        => 'templates/sivupohja-levea.php',
+		'kiinteistojen-palvelut-liike-ja-toimitiloille' => 'templates/sivupohja-levea.php',
 		'vuoden-putkiremontti-2024'   => 'templates/sivupohja-laskeutumissivu.php',
 		'taloyhtioiden-energiaratkaisut' => 'templates/sivupohja-laskeutumissivu.php',
 	);

@@ -19,6 +19,9 @@ function kp_builtin_redirects() {
 		'ota-yhteytta'                 => '/yhteystiedot/#viesti',
 		'portfolio-items'              => '/referenssit/',
 		'portfolio_category'           => '/referenssit/',
+		'palvelut/lampokamerakuvaukset' => '/palvelut/lampokuvaukset/',
+		'korjauspartnerit-avainlippu'  => '/korjauspartnerit/',
+		'lasikaiteiden-turvallisuusvaatimukset' => '/lasikaiteiden-turvallisuus/',
 	);
 }
 
