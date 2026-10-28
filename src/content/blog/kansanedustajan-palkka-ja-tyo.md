@@ -1,13 +1,13 @@
 ---
 draft: false
 title: "Kuinka paljon kansanedustaja tienaa? Palkkio, kulukorvaus ja mitä työ oikeasti on"
-snippet: "Kansanedustajan palkkio on noin 7 600–8 400 euroa kuukaudessa kokemuksesta riippuen, ja lisäksi maksetaan kulukorvaus. Kerron, miten palkkio määräytyy, mitä kansanedustajan työviikko pitää sisällään ja onko palkka mielestäni oikean kokoinen."
+snippet: "En ole itse kansanedustaja, joten tämän artikkelin tiedot on kasattu avoimista tietolähteistä. Kansanedustajan palkkio on noin 7 600–8 400 euroa kuukaudessa kokemuksesta riippuen, ja lisäksi maksetaan kulukorvaus. Kerron, miten palkkio määräytyy, mitä kansanedustajan työviikko pitää sisällään ja onko palkka mielestäni oikean kokoinen."
 publishDate: "2026-10-28 12:00"
 category: "Politiikka"
 tags: ["kansanedustaja", "kansanedustajan palkka", "eduskunta", "eduskuntavaalit 2027", "politiikka"]
 ---
 
-**Lyhyesti:** Kansanedustajan palkkio on lokakuussa 2025 tehdyn korotuksen jälkeen noin **7 637 euroa kuukaudessa**. Kokemuksen myötä palkkio nousee noin **7 944 euroon** ja yli 12 vuotta edustajana olleilla noin **8 393 euroon**. Lisäksi edustaja saa kulukorvausta noin **990–1 810 euroa kuukaudessa** sen mukaan, missä hän asuu. Palkkiosta päättää eduskunnan palkkiotoimikunta, ei edustajat itse. Työ on paljon muutakin kuin täysistuntoja: valiokuntia, valmistelua, kenttätyötä ja yhteydenpitoa äänestäjiin.
+**Lyhyesti:** En ole itse kansanedustaja, joten tämän artikkelin tiedot on kasattu avoimista tietolähteistä. Kansanedustajan palkkio on lokakuussa 2025 tehdyn korotuksen jälkeen noin **7 637 euroa kuukaudessa**. Kokemuksen myötä palkkio nousee noin **7 944 euroon** ja yli 12 vuotta edustajana olleilla noin **8 393 euroon**. Lisäksi edustaja saa kulukorvausta noin **990–1 810 euroa kuukaudessa** sen mukaan, missä hän asuu. Palkkiosta päättää eduskunnan palkkiotoimikunta, ei edustajat itse. Työ on paljon muutakin kuin täysistuntoja: valiokuntia, valmistelua, kenttätyötä ja yhteydenpitoa äänestäjiin.
 
 "Paljonko kansanedustaja oikeasti tienaa?" on yksi niistä kysymyksistä, joita kysytään vaalien alla aina. Yleensä kysymyksen sävy on vähän epäluuloinen, ja ymmärrän sen hyvin. Kun kunnissa leikataan ja ruokakaupassa jokainen euro lasketaan, poliitikkojen palkat kiinnostavat syystäkin.
 
