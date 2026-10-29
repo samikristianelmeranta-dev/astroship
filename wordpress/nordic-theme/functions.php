@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.10.0' );
+define( 'NORDIC_VERSION', '2.11.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1873,3 +1873,52 @@ function nordic_social_icon( $key ) {
 	);
 	return '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">' . ( $paths[ $key ] ?? '' ) . '</svg>';
 }
+
+/* =========================================================================
+ * Etusivun nostot: asiakaslupaus (tiimin kuvat taustalla) ja
+ * energiatehokkaat ikkunat ja ovet (ikkunakuva). Pääsivusto.
+ * ========================================================================= */
+
+function nordic_front_promos_html() {
+	$photos = '';
+	foreach ( nordic_team() as $m ) {
+		$photos .= '<img src="' . esc_url( nordic_asset_uri( 'img/tiimi/' . $m['key'] . '.webp' ) ) . '" alt="" width="600" height="799" loading="lazy" decoding="async">';
+	}
+	$about = nordic_about_url();
+	return '<section class="promo-duo-wrap"><div class="wrap"><div class="promo-duo">'
+		. '<div class="promo promo-promise">'
+		. '<div class="promo-photos" aria-hidden="true">' . $photos . '</div>'
+		. '<div class="promo-content">'
+		. '<h2>Asiakaslupauksemme</h2>'
+		. '<p>Mittaamme, asennamme ja viimeistelemme kotisi ikkunat ja ovet itse – kohde kerrallaan, paremman energiatehokkuuden puolesta. Otamme vastuun jokaisesta työstä ensikäynnistä luovutukseen.</p>'
+		. '<a class="btn btn-primary" href="#tarjous" data-quote>Pyydä tarjous</a>'
+		. ( $about ? '<a class="promo-sub-link" href="' . esc_url( $about ) . '">Tutustu meihin</a>' : '' )
+		. '</div></div>'
+		. '<div class="promo promo-energy">'
+		. '<img class="promo-window" src="' . esc_url( nordic_asset_uri( 'img/ikkuna-render.webp' ) ) . '" alt="" width="300" height="369" loading="lazy" decoding="async">'
+		. '<div class="promo-content">'
+		. '<h2>Energiatehokkaat ikkunat ja ovet asennettuna</h2>'
+		. '<p>Uudet ikkunat ja ovet ovat investointi, joka näkyy lämmityslaskussa ja asumismukavuudessa vuosikymmeniä. Kotimaiset Skaala-tuotteet valmistetaan mittatilaustyönä Ylihärmässä, ja ne sopivat yhtä hyvin remonttiin kuin uudiskohteeseen.</p>'
+		. '<p>Saat tuotteet ja asennuksen samalta tiimiltä, joka vastaa työstä mittauksesta luovutukseen.</p>'
+		. '<a class="promo-link" href="' . esc_url( home_url( '/ikkunat/' ) ) . '">Tutustu ikkunoihin <span aria-hidden="true">→</span></a>'
+		. '</div></div>'
+		. '</div></div></section>';
+}
+
+add_filter( 'the_content', function ( $html ) {
+	if ( ! in_the_loop() || nordic_is_regional() || strpos( $html, 'promo-duo' ) !== false ) {
+		return $html;
+	}
+	$slug = (string) get_post_field( 'post_name', get_the_ID() );
+	if ( ! is_front_page() && 'front' !== nordic_page_type( $slug ) ) {
+		return $html;
+	}
+	$block = nordic_front_promos_html();
+	foreach ( array( '<section class="about-band-wrap"', '<section class="seo-summary', '<section class="contact"', '<section class="final-cta"' ) as $anchor ) {
+		$pos = strpos( $html, $anchor );
+		if ( false !== $pos ) {
+			return substr_replace( $html, $block, $pos, 0 );
+		}
+	}
+	return $html . $block;
+}, 27 );

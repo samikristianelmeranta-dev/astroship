@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.10.0
+Version: 2.11.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -1571,3 +1571,35 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 .footer-col .footer-social li { margin: 0; }
 .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-on-dark); color: #fff; transition: background-color .2s, border-color .2s, color .2s; }
 .footer-social a:hover { background: var(--gold); border-color: var(--gold); color: var(--spruce); }
+
+/* 2.11.0: etusivun nostot (asiakaslupaus + energiatehokkaat ikkunat) */
+.promo-duo-wrap { padding: clamp(40px, 6vw, 72px) 0 0; }
+.promo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.4vw, 28px); }
+.promo { position: relative; overflow: hidden; border-radius: var(--radius-lg); min-height: 500px; display: flex; isolation: isolate; }
+.promo-content { position: relative; z-index: 2; padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; }
+.promo h2 { margin: 0 0 16px; }
+.promo p { font-size: 1.075rem; line-height: 1.65; }
+.promo-promise { background: var(--spruce); color: #fff; align-items: center; justify-content: center; text-align: center; }
+.promo-photos { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.promo-photos img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.promo-promise::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 48, 59, .72), rgba(29, 94, 121, .82)); }
+.promo-promise .promo-content { align-items: center; max-width: 560px; }
+.promo-promise h2 { color: #fff; font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem); }
+.promo-promise p { color: rgba(255, 255, 255, .92); font-weight: 600; margin: 0 0 30px; }
+.promo-sub-link { margin-top: 16px; color: rgba(255, 255, 255, .85) !important; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.promo-sub-link:hover { color: #fff !important; }
+.promo-energy { background: linear-gradient(160deg, #EAF5FB 0%, var(--pine-soft) 100%); color: var(--ink); }
+.promo-energy .promo-content { padding-right: clamp(28px, 22%, 160px); }
+.promo-energy h2 { font-size: clamp(1.7rem, 1.2rem + 1.5vw, 2.4rem); line-height: 1.1; text-transform: uppercase; letter-spacing: -.01em; font-weight: 500; }
+.promo-energy p { color: var(--ink-2); margin: 0 0 14px; }
+.promo-link { margin-top: auto; padding-top: 10px; color: var(--pine) !important; font-weight: 700; text-decoration: none !important; }
+.promo-link:hover { text-decoration: underline !important; }
+.promo-window { position: absolute; z-index: 0; right: -9%; top: 50%; width: 64%; height: auto; transform: translateY(-46%) rotate(-3deg); opacity: .6; filter: drop-shadow(0 30px 50px rgba(22, 48, 59, .16)); pointer-events: none; }
+@media (max-width: 900px) {
+  .promo-duo { grid-template-columns: 1fr; }
+  .promo { min-height: 440px; }
+}
+@media (max-width: 560px) {
+  .promo-energy .promo-content { padding-right: clamp(24px, 6vw, 32px); }
+  .promo-window { width: 80%; right: -22%; opacity: .45; }
+}
