@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.9.0' );
+define( 'NORDIC_VERSION', '2.10.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -823,7 +823,7 @@ function nordic_meta_description( $post_id ) {
 			$desc = wp_trim_words( wp_strip_all_tags( $m[1] ), 26, '…' );
 		}
 	}
-	return trim( html_entity_decode( (string) $desc, ENT_QUOTES, 'UTF-8' ) );
+	return apply_filters( 'nordic_meta_description', trim( html_entity_decode( (string) $desc, ENT_QUOTES, 'UTF-8' ) ), $post_id );
 }
 
 /**
@@ -928,6 +928,7 @@ function nordic_head_meta() {
 		'openingHours' => $business['openingHours'],
 		'brand'        => array( '@type' => 'Brand', 'name' => 'Skaala' ),
 		'knowsAbout'   => array( 'Ikkunaremontti', 'Oviremontti', 'Ikkunoiden asennus', 'Ulko-ovien asennus', 'Ikkunoiden huolto', 'Skaala-ikkunat', 'Skaala-ovet', 'Kotitalousvähennys' ),
+		'sameAs'       => array_values( wp_list_pluck( nordic_social_profiles(), 'url' ) ),
 		'employee'     => array_map( function ( $m ) {
 			return array( '@type' => 'Person', 'name' => $m['name'], 'jobTitle' => $m['role'], 'image' => nordic_asset_uri( 'img/tiimi/' . $m['key'] . '.webp' ) );
 		}, nordic_team() ),
@@ -1194,6 +1195,13 @@ function nordic_llms_txt() {
 	$out .= '- Sähköposti: ' . $business['email'] . "\n";
 	foreach ( $business['phones'] as $nordic_phone ) {
 		$out .= '- Puhelin, ' . strtolower( $nordic_phone['label'] ) . ': ' . $nordic_phone['display'] . "\n";
+	}
+	foreach ( nordic_social_profiles() as $nordic_sp ) {
+		$out .= '- ' . $nordic_sp['label'] . ': ' . $nordic_sp['url'] . "\n";
+	}
+	$about = function_exists( 'nordic_about_url' ) ? nordic_about_url() : '';
+	if ( $about ) {
+		$out .= '- Yritys ja tiimi: neljän kokeneen yrittäjän yhteistyöyritys (Jussi Henriksson, Anton Hörkkö, Matias Sirkiä, Sami Elmeranta) — ' . $about . "\n";
 	}
 	$out .= "- Tarjouspyyntö: ilmainen mittauskäynti ja kirjallinen, sitoumukseton tarjous — " . home_url( '/yhteystiedot/' ) . "\n\n";
 
@@ -1715,7 +1723,7 @@ add_action( 'admin_init', function () {
 		'post_status'  => 'publish',
 		'post_title'   => 'Meistä – Nordic Ikkunat & Ovet',
 		'post_name'    => 'meista',
-		'post_excerpt' => 'Neljän kokeneen yrittäjän yhteistyöyritys Maskusta. Valtuutettu Skaala-jälleenmyyjä: ikkunat ja ovet kohde kerrallaan paremman energiatehokkuuden puolesta.',
+		'post_excerpt' => 'Neljän kokeneen yrittäjän yhteistyöyritys ja valtuutettu Skaala-jälleenmyyjä. Ikkunat ja ovet asennettuna Turussa ja Varsinais-Suomessa.',
 		'post_content' => "<!-- wp:html -->\n" . $html . "\n<!-- /wp:html -->",
 	) );
 } );
@@ -1776,3 +1784,92 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'type'        => 'checkbox',
 	) );
 }, 20 );
+
+/* =========================================================================
+ * SEO ja AI-näkyvyys (2.10.0)
+ * ========================================================================= */
+
+/** Someprofiilit: skeeman sameAs, alatunniste ja llms.txt. Muokattavissa Mukauta → Sivuston alue. */
+function nordic_social_profiles() {
+	$defaults = array(
+		'facebook'  => array( 'Facebook', 'https://www.facebook.com/profile.php?id=61594844174657' ),
+		'instagram' => array( 'Instagram', 'https://www.instagram.com/ikkunakauppias.fi/' ),
+		'google'    => array( 'Google', 'https://share.google/GQp4H3j5zkapUQyMK' ),
+	);
+	$out = array();
+	foreach ( $defaults as $key => $d ) {
+		$url = trim( (string) get_theme_mod( 'nordic_social_' . $key, $d[1] ) );
+		if ( $url ) {
+			$out[ $key ] = array( 'label' => $d[0], 'url' => $url );
+		}
+	}
+	return apply_filters( 'nordic_social_profiles', $out );
+}
+
+add_action( 'customize_register', function ( $wp_customize ) {
+	foreach ( array( 'facebook' => 'Facebook-sivu', 'instagram' => 'Instagram', 'google' => 'Google-yritysprofiili' ) as $key => $label ) {
+		$wp_customize->add_setting( 'nordic_social_' . $key, array( 'default' => nordic_social_profiles()[ $key ]['url'] ?? '', 'sanitize_callback' => 'esc_url_raw' ) );
+		$wp_customize->add_control( 'nordic_social_' . $key, array( 'section' => 'nordic_site', 'label' => $label . ' (osoite)', 'type' => 'url' ) );
+	}
+}, 30 );
+
+/** Kirjoittaja- ja kategoria-arkistot pois XML-sivukartasta (sivustolla ei käytetä niitä). */
+add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) {
+	return in_array( $name, array( 'users', 'taxonomies' ), true ) ? false : $provider;
+}, 10, 2 );
+
+/** Pitkissä otsikoissa ei loppuliitettä "– Nordic Ikkunat & Ovet", ettei Google katkaise otsikkoa. */
+add_filter( 'document_title_parts', function ( $parts ) {
+	if ( ! empty( $parts['title'] ) && ! empty( $parts['site'] ) && ! is_front_page()
+		&& mb_strlen( wp_strip_all_tags( $parts['title'] ) . ' – ' . $parts['site'] ) > 62 ) {
+		unset( $parts['site'] );
+	}
+	return $parts;
+} );
+
+/**
+ * Lyhyemmät hakukonekuvaukset sivuille, joiden ote on yli 160 merkkiä tai
+ * vanhentunut. Käytetään vain, jos sivun oma kuvaus on liian pitkä tai
+ * sisältää vanhentuneen sanamuodon, joten sivulle itse kirjoitettu hyvä ote voittaa.
+ */
+function nordic_description_fixes() {
+	return array(
+		'front'                              => 'Skaala-ikkunat ja -ovet asennettuna Turussa ja Varsinais-Suomessa. Mittatilaustyönä Suomessa valmistetut tuotteet, ilmainen mittaus ja tarjous.',
+		'energiansaastolaskuri'              => 'Laske, paljonko säästät vuodessa lämmityskuluissa uusilla, energiatehokkailla ikkunoilla ja ovilla. Ilmainen energiansäästölaskuri.',
+		'huolto'                             => 'Ikkuna- ja ovihuolto, tiivistykset ja säädöt Turussa ja Varsinais-Suomessa. Edullinen vaihtoehto ikkuna- tai oviremontille. Pyydä ilmainen tarjous.',
+		'ikkunaremontti-ja-sisailma'         => 'Miten ikkunaremontti vaikuttaa sisäilmaan? Vetoisuuden, kosteuden ja ilmanvaihdon yhteys sekä miten uudet ikkunat parantavat asumisterveyttä.',
+		'ikkunat-ja-ovet-rakennusliikkeille' => 'Skaala-ikkunat ja -ovet rakennusliikkeille, talotehtaille ja urakoitsijoille. Yritysasiakashinnat ja aikataulutetut toimitukset Varsinais-Suomessa.',
+		'ikkunoiden-ja-ikkunaremontin-hinta' => 'Paljonko ikkunat ja ikkunaremontti maksavat 2026? Yksittäisen ikkunan ja koko talon hinta, kotitalousvähennys ja vinkit hinnan pienentämiseen.',
+		'oviremontti-taloyhtioon'            => 'Taloyhtiön oviremontti alusta loppuun: tarvekartoitus, tarjous, yhtiökokouksen päätös, toteutus ja asukasviestintä. Turku ja Varsinais-Suomi.',
+		'miten-valita-ikkunat-mokille'       => 'Mökin ikkunoiden pitää kestää kosteutta ja lämpötilan vaihtelua. Näin valitset ikkunat kylmään tai lämpimään mökkiin ja säilytät järvinäkymän.',
+		'edulliset-ikkunat'                  => 'Mistä saa edullisia ikkunoita ja milloin halvin hinta tulee kalliiksi? Vertailussa verkkokauppa, jälleenmyyjä, rautakauppa ja käytetyt ikkunat.',
+		'ikkunoiden-hinta'                   => 'Mitä uusi ikkuna maksaa ilman asennusta ja asennettuna? Suuntaa-antavat hinnat koon ja mallin mukaan, hinnan muodostuminen ja laskuesimerkki.',
+		'oppaat-ja-artikkelit'               => 'Oppaita ikkunoiden ja ulko-ovien valintaan, hintoihin, remontin suunnitteluun ja huoltoon. Kirjoittanut valtuutettu Skaala-jälleenmyyjä.',
+		'skaala-rahoitus'                    => 'Ikkunat ja ulko-ovet asennettuna OP:n rahoituksella: 2 500–50 000 €, joustava maksuaika ja kuukausi korotonta. Laske kuukausierä laskurilla.',
+		'meista'                             => 'Neljän kokeneen yrittäjän yhteistyöyritys ja valtuutettu Skaala-jälleenmyyjä. Ikkunat ja ovet asennettuna Turussa ja Varsinais-Suomessa.',
+		'tietoa-meista'                      => 'Neljän kokeneen yrittäjän yhteistyöyritys ja valtuutettu Skaala-jälleenmyyjä. Ikkunat ja ovet asennettuna Turussa ja Varsinais-Suomessa.',
+	);
+}
+
+add_filter( 'nordic_meta_description', function ( $desc, $post_id ) {
+	$slug  = (int) get_option( 'page_on_front' ) === (int) $post_id ? 'front' : (string) get_post_field( 'post_name', $post_id );
+	$fixes = nordic_description_fixes();
+	if ( isset( $fixes[ $slug ] ) && ( mb_strlen( $desc ) > 160 || '' === $desc || preg_match( '/Turun seudulla|Maskusta/u', $desc ) ) ) {
+		return $fixes[ $slug ];
+	}
+	if ( mb_strlen( $desc ) > 160 ) {
+		// Muut liian pitkät: katkaistaan sanan kohdalta.
+		$desc = rtrim( mb_substr( $desc, 0, 156 ) );
+		$desc = preg_replace( '/\s+\S*$/u', '', $desc ) . '…';
+	}
+	return $desc;
+}, 10, 2 );
+
+function nordic_social_icon( $key ) {
+	$paths = array(
+		'facebook'  => '<path d="M14 8.5V6.8c0-.8.5-1.3 1.3-1.3H17V2.2h-2.6C11.6 2.2 10.4 4 10.4 6.5v2H8v3.3h2.4V22h3.6V11.8h2.7l.4-3.3H14z" fill="currentColor"/>',
+		'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>',
+		'google'    => '<path d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z" fill="currentColor"/><path d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z" fill="currentColor" opacity=".8"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1a10 10 0 0 0 0 9.2L6.4 14z" fill="currentColor" opacity=".6"/><path d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.7 9.4 6 12 6z" fill="currentColor" opacity=".9"/>',
+	);
+	return '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">' . ( $paths[ $key ] ?? '' ) . '</svg>';
+}

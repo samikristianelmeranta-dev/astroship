@@ -101,6 +101,13 @@
         <li><?php echo nordic_icon( 'mail' ); // phpcs:ignore ?><a href="mailto:<?php echo esc_attr( $nordic_business['email'] ); ?>"><?php echo esc_html( $nordic_business['email'] ); ?></a></li>
         <li><a class="footer-link-strong" href="<?php echo esc_url( home_url( '/yhteystiedot/' ) ); ?>">Ota yhteyttä &rarr;</a></li>
       </ul>
+      <?php $nordic_social = nordic_social_profiles(); if ( $nordic_social ) : ?>
+      <ul class="footer-social">
+        <?php foreach ( $nordic_social as $nordic_key => $nordic_sp ) : ?>
+        <li><a href="<?php echo esc_url( $nordic_sp['url'] ); ?>" target="_blank" rel="noopener me" aria-label="<?php echo esc_attr( 'Nordic Ikkunat & Ovet: ' . $nordic_sp['label'] ); ?>"><?php echo nordic_social_icon( $nordic_key ); // phpcs:ignore ?></a></li>
+        <?php endforeach; ?>
+      </ul>
+      <?php endif; ?>
     </div>
 
   </div>

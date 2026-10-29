@@ -3,7 +3,7 @@ MEISTÄ – SIVUN TIEDOT WORDPRESSIIN
 Sivut → Lisää uusi
   Otsikko (title):   Meistä – Nordic Ikkunat & Ovet
   Osoite (slug):     /meista/
-  Ote (kuvaus):      Neljän kokeneen yrittäjän yhteistyöyritys Maskusta. Valtuutettu Skaala-jälleenmyyjä: ikkunat ja ovet kohde kerrallaan paremman energiatehokkuuden puolesta.
+  Ote (kuvaus):      Neljän kokeneen yrittäjän yhteistyöyritys ja valtuutettu Skaala-jälleenmyyjä. Ikkunat ja ovet asennettuna Turussa ja Varsinais-Suomessa.
   Sisältö:           Mukautettu HTML -lohko → tiedoston meista.html koko koodi
 
 Teema 2.8.0 tai uudempi:
