@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.11.0' );
+define( 'NORDIC_VERSION', '2.11.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1900,7 +1900,6 @@ function nordic_front_promos_html() {
 		. '<h2>Energiatehokkaat ikkunat ja ovet asennettuna</h2>'
 		. '<p>Uudet ikkunat ja ovet ovat investointi, joka näkyy lämmityslaskussa ja asumismukavuudessa vuosikymmeniä. Kotimaiset Skaala-tuotteet valmistetaan mittatilaustyönä Ylihärmässä, ja ne sopivat yhtä hyvin remonttiin kuin uudiskohteeseen.</p>'
 		. '<p>Saat tuotteet ja asennuksen samalta tiimiltä, joka vastaa työstä mittauksesta luovutukseen.</p>'
-		. '<a class="promo-link" href="' . esc_url( home_url( '/ikkunat/' ) ) . '">Tutustu ikkunoihin <span aria-hidden="true">→</span></a>'
 		. '</div></div>'
 		. '</div></div></section>';
 }
