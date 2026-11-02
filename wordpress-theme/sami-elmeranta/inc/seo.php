@@ -369,8 +369,10 @@ add_action( 'template_redirect', function () {
 		'kokoomus-kaarinassa'         => 'politiikkaa',
 		'kokoomus-on-tyovaen-puolue'  => 'politiikkaa',
 		'mielipiteetajatukset'        => '',
+		// Vanhan kotisivukoneen osoitteet.
+		'cv-ja-muuta-tietoa'          => 'tyoelamayrittajyys',
 	);
-	$path = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+	$path = strtolower( trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	if ( isset( $map[ $path ] ) ) {
 		$target = '' === $map[ $path ] ? se_blog_url() : se_page_url( $map[ $path ] );
 		wp_safe_redirect( $target, 301 );
