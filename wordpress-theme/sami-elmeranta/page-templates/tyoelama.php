@@ -16,7 +16,13 @@ se_page_hero( 'Työelämä & yrittäjyys', 'Monipuolinen työkokemus ja yrittäj
 		<div class="relative flex items-center gap-4 overflow-hidden rounded-3xl bg-gradient-to-br from-brand via-liila to-ink-soft p-5 sm:gap-5 text-white shadow-xl sm:p-8" data-reveal="zoom">
 			<div class="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-white/10 blur-2xl animate-blob" aria-hidden="true"></div>
 			<span class="relative grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15 sm:size-14"><?php se_the_icon( 'lucide:briefcase', 'size-7' ); ?></span>
-			<p class="relative font-display text-xl font-bold leading-snug sm:text-3xl">Toimin tällä hetkellä osakkaana kolmessa mikroyrityksessä</p>
+			<div class="relative">
+				<p class="font-display text-xl font-bold leading-snug sm:text-3xl">Toimin tällä hetkellä osakkaana kolmessa mikroyrityksessä</p>
+				<p class="mt-4 flex flex-wrap gap-2">
+					<a href="https://www.tilihub.fi/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/25 transition hover:-translate-y-0.5 hover:bg-white hover:text-brand-dark">tilihub.fi <?php se_the_icon( 'lucide:arrow-up-right', 'size-4' ); ?><span class="sr-only"> (avautuu uuteen ikkunaan)</span></a>
+					<a href="https://www.ikkunakauppias.fi/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/25 transition hover:-translate-y-0.5 hover:bg-white hover:text-brand-dark">ikkunakauppias.fi <?php se_the_icon( 'lucide:arrow-up-right', 'size-4' ); ?><span class="sr-only"> (avautuu uuteen ikkunaan)</span></a>
+				</p>
+			</div>
 		</div>
 	</div>
 </section>
