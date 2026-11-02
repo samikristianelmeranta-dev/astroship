@@ -371,10 +371,19 @@ add_action( 'template_redirect', function () {
 		'mielipiteetajatukset'        => '',
 		// Vanhan kotisivukoneen osoitteet.
 		'cv-ja-muuta-tietoa'          => 'tyoelamayrittajyys',
+		'ansioluettelo'               => 'tyoelamayrittajyys',
+		'politiikka'                  => 'politiikkaa',
+		'etusivu'                     => '/',
 	);
 	$path = strtolower( trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '/' ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 	if ( isset( $map[ $path ] ) ) {
-		$target = '' === $map[ $path ] ? se_blog_url() : se_page_url( $map[ $path ] );
+		if ( '/' === $map[ $path ] ) {
+			$target = home_url( '/' );
+		} elseif ( '' === $map[ $path ] ) {
+			$target = se_blog_url();
+		} else {
+			$target = se_page_url( $map[ $path ] );
+		}
 		wp_safe_redirect( $target, 301 );
 		exit;
 	}
