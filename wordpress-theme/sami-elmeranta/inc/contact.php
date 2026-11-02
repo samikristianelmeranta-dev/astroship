@@ -101,10 +101,10 @@ function se_handle_contact() {
 	// Otsakeinjektion esto.
 	$name = preg_replace( '/[\r\n<>"]+/', ' ', mb_substr( $first . ' ' . $last, 0, 160 ) );
 
-	// Vastaanottaja: lomakkeen vastaanottaja → julkinen sähköposti → ylläpitäjän osoite (ei näy sivulla).
-	$to = se_opt( 'form_recipient' );
-	if ( ! is_email( $to ) ) {
-		$to = is_email( se_opt( 'email' ) ) ? se_opt( 'email' ) : get_option( 'admin_email' );
+	// Vastaanottajat: Customizerin lista → teeman oletuslista (osoitteet eivät näy sivulla).
+	$to = se_email_list( se_opt( 'form_recipient' ) );
+	if ( ! $to ) {
+		$to = se_email_list( se_defaults()['form_recipient'] );
 	}
 	$subject = 'Yhteydenotto sivustolta: ' . $name;
 	$body    = "Nimi: {$name}\nSähköposti: {$email}\n\n{$message}\n\n--\nLähetetty: " . home_url( '/' );

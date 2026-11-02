@@ -37,7 +37,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 			'phone'          => array( 'Puhelin (kansainvälinen, esim. +35850…)', 'text' ),
 			'phone_display'  => array( 'Puhelin näytettävässä muodossa', 'text' ),
 			'email'          => array( 'Julkinen sähköposti (tyhjä = ei näytetä sivulla)', 'email' ),
-			'form_recipient' => array( 'Lomakeviestien vastaanottaja (tyhjä = julkinen tai ylläpitäjän sähköposti)', 'email' ),
+			'form_recipient' => array( 'Lomakeviestien vastaanottajat (useampi pilkulla eroteltuna)', 'emails' ),
 			'whatsapp_url'   => array( 'WhatsApp-linkki', 'url' ),
 		) ),
 		'se_social'  => array( 'Sosiaalinen media', array(
@@ -59,6 +59,11 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 				$sanitize = 'esc_url_raw';
 			} elseif ( 'email' === $type ) {
 				$sanitize = 'sanitize_email';
+			} elseif ( 'emails' === $type ) {
+				$sanitize = function ( $value ) {
+					return implode( ', ', se_email_list( $value ) );
+				};
+				$type     = 'text';
 			} elseif ( 'textarea' === $type ) {
 				$sanitize = 'sanitize_textarea_field';
 			}

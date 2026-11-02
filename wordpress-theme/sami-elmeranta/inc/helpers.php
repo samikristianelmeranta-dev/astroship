@@ -26,7 +26,7 @@ function se_defaults() {
 		'phone'          => '+358503460444',
 		'phone_display'  => '050 346 0444',
 		'email'          => '',
-		'form_recipient' => '',
+		'form_recipient' => 'elmeranta.liikenyt@gmail.com, info@samielmeranta.fi',
 		'whatsapp_url'   => 'https://wa.me/358503460444?text=Hei%20Sami!',
 		'facebook'       => 'https://www.facebook.com/Elmeranta/',
 		'instagram'      => 'https://www.instagram.com/s.elmeranta/',
@@ -40,6 +40,23 @@ function se_defaults() {
 		'hero_line3'     => 'Tolkun poliitikko.',
 		'hero_lead'      => 'Isä, myynnin ja markkinoinnin kokenut johtaja, yrittäjä, poliitikko ja seutuvaikuttaja. Haluan rakentaa yhteiskuntaa, jossa tekeminen palkitsee, yhteisö tukee ja jokainen voi vaikuttaa.',
 	);
+}
+
+/**
+ * Pilkuilla erotettu sähköpostilista taulukoksi; virheelliset osoitteet ohitetaan.
+ *
+ * @param string $value Osoitteet.
+ * @return string[]
+ */
+function se_email_list( $value ) {
+	$list = array();
+	foreach ( preg_split( '/[\s,;]+/', (string) $value, -1, PREG_SPLIT_NO_EMPTY ) as $addr ) {
+		$addr = sanitize_email( $addr );
+		if ( is_email( $addr ) && ! in_array( $addr, $list, true ) ) {
+			$list[] = $addr;
+		}
+	}
+	return $list;
 }
 
 /**
