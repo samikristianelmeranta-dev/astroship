@@ -15,6 +15,7 @@ const BLEED = 3; // leikkuuvara mm
 const flyers = [
   { file: "flyer-A4-210x297mm", w: 210, h: 297 },
   { file: "flyer-A5-148x210mm", w: 148, h: 210 },
+  { file: "flyer-148x200mm", w: 148, h: 200, layout: "short" },
   { file: "flyer-A6-105x148mm", w: 105, h: 148, layout: "compact" },
   { file: "flyer-DL-99x210mm", w: 99, h: 210, layout: "dl" },
 ];
