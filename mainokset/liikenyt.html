@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Liike Nyt -mainos</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --liila: #744668; --ink: #1d1934; --cream: #fbf3ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  /* --u = 1 % lyhyemmästä sivusta */
+  body { --u: calc(min(var(--w), var(--h)) / 100); font-family: 'Inter', sans-serif; color: var(--cream); background: var(--ink); -webkit-font-smoothing: antialiased; }
+  .ad {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden; display: flex; flex-direction: column;
+    background:
+      radial-gradient(ellipse 80% 55% at 50% 0%, rgba(222, 52, 120, .55), transparent 70%),
+      radial-gradient(ellipse 70% 60% at 0% 100%, rgba(116, 70, 104, .95), transparent 70%),
+      linear-gradient(170deg, var(--ink) 0%, #2b2552 55%, var(--sininen) 100%);
+  }
+  .ring { position: absolute; border-radius: 50%; border: calc(var(--u) * .5) solid rgba(251, 243, 234, .1); }
+  /* sisältö täyttää tilan ehdokasnauhan yläpuolella */
+  .body { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: var(--gap, calc(var(--u) * 4.4)); padding: calc(var(--u) * 5) 8%; }
+  .main { display: flex; flex-direction: column; align-items: center; gap: var(--gap, calc(var(--u) * 4.4)); }
+  .logo { width: var(--logo, calc(var(--u) * 40)); height: auto; display: block; }
+  h1 { font-family: 'Bricolage', sans-serif; font-weight: 800; line-height: .98; letter-spacing: -.015em; font-size: var(--h1, calc(var(--u) * 10)); text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--vaalea); }
+  .points { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--u) * 1.6); }
+  .points li { font-weight: 700; font-size: var(--pt, calc(var(--u) * 3.2)); padding: calc(var(--u) * 1.2) calc(var(--u) * 2.8); border-radius: 999px; background: rgba(251,243,234,.12); border: calc(var(--u) * .25) solid rgba(251,243,234,.22); white-space: nowrap; }
+  .cta { white-space: nowrap; font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: var(--cta, calc(var(--u) * 4.4)); background: var(--fuksia); color: #fff; padding: calc(var(--u) * 1.6) calc(var(--u) * 4); border-radius: calc(var(--u) * 1.6); box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.3); }
+
+  /* ehdokasnauha alareunassa */
+  .cand { position: relative; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: calc(var(--u) * 3); padding: calc(var(--u) * 3) 8% var(--cand-pb, calc(var(--u) * 3.6)); background: rgba(29,25,52,.72); border-top: calc(var(--u) * .3) solid rgba(222,52,120,.6); }
+  .face { flex: 0 0 auto; width: var(--face, calc(var(--u) * 14)); aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative; background: linear-gradient(160deg, var(--vaalea), var(--fuksia)); box-shadow: 0 0 0 calc(var(--u) * .7) var(--cream); }
+  .face img { position: absolute; width: 200%; left: -46%; top: 6%; display: block; }
+  .cand-text { text-align: left; display: flex; flex-direction: column; gap: calc(var(--u) * .5); }
+  .cand-k { font-size: calc(var(--u) * 2.3); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(251,243,234,.75); }
+  .cand-n { font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: var(--cn, calc(var(--u) * 5)); line-height: 1; text-transform: uppercase; }
+  .cand-u { font-weight: 700; font-size: calc(var(--u) * 2.8); color: var(--vaalea); }
+  .payer { position: absolute; right: 2.5%; bottom: calc(var(--u) * .8); font-size: calc(var(--u) * 1.3); color: rgba(251,243,234,.5); }
+
+  .portrait { --h1: calc(var(--u) * 9.6); --logo: calc(var(--u) * 38); --gap: calc(var(--u) * 4); }
+  .tall { --logo: calc(var(--u) * 48); --h1: calc(var(--u) * 11.5); --gap: calc(var(--u) * 5.5); --pt: calc(var(--u) * 4); --cta: calc(var(--u) * 4.8); --face: calc(var(--u) * 18); --cn: calc(var(--u) * 6.4); --cand-pb: calc(var(--u) * 12); }
+  .tall .points { flex-direction: column; align-items: center; gap: calc(var(--u) * 2.4); }
+  .square { --logo: calc(var(--u) * 32); --h1: calc(var(--u) * 8.8); --gap: calc(var(--u) * 3.4); --pt: calc(var(--u) * 2.9); --cta: calc(var(--u) * 3.9); --face: calc(var(--u) * 11); --cn: calc(var(--u) * 4.6); }
+  .square .body { padding-top: calc(var(--u) * 4); padding-bottom: calc(var(--u) * 4); }
+  /* vaaka: logo vasemmalla, teksti oikealla */
+  .wide .body { flex-direction: row; justify-content: flex-start; text-align: left; gap: 7%; padding: calc(var(--u) * 4) 6%; }
+  .wide .logo { width: calc(var(--u) * 50); flex: 0 0 auto; }
+  .wide .main { align-items: flex-start; gap: calc(var(--u) * 3.6); }
+  .wide h1 { font-size: calc(var(--u) * 10.5); }
+  .wide .points { justify-content: flex-start; }
+  .wide .points li { font-size: calc(var(--u) * 3); }
+  .wide .cta { font-size: calc(var(--u) * 4); }
+  .wide .cand { justify-content: flex-start; padding: calc(var(--u) * 2.2) 6%; gap: calc(var(--u) * 2.4); }
+  .wide .face { width: calc(var(--u) * 11); }
+  .wide .cand-n { font-size: calc(var(--u) * 4.4); }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="ring" style="width:calc(var(--u)*120);height:calc(var(--u)*120);left:50%;top:-40%;transform:translateX(-50%)"></div>
+  <div class="body">
+  <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt – Jotta sinulla on varaa elää">
+  <div class="main">
+    <h1>Työn pitää kannattaa. <em>Yrittämisen myös.</em></h1>
+    <ul class="points">
+      <li>200 000 uutta työpaikkaa</li>
+      <li>Kevyempi verotus</li>
+      <li>Vähemmän byrokratiaa</li>
+    </ul>
+    <p class="cta">Eduskuntavaalit su 18.4.2027</p>
+  </div>
+  </div>
+  <div class="cand">
+    <div class="face"><img src="assets/sami.png" alt=""></div>
+    <div class="cand-text">
+      <span class="cand-k">Ehdokkaasi Varsinais-Suomessa</span>
+      <span class="cand-n">Sami Elmeranta</span>
+      <span class="cand-u">samielmeranta.fi</span>
+    </div>
+  </div>
+  <p class="payer" hidden>Maksaja: Sami Elmeranta</p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.documentElement.style.setProperty('--w', q.get('w') + 'px');
+  document.documentElement.style.setProperty('--h', q.get('h') + 'px');
+  document.body.firstElementChild.classList.add(q.get('layout') || 'portrait');
+  if (q.get('payer')) document.querySelector('.payer').hidden = false;
+</script>
+</body>
+</html>
