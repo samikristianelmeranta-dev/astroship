@@ -9,7 +9,7 @@ function nap_settings_defaults() {
 	return array(
 		'form_ids'       => '',
 		'default_owner'  => 0,
-		'notify_stage'   => 1,
+		'notify_stage'   => 0,
 		'from_name'      => 'Nordic Ikkunat & Ovet Oy',
 		'reply_to'       => 'info@ikkunakauppias.fi',
 		'staff_notify'   => '',
@@ -28,6 +28,8 @@ function nap_settings_defaults() {
 		'inbox_months'   => 12,
 		'offer_days'     => 14,
 		'measure_terms'  => 'Asiakkaan omat mitat: Kun asiakas mittaa itse tai toimittaa mitat meille, tuotteet valmistetaan asiakkaan ilmoittamien mittojen mukaan, ja vastuu mittojen oikeellisuudesta on aina asiakkaalla. Vääristä mitoista johtuvat muutokset ja uudet tuotteet ovat asiakkaan kustannuksella.',
+		'contract_terms' => '',
+		'terms_url'      => '',
 		'cancel_terms'   => 'Ei lakisääteistä peruutusoikeutta: Suurin osa Skaalan toimittamista ikkunoista ja ovista valmistetaan mittatilaustyönä asiakkaan antamien mittojen ja toiveiden mukaan. Kuluttajansuojalain mukaan mittatilaustuotteilla ei ole 14 päivän maksutonta peruutusoikeutta, vaikka kauppa olisi tehty etämyyntinä tai kotimyyntinä (esimerkiksi edustajan käynnillä). Nordic Ikkunat & Ovet Oy toimii Skaalan jälleenmyyjänä.',
 	);
 }
@@ -145,6 +147,8 @@ add_action( 'admin_init', function () {
 				'inbox_months'  => max( 1, min( 60, absint( $in['inbox_months'] ?? 12 ) ) ),
 				'offer_days'    => max( 1, min( 365, absint( $in['offer_days'] ?? 14 ) ) ),
 				'cancel_terms'  => sanitize_textarea_field( $in['cancel_terms'] ?? $d['cancel_terms'] ),
+				'contract_terms' => sanitize_textarea_field( $in['contract_terms'] ?? '' ),
+				'terms_url'     => esc_url_raw( $in['terms_url'] ?? '' ),
 				'measure_terms' => sanitize_textarea_field( $in['measure_terms'] ?? $d['measure_terms'] ),
 			);
 		},
@@ -195,12 +199,16 @@ function nap_settings_page() {
 					<p><label>Säilytä viestit <input name="nap_settings[inbox_months]" type="number" min="1" max="60" value="<?php echo (int) $s['inbox_months']; ?>" style="width:70px"> kuukautta</label> <span class="description">Roskaposti, uutiskirjeet ja sivuston ilmoitukset poistetaan 30 päivän jälkeen.</span></p>
 					<?php if ( nap_inbox_missing() && ( $s['inbox_enabled'] || $s['inbox_user'] ) ) : ?><p><b style="color:#b23b2e">Puuttuu: <?php echo esc_html( implode( ', ', nap_inbox_missing() ) ); ?></b></p><?php elseif ( nap_inbox_ready() ) : ?><p style="color:#2c7a4e"><b>✓ Saapuneet on käytössä.</b></p><?php endif; ?>
 					<?php $ist = get_option( 'nap_inbox_status' ); if ( $ist ) : ?><p class="description">Viimeisin haku <?php echo esc_html( mysql2date( 'j.n. H:i', $ist['at'] ) ); ?>: <?php echo $ist['ok'] ? esc_html( $ist['msg'] ) : '<b style="color:#b23b2e">' . esc_html( $ist['msg'] ) . '</b>'; // phpcs:ignore ?></p><?php endif; ?></td></tr>
+				<tr><th scope="row"><label for="nap_cterms">Sopimusehdot</label></th>
+					<td><textarea id="nap_cterms" name="nap_settings[contract_terms]" rows="6" class="large-text" placeholder="esim. toimitusehdot, maksuehdot, takuu ja asennuksen valmistelu"><?php echo esc_textarea( $s['contract_terms'] ); ?></textarea>
+					<p><label>tai linkki sopimusehtoihin (PDF tai sivu) <input name="nap_settings[terms_url]" type="url" value="<?php echo esc_attr( $s['terms_url'] ); ?>" class="regular-text" placeholder="https://ikkunakauppias.fi/…/sopimusehdot.pdf"></label></p>
+					<p class="description">Lähtevät asiakkaalle, kun asennus- tai toimituspäivä kuitataan CRM:ssä varmistuneeksi (yhdessä peruutusehtojen kanssa).</p></td></tr>
 				<tr><th scope="row"><label for="nap_terms">Peruutusehdot</label></th>
 					<td><textarea id="nap_terms" name="nap_settings[cancel_terms]" rows="4" class="large-text"><?php echo esc_textarea( $s['cancel_terms'] ); ?></textarea>
-					<p class="description">Näkyy asiakkaalle lähtevässä vahvistuksessa, kun tarjous merkitään hyväksytyksi. Tyhjänä ei näytetä.</p></td></tr>
+					<p class="description">Näkyy tarjoussivulla ennen hyväksyntää ja asennus- tai toimituspäivän vahvistuksessa. Tyhjänä ei näytetä.</p></td></tr>
 				<tr><th scope="row"><label for="nap_mterms">Ehto: asiakkaan omat mitat</label></th>
 					<td><textarea id="nap_mterms" name="nap_settings[measure_terms]" rows="3" class="large-text"><?php echo esc_textarea( $s['measure_terms'] ); ?></textarea>
-					<p class="description">Näkyy kiitosviestissä ja hyväksynnän vahvistuksessa, kun toimitustapa on "Vain tuotteet, asiakas mittaa itse".</p></td></tr>
+					<p class="description">Näkyy kiitosviestissä, tarjoussivulla ja toimituspäivän vahvistuksessa, kun toimitustapa on "Vain tuotteet, asiakas mittaa itse".</p></td></tr>
 				<tr><th scope="row"><label for="nap_from">Lähettäjän nimi</label></th>
 					<td><input id="nap_from" name="nap_settings[from_name]" value="<?php echo esc_attr( $s['from_name'] ); ?>" class="regular-text"></td></tr>
 				<tr><th scope="row"><label for="nap_reply">Vastausosoite</label></th>

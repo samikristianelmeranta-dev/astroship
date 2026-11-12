@@ -195,3 +195,20 @@ main{min-width:0;padding-block:22px 48px;padding-left:max(24px,env(safe-area-ins
 .sigbox .linkbtn{position:absolute;right:10px;bottom:8px;color:#1D5E79}
 .btn.big{width:100%;justify-content:center;padding:14px;font-size:16px}
 .sigimg{max-width:320px;width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;margin-top:8px}
+
+/* Kohteen eteneminen vaihe vaiheelta */
+.flow{list-style:none;margin:12px 0 4px;padding:0;display:flex;flex-direction:column;gap:0}
+.flow li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;position:relative;padding:0 0 14px}
+.flow li:not(:last-child)::before{content:'';position:absolute;left:14px;top:30px;bottom:2px;width:2px;background:var(--line)}
+.flow li.done:not(:last-child)::before{background:var(--good)}
+.flow .dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;border:2px solid var(--line);background:var(--surface);color:var(--muted);position:relative;z-index:1}
+.flow li.done .dot{background:var(--good);border-color:var(--good);color:#fff}
+.flow li.now .dot{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 4px var(--accent-soft)}
+.flow li > div{padding-top:4px;min-width:0}
+.flow li.todo b{color:var(--muted);font-weight:600}
+.flow li.now{padding-bottom:18px}
+.flow li.now > div{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:-2px}
+.flow .actions{margin-top:8px}
+details.more{margin-top:8px}
+details.more>summary{cursor:pointer;color:var(--muted);font-size:13.5px;font-weight:600;padding:4px 0}
+.vchip.tent{border-style:dashed;opacity:.8}

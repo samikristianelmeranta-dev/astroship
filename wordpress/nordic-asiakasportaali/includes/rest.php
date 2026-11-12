@@ -486,15 +486,16 @@ function nap_record_approval( $p, $args ) {
 	}
 	$value   = (float) str_replace( array( ' ', ',' ), array( '', '.' ), (string) $args['value'] );
 	$how     = (string) $args['how'];
-	$payment = (string) $args['payment'];
 	$methods = nap_approval_methods();
 	$pays    = nap_payment_methods();
+	// Laskutus hoidetaan CRM:n ulkopuolella: maksutapaa ei enää kysytä (vanhat kirjaukset säilyvät).
+	$payment = isset( $pays[ (string) ( $args['payment'] ?? '' ) ] ) ? (string) $args['payment'] : 'auki';
 	$in_pdf = ! empty( $args['price_in_pdf'] ); // asiakas hyväksyi PDF-tarjouksen: hinta on PDF:ssä
 	if ( $value <= 0 && ! $in_pdf ) {
 		return new WP_Error( 'nap', 'Anna hyväksytty hinta.', 400 );
 	}
-	if ( ! isset( $methods[ $how ] ) || ! isset( $pays[ $payment ] ) ) {
-		return new WP_Error( 'nap', 'Valitse, miten asiakas hyväksyi ja maksutapa.', 400 );
+	if ( ! isset( $methods[ $how ] ) ) {
+		return new WP_Error( 'nap', 'Valitse, miten asiakas hyväksyi.', 400 );
 	}
 	$staff    = (int) $args['by'] > 0;
 	$approval = array(
@@ -530,7 +531,7 @@ function nap_record_approval( $p, $args ) {
 
 	nap_log( $c['id'], $p['id'], 'approval', 'Tarjous hyväksytty' . ( $in_pdf ? '' : ' (' . $eur . ')' ), true );
 	nap_log( $c['id'], $p['id'], 'approval', ( $staff ? 'Hyväksytty asiakkaan puolesta: asiakas hyväksyi ' . $methods[ $how ] . ', kirjasi ' . $approval['by_name'] : 'Asiakas hyväksyi tarjouksen Oma kohde -sivulla' )
-		. '. Maksutapa: ' . $pays[ $payment ] . '.' . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
+		. '.' . ( 'auki' !== $payment ? ' Maksutapa: ' . $pays[ $payment ] . '.' : '' ) . ( $approval['note'] ? ' ' . $approval['note'] : '' ) );
 	if ( $old < 3 ) {
 		nap_on_stage_change( $p, $old );
 	}
@@ -550,7 +551,7 @@ function nap_record_approval( $p, $args ) {
 	}
 	if ( ! $staff ) {
 		nap_notify_owner( $p, 'Tarjous hyväksytty: ' . $c['name'], 'Asiakas hyväksyi tarjouksen',
-			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), ( $value > 0 ? 'Hinta: ' . $eur . ' · ' : '' ) . 'Maksutapa: ' . $pays[ $payment ] ) );
+			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), ( $value > 0 ? 'Hinta: ' . $eur : 'Hinta: tarjouksen (PDF) mukaan' ), 'Seuraavaksi: sovi ' . ( 'asennus' === nap_delivery( $p ) ? 'asennuspäivä' : 'toimituspäivä' ) . ' ja kuittaa se CRM:ssä varmistuneeksi.' ) );
 	}
 	return $p;
 }

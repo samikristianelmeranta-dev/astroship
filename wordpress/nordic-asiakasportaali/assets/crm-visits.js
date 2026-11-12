@@ -9,6 +9,12 @@
   var TYPES = { mittaus: ['Mittauskäynti', 60], asennus: ['Asennus', 480], toimitus: ['Toimitus', 60], huolto: ['Huoltokäynti', 60], muu: ['Käynti', 60] };
   var KINDS = [['ennen', 'Ennen'], ['jalkeen', 'Jälkeen'], ['mittaus', 'Mittaus'], ['muu', 'Muut']];
   var DAYS = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'];
+  var INSTALL = { asennus: 1, toimitus: 1 };
+  function notifyText(type, v) {
+    if (v) return 'Ilmoita asiakkaalle, jos aika muuttuu';
+    return INSTALL[type] ? 'Päivä on jo varmistunut: lähetä asiakkaalle vahvistus ja sopimusehdot heti (muuten kuittaat päivän myöhemmin)'
+      : 'Lähetä asiakkaalle vahvistus sähköpostilla (muistutus lähtee edellisenä päivänä)';
+  }
 
   /* ---------- Päivämäärät (UTC, jotta aikavyöhyke ei siirrä päiviä) ---------- */
   function d(s) { return new Date(s + 'T00:00:00Z'); }
@@ -36,8 +42,9 @@
       var rows = (V.isOwner() ? S.users.slice() : S.users.filter(function (u) { return u.id === S.me.id; }));
       if (list.some(function (v) { return !v.installer_id; })) rows.push({ id: 0, name: 'Ei asentajaa', ini: '–' });
       var chip = function (v) {
-        return '<a class="vchip t-' + v.type + (v.status === 'done' ? ' done' : '') + '" href="#kaynti-' + v.id + '" title="' + esc(v.label + ': ' + v.customer + ', ' + v.address) + '">' +
-          '<b>' + (v.all_day ? 'Koko pv' : hm(v.start_at)) + '</b> ' + esc(v.customer) + '<span>' + esc(v.label) + (v.status === 'done' ? ' ✓' : '') + '</span></a>';
+        var tent = INSTALL[v.type] && !v.confirmed && v.status === 'planned';
+        return '<a class="vchip t-' + v.type + (v.status === 'done' ? ' done' : '') + (tent ? ' tent' : '') + '" href="#kaynti-' + v.id + '" title="' + esc(v.label + ': ' + v.customer + ', ' + v.address + (tent ? ' (alustava)' : '')) + '">' +
+          '<b>' + (v.all_day ? 'Koko pv' : hm(v.start_at)) + '</b> ' + esc(v.customer) + '<span>' + esc(v.label) + (tent ? ' · alustava' : '') + (v.status === 'done' ? ' ✓' : '') + '</span></a>';
       };
       var grid = '<div class="cal" style="grid-template-columns:150px repeat(7,minmax(0,1fr))"><div class="ch"></div>' +
         days.map(function (x) { return '<div class="ch' + (x === S.today ? ' today' : '') + '">' + dayName(x) + '</div>'; }).join('') +
@@ -81,23 +88,27 @@
       '<label class="fld">Kesto<select name="duration">' + durs.map(function (x) { var sel = allDay ? x[0] === 0 : x[0] === dur; return '<option value="' + x[0] + '"' + (sel ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
       (V.isOwner() ? '<label class="fld">Asentaja<select name="installer_id">' + V.opt(S.users, v ? v.installer_id : (pre.installer_id || null), 'Ei valittu') + '</select></label>' : '') +
       '<label class="fld wide">Lisätiedot asentajalle<textarea name="notes" rows="2" placeholder="esim. ovikoodi, pysäköinti, avaimet">' + esc(v ? v.notes : '') + '</textarea></label></div>' +
-      '<div class="choices"><label><input type="checkbox" name="notify" checked><span>' + (v ? 'Ilmoita asiakkaalle, jos aika muuttuu' : 'Lähetä asiakkaalle vahvistus sähköpostilla') + ' (muistutus lähtee aina edellisenä päivänä)</span></label></div>' +
+      (v && !v.confirmed ? '<input type="hidden" name="notify" value="">' : '<div class="choices"><label><input type="checkbox" name="notify"' + (v || !INSTALL[type] ? ' checked' : '') + '><span data-notifytext>' + notifyText(type, v) + '</span></label></div>') +
       '<div class="actions"><button class="btn p">Tallenna</button><button type="button" class="btn" data-x>Peruuta</button></div></form>';
     document.body.appendChild(m);
     var f = m.querySelector('form');
     var close = function () { m.remove(); };
     m.addEventListener('click', function (e) { if (e.target === m) close(); });
     f.querySelector('[data-x]').addEventListener('click', close);
-    f.type.addEventListener('change', function () { if (!v) { var t = TYPES[f.type.value][1]; f.duration.value = String(t >= 480 ? 480 : t); } });
+    f.type.addEventListener('change', function () {
+      if (v) return;
+      var t = TYPES[f.type.value][1]; f.duration.value = String(t >= 480 ? 480 : t);
+      f.notify.checked = !INSTALL[f.type.value]; f.querySelector('[data-notifytext]').textContent = notifyText(f.type.value, v);
+    });
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var all = f.duration.value === '0';
-      var body = { project_id: +f.project_id.value, type: f.type.value, date: f.date.value, time: f.time.value || '08:00', duration: all ? 0 : +f.duration.value, all_day: all, notes: f.notes.value, notify: f.notify.checked };
+      var body = { project_id: +f.project_id.value, type: f.type.value, date: f.date.value, time: f.time.value || '08:00', duration: all ? 0 : +f.duration.value, all_day: all, notes: f.notes.value, notify: f.notify.type === 'checkbox' ? f.notify.checked : false };
       if (f.installer_id) body.installer_id = +f.installer_id.value;
       if (!body.project_id) { toast('Valitse asiakas ja kohde', true); return; }
       f.querySelector('.btn.p').disabled = true;
       api(v ? 'visits/' + v.id : 'visits', { method: 'POST', body: body }).then(function (nv) {
-        close(); toast(v ? 'Käynti päivitetty' : 'Käynti varattu' + (body.notify && !v ? ', vahvistus lähetetty' : ''));
+        close(); toast(v ? 'Käynti päivitetty' : (INSTALL[body.type] ? (body.notify ? 'Päivä kirjattu ja vahvistettu, sopimusehdot lähetetty' : 'Päivä kirjattu – kuittaa se varmistuneeksi, kun päivä on varma') : 'Käynti varattu' + (body.notify ? ', vahvistus lähetetty' : '')));
         S.visitsToday = null;
         return V.reloadBoard().then(function () {
           if (location.hash === '#kaynti-' + nv.id) viewVisit(nv.id); else if (pre.back) location.hash = pre.back; else location.hash = 'kalenteri-' + monday(nv.start_at.slice(0, 10));
@@ -318,5 +329,5 @@
     });
   }
 
-  window.NAPV.visits = { viewCalendar: viewCalendar, viewVisit: viewVisit, visitForm: visitForm, todayBlock: todayBlock, loadToday: loadToday, cardBlock: cardBlock, bindCard: bindCard, monday: monday };
+  window.NAPV.visits = { when: when, viewCalendar: viewCalendar, viewVisit: viewVisit, visitForm: visitForm, todayBlock: todayBlock, loadToday: loadToday, cardBlock: cardBlock, bindCard: bindCard, monday: monday };
 })();

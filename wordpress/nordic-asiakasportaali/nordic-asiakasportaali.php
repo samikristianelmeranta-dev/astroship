@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Nordic Asiakasportaali
  * Description:       Asiakasportaali "Oma kohde" ja Nordicin myynnin ja projektien hallinta (CRM): asiakkaat, kohteet, myyntiputki, tehtävät ja käyttöoikeudet. Vaihe 1.
- * Version:           0.11.1
+ * Version:           0.12.0
  * Author:            Nordic Ikkunat & Ovet Oy
  * Requires at least: 6.2
  * Requires PHP:      7.4
@@ -12,8 +12,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NAP_VERSION', '0.11.1' );
-define( 'NAP_DB_VERSION', '9' );
+define( 'NAP_VERSION', '0.12.0' );
+define( 'NAP_DB_VERSION', '10' );
 define( 'NAP_FILE', __FILE__ );
 define( 'NAP_DIR', __DIR__ );
 define( 'NAP_URL', plugin_dir_url( __FILE__ ) );
@@ -49,6 +49,13 @@ register_deactivation_hook( __FILE__, function () {
 /* Tietokanta päivitetään automaattisesti, kun lisäosan versio vaihtuu. */
 add_action( 'plugins_loaded', function () {
 	if ( get_option( 'nap_db_version' ) !== NAP_DB_VERSION ) {
+		if ( (int) get_option( 'nap_db_version' ) < 10 ) { // yksinkertainen kulku: asiakkaalle vain kiitos, käyntien ja tarjouksen viestit
+			$s = get_option( 'nap_settings' );
+			if ( is_array( $s ) ) {
+				$s['notify_stage'] = 0;
+				update_option( 'nap_settings', $s );
+			}
+		}
 		if ( (int) get_option( 'nap_db_version' ) < 7 ) { // kirjautuminen käyttäjänimellä ja salasanalla: sähköpostikoodi pois
 			$s = get_option( 'nap_settings' );
 			if ( is_array( $s ) ) {

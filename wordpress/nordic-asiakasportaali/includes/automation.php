@@ -14,13 +14,12 @@ defined( 'ABSPATH' ) || exit;
 function nap_stage_tasks() {
 	return apply_filters( 'nap_stage_tasks', array(
 		2 => array( array( 'Seuraa tarjousta: soita asiakkaalle', 3, 'owner' ) ),
-		3 => array( array( 'Tilaa tuotteet Skaalalta', 1, 'owner' ) ),
-		4 => array( array( 'Sovi asennuspäivä asiakkaan kanssa', 2, 'installer', 'Sovi toimitus tai nouto asiakkaan kanssa' ) ),
-		5 => array( array( 'Luovutus: käy työ läpi asiakkaan kanssa', 1, 'installer', 'Toimita tuotteet asiakkaalle ja kuittaa toimitus' ) ),
-		6 => array(
-			array( 'Laskuta työ (Holvi) tai tarkista rahoitus', 1, 'owner' ),
-			array( 'Kiitoslahja ja suosittelupyyntö asiakkaalle', 1, 'owner' ),
+		3 => array(
+			array( 'Tilaa tuotteet Skaalalta', 1, 'owner' ),
+			array( 'Sovi asennuspäivä asiakkaan kanssa', 2, 'owner', 'Sovi toimituspäivä asiakkaan kanssa' ),
 		),
+		5 => array( array( 'Luovutus: käy työ läpi asiakkaan kanssa', 1, 'installer', 'Toimita tuotteet asiakkaalle ja kuittaa toimitus' ) ),
+		6 => array( array( 'Kiitoslahja ja suosittelupyyntö asiakkaalle', 1, 'owner' ) ),
 	) );
 }
 

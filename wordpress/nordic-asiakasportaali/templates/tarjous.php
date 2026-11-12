@@ -23,12 +23,12 @@ $eur      = function ( $v ) {
 	return number_format( (float) $v, 0, ',', ' ' ) . ' €';
 };
 $steps    = 'asennus' === $delivery
-	? array( 'Tilaamme tuotteet Skaalan tehtaalta.', 'Sovimme kanssasi asennuspäivän.', 'Asennamme ja käymme työn läpi kanssasi.' )
-	: array( 'Tilaamme tuotteet Skaalan tehtaalta.', 'Sovimme kanssasi toimituksen tai noudon.', 'Toimitamme tuotteet.' );
+	? array( 'Tilaamme tuotteet Skaalan tehtaalta.', 'Sovimme kanssasi asennuspäivän. Kun päivä on varmistunut, saat vahvistuksen ja sopimusehdot sähköpostilla.', 'Asennamme ja käymme työn läpi kanssasi.' )
+	: array( 'Tilaamme tuotteet Skaalan tehtaalta.', 'Sovimme kanssasi toimituspäivän. Kun päivä on varmistunut, saat vahvistuksen ja sopimusehdot sähköpostilla.', 'Toimitamme tuotteet.' );
 $tila     = sanitize_key( $_GET['tila'] ?? '' ); // phpcs:ignore
 $notes    = array(
 	'kysytty' => array( 'ok', 'Kiitos kysymyksestä! Vastaamme mahdollisimman pian, yleensä saman tai seuraavan arkipäivän aikana.' ),
-	'ehdot'   => array( 'warn', 'Valitse maksutapa ja vahvista, että olet lukenut tarjouksen ehdot.' ),
+	'ehdot'   => array( 'warn', 'Vahvista, että olet lukenut tarjouksen ja sen ehdot.' ),
 	'tyhja'   => array( 'warn', 'Kirjoita kysymyksesi ennen lähettämistä.' ),
 	'suljettu' => array( 'warn', 'Tähän tarjoukseen on jo vastattu tai sen voimassaolo on päättynyt.' ),
 	'virhe'   => array( 'warn', 'Toiminto ei onnistunut. Päivitä sivu ja yritä uudelleen, tai soita meille.' ),
@@ -165,19 +165,16 @@ textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12
   <?php if ( $open ) : ?>
   <section class="card" aria-labelledby="h-h" id="hyvaksy">
     <h2 id="h-h">Hyväksy tarjous</h2>
-    <p class="muted small" style="margin:0">Kaksi valintaa, ja tilaus lähtee eteenpäin.</p>
+    <p class="muted small" style="margin:0">Yksi vahvistus, ja tilaus lähtee eteenpäin.</p>
     <form method="post" action="<?php echo esc_url( $base ); ?>">
       <input type="hidden" name="nap_action" value="offer_accept"><?php echo $hidden; // phpcs:ignore ?>
-      <p class="step">1. Maksutapa</p>
-      <label class="opt"><input type="radio" name="payment" value="holvi" required><span><b>Lasku</b><small>Maksat laskulla.</small></span></label>
-      <label class="opt"><input type="radio" name="payment" value="rahoitus"><span><b>Skaala-rahoitus (OP)</b><small>Maksat erissä<?php echo $op_month ? ' – esim. noin ' . esc_html( number_format( $op_month, 0, ',', ' ' ) ) . ' €/kk 5 vuoden maksuajalla' : ''; ?>. Hoidamme rahoitushakemuksen kanssasi.<?php if ( $op_url ) : ?> <a href="<?php echo esc_url( $op_url ); ?>" target="_blank" rel="noopener">Rahoituslaskuri ja ehdot</a><?php endif; ?></small></span></label>
-      <p class="step">2. Vahvistus</p>
       <?php if ( $cterms || $mterms ) : ?>
       <details class="terms"><summary>Lue tarjouksen ehdot</summary><?php if ( $mterms ) : ?><p><?php echo esc_html( $mterms ); ?></p><?php endif; ?><?php if ( $cterms ) : ?><p><?php echo esc_html( $cterms ); ?></p><?php endif; ?></details>
       <?php endif; ?>
       <label class="chk"><input type="checkbox" name="terms" value="1" required><span>Olen lukenut tarjouksen ja sen ehdot<?php echo $mterms ? ', ja vastaan itse ilmoittamieni mittojen oikeellisuudesta' : ''; ?>.</span></label>
       <button class="btn" type="submit" style="margin-top:18px">Hyväksy tarjous</button>
       <p class="muted small" style="text-align:center;margin:10px 0 0">Saat vahvistuksen sähköpostiisi.</p>
+      <?php if ( $op_url ) : ?><p class="muted small" style="text-align:center;margin:8px 0 0">Haluatko maksaa erissä? <?php echo $op_month ? 'Esim. noin ' . esc_html( number_format( $op_month, 0, ',', ' ' ) ) . ' €/kk OP-rahoituksella. ' : ''; ?><a href="<?php echo esc_url( $op_url ); ?>" target="_blank" rel="noopener">Rahoituslaskuri</a></p><?php endif; ?>
     </form>
   </section>
 

@@ -190,8 +190,13 @@ function nap_intake( $lead ) {
 		'due_date'    => nap_next_workday(),
 	) );
 
-	nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus', nap_is_taloyhtio_page( $lead['page'] ?? '' ) );
-	nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
+	$blocked = nap_ack_block_reason( $customer['email'], $lead['message'] );
+	if ( '' === $blocked ) {
+		nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus', nap_is_taloyhtio_page( $lead['page'] ?? '' ) );
+		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
+	} else {
+		nap_log( $cid, $pid, 'mail', 'Automaattista kiitosviestiä ei lähetetty: ' . $blocked . '. Tarkista, onko tarjouspyyntö aito.' );
+	}
 
 	if ( $s['staff_notify'] ) {
 		nap_mail(

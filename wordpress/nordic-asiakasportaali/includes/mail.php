@@ -1,7 +1,8 @@
 <?php
 /**
- * Sähköpostit asiakkaalle ja henkilökunnalle. Viesteissä on vain linkki portaaliin,
- * ei sopimuksia tai muita liitteitä.
+ * Sähköpostit asiakkaalle ja henkilökunnalle. Asiakas saa viestin vain näissä kohdissa:
+ * kiitos tarjouspyynnöstä → mittauskäynnin vahvistus → tarjous → hyväksynnän vahvistus →
+ * asennus- tai toimituspäivän vahvistus sopimusehtoineen (+ muistutus edellisenä päivänä).
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,10 +32,65 @@ function nap_mail( $to, $subject, $heading, $paragraphs, $button = null, $reply_
 	$from = function () use ( $s ) {
 		return $s['from_name'];
 	};
+	// Lähettäjäosoite oikeaan, olemassa olevaan laatikkoon (esim. info@) eikä WordPressin oletukseen
+	// wordpress@…: vastaukset ja palautukset menevät perille, ja SPF/DMARC täsmäävät verkkotunnukseen.
+	$from_email = function ( $email ) use ( $s ) {
+		$host = strtolower( preg_replace( '/^www\./', '', (string) wp_parse_url( home_url(), PHP_URL_HOST ) ) );
+		$own  = strtolower( (string) $s['reply_to'] );
+		return $own && is_email( $own ) && substr( $own, -strlen( '@' . $host ) ) === '@' . $host ? $own : $email;
+	};
+	// Tekstiversio HTML:n rinnalle: viesti ilman tekstiosaa saa roskapostisuodattimissa huonommat pisteet.
+	$text = function ( $phpmailer ) use ( $heading, $paragraphs, $button ) {
+		$t = ( '' !== $heading ? $heading . "\n\n" : '' ) . implode( "\n\n", (array) $paragraphs );
+		if ( $button ) {
+			$t .= "\n\n" . $button[0] . ': ' . $button[1];
+		}
+		$phpmailer->AltBody = $t . "\n\n--\nNordic Ikkunat & Ovet Oy · Myynti 045 7832 5070 · Asennus 045 7830 4746 · ikkunakauppias.fi";
+	};
 	add_filter( 'wp_mail_from_name', $from );
+	add_filter( 'wp_mail_from', $from_email );
+	add_action( 'phpmailer_init', $text );
 	$ok = wp_mail( $to, $subject, $body, $headers );
 	remove_filter( 'wp_mail_from_name', $from );
+	remove_filter( 'wp_mail_from', $from_email );
+	remove_action( 'phpmailer_init', $text );
 	return $ok;
+}
+
+/**
+ * Saako lomakkeelta tulleelle osoitteelle lähettää automaattisen kiitosviestin? Estää sen, että
+ * roskapostibotit käyttävät lomaketta viestien lähettämiseen vieraisiin osoitteisiin:
+ *  - sama osoite enintään kerran vuorokaudessa
+ *  - samasta IP-osoitteesta enintään 5 tunnissa
+ *  - kaikkiaan enintään 40 vuorokaudessa
+ *  - ei, jos viestissä on linkkejä tai sähköpostiosoite näyttää virheelliseltä
+ * Tarjouspyyntö tallentuu CRM:ään joka tapauksessa; vain automaattinen viesti jää lähtemättä.
+ *
+ * @return string '' = saa lähettää, muuten syy
+ */
+function nap_ack_block_reason( $email, $message = '' ) {
+	$email = strtolower( trim( (string) $email ) );
+	if ( ! is_email( $email ) ) {
+		return 'virheellinen sähköpostiosoite';
+	}
+	if ( preg_match_all( '#https?://|www\.#i', (string) $message ) >= 1 ) {
+		return 'viestissä on linkkejä (tyypillistä roskapostille)';
+	}
+	$ip   = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+	$keys = array(
+		'nap_ack_e_' . md5( $email )             => array( 1, DAY_IN_SECONDS, 'samalle osoitteelle lähetetty jo tänään' ),
+		'nap_ack_i_' . md5( $ip )                => array( 5, HOUR_IN_SECONDS, 'liikaa tarjouspyyntöjä samasta osoitteesta' ),
+		'nap_ack_d_' . current_time( 'Ymd' )     => array( 40, DAY_IN_SECONDS, 'päivän enimmäismäärä täynnä' ),
+	);
+	foreach ( $keys as $key => $lim ) {
+		if ( (int) get_transient( $key ) >= $lim[0] ) {
+			return $lim[2];
+		}
+	}
+	foreach ( $keys as $key => $lim ) {
+		set_transient( $key, (int) get_transient( $key ) + 1, $lim[1] );
+	}
+	return '';
 }
 
 /**
@@ -69,10 +125,10 @@ function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'as
 		$subject = 'Tarjouspyyntösi on perillä';
 		$lines   = array(
 			$hi,
-			'kiitos tarjouspyynnöstä. Se tuli perille, ja otamme sinuun yhteyttä viimeistään seuraavana arkipäivänä.',
+			'kiitos tarjouspyynnöstä! Se tuli perille.',
 			$measure_date
-				? 'Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '. Käymme paikan päällä, mittaamme karmit ja katsomme, mitkä mallit sopivat taloosi. Sen jälkeen saat kirjallisen tarjouksen.'
-				: 'Ensimmäiseksi sovimme mittauskäynnin. Se on maksuton, eikä se sido sinua mihinkään. Käymme paikan päällä, mittaamme karmit ja katsomme, mitkä mallit sopivat taloosi. Sen jälkeen saat kirjallisen tarjouksen.',
+				? 'Maksuton mittauskäynti on sovittu ' . date_i18n( 'j.n.Y', strtotime( $measure_date ) ) . '. Käymme paikan päällä, mittaamme ikkunat ja ovet ja käymme vaihtoehdot läpi kanssasi. Sen jälkeen saat kirjallisen tarjouksen.'
+				: 'Otamme sinuun yhteyttä viimeistään seuraavana arkipäivänä ja sovimme maksuttoman mittauskäynnin. Vahvistamme sovitun päivän vielä sähköpostilla. Käynnillä mittaamme ikkunat ja ovet ja käymme vaihtoehdot läpi kanssasi, ja sen jälkeen saat kirjallisen tarjouksen.',
 		);
 		if ( 'ilman_asennusta' === $delivery ) {
 			$lines[] = 'Toivoit tuotteet ilman asennusta: mittaamme kohteen, ja toimitamme tuotteet asennettaviksi itse.';
@@ -90,20 +146,13 @@ function nap_mail_approval( $customer, $project, $a, $link ) {
 		'Hei ' . nap_first_name( $customer['name'] ) . ',',
 		'kiitos! Vahvistamme, että hyväksyit tarjouksemme ' . $a['how_label'] . ' ' . date_i18n( 'j.n.Y', strtotime( $a['at'] ) ) . '.',
 		'Kohde: ' . $project['title'] . ( $project['address'] ? ', ' . $project['address'] : '' ) . "\n"
-			. ( ! empty( $a['price_in_pdf'] ) || $a['value'] <= 0 ? 'Hinta ja erittely: tarjouksen (PDF) mukaan' : 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)' )
-			. ( 'auki' !== $a['payment'] ? "\nMaksutapa: " . $a['pay_label'] : '' ),
+			. ( ! empty( $a['price_in_pdf'] ) || $a['value'] <= 0 ? 'Hinta ja erittely: tarjouksen (PDF) mukaan' : 'Hinta: ' . number_format( (float) $a['value'], 0, ',', ' ' ) . ' € (sis. alv)' ),
 	);
 	$delivery = nap_delivery( $project );
 	$lines[]  = 'Toimitustapa: ' . nap_deliveries()[ $delivery ] . '.';
-	$lines[]  = 'Seuraavaksi tilaamme tuotteet Skaalalta ja sovimme kanssasi ' . ( 'asennus' === $delivery ? 'asennuspäivän' : 'toimituksen' ) . '. Voit seurata kohdetta Oma kohde -sivulla.';
-	if ( 'omat_mitat' === $delivery && trim( (string) nap_settings()['measure_terms'] ) ) {
-		$lines[] = trim( (string) nap_settings()['measure_terms'] );
-	}
-	$lines[] = 'Jos tiedoissa on virhe, vastaa tähän viestiin tai soita: myynti 045 7832 5070.';
-	$terms   = trim( (string) nap_settings()['cancel_terms'] );
-	if ( $terms ) {
-		$lines[] = $terms;
-	}
+	$day      = 'asennus' === $delivery ? 'asennuspäivän' : 'toimituspäivän';
+	$lines[]  = 'Seuraavaksi tilaamme tuotteet ja sovimme kanssasi ' . $day . '. Kun päivä on varmistunut, saat siitä vahvistuksen ja sopimusehdot sähköpostilla.';
+	$lines[]  = 'Jos tiedoissa on virhe, vastaa tähän viestiin tai soita: myynti 045 7832 5070.';
 	return nap_mail( $customer['email'], 'Vahvistus: tarjous hyväksytty', 'Kiitos tilauksestasi', $lines,
 		array( 'Avaa Oma kohde', $link ), $me ? $me->display_name . ' <' . $me->user_email . '>' : null );
 }
@@ -145,7 +194,9 @@ function nap_mail_visit( $customer, $project, $v, $kind, $link ) {
 	$inst  = $v['installer_id'] ? nap_user_name( $v['installer_id'] ) : '';
 	$addr  = $project['address'] ?: trim( $customer['address'] . ', ' . $customer['city'], ', ' );
 	$head  = array(
-		'confirm'  => array( $label . ' vahvistettu: ' . $when, $label . ' on sovittu' ),
+		'confirm'  => in_array( $v['type'], array( 'asennus', 'toimitus' ), true )
+			? array( ( 'asennus' === $v['type'] ? 'Asennuspäivä' : 'Toimituspäivä' ) . ' vahvistettu: ' . $when, ( 'asennus' === $v['type'] ? 'Asennuspäivä' : 'Toimituspäivä' ) . ' on vahvistettu' )
+			: array( $label . ' vahvistettu: ' . $when, $label . ' on sovittu' ),
 		'update'   => array( $label . ': uusi aika ' . $when, $label . ' – aika muuttui' ),
 		'cancel'   => array( $label . ' peruttu', $label . ' on peruttu' ),
 		'reminder' => array( 'Muistutus: ' . mb_strtolower( $label ) . ' huomenna', 'Huomenna: ' . mb_strtolower( $label ) ),
@@ -154,7 +205,8 @@ function nap_mail_visit( $customer, $project, $v, $kind, $link ) {
 	if ( 'cancel' === $kind ) {
 		$lines[] = $label . ' ' . $when . ' on peruttu. Otamme yhteyttä ja sovimme uuden ajan.';
 	} else {
-		$lines[] = ( 'reminder' === $kind ? 'muistutamme huomisesta käynnistä.' : ( 'update' === $kind ? 'käynnin aika on muuttunut. Uusi aika:' : 'vahvistamme sovitun käynnin.' ) );
+		$install = in_array( $v['type'], array( 'asennus', 'toimitus' ), true );
+		$lines[] = ( 'reminder' === $kind ? 'muistutamme huomisesta käynnistä.' : ( 'update' === $kind ? 'käynnin aika on muuttunut. Uusi aika:' : ( $install ? 'vahvistamme ' . ( 'asennus' === $v['type'] ? 'asennuspäivän' : 'toimituspäivän' ) . '. Alla ovat myös sopimusehdot.' : 'vahvistamme sovitun käynnin.' ) ) );
 		$lines[] = $label . "\n" . ucfirst( $when ) . "\n" . $addr . ( $inst ? "\n" . 'Tulossa: ' . $inst : '' );
 		$tips    = array(
 			'mittaus'  => 'Käynti kestää yleensä noin tunnin. Mittaamme ikkunat ja ovet ja käymme vaihtoehdot läpi kanssasi.',
@@ -166,9 +218,31 @@ function nap_mail_visit( $customer, $project, $v, $kind, $link ) {
 			$lines[] = $tips[ $v['type'] ];
 		}
 		$lines[] = 'Jos aika ei sovi, soita tai vastaa tähän viestiin: myynti 045 7832 5070, asennus 045 7830 4746.';
+		if ( 'confirm' === $kind && in_array( $v['type'], array( 'asennus', 'toimitus' ), true ) ) {
+			$lines = array_merge( $lines, nap_contract_terms_lines( $project ) );
+		}
 	}
 	$owner = $project['owner_id'] ? get_userdata( (int) $project['owner_id'] ) : null;
 	return nap_mail( $customer['email'], $head[ $kind ][0], $head[ $kind ][1], $lines, array( 'Avaa Oma kohde', $link ), $owner ? $owner->display_name . ' <' . $owner->user_email . '>' : null );
+}
+
+/** Sopimusehdot asennus- tai toimituspäivän vahvistukseen (asetuksista). */
+function nap_contract_terms_lines( $project ) {
+	$s   = nap_settings();
+	$out = array();
+	if ( trim( (string) $s['contract_terms'] ) ) {
+		$out[] = "Sopimusehdot\n" . trim( (string) $s['contract_terms'] );
+	}
+	if ( $s['terms_url'] ) {
+		$out[] = 'Sopimusehdot kokonaisuudessaan: ' . $s['terms_url'];
+	}
+	if ( 'omat_mitat' === nap_delivery( $project ) && trim( (string) $s['measure_terms'] ) ) {
+		$out[] = trim( (string) $s['measure_terms'] );
+	}
+	if ( trim( (string) $s['cancel_terms'] ) ) {
+		$out[] = trim( (string) $s['cancel_terms'] );
+	}
+	return $out;
 }
 
 /** Kuitattu luovutus: yhteenveto asiakkaalle. */

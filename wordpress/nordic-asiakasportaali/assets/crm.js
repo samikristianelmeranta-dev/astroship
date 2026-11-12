@@ -95,16 +95,18 @@
   }
 
   function viewBoard() {
-    main.innerHTML = head('Myyntiputki', 'Kohteet vaiheen mukaan. Nuoli siirtää seuraavaan vaiheeseen, ja asiakas saa ilmoituksen.') +
-      '<div class="board">' + S.stages.map(function (s, i) {
-        var items = S.board.filter(function (p) { return p.stage === i; });
+    // Tilaus-vaihe (4) näytetään Hyväksytty-sarakkeessa: kohde etenee kortin vaiheiden kautta.
+    var cols = S.stages.map(function (s, i) { return i; }).filter(function (i) { return i !== 4; });
+    main.innerHTML = head('Myyntiputki', 'Kohteet vaiheen mukaan. Avaa kohde, niin näet seuraavan toimenpiteen.') +
+      '<div class="board">' + cols.map(function (i) {
+        var s = S.stages[i];
+        var items = S.board.filter(function (p) { return p.stage === i || (i === 3 && p.stage === 4); });
         var sum = items.reduce(function (a, p) { return a + p.value; }, 0);
         return '<div class="col"><h3><span>' + esc(s) + '</span><span class="muted num">' + items.length + '</span></h3><div class="sum num">' + (sum ? eur(sum) : '') + '</div>' +
           items.map(function (p) {
             var o = user(p.owner_id);
             return '<div class="deal" data-cust="' + p.customer_id + '" tabindex="0" role="link"><b>' + esc(p.customer) + '</b><div class="m">' + esc(p.address) + '</div><div class="m">' + esc(p.title) + '</div>' + (p.delivery && p.delivery !== 'asennus' ? '<div class="m"><span class="pill gold">' + esc(p.delivery === 'omat_mitat' ? 'Omat mitat' : 'Ilman asennusta') + '</span></div>' : '') +
-              '<div class="f"><span class="num small">' + (p.value ? eur(p.value) : '–') + '</span><span style="display:flex;gap:4px;align-items:center">' + (o ? '<span class="av" title="' + esc(o.name) + '">' + esc(o.ini) + '</span>' : '') +
-              (i < 6 ? '<button class="mv" data-mv="' + p.id + '" aria-label="Siirrä vaiheeseen ' + esc(S.stages[i + 1]) + '">→</button>' : '') + '</span></div></div>';
+              '<div class="f"><span class="num small">' + (p.value ? eur(p.value) : '–') + '</span><span style="display:flex;gap:4px;align-items:center">' + (o ? '<span class="av" title="' + esc(o.name) + '">' + esc(o.ini) + '</span>' : '') + '</span></div></div>';
           }).join('') + (items.length ? '' : '<div class="muted small" style="padding:6px">Ei kohteita</div>') + '</div>';
       }).join('') + '</div>';
   }
@@ -158,47 +160,37 @@
         '<span class="small muted">Asiakas ' + esc(fdate(c.created_at)) + ' alkaen</span></div>' +
         '<dl class="kv"><dt>Puhelin</dt><dd class="num">' + esc(c.phone || '–') + '</dd><dt>Sähköposti</dt><dd>' + esc(c.email || '–') + '</dd>' +
         '<dt>Lähde</dt><dd>' + esc(c.source || '–') + (c.referred_by ? ' · suositteli <a href="#asiakas-' + c.referred_by.id + '">' + esc(c.referred_by.name) + '</a>' : '') + '</dd>' +
-        '<dt>Vastuumyyjä</dt><dd>' + (isOwner() ? '<select id="owner" aria-label="Vastuumyyjä">' + opt(owners, c.owner_id, 'Ei valittu') + '</select>' : esc(uname(c.owner_id) || '–')) + '</dd>' +
-        '<dt>Suosittelukoodi</dt><dd>' + esc(c.ref_code) + '</dd></dl>' +
-        '<div class="sect"><h3>Kohteet</h3>' + (c.projects.length ? c.projects.map(function (p) {
-          return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b><span style="display:flex;gap:6px;flex-wrap:wrap">' + (p.delivery !== 'asennus' ? '<span class="pill gold">' + esc(S.deliveries[p.delivery]) + '</span>' : '') + '<span class="pill ' + (p.stage === 6 ? 'good' : '') + '">' + esc(S.stages[p.stage]) + '</span></span></div>' +
+        '<dt>Vastuumyyjä</dt><dd>' + (isOwner() ? '<select id="owner" aria-label="Vastuumyyjä">' + opt(owners, c.owner_id, 'Ei valittu') + '</select>' : esc(uname(c.owner_id) || '–')) + '</dd></dl>' +
+        (c.projects.length ? c.projects.map(function (p) {
+          return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b>' + (p.delivery !== 'asennus' ? '<span class="pill gold">' + esc(S.deliveries[p.delivery]) + '</span>' : '') + '</div>' +
             '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') +
-            offerBox(p, c) + apprBox(p, c) +
-            '<div class="fields" style="margin-top:10px">' +
-            '<label class="fld">Vaihe<select data-f="stage">' + S.stages.map(function (s, i) { return '<option value="' + i + '" ' + (i === p.stage ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></label>' +
+            flowBox(p, c) +
+            '<details class="more"><summary>Lisätiedot: arvo, asentaja, toimitustapa</summary><div class="fields" style="margin-top:10px">' +
             '<label class="fld">Arvo (€, sis. alv)<input data-f="value" type="number" min="0" step="10" value="' + (p.value || '') + '"></label>' +
             '<label class="fld">Asentaja<select data-f="installer_id">' + opt(S.users, p.installer_id, 'Ei valittu') + '</select></label>' +
-            '<label class="fld">Toimitustapa<select data-f="delivery">' + Object.keys(S.deliveries).map(function (k) { return '<option value="' + k + '"' + (k === p.delivery ? ' selected' : '') + '>' + esc(S.deliveries[k]) + '</option>'; }).join('') + '</select></label></div>' +
-            (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small">' + esc(S.measureTerms) + '</div>' : '') + '</div>';
-        }).join('') : '<div class="empty">Ei kohteita.</div>') + '</div>' +
-        (window.NAPV.visits ? window.NAPV.visits.cardBlock(c) : '') +
+            '<label class="fld">Toimitustapa<select data-f="delivery">' + Object.keys(S.deliveries).map(function (k) { return '<option value="' + k + '"' + (k === p.delivery ? ' selected' : '') + '>' + esc(S.deliveries[k]) + '</option>'; }).join('') + '</select></label>' +
+            '<label class="fld">Vaihe (korjaa käsin)<select data-f="stage">' + S.stages.map(function (s, i) { return '<option value="' + i + '" ' + (i === p.stage ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></label></div>' +
+            (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small">' + esc(S.measureTerms) + '</div>' : '') + '</details></div>';
+        }).join('') : '<div class="empty">Ei kohteita.</div>') +
         '<div class="sect"><h3>Avoimet tehtävät</h3>' + (c.tasks.length ? c.tasks.map(taskRow).join('') : '<p class="muted small">Ei avoimia tehtäviä.</p>') +
         '<form class="form" id="ctask"><input class="grow" name="title" placeholder="Uusi tehtävä, esim. Soita ' + esc(c.name.split(' ')[0]) + 'lle" aria-label="Tehtävä" required>' +
         (isOwner() ? '<select name="assignee_id" aria-label="Vastuuhenkilö">' + opt(S.users, S.me.id) + '</select>' : '') +
         '<input name="due_date" type="date" aria-label="Päivämäärä" value="' + esc(S.today) + '"><button class="btn p">Lisää</button></form></div>' +
         '<div class="sect"><h3>Historia</h3><form class="form" id="cnote" style="margin:0 0 12px"><input class="grow" name="text" placeholder="Kirjaa muistiinpano, esim. puhelu tai sovittu asia" aria-label="Muistiinpano" required><button class="btn">Tallenna</button></form>' +
         (c.events.length ? '<ul class="hist">' + c.events.map(function (e) { return '<li><div class="d">' + esc(ftime(e.at)) + (e.by ? ' · ' + esc(e.by) : '') + (e.for_customer ? ' · näkyy asiakkaalle' : '') + '</div>' + esc(e.text) + '</li>'; }).join('') + '</ul>' : '<p class="muted small">Ei tapahtumia.</p>') + '</div>' +
-        '<div class="sect"><h3>Suosittelut</h3>' + (c.referrals.length ? c.referrals.map(function (r) { return '<div class="small"><a href="#asiakas-' + r.id + '">' + esc(r.name) + '</a> · <span class="pill ' + (r.stage === 6 ? 'good' : '') + '">' + esc(S.stages[r.stage]) + '</span></div>'; }).join('') : '<p class="muted small">Ei vielä suositeltuja asiakkaita.</p>') + '</div>' +
+        '<details class="more sect"><summary>Käynnit, suosittelut ja muut tiedot</summary>' + (window.NAPV.visits ? window.NAPV.visits.cardBlock(c) : '') +
+        '<div class="sect"><h3>Suosittelut</h3><p class="small muted">Suosittelukoodi ' + esc(c.ref_code) + '</p>' + (c.referrals.length ? c.referrals.map(function (r) { return '<div class="small"><a href="#asiakas-' + r.id + '">' + esc(r.name) + '</a> · <span class="pill ' + (r.stage === 6 ? 'good' : '') + '">' + esc(S.stages[r.stage]) + '</span></div>'; }).join('') : '<p class="muted small">Ei vielä suositeltuja asiakkaita.</p>') + '</div></details>' +
         '<div class="actions"><a class="btn" href="#uusi-' + c.id + '">+ Uusi kohde</a><button class="btn p" id="invite">Lähetä Oma kohde -linkki</button><button class="btn" id="editc">Muokkaa yhteystietoja</button></div><div id="editbox"></div>';
       bindCard(c);
     }).catch(function (e) { var b = document.getElementById('ccard'); if (b) b.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
   }
   var HOW = [['puhelin', 'Puhelimessa'], ['paikan', 'Paikan päällä'], ['sahkoposti', 'Sähköpostilla'], ['viesti', 'WhatsAppissa tai tekstiviestillä'], ['paperi', 'Allekirjoitti paperisen tarjouksen']];
-  var PAY = [['holvi', 'Lasku (Holvi)'], ['rahoitus', 'Skaala-rahoitus (OP)'], ['auki', 'Ei vielä sovittu']];
-  function apprBox(p, c) {
-    var a = p.approval;
-    if (a) return '<div class="appr"><b>✓ Tarjous hyväksytty ' + esc(fdate(a.at)) + '</b> · ' + esc(eur(a.value)) + '<div class="small">Asiakas hyväksyi ' + esc(a.how_label) + ' · kirjasi ' + esc(a.by_name) +
-      ' · ' + esc(a.pay_label) + '</div>' + (a.note ? '<div class="small muted">' + esc(a.note) + '</div>' : '') + '</div>';
-    if (p.stage >= 3) return '';
-    return '<div class="apprw" data-apprw="' + p.id + '"><button type="button" class="btn sm" data-approve="' + p.id + '">✓ Hyväksy tarjous asiakkaan puolesta</button></div>';
-  }
   function openApprove(c, pid) {
     var w = document.querySelector('[data-apprw="' + pid + '"]'); if (!w) return;
     var p = c.projects.filter(function (x) { return x.id === pid; })[0];
     w.innerHTML = '<form class="apprf"><h3>Tarjouksen hyväksyntä asiakkaan puolesta</h3><div class="fields">' +
       '<label class="fld">Hyväksytty hinta (€, sis. alv) *<input name="value" type="number" min="1" step="1" required value="' + (p.value || '') + '"></label>' +
       '<label class="fld">Miten asiakas hyväksyi *<select name="how" required><option value="">Valitse</option>' + HOW.map(function (h) { return '<option value="' + h[0] + '">' + h[1] + '</option>'; }).join('') + '</select></label>' +
-      '<label class="fld">Maksutapa<select name="payment">' + PAY.map(function (h) { return '<option value="' + h[0] + '"' + (h[0] === 'auki' ? ' selected' : '') + '>' + h[1] + '</option>'; }).join('') + '</select></label>' +
       '<label class="fld wide">Lisätiedot<textarea name="note" rows="2" placeholder="esim. sovittu, että ulko-ovi vaihdetaan malliin X"></textarea></label></div>' +
       (p.delivery === 'omat_mitat' && S.measureTerms ? '<div class="terms small"><b>Asiakas mittaa itse.</b> Kerro asiakkaalle ennen hyväksyntää: ' + esc(S.measureTerms) + '</div>' : '') +
       '<div class="choices">' +
@@ -211,7 +203,7 @@
       e.preventDefault();
       if (!f.how.value) { toast('Valitse, miten asiakas hyväksyi', true); return; }
       f.querySelector('.btn.p').disabled = true;
-      api('projects/' + pid + '/approve', { method: 'POST', body: { value: f.value.value, how: f.how.value, payment: f.payment.value, note: f.note.value, confirm: f.confirm.checked } })
+      api('projects/' + pid + '/approve', { method: 'POST', body: { value: f.value.value, how: f.how.value, note: f.note.value, confirm: f.confirm.checked } })
         .then(function (np) {
           S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
           return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
@@ -219,27 +211,89 @@
         .catch(function (err) { f.querySelector('.btn.p').disabled = false; fail(err); });
     });
   }
-  function addDays(n) { var d = new Date(S.today + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
-  function offerBox(p, c) {
-    var o = p.offer;
-    if (!o) return p.stage < 3 && !p.approval ? '<div class="offw" data-offw="' + p.id + '"><button type="button" class="btn sm p" data-offer="' + p.id + '">Lähetä tarjous asiakkaalle</button></div>' : '';
-    var expired = o.valid_until && o.valid_until < S.today && o.status === 'sent';
-    var st = o.status === 'accepted' ? '<span class="pill good">Hyväksytty</span>' : o.status === 'declined' ? '<span class="pill crit">Ei kiinnostunut</span>' :
-      expired ? '<span class="pill crit">Vanhentunut</span>' : (o.viewed_at ? '<span class="pill">Asiakas avasi ' + esc(fdate(o.viewed_at)) + '</span>' : '<span class="pill gold">Ei vielä avattu</span>');
-    var pdfMode = o.mode === 'pdf';
-    return '<div class="offer" data-offw="' + p.id + '"><div class="offer-h"><b>' + (o.version > 1 ? 'Tarjous (versio ' + o.version + ')' : 'Tarjous') + (pdfMode ? ' · PDF' : '') + (o.sum ? ' · ' + esc(eur(o.sum)) : '') + '</b>' + st + '</div>' +
-      '<div class="small muted">Lähetetty ' + esc(fdate(o.sent_at)) + ' · ' + esc(o.sent_name) + (o.valid_until ? ' · voimassa ' + esc(fdate(o.valid_until)) + ' asti' : '') + (o.labor ? ' · työn osuus ' + esc(eur(o.labor)) : '') +
-      ((o.reminders || []).length ? ' · muistutuksia ' + o.reminders.length : '') + '</div>' +
-      (o.content ? '<div class="small" style="white-space:pre-line;margin-top:4px">' + esc(o.content) + '</div>' : '') +
-      '<div class="actions" style="margin-top:6px">' + (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') +
-      (!p.approval ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button>' : '') + '</div></div>';
+  /* ---------- Kohteen eteneminen: yksi vaihe kerrallaan, seuraava toimenpide aina näkyvissä ---------- */
+  function flowBox(p, c) {
+    var VV = window.NAPV.visits;
+    var vs = (c.visits || []).filter(function (v) { return v.project_id === p.id && v.status !== 'cancelled'; });
+    var instType = p.delivery === 'asennus' ? 'asennus' : 'toimitus';
+    var mv = vs.filter(function (v) { return v.type === 'mittaus'; })[0];
+    var iv = vs.filter(function (v) { return v.type === instType; })[0];
+    var dayWord = instType === 'asennus' ? 'Asennuspäivä' : 'Toimituspäivä';
+    var when = function (v) { return VV ? VV.when(v) : fdate(v.start_at); };
+    var own = p.delivery === 'omat_mitat';
+    var a = p.approval, o = p.offer;
+    var steps = [
+      { t: 'Tarjouspyyntö', done: true, sub: c.email ? 'Asiakas sai kiitosviestin automaattisesti.' : 'Asiakkaalla ei ole sähköpostia – soita.' },
+      own ? { t: 'Mitat asiakkaalta', done: p.stage >= 1, sub: p.stage >= 1 ? 'Mitat saatu.' : 'Odotetaan asiakkaan mittoja.',
+        act: '<button type="button" class="btn sm p" data-flow="mitat">Mitat saatu</button>' } :
+      { t: 'Mittauskäynti', done: !!(mv && mv.confirmed) || (!mv && p.stage >= 1),
+        sub: mv ? when(mv) + (mv.installer_id ? ' · ' + uname(mv.installer_id) : '') + (mv.confirmed ? ' · vahvistettu asiakkaalle' : ' · ei vielä vahvistettu asiakkaalle') : (p.stage >= 1 ? 'Kirjattu tehdyksi.' : 'Sovi päivä asiakkaan kanssa ja kirjaa se tähän: asiakas saa vahvistuksen ja muistutuksen.'),
+        act: mv ? '<button type="button" class="btn sm p" data-flow="confirm" data-visit="' + mv.id + '">Lähetä vahvistus asiakkaalle</button><a class="btn sm" href="#kaynti-' + mv.id + '">Avaa käynti</a>'
+          : '<button type="button" class="btn sm p" data-flow="book" data-type="mittaus">Sovi mittauskäynti</button>' },
+      { t: 'Tarjous', done: !!o || p.stage >= 2,
+        sub: o ? (o.mode === 'pdf' ? 'PDF-tarjous' : eur(o.sum)) + ' · lähetetty ' + fdate(o.sent_at) + (o.valid_until ? ' · voimassa ' + fdate(o.valid_until) + ' asti' : '') + (o.status === 'declined' ? ' · asiakas ei ole kiinnostunut' : o.viewed_at ? ' · asiakas avasi ' + fdate(o.viewed_at) : ' · ei vielä avattu') : 'Lähetä tarjous käsin: PDF tai hinta ja sisältö.',
+        act: '<div data-offw="' + p.id + '"><button type="button" class="btn sm p" data-offer="' + p.id + '">Lähetä tarjous</button></div>',
+        extra: o ? (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') + (!a ? '<span data-offw="' + p.id + '"><button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button></span>' : '') : '' },
+      { t: 'Hyväksyntä', done: !!a || p.stage >= 3,
+        sub: a ? 'Hyväksytty ' + fdate(a.at) + ' · ' + (a.how === 'portaali' ? 'asiakas itse tarjoussivulla' : 'asiakkaan puolesta (' + a.how_label + ', ' + a.by_name + ')') + (a.value ? ' · ' + eur(a.value) : '') : 'Asiakas hyväksyy tarjouksen itse linkistä, tai kirjaat hyväksynnän hänen puolestaan.',
+        act: '<div data-apprw="' + p.id + '"><button type="button" class="btn sm p" data-approve="' + p.id + '">Hyväksy asiakkaan puolesta</button></div>' },
+      { t: dayWord, done: !!(iv && iv.confirmed) || (!iv && p.stage >= 5),
+        sub: iv ? when(iv) + (iv.installer_id ? ' · ' + uname(iv.installer_id) : '') + (iv.confirmed ? ' · varmistettu: asiakas sai vahvistuksen ja sopimusehdot' : ' · alustava, ei vielä varmistettu') : 'Syötä sovittu päivä. Kun se on varmistunut, kuittaa se: asiakas saa vahvistuksen ja sopimusehdot.',
+        act: iv ? '<button type="button" class="btn sm p" data-flow="confirm" data-visit="' + iv.id + '" data-terms="1">Kuittaa varmistuneeksi</button><button type="button" class="btn sm" data-flow="edit" data-visit="' + iv.id + '">Muuta päivää</button>'
+          : '<button type="button" class="btn sm p" data-flow="book" data-type="' + instType + '">Syötä ' + dayWord.toLowerCase() + '</button>' },
+      { t: 'Valmis', done: p.stage >= 6, sub: p.stage >= 6 ? 'Työ on valmis. Lasku lähetetään erikseen.' : 'Kun työ on tehty: asentaja kuittaa luovutuksen puhelimella, tai merkitse valmiiksi tästä.',
+        act: '<button type="button" class="btn sm p" data-flow="done">Merkitse valmiiksi</button>' }
+    ];
+    var cur = -1;
+    steps.forEach(function (s, i) { if (cur < 0 && !s.done) cur = i; });
+    return '<ol class="flow">' + steps.map(function (s, i) {
+      var state = s.done ? 'done' : i === cur ? 'now' : 'todo';
+      return '<li class="' + state + '"><span class="dot" aria-hidden="true">' + (s.done ? '✓' : i + 1) + '</span><div><b>' + esc(s.t) + '</b>' +
+        (state === 'todo' ? '' : '<div class="small muted">' + esc(s.sub) + '</div>') +
+        (state === 'now' && s.act ? '<div class="actions">' + s.act + '</div>' : '') +
+        (state === 'done' && s.extra ? '<div class="actions">' + s.extra + '</div>' : '') + '</div></li>';
+    }).join('') + '</ol>';
   }
+  function bindFlow(c) {
+    var VV = window.NAPV.visits;
+    document.querySelectorAll('#ccard [data-proj]').forEach(function (el) {
+      var pid = +el.getAttribute('data-proj');
+      var p = c.projects.filter(function (x) { return x.id === pid; })[0];
+      el.querySelectorAll('[data-flow]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var what = b.getAttribute('data-flow'), vid = +b.getAttribute('data-visit');
+          if (what === 'book' && VV) { VV.visitForm({ project_id: pid, type: b.getAttribute('data-type'), back: 'asiakas-' + c.id }); return; }
+          if (what === 'edit' && VV) { api('visits/' + vid).then(function (v) { VV.visitForm({ back: 'asiakas-' + c.id }, v); }).catch(fail); return; }
+          if (what === 'confirm') {
+            var terms = b.getAttribute('data-terms');
+            if (!confirm(terms ? 'Kuitataanko päivä varmistuneeksi? Asiakkaalle lähtee vahvistus ja sopimusehdot sähköpostilla.' : 'Lähetetäänkö asiakkaalle vahvistus mittauskäynnistä?')) return;
+            b.disabled = true;
+            api('visits/' + vid + '/confirm', { method: 'POST' }).then(function (v) {
+              toast(v.mail_sent ? 'Vahvistettu ja lähetetty asiakkaalle' : 'Vahvistettu (asiakkaalla ei sähköpostia – kerro itse)');
+              return window.NAPV.reloadBoard();
+            }).then(function () { loadCard(c.id); }).catch(function (err) { b.disabled = false; fail(err); });
+            return;
+          }
+          var stage = what === 'mitat' ? 1 : what === 'done' ? 6 : null;
+          if (stage === null) return;
+          if (what === 'done' && !confirm('Merkitäänkö kohde valmiiksi?')) return;
+          b.disabled = true;
+          api('projects/' + pid, { method: 'POST', body: { stage: stage } }).then(function (np) {
+            S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
+            toast(what === 'done' ? 'Kohde valmis' : 'Mitat kirjattu');
+            return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
+          }).then(function () { loadCard(c.id); }).catch(function (err) { b.disabled = false; fail(err); });
+        });
+      });
+    });
+  }
+  function addDays(n) { var d = new Date(S.today + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
   function openOffer(c, pid) {
     var w = document.querySelector('[data-offw="' + pid + '"]'); if (!w) return;
     var p = c.projects.filter(function (x) { return x.id === pid; })[0], o = p.offer || {};
     var pdfFirst = o.mode ? o.mode === 'pdf' : true;
     w.innerHTML = '<form class="apprf" enctype="multipart/form-data"><h3>' + (p.offer ? 'Päivitetty tarjous' : 'Tarjous asiakkaalle') + '</h3>' +
-      '<p class="small muted" style="margin:0">Asiakas näkee tarjouksen Oma kohde -sivulla ja voi hyväksyä sen, valita maksutavan tai kysyä tarkennusta.</p>' +
+      '<p class="small muted" style="margin:0">Asiakas avaa tarjouksen sähköpostin linkistä ja voi hyväksyä sen tai kysyä tarkennusta.</p>' +
       '<div class="choices"><label><input type="radio" name="mode" value="pdf"' + (pdfFirst ? ' checked' : '') + '><span><b>Valmis PDF-tarjous</b> – erittely, hinta ja voimassaolo ovat PDF:ssä</span></label>' +
       '<label><input type="radio" name="mode" value="fields"' + (pdfFirst ? '' : ' checked') + '><span><b>Täytä tiedot</b> – hinta, työn osuus ja sisältö näkyvät asiakkaalle sivulla (PDF valinnainen)</span></label></div><div class="fields">' +
       '<label class="fld wide">Tarjous PDF:nä (Skaalan tarjoustyökalusta)<span class="muted small" data-pdfhint>' + (o.file ? ' – jätä tyhjäksi, niin edellinen PDF säilyy' : '') + '</span><input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
@@ -278,6 +332,7 @@
   function bindCard(c) {
     var box = document.getElementById('ccard');
     if (window.NAPV.visits) window.NAPV.visits.bindCard(c);
+    bindFlow(c);
     box.querySelectorAll('[data-offer]').forEach(function (b) { b.addEventListener('click', function () { openOffer(c, +b.getAttribute('data-offer')); }); });
     if (S.openOffer) { var of = S.openOffer; S.openOffer = null; openOffer(c, of); var ow = document.querySelector('[data-offw="' + of + '"]'); if (ow) ow.scrollIntoView({ block: 'center' }); }
     box.querySelectorAll('[data-approve]').forEach(function (b) { b.addEventListener('click', function () { openApprove(c, +b.getAttribute('data-approve')); }); });

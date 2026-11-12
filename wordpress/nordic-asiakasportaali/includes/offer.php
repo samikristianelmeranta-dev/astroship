@@ -186,11 +186,10 @@ function nap_customer_offer_action( $c, $action ) {
 		return 'suljettu';
 	}
 	if ( 'offer_accept' === $action ) {
-		$pay = sanitize_key( $_POST['payment'] ?? '' ); // phpcs:ignore
-		if ( empty( $_POST['terms'] ) || ! in_array( $pay, array( 'holvi', 'rahoitus' ), true ) ) { // phpcs:ignore
+		if ( empty( $_POST['terms'] ) ) { // phpcs:ignore
 			return 'ehdot';
 		}
-		$r = nap_record_approval( $p, array( 'value' => $offer['sum'] > 0 ? $offer['sum'] : $p['value'], 'price_in_pdf' => 'pdf' === ( $offer['mode'] ?? '' ), 'how' => 'portaali', 'payment' => $pay, 'note' => '', 'by' => 0, 'by_name' => $c['name'], 'confirm' => true ) );
+		$r = nap_record_approval( $p, array( 'value' => $offer['sum'] > 0 ? $offer['sum'] : $p['value'], 'price_in_pdf' => 'pdf' === ( $offer['mode'] ?? '' ), 'how' => 'portaali', 'payment' => 'auki', 'note' => '', 'by' => 0, 'by_name' => $c['name'], 'confirm' => true ) );
 		return is_wp_error( $r ) ? 'virhe' : 'hyvaksytty';
 	}
 	if ( 'offer_question' === $action ) {

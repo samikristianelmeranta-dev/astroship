@@ -3,6 +3,27 @@
 WordPress-lisäosa ikkunakauppias.fi:hin: oma myynti- ja projektinhallinta (Nordic CRM, osoitteessa `/crm/`)
 ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, tämä ei korvaa sitä.
 
+## Kulku vaihe vaiheelta (0.12.0)
+Asiakaskortilla jokainen kohde näkyy vaiheina, ja vain seuraava toimenpide on auki:
+1. **Tarjouspyyntö** – asiakas saa automaattisesti kiitosviestin: "sovimme mittauskäynnin ja vahvistamme päivän".
+2. **Mittauskäynti** – *Sovi mittauskäynti*: päivä, aika ja tekijä. Asiakas saa vahvistuksen ja muistutuksen edellisenä päivänä.
+   (Omat mitat: *Mitat saatu*.)
+3. **Tarjous** – *Lähetä tarjous* käsin (PDF tai hinta ja sisältö). Asiakas avaa sen linkistä.
+4. **Hyväksyntä** – asiakas hyväksyy itse tarjoussivulla tai *Hyväksy asiakkaan puolesta*. Maksutapaa ei kysytä: lasku lähetetään muuta kautta.
+5. **Asennus- tai toimituspäivä** – *Syötä asennuspäivä* (alustava, asiakas ei saa vielä viestiä eikä se näy Oma kohde -sivulla).
+   Kun päivä on varma: *Kuittaa varmistuneeksi* → asiakas saa vahvistuksen **ja sopimusehdot** (asetuksista), ja muistutuksen edellisenä päivänä.
+6. **Valmis** – asentajan luovutuskuittaus puhelimella tai *Merkitse valmiiksi*.
+
+Asiakas saa sähköpostia vain näissä kohdissa. Vaiheviestit ("Kohteesi eteni") ovat oletuksena pois päältä.
+Sopimusehdot kirjoitetaan kohtaan Asetukset → Asiakasportaali → Sopimusehdot (teksti tai linkki PDF:ään).
+
+## Roskapostisuojaus
+- Lomakkeelta tulleelle osoitteelle lähtee kiitosviesti enintään kerran vuorokaudessa, samasta IP:stä enintään 5 tunnissa ja
+  kaikkiaan enintään 40 päivässä. Jos viestissä on linkkejä, kiitosviestiä ei lähetetä. Tarjouspyyntö tallentuu silti CRM:ään,
+  ja historiaan kirjataan syy.
+- Viestit lähtevät vastausosoitteesta (esim. info@ikkunakauppias.fi), ja niissä on HTML:n lisäksi tekstiversio.
+- Uuden kirjautumislinkin pyyntö: 3 / osoite / tunti ja 10 / IP / tunti, ja vain olemassa oleville asiakkaille.
+
 ## Mitä vaihe 1 sisältää
 - Omat tietokantataulut: asiakkaat, kohteet, tehtävät ja tapahtumahistoria.
 - Roolit **Nordic: osakas** (näkee kaiken, asetukset, käyttäjät) ja **Nordic: asentaja** (näkee vain kohteet,
@@ -20,7 +41,7 @@ ja asiakkaan Oma kohde -sivu (`/oma-kohde/`). FluentCRM jää markkinointiin, t�
   sähköpostin, osoitteen, paikkakunnan ja tuotteet valmiiksi kenttiin ja kertoo, jos numero tai sähköposti on jo asiakkaalla.
 - **Androidin Jaa-valikko:** kun CRM on lisätty kotinäytölle (Chrome → ⋮ → Lisää aloitusnäyttöön / Asenna sovellus),
   WhatsApp-viestin voi jakaa suoraan Nordic CRM:ään, ja Uusi tarjouspyyntö aukeaa täytettynä. iPhonella kopioi ja liitä. Asiakaskortin **+ Uusi kohde** lisää kohteen suoraan olemassa olevalle asiakkaalle.
-- Vaiheen siirto kirjautuu historiaan ja lähettää asiakkaalle ilmoituksen (voi kytkeä pois).
+- Vaiheen siirto kirjautuu historiaan. Asiakkaalle voi halutessaan lähettää vaiheilmoituksen (asetuksissa, oletuksena pois).
 - Asiakkaan kirjautuminen ilman salasanaa: linkki sähköpostiin (voimassa 7 vrk).
   Linkkiin voi palata voimassaolon aikana. Uuden linkin voi pyytää Oma kohde -sivulta. Pyynnöt on rajoitettu, eikä sivu paljasta, onko osoite asiakkaana.
 - Suosittelulinkki `ikkunakauppias.fi/s/KOODI`: uusi tarjouspyyntö merkitään suositelluksi ja näkyy
@@ -125,7 +146,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - **Luovutuskuittaus**: tarkistuslista, huomautukset, asiakkaan nimi ja allekirjoitus sormella näytölle. Kuittaus merkitsee kohteen valmiiksi, lähettää asiakkaalle kiitosviestin ja luo laskutus- ja kiitoslahjatehtävät (huomautuksista oma tehtävä).
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.11.1.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.12.0.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

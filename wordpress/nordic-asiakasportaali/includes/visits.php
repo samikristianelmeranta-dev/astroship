@@ -147,12 +147,48 @@ function nap_api_create_visit( WP_REST_Request $req ) {
 	if ( $inst && ! $p['installer_id'] ) {
 		nap_update_project( (int) $p['id'], array( 'installer_id' => $inst ) );
 	}
-	nap_log( (int) $p['customer_id'], (int) $p['id'], 'visit', nap_visit_label( $v ) . ' ' . nap_visit_when( $v ) . ( $inst ? ' (' . nap_user_name( $inst ) . ')' : '' ), true );
-	nap_visit_advance_stage( $p, $type );
+	$install = in_array( $type, array( 'asennus', 'toimitus' ), true );
+	nap_log( (int) $p['customer_id'], (int) $p['id'], 'visit', nap_visit_label( $v ) . ' ' . nap_visit_when( $v ) . ( $inst ? ' (' . nap_user_name( $inst ) . ')' : '' ) . ( $install && ! $req->get_param( 'notify' ) ? ' – ei vielä varmistettu' : '' ), true );
+	if ( $install ) {
+		// Asennus- tai toimituspäivä syötetty: "Sovi asennuspäivä" -tehtävä on hoidettu.
+		$wpdb->query( $wpdb->prepare( 'UPDATE ' . nap_table( 'tasks' ) . " SET done_at = %s WHERE project_id = %d AND done_at IS NULL AND (title LIKE %s OR title LIKE %s)", nap_now(), $p['id'], 'Sovi asennuspäivä%', 'Sovi toimituspäivä%' ) ); // phpcs:ignore
+	}
 	if ( $req->get_param( 'notify' ) ) {
-		nap_visit_notify( $v, 'confirm' );
+		nap_visit_confirm( $v );
+	} elseif ( ! $install ) {
+		nap_visit_advance_stage( $p, $type );
 	}
 	return nap_visit_out( nap_get_visit( (int) $v['id'] ), true );
+}
+
+/**
+ * Käynti varmistunut: merkitään vahvistetuksi, asiakkaalle lähtee vahvistus (asennus/toimitus:
+ * mukana sopimusehdot) ja kohde etenee. Asennus- tai toimituspäivä voidaan syöttää ensin
+ * alustavana ja kuitata varmistuneeksi myöhemmin.
+ */
+function nap_visit_confirm( $v ) {
+	global $wpdb;
+	$p = nap_get_project( (int) $v['project_id'] );
+	$wpdb->update( nap_table( 'visits' ), array( 'confirmed_at' => nap_now(), 'updated_at' => nap_now() ), array( 'id' => (int) $v['id'] ) );
+	if ( in_array( $v['type'], array( 'asennus', 'toimitus' ), true ) ) {
+		nap_log( (int) $p['customer_id'], (int) $p['id'], 'visit', ( 'asennus' === $v['type'] ? 'Asennuspäivä' : 'Toimituspäivä' ) . ' varmistunut: ' . nap_visit_when( $v ), true );
+	}
+	nap_visit_advance_stage( $p, $v['type'] );
+	return nap_visit_notify( nap_get_visit( (int) $v['id'] ), 'confirm' );
+}
+
+function nap_api_confirm_visit( WP_REST_Request $req ) {
+	$v = nap_get_visit( (int) $req['id'] );
+	if ( ! nap_can_see_visit( $v ) ) {
+		return nap_err( 'Ei oikeutta tähän käyntiin.' );
+	}
+	if ( 'planned' !== $v['status'] ) {
+		return nap_err( 'Peruttua tai tehtyä käyntiä ei voi vahvistaa.', 409 );
+	}
+	$sent = nap_visit_confirm( $v );
+	$out  = nap_visit_out( nap_get_visit( (int) $v['id'] ), true );
+	$out['mail_sent'] = (bool) $sent;
+	return $out;
 }
 
 /**
@@ -224,7 +260,7 @@ function nap_api_update_visit( WP_REST_Request $req ) {
 		$rows = count( (array) json_decode( $data['protocol'], true )['rows'] );
 		nap_log( (int) $p['customer_id'], (int) $p['id'], 'protocol', 'Mittauspöytäkirja tallennettu (' . $rows . ' riviä)' );
 	}
-	if ( $req->get_param( 'notify' ) && ( $moved || ( isset( $data['status'] ) && 'cancelled' === $data['status'] && 'cancelled' !== $v['status'] ) ) ) {
+	if ( $req->get_param( 'notify' ) && $v['confirmed_at'] && ( $moved || ( isset( $data['status'] ) && 'cancelled' === $data['status'] && 'cancelled' !== $v['status'] ) ) ) {
 		nap_visit_notify( $nv, 'cancelled' === $nv['status'] ? 'cancel' : 'update' );
 	}
 	return nap_visit_out( $nv, true );
@@ -465,7 +501,7 @@ add_action( 'nap_hourly', function () {
 		return;
 	}
 	$tomorrow = gmdate( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' +1 day' ) );
-	$rows     = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'visits' ) . " WHERE status = 'planned' AND reminded_at IS NULL AND start_at >= %s AND start_at < %s", $tomorrow . ' 00:00:00', $tomorrow . ' 23:59:59' ), ARRAY_A ); // phpcs:ignore
+	$rows     = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'visits' ) . " WHERE status = 'planned' AND confirmed_at IS NOT NULL AND reminded_at IS NULL AND start_at >= %s AND start_at < %s", $tomorrow . ' 00:00:00', $tomorrow . ' 23:59:59' ), ARRAY_A ); // phpcs:ignore
 	foreach ( $rows as $v ) {
 		// Juuri vahvistettu käynti ei tarvitse erillistä muistutusta.
 		if ( $v['confirmed_at'] && strtotime( $v['confirmed_at'] ) > current_time( 'timestamp' ) - 6 * HOUR_IN_SECONDS ) {
@@ -493,5 +529,6 @@ add_action( 'rest_api_init', function () {
 	$r( '/visits/(?P<id>\d+)', 'POST', 'nap_api_update_visit' );
 	$r( '/visits/(?P<id>\d+)/files', 'POST', 'nap_api_visit_file' );
 	$r( '/visits/(?P<id>\d+)/handover', 'POST', 'nap_api_handover' );
+	$r( '/visits/(?P<id>\d+)/confirm', 'POST', 'nap_api_confirm_visit' );
 	$r( '/files/(?P<id>\d+)/delete', 'POST', 'nap_api_delete_file' );
 } );
