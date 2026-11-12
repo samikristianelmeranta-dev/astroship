@@ -321,6 +321,9 @@ function nap_inbox_classify( $m ) {
 	global $wpdb;
 	$h       = $m['headers'];
 	$from    = $m['from_email'];
+	if ( in_array( strtolower( $from ), (array) get_option( 'nap_inbox_blocked', array() ), true ) ) {
+		return array( 'roskaposti', 'Lähettäjä on merkitty roskapostittajaksi', null );
+	}
 	$fdom    = strtolower( substr( strrchr( $from, '@' ), 1 ) );
 	$subj    = mb_strtolower( $m['subject'] );
 	$all     = $subj . "\n" . mb_strtolower( mb_substr( $m['text'], 0, 6000 ) );
@@ -583,6 +586,7 @@ add_action( 'rest_api_init', function () {
 	};
 	register_rest_route( 'nap/v1', '/inbox', array( 'methods' => 'GET', 'callback' => 'nap_api_inbox', 'permission_callback' => $perm ) );
 	register_rest_route( 'nap/v1', '/inbox/fetch', array( 'methods' => 'POST', 'callback' => 'nap_api_inbox_fetch', 'permission_callback' => $perm ) );
+	register_rest_route( 'nap/v1', '/inbox/bulk', array( 'methods' => 'POST', 'callback' => 'nap_api_inbox_bulk', 'permission_callback' => $perm ) );
 	register_rest_route( 'nap/v1', '/inbox/(?P<id>\d+)', array(
 		array( 'methods' => 'GET', 'callback' => 'nap_api_inbox_item', 'permission_callback' => $perm ),
 		array( 'methods' => 'POST', 'callback' => 'nap_api_inbox_update', 'permission_callback' => $perm ),
@@ -716,4 +720,58 @@ function nap_inbox_send_attachment( $id, $n ) {
 	header( 'Content-Length: ' . filesize( $path ) );
 	readfile( $path ); // phpcs:ignore
 	exit;
+}
+
+/** Poistaa viestit ja niiden liitteet. */
+function nap_inbox_delete( $ids ) {
+	global $wpdb;
+	$t = $wpdb->prefix . 'nap_inbox';
+	$n = 0;
+	foreach ( array_map( 'intval', (array) $ids ) as $id ) {
+		$r = $wpdb->get_row( $wpdb->prepare( "SELECT id, attachments FROM $t WHERE id = %d", $id ), ARRAY_A ); // phpcs:ignore
+		if ( ! $r ) {
+			continue;
+		}
+		foreach ( (array) json_decode( (string) $r['attachments'], true ) as $f ) {
+			@unlink( nap_private_dir() . '/mail/' . basename( (string) ( $f['file'] ?? '' ) ) ); // phpcs:ignore
+		}
+		$n += (int) $wpdb->delete( $t, array( 'id' => $id ) );
+	}
+	return $n;
+}
+
+/**
+ * Useampi viesti kerralla: action = spam (roskapostiin + lähettäjä estolistalle), delete (poista)
+ * tai empty_spam (tyhjennä koko roskaposti).
+ */
+function nap_api_inbox_bulk( WP_REST_Request $req ) {
+	global $wpdb;
+	$t      = $wpdb->prefix . 'nap_inbox';
+	$action = (string) $req->get_param( 'action' );
+	$ids    = array_slice( array_filter( array_map( 'intval', (array) $req->get_param( 'ids' ) ) ), 0, 500 );
+	if ( 'empty_spam' === $action ) {
+		$ids = array_map( 'intval', $wpdb->get_col( "SELECT id FROM $t WHERE category = 'roskaposti' LIMIT 5000" ) ); // phpcs:ignore
+		return array( 'poistettu' => nap_inbox_delete( $ids ) );
+	}
+	if ( ! $ids ) {
+		return nap_err( 'Valitse viestit.', 400 );
+	}
+	if ( 'delete' === $action ) {
+		return array( 'poistettu' => nap_inbox_delete( $ids ) );
+	}
+	if ( 'spam' === $action ) {
+		$blocked = (array) get_option( 'nap_inbox_blocked', array() );
+		$own     = nap_own_domains();
+		foreach ( $ids as $id ) {
+			$from = strtolower( (string) $wpdb->get_var( $wpdb->prepare( "SELECT from_email FROM $t WHERE id = %d", $id ) ) ); // phpcs:ignore
+			// Omaa verkkotunnusta tai asiakasta ei estetä, vaikka yksittäinen viesti merkittäisiin roskapostiksi.
+			if ( $from && ! in_array( substr( strrchr( $from, '@' ), 1 ), $own, true ) && ! nap_find_customer_by_email( $from ) ) {
+				$blocked[] = $from;
+			}
+			$wpdb->update( $t, array( 'category' => 'roskaposti', 'status' => 'done', 'reason' => 'Merkitty roskapostiksi: ' . wp_get_current_user()->display_name ), array( 'id' => $id ) );
+		}
+		update_option( 'nap_inbox_blocked', array_slice( array_values( array_unique( $blocked ) ), -2000 ), false );
+		return array( 'merkitty' => count( $ids ) );
+	}
+	return nap_err( 'Tuntematon toiminto.', 400 );
 }

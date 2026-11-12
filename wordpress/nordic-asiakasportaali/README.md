@@ -23,6 +23,9 @@ Sopimusehdot kirjoitetaan kohtaan Asetukset → Asiakasportaali → Sopimusehdot
   ja historiaan kirjataan syy.
 - Viestit lähtevät vastausosoitteesta (esim. info@ikkunakauppias.fi), ja niissä on HTML:n lisäksi tekstiversio.
 - Uuden kirjautumislinkin pyyntö: 3 / osoite / tunti ja 10 / IP / tunti, ja vain olemassa oleville asiakkaille.
+- **Roskapostin poisto (osakkaat):** Asiakkaat-listassa valintaruudut ja *Poista valitut*, asiakaskortilla *Poista asiakas*
+  (poistaa kohteet, tehtävät, historian, käynnit ja kuvat). Saapuneissa valinta, *Roskapostiin* (lähettäjä estetään:
+  jatkossa suoraan roskapostiin), *Poista* ja Roskaposti-välilehdellä *Tyhjennä roskaposti*.
 
 ## Mitä vaihe 1 sisältää
 - Omat tietokantataulut: asiakkaat, kohteet, tehtävät ja tapahtumahistoria.
@@ -146,7 +149,7 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - **Luovutuskuittaus**: tarkistuslista, huomautukset, asiakkaan nimi ja allekirjoitus sormella näytölle. Kuittaus merkitsee kohteen valmiiksi, lähettää asiakkaalle kiitosviestin ja luo laskutus- ja kiitoslahjatehtävät (huomautuksista oma tehtävä).
 
 ## Asennus
-1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.12.1.zip` → Ota käyttöön.
+1. WordPress → Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-asiakasportaali-0.12.2.zip` → Ota käyttöön.
 2. Asetukset → Kestolinkit → **Tallenna muutokset** (varmistaa, että `/crm/` ja `/oma-kohde/` toimivat).
 3. Asetukset → **Asiakasportaali**:
    - *Tarjouslomakkeet*: Fluent Formsin lomakkeen ID (näkyy Fluent Forms → Lomakkeet, sarake ID). Jos kenttä on tyhjä,

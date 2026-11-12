@@ -24,6 +24,9 @@ add_action( 'rest_api_init', function () {
 	$r( '/customers/(?P<id>\d+)', 'POST', 'nap_api_update_customer' );
 	$r( '/customers/(?P<id>\d+)/note', 'POST', 'nap_api_note' );
 	$r( '/customers/(?P<id>\d+)/invite', 'POST', 'nap_api_invite' );
+	register_rest_route( $ns, '/customers/delete', array( 'methods' => 'POST', 'callback' => 'nap_api_delete_customers', 'permission_callback' => function () {
+		return current_user_can( 'nap_all' ); // vain osakas poistaa
+	} ) );
 	$r( '/projects/(?P<id>\d+)/approve', 'POST', 'nap_api_approve' );
 	$r( '/tasks', 'GET', 'nap_api_tasks' );
 	$r( '/tasks', 'POST', 'nap_api_create_task' );
@@ -580,4 +583,47 @@ function nap_record_approval( $p, $args ) {
 			array( $c['name'] . ' hyväksyi tarjouksen Oma kohde -sivulla.', 'Kohde: ' . $p['title'] . ( $p['address'] ? ', ' . $p['address'] : '' ), ( $value > 0 ? 'Hinta: ' . $eur : 'Hinta: tarjouksen (PDF) mukaan' ), 'Seuraavaksi: sovi ' . ( 'asennus' === nap_delivery( $p ) ? 'asennuspäivä' : 'toimituspäivä' ) . ' ja kuittaa se CRM:ssä varmistuneeksi.' ) );
 	}
 	return $p;
+}
+
+/**
+ * Poistaa asiakkaat kaikkine tietoineen (roskapostina tullut tai testi): kohteet, tehtävät,
+ * historia, käynnit, kuvat, tarjous-PDF:t ja kirjautumislinkit. Saapuneiden viestien liitos puretaan.
+ */
+function nap_delete_customer( $cid ) {
+	global $wpdb;
+	$c = nap_get_customer( (int) $cid );
+	if ( ! $c ) {
+		return false;
+	}
+	foreach ( nap_customer_projects( (int) $c['id'] ) as $p ) {
+		$offer = nap_get_offer( $p );
+		if ( $offer && ! empty( $offer['file'] ) ) {
+			@unlink( nap_private_dir() . '/' . basename( (string) $offer['file'] ) ); // phpcs:ignore
+		}
+	}
+	foreach ( $wpdb->get_col( $wpdb->prepare( 'SELECT file FROM ' . nap_table( 'files' ) . ' WHERE customer_id = %d', $c['id'] ) ) as $f ) {
+		@unlink( nap_private_dir() . '/files/' . basename( (string) $f ) ); // phpcs:ignore
+	}
+	$pids = array_map( 'intval', $wpdb->get_col( $wpdb->prepare( 'SELECT id FROM ' . nap_table( 'projects' ) . ' WHERE customer_id = %d', $c['id'] ) ) );
+	foreach ( $pids as $pid ) {
+		$wpdb->delete( nap_table( 'visits' ), array( 'project_id' => $pid ) );
+	}
+	foreach ( array( 'files', 'tasks', 'events', 'tokens', 'projects' ) as $tbl ) {
+		$wpdb->delete( nap_table( $tbl ), array( 'customer_id' => (int) $c['id'] ) );
+	}
+	$wpdb->update( nap_table( 'inbox' ), array( 'customer_id' => null, 'project_id' => null ), array( 'customer_id' => (int) $c['id'] ) );
+	$wpdb->update( nap_table( 'customers' ), array( 'referred_by' => null ), array( 'referred_by' => (int) $c['id'] ) );
+	return (bool) $wpdb->delete( nap_table( 'customers' ), array( 'id' => (int) $c['id'] ) );
+}
+
+function nap_api_delete_customers( WP_REST_Request $req ) {
+	$ids = array_slice( array_filter( array_map( 'intval', (array) $req->get_param( 'ids' ) ) ), 0, 500 );
+	if ( ! $ids ) {
+		return nap_err( 'Valitse poistettavat asiakkaat.', 400 );
+	}
+	$n = 0;
+	foreach ( $ids as $id ) {
+		$n += nap_delete_customer( $id ) ? 1 : 0;
+	}
+	return array( 'poistettu' => $n );
 }

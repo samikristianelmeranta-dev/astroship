@@ -138,14 +138,37 @@
     main.innerHTML = head('Asiakkaat', 'Yhteystiedot, kohteet ja koko historia', '<a class="btn p" href="#uusi">+ Uusi tarjouspyyntö</a>') +
       '<div class="cust"><div class="card"><div class="search"><input id="q" type="search" placeholder="Hae nimellä, osoitteella tai puhelimella" aria-label="Hae asiakasta" value="' + esc(S.q) + '">' +
       '<select id="src" aria-label="Lähde"><option value="">Kaikki lähteet</option>' + srcs.map(function (s) { return '<option ' + (s === S.src ? 'selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select></div>' +
+      (isOwner() && list.length ? '<div class="selbar"><label><input type="checkbox" id="selall"> Valitse kaikki</label><button type="button" class="btn sm danger" id="seldel" hidden>Poista valitut</button></div>' : '') +
       '<div class="clist">' + (list.length ? list.map(function (c) {
-        return '<a href="#asiakas-' + c.id + '" class="' + (c.id === id ? 'on' : '') + '"><span><b>' + esc(c.name) + '</b><span class="small muted">' + esc(c.address) + '</span></span><span class="pill ' + (c.stage === 6 ? 'good' : c.stage === 2 ? 'gold' : '') + '">' + esc(S.stages[c.stage]) + '</span></a>';
+        var row = '<a href="#asiakas-' + c.id + '" class="' + (c.id === id ? 'on' : '') + '"><span><b>' + esc(c.name) + '</b><span class="small muted">' + esc(c.address || c.email) + '</span></span><span class="pill ' + (c.stage === 6 ? 'good' : c.stage === 2 ? 'gold' : '') + '">' + esc(S.stages[c.stage]) + '</span></a>';
+        return isOwner() ? '<div class="selrow"><input type="checkbox" data-sel="' + c.id + '" aria-label="Valitse ' + esc(c.name) + '">' + row + '</div>' : row;
       }).join('') : '<div class="empty">Ei asiakkaita. Uudet tarjouspyynnöt tulevat tänne automaattisesti.</div>') + '</div></div>' +
       '<div class="card" id="ccard">' + (id ? '<p class="muted">Ladataan…</p>' : '<div class="empty">Valitse asiakas listasta.</div>') + '</div></div>';
     var q = document.getElementById('q'), t;
     q.addEventListener('input', function () { clearTimeout(t); t = setTimeout(function () { S.q = q.value.trim(); loadCustomers().then(function () { viewCustomers(route().id); var n = document.getElementById('q'); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }); }, 300); });
     document.getElementById('src').addEventListener('change', function (e) { S.src = e.target.value; viewCustomers(route().id); });
+    bindSelection(main, '[data-sel]', 'selall', 'seldel', function (ids) {
+      if (!confirm('Poistetaanko ' + ids.length + ' asiakasta pysyvästi kaikkine tietoineen (kohteet, tehtävät, historia, kuvat)? Tätä ei voi perua.')) return;
+      deleteCustomers(ids);
+    });
     if (id) loadCard(id);
+  }
+
+  /* ---------- Valintaruudut ja poisto (roskaposti, testit) ---------- */
+  function bindSelection(root, sel, allId, btnId, onGo, label) {
+    var btn = document.getElementById(btnId), all = document.getElementById(allId);
+    if (!btn) return;
+    var boxes = function () { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+    var upd = function () { var n = boxes().filter(function (b) { return b.checked; }).length; btn.hidden = !n; btn.textContent = (label || 'Poista valitut') + ' (' + n + ')'; };
+    boxes().forEach(function (b) { b.addEventListener('change', upd); });
+    if (all) all.addEventListener('change', function () { boxes().forEach(function (b) { b.checked = all.checked; }); upd(); });
+    btn.addEventListener('click', function () { onGo(boxes().filter(function (b) { return b.checked; }).map(function (b) { return +b.getAttribute(sel.slice(1, -1)); })); });
+  }
+  function deleteCustomers(ids) {
+    api('customers/delete', { method: 'POST', body: { ids: ids } }).then(function (r) {
+      toast('Poistettu: ' + r.poistettu);
+      return Promise.all([loadCustomers(), window.NAPV.reloadBoard()]);
+    }).then(function () { location.hash = 'asiakkaat'; viewCustomers(); }).catch(fail);
   }
 
   function opt(users, sel, empty) {
@@ -180,7 +203,8 @@
         (c.events.length ? '<ul class="hist">' + c.events.map(function (e) { return '<li><div class="d">' + esc(ftime(e.at)) + (e.by ? ' · ' + esc(e.by) : '') + (e.for_customer ? ' · näkyy asiakkaalle' : '') + '</div>' + esc(e.text) + '</li>'; }).join('') + '</ul>' : '<p class="muted small">Ei tapahtumia.</p>') + '</div>' +
         '<details class="more sect"><summary>Käynnit, suosittelut ja muut tiedot</summary>' + (window.NAPV.visits ? window.NAPV.visits.cardBlock(c) : '') +
         '<div class="sect"><h3>Suosittelut</h3><p class="small muted">Suosittelukoodi ' + esc(c.ref_code) + '</p>' + (c.referrals.length ? c.referrals.map(function (r) { return '<div class="small"><a href="#asiakas-' + r.id + '">' + esc(r.name) + '</a> · <span class="pill ' + (r.stage === 6 ? 'good' : '') + '">' + esc(S.stages[r.stage]) + '</span></div>'; }).join('') : '<p class="muted small">Ei vielä suositeltuja asiakkaita.</p>') + '</div></details>' +
-        '<div class="actions"><a class="btn" href="#uusi-' + c.id + '">+ Uusi kohde</a><button class="btn p" id="invite">Lähetä Oma kohde -linkki</button><button class="btn" id="editc">Muokkaa yhteystietoja</button></div><div id="editbox"></div>';
+        '<div class="actions"><a class="btn" href="#uusi-' + c.id + '">+ Uusi kohde</a><button class="btn p" id="invite">Lähetä Oma kohde -linkki</button><button class="btn" id="editc">Muokkaa yhteystietoja</button>' +
+        (isOwner() ? '<button class="btn danger" id="delc">Poista asiakas</button>' : '') + '</div><div id="editbox"></div>';
       bindCard(c);
     }).catch(function (e) { var b = document.getElementById('ccard'); if (b) b.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
   }
@@ -370,6 +394,11 @@
       e.target.disabled = true;
       api('customers/' + c.id + '/invite', { method: 'POST' }).then(function () { toast('Kirjautumislinkki lähetetty: ' + c.email); loadCard(c.id); }).catch(function (err) { e.target.disabled = false; fail(err); });
     });
+    var dc = document.getElementById('delc');
+    if (dc) dc.addEventListener('click', function () {
+      if (!confirm('Poistetaanko ' + c.name + ' pysyvästi kaikkine tietoineen? Käytä tätä roskapostille ja testeille. Tätä ei voi perua.')) return;
+      deleteCustomers([c.id]);
+    });
     document.getElementById('editc').addEventListener('click', function () {
       document.getElementById('editbox').innerHTML = '<form class="card" id="cedit" style="margin-top:12px"><div class="fields">' +
         [['name', 'Nimi'], ['email', 'Sähköposti'], ['phone', 'Puhelin'], ['address', 'Katuosoite'], ['city', 'Paikkakunta'], ['source', 'Lähde']].map(function (f) {
@@ -484,10 +513,12 @@
       '<span class="ibsep">Piilotetut:</span>' + r.hidden.map(function (k) { return chip(k, cats[k]); }).join('') + '</div>' +
       '<div class="cust"><div class="card"><div class="search"><input id="ibq" type="search" placeholder="Hae lähettäjällä tai sisällöllä" aria-label="Hae viestejä" value="' + esc(S.ib.q) + '">' +
       '<label class="ibnew"><input type="checkbox" id="ibonly"' + (S.ib.onlyNew ? ' checked' : '') + '> Vain käsittelemättömät</label></div>' +
+      (r.items.length ? '<div class="selbar"><label><input type="checkbox" id="iball"> Valitse kaikki</label><button type="button" class="btn sm" id="ibspam" hidden>Roskapostiin</button><button type="button" class="btn sm danger" id="ibdel" hidden>Poista</button>' +
+        (S.ib.cat === 'roskaposti' ? '<button type="button" class="btn sm danger" id="ibempty">Tyhjennä roskaposti</button>' : '') + '</div>' : '') +
       '<div class="clist iblist">' + (r.items.length ? r.items.map(function (m) {
-        return '<a href="#saapunut-' + m.id + '" class="' + (m.id === id ? 'on' : '') + (m.status === 'new' ? ' unread' : '') + '"><span><span class="ibrow"><b>' + esc(m.from_name || m.from_email) + '</b><span class="small muted">' + esc(ibTime(m.received_at)) + '</span></span>' +
+        return '<div class="selrow"><input type="checkbox" data-ibsel="' + m.id + '" aria-label="Valitse viesti"><a href="#saapunut-' + m.id + '" class="' + (m.id === id ? 'on' : '') + (m.status === 'new' ? ' unread' : '') + '"><span><span class="ibrow"><b>' + esc(m.from_name || m.from_email) + '</b><span class="small muted">' + esc(ibTime(m.received_at)) + '</span></span>' +
           '<span class="ibsubj">' + (m.files ? '📎 ' : '') + esc(m.subject) + '</span><span class="small muted ibsnip">' + esc(m.snippet) + '</span>' +
-          '<span class="ibrow"><span class="pill ' + ibPill(m.category) + '">' + esc(cats[m.category]) + '</span><span class="small muted">' + esc(m.customer || m.mailbox) + '</span></span></span></a>';
+          '<span class="ibrow"><span class="pill ' + ibPill(m.category) + '">' + esc(cats[m.category]) + '</span><span class="small muted">' + esc(m.customer || m.mailbox) + '</span></span></span></a></div>';
       }).join('') : '<div class="empty">Ei viestejä tässä näkymässä.</div>') + '</div></div>' +
       '<div class="card" id="ibcard">' + (id ? '<p class="muted">Ladataan…</p>' : '<div class="empty">Valitse viesti listasta.</div>') + '</div></div>';
     main.querySelectorAll('[data-cat]').forEach(function (b) { b.addEventListener('click', function () { S.ib.cat = b.getAttribute('data-cat'); loadInbox().then(function () { viewInbox(); }).catch(fail); }); });
@@ -499,6 +530,14 @@
       api('inbox/fetch', { method: 'POST' }).then(function (x) { toast(x.haettu ? 'Uusia viestejä: ' + x.haettu : 'Ei uusia viestejä'); return loadInbox(); })
         .then(function () { viewInbox(route().id); }).catch(function (err) { fail(err); loadInbox().then(function () { viewInbox(route().id); }); });
     });
+    var ibBulk = function (action, ids, msg) {
+      return api('inbox/bulk', { method: 'POST', body: { action: action, ids: ids || [] } }).then(function (x) { toast(msg + ': ' + (x.poistettu != null ? x.poistettu : x.merkitty)); return loadInbox(); })
+        .then(function () { location.hash = 'saapuneet'; viewInbox(); }).catch(fail);
+    };
+    bindSelection(main, '[data-ibsel]', 'iball', 'ibdel', function (ids) { if (confirm('Poistetaanko ' + ids.length + ' viestiä pysyvästi?')) ibBulk('delete', ids, 'Poistettu'); });
+    bindSelection(main, '[data-ibsel]', null, 'ibspam', function (ids) { ibBulk('spam', ids, 'Siirretty roskapostiin'); }, 'Roskapostiin');
+    var em = document.getElementById('ibempty');
+    if (em) em.addEventListener('click', function () { if (confirm('Poistetaanko kaikki roskapostiviestit pysyvästi?')) ibBulk('empty_spam', [], 'Poistettu'); });
     if (id) loadInboxItem(id);
   }
   function ibPill(cat) { return cat === 'reklamaatio' ? 'crit' : cat === 'tarjouspyynto' ? 'gold' : cat === 'asiakas' ? 'good' : ''; }
@@ -516,6 +555,7 @@
         (!m.customer_id ? '<button class="btn p" id="iblead">Luo tarjouspyyntö</button>' : '') +
         '<a class="btn" href="mailto:' + esc(m.from_email) + '?subject=' + encodeURIComponent('Re: ' + m.subject) + '">Vastaa</a>' +
         '<button class="btn" id="ibdone">' + (m.status === 'new' ? '✓ Merkitse käsitellyksi' : 'Palauta käsittelemättömäksi') + '</button>' +
+        (m.category !== 'roskaposti' ? '<button class="btn" id="ibspam1">Roskapostia</button>' : '') + '<button class="btn danger" id="ibdel1">Poista</button>' +
         '<select id="ibcat" aria-label="Vaihda luokka">' + Object.keys(cats).map(function (k) { return '<option value="' + k + '"' + (k === m.category ? ' selected' : '') + '>' + esc(cats[k]) + '</option>'; }).join('') + '</select></div>' +
         (m.attachments.length ? '<div class="ibatt">' + m.attachments.map(function (a, i) { return '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?saapunut=' + m.id + '&liite=' + i) + '">📎 ' + esc(a.name) + ' <span class="muted">' + Math.max(1, Math.round(a.size / 1024)) + ' kt</span></a>'; }).join('') + '</div>' : '') +
         '<div class="ibbody">' + esc(m.body || '(tyhjä viesti)') + '</div>';
@@ -525,6 +565,10 @@
       };
       document.getElementById('ibdone').addEventListener('click', function () { upd({ status: m.status === 'new' ? 'done' : 'new' }, m.status === 'new' ? 'Merkitty käsitellyksi' : 'Palautettu'); });
       document.getElementById('ibcat').addEventListener('change', function (e) { upd({ category: e.target.value }, 'Luokka vaihdettu'); });
+      var one = function (action, msg) { api('inbox/bulk', { method: 'POST', body: { action: action, ids: [m.id] } }).then(function () { toast(msg); return loadInbox(); }).then(function () { location.hash = 'saapuneet'; viewInbox(); }).catch(fail); };
+      var sp = document.getElementById('ibspam1');
+      if (sp) sp.addEventListener('click', function () { one('spam', 'Siirretty roskapostiin – saman lähettäjän viestit menevät jatkossa suoraan roskapostiin'); });
+      document.getElementById('ibdel1').addEventListener('click', function () { if (confirm('Poistetaanko viesti pysyvästi?')) one('delete', 'Viesti poistettu'); });
       var l = document.getElementById('iblink');
       if (l) l.addEventListener('change', function () { if (l.value) upd({ customer_id: +l.value }, 'Viesti liitetty asiakkaaseen'); });
       var nl = document.getElementById('iblead');

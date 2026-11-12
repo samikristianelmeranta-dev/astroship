@@ -212,3 +212,12 @@ main{min-width:0;padding-block:22px 48px;padding-left:max(24px,env(safe-area-ins
 details.more{margin-top:8px}
 details.more>summary{cursor:pointer;color:var(--muted);font-size:13.5px;font-weight:600;padding:4px 0}
 .vchip.tent{border-style:dashed;opacity:.8}
+
+/* Valinta ja poisto */
+.selbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 2px;font-size:13.5px;color:var(--muted)}
+.selbar label{display:flex;align-items:center;gap:6px;margin-right:auto;cursor:pointer}
+.selrow{display:flex;align-items:center;gap:8px}
+.selrow>input{flex:none;width:17px;height:17px;margin:0 0 0 4px;accent-color:var(--accent)}
+.selrow>a{flex:1;min-width:0}
+.btn.danger{color:var(--crit);border-color:var(--crit)}
+.btn.danger:hover{background:var(--crit);color:#fff}
