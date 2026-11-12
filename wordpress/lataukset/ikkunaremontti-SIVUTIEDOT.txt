@@ -1,0 +1,10 @@
+IKKUNAREMONTTI – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Ikkunaremontti → Muokkaa
+  Otsikko (title):   Ikkunaremontti Turussa ja Varsinais-Suomessa
+  Osoite (slug):     /ikkunaremontti/   (ei muutu)
+  Ote (kuvaus):      Ikkunaremontti avaimet käteen Turussa ja Varsinais-Suomessa: ilmainen mittaus, Skaala-ikkunat, asennus 1–3 päivässä. Hinnat, kotitalousvähennys ja rahoitus.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunaremontti.html koodilla.
+
+Vanha versio talteen: sivut/vanhat/ikkunaremontti-ennen.html (tekstit) – WordPressin Versiot-toiminnolla
+voit palata vanhaan milloin tahansa.
