@@ -22,6 +22,7 @@ function kp_builtin_redirects() {
 		'palvelut/lampokamerakuvaukset' => '/palvelut/lampokuvaukset/',
 		'korjauspartnerit-avainlippu'  => '/korjauspartnerit/',
 		'lasikaiteiden-turvallisuusvaatimukset' => '/lasikaiteiden-turvallisuus/',
+		'linjasaneeraus-taloyhtiossa-asiantuntija' => '/linjasaneeraus-taloyhtiossa/',
 	);
 }
 
