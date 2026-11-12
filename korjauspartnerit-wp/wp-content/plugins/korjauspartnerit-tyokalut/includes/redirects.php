@@ -23,6 +23,9 @@ function kp_builtin_redirects() {
 		'korjauspartnerit-avainlippu'  => '/korjauspartnerit/',
 		'lasikaiteiden-turvallisuusvaatimukset' => '/lasikaiteiden-turvallisuus/',
 		'linjasaneeraus-taloyhtiossa-asiantuntija' => '/linjasaneeraus-taloyhtiossa/',
+		'taloyhtion-erergiaremontti'   => '/taloyhtion-energiaremontti/',
+		'taloyhtioiden-energiaremontit-opas' => '/taloyhtion-energiaremontti/',
+		'taloyhtiöiden-energiaremontit-opas' => '/taloyhtion-energiaremontti/',
 	);
 }
 

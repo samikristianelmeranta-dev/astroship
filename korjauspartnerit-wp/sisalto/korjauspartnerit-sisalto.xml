@@ -10338,7 +10338,7 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 <p>Tämä kannattaa huomioida, kun suunnitellaan kuvauksen ajankohtaa: tilaa kuvaus syksyllä ennen talven kylmimpiä pakkasia, jolloin aikataulut ovat vielä joustavia.</p>
 
 <h3>Ennen energiaremonttia</h3>
-<p>Lämpökamerakuvaus on tehokas tapa kartoittaa rakennuksen energiahukka ennen <a href="https://korjauspartnerit.fi/taloyhtion-erergiaremontti/">energiaremonttia</a>. Se osoittaa, missä eristys on puutteellinen, missä ilmavuodot ovat pahimmat ja mihin toimenpiteet kannattaa kohdistaa. Tämä auttaa priorisoimaan korjaustoimenpiteet oikein ja saamaan parhaan hyödyn investoinnille.</p>
+<p>Lämpökamerakuvaus on tehokas tapa kartoittaa rakennuksen energiahukka ennen <a href="https://korjauspartnerit.fi/taloyhtiöiden-energiaremontit-opas/">energiaremonttia</a>. Se osoittaa, missä eristys on puutteellinen, missä ilmavuodot ovat pahimmat ja mihin toimenpiteet kannattaa kohdistaa. Tämä auttaa priorisoimaan korjaustoimenpiteet oikein ja saamaan parhaan hyödyn investoinnille.</p>
 <p>Nyt on erityisen hyvä aika selvittää rakennuksen energiatehokkuus: <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/">taloyhtiöiden korjausavustus 2026–2027</a> voi kattaa merkittävän osan energiaremontin kustannuksista.</p>
 
 <h3>Rakennusvaurion selvittämisessä</h3>
@@ -10418,112 +10418,177 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Lämpökamerakuvaukset taloyhtiöille – milloin ja miksi?","description":"Lämpökamerakuvaus paljastaa eristysvirheet, kosteusvauriot ja ilmavuodot ennen kuin ne näkyvät silmälle. Opas taloyhtiöille.","image":"https://korjauspartnerit.fi/wp-content/uploads/Taloyhtiomainoskuva-e1774354919585.jpg","author":{"@type":"Organization","name":"Korjauspartnerit"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-08-21","dateModified":"2026-08-21","mainEntityOfPage":"https://korjauspartnerit.fi/lampokamerakuvaukset-taloyhtioille/","keywords":["lämpökamerakuvaus taloyhtiö","lämpökuvaus rakennus","eristysvirheet lämpökamera","ilmavuodot rakenne","lämpökuvaus kosteusvaurio","energiatehokkuus taloyhtiö"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mitä lämpökamerakuvaus paljastaa?","acceptedAnswer":{"@type":"Answer","text":"Lämpökamerakuvaus paljastaa rakenteiden lämpötilaerot, jotka voivat kertoa eristysvirheistä, ilmavuodoista, kosteudesta rakenteissa tai lämpösilloista. Kuvaus on erityisen tehokas työkalu energiatehokkuuden arvioinnissa ja piilevien vaurioiden etsinnässä."}},{"@type":"Question","name":"Milloin lämpökamerakuvaus kannattaa teettää?","acceptedAnswer":{"@type":"Answer","text":"Lämpökamerakuvaus kannattaa teettää kylmällä säällä, kun ulkolämpötila on alle -5°C ja sisälämpötila on normaali. Paras aika on myöhäissyksy tai talvi. Kuvaus on hyödyllinen ennen energiaremonttia, rakennusvaurion selvittämisessä ja uudisrakentamisen laadunvarmistuksessa."}},{"@type":"Question","name":"Mitä lämpökamerakuvaus maksaa taloyhtiölle?","acceptedAnswer":{"@type":"Answer","text":"Hinta riippuu rakennuksen koosta ja kuvauksen laajuudesta. Korjauspartnerit antaa kiinteähintaisen tarjouksen etukäteen. Ota yhteyttä Turun tai Helsingin toimistoon."}},{"@type":"Question","name":"Onko lämpökamerakuvaus sama kuin kosteusmittaus?","acceptedAnswer":{"@type":"Answer","text":"Ei. Lämpökamerakuvaus osoittaa epäilyttävät kohdat, joissa kosteus voi olla ongelma, mutta varsinainen kosteusmittaus tarvitaan vahvistamaan löydös. Lämpökamerakuvaus on tehokas ensimmäinen askel kosteusongelmien paikantamisessa."}},{"@type":"Question","name":"Liittyykö lämpökamerakuvaus energiaremonttiin?","acceptedAnswer":{"@type":"Answer","text":"Kyllä. Lämpökamerakuvaus on tehokas tapa kartoittaa rakennuksen energiahukka ennen energiaremonttia. Se osoittaa tarkasti, mistä lämpöä karkaa eniten, ja auttaa kohdistamaan korjaustoimenpiteet oikein. Taloyhtiöiden uusi korjausavustus 2026–2027 voi kattaa myös energiaremonttien suunnittelua."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Lämpökamerakuvaukset taloyhtiöille","item":"https://korjauspartnerit.fi/lampokamerakuvaukset-taloyhtioille/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
-		<title><![CDATA[Taloyhtiön erergiaremontti]]></title>
-		<link>https://korjauspartnerit.fi/taloyhtion-erergiaremontti/</link>
+		<title><![CDATA[Taloyhtiön energiaremontti]]></title>
+		<link>https://korjauspartnerit.fi/taloyhtion-energiaremontti/</link>
 		<dc:creator><![CDATA[sami]]></dc:creator>
 		<guid isPermaLink="false">https://korjauspartnerit.fi/?page_id=23538</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h2>Miksi energiaremontti on nyt ajankohtainen?</h2>
-<p>Suomen rakennuskanta kuluttaa energiaa huomattavasti enemmän kuin nykyrakentaminen edellyttää. Erityisesti 1960–1980-luvuilla rakennetut kerrostalot ovat energiatehokkuudeltaan selvästi alle nykystandardin: vanhat ikkunat, puutteellinen eristys ja vanhentunut talotekniikka voivat aiheuttaa sen, että lämmityskustannukset ovat moninkertaiset uuteen rakennukseen verrattuna.</p>
-<p>Samaan aikaan energian hinta on noussut merkittävästi, ja taloyhtiöillä on kasvava paine pienentää energiankulutustaan sekä kustannussyistä että ilmastotavoitteiden vuoksi. Energiaremontti on konkreettinen ja mitattava keino vastata molempiin haasteisiin.</p>
+		<content:encoded><![CDATA[<div class="kp-article__highlight">
+<p><strong>Lyhyesti:</strong> Energiaremontti kannattaa aloittaa kuntoarviosta ja energiaselvityksestä, joiden perusteella valitaan toimenpiteet, joilla saavutetaan suurin parannus. Kannattavimpia ovat usein lämmityksen säätö ja automaatio, lämpöpumppuratkaisut sekä julkisivuremonttiin tai linjasaneeraukseen yhdistetyt energiatoimenpiteet. Korjausavustus 2026–2027 edellyttää merkittävää energiatehokkuuden parannusta, joten se kannattaa huomioida jo hankesuunnittelussa.</p>
+</div>
 
-<h2>Korjausavustus 2026–2027 – historiallinen mahdollisuus</h2>
-<h3>110 miljoonaa euroa energiaremontteihin</h3>
-<p>Suomen hallitus on valmistelemassa uutta määräaikaista korjausrakentamisen avustusta, johon on varattu <strong>110 miljoonaa euroa vuosille 2026–2027</strong>. Kyseessä on yksi merkittävimmistä taloyhtiöiden korjaushankkeita tukevista ohjelmista viime vuosina.</p>
-<p>Lue kaikki yksityiskohdat artikkelista: <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/">Taloyhtiöiden uusi korjausavustus 2026–2027 – tuki energiaremontteihin</a>.</p>
+<h2>Miksi energiaremontti on nyt ajankohtainen?</h2>
+<p>Suomen rakennuskanta kuluttaa energiaa huomattavasti enemmän kuin nykyrakentaminen edellyttää. Erityisesti 1960–1980-luvuilla rakennetut kerrostalot jäävät energiatehokkuudeltaan selvästi nykytasosta: vanhat ikkunat, ohut eristys ja vanhentunut talotekniikka voivat tehdä lämmityskustannuksista moninkertaiset uuteen rakennukseen verrattuna.</p>
+<p>Samaan aikaan energian hinnan vaihtelu on lisännyt epävarmuutta, ja taloyhtiöillä on kasvava paine pienentää energiankulutusta sekä kustannus- että ilmastosyistä. Energiaremontti on konkreettinen ja mitattava keino vastata molempiin. Hyvin toteutettu hanke pienentää yhtiövastikkeen energiaosuutta vuosikymmeniksi.</p>
+
+<h2>Korjausavustus 2026–2027 – tuki energiaremontteihin</h2>
+<h3>110 miljoonaa euroa taloyhtiöiden energiaremontteihin</h3>
+<p>Valtio on valmistellut uutta määräaikaista korjausrakentamisen avustusta, johon on varattu <strong>110 miljoonaa euroa vuosille 2026–2027</strong>. Kyseessä on yksi merkittävimmistä taloyhtiöiden korjaushankkeita tukevista ohjelmista viime vuosina.</p>
+<ul>
+<li><strong>Vaatimus:</strong> lausuntokierroksen luonnoksessa energiatehokkuuden parannuksen tuli olla kerrostaloissa vähintään 23 % ja rivi- ja pientaloissa 28 %.</li>
+<li><strong>Hakijat:</strong> asunto-osakeyhtiöt, keskinäiset kiinteistöosakeyhtiöt sekä valtion tukemia vuokra- ja asumisoikeusasuntoja omistavat yhteisöt. Ei omakotitaloille eikä yksityishenkilöille.</li>
+<li><strong>Ajoitus:</strong> valmistelutietojen mukaan avustusta voitaisiin myöntää hankkeille, joiden kilpailutus tai urakkasopimus on tehty kesän 2026 jälkeen.</li>
+<li><strong>Osoittaminen:</strong> parannus osoitetaan energiatehokkuuslaskelmilla, joten ne on tehtävä ennen hakemusta.</li>
+</ul>
+<p>Lopullinen hakuaikataulu, avustussummat ja ehdot vahvistetaan viranomaispäätöksillä, joten ne kannattaa tarkistaa ennen kilpailutusta. Lue tarkemmin: <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/">Taloyhtiöiden uusi korjausavustus 2026–2027 – tuki energiaremontteihin</a>.</p>
 
 <h3>Mitä avustuksella tuetaan?</h3>
 <ul>
-<li>Julkisivuremontit energiatehokkuutta parantavilla ratkaisuilla</li>
-<li>Ikkunoiden ja ulko-ovien uusiminen</li>
-<li>Ilmanvaihdon energiatehokkuuden parantaminen</li>
-<li>Lämmitysjärjestelmien uudistaminen</li>
-<li>Maalämpö- ja muut energiajärjestelmähankkeet</li>
-<li>Rakennusautomaation kehittäminen</li>
-<li>Muut korjaukset joilla saavutetaan merkittävä energiansäästö</li>
-<li>Edellisten hankkeiden suunnittelu</li>
+<li>julkisivuremontit energiatehokkuutta parantavilla ratkaisuilla</li>
+<li>ikkunoiden ja ulko-ovien uusiminen</li>
+<li>ilmanvaihdon energiatehokkuuden parantaminen</li>
+<li>lämmitysjärjestelmien uudistaminen</li>
+<li>maalämpö- ja muut energiajärjestelmähankkeet</li>
+<li>rakennusautomaation kehittäminen</li>
+<li>muut korjaukset, joilla saavutetaan merkittävä energiansäästö</li>
+<li>edellä mainittujen hankkeiden suunnittelu</li>
 </ul>
 
 <blockquote class="kp-article__quote">
 "Taloyhtiöiden on tärkeää huomioida myönnettävä energia-avustus hankkeissaan, sillä kyseessä on yksi merkittävimmistä taloyhtiöiden korjaushankkeita tukevista tukiohjelmista viime vuosina."
-<cite>— Ville Ranta-Korpi, suunnittelupäällikkö, Korjauspartnerit Helsinki</cite>
+<cite>— Ville Ranta-Korpi, toimialapäällikkö, Korjauspartnerit Helsinki</cite>
 </blockquote>
 
 <h2>Mitä taloyhtiön energiaremontti käytännössä tarkoittaa?</h2>
-<h3>Julkisivun lisäeristys</h3>
-<p>Julkisivun lisäeristys on usein tehokkain yksittäinen energiatehokkuustoimenpide. Kun eristystä parannetaan julkisivuremontin yhteydessä, hanke hyödyttää sekä rakenteita että energiatehokkuutta samanaikaisesti. Yhdistetylle hankkeelle on myös paremmat avustusedellytykset.</p>
-<p>Tutustu palveluumme: <a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">Julkisivujen ja parvekkeiden kuntotutkimukset</a>.</p>
 
-<h3>Ikkunoiden ja ovien uusiminen</h3>
-<p>Vanhat ikkunat ovat usein suurin yksittäinen lämpöhukan lähde. 1970-luvun kaksilasiset ikkunat voivat vastata jopa 25–30 % kodin lämpöhukasta. Uudet kolmi- tai nelilasiset ikkunat voivat pienentää tätä merkittävästi. Ikkunoiden uusiminen julkisivuremontin yhteydessä on kustannustehokkain vaihtoehto — telineet ovat joka tapauksessa paikalla.</p>
-
-<h3>Ilmanvaihdon parantaminen</h3>
-<p>Vanhassa rakennuksessa on usein poistoilmanvaihtojärjestelmä ilman lämmön talteenottoa. Siirtyminen lämmön talteenotolla varustettuun koneelliseen tulo- ja poistoilmanvaihtoon voi pienentää ilmanvaihdon energiankulutusta jopa 50–70 %.</p>
+<h3>Lämmityksen säätö ja rakennusautomaatio</h3>
+<p>Edullisin aloitus on usein lämmitysverkoston perussäätö, termostaattien uusiminen, sääkompensoinnin ja kiinteistöautomaation kehittäminen sekä kulutuksen etäseuranta. Toimenpiteet ovat pieniä, mutta ne tasaavat asuntojen lämpötiloja ja vähentävät hukkaa nopeasti. Ne ovat myös edellytys sille, että isommista investoinneista saadaan täysi hyöty.</p>
 
 <h3>Lämmitysjärjestelmän uudistaminen</h3>
-<p>Maalämpö, kaukolämpöön liittyminen tai hybridijärjestelmä voi olla taloyhtiölle oikea ratkaisu. Lämmitysjärjestelmän valinta edellyttää tarkkaa laskelmaa kiinteistön ominaisuuksista ja paikallisista energiahinnoista.</p>
+<p>Kerrostaloissa, joissa on koneellinen poistoilmanvaihto, <strong>poistoilmalämpöpumppu</strong> ottaa talteen poistoilman lämmön ja käyttää sen lämmitykseen ja lämpimään käyttöveteen. <strong>Maalämpö</strong> voi korvata kaukolämmön kokonaan tai osittain, ja <strong>hybridiratkaisussa</strong> kaukolämpö jää huipputehon lähteeksi. <strong>Aurinkopaneelit</strong> tuottavat kiinteistösähköä, jota lämpöpumput käyttävät. Valinta edellyttää tarkkaa laskelmaa kiinteistön ominaisuuksista, energiahinnoista ja lupa-asioista, kuten porakaivojen sijoittelusta.</p>
 
-<h2>Energiaremontin suunnittelu — mistä aloittaa?</h2>
-<h3>Vaihe 1: Kuntoarvio ja energiaselvitys</h3>
-<p>Ennen mitään päätöksiä tarvitaan tieto siitä, missä kunnossa kiinteistö on ja missä energiaa kuluu eniten. <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kuntoarvio ja PTS-suunnitelma</a> ovat taloyhtiön lähtöpiste. Energiaselvitys täydentää tätä kuvaa osoittamalla, millaisilla toimenpiteillä saavutetaan merkittävin parannus.</p>
+<h3>Ilmanvaihdon parantaminen</h3>
+<p>Vanhassa rakennuksessa on usein pelkkä poistoilmanvaihto ilman lämmön talteenottoa. Siirtyminen lämmön talteenotolla varustettuun tulo- ja poistoilmanvaihtoon voi pienentää ilmanvaihdon lämmitysenergian tarvetta jopa 50–70 % ja parantaa samalla sisäilmaa. Ratkaisu vaatii tilaa kanaville, joten se on luontevinta toteuttaa linjasaneerauksen tai laajan peruskorjauksen yhteydessä.</p>
 
-<h3>Vaihe 2: Hankesuunnittelu</h3>
-<p>Hankesuunnitteluvaiheessa päätetään, mitä tehdään, missä järjestyksessä ja milloin. Tässä vaiheessa selvitetään myös avustusmahdollisuudet ja varmistetaan, että hanke täyttää avustuksen energiatehokkuusvaatimukset.</p>
+<h3>Julkisivun ja yläpohjan lisäeristys</h3>
+<p>Julkisivun lisäeristys on usein tehokkain yksittäinen rakenteellinen energiatoimenpide, ja yläpohjan lisäeristys on tyypillisesti edullinen tapa vähentää lämpöhäviötä. Kun eristystä parannetaan muutenkin tarpeellisen julkisivuremontin yhteydessä, hanke hyödyttää sekä rakenteita että energiatehokkuutta. Lähtötiedot saadaan <a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">julkisivujen ja parvekkeiden kuntotutkimuksesta</a>.</p>
 
-<h3>Vaihe 3: Kilpailutus ja toteutus</h3>
-<p>Kokenut <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">rakennuttaja ja projektinjohto</a> huolehtii kilpailutuksesta, sopimusneuvotteluista ja hankkeen toteutuksesta. <a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">Rakennustöiden valvonta</a> varmistaa, että työ tehdään laadukkaasti ja aikataulussa.</p>
+<h3>Ikkunoiden ja ovien uusiminen</h3>
+<p>Vanhat ikkunat ovat usein suurimpia lämpöhukan lähteitä: 1970-luvun kaksilasiset ikkunat voivat vastata jopa neljänneksestä rakennuksen lämpöhäviöistä. Uudet energiatehokkaat ikkunat pienentävät hukkaa ja vetoisuutta merkittävästi. Ikkunat kannattaa uusia julkisivuremontin yhteydessä, kun telineet ovat joka tapauksessa paikalla. Ikkunoiden kunnon selvittää <a href="https://korjauspartnerit.fi/palvelut/ikkunoiden-kuntotutkimus/">ikkunoiden kuntotutkimus</a>, ja lämpövuodot paikantaa <a href="https://korjauspartnerit.fi/palvelut/lampokuvaukset/">lämpökuvaus</a>.</p>
 
-<h2>Miksi toimia nyt — ennen avustushaun avautumista?</h2>
-<p>Korjausavustukset ovat määräaikaisia ja määrärahasidonnaisia. Aikaisemmissa tukiohjelmissa hakemuksia on jätetty runsaasti heti haun avauduttua. Taloyhtiö, joka on valmistellut hankkeensa etukäteen, pystyy:</p>
+<div class="kp-article__tablewrap">
+<table class="kp-article__table">
+<caption>Energiatoimenpiteet pähkinänkuoressa</caption>
+<thead>
+<tr><th scope="col">Toimenpide</th><th scope="col">Investointi</th><th scope="col">Vaikutus</th><th scope="col">Kannattaa yhdistää</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Lämmityksen säätö ja automaatio</th><td>Pieni</td><td>Tasainen lämpö, nopea säästö</td><td>Tehdään aina ensin</td></tr>
+<tr><th scope="row">Poistoilmalämpöpumppu</th><td>Keskisuuri</td><td>Pienentää ostoenergiaa merkittävästi</td><td>Ilmanvaihdon kunnostukseen</td></tr>
+<tr><th scope="row">Maalämpö tai hybridi</th><td>Suuri</td><td>Suurin vaikutus ostoenergiaan</td><td>Linjasaneeraukseen, aurinkosähköön</td></tr>
+<tr><th scope="row">LTO-ilmanvaihto</th><td>Suuri</td><td>Ilmanvaihdon lämpöhukka pienenee, sisäilma paranee</td><td>Linjasaneeraukseen, peruskorjaukseen</td></tr>
+<tr><th scope="row">Lisäeristys</th><td>Suuri</td><td>Lämpöhäviö pienenee, asumismukavuus paranee</td><td>Julkisivu- ja kattoremonttiin</td></tr>
+<tr><th scope="row">Ikkunat ja ovet</th><td>Keskisuuri–suuri</td><td>Vähemmän hukkaa ja vetoa</td><td>Julkisivuremonttiin</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Energiaremontin suunnittelu – mistä aloittaa?</h2>
+
+<div class="kp-article__steps">
+<div class="kp-article__step">
+<span class="kp-article__step-num">1</span>
+<div>
+<strong>Kuntoarvio ja PTS</strong>
+<p>Ennen päätöksiä tarvitaan tieto kiinteistön kunnosta ja tulevista korjauksista. <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kuntoarvio ja PTS</a> näyttävät, mitkä remontit ovat joka tapauksessa edessä ja mihin energiatoimenpiteet kannattaa yhdistää.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">2</span>
+<div>
+<strong>Energiaselvitys ja laskelmat</strong>
+<p>Energiaselvitys osoittaa, missä energiaa kuluu ja millä toimenpideyhdistelmällä saavutetaan suurin parannus. Laskelmilla varmistetaan myös, täyttääkö hanke avustuksen energiatehokkuusvaatimuksen.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">3</span>
+<div>
+<strong>Hankesuunnittelu ja avustusselvitys</strong>
+<p>Päätetään, mitä tehdään, missä järjestyksessä ja milloin. Vaihtoehtojen kustannukset, säästöt ja takaisinmaksuajat vertaillaan, ja avustuksen ehdot ja aikataulu sovitetaan hankkeeseen.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">4</span>
+<div>
+<strong>Yhtiökokouksen päätös ja avustushakemus</strong>
+<p>Yhtiökokous päättää hankkeesta hankesuunnitelman perusteella. Avustushakemus valmistellaan ehtojen mukaisessa vaiheessa, ja toteutussuunnitelmat laaditaan.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">5</span>
+<div>
+<strong>Kilpailutus, toteutus ja valvonta</strong>
+<p>Kokenut <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">rakennuttaja ja projektinjohto</a> huolehtii kilpailutuksesta, sopimuksista ja toteutuksesta. <a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">Rakennustöiden valvonta</a> varmistaa laadun ja aikataulun.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">6</span>
+<div>
+<strong>Käyttöönotto ja seuranta</strong>
+<p>Järjestelmät säädetään ja kulutusta seurataan, jotta luvatut säästöt toteutuvat. Seurantatiedot tarvitaan usein myös avustuksen loppuselvitykseen.</p>
+</div>
+</div>
+</div>
+
+<h2>Esimerkki: linjasaneeraus ja energiaremontti samassa hankkeessa</h2>
+<p>As Oy Turun Vantissa toteutettiin linjasaneerauksen yhteydessä kunnianhimoinen energiaremontti: vanhaan kerrostaloon asennettiin maalämpö ja aurinkopaneelit. Kohde voitti <a href="https://korjauspartnerit.fi/vuoden-putkiremontti-2024/">Vuoden Putkiremontti 2024</a> -kilpailun ja oli kilpailun ensimmäinen Uudenmaan ulkopuolinen voittaja. Esimerkki osoittaa, että kun rakenteet ovat joka tapauksessa auki, energiaratkaisut voidaan toteuttaa kustannustehokkaasti. Lue lisää <a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">linjasaneerauksesta taloyhtiössä</a>.</p>
+<p>Pienetkin teot ratkaisevat: Varsinais-Suomen Energiafiksuin taloyhtiö 2023 -tittelin voittanut As Oy Kivenhakkaajankatu 1 on osoittanut, että suunnitelmallisella työllä energiaa säästetään asumismukavuudesta tinkimättä. <a href="https://korjauspartnerit.fi/energiafiksuin-taloyhtio-saastaa-energiasta-mutta-ei-asumismukavuudesta/">Lue tarina</a>.</p>
+
+<h2>Miksi toimia nyt?</h2>
+<p>Korjausavustukset ovat määräaikaisia ja määrärahasidonnaisia. Aiemmissa tukiohjelmissa hakemuksia on jätetty runsaasti heti haun avauduttua. Taloyhtiö, joka on valmistellut hankkeensa etukäteen, pystyy:</p>
 <ul>
-<li>Arvioimaan avustuskelpoisuuden ajoissa</li>
-<li>Kilpailuttamaan hankkeen oikeassa aikataulussa</li>
-<li>Hyödyntämään mahdollisen avustuksen täysimääräisesti</li>
-<li>Tekemään päätökset yhtiökokouksessa ilman kiirettä</li>
-<li>Käynnistämään remontin hallitusti</li>
+<li>arvioimaan avustuskelpoisuuden ajoissa</li>
+<li>kilpailuttamaan hankkeen oikeassa aikataulussa</li>
+<li>hyödyntämään mahdollisen avustuksen täysimääräisesti</li>
+<li>tekemään päätökset yhtiökokouksessa ilman kiirettä</li>
+<li>käynnistämään remontin hallitusti</li>
 </ul>
 
-<div class="kp-article__highlight">
-<p><strong>Tärkeää: avustusta voidaan nykyisten valmistelutietojen mukaan myöntää hankkeille, joiden kilpailutus tai urakkasopimus on tehty kesän 2026 jälkeen.</strong></p>
-<p>Koska hankkeiden valmistelu vie aikaa, nyt on oikea hetki aloittaa. Lue lisää: <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/" style="color:#fff;">Taloyhtiöiden uusi korjausavustus 2026–2027 →</a></p>
+<div class="kp-article__urgency-box">
+<p class="kp-article__urgency-label">Huomioi ajoitus</p>
+<p>Kesäkuun 2026 valmistelutietojen mukaan avustusta voitaisiin myöntää hankkeille, joiden kilpailutus tai urakkasopimus on tehty kesän 2026 jälkeen. Varmista ajantasaiset ehdot ennen kilpailutusta, ettei hanke menetä avustuskelpoisuuttaan ajoituksen vuoksi.</p>
 </div>
 
 <h2>Korjauspartnerit auttaa koko prosessissa</h2>
-<p>Korjauspartnerit palvelee taloyhtiöitä energiaremontin kaikissa vaiheissa — kuntoarviosta ja energiaselvityksestä hankesuunnitteluun, kilpailutukseen, rakennuttamiseen ja valvontaan. Palvelumme kattavat myös avustusmahdollisuuksien selvittämisen.</p>
-<p>Palvelemme taloyhtiöitä <strong>Turussa ja Varsinais-Suomessa</strong> sekä <strong>Helsingissä ja Uudellamaalla</strong>.</p>
+<p>Korjauspartnerit palvelee taloyhtiöitä energiaremontin kaikissa vaiheissa: kuntoarviosta ja energiaselvityksestä avustusmahdollisuuksien selvittämiseen, hankesuunnitteluun, kilpailutukseen, rakennuttamiseen ja valvontaan. Koska emme urakoi itse, suosittelemme ratkaisuja, jotka hyödyttävät taloyhtiötä, emme laitetoimittajaa. Lisää energiaratkaisuista: <a href="https://korjauspartnerit.fi/taloyhtioiden-energiaratkaisut/">taloyhtiöiden energiaratkaisut</a>.</p>
+<p>Palvelemme taloyhtiöitä <strong>Helsingissä ja Uudellamaalla</strong> sekä <strong>Turussa ja Varsinais-Suomessa</strong>.</p>
 
 <div class="kp-article__refgrid">
-<div class="kp-article__ref"><p><strong>Lue lisää:</strong> <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/">Taloyhtiöiden korjausavustus 2026–2027 →</a></p></div>
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kuntoarvio ja PTS →</a></p></div>
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">Rakennuttaminen ja projektinjohto →</a></p></div>
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">Julkisivujen kuntotutkimus →</a></p></div>
+<div class="kp-article__ref"><p><strong>Ajankohtaista</strong><a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/">Taloyhtiöiden korjausavustus 2026–2027 →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kuntoarvio ja PTS →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">Rakennuttaminen ja projektinjohto →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">Julkisivujen kuntotutkimus →</a></p></div>
 </div>
 
 <div class="kp-article__cta">
 <p>Onko taloyhtiöllänne energiaremontti suunnitteilla? Selvitetään yhdessä avustusmahdollisuudet.</p>
+<a href="https://korjauspartnerit.fi/yhteystiedot/#viesti" class="kp-article__cta-link">Pyydä arvio hankkeesta</a>
+<span> · </span>
 <a href="https://korjauspartnerit.fi/taloyhtioiden-uusi-korjausavustus-2026-2027-tuki-energiaremontteihin/" class="kp-article__cta-link">Lue korjausavustuksesta</a>
-<span> tai </span>
-<a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">ota yhteyttä asiantuntijaan</a>.
+<span> · </span>
+<a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">Ota yhteyttä asiantuntijaan</a>
 </div>
 
-<section class="kp-article__faq" aria-label="Usein kysytyt kysymykset energiaremonteista">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="kp-article__faq-item">
-<h3>Mitä taloyhtiön energiaremontti tarkoittaa?</h3>
-<p>Toimenpiteitä, joilla parannetaan rakennuksen energiatehokkuutta merkittävästi — julkisivun lisäeristys, ikkunoiden uusiminen, ilmanvaihdon parantaminen tai lämmitysjärjestelmän uudistaminen.</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Mikä on taloyhtiöiden korjausavustus 2026–2027?</h3>
-<p>Suomen hallituksen valmistelema määräaikainen tuki energiaremontteihin — 110 miljoonaa euroa. Vaatimuksena on merkittävä energiatehokkuuden parannus (kerrostaloissa 23 %, rivi/pientalossa 28 %).</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Miten taloyhtiö valmistautuu energiaremonttiin?</h3>
-<p>Aloitetaan kuntoarviolla ja PTS:llä, tehdään energiaselvitys ja hankesuunnitelma, kilpailutetaan ja toteutetaan kokeneen projektinjohdon avulla.</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Kannattaako energiaremontti yhdistää muihin hankkeisiin?</h3>
-<p>Kyllä, usein ehdottomasti. Julkisivuremonttiin yhdistetty lisäeristys ja ikkunoiden uusiminen ovat kustannustehokkaampia ja voivat oikeuttaa suurempaan avustukseen.</p>
-</div>
+<section class="kp-article__faq" aria-label="Usein kysytyt kysymykset taloyhtiön energiaremontista">
+<h2>Usein kysytyt kysymykset taloyhtiön energiaremontista</h2>
+<div class="kp-article__faq-item"><h3>Mitä taloyhtiön energiaremontti tarkoittaa?</h3><p>Toimenpiteitä, joilla rakennuksen energiatehokkuutta parannetaan merkittävästi, esimerkiksi julkisivun ja yläpohjan lisäeristys, ikkunoiden ja ovien uusiminen, lämmön talteenotto ilmanvaihtoon, lämmitysjärjestelmän uudistaminen, kuten maalämpö tai poistoilmalämpöpumppu, sekä rakennusautomaation ja lämmityksen säädön kehittäminen.</p></div>
+<div class="kp-article__faq-item"><h3>Mikä on taloyhtiöiden korjausavustus 2026–2027?</h3><p>Valtion määräaikainen korjausrakentamisen avustus, johon on valmistelutietojen mukaan varattu 110 miljoonaa euroa vuosille 2026–2027. Se kohdistuu hankkeisiin, jotka parantavat energiatehokkuutta merkittävästi: lausuntokierroksen luonnoksessa vaatimus oli kerrostaloissa 23 % ja rivi- ja pientaloissa 28 %. Lopulliset ehdot ja hakuaika vahvistetaan viranomaispäätöksillä.</p></div>
+<div class="kp-article__faq-item"><h3>Kuka voi hakea energiaremontin korjausavustusta?</h3><p>Valmistelutietojen mukaan asunto-osakeyhtiöt, keskinäiset kiinteistöosakeyhtiöt sekä valtion tukemia vuokra- ja asumisoikeusasuntoja omistavat yhteisöt. Avustus ei ole tarkoitettu omakotitaloille tai yksityishenkilöille.</p></div>
+<div class="kp-article__faq-item"><h3>Mistä taloyhtiön energiaremontti kannattaa aloittaa?</h3><p>Kuntoarviosta ja PTS:stä, jotka kertovat kiinteistön nykytilan ja tulevat korjaustarpeet. Sen jälkeen energiaselvitys ja energiatehokkuuslaskelmat osoittavat, millä toimenpiteillä saavutetaan suurin parannus ja täyttyvätkö avustuksen vaatimukset. Vasta sitten tehdään hankesuunnitelma, päätökset ja kilpailutus.</p></div>
+<div class="kp-article__faq-item"><h3>Mitkä energiatoimenpiteet ovat kannattavimpia?</h3><p>Se riippuu rakennuksesta. Lämmityksen perussäätö ja automaatio ovat edullisia ja nopeasti takaisin maksavia. Poistoilmalämpöpumppu tai maalämpö voi pienentää ostoenergian tarvetta merkittävästi. Julkisivun lisäeristys ja ikkunoiden uusiminen ovat kannattavimpia, kun ne tehdään muutenkin tarpeellisen julkisivuremontin yhteydessä.</p></div>
+<div class="kp-article__faq-item"><h3>Kannattaako energiaremontti yhdistää muihin hankkeisiin?</h3><p>Usein kannattaa. Julkisivuremonttiin yhdistetty lisäeristys ja ikkunoiden uusiminen sekä linjasaneeraukseen yhdistetty lämmitysjärjestelmän uudistus ovat kustannustehokkaampia kuin erilliset hankkeet. Yhdistetty hanke voi myös helpommin saavuttaa avustuksen edellyttämän energiatehokkuuden parannuksen.</p></div>
+<div class="kp-article__faq-item"><h3>Milloin energiaremontti pitää kilpailuttaa, jotta avustusta voi saada?</h3><p>Kesäkuun 2026 valmistelutietojen mukaan avustusta voitaisiin myöntää hankkeille, joiden kilpailutus tai urakkasopimus on tehty kesän 2026 jälkeen. Ajoitus kannattaa varmistaa ennen kilpailutusta, koska lopulliset ehdot vahvistetaan viranomaispäätöksillä.</p></div>
+<div class="kp-article__faq-item"><h3>Toimiiko Korjauspartnerit energiaremontin kaikissa vaiheissa?</h3><p>Kyllä. Korjauspartnerit auttaa kuntoarviosta ja energiaselvityksestä avustusmahdollisuuksien selvittämiseen, hankesuunnitteluun, kilpailutukseen, rakennuttamiseen ja valvontaan Helsingissä, Uudellamaalla, Turussa ja Varsinais-Suomessa. Emme urakoi itse, joten suosituksemme ovat puolueettomia.</p></div>
 </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>23538</wp:post_id>
@@ -10531,18 +10596,18 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<wp:post_date_gmt><![CDATA[2026-09-06 12:36:07]]></wp:post_date_gmt>
 		<wp:comment_status>closed</wp:comment_status>
 		<wp:ping_status>closed</wp:ping_status>
-		<wp:post_name><![CDATA[taloyhtion-erergiaremontti]]></wp:post_name>
+		<wp:post_name><![CDATA[taloyhtion-energiaremontti]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti, mitä tarkoittaa ja mitä energiaremontista on hyvä tietää? Lue lisää ja ota yhteyttä.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti on investointi, joka pienentää lämmityslaskua, parantaa asumismukavuutta ja nostaa asuntojen arvoa. Nyt ajoitus on poikkeuksellisen hyvä: Suomen hallitus on valmistelemassa merkittävää korjausavustusta 2026–2027 , joka voi kattaa merkittävän osan hankkeen kustannuksista.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_hero_otsikko]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiöiden energiaremontit – opas suunnittelusta avustuksiin]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiöiden energiaremontit – opas suunnittelusta avustuksiin | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Taloyhtiöiden energiaremontit – opas suunnittelusta avustuksiin","description":"Kattava opas taloyhtiön energiaremontin suunnitteluun: mitä kannattaa tehdä, miten haetaan korjausavustus 2026–2027 ja miten Korjauspartnerit auttaa.","image":"https://korjauspartnerit.fi/wp-content/uploads/DSC_2009.jpg","author":{"@type":"Organization","name":"Korjauspartnerit"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-08-21","dateModified":"2026-08-21","mainEntityOfPage":"https://korjauspartnerit.fi/taloyhtiöiden-energiaremontit-opas/","keywords":["taloyhtiön energiaremontti","energiatehokkuus taloyhtiö","korjausavustus 2026","energiaremontti avustus","julkisivuremontti energiatehokkuus","linjasaneeraus energiaremontti"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mitä taloyhtiön energiaremontti tarkoittaa?","acceptedAnswer":{"@type":"Answer","text":"Taloyhtiön energiaremontti tarkoittaa toimenpiteitä, joilla parannetaan rakennuksen energiatehokkuutta merkittävästi. Tähän kuuluvat esimerkiksi julkisivun lisäeristys, ikkunoiden ja ovien uusiminen, ilmanvaihdon parantaminen, lämmitysjärjestelmän uudistaminen sekä rakennusautomaation kehittäminen."}},{"@type":"Question","name":"Mikä on taloyhtiöiden korjausavustus 2026–2027?","acceptedAnswer":{"@type":"Answer","text":"Suomen hallitus on valmistelemassa määräaikaista korjausrakentamisen avustusta, johon on varattu 110 miljoonaa euroa vuosille 2026–2027. Avustus kohdistuu hankkeisiin, jotka parantavat rakennuksen energiatehokkuutta merkittävästi — kerrostaloissa vähintään 23 % ja rivi- sekä pientaloissa 28 %."}},{"@type":"Question","name":"Miten taloyhtiö voi valmistautua energiaremonttiin?","acceptedAnswer":{"@type":"Answer","text":"Paras tapa on aloittaa kuntoarviolla ja PTS-suunnitelmalla, jotka kertovat kiinteistön nykytilan ja tulevat korjaustarpeet. Tämän jälkeen energiatehokkuusselvitys osoittaa, millaisilla toimenpiteillä saavutetaan merkittävin parannus. Korjauspartnerit auttaa koko prosessissa."}},{"@type":"Question","name":"Kannattaako energiaremontti yhdistää muihin hankkeisiin?","acceptedAnswer":{"@type":"Answer","text":"Kyllä, usein ehdottomasti. Julkisivuremonttiin yhdistetty lisäeristys, ikkunoiden uusiminen ja muut energiatoimenpiteet ovat kustannustehokkaampia kuin erilliset hankkeet. Lisäksi yhdistetty hanke voi oikeuttaa suurempaan avustukseen."}},{"@type":"Question","name":"Toimiiko Korjauspartnerit energiaremonttihankkeen kaikissa vaiheissa?","acceptedAnswer":{"@type":"Answer","text":"Kyllä. Korjauspartnerit auttaa kuntoarviosta ja energiaselvityksestä hankesuunnitteluun, kilpailutukseen, rakennuttamiseen ja valvontaan. Kaikki palvelut saman katon alta Turussa ja Helsingissä."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Taloyhtiöiden energiaremontit","item":"https://korjauspartnerit.fi/taloyhtiöiden-energiaremontit-opas/"}]}]}]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti pienentää lämmityslaskua, parantaa asumismukavuutta ja nostaa asuntojen arvoa. Nyt ajoitus on poikkeuksellisen hyvä: valtio on valmistellut taloyhtiöille korjausavustusta 2026–2027 , joka voi kattaa merkittävän osan hankkeen kustannuksista. Tässä oppaassa kerromme, mitkä toimenpiteet kannattavat, miten hanke suunnitellaan ja miten avustus huomioidaan.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_hero_otsikko]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti – opas suunnittelusta avustuksiin]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti ja avustus 2026 | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Taloyhtiön energiaremontti: mitkä toimenpiteet kannattavat, miten hanke suunnitellaan ja miten korjausavustus 2026–2027 huomioidaan. Opas hallitukselle.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://korjauspartnerit.fi/taloyhtion-energiaremontti/#article","headline":"Taloyhtiön energiaremontti – opas suunnittelusta avustuksiin","description":"Taloyhtiön energiaremontti: mitkä toimenpiteet kannattavat, miten hanke suunnitellaan ja miten korjausavustus 2026–2027 huomioidaan. Opas hallitukselle.","image":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/DSC_2009.jpg"},"inLanguage":"fi-FI","author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/"},"publisher":{"@type":"Organization","@id":"https://korjauspartnerit.fi/#organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-08-21T09:00:00+03:00","dateModified":"2026-11-12T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/taloyhtion-energiaremontti/"},"keywords":["taloyhtiön energiaremontti","taloyhtiöiden energiaremontit","energiatehokkuus taloyhtiö","korjausavustus 2026","energiaremontti avustus","energia-avustus taloyhtiö","maalämpö taloyhtiö","poistoilmalämpöpumppu kerrostalo","julkisivuremontti lisäeristys","linjasaneeraus ja energiaremontti"],"about":{"@type":"Service","name":"Taloyhtiön energiaremontin asiantuntijapalvelut","serviceType":"Energiaremontin hankesuunnittelu, avustusselvitys, kilpailutus, rakennuttaminen ja valvonta","provider":{"@id":"https://korjauspartnerit.fi/#organization"},"areaServed":[{"@type":"City","name":"Helsinki"},{"@type":"AdministrativeArea","name":"Uusimaa"},{"@type":"City","name":"Turku"},{"@type":"AdministrativeArea","name":"Varsinais-Suomi"}]}},{"@type":"FAQPage","@id":"https://korjauspartnerit.fi/taloyhtion-energiaremontti/#faq","mainEntity":[{"@type":"Question","name":"Mitä taloyhtiön energiaremontti tarkoittaa?","acceptedAnswer":{"@type":"Answer","text":"Toimenpiteitä, joilla rakennuksen energiatehokkuutta parannetaan merkittävästi, esimerkiksi julkisivun ja yläpohjan lisäeristys, ikkunoiden ja ovien uusiminen, lämmön talteenotto ilmanvaihtoon, lämmitysjärjestelmän uudistaminen, kuten maalämpö tai poistoilmalämpöpumppu, sekä rakennusautomaation ja lämmityksen säädön kehittäminen."}},{"@type":"Question","name":"Mikä on taloyhtiöiden korjausavustus 2026–2027?","acceptedAnswer":{"@type":"Answer","text":"Valtion määräaikainen korjausrakentamisen avustus, johon on valmistelutietojen mukaan varattu 110 miljoonaa euroa vuosille 2026–2027. Se kohdistuu hankkeisiin, jotka parantavat energiatehokkuutta merkittävästi: lausuntokierroksen luonnoksessa vaatimus oli kerrostaloissa 23 % ja rivi- ja pientaloissa 28 %. Lopulliset ehdot ja hakuaika vahvistetaan viranomaispäätöksillä."}},{"@type":"Question","name":"Kuka voi hakea energiaremontin korjausavustusta?","acceptedAnswer":{"@type":"Answer","text":"Valmistelutietojen mukaan asunto-osakeyhtiöt, keskinäiset kiinteistöosakeyhtiöt sekä valtion tukemia vuokra- ja asumisoikeusasuntoja omistavat yhteisöt. Avustus ei ole tarkoitettu omakotitaloille tai yksityishenkilöille."}},{"@type":"Question","name":"Mistä taloyhtiön energiaremontti kannattaa aloittaa?","acceptedAnswer":{"@type":"Answer","text":"Kuntoarviosta ja PTS:stä, jotka kertovat kiinteistön nykytilan ja tulevat korjaustarpeet. Sen jälkeen energiaselvitys ja energiatehokkuuslaskelmat osoittavat, millä toimenpiteillä saavutetaan suurin parannus ja täyttyvätkö avustuksen vaatimukset. Vasta sitten tehdään hankesuunnitelma, päätökset ja kilpailutus."}},{"@type":"Question","name":"Mitkä energiatoimenpiteet ovat kannattavimpia?","acceptedAnswer":{"@type":"Answer","text":"Se riippuu rakennuksesta. Lämmityksen perussäätö ja automaatio ovat edullisia ja nopeasti takaisin maksavia. Poistoilmalämpöpumppu tai maalämpö voi pienentää ostoenergian tarvetta merkittävästi. Julkisivun lisäeristys ja ikkunoiden uusiminen ovat kannattavimpia, kun ne tehdään muutenkin tarpeellisen julkisivuremontin yhteydessä."}},{"@type":"Question","name":"Kannattaako energiaremontti yhdistää muihin hankkeisiin?","acceptedAnswer":{"@type":"Answer","text":"Usein kannattaa. Julkisivuremonttiin yhdistetty lisäeristys ja ikkunoiden uusiminen sekä linjasaneeraukseen yhdistetty lämmitysjärjestelmän uudistus ovat kustannustehokkaampia kuin erilliset hankkeet. Yhdistetty hanke voi myös helpommin saavuttaa avustuksen edellyttämän energiatehokkuuden parannuksen."}},{"@type":"Question","name":"Milloin energiaremontti pitää kilpailuttaa, jotta avustusta voi saada?","acceptedAnswer":{"@type":"Answer","text":"Kesäkuun 2026 valmistelutietojen mukaan avustusta voitaisiin myöntää hankkeille, joiden kilpailutus tai urakkasopimus on tehty kesän 2026 jälkeen. Ajoitus kannattaa varmistaa ennen kilpailutusta, koska lopulliset ehdot vahvistetaan viranomaispäätöksillä."}},{"@type":"Question","name":"Toimiiko Korjauspartnerit energiaremontin kaikissa vaiheissa?","acceptedAnswer":{"@type":"Answer","text":"Kyllä. Korjauspartnerit auttaa kuntoarviosta ja energiaselvityksestä avustusmahdollisuuksien selvittämiseen, hankesuunnitteluun, kilpailutukseen, rakennuttamiseen ja valvontaan Helsingissä, Uudellamaalla, Turussa ja Varsinais-Suomessa. Emme urakoi itse, joten suosituksemme ovat puolueettomia."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Palvelut taloyhtiöille","item":"https://korjauspartnerit.fi/kiinteistojen-palvelut-taloyhtioille/"},{"@type":"ListItem","position":3,"name":"Taloyhtiön energiaremontti","item":"https://korjauspartnerit.fi/taloyhtion-energiaremontti/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Parveketurvallisuus - parvekkeiden kunto ja turvallisuus]]></title>

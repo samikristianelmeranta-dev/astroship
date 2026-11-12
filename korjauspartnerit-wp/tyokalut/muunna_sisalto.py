@@ -315,6 +315,12 @@ LINK_FIXES = {
     'palvelut/lampokamerakuvaukset/': 'palvelut/lampokuvaukset/',
     'palvelut/yllapitopartnerit/': 'palvelut/yllapitopartneri/',
     'korjauspartnerit-avainlippu/': 'korjauspartnerit/',
+    'taloyhtion-erergiaremontti/': 'taloyhtion-energiaremontti/',
+}
+
+# Kirjoitusvirheelliset osoitteet korjataan (vanha osoite ohjataan, ks. redirects.php).
+SLUG_RENAME = {
+    'taloyhtion-erergiaremontti': 'taloyhtion-energiaremontti',
 }
 
 
@@ -527,6 +533,11 @@ def format_phone(p):
 
 def convert(src, dst):
     title, authors, cats, tags, terms, items = read_items(src)
+    for d in items:
+        if d['type'] != 'attachment' and d['slug'] in SLUG_RENAME:
+            d['slug'] = SLUG_RENAME[d['slug']]
+            d['link'] = 'https://korjauspartnerit.fi/' + d['slug'] + '/'
+            d['title'] = d['title'].replace('erergia', 'energia')
     by_id = {d['id']: d for d in items}
     attachments = {base_name(d['url']): d['id'] for d in items if d['type'] == 'attachment' and d['url']}
 
