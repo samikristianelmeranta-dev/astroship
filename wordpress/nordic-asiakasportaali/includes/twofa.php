@@ -102,9 +102,10 @@ add_filter( 'authenticate', function ( $user ) {
 	$redirect = isset( $_REQUEST['redirect_to'] ) ? wp_unslash( $_REQUEST['redirect_to'] ) : ''; // phpcs:ignore
 	$token    = nap_2fa_start( $user, ! empty( $_POST['rememberme'] ), $redirect ); // phpcs:ignore
 	if ( ! $token ) {
-		// Sähköposti ei lähtenyt: ei lukita ketään ulos, mutta kirjataan ylös.
+		// Koodi ei lähtenyt: kirjautumista ei päästetä läpi pelkällä salasanalla. Hätätilanteessa
+		// koodivaiheen voi ohittaa wp-config.php:n vakiolla NAP_2FA_DISABLE.
 		error_log( 'Nordic asiakasportaali: kirjautumiskoodin lähetys epäonnistui käyttäjälle ' . $user->user_login );
-		return $user;
+		return new WP_Error( 'nap_2fa_mail', 'Kirjautumiskoodin lähetys epäonnistui. Yritä hetken päästä uudelleen tai ota yhteyttä ylläpitoon.' );
 	}
 	wp_safe_redirect( add_query_arg( array( 'action' => 'nap_2fa', 't' => $token ), wp_login_url() ) );
 	exit;
@@ -137,6 +138,7 @@ add_action( 'login_form_nap_2fa', function () {
 			exit;
 		}
 		$st['tries']++;
+		do_action( 'wp_login_failed', $user->user_login, new WP_Error( 'nap_2fa_code' ) ); // lasketaan arvauslukkoon
 		if ( $st['tries'] >= 5 ) {
 			delete_transient( $key );
 			wp_safe_redirect( add_query_arg( 'nap2fa', 'locked', wp_login_url() ) );

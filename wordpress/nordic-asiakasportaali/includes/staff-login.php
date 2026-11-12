@@ -2,7 +2,8 @@
 /**
  * Henkilökunnan kirjautuminen osoitteessa /crm/: käyttäjänimi (tai sähköposti) + salasana.
  *  - "Pysy kirjautuneena" pitää kirjautumisen voimassa 90 päivää samalla laitteella.
- *  - Arvausesto: 5 väärää salasanaa samalle tunnukselle tai 10 samasta osoitteesta → 15 minuutin tauko.
+ *  - Arvausesto: 5 väärää salasanaa samalle tunnukselle samasta osoitteesta, 10 samasta osoitteesta tai
+ *    30 samalle tunnukselle kaikkiaan → 15 minuutin tauko.
  *    Koskee myös WordPressin omaa kirjautumissivua.
  *  - Jos sähköpostikoodi on asetuksissa päällä, se kysytään salasanan jälkeen kuten ennenkin.
  */
@@ -16,16 +17,23 @@ function nap_client_ip() {
 	return isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 }
 
+/**
+ * Laskurit: tunnus + IP (5), IP (10) ja tunnus kaikkiaan (30). Tunnus lukittuu siis vain
+ * arvaajan omasta osoitteesta, eikä ulkopuolinen voi pitää osakkaita ulkona muutamalla väärällä
+ * salasanalla. Laaja hajautettu arvailu pysähtyy silti tunnuskohtaiseen ylärajaan.
+ */
 function nap_fail_keys( $username ) {
+	$u = strtolower( trim( (string) $username ) );
 	return array(
-		'u' => 'nap_lf_u_' . md5( strtolower( trim( (string) $username ) ) ),
+		'u' => 'nap_lf_u_' . md5( $u . '|' . nap_client_ip() ),
 		'i' => 'nap_lf_i_' . md5( nap_client_ip() ),
+		'g' => 'nap_lf_g_' . md5( $u ),
 	);
 }
 
 function nap_login_locked( $username ) {
 	$k = nap_fail_keys( $username );
-	return (int) get_transient( $k['u'] ) >= 5 || (int) get_transient( $k['i'] ) >= 10;
+	return (int) get_transient( $k['u'] ) >= 5 || (int) get_transient( $k['i'] ) >= 10 || (int) get_transient( $k['g'] ) >= 30;
 }
 
 add_action( 'wp_login_failed', function ( $username ) {
@@ -35,7 +43,9 @@ add_action( 'wp_login_failed', function ( $username ) {
 } );
 
 add_action( 'wp_login', function ( $login ) {
-	delete_transient( nap_fail_keys( $login )['u'] );
+	$k = nap_fail_keys( $login );
+	delete_transient( $k['u'] );
+	delete_transient( $k['g'] );
 } );
 
 /** Lukittu tunnus ei pääse sisään oikeallakaan salasanalla ennen tauon päättymistä. */

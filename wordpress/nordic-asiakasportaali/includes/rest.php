@@ -163,17 +163,29 @@ function nap_api_customer( WP_REST_Request $req ) {
 		return nap_err( 'Ei oikeutta tähän asiakkaaseen.' );
 	}
 	$projects = array();
+	$seen     = array();
 	foreach ( nap_customer_projects( (int) $c['id'] ) as $p ) {
 		if ( nap_can_see_project( $p ) ) {
 			$projects[] = nap_project_out( $p );
+			$seen[]     = (int) $p['id'];
 		}
 	}
-	$tasks = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'tasks' ) . ' WHERE customer_id = %d AND done_at IS NULL ORDER BY due_date IS NULL, due_date ASC', $c['id'] ), ARRAY_A );
-	$refs  = $wpdb->get_results( $wpdb->prepare( 'SELECT id, name FROM ' . nap_table( 'customers' ) . ' WHERE referred_by = %d', $c['id'] ), ARRAY_A );
-	$by    = $c['referred_by'] ? nap_get_customer( (int) $c['referred_by'] ) : null;
-	$events = array_map( function ( $e ) {
+	$all   = current_user_can( 'nap_all' );
+	$me    = get_current_user_id();
+	// Asentaja näkee vain omien kohteidensa tehtävät ja historian (ei hintoja tai muistiinpanoja muista kohteista).
+	$mine  = function ( $row, $user_col ) use ( $all, $seen, $me ) {
+		return $all || ( $row['project_id'] ? in_array( (int) $row['project_id'], $seen, true ) : (int) $row[ $user_col ] === $me );
+	};
+	$tasks = array_values( array_filter( $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ' . nap_table( 'tasks' ) . ' WHERE customer_id = %d AND done_at IS NULL ORDER BY due_date IS NULL, due_date ASC', $c['id'] ), ARRAY_A ), function ( $t ) use ( $mine ) {
+		return $mine( $t, 'assignee_id' );
+	} ) );
+	$refs  = $all ? $wpdb->get_results( $wpdb->prepare( 'SELECT id, name FROM ' . nap_table( 'customers' ) . ' WHERE referred_by = %d', $c['id'] ), ARRAY_A ) : array();
+	$by    = $all && $c['referred_by'] ? nap_get_customer( (int) $c['referred_by'] ) : null;
+	$events = array_values( array_map( function ( $e ) {
 		return array( 'type' => $e['type'], 'text' => $e['text'], 'at' => $e['created_at'], 'by' => nap_user_name( $e['user_id'] ), 'for_customer' => (bool) $e['for_customer'] );
-	}, nap_customer_events( (int) $c['id'] ) );
+	}, array_filter( nap_customer_events( (int) $c['id'] ), function ( $e ) use ( $mine ) {
+		return $mine( $e, 'user_id' );
+	} ) ) );
 	foreach ( $refs as &$r ) {
 		$rp       = nap_customer_projects( (int) $r['id'] );
 		$r['stage'] = $rp ? max( array_map( function ( $p ) { return (int) $p['stage']; }, $rp ) ) : 0;
@@ -332,7 +344,14 @@ function nap_api_note( WP_REST_Request $req ) {
 	if ( '' === $text ) {
 		return nap_err( 'Kirjoita muistiinpano.', 400 );
 	}
-	nap_log( $c['id'], (int) $req->get_param( 'project_id' ) ?: null, 'note', $text );
+	$pid = (int) $req->get_param( 'project_id' );
+	if ( $pid ) {
+		$p = nap_get_project( $pid );
+		if ( ! nap_can_see_project( $p ) || (int) $p['customer_id'] !== (int) $c['id'] ) {
+			return nap_err( 'Ei oikeutta tähän kohteeseen.' );
+		}
+	}
+	nap_log( $c['id'], $pid ?: null, 'note', $text );
 	return array( 'ok' => true );
 }
 
@@ -404,10 +423,17 @@ function nap_api_create_task( WP_REST_Request $req ) {
 	if ( ! user_can( $assignee, 'nap_access' ) ) {
 		return nap_err( 'Valittu henkilö ei ole Nordicin käyttäjä.', 400 );
 	}
+	$pid = (int) $req->get_param( 'project_id' );
+	if ( $pid ) {
+		$p = nap_get_project( $pid );
+		if ( ! nap_can_see_project( $p ) || ( $cid && (int) $p['customer_id'] !== (int) $cid ) ) {
+			return nap_err( 'Ei oikeutta tähän kohteeseen.' );
+		}
+	}
 	$id = nap_create_task( array(
 		'title'       => $title,
 		'customer_id' => $cid ?: null,
-		'project_id'  => (int) $req->get_param( 'project_id' ) ?: null,
+		'project_id'  => $pid ?: null,
 		'assignee_id' => $assignee,
 		'due_date'    => (string) $req->get_param( 'due_date' ),
 	) );

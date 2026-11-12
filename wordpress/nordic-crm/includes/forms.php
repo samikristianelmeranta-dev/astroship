@@ -147,10 +147,19 @@ function nordic_crm_handle_form() {
 	if ( ! is_email( $email ) ) {
 		$fail();
 	}
+	// Ettei lomaketta voi käyttää viestien lähettämiseen vieraisiin osoitteisiin: sama osoite
+	// enintään 2 kertaa vuorokaudessa, kaikkiaan enintään 60 lomaketta vuorokaudessa.
+	$e_key = 'nordic_crm_rl_e_' . md5( strtolower( $email ) );
+	$d_key = 'nordic_crm_rl_d_' . gmdate( 'Ymd' );
+	if ( (int) get_transient( $e_key ) >= 2 || (int) get_transient( $d_key ) >= 60 ) {
+		$ok();
+	}
+	set_transient( $e_key, (int) get_transient( $e_key ) + 1, DAY_IN_SECONDS );
+	set_transient( $d_key, (int) get_transient( $d_key ) + 1, DAY_IN_SECONDS );
 
 	$lead = array(
 		'email'      => $email,
-		'first_name' => isset( $_POST['nc_first_name'] ) ? sanitize_text_field( wp_unslash( $_POST['nc_first_name'] ) ) : '', // phpcs:ignore
+		'first_name' => nordic_crm_clean_name( isset( $_POST['nc_first_name'] ) ? wp_unslash( $_POST['nc_first_name'] ) : '' ), // phpcs:ignore
 		'type'       => $type,
 		'consent'    => ! empty( $_POST['nc_consent'] ), // phpcs:ignore
 		'source_url' => $back,

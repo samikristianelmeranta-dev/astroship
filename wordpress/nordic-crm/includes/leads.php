@@ -97,8 +97,10 @@ function nordic_crm_process_lead( $lead ) {
 		'email' => $lead['email'],
 	);
 	foreach ( array( 'first_name', 'last_name', 'phone' ) as $k ) {
-		if ( $lead[ $k ] !== '' ) {
-			$data[ $k ] = sanitize_text_field( $lead[ $k ] );
+		// Olemassa olevan yhteystiedon nimeä ei korvata lomakkeelta: muuten kuka tahansa voisi
+		// vaihtaa asiakkaan nimen, joka näkyy myöhemmissä viesteissä ("Hei …").
+		if ( $lead[ $k ] !== '' && ! ( $existing && in_array( $k, array( 'first_name', 'last_name' ), true ) && ! empty( $existing->$k ) ) ) {
+			$data[ $k ] = 'phone' === $k ? sanitize_text_field( $lead[ $k ] ) : nordic_crm_clean_name( $lead[ $k ] );
 		}
 	}
 	if ( $status ) {
@@ -300,4 +302,17 @@ function nordic_crm_maybe_stop_sequences( $tag_ids, $subscriber ) {
 			\FluentCrm\App\Services\Funnel\FunnelHelper::removeSubscribersFromFunnel( (int) $info['funnel_id'], array( $subscriber->id ) );
 		}
 	}
+}
+
+/**
+ * Nimi viestien tervehdykseen: enintään 40 merkkiä, vain kirjaimia, välilyöntejä, väliviivoja ja
+ * heittomerkkejä. Linkit, pisteet ja numerot hylätään (roskapostittajat yrittävät ujuttaa tekstiä
+ * tervehdykseen "Hei <teksti>,").
+ */
+function nordic_crm_clean_name( $name ) {
+	$name = trim( sanitize_text_field( (string) $name ) );
+	if ( '' === $name || mb_strlen( $name ) > 40 || ! preg_match( "/^[\\p{L}][\\p{L} '\\-]*$/u", $name ) || substr_count( $name, ' ' ) > 2 ) {
+		return '';
+	}
+	return $name;
 }
