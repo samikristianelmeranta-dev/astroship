@@ -1,0 +1,7 @@
+OVIREMONTTI – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Oviremontti → Muokkaa
+  Otsikko (title):   Oviremontti Turussa ja Varsinais-Suomessa – ulko-ovet mittojen mukaan
+  Osoite (slug):     /oviremontti/   (ei muutu)
+  Ote (kuvaus):      Ulko-oven vaihto avaimet käteen Turussa ja Varsinais-Suomessa: ilmainen mittaus, Skaala-ovet, asennus päivässä. Hinnat, mallit ja kotitalousvähennys.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston oviremontti.html koodilla.
