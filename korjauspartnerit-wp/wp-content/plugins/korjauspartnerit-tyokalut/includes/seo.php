@@ -149,7 +149,12 @@ function kp_seo_graph( $post ) {
 	$has_faq = false;
 	foreach ( $graph as &$node ) {
 		$type = isset( $node['@type'] ) ? $node['@type'] : '';
-		if ( in_array( $type, array( 'Article', 'BlogPosting', 'WebPage', 'Service' ), true ) ) {
+		if ( in_array( $type, array( 'AboutPage', 'WebPage' ), true ) ) {
+			$node['url'] = $url;
+			if ( isset( $node['@id'] ) ) {
+				$node['@id'] = $url . '#webpage';
+			}
+		} elseif ( in_array( $type, array( 'Article', 'BlogPosting', 'Service' ), true ) ) {
 			// Osoite, päivämäärät ja kuva ajan tasalle tästä sisällöstä.
 			$node['mainEntityOfPage'] = array( '@type' => 'WebPage', '@id' => $url );
 			if ( 'post' === $post->post_type ) {
@@ -178,7 +183,7 @@ function kp_seo_graph( $post ) {
 	// SEO-lisäosa tuottaa jo Article- ja murupolkutiedot; meiltä vain niiden täydennykset.
 	if ( kp_seo_plugin_active() ) {
 		$graph = array_values( array_filter( $graph, function ( $n ) {
-			return isset( $n['@type'] ) && ! in_array( $n['@type'], array( 'Article', 'BlogPosting', 'WebPage', 'BreadcrumbList' ), true );
+			return isset( $n['@type'] ) && ! in_array( $n['@type'], array( 'Article', 'BlogPosting', 'WebPage', 'AboutPage', 'BreadcrumbList' ), true );
 		} ) );
 	}
 	return $graph;

@@ -7,6 +7,7 @@ Uusi WordPress-sivusto Korjauspartnereille, tehty graafisen ohjeistuksen 2024 (v
 | `wp-content/themes/korjauspartnerit/` | Teema: ulkoasu, sivupohjat, logo, fontit |
 | `wp-content/plugins/korjauspartnerit-tyokalut/` | Lisäosa: henkilökunta ja henkilöhaku, palvelut, referenssit, työpaikat, yhteydenottolomake, sisältöpohjat, Classic Editor -asetukset, uudelleenohjaukset ja asennusapuri |
 | `sisalto/korjauspartnerit-sisalto.xml` | Vanhan sivuston sisältö muunnettuna (WordPress-tuontitiedosto) |
+| `sisalto/sivut/` | Päivitetyt versiot vanhoista dokumenttisivuista (esim. `insinooritoimisto.html`). Korvaavat tuonnissa vanhan version. |
 | `sisalto/artikkelit/` | Uudet asiantuntija-artikkelit samassa HTML-dokumenttimuodossa kuin vanhan sivuston artikkelisarja (esim. `parvekelasien-tarkastus.html`). Muunnos lisää ne tuontitiedostoon. |
 | `tyokalut/muunna_sisalto.py` | Skripti, jolla muunnos tehtiin. Sen voi ajaa uudelleen tuoreesta viennistä. |
 | `OHJE-SISALLONTUOTTAJILLE.md` | Käyttöohje henkilökunnalle |

@@ -584,6 +584,12 @@ def convert(src, dst):
         c = clean(d['content'])
         c = strip_heading_dupe(c, d['title'])
         docs = code_docs(d['content']) if d['id'] != '2' else []
+        # Päivitetty versio kansiossa sisalto/sivut/<slug>.html korvaa vanhan dokumentin.
+        override = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'sisalto', 'sivut', d['slug'] + '.html')
+        if os.path.exists(override):
+            docs = [open(override, encoding='utf-8').read()]
+            d2['meta'].pop('_yoast_wpseo_title', None)
+            d2['meta'].pop('_yoast_wpseo_metadesc', None)
         if docs:
             c, canonical = apply_doc(d2, docs, c)
             if canonical:

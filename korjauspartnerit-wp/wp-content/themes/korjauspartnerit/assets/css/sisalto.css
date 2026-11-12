@@ -526,9 +526,15 @@ a:hover .kp-nuolilinkki::after,
 
 :is(.kp-sisalto, .mce-content-body) .kp-article__refgrid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 14px;
 	margin: 1.2em 0 2em;
+}
+
+@media (max-width: 560px) {
+	:is(.kp-sisalto, .mce-content-body) .kp-article__refgrid {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }
 
 :is(.kp-sisalto, .mce-content-body) .kp-article__ref {
