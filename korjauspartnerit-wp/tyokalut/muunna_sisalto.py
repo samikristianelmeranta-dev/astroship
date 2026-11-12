@@ -326,7 +326,7 @@ NEW_ARTICLES = {
         'author': 'sami',
         'thumbnail': '20728',
         'focuskw': 'parvekelasien tarkastus',
-        'seo_title': 'Parvekelasien tarkastus taloyhtiössä – sisältö, vastuut ja hinta %%sep%% %%sitename%%',
+        'seo_title': 'Parvekelasien tarkastus taloyhtiölle %%sep%% %%sitename%%',
         'cats': [('category', 'ajankohtaista', 'Ajankohtaista'), ('category', 'ajankohtaista-footer', 'Ajankohtaista footer'),
                  ('category', 'parvekkeet', 'Parvekkeet'), ('category', 'lasikaiteet', 'lasikaiteet'),
                  ('post_tag', 'parvekelasit', 'parvekelasit'), ('post_tag', 'lasikaiteet', 'lasikaiteet'),

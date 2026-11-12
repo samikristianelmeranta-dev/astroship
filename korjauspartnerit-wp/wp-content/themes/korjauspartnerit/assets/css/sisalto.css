@@ -554,6 +554,12 @@ a:hover .kp-nuolilinkki::after,
 	color: var(--kp-turkoosi);
 }
 
+/* Kortin otsikko omalle rivilleen. */
+:is(.kp-sisalto, .mce-content-body) .kp-article__ref p > strong:first-child {
+	display: block;
+	margin-bottom: 4px;
+}
+
 :is(.kp-sisalto, .mce-content-body) .kp-article__tablewrap {
 	margin: 1.5em 0 2em;
 	overflow-x: auto;
@@ -847,4 +853,143 @@ a:hover .kp-nuolilinkki::after,
 :is(.kp-sisalto, .mce-content-body) .kp-intro__contact-item > *,
 :is(.kp-sisalto, .mce-content-body) .kp-intro__contact-item p {
 	margin: 0;
+}
+
+/* ---------- Artikkelin lisälohkot: kiireellinen huomio, vaiheet, vertailu, yhteyshenkilöt ---------- */
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__urgency-box {
+	margin: 0 0 1.75em;
+	padding: 22px 26px;
+	background: #fff4ef;
+	border: 2px solid var(--kp-tiili);
+	border-radius: var(--kp-sade-iso);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__urgency-box p:last-child {
+	margin-bottom: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__urgency-label {
+	margin: 0 0 0.6em;
+	font-size: 0.82em;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #b53d1b;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__ref--red {
+	background: #fdf2f2;
+	border-left-color: #c0392b;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__ref--orange {
+	background: #fff4ef;
+	border-left-color: var(--kp-tiili);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__ref--green {
+	background: #f0f8f3;
+	border-left-color: #2e8b57;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__steps {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	margin: 1.25em 0 2.25em;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__step {
+	display: flex;
+	gap: 18px;
+	align-items: flex-start;
+	padding: 20px 24px;
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__step > div {
+	flex: 1;
+	min-width: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__step strong {
+	display: block;
+	margin-bottom: 4px;
+	color: var(--kp-turkoosi);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__step p {
+	margin: 0;
+	font-size: 0.94em;
+	line-height: 1.6;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__step-num {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	font-weight: 800;
+	color: var(--kp-valkoinen);
+	background: var(--kp-turkoosi);
+	border-radius: 50%;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__compare,
+:is(.kp-sisalto, .mce-content-body) .kp-article__contacts {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+	margin: 1.25em 0 2em;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__compare-col {
+	padding: 22px 24px;
+	background: var(--kp-hiekka-vaalea);
+	border-radius: var(--kp-sade-iso);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__compare-col h3 {
+	margin-top: 0;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__compare-col ul {
+	margin-bottom: 0;
+	font-size: 0.94em;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__contact {
+	padding: 20px 22px;
+	background: var(--kp-hiekka-vaalea);
+	border-left: 4px solid var(--kp-turkoosi);
+	border-radius: 0 var(--kp-sade-iso) var(--kp-sade-iso) 0;
+	overflow-wrap: anywhere;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__contact p {
+	margin: 0 0 4px;
+	font-size: 0.94em;
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__contact .kp-article__contact-name {
+	font-size: 1.05em;
+	font-weight: 800;
+	color: var(--kp-turkoosi);
+}
+
+:is(.kp-sisalto, .mce-content-body) .kp-article__contact .kp-article__contact-title {
+	margin-bottom: 10px;
+	font-size: 0.84em;
+	color: var(--kp-teksti-heikko);
+}
+
+@media (max-width: 700px) {
+	:is(.kp-sisalto, .mce-content-body) .kp-article__compare,
+	:is(.kp-sisalto, .mce-content-body) .kp-article__contacts {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }

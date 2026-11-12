@@ -2,7 +2,7 @@
 <!-- Korjauspartnerit: muunnettu sisältö uudelle sivustolle (muunna_sisalto.py). -->
 <rss version="2.0" xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:wp="http://wordpress.org/export/1.2/">
 <channel>
-	<title>Parvekelasien tarkastus taloyhtiössä – mitä tarkastetaan, kuka vastaa ja milloin?</title>
+	<title>Parvekelasien tarkastus taloyhtiölle – näin selvität ovatko kaiteet turvallisia</title>
 	<link>https://korjauspartnerit.fi</link>
 	<language>fi</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
@@ -11096,103 +11096,201 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<dc:creator><![CDATA[sami]]></dc:creator>
 		<guid isPermaLink="false">https://korjauspartnerit.fi/?page_id=23584</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h2>Mikä on märkätilojen kosteuskartoitus?</h2>
-<p>Märkätilojen kosteuskartoituksella tarkoitetaan asiantuntijan tekemää selvitystä, jossa kylpyhuoneiden, saunojen, pesuhuoneiden ja muiden vedelle alttiiden tilojen rakenteiden kosteustekninen kunto käydään läpi systemaattisesti. Kartoituksessa yhdistyvät aistinvarainen tarkastus, pintakosteusmittaus ja tarvittaessa tarkempi porareikämittaus, jolla saadaan tietoa myös pintarakenteiden alla olevasta kosteudesta.</p>
-<p>Toisin kuin silmämääräinen tarkastus, kosteuskartoitus tuottaa mitattua, dokumentoitua tietoa. Se kertoo taloyhtiön hallitukselle konkreettisesti, missä kunnossa märkätilojen rakenteet todella ovat — ei arvauksia, vaan mittaustuloksia, joiden pohjalta voidaan tehdä perusteltuja päätöksiä.</p>
+		<content:encoded><![CDATA[<div class="kp-article__highlight">
+<p><strong>Lyhyesti:</strong> Märkätilojen kosteuskartoituksessa asiantuntija tarkastaa kylpyhuoneet, saunat ja muut märkätilat ja mittaa rakenteiden kosteuden. Kartoitus kannattaa teettää, kun vedeneristeet ovat 20–25 vuotta vanhoja, ennen linjasaneerauksen suunnittelua, vuodon jälkeen tai kun havaitaan hajua tai kosteusjälkiä. Tuloksena on raportti, joka kertoo, tarvitaanko korjausta, lisätutkimuksia vai riittääkö seuranta.</p>
+</div>
+
+<h2>Mikä on märkätilojen kosteuskartoitus?</h2>
+<p>Märkätilojen kosteuskartoituksella tarkoitetaan asiantuntijan tekemää selvitystä, jossa kylpyhuoneiden, saunojen, pesuhuoneiden ja muiden vedelle alttiiden tilojen rakenteiden kosteustekninen kunto käydään läpi järjestelmällisesti. Kartoituksessa yhdistyvät aistinvarainen tarkastus, pintakosteusmittaus ja tarvittaessa tarkempi rakennekosteusmittaus, jolla saadaan tietoa myös pintojen alla olevasta kosteudesta.</p>
+<p>Toisin kuin silmämääräinen tarkastus, kosteuskartoitus tuottaa mitattua ja dokumentoitua tietoa. Se kertoo taloyhtiön hallitukselle, missä kunnossa märkätilojen rakenteet todella ovat. Arvausten sijaan päätökset voidaan tehdä mittaustulosten perusteella.</p>
 
 <h2>Miksi kosteuskartoitus on taloyhtiölle tärkeä?</h2>
 <h3>Vaurio etenee ennen kuin se näkyy</h3>
-<p>Vedeneristeen pettäminen ei useinkaan näy heti. Kosteus voi vaeltaa rakenteissa pitkän matkan ennen kuin se ilmenee esimerkiksi tummumana laatan saumassa, hajuhaittana tai kosteusjälkenä viereisen huoneen seinässä. Tässä vaiheessa vaurio on jo usein laajentunut merkittävästi laajemmalle kuin mistä ensimmäiset merkit antavat ymmärtää.</p>
-<p>Ajoissa tehty kosteuskartoitus tunnistaa riskikohdat ja alkavat vauriot vaiheessa, jossa korjaus voidaan vielä rajata pieneksi ja kohdennetuksi — sen sijaan että koko kylpyhuone tai useampi asunto jouduttaisiin purkamaan ja rakentamaan uudelleen.</p>
+<p>Vedeneristeen pettäminen ei useinkaan näy heti. Kosteus voi kulkeutua rakenteissa pitkän matkan ennen kuin se ilmenee esimerkiksi tummumana laattasaumassa, hajuhaittana tai kosteusjälkenä viereisen huoneen seinässä. Siinä vaiheessa vaurio on usein jo laajempi kuin ensimmäiset merkit antavat ymmärtää.</p>
+<p>Ajoissa tehty kosteuskartoitus tunnistaa riskikohdat ja alkavat vauriot vaiheessa, jossa korjaus voidaan vielä rajata pieneksi ja kohdennetuksi. Muuten koko kylpyhuone tai useampi asunto voidaan joutua purkamaan ja rakentamaan uudelleen.</p>
 
-<h3>Taloudellinen näkökulma: kartoitus vs. vesivahinko</h3>
-<p>Kosteuskartoituksen kustannus on aina murto-osa siitä, mitä laajan vesivahingon korjaaminen taloyhtiölle maksaa. Kun vaurio ehtii levitä rakenteisiin, alapuolisiin asuntoihin tai kantaviin rakenteisiin, korjaustyön laajuus — ja siten myös kustannus, remonttiaika ja haitta asukkaille — kasvaa moninkertaiseksi verrattuna varhaisessa vaiheessa tehtyyn korjaukseen.</p>
+<h3>Taloudellinen näkökulma: kartoitus vai vesivahinko</h3>
+<p>Kosteuskartoituksen kustannus on murto-osa siitä, mitä laajan vesivahingon korjaaminen maksaa. Kun vaurio ehtii levitä rakenteisiin, alapuolisiin asuntoihin tai kantaviin rakenteisiin, korjauksen laajuus kasvaa moninkertaiseksi. Samalla kasvavat remonttiaika, väistöasumisen tarve ja haitta asukkaille.</p>
+
+<h3>Terveellinen sisäilma</h3>
+<p>Pitkään kostuneet rakenteet voivat altistaa mikrobikasvulle, joka heikentää sisäilman laatua myös märkätilan ulkopuolella. Kartoitus auttaa katkaisemaan kehityksen ennen kuin syntyy sisäilmaongelma, jonka selvittäminen ja korjaaminen on huomattavasti työläämpää.</p>
 
 <h2>Milloin märkätilojen kosteuskartoitus kannattaa teettää?</h2>
-<p>Seuraavat tilanteet ovat tyypillisimpiä hetkiä, jolloin taloyhtiön kannattaa tilata kosteuskartoitus:</p>
+<p>Tyypillisimmät tilanteet, joissa taloyhtiön kannattaa tilata kosteuskartoitus:</p>
 <ul>
-<li><strong>Vedeneristeet lähestyvät 20–25 vuoden ikää</strong> — tyypillinen tekninen käyttöikä alkaa olla lopuillaan</li>
-<li><strong>Ennen linjasaneerauksen hankesuunnittelua</strong>, jotta märkätilojen todellinen kunto on tiedossa suunnittelun pohjaksi</li>
-<li><strong>Osana kuntoarviota tai PTS-päivitystä</strong>, kun taloyhtiö kartoittaa koko kiinteistön korjaustarpeita</li>
-<li><strong>Havaittaessa hajuhaittoja, kosteusjälkiä tai lattian pinnoitteen irtoamista</strong></li>
-<li><strong>Ennen asunnon myyntiä tai omistajanvaihdosta</strong>, jotta sekä myyjä että ostaja tietävät rakenteiden todellisen kunnon</li>
-<li><strong>Naapuriasunnossa tai alapuolisessa huoneistossa havaitun vuodon jälkeen</strong>, vaurion laajuuden selvittämiseksi</li>
+<li><strong>Vedeneristeet lähestyvät 20–25 vuoden ikää</strong> – tyypillinen tekninen käyttöikä alkaa olla lopuillaan.</li>
+<li><strong>Ennen linjasaneerauksen hankesuunnittelua</strong> – märkätilojen todellinen kunto on tiedossa suunnittelun pohjaksi.</li>
+<li><strong>Osana kuntoarviota tai PTS-päivitystä</strong> – kun taloyhtiö kartoittaa koko kiinteistön korjaustarpeita.</li>
+<li><strong>Hajuhaittojen, kosteusjälkien tai irtoilevien pinnoitteiden vuoksi</strong> – aina viipymättä.</li>
+<li><strong>Vuodon jälkeen naapuri- tai alapuolisessa huoneistossa</strong> – vaurion laajuuden selvittämiseksi.</li>
+<li><strong>Ennen asunnon myyntiä tai omistajanvaihdosta</strong> – sekä myyjä että ostaja tietävät rakenteiden kunnon.</li>
+<li><strong>Kun osakkaiden omia märkätilaremontteja on tehty eri vuosikymmeninä</strong> – kartoitus antaa yhtenäisen kuvan huoneistojen eroista.</li>
+</ul>
+
+<h3>Varoitusmerkit, joiden vuoksi kartoitus kannattaa tilata heti</h3>
+<ul>
+<li>tunkkainen tai maakellarimainen haju kylpyhuoneessa tai sen viereisessä huoneessa</li>
+<li>tummuneet, halkeilleet tai murenevat laattasaumat erityisesti suihkun ja lattiakaivon ympärillä</li>
+<li>kopo eli ontosti kopisevat laatat, irtoava muovimatto tai kupruileva maali</li>
+<li>kosteusjäljet, maalin hilseily tai jalkalistojen turpoaminen märkätilan ulkopuolella</li>
+<li>vesi ei valu lattiakaivoon tai jää lammikoiksi lattialle</li>
+<li>vuotoilmoitus alakerran asunnosta tai porraskäytävästä</li>
 </ul>
 
 <h2>Miten kosteuskartoitus tehdään käytännössä?</h2>
 
-<h3>1. Aistinvarainen tarkastus</h3>
-<p>Kartoitus alkaa silmämääräisellä tarkastuksella, jossa käydään läpi pintojen, saumojen, läpivientien ja lattiakaivojen kunto sekä mahdolliset näkyvät merkit kosteudesta tai hajuhaitoista.</p>
+<div class="kp-article__steps">
+<div class="kp-article__step">
+<span class="kp-article__step-num">1</span>
+<div>
+<strong>Lähtötiedot ja aikataulu</strong>
+<p>Kokoamme rakennus- ja korjaushistorian, aiemmat kuntoarviot ja tiedot osakkaiden tekemistä märkätilaremonteista. Isännöitsijä tiedottaa asukkaille huoneistokäynneistä.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">2</span>
+<div>
+<strong>Aistinvarainen tarkastus</strong>
+<p>Käymme läpi pintojen, saumojen, läpivientien ja lattiakaivojen kunnon, lattian kaadot, ilmanvaihdon toiminnan sekä näkyvät merkit kosteudesta tai hajuhaitoista.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">3</span>
+<div>
+<strong>Pintakosteusmittaus</strong>
+<p>Pintakosteusmittarilla kartoitetaan seinä- ja lattiapinnat järjestelmällisesti, erityisesti suihkun, kaivon ja seinän ja lattian liittymän kohdalta. Mittaus on vertaileva ja tehdään rikkomatta pintoja, joten se paljastaa poikkeavat kohdat nopeasti.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">4</span>
+<div>
+<strong>Rakennekosteusmittaus tarvittaessa</strong>
+<p>Jos pintakosteusmittaus antaa viitteitä kohonneesta kosteudesta, kosteus todennetaan rakenteesta porareikä- tai viiltomittauksella. Se kertoo luotettavasti rakenteen suhteellisen kosteuden ilman laajaa purkutyötä.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">5</span>
+<div>
+<strong>Raportti ja toimenpidesuositukset</strong>
+<p>Tulokset kootaan selkeäksi raportiksi, joka sisältää mittaustulokset, havainnot ja suositukset jatkotoimista. Raportti kertoo, tarvitaanko välitöntä korjausta, tarkempaa kuntotutkimusta vai riittääkö seuranta.</p>
+</div>
+</div>
+</div>
 
-<h3>2. Pintakosteusmittaus</h3>
-<p>Pintakosteusmittarilla kartoitetaan koko märkätilan seinä- ja lattiapinnat, jotta poikkeavat kosteusarvot ja mahdolliset riskikohdat saadaan tunnistettua ilman rakenteiden rikkomista.</p>
+<h2>Mitä kosteuskartoituksen raportti sisältää?</h2>
+<p>Hyvä raportti on hallituksen työkalu, ei pelkkä lukulista. Siitä tulee löytyä vähintään:</p>
+<ul>
+<li><strong>huoneistokohtaiset mittaustulokset</strong> pohjapiirrokseen merkittyinä</li>
+<li><strong>valokuvat havainnoista</strong>, kuten saumoista, kaivoista ja läpivienneistä</li>
+<li><strong>riskiluokitus</strong> jokaiselle märkätilalle: kunnossa, seurattava, korjattava tai kiireellinen</li>
+<li><strong>toimenpidesuositukset</strong> ja niiden kiireellisyys</li>
+<li><strong>arvio siitä, kenen vastuulle korjaus kuuluu</strong>, kun kyse on osakkaan aiemmasta remontista</li>
+<li><strong>suositus jatkotoimista</strong>, kuten kuntotutkimuksesta, linjasaneerauksen ajoituksesta tai seurantamittauksista</li>
+</ul>
 
-<h3>3. Porareikämittaus tarvittaessa</h3>
-<p>Mikäli pintakosteusmittaus antaa viitteitä kohonneesta kosteudesta, tehdään tarkempi porareikämittaus, jolla saadaan luotettavaa tietoa myös pintarakenteen alla olevasta kosteustilanteesta ilman laajaa purkutyötä.</p>
+<h2>Kosteuskartoitus, kuntoarvio vai kuntotutkimus – mikä ero?</h2>
+<p>Termit sekoitetaan usein keskenään, mutta ne palvelevat eri tarkoitusta. Usein järkevintä on teettää ne toisiaan täydentävinä.</p>
+<div class="kp-article__tablewrap">
+<table class="kp-article__table">
+<caption>Kolme selvitystä märkätilojen kunnosta</caption>
+<thead>
+<tr><th scope="col"></th><th scope="col">Kuntoarvio</th><th scope="col">Kosteuskartoitus</th><th scope="col">Kuntotutkimus</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Laajuus</th><td>Koko kiinteistö</td><td>Märkätilat</td><td>Valittu rakenneosa</td></tr>
+<tr><th scope="row">Menetelmä</th><td>Aistinvarainen katselmus</td><td>Pinta- ja rakennekosteusmittaukset</td><td>Rakenneavaukset, näytteet, laboratorio</td></tr>
+<tr><th scope="row">Vastaa kysymykseen</th><td>Mitä korjataan lähivuosina?</td><td>Missä märkätiloissa on kosteusriski?</td><td>Kuinka laaja korjaus tarvitaan?</td></tr>
+<tr><th scope="row">Tulos</th><td>PTS</td><td>Riskiluokitus ja suositukset</td><td>Korjaussuunnittelun lähtötiedot</td></tr>
+</tbody>
+</table>
+</div>
+<p>Lue lisää: <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kiinteistön kuntoarvio ja PTS</a> · <a href="https://korjauspartnerit.fi/kiinteistojen-kuntotutkimus/">kiinteistön kuntotutkimukset</a> · <a href="https://korjauspartnerit.fi/palvelut/putkistojen-kuntotutkimus/">putkistojen kuntotutkimus</a></p>
 
-<h3>4. Raportti ja toimenpidesuositukset</h3>
-<p>Kartoituksen tulokset kootaan selkeäksi raportiksi, joka sisältää mittaustulokset, havainnot ja konkreettiset suositukset jatkotoimenpiteistä. Raportti toimii pohjana sille, tarvitaanko välittömiä korjaustoimia, tarkempaa kuntotutkimusta vai voidaanko tilannetta seurata.</p>
+<h2>Kuka vastaa märkätilojen kosteusvaurioista?</h2>
+<p>Asunto-osakeyhtiölain lähtökohta on, että <strong>taloyhtiö vastaa rakenteista</strong>, myös märkätilan vedeneristeestä, ja <strong>osakas huoneiston sisäosista</strong>, kuten pintamateriaaleista ja kalusteista. Poikkeuksen tekevät osakkaan omat remontit: jos osakas on uusinut kylpyhuoneen muutostyönä, hän vastaa lähtökohtaisesti työn virheistä ja niistä aiheutuneista vahingoista.</p>
+<p>Siksi kartoituksessa kirjataan, missä huoneistoissa märkätila on alkuperäinen ja missä osakkaan uusima. Tieto helpottaa korjausvastuun selvittämistä ja säästää kiistoilta. Tarkka vastuunjako kannattaa tarkistaa yhtiöjärjestyksestä ja yhtiön vastuunjakotaulukosta.</p>
 
-<h2>Kosteuskartoitus vai kuntotutkimus – mikä ero?</h2>
-<p>Kosteuskartoitus ja kuntotutkimus sekoitetaan usein keskenään, mutta ne palvelevat eri tarkoitusta. Kosteuskartoitus on kohdennettu, mittauksiin perustuva selvitys nimenomaan märkätilojen kosteustilanteesta. <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kuntoarvio</a> puolestaan on koko kiinteistön kattava, yleisluontoisempi katselmus kaikista rakennusosista, jonka pohjalta laaditaan pitkän tähtäimen suunnitelma (PTS).</p>
-<p>Usein järkevin ratkaisu on teettää molemmat toisiaan täydentävinä: kuntoarvio antaa kokonaiskuvan koko kiinteistöstä, kun taas kosteuskartoitus tuo tarkkaa, mitattua tietoa nimenomaan märkätilojen riskikohteista.</p>
+<h2>Mitä märkätilojen kosteuskartoitus maksaa?</h2>
+<p>Yleispätevää hintaa ei voi antaa ilman kohdekohtaista tarjousta. Hintaan vaikuttavat:</p>
+<ul>
+<li>kartoitettavien märkätilojen määrä ja rakennuksen koko</li>
+<li>tarkastetaanko kaikki huoneistot vai otos</li>
+<li>tarvittavien rakennekosteusmittausten määrä</li>
+<li>lähtötietojen saatavuus ja huoneistokäyntien järjestelyt</li>
+<li>raportin laajuus ja mahdollinen esittely yhtiökokouksessa</li>
+</ul>
+<p>Kun kaikki märkätilat kartoitetaan kerralla, huoneistokohtainen hinta laskee ja raportti antaa yhtenäisen kuvan koko taloyhtiöstä. Kartoitus on joka tapauksessa murto-osa siitä, mitä laajan vesivahingon korjaaminen maksaisi.</p>
 
-<h2>Miksi valita puolueeton asiantuntija kosteuskartoitukseen?</h2>
-<p>Korjauspartnerit on riippumaton asiantuntijaorganisaatio — emme urakoi itse emmekä myy korjaustöitä. Tällä on merkitystä juuri kosteuskartoituksessa: kun kartoituksen tekijä ei hyödy siitä, löytyykö vaurioita vai ei, taloyhtiö voi luottaa siihen, että raportti ja suositukset perustuvat yksinomaan mittaustuloksiin ja taloyhtiön etuun.</p>
+<h2>Miksi valita puolueeton asiantuntija?</h2>
+<p>Korjauspartnerit on riippumaton asiantuntijaorganisaatio: emme urakoi itse emmekä myy korjaustöitä. Kosteuskartoituksessa sillä on merkitystä. Kun kartoittaja ei hyödy siitä, löytyykö vaurioita vai ei, taloyhtiö voi luottaa siihen, että raportti ja suositukset perustuvat yksinomaan mittaustuloksiin ja taloyhtiön etuun.</p>
 
 <blockquote class="kp-article__quote">
-"Kosteuskartoitus on halvin vakuutus, jonka taloyhtiö voi ottaa märkätilojaan vastaan — ja kun sen tekee riippumaton asiantuntija, tulos on aina puolueeton."
+"Kosteuskartoitus on halvin vakuutus, jonka taloyhtiö voi ottaa märkätilojaan varten. Kun sen tekee riippumaton asiantuntija, tulos on aina puolueeton."
 <cite>— Korjauspartnereiden kuntotutkimusten asiantuntija</cite>
 </blockquote>
 
 <h2>Entä jos kartoituksessa löytyy vaurio?</h2>
-<p>Jos kosteuskartoituksessa havaitaan vaurio tai kohonnut riski, seuraava askel riippuu löydöksen laajuudesta. Pienempi, paikallinen vaurio voidaan usein korjata kohdennetusti. Laajempi tai useampaa asuntoa koskeva löydös puolestaan kannattaa ottaa huomioon osana taloyhtiön <a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">linjasaneerauksen hankesuunnittelua</a>, jolloin märkätilojen korjaus voidaan aikatauluttaa ja mitoittaa osaksi suurempaa, hallittua kokonaisuutta sen sijaan, että eri korjaukset tehtäisiin erillisinä, päällekkäisinä hankkeina.</p>
-
-<div class="kp-article__highlight">
-<p><strong>Muistisääntö hallitukselle:</strong></p>
-<p>Jos taloyhtiönne märkätilojen vedeneristeet ovat yli 20 vuotta vanhoja, tai jos olette havainneet hajuhaittoja tai kosteusjälkiä, kosteuskartoituksen tilaaminen kannattaa aikatauluttaa jo nyt. Mittauksiin perustuva tieto on aina parempi pohja päätöksille kuin arvailu.</p>
+<p>Seuraava askel riippuu löydöksen laajuudesta:</p>
+<div class="kp-article__refgrid">
+<div class="kp-article__ref kp-article__ref--red">
+<p><strong>Kiireellinen korjaus</strong>Aktiivinen vuoto tai laaja kosteusvaurio. Vesivahingon eteneminen pysäytetään heti, ja korjaus suunnitellaan vaurion laajuuden mukaan.</p>
+</div>
+<div class="kp-article__ref kp-article__ref--orange">
+<p><strong>Paikallinen korjaus</strong>Rajattu vaurio esimerkiksi kaivon tai läpiviennin kohdalla. Korjataan kohdennetusti, usein ilman koko märkätilan uusimista.</p>
+</div>
+<div class="kp-article__ref kp-article__ref--green">
+<p><strong>Seuranta</strong>Ei kosteusvauriota, mutta vedeneriste on käyttöikänsä loppupäässä. Kirjataan PTS:ään ja mitataan uudelleen sovitusti.</p>
+</div>
+<div class="kp-article__ref">
+<p><strong>Osaksi linjasaneerausta</strong>Laajat tai useita asuntoja koskevat löydökset kannattaa sovittaa <a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">linjasaneerauksen hankesuunnitteluun</a>, ettei samoja tiloja korjata kahteen kertaan.</p>
+</div>
 </div>
 
-<h2>Korjauspartnerit — puolueeton kumppani märkätilojen kosteuskartoituksiin</h2>
-<p>Autamme taloyhtiöitä tunnistamaan märkätilojen riskit ajoissa ja liittämään kosteuskartoituksen luontevaksi osaksi taloyhtiön <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kuntoarviota ja PTS-suunnitelmaa</a>. Löydöksen vaatiessa jatkotoimia tuemme myös <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">rakennuttamisessa ja projektinjohdossa</a> sekä <a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">rakennustöiden valvonnassa</a>. Koska emme urakoi itse, taloyhtiö voi luottaa siihen, että jokainen suositus on annettu yksinomaan sen omaa etua ajatellen.</p>
-<p>Palvelemme taloyhtiöitä <strong>Turussa ja Varsinais-Suomessa</strong> sekä <strong>Helsingissä ja Uudellamaalla</strong>.</p>
+<div class="kp-article__highlight">
+<p><strong>Muistisääntö hallitukselle:</strong> Jos märkätilojen vedeneristeet ovat yli 20 vuotta vanhoja tai olette havainneet hajuhaittoja tai kosteusjälkiä, kosteuskartoitus kannattaa aikatauluttaa jo nyt. Mittauksiin perustuva tieto on aina parempi pohja päätöksille kuin arvailu.</p>
+</div>
+
+<h2>Vinkit osakkaalle: näin märkätila pysyy kunnossa</h2>
+<ul>
+<li>Puhdista lattiakaivo ja sen sihti säännöllisesti, jotta vesi poistuu nopeasti.</li>
+<li>Pidä ilmanvaihto päällä ja venttiilit auki, ja kuivaa lattia suihkun jälkeen.</li>
+<li>Älä poraa kiinnikkeitä suihkualueen seinään ilman tiivistystä, koska jokainen reikä voi rikkoa vedeneristeen.</li>
+<li>Tarkkaile saumoja ja silikonisaumauksia ja uusi ne, kun ne halkeilevat.</li>
+<li>Ilmoita isännöitsijälle heti hajusta, kosteusjäljistä tai vuodosta.</li>
+<li>Hae taloyhtiöltä muutostyölupa ennen omaa märkätilaremonttia ja säilytä työn dokumentit.</li>
+</ul>
+
+<h2>Korjauspartnerit – puolueeton kumppani märkätilojen kosteuskartoituksiin</h2>
+<p>Autamme taloyhtiöitä tunnistamaan märkätilojen riskit ajoissa ja liittämään kosteuskartoituksen luontevaksi osaksi <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kuntoarviota ja PTS-suunnitelmaa</a>. Kun löydös vaatii jatkotoimia, tuemme myös <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">rakennuttamisessa ja projektinjohdossa</a> sekä <a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">rakennustöiden valvonnassa</a>. Koska emme urakoi itse, jokainen suositus annetaan taloyhtiön omaa etua ajatellen.</p>
+<p>Palvelemme taloyhtiöitä <strong>Helsingissä ja Uudellamaalla</strong> sekä <strong>Turussa ja Varsinais-Suomessa</strong>.</p>
 
 <div class="kp-article__refgrid">
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kiinteistön kuntoarvio ja PTS →</a></p></div>
-<div class="kp-article__ref"><p><strong>Aihe:</strong> <a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">Linjasaneeraus taloyhtiössä →</a></p></div>
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">Rakennuttaminen ja projektinjohto →</a></p></div>
-<div class="kp-article__ref"><p><strong>Palvelu:</strong> <a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">Rakennustöiden valvonta →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">Kiinteistön kuntoarvio ja PTS →</a></p></div>
+<div class="kp-article__ref"><p><strong>Opas</strong><a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">Linjasaneeraus taloyhtiössä →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">Rakennuttaminen ja projektinjohto →</a></p></div>
+<div class="kp-article__ref"><p><strong>Palvelu</strong><a href="https://korjauspartnerit.fi/palvelut/rakennustoiden-valvonta/">Rakennustöiden valvonta →</a></p></div>
 </div>
 
 <div class="kp-article__cta">
-<p>Onko teidän taloyhtiönne märkätilojen kunto viimeksi tarkistettu yli 20 vuotta sitten?</p>
+<p>Onko taloyhtiönne märkätilojen kunto viimeksi tarkistettu yli 20 vuotta sitten?</p>
+<a href="https://korjauspartnerit.fi/yhteystiedot/#viesti" class="kp-article__cta-link">Pyydä tarjous kosteuskartoituksesta</a>
+<span> · </span>
 <a href="https://korjauspartnerit.fi/kiinteistojen-palvelut-taloyhtioille/" class="kp-article__cta-link">Tutustu taloyhtiöpalveluihimme</a>
-<span> tai </span>
-<a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">ota yhteyttä asiantuntijaan</a>.
+<span> · </span>
+<a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">Ota yhteyttä asiantuntijaan</a>
 </div>
 
 <section class="kp-article__faq" aria-label="Usein kysytyt kysymykset märkätilojen kosteuskartoituksesta">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="kp-article__faq-item">
-<h3>Mikä on märkätilojen kosteuskartoitus?</h3>
-<p>Asiantuntijan tekemä, mittauksiin perustuva selvitys kylpyhuoneiden ja muiden märkätilojen rakenteiden kosteustilanteesta. Yhdistää aistinvaraisen tarkastuksen, pintakosteusmittauksen ja tarvittaessa porareikämittauksen.</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Miksi kosteuskartoitus kannattaa teettää taloyhtiössä?</h3>
-<p>Vesieristeen vaurio etenee usein huomaamatta ennen kuin se näkyy pinnalla. Ajoissa tehty kartoitus mahdollistaa pienen, edullisen korjauksen sen sijaan, että vaurio ehtii laajentua kalliiksi vesivahingoksi.</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Milloin kosteuskartoitus kannattaa teettää?</h3>
-<p>Kun vedeneristeet lähestyvät 20–25 vuoden ikää, ennen linjasaneerauksen hankesuunnittelua, osana kuntoarviota, tai heti kun havaitaan hajuhaittoja tai kosteusjälkiä.</p>
-</div>
-<div class="kp-article__faq-item">
-<h3>Mitä märkätilojen kosteuskartoitus maksaa?</h3>
-<p>Hinta riippuu kartoitettavien tilojen määrästä ja käytettävistä menetelmistä. Kartoitus on kuitenkin aina murto-osa laajan vesivahingon korjauskustannuksista.</p>
-</div>
-<div class="kp-article__faq-item" style="border-bottom:none;">
-<h3>Mitä eroa on kosteuskartoituksella ja kuntoarviolla?</h3>
-<p>Kuntoarvio kattaa koko kiinteistön yleisellä tasolla. Kosteuskartoitus keskittyy nimenomaan märkätiloihin ja tehdään mittalaittein, joten se antaa tarkempaa tietoa juuri kosteustilanteesta.</p>
-</div>
+<h2>Usein kysytyt kysymykset märkätilojen kosteuskartoituksesta</h2>
+<div class="kp-article__faq-item"><h3>Mikä on märkätilojen kosteuskartoitus?</h3><p>Asiantuntijan tekemä, mittauksiin perustuva selvitys kylpyhuoneiden, saunojen ja muiden märkätilojen rakenteiden kosteusteknisestä kunnosta. Kartoitus yhdistää aistinvaraisen tarkastuksen, pintakosteusmittauksen ja tarvittaessa rakennekosteusmittauksen, jotta piilevät vauriot löytyvät ennen kuin ne näkyvät pinnoilla.</p></div>
+<div class="kp-article__faq-item"><h3>Miksi kosteuskartoitus kannattaa teettää taloyhtiössä?</h3><p>Vedeneristeen vaurio etenee usein rakenteiden sisällä pitkään ennen kuin se näkyy hajuna, tummumana tai kosteusjälkenä. Ajoissa tehty kartoitus mahdollistaa pienen, kohdennetun korjauksen sen sijaan, että vaurio ehtii laajentua kalliiksi vesivahingoksi.</p></div>
+<div class="kp-article__faq-item"><h3>Milloin kosteuskartoitus kannattaa teettää?</h3><p>Kun märkätilojen vedeneristeet lähestyvät 20–25 vuoden ikää, ennen linjasaneerauksen hankesuunnittelua, osana kuntoarviota tai PTS-päivitystä, vuotojen jälkeen sekä aina, kun havaitaan hajuhaittoja, kosteusjälkiä tai irtoilevia pinnoitteita.</p></div>
+<div class="kp-article__faq-item"><h3>Miten kosteuskartoitus tehdään?</h3><p>Ensin tarkastetaan pinnat, saumat, lattiakaivot, läpiviennit ja kaadot aistinvaraisesti. Sen jälkeen seinä- ja lattiapinnat kartoitetaan pintakosteusmittarilla. Jos lukemat poikkeavat, kosteus todennetaan rakenteesta porareikä- tai viiltomittauksella. Lopuksi tulokset ja suositukset kootaan raportiksi.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä märkätilojen kosteuskartoitus maksaa?</h3><p>Hinta riippuu kartoitettavien märkätilojen määrästä, rakennuksen koosta, käytettävistä mittausmenetelmistä ja siitä, tarvitaanko rakennekosteusmittauksia. Korjauspartnerit antaa kohdekohtaisen tarjouksen. Kartoitus on aina murto-osa laajan vesivahingon korjauskustannuksista.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä eroa on kosteuskartoituksella, kuntoarviolla ja kuntotutkimuksella?</h3><p>Kuntoarvio on koko kiinteistön aistinvarainen yleiskatselmus PTS:n pohjaksi. Kosteuskartoitus keskittyy märkätiloihin ja tehdään mittalaittein. Kuntotutkimus on vielä tarkempi, rakenneavauksiin ja laboratorioanalyyseihin perustuva selvitys valitusta rakenneosasta, kun korjauksen laajuus pitää ratkaista.</p></div>
+<div class="kp-article__faq-item"><h3>Kuka vastaa märkätilojen kosteusvaurioista – taloyhtiö vai osakas?</h3><p>Asunto-osakeyhtiölain lähtökohta on, että yhtiö vastaa rakenteista, myös vedeneristeestä, ja osakas huoneiston sisäosista, kuten pintamateriaaleista. Osakkaan itse teettämän remontin virheistä vastaa kuitenkin osakas. Tarkka jako riippuu yhtiöjärjestyksestä ja tehdyistä muutostöistä.</p></div>
+<div class="kp-article__faq-item"><h3>Pitääkö kartoituksen vuoksi purkaa rakenteita?</h3><p>Ei yleensä. Pintakosteusmittaus tehdään rikkomatta pintoja. Rakennekosteusmittauksessa porataan pieniä reikiä esimerkiksi laattasaumaan tai märkätilan ulkopuolelle, ja reiät tiivistetään mittauksen jälkeen. Laajempia avauksia tehdään vain, jos vaurion laajuus sitä edellyttää.</p></div>
+<div class="kp-article__faq-item"><h3>Kauanko kosteuskartoitus kestää?</h3><p>Yhden märkätilan mittaukset kestävät tyypillisesti alle tunnin. Koko taloyhtiön kartoitus tehdään yleensä muutamassa päivässä huoneistokäyntien aikataulun mukaan. Rakennekosteusmittaukset vaativat lisäksi tasaantumisajan ennen lukemien ottamista.</p></div>
 </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>23584</wp:post_id>
@@ -11207,11 +11305,11 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Märkätilojen kosteuskartoitus taloyhtiössä. Kysy lisää ammattilaiselta ja pyydä meidät käymään.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Kylpyhuoneiden ja muiden märkätilojen vesieristeet eivät kestä ikuisesti, ja vaurio etenee usein huomaamatta rakenteiden sisällä kuukausia tai jopa vuosia ennen kuin se näkyy pinnalla. Märkätilojen kosteuskartoitus on nopea ja edullinen tapa saada faktapohjainen tieto rakenteiden kunnosta — ennen kuin pieni ongelma ehtii kasvaa suureksi ja kalliiksi vesivahingoksi.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Kylpyhuoneiden ja muiden märkätilojen vedeneristeet eivät kestä ikuisesti, ja vaurio etenee usein huomaamatta rakenteiden sisällä kuukausia tai jopa vuosia ennen kuin se näkyy pinnalla. Märkätilojen kosteuskartoitus on nopea ja edullinen tapa saada mitattua tietoa rakenteiden kunnosta ennen kuin pieni ongelma kasvaa suureksi ja kalliiksi vesivahingoksi. Tässä oppaassa kerromme, milloin kartoitus kannattaa teettää, miten se tehdään, mitä raportti kertoo, kuka vastaa ja mitä se maksaa.]]></wp:meta_value></wp:postmeta>
 		<wp:postmeta><wp:meta_key><![CDATA[kp_hero_otsikko]]></wp:meta_key><wp:meta_value><![CDATA[Märkätilojen kosteuskartoitus taloyhtiössä – milloin ja miksi se kannattaa teettää]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Märkätilojen kosteuskartoitus taloyhtiössä – milloin ja miksi se kannattaa teettää | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Märkätilojen kosteuskartoitus taloyhtiössä – milloin ja miksi se kannattaa teettää","description":"Miten märkätilojen kosteuskartoitus tehdään, mitä se maksaa, milloin se kannattaa teettää ja miksi puolueeton asiantuntija kannattaa ottaa mukaan ennen kuin vesivauriot ehtivät laajentua.","image":"https://korjauspartnerit.fi/wp-content/uploads/kuvituskuvaa.jpg","author":{"@type":"Organization","name":"Korjauspartnerit"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-09-10","dateModified":"2026-09-10","mainEntityOfPage":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/","keywords":["märkätilojen kosteuskartoitus","kosteuskartoitus taloyhtiö","kylpyhuoneen kosteusmittaus","vesivahingon ennaltaehkäisy","pintakosteusmittaus","kosteuskartoituksen hinta"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mikä on märkätilojen kosteuskartoitus?","acceptedAnswer":{"@type":"Answer","text":"Märkätilojen kosteuskartoitus on asiantuntijan tekemä selvitys, jossa kartoitetaan kylpyhuoneiden, saunojen ja muiden märkätilojen rakenteiden kosteustekninen kunto. Kartoituksessa käytetään pintakosteusmittausta ja tarvittaessa porareikämittausta, jotta piilevät vesivauriot ja vaurioriskit löydetään ennen kuin ne näkyvät pinnoilla."}},{"@type":"Question","name":"Miksi märkätilojen kosteuskartoitus kannattaa teettää taloyhtiössä?","acceptedAnswer":{"@type":"Answer","text":"Märkätilojen vesieristeiden käyttöikä on rajallinen, ja vaurio etenee usein rakenteiden sisällä pitkään ennen kuin se näkyy pinnalla esimerkiksi hajuna tai tummumana. Ajoissa tehty kosteuskartoitus paljastaa ongelman varhaisessa vaiheessa, jolloin korjaus on huomattavasti pienempi ja edullisempi kuin laajan vesivahingon korjaaminen."}},{"@type":"Question","name":"Milloin kosteuskartoitus kannattaa teettää?","acceptedAnswer":{"@type":"Answer","text":"Kosteuskartoitus kannattaa teettää, kun märkätilojen pinnoitteet tai vedeneristeet lähestyvät 20–25 vuoden ikää, ennen linjasaneerauksen hankesuunnittelua, osana taloyhtiön kuntoarviota tai PTS-päivitystä, sekä aina, jos havaitaan hajuhaittoja, kosteusjälkiä tai epäilyä vuodosta."}},{"@type":"Question","name":"Mitä märkätilojen kosteuskartoitus maksaa?","acceptedAnswer":{"@type":"Answer","text":"Hinta riippuu kartoitettavien tilojen määrästä, rakennuksen koosta ja käytettävistä mittausmenetelmistä, eikä yleispätevää hintaa voi antaa ilman kohdekohtaista tarjousta. Kartoitus on kuitenkin aina murto-osa siitä, mitä laajan vesivahingon korjaaminen taloyhtiölle maksaisi."}},{"@type":"Question","name":"Mitä eroa on kosteuskartoituksella ja kuntoarviolla?","acceptedAnswer":{"@type":"Answer","text":"Kuntoarvio on koko kiinteistön yleistason katselmus, joka kattaa kaikki rakennusosat pintapuolisesti. Kosteuskartoitus sen sijaan keskittyy nimenomaan märkätiloihin ja tehdään mittalaittein, jolloin se antaa tarkempaa tietoa juuri kosteusteknisestä kunnosta kuin yleisluontoinen kuntoarvio."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Märkätilojen kosteuskartoitus taloyhtiössä","item":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/"}]}]}]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Märkätilojen kosteuskartoitus taloyhtiössä | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Märkätilojen kosteuskartoitus taloyhtiössä: milloin se kannattaa teettää, miten mittaukset tehdään, mitä raportti kertoo, kuka vastaa ja mitä se maksaa.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/#article","headline":"Märkätilojen kosteuskartoitus taloyhtiössä – milloin ja miksi se kannattaa teettää","description":"Märkätilojen kosteuskartoitus taloyhtiössä: milloin se kannattaa teettää, miten mittaukset tehdään, mitä raportti kertoo, kuka vastaa ja mitä se maksaa.","image":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/kuvituskuvaa.jpg"},"inLanguage":"fi-FI","author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/"},"publisher":{"@type":"Organization","@id":"https://korjauspartnerit.fi/#organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-09-10T09:00:00+03:00","dateModified":"2026-11-12T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/"},"keywords":["märkätilojen kosteuskartoitus","kosteuskartoitus taloyhtiö","märkätilojen kuntokartoitus","kylpyhuoneen kosteusmittaus","pintakosteusmittaus","rakennekosteusmittaus","vedeneristeen kunto","vesivahingon ennaltaehkäisy","kosteuskartoituksen hinta"],"about":{"@type":"Service","name":"Märkätilojen kosteuskartoitus","serviceType":"Märkätilojen kosteuskartoitus taloyhtiöille","provider":{"@id":"https://korjauspartnerit.fi/#organization"},"areaServed":[{"@type":"City","name":"Helsinki"},{"@type":"AdministrativeArea","name":"Uusimaa"},{"@type":"City","name":"Turku"},{"@type":"AdministrativeArea","name":"Varsinais-Suomi"}]}},{"@type":"FAQPage","@id":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/#faq","mainEntity":[{"@type":"Question","name":"Mikä on märkätilojen kosteuskartoitus?","acceptedAnswer":{"@type":"Answer","text":"Asiantuntijan tekemä, mittauksiin perustuva selvitys kylpyhuoneiden, saunojen ja muiden märkätilojen rakenteiden kosteusteknisestä kunnosta. Kartoitus yhdistää aistinvaraisen tarkastuksen, pintakosteusmittauksen ja tarvittaessa rakennekosteusmittauksen, jotta piilevät vauriot löytyvät ennen kuin ne näkyvät pinnoilla."}},{"@type":"Question","name":"Miksi kosteuskartoitus kannattaa teettää taloyhtiössä?","acceptedAnswer":{"@type":"Answer","text":"Vedeneristeen vaurio etenee usein rakenteiden sisällä pitkään ennen kuin se näkyy hajuna, tummumana tai kosteusjälkenä. Ajoissa tehty kartoitus mahdollistaa pienen, kohdennetun korjauksen sen sijaan, että vaurio ehtii laajentua kalliiksi vesivahingoksi."}},{"@type":"Question","name":"Milloin kosteuskartoitus kannattaa teettää?","acceptedAnswer":{"@type":"Answer","text":"Kun märkätilojen vedeneristeet lähestyvät 20–25 vuoden ikää, ennen linjasaneerauksen hankesuunnittelua, osana kuntoarviota tai PTS-päivitystä, vuotojen jälkeen sekä aina, kun havaitaan hajuhaittoja, kosteusjälkiä tai irtoilevia pinnoitteita."}},{"@type":"Question","name":"Miten kosteuskartoitus tehdään?","acceptedAnswer":{"@type":"Answer","text":"Ensin tarkastetaan pinnat, saumat, lattiakaivot, läpiviennit ja kaadot aistinvaraisesti. Sen jälkeen seinä- ja lattiapinnat kartoitetaan pintakosteusmittarilla. Jos lukemat poikkeavat, kosteus todennetaan rakenteesta porareikä- tai viiltomittauksella. Lopuksi tulokset ja suositukset kootaan raportiksi."}},{"@type":"Question","name":"Mitä märkätilojen kosteuskartoitus maksaa?","acceptedAnswer":{"@type":"Answer","text":"Hinta riippuu kartoitettavien märkätilojen määrästä, rakennuksen koosta, käytettävistä mittausmenetelmistä ja siitä, tarvitaanko rakennekosteusmittauksia. Korjauspartnerit antaa kohdekohtaisen tarjouksen. Kartoitus on aina murto-osa laajan vesivahingon korjauskustannuksista."}},{"@type":"Question","name":"Mitä eroa on kosteuskartoituksella, kuntoarviolla ja kuntotutkimuksella?","acceptedAnswer":{"@type":"Answer","text":"Kuntoarvio on koko kiinteistön aistinvarainen yleiskatselmus PTS:n pohjaksi. Kosteuskartoitus keskittyy märkätiloihin ja tehdään mittalaittein. Kuntotutkimus on vielä tarkempi, rakenneavauksiin ja laboratorioanalyyseihin perustuva selvitys valitusta rakenneosasta, kun korjauksen laajuus pitää ratkaista."}},{"@type":"Question","name":"Kuka vastaa märkätilojen kosteusvaurioista – taloyhtiö vai osakas?","acceptedAnswer":{"@type":"Answer","text":"Asunto-osakeyhtiölain lähtökohta on, että yhtiö vastaa rakenteista, myös vedeneristeestä, ja osakas huoneiston sisäosista, kuten pintamateriaaleista. Osakkaan itse teettämän remontin virheistä vastaa kuitenkin osakas. Tarkka jako riippuu yhtiöjärjestyksestä ja tehdyistä muutostöistä."}},{"@type":"Question","name":"Pitääkö kartoituksen vuoksi purkaa rakenteita?","acceptedAnswer":{"@type":"Answer","text":"Ei yleensä. Pintakosteusmittaus tehdään rikkomatta pintoja. Rakennekosteusmittauksessa porataan pieniä reikiä esimerkiksi laattasaumaan tai märkätilan ulkopuolelle, ja reiät tiivistetään mittauksen jälkeen. Laajempia avauksia tehdään vain, jos vaurion laajuus sitä edellyttää."}},{"@type":"Question","name":"Kauanko kosteuskartoitus kestää?","acceptedAnswer":{"@type":"Answer","text":"Yhden märkätilan mittaukset kestävät tyypillisesti alle tunnin. Koko taloyhtiön kartoitus tehdään yleensä muutamassa päivässä huoneistokäyntien aikataulun mukaan. Rakennekosteusmittaukset vaativat lisäksi tasaantumisajan ennen lukemien ottamista."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Palvelut taloyhtiöille","item":"https://korjauspartnerit.fi/kiinteistojen-palvelut-taloyhtioille/"},{"@type":"ListItem","position":3,"name":"Märkätilojen kosteuskartoitus","item":"https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Liike- ja toimitilojen suunnittelu, rakennuttaminen ja projektinjohto]]></title>
@@ -11427,83 +11525,150 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<dc:creator><![CDATA[sami]]></dc:creator>
 		<guid isPermaLink="false">https://korjauspartnerit.fi/?page_id=23634</guid>
 		<description></description>
-		<content:encoded><![CDATA[<h2>Kuntoarvio vai kuntotutkimus — mikä ero?</h2>
-<p><strong>Kuntoarvio</strong> on koko kiinteistön yleiskatsaus. Asiantuntija käy läpi rakenteet, talotekniikan ja energiatehokkuuden, antaa jokaiselle rakenneosalle kuntoluokituksen ja tuottaa <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">PTS-suunnitelman</a> — 10 vuoden korjausohjelman.</p>
-<p><strong>Kuntotutkimus</strong> on syvällisempi. Se kohdistuu tiettyyn rakennusosaan tai järjestelmään ja paljastaa vaurioiden syyt, laajuuden ja korjauskustannukset. Kuntotutkimus tehdään tyypillisesti ennen suurta korjaushanketta tai kun ongelma on jo havaittu.</p>
+		<content:encoded><![CDATA[<div class="kp-article__highlight">
+<p><strong>Lyhyesti:</strong> Kiinteistön kuntotutkimus on yhteen rakennusosaan tai järjestelmään kohdistuva asiantuntijatutkimus mittauksineen ja näytteineen. Se tehdään ennen suurta korjausta, kun kuntoarvio tai PTS osoittaa korjaustarpeen lähestyvän tai kun vaurioita on havaittu. Tuloksena saadaan vaurioiden syy ja laajuus, korjaustapa, kiireellisyys ja suuntaa antava kustannusarvio.</p>
+</div>
 
-<h2>Kaikki kiinteistötutkimukset</h2>
+<h2>Kuntoarvio vai kuntotutkimus – mikä ero?</h2>
+<p><strong>Kuntoarvio</strong> on koko kiinteistön yleiskatsaus. Asiantuntija käy läpi asiakirjat sekä huolto- ja korjaushistorian, tarkastaa rakennustekniikan sekä LVI-, sähkö- ja automaatiojärjestelmät, vertaa veden- ja energiankulutusta vastaaviin kiinteistöihin ja tarkastaa huoneistoista otoksen (vähintään 20 %), piha-alueet sekä yhteiset ja tekniset tilat. Tuloksena syntyy kuntoarvioraportti ja 10 vuoden <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kunnossapitosuunnitelma (PTS)</a>.</p>
+<p><strong>Kuntotutkimus</strong> on syvällisempi. Se kohdistuu yhteen rakennusosaan tai järjestelmään, ja siinä käytetään mittauksia, näytteitä, laboratorioanalyysejä ja tarvittaessa rakenneavauksia. Kuntoarvio kertoo, mitä pitää tutkia tarkemmin. Kuntotutkimus kertoo, miten ja milloin se kannattaa korjata.</p>
+
+<div class="kp-article__tablewrap">
+<table class="kp-article__table">
+<caption>Kiinteistön kuntotutkimukset yhdellä silmäyksellä</caption>
+<thead>
+<tr><th scope="col">Tutkimus</th><th scope="col">Mitä selvittää</th><th scope="col">Milloin tyypillisesti</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Julkisivu ja parvekkeet</th><td>Betonin rapautuminen ja karbonatisoituminen, terästen korroosio, pinnoitteet, vedeneristys, kaiteet</td><td>Ennen julkisivu- tai parvekeremonttia, kun näkyy lohkeilua tai ruostetta</td></tr>
+<tr><th scope="row">Putkistot</th><td>Vesi- ja viemäriputkien kunto, korroosio, jäljellä oleva käyttöikä</td><td>Ennen linjasaneerauspäätöstä, toistuvat vuodot</td></tr>
+<tr><th scope="row">Vesikatto</th><td>Katteen, saumojen, läpivientien, räystäiden ja vedenpoiston kunto, yläpohjan tuuletus</td><td>Katto lähestyy käyttöikänsä loppua, vuotoepäily</td></tr>
+<tr><th scope="row">Sähköverkko</th><td>Sähköjärjestelmien kunto ja turvallisuus, kapasiteetti tuleviin tarpeisiin</td><td>Ennen peruskorjausta tai latauspisteiden rakentamista</td></tr>
+<tr><th scope="row">Ikkunat</th><td>Tekninen ja toiminnallinen kunto, huolto vai uusiminen</td><td>Ennen ikkunaremonttia, vedon ja tiiveysongelmien vuoksi</td></tr>
+<tr><th scope="row">Sisäilma</th><td>Sisäilmaongelmien syyt, kosteus- ja mikrobivauriot, ilmanvaihto</td><td>Oireilu, kosteusvaurio tai homeepäily</td></tr>
+<tr><th scope="row">Asbesti ja haitta-aineet</th><td>Asbestin, PCB:n, PAH-yhdisteiden ja lyijyn sijainti ja määrä</td><td>Ennen purku- ja korjaustöitä vuotta 1994 vanhemmissa rakennuksissa</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Kiinteistön kuntotutkimukset rakennusosittain</h2>
 
 <h3>Julkisivujen ja parvekkeiden kuntotutkimus</h3>
-<p>Betonijulkisivujen ja parvekkeiden tärkein tutkimus. Selvittää betonin karbonatisoitumissyvyyden, terästen kunnon, vaurioiden laajuuden ja kaatokaltevuudet. Välttämätön ennen julkisivuremonttia tai parvekesaneerausta.</p>
-<p><strong>Milloin tarvitaan:</strong> Kun betonissa näkyy lohkeilua tai ruosteraitoja — tai ennakoivasti, jos rakennus on yli 30 vuotta vanha.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">Tutustu julkisivujen ja parvekkeiden kuntotutkimukseen →</a></p>
+<p>Betonijulkisivujen ja parvekkeiden tärkein tutkimus. Asiantuntija tekee kohteessa aistinvaraisen tarkastuksen ja ottaa näytteet, jotka analysoidaan laboratoriossa. Tutkimus suunnitellaan kohteen mukaan, ja siihen kuuluvat tyypillisesti:</p>
+<ul>
+<li>betonin karbonatisoitumissyvyys ja betoniterästen peitepaksuus</li>
+<li>raudoitteiden korroosio sekä rapautuma- ja pakkasvauriot</li>
+<li>pinnoitteiden ja vedeneristysten kunto, kaatokaltevuudet</li>
+<li>parvekkeiden kaiteet, kiinnitykset ja lasirakenteet</li>
+<li>haitta-aineanalyysit pinnoitteista ja saumoista</li>
+</ul>
+<p><strong>Milloin tarvitaan:</strong> ennen julkisivuremonttia tai parvekekorjausta, kun betonissa näkyy lohkeilua tai ruosteraitoja, tai ennakoivasti, kun rakennus on noin 30 vuotta vanha. Parvekkeiden lasikaiteet kannattaa tarkastaa erikseen: lue lisää <a href="https://korjauspartnerit.fi/parvekelasien-tarkastus/">parvekelasien tarkastuksesta</a> ja <a href="https://korjauspartnerit.fi/parvekkeenkuntotutkimus/">parvekkeen kuntotutkimuksesta</a>.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">Julkisivujen ja parvekkeiden kuntotutkimus</a></p>
 
 <h3>Putkistojen kuntotutkimus</h3>
-<p>Selvittää vesi- ja viemärijohtojen kunnon, korroosion asteen ja arvioidun jäljellä olevan käyttöiän. Viemärikuvaus on osa tutkimusta. Pohja linjasaneerauksen suunnittelulle.</p>
-<p><strong>Milloin tarvitaan:</strong> Kun putkisto on yli 40 vuotta vanha, toistuvien vuotojen yhteydessä tai ennen putkiremonttipäätöstä.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/putkistojen-kuntotutkimus/">Tutustu putkistojen kuntotutkimukseen →</a></p>
+<p>Selvittää vesi- ja viemärijohtojen kunnon, korroosion asteen ja arvioidun jäljellä olevan käyttöiän. Tutkimukseen kuuluu tyypillisesti viemärien kuvaus ja tarvittaessa putkinäytteiden analyysi. Tulos on pohja linjasaneerauksen ajoitukselle ja hankesuunnittelulle.</p>
+<p><strong>Milloin tarvitaan:</strong> kun putkisto on noin 40 vuotta vanha, vuotoja esiintyy toistuvasti tai taloyhtiö valmistelee putkiremonttipäätöstä. Korjauspartnerit on ollut mukana Vuoden Putkiremontti -kilpailun voittaneissa hankkeissa 2019 (As Oy Porthaninhovi, Helsinki) ja 2024 (As Oy Vantti).</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/putkistojen-kuntotutkimus/">Putkistojen kuntotutkimus</a> · <a href="https://korjauspartnerit.fi/linjasaneeraus-taloyhtiossa/">Linjasaneeraus taloyhtiössä</a></p>
 
 <h3>Vesikaton kuntotutkimus</h3>
-<p>Arvioi kattomateriaalien kunnon, vedeneristyksen tilan, läpivientien tiiveyden ja räystäsrakenteet. Usein yhdistetään kattoremonttisuunnitteluun.</p>
-<p><strong>Milloin tarvitaan:</strong> Kun katto on yli 20–30 vuotta vanha tai yläkerrassa havaitaan kosteusjälkiä.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/vesikaton-kuntotutkimus/">Tutustu vesikaton kuntotutkimukseen →</a></p>
+<p>Tutkimuksen painopiste riippuu kattotyypistä. Huopakatteessa tarkastetaan mekaaniset vauriot, halkeilu, poimut ja saumat. Peltikatteessa pellitysten tiiveys, maalipinnoite ja ruostevauriot. Tiili- ja varttikatteessa ruoteiden ja pellitysten kunto. Kaikissa käydään läpi läpivientien liitokset, ylösnostot, räystäät, kattokaltevuudet, vedenpoisto, kattoturvatuotteet sekä mahdollisuuksien mukaan ullakkotilan vuodot ja yläpohjan tuuletus.</p>
+<p><strong>Milloin tarvitaan:</strong> kun katto lähestyy käyttöikänsä loppua, yläkerroksissa näkyy kosteusjälkiä tai katolla on vuotoepäily.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/vesikaton-kuntotutkimus/">Vesikaton kuntotutkimus</a></p>
 
 <h3>Sähköverkon kuntotutkimus</h3>
-<p>Arvioi sähköjärjestelmien iän, kunnon ja turvallisuuden. Tärkeä ennen linjasaneerausta tai peruskorjausta — sähköverkon samanaikainen uusiminen on edullisempaa kuin erillinen hanke.</p>
-<p><strong>Milloin tarvitaan:</strong> Kun sähköjärjestelmät ovat yli 30–40 vuotta vanhoja tai kun harkitaan sähköautojen latauspaikkojen lisäämistä.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/sahkoverkon-kuntotutkimus/">Tutustu sähköverkon kuntotutkimukseen →</a></p>
+<p>Tutkimus tehdään ST-kortin mukaisen sähköjärjestelmien kuntotutkimusohjeen mukaisesti. Siihen kuuluvat jännite- ja virtamittaukset, oikosulkuvirtamittaukset, valaistusmittaukset, sähkökeskusten lämpötilamittaukset tarvittaessa lämpökameralla sekä aistinvaraiset tarkastukset. Lisäksi käydään läpi suunnitelmapiirustukset sekä vika- ja huoltohistoria.</p>
+<p><strong>Milloin tarvitaan:</strong> ennen peruskorjausta tai linjasaneerausta, kun sähköjärjestelmät ovat iäkkäitä tai kun taloyhtiö suunnittelee sähköautojen latauspisteitä. Sähköverkon uusiminen samassa hankkeessa on yleensä edullisempaa kuin erillisenä.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/sahkoverkon-kuntotutkimus/">Sähköverkon kuntotutkimus</a></p>
 
 <h3>Ikkunoiden kuntotutkimus</h3>
-<p>Arvioi ikkunoiden rakenteen, tiiveyden, toimivuuden ja uusimistarpeen. Vastaa kysymykseen: riittääkö huolto vai tarvitaanko uudet ikkunat?</p>
-<p><strong>Milloin tarvitaan:</strong> Ennen ikkunaremonttia tai kun asukkaat raportoivat vedosta ja tiivistysongelmista.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/ikkunoiden-kuntotutkimus/">Tutustu ikkunoiden kuntotutkimukseen →</a></p>
+<p>Tutkimus tehdään kohdekäynnillä otokselle huoneistoja. Tarvittaessa asukkaiden kokemuksia kartoitetaan etukäteen kyselyllä. Tutkimuksessa selvitetään ikkunoiden tekninen kunto (puitteet, karmit, listat, tiivisteet ja kittikyntteet) ja toiminnallinen kunto (lukot, painikkeet, saranat ja salvat). Raportti vastaa kysymykseen, riittääkö huolto vai tarvitaanko uudet ikkunat.</p>
+<p><strong>Milloin tarvitaan:</strong> ennen ikkunaremonttipäätöstä tai kun asukkaat raportoivat vedosta ja tiiveysongelmista.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/ikkunoiden-kuntotutkimus/">Ikkunoiden kuntotutkimus</a></p>
 
 <h3>Sisäilmatutkimus</h3>
-<p>Selvittää sisäilmaongelmien syyt, laajuuden ja korjaustoimenpiteet. Voi sisältää ilmanäytteitä, kosteusmittauksia, rakenneavauksia ja materiaalinäytteitä. RTA-pätevyys (Rakennusterveysasiantuntija) on alan korkein tutkinto.</p>
-<p><strong>Milloin tarvitaan:</strong> Kun asukkaat raportoivat oireista, havaitaan kosteusvaurio tai epäillään hometta.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/sisailmatutkimukset/">Tutustu sisäilmatutkimuksiin →</a></p>
-
-<h3>Lämpökamerakuvaukset</h3>
-<p>Paljastaa eristysvirheet, ilmavuodot, kosteuden rakenteissa ja lämpösillat — asiat, jotka silmä ei näe. Erityisen arvokas ennen energiaremonttia: osoittaa tarkasti mistä lämpö karkaa.</p>
-<p><strong>Milloin tarvitaan:</strong> Kylmällä säällä (alle -5°C). Ennen energiaremonttia tai rakennusvaurion selvittämisessä.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/lampokuvaukset/">Tutustu lämpökamerakuvauksiin →</a></p>
+<p>Selvittää sisäilmaongelmien syyt, laajuuden ja korjaustoimenpiteet. Tutkimus voi sisältää ilma- ja materiaalinäytteitä, kosteusmittauksia, rakenneavauksia sekä ilmanvaihdon ja painesuhteiden mittauksia. Sisäilmatutkimuksia tekevät sertifioidut rakennusterveysasiantuntijat (RTA).</p>
+<p><strong>Milloin tarvitaan:</strong> kun käyttäjät oireilevat, havaitaan kosteusvaurio tai epäillään mikrobivauriota.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/sisailmatutkimukset/">Sisäilmatutkimukset</a> · <a href="https://korjauspartnerit.fi/markatilojen-kosteuskartoitus-taloyhtiossa/">Märkätilojen kosteuskartoitus</a></p>
 
 <h3>Merkkiainekokeet</h3>
-<p>Paikantaa tarkasti ilmavuodot ja epäpuhtauksien kulkureitit rakenteissa. Usein osa laajempaa sisäilmatutkimusta.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/merkkiainekokeet/">Tutustu merkkiainekokeisiin →</a></p>
+<p>Rakenteisiin vapautetaan merkkiainekaasua, jonka kulkua seurataan tunnistimella. Koe paikantaa ilmavuodot ja epäpuhtauksien kulkureitit ilman rakenteiden purkamista, ja tulokset voidaan mallintaa pohjakuvaan. Merkkiainekoe on usein osa sisäilmatutkimusta tai korjausten laadunvarmistusta.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/merkkiainekokeet/">Merkkiainekokeet</a></p>
+
+<h3>Lämpökamerakuvaus</h3>
+<p>Paljastaa eristysvirheet, kylmäsillat, ilmavuodot ja kosteuden rakenteissa ilman purkamista. Visuaaliset tulokset auttavat hallitusta ja osakkaita ymmärtämään, mistä lämpö karkaa, ja helpottavat korjauspäätöksiä. Kuvaus ennen ja jälkeen rakennustöiden on myös hyvä rakentamisen laadun mittari.</p>
+<p><strong>Milloin tarvitaan:</strong> ennen energiaremonttia tai rakennusvaurion selvittämisessä. Ulkokuvaus tehdään kylmällä säällä, kun sisä- ja ulkolämpötilan ero on riittävän suuri.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/lampokuvaukset/">Lämpökuvaukset</a> · <a href="https://korjauspartnerit.fi/lampokamerakuvaus-taloyhtiot/">Lämpökamerakuvaus taloyhtiöille</a></p>
 
 <h3>Asbestikartoitus ja haitta-ainetutkimus</h3>
-<p>Lakisääteisesti pakollinen ennen kaikkia purkutöitä rakennuksissa, jotka on rakennettu ennen vuotta 1994. Selvittää asbestin, PCB:n, lyijyn ja muiden haitta-aineiden sijainnin.</p>
-<p><strong>Milloin tarvitaan:</strong> Aina ennen purkutöitä tai remonttia 1994 edeltävissä rakennuksissa.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/asbestikartoitus-ja-haitta-ainetutkimus/">Tutustu asbestikartoitukseen →</a></p>
+<p>Asbestikartoitus on lakisääteinen ennen purku- ja korjaustöitä rakennuksissa, joiden rakentaminen on aloitettu ennen vuotta 1994. Samalla kannattaa selvittää muut haitta-aineet, kuten PCB, PAH-yhdisteet ja lyijy. Näytteet analysoidaan sertifioidussa laboratoriossa, ja raportti kertoo haitallisia aineita sisältävien materiaalien sijainnit ja määrät sekä ohjeet turvalliseen purkamiseen.</p>
+<p><strong>Milloin tarvitaan:</strong> aina ennen purkutöitä tai remonttia vuotta 1994 vanhemmissa rakennuksissa. Haitta-aineiden selvittäminen etukäteen estää myös urakan aikaiset viivästykset ja lisäkustannukset.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/asbestikartoitus-ja-haitta-ainetutkimus/">Asbestikartoitus ja haitta-ainetutkimus</a></p>
 
-<h3>Teknisten riskien arviointi TDD ja ympäristöriskien arviointi EDD</h3>
-<p>Kiinteistökauppaa ja sijoituspäätöksiä varten tehtävät due diligence -arvioinnit. TDD selvittää rakenteiden teknisen kunnon, EDD ympäristöriskit kuten maaperän pilaantuneisuuden.</p>
-<p><a href="https://korjauspartnerit.fi/palvelut/teknisten-riskien-arviointi-tdd/">TDD →</a> · <a href="https://korjauspartnerit.fi/palvelut/ymparistoriskien-arviointi-edd/">EDD →</a></p>
+<h3>Teknisten riskien arviointi (TDD) ja ympäristöriskien arviointi (EDD)</h3>
+<p>Kiinteistökauppaa ja sijoituspäätöksiä varten tehtävät due diligence -arvioinnit. TDD selvittää rakennusten teknisen kunnon ja lähivuosien korjausvastuut, EDD ympäristöriskit, kuten maaperän pilaantuneisuuden.</p>
+<p><a href="https://korjauspartnerit.fi/palvelut/teknisten-riskien-arviointi-tdd/">TDD</a> · <a href="https://korjauspartnerit.fi/palvelut/ymparistoriskien-arviointi-edd/">EDD</a></p>
 
 <h2>Missä järjestyksessä tutkimukset tehdään?</h2>
-<p>Yleinen järjestys on: ensin <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kuntoarvio ja PTS</a>, joka osoittaa mitkä rakenteet lähestyvät korjausikää. Sitten kohdennettu kuntotutkimus juuri sille rakenneosalle ennen remonttipäätöstä. Tutkimuksen tulokset ohjaavat hankesuunnittelua ja kilpailutusta.</p>
+<div class="kp-article__refgrid">
+<div class="kp-article__ref"><p><strong>1. Kuntoarvio ja PTS</strong><br>Koko kiinteistön tilannekuva ja 10 vuoden korjaussuunnitelma kertovat, mitkä rakenteet lähestyvät korjausikää.</p></div>
+<div class="kp-article__ref"><p><strong>2. Kohdennettu kuntotutkimus</strong><br>Tarkka tutkimus juuri sille rakennusosalle, jonka korjaus on ajankohtainen.</p></div>
+<div class="kp-article__ref"><p><strong>3. Hankesuunnittelu</strong><br>Tutkimustulosten pohjalta laaditaan korjausvaihtoehdot, kustannusarvio ja aikataulu. <a href="https://korjauspartnerit.fi/kilpailuttaminen-ilman-hankesuunnittelua-ei-kannata/">Miksi hankesuunnittelu kannattaa</a></p></div>
+<div class="kp-article__ref"><p><strong>4. Suunnittelu, kilpailutus ja toteutus</strong><br>Tutkimustieto kulkee mukana suunnitelmiin, <a href="https://korjauspartnerit.fi/taloyhtion-korjaushankkeen-kilpailutus/">kilpailutukseen</a> ja valvontaan.</p></div>
+</div>
+
+<h2>Merkit, että kiinteistö tarvitsee kuntotutkimuksen</h2>
+<ul>
+<li>PTS:ssä on lähivuosina suuria korjauksia, mutta niiden laajuus ja kustannukset ovat epävarmoja</li>
+<li>julkisivussa tai parvekkeissa näkyy halkeamia, lohkeilua tai ruostevalumia</li>
+<li>putkistossa on toistuvia vuotoja tai viemäreissä tukoksia</li>
+<li>yläkerroksissa tai ullakolla on kosteusjälkiä</li>
+<li>asukkaat raportoivat vedosta, kylmistä pinnoista tai sisäilmaoireista</li>
+<li>taloyhtiö suunnittelee energiaremonttia, lisärakentamista tai latauspisteitä</li>
+<li>kiinteistöä ollaan ostamassa tai myymässä</li>
+</ul>
+
+<h2>Mihin kuntotutkimuksen hinta perustuu?</h2>
+<p>Kuntotutkimuksen hinta määräytyy kohteen mukaan. Hintaan vaikuttavat erityisesti:</p>
+<ul>
+<li>tutkittava rakennusosa tai järjestelmä ja kiinteistön koko</li>
+<li>tutkittavien huoneistojen, näytteiden ja laboratorioanalyysien määrä</li>
+<li>rakenneavausten ja nostimien tarve</li>
+<li>lähtötietojen saatavuus (piirustukset, aiemmat tutkimukset, huoltohistoria)</li>
+</ul>
+<p>Kun tutkimuksen laajuus määritellään kuntoarvion ja lähtötietojen perusteella, tutkitaan juuri se, mikä päätöksentekoon tarvitaan. Hyvin kohdennettu tutkimus maksaa itsensä takaisin, kun korjaus voidaan mitoittaa oikein ja urakan aikaiset yllätykset vähenevät. <a href="https://korjauspartnerit.fi/yhteystiedot/#viesti">Pyydä tarjous kuntotutkimuksesta</a>.</p>
+
+<h2>Näin taloyhtiö valmistautuu kuntotutkimukseen</h2>
+<ul>
+<li>Kokoa saatavilla olevat piirustukset, aiemmat kuntoarviot ja -tutkimukset sekä huolto- ja korjaushistoria. Puuttuvia asiakirjoja voidaan hankkia rakennusvalvonnan arkistosta.</li>
+<li>Kerää asukkaiden havainnot, esimerkiksi lyhyellä kyselyllä ennen tutkimusta.</li>
+<li>Tiedota osakkaita tutkimuspäivästä ja järjestä pääsy tutkittaviin huoneistoihin ja tiloihin.</li>
+<li>Päätä hallituksessa, mihin kysymyksiin tutkimuksen pitää vastata, esimerkiksi korjauksen ajoitukseen tai korjaustapaan.</li>
+</ul>
+
+<h2>Kuka tekee kiinteistön kuntotutkimukset?</h2>
+<p>Kuntotutkimuksen tekee kyseisen alan pätevä asiantuntija: rakennustekniikan, LVI- tai sähköalan asiantuntija tai sertifioitu rakennusterveysasiantuntija (RTA). Näytteet analysoidaan laboratoriossa, ja raportissa noudatetaan alan ohjeistusta, kuten KH- ja ST-kortteja.</p>
+<p>Korjauspartnereilla on kaikkien rakennusosien tutkijat ja useita rakennusterveysasiantuntijoita samassa talossa. Kun samalla insinööritoimistolla on myös suunnittelijat, rakennuttajat ja valvojat, tutkimustieto siirtyy suoraan korjaussuunnitteluun eikä katoa hankkeen vaiheiden välissä. Palvelemme <a href="https://korjauspartnerit.fi/insinooritoimisto/">Turun ja Helsingin toimistoistamme</a> erityisesti Varsinais-Suomea ja Uuttamaata.</p>
 
 <div class="kp-article__cta">
-<p>Tarvitaanko kiinteistöllenne kuntotutkimus? Selvitetään oikea tutkimus teidän tilanteeseenne.</p>
+<p>Tarvitaanko kiinteistöllenne kuntotutkimus? Selvitetään yhdessä oikea tutkimus teidän tilanteeseenne. Asiakaspalvelu 029 309 9000, toimisto@korjauspartnerit.fi.</p>
+<a href="https://korjauspartnerit.fi/yhteystiedot/#viesti" class="kp-article__cta-link">Pyydä tarjous</a>
+<span> · </span>
 <a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">Ota yhteyttä asiantuntijaan</a>
-<span> tai </span>
-<a href="https://korjauspartnerit.fi/kiinteistojen-palvelut-taloyhtioille/" class="kp-article__cta-link">tutustu taloyhtiöpalveluihin</a>.
+<span> · </span>
+<a href="https://korjauspartnerit.fi/kiinteistojen-palvelut-taloyhtioille/" class="kp-article__cta-link">Taloyhtiöpalvelut</a>
 </div>
 
 <section class="kp-article__faq" aria-label="Usein kysytyt kysymykset kuntotutkimuksista">
-<h2>Usein kysytyt kysymykset</h2>
-<div class="kp-article__faq-item"><h3>Mitä kuntotutkimuksia on olemassa?</h3><p>Julkisivu, putkisto, vesikatko, sähköverkko, ikkunat, sisäilma, asbestikartoitus, lämpökamerakuvaus, merkkiainekokeet sekä TDD ja EDD kiinteistökauppaan.</p></div>
-<div class="kp-article__faq-item"><h3>Milloin kuntotutkimus tarvitaan?</h3><p>Ennen suurta korjaushanketta, kun PTS osoittaa korjaustarpeen lähestyvän tai kun ongelma on jo havaittu. Ennakoiva tutkimus on aina edullisempaa kuin kriisikorjaus.</p></div>
-<div class="kp-article__faq-item"><h3>Mitä eroa on kuntoarviolla ja kuntotutkimuksella?</h3><p>Kuntoarvio on koko kiinteistön yleiskatsaus, kuntotutkimus on syvällinen tutkimus tietystä rakennusosasta tai järjestelmästä.</p></div>
-<div class="kp-article__faq-item" style="border-bottom:none;"><h3>Toimiiko Korjauspartnerit koko Suomessa?</h3><p>Kyllä. Aluetoimistot Turussa ja Helsingissä, palvelu valtakunnallisesti.</p></div>
-</section>
-</div>
-</div>
-</article>
-
-</body>
-</html>]]></content:encoded>
+<h2>Usein kysytyt kysymykset kuntotutkimuksista</h2>
+<div class="kp-article__faq-item"><h3>Mikä on kiinteistön kuntotutkimus?</h3><p>Kiinteistön kuntotutkimus on asiantuntijan tekemä yksityiskohtainen selvitys yhden rakennusosan tai järjestelmän, kuten julkisivun, putkiston, vesikaton tai sähköverkon, kunnosta. Siinä käytetään mittauksia, näytteitä ja tarvittaessa rakenneavauksia. Tulos kertoo vaurioiden syyt ja laajuuden, korjaustarpeen ja sen kiireellisyyden sekä suuntaa antavat korjauskustannukset.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä eroa on kuntoarviolla ja kuntotutkimuksella?</h3><p>Kuntoarvio on koko kiinteistön aistinvarainen yleiskatsaus, jonka tuloksena syntyy kuntoarvioraportti ja 10 vuoden kunnossapitosuunnitelma (PTS). Kuntotutkimus on syvällisempi, yhteen rakennusosaan tai järjestelmään kohdistuva tutkimus mittauksineen ja näytteineen. Kuntoarvio kertoo, mitä pitää tutkia tarkemmin, ja kuntotutkimus, miten se korjataan.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä kiinteistön kuntotutkimuksia on olemassa?</h3><p>Yleisimpiä ovat julkisivujen ja parvekkeiden kuntotutkimus, putkistojen kuntotutkimus, vesikaton kuntotutkimus, sähköverkon kuntotutkimus, ikkunoiden kuntotutkimus, sisäilmatutkimus, merkkiainekokeet, lämpökamerakuvaus sekä asbestikartoitus ja haitta-ainetutkimus. Kiinteistökaupassa käytetään teknisten riskien arviointia (TDD) ja ympäristöriskien arviointia (EDD).</p></div>
+<div class="kp-article__faq-item"><h3>Milloin kuntotutkimus pitää tehdä?</h3><p>Kuntotutkimus tehdään ennen suurta korjaushanketta, kun kuntoarvio tai PTS osoittaa rakennusosan lähestyvän käyttöikänsä loppua, kun rakenteissa näkyy vaurioita tai asukkaat raportoivat ongelmista. Ennakoiva tutkimus on lähes aina edullisempi kuin vaurion jälkeinen kiirekorjaus.</p></div>
+<div class="kp-article__faq-item"><h3>Onko asbestikartoitus pakollinen?</h3><p>Kyllä. Asbestikartoitus on lakisääteinen ennen purku- ja korjaustöitä rakennuksissa, joiden rakentaminen on aloitettu ennen vuotta 1994. Samalla kannattaa selvittää muut haitta-aineet, kuten PCB, PAH-yhdisteet ja lyijy.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä kuntotutkimus maksaa?</h3><p>Hinta riippuu tutkittavasta rakennusosasta, kiinteistön koosta, tutkittavien huoneistojen ja näytteiden määrästä, laboratorioanalyyseistä ja rakenneavausten tarpeesta. Kun tutkimuksen laajuus määritellään kuntoarvion ja lähtötietojen perusteella, tutkitaan juuri se, mikä päätöksentekoon tarvitaan. Korjauspartnerit antaa kohteesta tarjouksen.</p></div>
+<div class="kp-article__faq-item"><h3>Kuka voi tehdä kuntotutkimuksen?</h3><p>Kuntotutkimuksen tekee alan pätevä asiantuntija, esimerkiksi rakennusinsinööri, LVI- tai sähköasiantuntija tai sertifioitu rakennusterveysasiantuntija (RTA). Näytteet analysoidaan akkreditoidussa tai sertifioidussa laboratoriossa. Korjauspartnereilla on kaikkien rakennusosien tutkijat samassa talossa.</p></div>
+<div class="kp-article__faq-item"><h3>Missä Korjauspartnerit tekee kuntotutkimuksia?</h3><p>Korjauspartnereilla on toimistot Turussa ja Helsingissä. Teemme kuntotutkimuksia erityisesti Varsinais-Suomessa ja Uudellamaalla sekä tarvittaessa muualla Suomessa.</p></div>
+</section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>23634</wp:post_id>
 		<wp:post_date><![CDATA[2026-09-16 08:34:22]]></wp:post_date>
@@ -11517,11 +11682,11 @@ Kun teemme myönteisen päätöksen, ilmoitamme siitä itse valitulle kohteelle,
 		<wp:post_type><![CDATA[page]]></wp:post_type>
 		<wp:post_password></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Opas taloyhtiölle: julkisivu, putkisto, vesikatko, sähköverkko, sisäilma, asbesti ja lämpökamerakuvaukset — milloin mikäkin kuntotutkimus tarvitaan ja mitä se selvittää.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Ennen korjauksia pitää tietää, missä kunnossa kiinteistö on. Kiinteistötutkimukset ovat se työkalu — ja niitä on monia erilaisia. Tämä opas kertoo, mitä tutkimuksia on olemassa, milloin mikäkin tarvitaan ja mitä ne maksavat.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_hero_otsikko]]></wp:meta_key><wp:meta_value><![CDATA[Kiinteistöjen kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee?]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Kiinteistöjen kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee? | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Kiinteistöjen kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee?","description":"Opas kiinteistöjen kuntotutkimuksiin: julkisivu, putkisto, vesikatko, sähköverkko, sisäilma, asbesti ja lämpökamerakuvaukset. Milloin mikäkin tutkimus tarvitaan?","image":"https://korjauspartnerit.fi/wp-content/uploads/Taloyhtiomainoskuva-e1774354919585.jpg","author":{"@type":"Organization","name":"Korjauspartnerit"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-09-16","dateModified":"2026-09-16","mainEntityOfPage":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimukset-opas/","keywords":["kiinteistön kuntotutkimus","julkisivun kuntotutkimus","putkistojen kuntotutkimus","sisäilmatutkimus taloyhtiö","asbestikartoitus","kiinteistötutkimus Turku Helsinki","rakennuksen kuntoselvitys"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mitä kiinteistöjen kuntotutkimuksia on olemassa?","acceptedAnswer":{"@type":"Answer","text":"Yleisimpiä kiinteistötutkimuksia ovat julkisivujen ja parvekkeiden kuntotutkimus, putkistojen kuntotutkimus, vesikaton kuntotutkimus, sähköverkon kuntotutkimus, ikkunoiden kuntotutkimus, sisäilmatutkimus, asbestikartoitus ja haitta-ainetutkimus, lämpökamerakuvaus, merkkiainekokeet sekä kiinteistön yleinen kuntoarvio ja PTS-suunnitelma."}},{"@type":"Question","name":"Milloin kuntotutkimus tarvitaan?","acceptedAnswer":{"@type":"Answer","text":"Kuntotutkimus tarvitaan ennen suurta korjaushanketta, kun PTS osoittaa korjaustarpeen lähestyvän, kun asukkaat raportoivat ongelmista, tai kun kiinteistö on tietyn iän saavuttanut. Ennakoiva tutkimus on aina edullisempaa kuin kriisikorjaus."}},{"@type":"Question","name":"Mitä kuntoarvio ja kuntotutkimus eroavat toisistaan?","acceptedAnswer":{"@type":"Answer","text":"Kuntoarvio on yleiskatsaus koko kiinteistön kuntoon ja tuottaa PTS-suunnitelman. Kuntotutkimus on syvällisempi, tiettyyn rakennusosaan tai järjestelmään kohdistuva tutkimus, joka paljastaa vaurioiden syyt, laajuuden ja korjauskustannukset."}},{"@type":"Question","name":"Toimiiko Korjauspartnerit koko Suomessa?","acceptedAnswer":{"@type":"Answer","text":"Kyllä. Aluetoimistot Turussa ja Helsingissä, palvelu valtakunnallisesti."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Kiinteistöjen kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee?","item":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimukset-opas/"}]}]}]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Ennen korjauksia pitää tietää, missä kunnossa kiinteistö on. Kuntotutkimus kertoo, mikä rakenteessa on vialla, miksi ja kuinka laajasti – ja mitä korjaus maksaa. Tässä oppaassa käymme läpi kaikki kiinteistön kuntotutkimukset julkisivuista ja putkistoista sähköverkkoon ja sisäilmaan: mitä kussakin selvitetään, milloin tutkimus tarvitaan ja mihin sen hinta perustuu.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_hero_otsikko]]></wp:meta_key><wp:meta_value><![CDATA[Kiinteistön kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee?]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Kiinteistön kuntotutkimukset – opas taloyhtiölle | Korjauspartnerit]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Kiinteistön kuntotutkimukset: julkisivu, parvekkeet, putket, vesikatto, sähkö, ikkunat, sisäilma ja asbesti. Mitä tutkitaan ja milloin?]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimus/#article","headline":"Kiinteistön kuntotutkimukset – mitä tutkitaan, milloin ja kuka tekee?","description":"Opas taloyhtiölle ja kiinteistönomistajalle kiinteistön kuntotutkimuksiin: julkisivut ja parvekkeet, putkistot, vesikatto, sähköverkko, ikkunat, sisäilma, merkkiainekokeet, lämpökuvaus, asbesti- ja haitta-ainekartoitus sekä TDD ja EDD.","image":"https://korjauspartnerit.fi/wp-content/uploads/Taloyhtiomainoskuva-e1774354919585.jpg","inLanguage":"fi-FI","author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/"},"publisher":{"@type":"Organization","@id":"https://korjauspartnerit.fi/#organization","name":"Korjauspartnerit","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-09-16T09:00:00+03:00","dateModified":"2026-11-12T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimus/"},"keywords":["kiinteistön kuntotutkimus","kuntotutkimus taloyhtiö","julkisivun kuntotutkimus","parvekkeen kuntotutkimus","putkistojen kuntotutkimus","vesikaton kuntotutkimus","sähköverkon kuntotutkimus","ikkunoiden kuntotutkimus","sisäilmatutkimus","asbestikartoitus","kuntoarvio ja kuntotutkimus ero"],"about":[{"@type":"Service","name":"Julkisivujen ja parvekkeiden kuntotutkimus","url":"https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/"},{"@type":"Service","name":"Putkistojen kuntotutkimus","url":"https://korjauspartnerit.fi/palvelut/putkistojen-kuntotutkimus/"},{"@type":"Service","name":"Vesikaton kuntotutkimus","url":"https://korjauspartnerit.fi/palvelut/vesikaton-kuntotutkimus/"},{"@type":"Service","name":"Sähköverkon kuntotutkimus","url":"https://korjauspartnerit.fi/palvelut/sahkoverkon-kuntotutkimus/"},{"@type":"Service","name":"Ikkunoiden kuntotutkimus","url":"https://korjauspartnerit.fi/palvelut/ikkunoiden-kuntotutkimus/"},{"@type":"Service","name":"Sisäilmatutkimus","url":"https://korjauspartnerit.fi/palvelut/sisailmatutkimukset/"},{"@type":"Service","name":"Asbestikartoitus ja haitta-ainetutkimus","url":"https://korjauspartnerit.fi/palvelut/asbestikartoitus-ja-haitta-ainetutkimus/"},{"@type":"Service","name":"Kiinteistön kuntoarvio ja PTS","url":"https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/"}]},{"@type":"FAQPage","@id":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimus/#faq","mainEntity":[{"@type":"Question","name":"Mikä on kiinteistön kuntotutkimus?","acceptedAnswer":{"@type":"Answer","text":"Kiinteistön kuntotutkimus on asiantuntijan tekemä yksityiskohtainen selvitys yhden rakennusosan tai järjestelmän, kuten julkisivun, putkiston, vesikaton tai sähköverkon, kunnosta. Siinä käytetään mittauksia, näytteitä ja tarvittaessa rakenneavauksia. Tulos kertoo vaurioiden syyt ja laajuuden, korjaustarpeen ja sen kiireellisyyden sekä suuntaa antavat korjauskustannukset."}},{"@type":"Question","name":"Mitä eroa on kuntoarviolla ja kuntotutkimuksella?","acceptedAnswer":{"@type":"Answer","text":"Kuntoarvio on koko kiinteistön aistinvarainen yleiskatsaus, jonka tuloksena syntyy kuntoarvioraportti ja 10 vuoden kunnossapitosuunnitelma (PTS). Kuntotutkimus on syvällisempi, yhteen rakennusosaan tai järjestelmään kohdistuva tutkimus mittauksineen ja näytteineen. Kuntoarvio kertoo, mitä pitää tutkia tarkemmin, ja kuntotutkimus, miten se korjataan."}},{"@type":"Question","name":"Mitä kiinteistön kuntotutkimuksia on olemassa?","acceptedAnswer":{"@type":"Answer","text":"Yleisimpiä ovat julkisivujen ja parvekkeiden kuntotutkimus, putkistojen kuntotutkimus, vesikaton kuntotutkimus, sähköverkon kuntotutkimus, ikkunoiden kuntotutkimus, sisäilmatutkimus, merkkiainekokeet, lämpökamerakuvaus sekä asbestikartoitus ja haitta-ainetutkimus. Kiinteistökaupassa käytetään teknisten riskien arviointia (TDD) ja ympäristöriskien arviointia (EDD)."}},{"@type":"Question","name":"Milloin kuntotutkimus pitää tehdä?","acceptedAnswer":{"@type":"Answer","text":"Kuntotutkimus tehdään ennen suurta korjaushanketta, kun kuntoarvio tai PTS osoittaa rakennusosan lähestyvän käyttöikänsä loppua, kun rakenteissa näkyy vaurioita tai asukkaat raportoivat ongelmista. Ennakoiva tutkimus on lähes aina edullisempi kuin vaurion jälkeinen kiirekorjaus."}},{"@type":"Question","name":"Onko asbestikartoitus pakollinen?","acceptedAnswer":{"@type":"Answer","text":"Kyllä. Asbestikartoitus on lakisääteinen ennen purku- ja korjaustöitä rakennuksissa, joiden rakentaminen on aloitettu ennen vuotta 1994. Samalla kannattaa selvittää muut haitta-aineet, kuten PCB, PAH-yhdisteet ja lyijy."}},{"@type":"Question","name":"Mitä kuntotutkimus maksaa?","acceptedAnswer":{"@type":"Answer","text":"Hinta riippuu tutkittavasta rakennusosasta, kiinteistön koosta, tutkittavien huoneistojen ja näytteiden määrästä, laboratorioanalyyseistä ja rakenneavausten tarpeesta. Kun tutkimuksen laajuus määritellään kuntoarvion ja lähtötietojen perusteella, tutkitaan juuri se, mikä päätöksentekoon tarvitaan. Korjauspartnerit antaa kohteesta tarjouksen."}},{"@type":"Question","name":"Kuka voi tehdä kuntotutkimuksen?","acceptedAnswer":{"@type":"Answer","text":"Kuntotutkimuksen tekee alan pätevä asiantuntija, esimerkiksi rakennusinsinööri, LVI- tai sähköasiantuntija tai sertifioitu rakennusterveysasiantuntija (RTA). Näytteet analysoidaan akkreditoidussa tai sertifioidussa laboratoriossa. Korjauspartnereilla on kaikkien rakennusosien tutkijat samassa talossa."}},{"@type":"Question","name":"Missä Korjauspartnerit tekee kuntotutkimuksia?","acceptedAnswer":{"@type":"Answer","text":"Korjauspartnereilla on toimistot Turussa ja Helsingissä. Teemme kuntotutkimuksia erityisesti Varsinais-Suomessa ja Uudellamaalla sekä tarvittaessa muualla Suomessa."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Kiinteistön kuntotutkimukset","item":"https://korjauspartnerit.fi/kiinteistojen-kuntotutkimus/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Asunto-oy Vantti teki ennakkoluulottomia ratkaisuja]]></title>
@@ -13734,23 +13899,27 @@ taru.sateri@korjauspartnerit.fi · 0400 737 739
 		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Parvekkeiden huolto ja kunnossapito taloyhtiössä – vuosihuolto ja pitkäjänteinen suunnitelma","description":"Parvekkeiden säännöllinen huolto estää kalliit korjaukset. Lue mitä taloyhtiön vuosihuoltoon kuuluu, mikä on PTS-suunnitelman rooli ja milloin on korjauksen aika.","image":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/parvekekorjaukset.jpg","width":1200,"height":630},"author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-10-23T10:00:00+03:00","dateModified":"2026-10-23T10:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/parvekkeiden-huolto-kunnossapito/"},"keywords":["parvekehuolto taloyhtiö","parvekkeiden kunnossapito","parvekkeen vuosihuolto","parveke PTS","parveke korjausvelka","parvekkeen vedeneristys huolto","parvekkeiden kunnossapitosuunnitelma"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mitä parvekkeen vuosihuoltoon kuuluu?","acceptedAnswer":{"@type":"Answer","text":"Tyypillinen vuosihuolto sisältää viemärien puhdistuksen, vedenpoiston toimivuuden tarkastuksen, kaiteiden kunnon silmämääräisen arvioinnin, vedeneristyksen näkyvien vaurioiden kartoituksen sekä talvikäytön jälkeen tehtävän keväthuollon, jossa tarkistetaan pakkasliikkumisesta johtuvat vauriot."}},{"@type":"Question","name":"Kuka vastaa parvekkeiden huollosta taloyhtiössä?","acceptedAnswer":{"@type":"Answer","text":"Asunto-osakeyhtiölain mukaan taloyhtiö vastaa parvekkeiden rakenteellisesta kunnossapidosta. Asukkaat vastaavat omista kalusteistaan ja siitä, etteivät kuormita tai vaurioita yhtiön rakenteita."}},{"@type":"Question","name":"Milloin parvekkeet kannattaa ottaa PTS-suunnitelmaan?","acceptedAnswer":{"@type":"Answer","text":"Parvekkeet kannattaa huomioida PTS:ssä heti, kun rakennus on yli 15 vuotta vanha. Betoniparvekkeilla tyypillinen peruskorjausikä on 25–40 vuotta riippuen materiaalista ja sijainnista."}},{"@type":"Question","name":"Mitä maksaa parvekkeiden pintaremontti verrattuna peruskorjaukseen?","acceptedAnswer":{"@type":"Answer","text":"Pintaremontti (maalaus, pienkorjaukset) on edullisempi lyhyellä tähtäimellä mutta ei poista rakenteellisia ongelmia. Peruskorjaus on kertainvestointi, joka pidentää rakenteiden elinkaarta 20–30 vuodella. Kuntotutkimus kertoo, kumpi on oikeampi valinta."}},{"@type":"Question","name":"Miten parvekkeen vedeneristys pidetään kunnossa?","acceptedAnswer":{"@type":"Answer","text":"Vedeneristys tarkastetaan vuosittain silmämääräisesti: saumat, kaadot ja kynnysten tiivisteistä alkavat vuodot. Vedeneristys uusitaan yleensä 15–25 vuoden välein tai aiemmin, jos pinnassa näkyy halkeamia tai vesi ei johdu kunnolla viemärikaivoon."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Parvekkeiden huolto ja kunnossapito","item":"https://korjauspartnerit.fi/parvekkeiden-huolto-kunnossapito/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
-		<title><![CDATA[Parvekelasien tarkastus taloyhtiössä – mitä tarkastetaan, kuka vastaa ja milloin?]]></title>
+		<title><![CDATA[Parvekelasien tarkastus taloyhtiölle – näin selvität ovatko kaiteet turvallisia]]></title>
 		<link>https://korjauspartnerit.fi/parvekelasien-tarkastus/</link>
 		<dc:creator><![CDATA[sami]]></dc:creator>
 		<guid isPermaLink="false">https://korjauspartnerit.fi/?p=995001</guid>
 		<description></description>
-		<content:encoded><![CDATA[<div class="kp-article__highlight">
-<p><strong>Lyhyesti:</strong> Parvekelasien tarkastuksessa selvitetään lasikaiteiden ja parvekelasitusten turvallisuus ja kunto. Lasikaiteista mitataan lasien paksuus ja tukipinnat ja kaidelasit koestetaan mekaanisesti, sillä silmämääräinen tarkastus ei riitä. Lasikaiteista vastaa taloyhtiö. Tarkastus kannattaa tehdä viimeistään nyt, jos lasikaiteet on asennettu vuonna 2023 tai aiemmin.</p>
+		<content:encoded><![CDATA[<div class="kp-article__urgency-box">
+<p class="kp-article__urgency-label">Ajankohtainen turvallisuusasia</p>
+<p>OTKES antoi 21.5.2026 onnettomuusuhkailmoituksen parvekkeiden putoamissuojien turvallisuuspuutteista. Helsingin rakennusvalvonta suositti 3.7.2026 taloyhtiöitä tarkistuttamaan lasikaideparvekkeensa, ja pääkaupunkiseudun rakennusvalvonnat (Helsinki, Espoo, Vantaa, Kauniainen) julkaisivat samana päivänä yhteiset ohjeet. Tarkastamatta jättäminen ei ole enää neutraali päätös, vaan tietoinen riski.</p>
 </div>
 
-<h2>Mitä parvekelasien tarkastus tarkoittaa?</h2>
-<p>Parvekelasien tarkastus on asiantuntijan tekemä selvitys, jossa arvioidaan parvekkeen lasirakenteiden turvallisuus, kunto ja vaatimustenmukaisuus. Puhekielessä "parvekelaseilla" tarkoitetaan kahta eri rakennetta, ja hyvä tarkastus kattaa molemmat:</p>
-<ul>
-<li><strong>Lasikaide</strong> – parvekkeen kaide, jossa täytteenä on lasilevy. Lasikaide on parvekkeen putoamissuoja, ja sen on kestettävä siihen kohdistuvat kuormat, kuten ihmisen nojaaminen tai törmäys.</li>
-<li><strong>Parvekelasitus</strong> – kaiteen päälle asennettu avattava lasiseinä, joka suojaa parveketta tuulelta, sateelta ja lialta. Lasitus ei ole putoamissuoja, mutta sen lasien, kiskojen ja kiinnitysten on pysyttävä paikallaan kaikissa sääolosuhteissa.</li>
-</ul>
-<p>Kun puhutaan parvekkeiden turvallisuudesta, painopiste on lasikaiteissa. Lasituksen tarkastaminen samalla kertaa on kuitenkin perusteltua, koska lasitus kiinnitetään yleensä kaiteen yläjohteeseen ja sen tuulikuorma rasittaa kaidetta.</p>
+<div class="kp-article__highlight">
+<p><strong>Lyhyesti:</strong> Parvekelasien tarkastuksessa selvitetään lasikaiteiden ja parvekelasitusten turvallisuus. Lasikaiteista mitataan lasien paksuus ja tukipinnat ja kaide koestetaan mekaanisesti, koska silmämääräinen tarkastus ei riitä. Lasikaiteista vastaa taloyhtiö. Tarkastus kannattaa tilata viimeistään nyt, jos lasikaiteet on asennettu ennen vuotta 2023.</p>
+</div>
 
+<h2>Lasikaide vai parvekelasitus – mitä parvekelasien tarkastus tarkoittaa?</h2>
+<p>Puhekielessä "parvekelaseilla" tarkoitetaan kahta eri rakennetta, ja hyvä tarkastus kattaa molemmat:</p>
+<ul>
+<li><strong>Lasikaide</strong> on parvekkeen kaide, jossa täytteenä on lasilevy. Se on parvekkeen putoamissuoja, ja sen on kestettävä ihmisen nojaaminen ja törmäys.</li>
+<li><strong>Parvekelasitus</strong> on kaiteen päälle asennettu avattava lasiseinä. Se suojaa säältä mutta ei ole putoamissuoja. Lasien, kiskojen ja kiinnitysten on silti pysyttävä paikallaan kaikissa sääolosuhteissa.</li>
+</ul>
+<p>Turvallisuuden kannalta painopiste on lasikaiteissa. Lasitukset kannattaa tarkastaa samalla, koska ne kiinnitetään yleensä kaiteen yläjohteeseen ja niiden tuulikuorma rasittaa kaidetta.</p>
 <div class="kp-article__tablewrap">
 <table class="kp-article__table">
 <caption>Lasikaide ja parvekelasitus tarkastuksessa</caption>
@@ -13760,111 +13929,77 @@ taru.sateri@korjauspartnerit.fi · 0400 737 739
 <tbody>
 <tr><th scope="row">Tehtävä</th><td>Estää putoamisen</td><td>Suojaa säältä ja melulta</td></tr>
 <tr><th scope="row">Tärkein riski</th><td>Lasi tai kiinnitys pettää kuormassa</td><td>Lasi tai kisko irtoaa ja putoaa</td></tr>
-<tr><th scope="row">Tarkastetaan</th><td>Lasin paksuus ja tyyppi, tukipinnat, kiinnikkeet, runko, mekaaninen koestus</td><td>Kiskot ja kiinnitykset, lukitukset, saranat ja liukujohteet, lasien kunto, tiivisteet</td></tr>
+<tr><th scope="row">Tarkastetaan</th><td>Lasin paksuus ja tyyppi, tukipinnat, kiinnikkeet, runko, mekaaninen koestus</td><td>Kiskot ja kiinnitykset, lukitukset, saranat, lasien kunto, tiivisteet</td></tr>
 <tr><th scope="row">Vastuu yleensä</th><td>Taloyhtiö</td><td>Asentajan mukaan: taloyhtiö tai osakas</td></tr>
 </tbody>
 </table>
 </div>
 
-<h2>Miksi parvekelasien tarkastus on nyt ajankohtainen?</h2>
-<p>Lasikaiteet yleistyivät suomalaisissa kerrostaloissa 1990-luvulta alkaen, ja niitä on asennettu runsaasti myös parvekekorjausten yhteydessä. Osa ratkaisuista on toteutettu tavalla, joka ei vastaa nykyistä käsitystä kaiteiden kestävyydestä. Ikääntyessään kiinnitykset väljenevät, tiivisteet ja tukipalat kuluvat ja metalliosat ruostuvat.</p>
-<p>Onnettomuustutkintakeskus (OTKES) julkaisi keväällä 2026 onnettomuusuhkailmoituksen parvekkeiden putoamissuojauksista. Lujuustesteissä sementtikuitulevy petti jo suhteellisen pienestä törmäyksestä, ja riskejä havaittiin myös lasikaiteiden kiinnityksissä. Pääkaupunkiseudun rakennusvalvonnat julkaisivat heinäkuussa 2026 yhteisen ohjeen lasikaiteista, ja useat rakennusvalvonnat ovat ohjeistaneet taloyhtiöitä selvittämään putoamissuojien turvallisuuden ja tarvittaessa rajoittamaan parvekkeiden käyttöä.</p>
-
-<div class="kp-article__highlight">
-<p><strong>Tarkastuksistamme syksyllä 2026:</strong> Korjauspartnerit on tarkastanut syksyn aikana yli 1 000 lasikaideparveketta eri puolilla Suomea Helsingistä Ouluun ja Turusta Lappeenrantaan. Yksikään tähän mennessä tarkastamamme lasikaide ei ole täyttänyt sille asetettuja turvallisuusvaatimuksia, ja kaikkien käyttöä on rajoitettu, kunnes kaiteet on korjattu.</p>
-</div>
-
-<p>Tyypillisiä puutteita ovat olleet liian ohuet lasit, kiinnitysten riittämättömät tukipinnat, liian pitkät jännevälit laseissa ja kaiteiden riittämätön jäykkyys. Lue tarkemmin, <a href="https://korjauspartnerit.fi/parvekerakenteiden-turvallisuus/">mitä syksyn tarkastukset ovat kertoneet</a>.</p>
+<h2>Miksi parvekelasien tarkastus on nyt kiireellistä?</h2>
+<p>Suomessa asennettiin lasikaideparvekkeita erityisen paljon 1990- ja 2000-luvuilla. Osa tuon ajan ratkaisuista ei vastaa nykyisiä lujuusvaatimuksia: lasilevyt voivat olla liian ohuita, tukipinnat liian pieniä tai kiinnityspultit väljentyneet vuosien saatossa.</p>
+<p>Ongelma on vakava siksi, että <strong>vika ei näy ulospäin</strong>. Lasikaide voi näyttää täysin ehjältä ja silti pettää, jos siihen nojataan tai osutaan voimakkaasti. Silmämääräinen tarkastus ei riitä, vaan tarvitaan mittauksia ja mekaaninen koestus.</p>
 
 <blockquote class="kp-article__quote">
-"Lujuustesteissä on todettu, että sementtikuitulevy voi pettää suhteellisen pienestä törmäyksestä. Samoin testeissä on havaittu, että myös lasikaiteiden kiinnityksissä voi esiintyä riskejä, jos rakenteita ei ole toteutettu tai ylläpidetty oikein." <cite>— Kimmo Köyvönen, rakennesuunnittelija, Korjauspartnerit</cite>
+"Lujuustesteissä on todettu, että sementtikuitulevy voi pettää suhteellisen pienestä törmäyksestä. Samoin testeissä on havaittu, että myös lasikaiteiden kiinnityksissä voi esiintyä riskejä, jos rakenteita ei ole toteutettu tai ylläpidetty oikein."
+<cite>— Kimmo Köyvönen, rakennesuunnittelija, Korjauspartnerit</cite>
 </blockquote>
 
-<h2>Mitä parvekelasien tarkastuksessa tarkastetaan?</h2>
-<p>Parveketurvallisuus on kokonaisuus, jossa yksikin heikko kohta voi muodostaa riskin. Siksi tarkastuksessa käydään läpi lasien lisäksi niitä kannattelevat rakenteet.</p>
+<h2>Mitä parvekelasien tarkastus sisältää?</h2>
+<p>Pätevä parvekelasien tarkastus on paljon enemmän kuin silmäily. Se sisältää seuraavat osat:</p>
 
-<h3>Lasikaiteet</h3>
-<ul>
-<li><strong>Kaidelasien paksuuksien mittaus</strong> – liian ohut lasi on ollut tarkastuksissamme yleisin puute.</li>
-<li><strong>Lasityypin tunnistus</strong> – kaiteen lasina käytetään laminoitua turvalasia, joka pysyy rikkoutuessaankin koossa ja estää putoamisen. Pelkkä karkaistu lasi murtuu pieniksi muruiksi, jolloin putoamissuoja häviää.</li>
-<li><strong>Lasien tukipintojen mittaus</strong> – lasi ei saa päästä liukumaan pois kiinnikkeistään kuormituksessa.</li>
-<li><strong>Mekaaninen koestus</strong> – huoneistoparvekkeiden lasikaidelevyjä koestetaan kuormittamalla, jotta nähdään kaiteen todellinen käyttäytyminen.</li>
-<li><strong>Kaiderungon ja kiinnitysten tarkastus</strong> – kaidetolpat, ankkuroinnit, lasikiinnikkeet ja niiden ympäröivä betoni.</li>
-<li><strong>Jännevälit ja jäykkyys</strong> – pitkä lasilevy tai jousto kaiteessa heikentää kestävyyttä.</li>
-</ul>
-
-<h3>Parvekelasitukset</h3>
-<ul>
-<li><strong>Ylä- ja alakiskojen kiinnitykset</strong> kaiteeseen ja yläpuolisen parvekkeen laattaan.</li>
-<li><strong>Lukitukset, saranat ja liukujohteet</strong> – lasin on pysyttävä kiinni myös myrskyssä ja avattaessa.</li>
-<li><strong>Lasien kunto</strong> – lohkeamat, särökohdat ja reunavauriot sekä lasien kiinnitys profiileihin.</li>
-<li><strong>Tiivisteet, tuuletus ja vedenpoisto</strong> – riittämätön tuuletus aiheuttaa kosteutta, joka rasittaa parvekelaattaa ja kaiteen kiinnityksiä.</li>
-<li><strong>Lasituksen vaikutus kaiteeseen</strong> – lasituksen tuulikuorma siirtyy kaiteelle, joten kaiteen ja lasituksen yhteistoiminta arvioidaan.</li>
-</ul>
-
-<h3>Parvekkeen muut rakenteet</h3>
-<ul>
-<li><strong>Sementtikuitulevyiset kaiteet</strong> tarkastetaan viranomaisohjeiden mukaisesti.</li>
-<li><strong>Betoniparvekkeiden turvallisuustarkastus</strong> – halkeamat, rapautuminen ja raudoitteiden korroosio laatoissa, pielissä ja kiinnityksissä.</li>
-<li><strong>Kaiteen korkeus ja aukot</strong> – vanhoissa rakennuksissa kaide voi olla nykyvaatimuksia matalampi.</li>
-</ul>
-<p>Jos parvekkeiden yleinen kunto herättää kysymyksiä, tarkastus voidaan laajentaa <a href="https://korjauspartnerit.fi/parvekkeenkuntotutkimus/">parvekkeen kuntotutkimukseksi</a> tai osaksi <a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">julkisivujen ja parvekkeiden kuntotutkimusta</a>.</p>
-
-<h2>Lasikaide- ja lasitustyypit: mihin tarkastuksessa keskitytään?</h2>
-<p>Tarkastuksen painopiste riippuu siitä, miten lasi on kiinnitetty. Siksi tarkastaja tunnistaa ensin parvekkeiden kaide- ja lasitusratkaisut.</p>
-<ul>
-<li><strong>Kehyksellinen lasikaide</strong> – lasilevy on asennettu kaiderungon tai kehyksen sisään tolppien väliin. Tärkeimmät tarkastuskohteet ovat lasin paksuus, lasin reunan tukipinta kehyksessä sekä tolppien kiinnitys parvekelaattaan.</li>
-<li><strong>Pistekiinnitteinen lasikaide</strong> – lasi on kiinnitetty runkoon tai laatan reunaan pistemäisillä kiinnikkeillä. Erityistä huomiota vaativat kiinnikkeiden kunto, lasin reikien ympäristö ja kiinnikkeiden ankkurointi betoniin.</li>
-<li><strong>Alareunastaan kiinnitetty lasikaide</strong> – lasi seisoo jäykästi alaprofiilin varassa ilman pystytolppia. Tarkastetaan profiilin kiinnitys, lasin kiilaus profiiliin ja kaiteen jäykkyys.</li>
-<li><strong>Karmiton parvekelasitus</strong> – yleisin lasitustyyppi, jossa lasit liukuvat kiskoilla ja kääntyvät auki. Tarkastetaan lasien kiinnitys profiileihin, kääntö- ja lukitusmekanismit sekä kiskojen kiinnitys kaiteeseen ja yläpuoliseen laattaan.</li>
-<li><strong>Karmillinen parvekelasitus</strong> – lasit ovat liukuvissa karmeissa. Tarkastetaan karmien ja liukupyörien kunto, tiivisteet sekä vedenpoisto.</li>
-</ul>
-
-<h3>Muistilista hallitukselle ennen tarkastusta</h3>
-<ul>
-<li>Selvitä, milloin kaiteet ja lasitukset on asennettu ja kuka ne on teettänyt.</li>
-<li>Kokoa saatavilla olevat piirustukset, aiempi kuntoarvio, PTS ja parvekekorjausten asiakirjat.</li>
-<li>Kirjaa osakkaiden ja huollon ilmoittamat havainnot parvekkeista.</li>
-<li>Päätä tarkastuksen tilaamisesta hallituksen kokouksessa ja kirjaa päätös pöytäkirjaan.</li>
-<li>Tiedota osakkaita tarkastuspäivästä ja pyydä tyhjentämään parvekkeet.</li>
-</ul>
-
-<h2>Riittääkö silmämääräinen tarkastus?</h2>
-<p>Ei riitä. Kaikki puutteet eivät näy päältä päin: kaide voi näyttää ehjältä, vaikka lasi tai sen kiinnitys ei kestäisi vaadittua kuormaa. Esimerkiksi lasin paksuutta tai tukipinnan leveyttä ei voi luotettavasti arvioida silmällä, eikä lasityyppiä aina tunnista ilman mittausta.</p>
-<p>Taloyhtiön huolto, isännöitsijä tai osakkaat voivat ja niiden kannattaakin seurata parvekkeiden kuntoa ja ilmoittaa havaitsemistaan vaurioista. Turvallisuuden toteaminen vaatii kuitenkin asiantuntijan tekemän tarkastuksen mittauksineen ja koestuksineen.</p>
-
-<h2>Miten parvekelasien tarkastus etenee?</h2>
 <div class="kp-article__refgrid">
 <div class="kp-article__ref">
-<p><strong>1. Lähtötiedot</strong><br>Kokoamme piirustukset, aiemmat kuntoarviot ja tiedot kaiteiden ja lasitusten asennusvuosista. Puuttuvat tiedot eivät estä tarkastusta.</p>
+<p><strong>Lasilevyjen paksuusmittaus</strong>Lasilevyjen paksuus mitataan ja sitä verrataan vaatimuksiin. Liian ohut lasi ei kestä standardin SFS-EN 1991-1-1 mukaista vaakakuormaa.</p>
 </div>
 <div class="kp-article__ref">
-<p><strong>2. Osakastiedote ja aikataulu</strong><br>Laadimme isännöitsijälle valmiin tiedotteen, jotta parvekkeet ovat tarkastuspäivänä vapaana ja kulku huoneistoihin on järjestetty.</p>
+<p><strong>Tukipinta-alan mittaus</strong>PKS-rakennusvalvontojen ohjeessa lasilevyn tukipinnalle on vähimmäisvaatimus. Liian pieni kontaktipinta tarkoittaa, että lasi voi irrota kehyksestä kuormituksessa.</p>
 </div>
 <div class="kp-article__ref">
-<p><strong>3. Kenttätarkastus</strong><br>Tarkastamme parvekkeet, mittaamme lasipaksuudet ja tukipinnat ja koestamme kaidelasit. Lasitusten kiinnitykset ja lukitukset käydään läpi.</p>
+<p><strong>Kiinnitysten tarkastus</strong>Pulttien kireys, kiinnikepalojen eheys, profiilirakenteen kunto ja ruosteen aste. Ruostunut kiinnitin ei pidä kaatumistilanteessa.</p>
 </div>
 <div class="kp-article__ref">
-<p><strong>4. Välitön ilmoitus vaarasta</strong><br>Jos parvekkeella havaitaan välitön putoamisvaara, ilmoitamme siitä heti, jotta parvekkeen käyttö voidaan rajoittaa.</p>
+<p><strong>Mekaaninen koestus</strong>Kaidelevyyn kohdistetaan standardin mukainen vaakasuuntainen kuorma. Koestus on ainoa tapa todentaa, kestääkö kaide käytännössä.</p>
 </div>
 <div class="kp-article__ref">
-<p><strong>5. Raportti ja toimenpidesuositukset</strong><br>Raportti kertoo puutteet parvekekohtaisesti, niiden kiireellisyyden ja suositellut korjaustavat. Se toimii hallituksen päätöksenteon pohjana.</p>
+<p><strong>Lasilevyjen tarkastus</strong>Halkeamat, siruilu, laminointikerroksen irtoaminen ja reunavauriot. Kaiteissa tulee olla laminoitu turvalasi, joka pysyy rikkoutuessaankin koossa.</p>
 </div>
 <div class="kp-article__ref">
-<p><strong>6. Jatkotoimet</strong><br>Autamme korjausten suunnittelussa, lupa-asioissa, kilpailutuksessa ja valvonnassa, jotta korjaukset toteutetaan oikein.</p>
+<p><strong>Kaiderungon tarkastus</strong>Alumiini- tai teräsrungon jäykkyys, liitokset ja muodonmuutokset. Joustava runko siirtää kuormaa epätasaisesti lasille.</p>
+</div>
+<div class="kp-article__ref">
+<p><strong>Parvekelasitusten tarkastus</strong>Ylä- ja alakiskojen kiinnitykset, lukitukset, saranat ja liukujohteet, lasien kunto sekä tuuletus ja vedenpoisto.</p>
+</div>
+<div class="kp-article__ref">
+<p><strong>Sementtikuitulevyjen tarkastus</strong>OTKESin uhkailmoituksen perusteella sementtikuitulevyt putoamissuojana tarkastetaan erikseen viranomaisohjeiden mukaisesti.</p>
+</div>
+<div class="kp-article__ref">
+<p><strong>Kirjallinen raportti</strong>Raportti kertoo puutteet parvekekohtaisesti, niiden vakavuuden ja suositellut jatkotoimenpiteet. Se on hallituksen päätöksenteon ja oikeusturvan pohja.</p>
 </div>
 </div>
 
-<h2>Milloin parvekelasit pitää tarkastaa?</h2>
-<p>Tarkastus kannattaa teettää viimeistään nyt, jos jokin seuraavista pätee taloyhtiöönne:</p>
+<h2>Lasikaide- ja lasitustyypit: mihin tarkastus keskittyy?</h2>
+<p>Tarkastuksen painopiste riippuu siitä, miten lasi on kiinnitetty:</p>
 <ul>
-<li>parvekkeilla on <strong>vuonna 2023 tai sitä ennen asennetut lasikaiteet</strong></li>
-<li>rakennus on valmistunut <strong>1960–1980-luvuilla</strong> tai parvekkeissa on sementtikuitulevyjä</li>
-<li>parvekkeita <strong>ei ole kartoitettu pitkään aikaan</strong> tai ajantasaista suunnitelmatietoa ei ole</li>
-<li>rakenteissa näkyy <strong>vaurioita</strong>, kuten halkeamia, irtoamista tai ruostetta</li>
-<li>taloyhtiö on saanut rakennusvalvonnalta tai isännöitsijältä <strong>kehotuksen selvittää putoamissuojat</strong></li>
+<li><strong>Kehyksellinen lasikaide</strong> – lasi on kaiderungon sisällä tolppien välissä. Tärkeimmät kohteet ovat lasin paksuus, reunan tukipinta ja tolppien kiinnitys laattaan.</li>
+<li><strong>Pistekiinnitteinen lasikaide</strong> – lasi on kiinnitetty pistemäisillä kiinnikkeillä. Huomio kiinnikkeiden kuntoon, lasin reikien ympäristöön ja ankkurointiin.</li>
+<li><strong>Alareunastaan kiinnitetty lasikaide</strong> – lasi seisoo alaprofiilin varassa ilman tolppia. Tarkastetaan profiilin kiinnitys, lasin kiilaus ja kaiteen jäykkyys.</li>
+<li><strong>Karmiton parvekelasitus</strong> – yleisin lasitustyyppi. Tarkastetaan lasien kiinnitys profiileihin, kääntö- ja lukitusmekanismit ja kiskojen kiinnitys.</li>
+<li><strong>Karmillinen parvekelasitus</strong> – lasit liukuvissa karmeissa. Tarkastetaan karmit, liukupyörät, tiivisteet ja vedenpoisto.</li>
 </ul>
-<p>Lisäksi parvekelasien tarkastus kuuluu luontevasti <a href="https://korjauspartnerit.fi/palvelut/kiinteistojen-kuntoarviot-ja-pts/">kuntoarvion ja PTS:n</a> päivitykseen sekä vaiheeseen ennen <a href="https://korjauspartnerit.fi/parvekekorjaus-taloyhtiolle/">parvekekorjausta</a> tai julkisivuremonttia.</p>
+
+<h2>Kenet tarkastus koskee ja millä aikataululla?</h2>
+<p>Helsingin rakennusvalvonnan ohje (3.7.2026) on selkeä: <em>"Rakennuksen omistaja on vastuussa parvekkeiden turvallisuudesta."</em> Tarkastus on kiireellisin, kun kyse on:</p>
+<ul>
+<li><strong>lasikaideparvekkeista, jotka on asennettu ennen vuotta 2023</strong> – valtaosa Suomen lasikaideparvekkeista</li>
+<li><strong>parvekkeista, joissa on sementtikuitulevyjä putoamissuojana</strong> – OTKESin uhkailmoituksen piirissä</li>
+<li><strong>1960–1980-luvulla rakennetuista kohteista</strong> – vanha betonirakenne voi heikentää kiinnityksiä</li>
+<li><strong>kohteista, joita ei ole kartoitettu yli viiteen vuoteen</strong></li>
+<li><strong>kohteista, joissa näkyy halkeamia, ruostetta tai löysyyttä</strong> – tarkastus heti</li>
+</ul>
+
+<div class="kp-article__highlight">
+<p><strong>Suuret vuokranantajat Sato ja Lumo kielsivät parvekkeiden käytön kokonaan</strong> kesällä 2026, kunnes tarkastukset oli tehty. Pienemmissä taloyhtiöissä reagointi on ollut hitaampaa. Isännöintiliiton lakiasiantuntija Sara Rintamon mukaan osassa taloyhtiöitä tarkastuksia ei ole tilattu vielä ollenkaan.</p>
+</div>
 
 <h3>Merkit, joiden vuoksi tarkastus kannattaa tilata heti</h3>
 <ul>
@@ -13872,87 +14007,200 @@ taru.sateri@korjauspartnerit.fi · 0400 737 739
 <li>lasin reunassa on lohkeama tai kiinnikkeen kohdalla särö</li>
 <li>kaidetolppa tai kiinnike on ruostunut tai sen ympäriltä betoni on halkeillut</li>
 <li>parvekelasi on irronnut kiskostaan, lukitus ei pidä tai lasit eivät liu'u</li>
-<li>parvekkeen laatassa tai pielissä näkyy halkeamia, rapautumista tai ruostevalumia</li>
+<li>parvekelaatassa tai pielissä näkyy halkeamia, rapautumista tai ruostevalumia</li>
 </ul>
-<p>Jos havaitset parvekkeella välittömän putoamisvaaran, älä käytä parveketta ja ilmoita asiasta heti isännöitsijälle tai huoltoyhtiölle.</p>
 
-<h2>Kuka vastaa parvekelaseista taloyhtiössä?</h2>
-<p><a href="https://www.finlex.fi/fi/laki/ajantasa/2023/20230751" target="_blank" rel="noopener">Rakentamislaki (751/2023)</a> velvoittaa rakennuksen omistajan pitämään rakennuksen kunnossa ja turvallisena käyttää. Asunto-osakeyhtiössä omistaja on taloyhtiö, ja <a href="https://www.finlex.fi/fi/laki/ajantasa/2009/20091599" target="_blank" rel="noopener">asunto-osakeyhtiölain (1599/2009)</a> mukaan hallituksen on huolehdittava yhtiön kiinteistön kunnossapidosta.</p>
+<h2>Kuka saa tehdä parvekelasien tarkastuksen?</h2>
+<p>Kysymys on herättänyt paljon keskustelua kesän 2026 jälkeen. Yle uutisoi, että sama yritys voi asentaa ja tarkastaa parvekelasin, mikä on herättänyt epäluuloja tarkastusten puolueettomuudesta.</p>
+<p>Suomen Tasolasiyhdistyksen toimitusjohtaja Jenni Heikkilä suosittelee <strong>riippumatonta tarkastajaa</strong>, joka ei ole asentanut kyseisiä kaiteita. Tarkastajan tulee:</p>
 <ul>
-<li><strong>Lasikaiteet</strong> ovat parvekkeen putoamissuoja ja osa rakennusta. Niiden turvallisuus ja kunnossapito kuuluvat taloyhtiölle.</li>
-<li><strong>Parvekelasitukset</strong>: jos taloyhtiö on teettänyt lasitukset, vastuu on yleensä yhtiöllä. Jos osakas on asentanut lasituksen muutostyönä yhtiön luvalla, kunnossapito kuuluu lähtökohtaisesti osakkaalle, ellei toisin ole sovittu. Tarkista vastuunjako yhtiöjärjestyksestä, muutostyöluvasta ja yhtiön vastuunjakotaulukosta.</li>
-<li><strong>Tarkastuksen tilaa käytännössä taloyhtiö</strong> kaikista parvekkeista kerralla. Näin tulokset ovat vertailukelpoisia, kustannus jää pienemmäksi ja hallitus saa kokonaiskuvan.</li>
+<li>tuntea lasikaiteiden turvallisuusvaatimukset ja riskirakenteet</li>
+<li>olla perehtynyt lasi- ja metallirakenteisiin</li>
+<li>pystyä esittämään CV ja referenssit vastaavista kohteista</li>
+<li>tuottaa kirjallinen, allekirjoitettu tarkastusraportti</li>
 </ul>
-<p>Kun riskistä on julkisesti varoitettu, toimimattomuus on hallitukselle erityisen riskialtista. Kirjaa tarkastuspäätös ja jatkotoimet hallituksen pöytäkirjaan ja tiedota osakkaita. Lue lisää aiheesta <a href="https://korjauspartnerit.fi/parvekerakenteiden-turvallisuus-mita-taloyhtion-tulee-selvittaa-nyt/">mitä taloyhtiön tulee selvittää parvekerakenteiden turvallisuudesta</a>.</p>
+<p>Isännöintiliiton lakiasiantuntija Sara Rintamo huomauttaa, että <strong>käytännön asennuksen arviointi ja rakenteellinen mitoitus saattavat edellyttää eri asiantuntijaa</strong>, joten pelkkä asentajan lausunto ei aina riitä.</p>
+<p>Kun kaiteita korjataan tai uusitaan, työ vaatii suunnitelmat ja usein rakennusvalvonnan luvan. Uusien kaiteiden on täytettävä rakentamislain ja ympäristöministeriön käyttöturvallisuusvaatimukset.</p>
+
+<h2>Miten tarkastus tilataan? Vaihe vaiheelta</h2>
+
+<div class="kp-article__steps">
+<div class="kp-article__step">
+<span class="kp-article__step-num">1</span>
+<div>
+<strong>Selvitä parvekkeiden ikä ja tyyppi</strong>
+<p>Tarkista rakennuspiirustuksista tai isännöitsijätodistuksesta, milloin parvekkeet on rakennettu tai viimeksi peruskorjattu. Onko kaiteissa lasia vai sementtikuitulevyä, ja kuka on asentanut mahdolliset lasitukset?</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">2</span>
+<div>
+<strong>Tee hallituksen päätös ja dokumentoi se</strong>
+<p>Kirjaa hallituksen pöytäkirjaan, että tarkastus tilataan OTKESin ja rakennusvalvonnan ohjeiden perusteella. Dokumentointi osoittaa, että hallitus on toiminut huolellisesti.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">3</span>
+<div>
+<strong>Pyydä tarjous riippumattomalta asiantuntijalta</strong>
+<p>Pyydä tarjous, CV ja referenssit. Varmista, että tarkastukseen kuuluu mekaaninen koestus eikä pelkkä silmämääräinen tarkastus.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">4</span>
+<div>
+<strong>Tiedota asukkaille etukäteen</strong>
+<p>Ilmoita osakkaille ja vuokralaisille tarkastuksen ajankohdasta ja pyydä tyhjentämään parvekkeet. Kerro, miksi tarkastus tehdään. Selkeä viestintä vähentää huolta ja epäselvyyksiä.</p>
+</div>
+</div>
+<div class="kp-article__step">
+<span class="kp-article__step-num">5</span>
+<div>
+<strong>Toimi raportin mukaan välittömästi</strong>
+<p>Jos raportti osoittaa vakavia puutteita, rajoita parvekkeiden käyttöä heti ja käynnistä korjausten suunnittelu. Rajoituksen lykkääminen on sekä turvallisuus- että oikeudellinen riski hallitukselle.</p>
+</div>
+</div>
+</div>
+
+<h2>Mitä tapahtuu, jos tarkastuksessa löytyy puutteita?</h2>
+<p>Kokemuksemme perusteella löydökset jakautuvat kolmeen vakavuusasteeseen:</p>
+
+<div class="kp-article__refgrid">
+<div class="kp-article__ref kp-article__ref--red">
+<p><strong>Välitön käyttörajoitus</strong>Kaide ei kestä vaadittua kuormaa tai lasilevyssä on halkeamia. Parveke suljetaan käytöltä heti, kunnes korjaus on tehty.</p>
+</div>
+<div class="kp-article__ref kp-article__ref--orange">
+<p><strong>Korjaus lähiaikoina</strong>Puutteet ovat merkittäviä mutta eivät välittömästi kriittisiä. Korjaussuunnitelma laaditaan ja toteutetaan sovitussa aikataulussa, yleensä 3–6 kuukauden kuluessa.</p>
+</div>
+<div class="kp-article__ref kp-article__ref--green">
+<p><strong>Seuranta ja huolto</strong>Pieniä puutteita, jotka eivät vaaranna turvallisuutta. Kirjataan PTS:ään ja tarkastetaan seuraavalla kerralla.</p>
+</div>
+<div class="kp-article__ref">
+<p><strong>Korjausvaihtoehdot</strong>Kiinnitysten korjaus · lasilevyjen vaihto · koko kaiteen uusiminen · <a href="https://korjauspartnerit.fi/parvekekorjaus-taloyhtiolle/">parvekekorjaus osana laajempaa remonttia</a>.</p>
+</div>
+</div>
+
+<h2>Vastuut taloyhtiössä: kuka on velvollinen toimimaan?</h2>
+<ul>
+<li><a href="https://www.finlex.fi/fi/laki/ajantasa/2023/20230751" target="_blank" rel="noopener"><strong>Rakentamislaki (751/2023)</strong></a> – rakennuksen omistajan on pidettävä rakennus kunnossa ja turvallisena käyttää.</li>
+<li><a href="https://www.finlex.fi/fi/laki/ajantasa/2009/20091599" target="_blank" rel="noopener"><strong>Asunto-osakeyhtiölaki (1599/2009)</strong></a> – hallituksen on huolehdittava yhtiön kiinteistön kunnossapidosta. Hallituksen jäsenet voivat joutua vahingonkorvausvastuuseen laiminlyönnistä.</li>
+<li><strong>OTKESin onnettomuusuhkailmoitus (21.5.2026)</strong> – tekee riskistä yleisesti tunnetun. "Emme tienneet" ei enää ole uskottava selitys.</li>
+<li><strong>PKS-rakennusvalvontojen ohje (3.7.2026)</strong> – Helsingin, Espoon, Vantaan ja Kauniaisten yhteinen ohje täsmentää velvoitteen pääkaupunkiseudulla.</li>
+</ul>
+<p><strong>Lasikaiteet</strong> ovat putoamissuoja ja osa rakennusta, joten niistä vastaa taloyhtiö. <strong>Parvekelasituksen</strong> vastuu riippuu asentajasta: yhtiön teettämä lasitus kuuluu yleensä yhtiölle, osakkaan muutostyönä yhtiön luvalla asentama lähtökohtaisesti osakkaalle, ellei toisin ole sovittu. Tarkista vastuunjako yhtiöjärjestyksestä, muutostyöluvasta ja vastuunjakotaulukosta.</p>
+
+<blockquote class="kp-article__quote">
+"Rakennuksen omistaja on vastuussa parvekkeiden turvallisuudesta. Taloyhtiön tulee arvioida tapauskohtaisesti, miten asukkaiden turvallisuus varmistetaan ennen tarkistusta. Tarvittaessa parvekkeiden käyttö voidaan kieltää."
+<cite>— Helsingin rakennusvalvonta, 3.7.2026</cite>
+</blockquote>
 
 <h2>Mitä parvekelasien tarkastus maksaa?</h2>
-<p>Tarkastuksen hinta määräytyy kohteen mukaan. Hintaan vaikuttavat erityisesti:</p>
+<p>Tarkastuksen hinta määräytyy kohteen mukaan. Hintaan vaikuttavat:</p>
 <ul>
 <li>parvekkeiden määrä ja tyypit (huoneisto-, ranska- ja käytäväparvekkeet)</li>
 <li>kaide- ja lasitusratkaisut sekä koestettavien lasien määrä</li>
 <li>kulku parvekkeille: huoneistojen kautta vai ulkopuolelta nostimella</li>
-<li>lähtötietojen saatavuus</li>
-<li>tarvitaanko lisätutkimuksia, kuten betonirakenteiden kuntotutkimusta</li>
+<li>lähtötietojen saatavuus ja mahdolliset lisätutkimukset</li>
 </ul>
-<p>Kun kaikki parvekkeet tarkastetaan samalla kertaa, parvekekohtainen hinta laskee ja raportti palvelee päätöksentekoa parhaiten. Annamme kohteesta kiinteähintaisen tarjouksen – <a href="https://korjauspartnerit.fi/yhteystiedot/#viesti">pyydä tarjous parvekelasien tarkastuksesta</a>.</p>
+<p>Kun kaikki parvekkeet tarkastetaan samalla kertaa, parvekekohtainen hinta laskee ja raportti palvelee päätöksentekoa parhaiten. Korjauspartnerit antaa kiinteähintaisen tarjouksen etukäteen.</p>
 
-<h2>Tarkastuksen jälkeen: korjaus, lasien vaihto vai uusiminen?</h2>
-<p>Raportissa puutteet luokitellaan kiireellisyyden mukaan. Vakavissa puutteissa parvekkeen käyttöä rajoitetaan heti. Korjausvaihtoehtoja on tyypillisesti neljä:</p>
+<h2>Parvekelasien tarkastus vai parvekkeen kuntotutkimus?</h2>
+<div class="kp-article__compare">
+<div class="kp-article__compare-col">
+<h3>Parvekelasien tarkastus</h3>
 <ul>
-<li><strong>Kiinnitysten korjaus tai vahvistaminen</strong> – kun lasit ovat kunnossa mutta kiinnikkeet tai tukipinnat eivät riitä.</li>
-<li><strong>Kaidelasien vaihto</strong> – kun runko täyttää vaatimukset mutta lasit ovat alimittaisia tai väärää tyyppiä.</li>
-<li><strong>Kaiteen uusiminen</strong> – koko kaidejärjestelmä vaihdetaan nykyvaatimusten mukaiseen.</li>
-<li><strong>Parvekkeen peruskorjaus</strong> – kun myös betonirakenteissa on korjaustarvetta, kaiteet ja lasitukset uusitaan osana kokonaisuutta.</li>
+<li>Kohdistuu lasikaiteiden ja lasitusten turvallisuuteen</li>
+<li>Mittaukset ja mekaaninen koestus</li>
+<li>Vastaa kysymykseen: onko kaide turvallinen nyt?</li>
+<li>Kirjallinen tarkastusraportti</li>
+<li>Nopea toteuttaa kiireellisessä tilanteessa</li>
 </ul>
-<p>Kaiteiden muutokset vaativat suunnitelmat ja usein rakennusvalvonnan luvan. Lue lisää <a href="https://korjauspartnerit.fi/lasikaiteiden-turvallisuus/">lasikaiteiden turvallisuusvaatimuksista ja uusimisesta</a> sekä <a href="https://korjauspartnerit.fi/parvekekorjaus-taloyhtiolle/">parvekekorjauksen kustannuksista ja vastuista</a>.</p>
+</div>
+<div class="kp-article__compare-col">
+<h3>Parvekkeen kuntotutkimus</h3>
+<ul>
+<li>Kattaa kaikki parvekkeen rakenteet</li>
+<li>Betonin karbonatisoitumis- ja kloridimittaukset</li>
+<li>Vastaa kysymykseen: missä kunnossa parveke on kokonaisuutena?</li>
+<li>Laaja raportti kustannusarvioineen</li>
+<li>Pohja koko korjausohjelmalle</li>
+</ul>
+</div>
+</div>
+<p>Tarkastus voidaan syventää <a href="https://korjauspartnerit.fi/parvekkeenkuntotutkimus/">parvekkeen kuntotutkimukseksi</a> tai osaksi <a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/">julkisivujen ja parvekkeiden kuntotutkimusta</a>, jos tarkastuksessa ilmenee laajempia rakenteellisia ongelmia.</p>
 
 <h2>Vinkit osakkaalle: näin pidät parvekelasit kunnossa</h2>
 <ul>
 <li>Pidä parvekelasit suljettuina ja lukittuina kovalla tuulella ja poissa ollessasi.</li>
 <li>Puhdista kiskot hiekasta ja lehdistä, jotta lasit liukuvat ja lukitukset toimivat.</li>
-<li>Tuuleta lasitettua parveketta ja jätä tuuletusrako auki, jotta kosteus ei tiivisty rakenteisiin.</li>
+<li>Tuuleta lasitettua parveketta, jotta kosteus ei tiivisty rakenteisiin.</li>
 <li>Älä kiinnitä kaiteeseen tai lasitukseen raskaita kukkalaatikoita tai telineitä ilman taloyhtiön lupaa.</li>
 <li>Ilmoita isännöitsijälle heti, jos huomaat löysän lasin, lohkeaman tai ruostetta.</li>
 </ul>
-<p>Parvekkeen säännöllisestä huollosta kerromme lisää artikkelissa <a href="https://korjauspartnerit.fi/parvekkeiden-huolto-ja-kunnossapito/">parvekkeiden huolto ja kunnossapito</a>.</p>
+<p>Parvekkeen säännöllisestä huollosta kerromme artikkelissa <a href="https://korjauspartnerit.fi/parvekkeiden-huolto-ja-kunnossapito/">parvekkeiden huolto ja kunnossapito</a>.</p>
 
-<h2>Miksi Korjauspartnerit tarkastajaksi?</h2>
+<h2>Miten Korjauspartnerit hoitaa parvekelasien tarkastuksen?</h2>
+<p>Korjauspartnerit on tarkastanut syksyllä 2026 yli 1&nbsp;000 lasikaideparveketta eri puolilla Suomea. Prosessimme:</p>
 <ul>
-<li><strong>Kokemus:</strong> yli 1 000 tarkastettua lasikaideparveketta syksyllä 2026 eri puolilla Suomea.</li>
-<li><strong>Rakennesuunnittelijat samassa talossa:</strong> tarkastuksesta siirrytään suoraan korjausratkaisuihin ja suunnitelmiin.</li>
-<li><strong>Selkeä raportti</strong>, joka kertoo hallitukselle, mitä pitää tehdä, missä järjestyksessä ja kuinka kiireellisesti.</li>
-<li><strong>Koko polku yhdeltä kumppanilta:</strong> kartoitus, suunnittelu, lupa-asiat, kilpailutus, <a href="https://korjauspartnerit.fi/palvelut/rakennuttaminen-ja-projektinjohto/">rakennuttaminen</a> ja valvonta.</li>
+<li><strong>Kiinteähintainen tarjous etukäteen</strong> – tiedät kustannukset ennen töiden aloittamista</li>
+<li><strong>Riippumaton tarkastaja</strong> – emme ole asentaneet tarkastettavia kaiteita</li>
+<li><strong>Mekaaninen koestus mukana</strong> – ei pelkkää silmäilyä</li>
+<li><strong>Kirjallinen raportti 5–10 arkipäivässä</strong> – hallituksella on päätöspohja nopeasti</li>
+<li><strong>Jatkumo tarvittaessa</strong> – tarkastuksesta suoraan korjaussuunnitteluun, kilpailutukseen ja valvontaan samalla tiimillä</li>
 </ul>
-<p>Palvelemme taloyhtiöitä Helsingin ja Turun toimistoistamme koko Etelä-Suomessa. Lisätietoa parvekkeiden kokonaisturvallisuudesta löydät sivulta <a href="https://korjauspartnerit.fi/parveketurvallisuus-parvekkeiden-kunto-ja-turvallisuus/">parveketurvallisuus – parvekkeiden kunto ja turvallisuus</a>.</p>
+<p>Lue lisää: <a href="https://korjauspartnerit.fi/parvekerakenteiden-turvallisuus/">Parvekerakenteiden turvallisuus – mitä syksyn tarkastukset ovat kertoneet</a> · <a href="https://korjauspartnerit.fi/lasikaiteiden-turvallisuus/">Lasikaiteiden turvallisuusvaatimukset</a> · <a href="https://korjauspartnerit.fi/parveketurvallisuus-parvekkeiden-kunto-ja-turvallisuus/">Parveketurvallisuus</a></p>
 
-<h2>Ulkoiset lähteet ja viranomaisohjeet</h2>
-<ul>
-<li><a href="https://www.otkes.fi" target="_blank" rel="noopener">OTKES – Onnettomuustutkintakeskus</a>: onnettomuusuhkailmoitus parvekkeiden putoamissuojauksista (kevät 2026)</li>
-<li><a href="https://www.vantaa.fi/fi/asuminen-ja-ymparisto/rakentaminen/rakennusvalvonta" target="_blank" rel="noopener">PKS-rakennusvalvontojen ohjeet (Helsinki, Espoo, Vantaa, Kauniainen)</a> – suositukset ja ohjeet lasikaiteista 3.7.2026</li>
-<li><a href="https://www.finlex.fi/fi/laki/ajantasa/2023/20230751" target="_blank" rel="noopener">Rakentamislaki (751/2023)</a> – rakennuksen omistajan kunnossapitovelvollisuus</li>
-<li><a href="https://www.finlex.fi/fi/laki/ajantasa/2009/20091599" target="_blank" rel="noopener">Asunto-osakeyhtiölaki (1599/2009)</a> – hallituksen kunnossapitovastuu ja osakkaan muutostyöt</li>
-<li><a href="https://ym.fi/rakentamismaaraykset" target="_blank" rel="noopener">Ympäristöministeriö – rakentamismääräykset</a> – rakennuksen käyttöturvallisuutta koskevat vaatimukset</li>
-</ul>
+<h2>Ota yhteyttä – tarkastus käyntiin nopeasti</h2>
+<div class="kp-article__contacts">
+<div class="kp-article__contact">
+<p class="kp-article__contact-name">Jari Lemponen</p>
+<p class="kp-article__contact-title">Myyntijohtaja · Toimialapäällikkö taloyhtiöt, Uusimaa</p>
+<p><a href="tel:+358444918240">044 491 8240</a></p>
+<p><a href="mailto:jari.lemponen@korjauspartnerit.fi">jari.lemponen@korjauspartnerit.fi</a></p>
+</div>
+<div class="kp-article__contact">
+<p class="kp-article__contact-name">Miikka Nieminen</p>
+<p class="kp-article__contact-title">Osastopäällikkö taloyhtiöt · Varsinais-Suomi ja Pirkanmaa</p>
+<p><a href="tel:+358447771712">044 777 1712</a></p>
+<p><a href="mailto:miikka.nieminen@korjauspartnerit.fi">miikka.nieminen@korjauspartnerit.fi</a></p>
+</div>
+<div class="kp-article__contact">
+<p class="kp-article__contact-name">Taru Säteri</p>
+<p class="kp-article__contact-title">Aluejohtaja · Varsinais-Suomi</p>
+<p><a href="tel:+358400737739">0400 737 739</a></p>
+<p><a href="mailto:taru.sateri@korjauspartnerit.fi">taru.sateri@korjauspartnerit.fi</a></p>
+</div>
+<div class="kp-article__contact">
+<p class="kp-article__contact-name">Asiakaspalvelu</p>
+<p class="kp-article__contact-title">Koko Suomi</p>
+<p><a href="tel:+358293099000">029 309 9000</a></p>
+<p><a href="mailto:toimisto@korjauspartnerit.fi">toimisto@korjauspartnerit.fi</a></p>
+</div>
+</div>
 
 <div class="kp-article__cta">
-<p>Tarkastetaanko taloyhtiönne parvekelasit? Kerro kohteesta, niin annamme kiinteähintaisen tarjouksen.</p>
-<a href="https://korjauspartnerit.fi/yhteystiedot/#viesti" class="kp-article__cta-link">Pyydä tarjous parvekelasien tarkastuksesta</a>
+<p>Haluatko tilata parvekelasien tarkastuksen tai pyytää tarjouksen?</p>
+<a href="https://korjauspartnerit.fi/yhteystiedot/#viesti" class="kp-article__cta-link">Pyydä tarjous</a>
 <span> · </span>
 <a href="https://korjauspartnerit.fi/henkilokunta/" class="kp-article__cta-link">Ota yhteyttä asiantuntijoihimme</a>
 <span> · </span>
-<a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/" class="kp-article__cta-link">Parveke- ja julkisivututkimukset</a>
+<a href="https://korjauspartnerit.fi/palvelut/julkisivujen-ja-parvekkeiden-kuntotutkimukset/" class="kp-article__cta-link">Julkisivu- ja parveketutkimukset</a>
 </div>
 
-<section class="kp-article__faq" aria-label="Usein kysytyt kysymykset">
+<section class="kp-article__faq" aria-label="Usein kysytyt kysymykset parvekelasien tarkastuksesta">
 <h2>Usein kysytyt kysymykset parvekelasien tarkastuksesta</h2>
-<div class="kp-article__faq-item"><h3>Mitä parvekelasien tarkastus tarkoittaa?</h3><p>Asiantuntija selvittää, ovatko parvekkeen lasikaiteet ja parvekelasitukset kiinnityksineen turvallisia ja ehjiä. Lasikaiteista mitataan lasien paksuus ja tukipinnat ja kaidelasit koestetaan mekaanisesti, lasituksista tarkastetaan kiskot, kiinnitykset, lukitukset ja lasien kunto. Tuloksena saadaan raportti puutteista ja niiden kiireellisyydestä.</p></div>
-<div class="kp-article__faq-item"><h3>Kenen vastuulla parvekelasien tarkastus on?</h3><p>Lasikaide on putoamissuoja ja osa rakennusta, joten siitä vastaa taloyhtiö. Parvekelasituksen vastuu riippuu asentajasta: yhtiön teettämä lasitus kuuluu yleensä yhtiölle, osakkaan muutostyönä asentama lähtökohtaisesti osakkaalle. Tarkastus kannattaa tilata taloyhtiön kautta kaikista parvekkeista kerralla.</p></div>
-<div class="kp-article__faq-item"><h3>Onko parvekelasien tarkastus pakollinen?</h3><p>Erillistä tarkastusvelvoitetta ei ole, mutta rakentamislaki velvoittaa omistajan pitämään rakennuksen turvallisena. OTKESin onnettomuusuhkailmoitus ja rakennusvalvontojen lasikaideohje tekevät tarkastuksesta käytännössä välttämättömän erityisesti vanhemmille lasikaiteille.</p></div>
-<div class="kp-article__faq-item"><h3>Riittääkö silmämääräinen tarkastus?</h3><p>Ei. Lasikaide voi näyttää ehjältä, vaikka lasi on liian ohut tai kiinnitys ei kestä kuormaa. Siksi tarvitaan mittaukset ja mekaaninen koestus.</p></div>
-<div class="kp-article__faq-item"><h3>Milloin parvekelasit kannattaa tarkastuttaa?</h3><p>Viimeistään nyt, jos lasikaiteet on asennettu vuonna 2023 tai aiemmin, rakennus on 1960–1980-luvuilta, parvekkeita ei ole kartoitettu pitkään aikaan tai rakenteissa näkyy vaurioita. Lisäksi kuntoarvion ja PTS:n yhteydessä sekä ennen parvekekorjausta.</p></div>
-<div class="kp-article__faq-item"><h3>Mitä parvekelasien tarkastus maksaa?</h3><p>Hinta riippuu parvekkeiden määrästä ja tyypistä, kaide- ja lasitusratkaisuista, koestettavien lasien määrästä, kulkuyhteyksistä ja mahdollisista lisätutkimuksista. Kun kaikki parvekkeet tarkastetaan kerralla, parvekekohtainen hinta on edullisempi. Annamme kohteesta kiinteähintaisen tarjouksen.</p></div>
-<div class="kp-article__faq-item"><h3>Mitä tapahtuu, jos tarkastuksessa löytyy puutteita?</h3><p>Puutteet luokitellaan kiireellisyyden mukaan, ja vakavissa tapauksissa parvekkeen käyttöä rajoitetaan heti. Korjaus voi olla kiinnitysten vahvistaminen, lasien vaihto, kaiteen uusiminen tai laajempi parvekekorjaus. Korjaukset vaativat suunnitelmat ja usein rakennusvalvonnan luvan.</p></div>
-<div class="kp-article__faq-item"><h3>Mitä eroa on lasikaiteella ja parvekelasituksella?</h3><p>Lasikaide estää putoamisen. Parvekelasitus on kaiteen päälle asennettu avattava lasiseinä, joka suojaa säältä mutta ei ole putoamissuoja. Molemmat tarkastetaan, koska lasituksen kiinnitykset ja tuulikuormat rasittavat myös kaidetta.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä parvekelasien tarkastus sisältää?</h3><p>Lasilevyjen paksuusmittauksen, tukipinta-alan ja kiinnitysten tarkastuksen, kaiteen mekaanisen koestuksen standardin SFS-EN 1991-1-1 mukaiselle vaakakuormalle, lasilevyjen tarkastuksen (halkeamat, siruilu, laminoinnin kunto) sekä kirjallisen raportin jatkotoimenpidesuosituksineen. Parvekelasituksista tarkastetaan lisäksi kiskot, kiinnitykset ja lukitukset.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä eroa on lasikaiteella ja parvekelasituksella?</h3><p>Lasikaide on parvekkeen kaide, jonka tehtävä on estää putoaminen. Parvekelasitus on kaiteen päälle asennettu avattava lasiseinä, joka suojaa säältä mutta ei ole putoamissuoja. Tarkastuksen painopiste on lasikaiteissa, mutta lasitukset kannattaa tarkastaa samalla, koska niiden kiinnitykset ja tuulikuorma rasittavat kaidetta.</p></div>
+<div class="kp-article__faq-item"><h3>Kuka saa tehdä parvekelasien tarkastuksen?</h3><p>Lasi- ja metallirakenteisiin perehtynyt pätevä asiantuntija. Suomen Tasolasiyhdistys suosittelee riippumatonta tarkastajaa, joka ei ole asentanut kyseisiä kaiteita. Pyydä tarkastajalta CV ja referenssit vastaavista kohteista.</p></div>
+<div class="kp-article__faq-item"><h3>Onko parvekelasien tarkastus pakollinen?</h3><p>Laissa ei ole yksittäistä pykälää, joka pakottaisi tarkastukseen. Rakentamislaki velvoittaa rakennuksen omistajan pitämään rakennuksen kunnossa ja turvallisena, ja asunto-osakeyhtiölain mukaan hallituksen on huolehdittava kunnossapidosta. OTKESin onnettomuusuhkailmoitus (21.5.2026) ja rakennusvalvontojen ohjeet (3.7.2026) tekevät riskistä tunnetun, joten tarkastus on käytännössä välttämätön.</p></div>
+<div class="kp-article__faq-item"><h3>Mitkä parvekkeet on tarkastettava kiireellisimmin?</h3><p>Ennen vuotta 2023 asennetut lasikaiteet, parvekkeet, joissa on sementtikuitulevyjä putoamissuojana, sekä kaikki parvekkeet, joiden kaiteissa näkyy halkeamia, ruostetta tai löysyyttä. Korjauspartnerit on tarkastanut syksyllä 2026 yli 1 000 lasikaideparveketta, eikä yksikään ole täyttänyt turvallisuusvaatimuksia.</p></div>
+<div class="kp-article__faq-item"><h3>Onko pakko rajoittaa parvekkeen käyttöä ennen tarkastusta?</h3><p>Ei automaattisesti, mutta taloyhtiön on arvioitava riski tapauskohtaisesti. Jos kaiteessa näkyy halkeamia, löysyyttä tai ruostetta, käytön rajoittaminen ennen tarkastusta on viisasta. Helsingin rakennusvalvonta mainitsee käyttökiellon mahdollisuutena, ei velvollisuutena.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä parvekelasien tarkastus maksaa?</h3><p>Hinta määräytyy parvekkeiden lukumäärän ja tyypin, kaide- ja lasitusratkaisujen, koestettavien lasien määrän sekä kulkuyhteyksien mukaan. Kun kaikki parvekkeet tarkastetaan kerralla, parvekekohtainen hinta on edullisempi. Korjauspartnerit antaa kiinteähintaisen tarjouksen etukäteen.</p></div>
+<div class="kp-article__faq-item"><h3>Mitä tapahtuu, jos parvekelasit eivät läpäise tarkastusta?</h3><p>Raportti kertoo puutteet ja niiden vakavuuden. Vakavissa puutteissa parvekkeen käyttö rajoitetaan välittömästi, lievemmissä laaditaan korjaussuunnitelma ja aikataulu. Korjausvaihtoehdot ovat kiinnitysten korjaus, lasilevyjen vaihto, koko kaiteen uusiminen tai laajempi parvekekorjaus.</p></div>
+<div class="kp-article__faq-item"><h3>Voiko saman yrityksen asentaja myös tarkastaa kaiteet?</h3><p>Teknisesti se on mahdollista, mutta Suomen Tasolasiyhdistys suosittelee riippumatonta tarkastajaa. Isännöintiliiton lakiasiantuntija Sara Rintamo huomauttaa, että käytännön asennuksen ja rakenteellisen mitoituksen arviointi saattaa edellyttää eri asiantuntijaa.</p></div>
+<div class="kp-article__faq-item"><h3>Kuka vastaa parvekelaseista – taloyhtiö vai osakas?</h3><p>Lasikaide on putoamissuoja ja osa rakennusta, joten siitä vastaa taloyhtiö. Parvekelasituksen vastuu riippuu asentajasta: yhtiön teettämä lasitus kuuluu yleensä yhtiölle, osakkaan muutostyönä asentama lähtökohtaisesti osakkaalle, ellei toisin ole sovittu. Tarkastus kannattaa tilata taloyhtiön kautta kaikista parvekkeista kerralla.</p></div>
+<div class="kp-article__faq-item"><h3>Korvaako vakuutus, jos onnettomuus sattuu tarkastamattomalla parvekkeella?</h3><p>Vakuutusyhtiö voi rajoittaa korvausta, jos taloyhtiö on laiminlyönyt tiedossa olevan turvallisuuspuutteen. OTKESin uhkailmoituksen ja rakennusvalvontojen ohjeiden jälkeen riski on yleisesti tunnettu, joten tarkastuksen laiminlyönti on vaikea perustella.</p></div>
+<div class="kp-article__faq-item"><h3>Saavatko osakkaat nähdä tarkastusraportin?</h3><p>Raportti ei ole julkinen, mutta se kuuluu taloyhtiön hallinnon asiakirjoihin, joihin osakkailla on asunto-osakeyhtiölain mukainen tiedonsaantioikeus. Raportin keskeiset tulokset kannattaa kertoa osakkaille tiedotteella.</p></div>
 </section>]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>995001</wp:post_id>
@@ -13977,10 +14225,10 @@ taru.sateri@korjauspartnerit.fi · 0400 737 739
 		<category domain="post_tag" nicename="taloyhtio"><![CDATA[taloyhtiö]]></category>
 		<wp:postmeta><wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key><wp:meta_value><![CDATA[20728]]></wp:meta_value></wp:postmeta>
 		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_focuskw]]></wp:meta_key><wp:meta_value><![CDATA[parvekelasien tarkastus]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Parvekelasien tarkastus taloyhtiössä – sisältö, vastuut ja hinta %%sep%% %%sitename%%]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Parvekelasien tarkastus on noussut taloyhtiöiden tärkeimpien tehtävien joukkoon. OTKES varoitti keväällä 2026 parvekkeiden putoamissuojien puutteista, ja Korjauspartnereiden syksyllä tarkastamista yli 1 000 lasikaideparvekkeesta yksikään ei ole täyttänyt sille asetettuja turvallisuusvaatimuksia. Tässä oppaassa kerromme, mitä parvekelasien tarkastus sisältää, kuka siitä vastaa, milloin se kannattaa tehdä ja mitä tuloksilla tehdään.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Parvekelasien tarkastus varmistaa lasikaiteiden ja parvekelasitusten turvallisuuden. Lue, mitä tarkastus sisältää, kuka vastaa ja milloin se on tehtävä.]]></wp:meta_value></wp:postmeta>
-		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Parvekelasien tarkastus taloyhtiössä – mitä tarkastetaan, kuka vastaa ja milloin?","description":"Parvekelasien tarkastus varmistaa lasikaiteiden ja parvekelasitusten turvallisuuden. Opas taloyhtiölle: tarkastuksen sisältö, vastuut, ajoitus, kustannuksiin vaikuttavat tekijät ja jatkotoimet.","image":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/parvekkeiden-kuntotutkimukset.jpg","width":1200,"height":630},"author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi"},"publisher":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-10-28T08:00:00+02:00","dateModified":"2026-10-28T08:00:00+02:00","inLanguage":"fi-FI","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/parvekelasien-tarkastus/"},"keywords":["parvekelasien tarkastus","parvekelasitusten tarkastus","lasikaiteen tarkastus","lasikaiteiden tarkastus taloyhtiö","parvekelasien turvallisuus","parvekelasit taloyhtiö vastuu","parvekelasien huolto","parveketurvallisuus 2026","OTKES lasikaide"],"about":[{"@type":"Thing","name":"Parvekelasien tarkastus","description":"Taloyhtiön lasikaiteiden ja parvekelasitusten turvallisuuden ja kunnon tarkastus"},{"@type":"Thing","name":"Lasikaide"},{"@type":"Thing","name":"Parvekelasitus"}],"citation":[{"@type":"CreativeWork","name":"OTKES onnettomuusuhkailmoitus parvekkeiden putoamissuojauksista","url":"https://www.otkes.fi","datePublished":"2026-04"},{"@type":"CreativeWork","name":"PKS-rakennusvalvontojen suositukset ja ohjeet lasikaiteista","url":"https://www.vantaa.fi/fi/asuminen-ja-ymparisto/rakentaminen/rakennusvalvonta","datePublished":"2026-07-03"},{"@type":"Legislation","name":"Rakentamislaki (751/2023)","url":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230751"},{"@type":"Legislation","name":"Asunto-osakeyhtiölaki (1599/2009)","url":"https://www.finlex.fi/fi/laki/ajantasa/2009/20091599"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mitä parvekelasien tarkastus tarkoittaa?","acceptedAnswer":{"@type":"Answer","text":"Parvekelasien tarkastuksessa asiantuntija selvittää, ovatko parvekkeen lasirakenteet – lasikaiteet ja parvekelasitukset kiinnityksineen – turvallisia ja ehjiä. Lasikaiteista mitataan lasien paksuus ja tukipinnat ja kaidelasit koestetaan mekaanisesti. Lasituksista tarkastetaan kiskot, kiinnitykset, lukitukset ja lasien kunto. Tuloksena taloyhtiö saa raportin puutteista, korjaustarpeista ja niiden kiireellisyydestä."}},{"@type":"Question","name":"Kenen vastuulla parvekelasien tarkastus on?","acceptedAnswer":{"@type":"Answer","text":"Lasikaide on parvekkeen putoamissuoja ja osa rakennusta, joten sen turvallisuudesta vastaa taloyhtiö rakennuksen omistajana. Parvekelasituksen kunnossapitovastuu riippuu siitä, kuka lasituksen on asentanut: yhtiön teettämä lasitus kuuluu yleensä yhtiölle, osakkaan muutostyönä asentama lasitus lähtökohtaisesti osakkaalle, ellei toisin ole sovittu. Taloyhtiön hallituksen kannattaa teettää tarkastus kaikista parvekkeista kerralla."}},{"@type":"Question","name":"Onko parvekelasien tarkastus pakollinen?","acceptedAnswer":{"@type":"Answer","text":"Erillistä lakisääteistä tarkastusvelvoitetta ei ole. Rakentamislaki velvoittaa rakennuksen omistajan pitämään rakennuksen kunnossa ja turvallisena käyttää. OTKESin keväällä 2026 antama onnettomuusuhkailmoitus ja pääkaupunkiseudun rakennusvalvontojen lasikaideohje tekevät tarkastuksesta käytännössä välttämättömän erityisesti vanhemmille lasikaiteille."}},{"@type":"Question","name":"Riittääkö silmämääräinen tarkastus?","acceptedAnswer":{"@type":"Answer","text":"Ei riitä. Lasikaide voi näyttää ehjältä, vaikka lasi on liian ohut tai sen kiinnitys ei kestä vaadittua kuormaa. Siksi tarkastukseen kuuluvat lasipaksuuksien ja tukipintojen mittaukset sekä kaidelasien mekaaninen koestus."}},{"@type":"Question","name":"Milloin parvekelasit kannattaa tarkastuttaa?","acceptedAnswer":{"@type":"Answer","text":"Viimeistään nyt, jos parvekkeilla on vuonna 2023 tai sitä ennen asennetut lasikaiteet, rakennus on valmistunut 1960–1980-luvuilla, parvekkeita ei ole kartoitettu pitkään aikaan tai rakenteissa näkyy halkeamia, ruostetta tai löysiä kiinnityksiä. Lisäksi tarkastus kannattaa tehdä kuntoarvion ja PTS:n päivityksen yhteydessä sekä ennen parvekekorjausta."}},{"@type":"Question","name":"Mitä parvekelasien tarkastus maksaa?","acceptedAnswer":{"@type":"Answer","text":"Hinta riippuu parvekkeiden määrästä ja tyypistä, kaide- ja lasitusratkaisuista, koestettavien lasien määrästä, kulkuyhteyksistä sekä siitä, tarvitaanko nostinta tai lisätutkimuksia. Kun kaikki parvekkeet tarkastetaan samalla kertaa, parvekekohtainen hinta on edullisempi. Korjauspartnerit antaa kohteesta kiinteähintaisen tarjouksen."}},{"@type":"Question","name":"Mitä tapahtuu, jos tarkastuksessa löytyy puutteita?","acceptedAnswer":{"@type":"Answer","text":"Raportissa puutteet luokitellaan kiireellisyyden mukaan. Vakavissa puutteissa parvekkeen käyttöä rajoitetaan heti, kunnes kaide on korjattu. Ratkaisu voi olla lasien vaihto, kiinnitysten vahvistaminen, koko kaiteen uusiminen tai laajempi parvekekorjaus. Taloyhtiö tarvitsee korjaukselle suunnitelmat ja usein myös rakennusvalvonnan luvan."}},{"@type":"Question","name":"Mitä eroa on lasikaiteella ja parvekelasituksella?","acceptedAnswer":{"@type":"Answer","text":"Lasikaide on parvekkeen kaide, jonka tehtävä on estää putoaminen. Parvekelasitus on kaiteen päälle asennettu avattava lasiseinä, joka suojaa parveketta säältä mutta ei toimi putoamissuojana. Molemmat tarkastetaan, koska lasituksen kiinnitykset ja tuulikuormat rasittavat myös kaidetta."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Parvekelasien tarkastus","item":"https://korjauspartnerit.fi/parvekelasien-tarkastus/"}]}]}]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_title]]></wp:meta_key><wp:meta_value><![CDATA[Parvekelasien tarkastus taloyhtiölle %%sep%% %%sitename%%]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_ingressi]]></wp:meta_key><wp:meta_value><![CDATA[Kesällä 2026 Vantaan Tikkurilassa mies putosi parvekkeelta lasilevyn pettäessä. Syksyyn mennessä Korjauspartnerit oli tarkastanut yli 1&nbsp;000 lasikaideparveketta ympäri Suomen, ja tulos on huolestuttava: yksikään tarkastettu lasikaide ei täyttänyt turvallisuusvaatimuksia. Tässä oppaassa kerromme, mitä parvekelasien tarkastus sisältää, kuka sen saa tehdä, kuka vastaa, mitä se maksaa ja miten taloyhtiö hoitaa asian kuntoon.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[_yoast_wpseo_metadesc]]></wp:meta_key><wp:meta_value><![CDATA[Parvekelasien tarkastus taloyhtiölle: mitä lasikaiteiden ja parvekelasitusten tarkastus sisältää, kuka sen tekee, kuka vastaa ja mitä se maksaa.]]></wp:meta_value></wp:postmeta>
+		<wp:postmeta><wp:meta_key><![CDATA[kp_jsonld]]></wp:meta_key><wp:meta_value><![CDATA[{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://korjauspartnerit.fi/parvekelasien-tarkastus/#article","headline":"Parvekelasien tarkastus taloyhtiölle – näin selvität ovatko kaiteet turvallisia","description":"Parvekelasien tarkastus taloyhtiölle: mitä lasikaiteiden ja parvekelasitusten tarkastus sisältää, kuka sen tekee, kuka vastaa ja mitä se maksaa.","image":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/parvekekorjaukset.jpg","width":1200,"height":630},"inLanguage":"fi-FI","author":{"@type":"Organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/"},"publisher":{"@type":"Organization","@id":"https://korjauspartnerit.fi/#organization","name":"Korjauspartnerit","url":"https://korjauspartnerit.fi/","logo":{"@type":"ImageObject","url":"https://korjauspartnerit.fi/wp-content/uploads/korjauspartnerit-logo-1.svg"}},"datePublished":"2026-10-28T08:00:00+02:00","dateModified":"2026-11-12T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://korjauspartnerit.fi/parvekelasien-tarkastus/"},"keywords":["parvekelasien tarkastus","parvekelasit tarkastus","parvekelasin tarkastus","parvekelasien tarkistus","lasikaide tarkastus","lasikaiteiden tarkastus taloyhtiö","parvekelasitusten tarkastus","parvekelasi turvallisuus","lasikaide vaatimukset 2026","parveketurvallisuus tarkastus","OTKES lasikaide"],"about":{"@type":"Service","name":"Parvekelasien turvallisuustarkastus","serviceType":"Lasikaiteiden ja parvekelasitusten turvallisuustarkastus","provider":{"@id":"https://korjauspartnerit.fi/#organization"},"areaServed":{"@type":"Country","name":"Suomi"}},"citation":[{"@type":"CreativeWork","name":"OTKES onnettomuusuhkailmoitus – parvekkeiden putoamissuojaukset","url":"https://www.otkes.fi","datePublished":"2026-05-21"},{"@type":"CreativeWork","name":"Helsingin rakennusvalvonta – lasikaiteiden tarkistuttaminen","url":"https://www.hel.fi/fi/kaupunkiymparisto-ja-liikenne/tontit-ja-rakentamisen-luvat/rakentamisluvan-hakeminen/ajankohtaista-rakennusvalvonnasta","datePublished":"2026-07-03"},{"@type":"CreativeWork","name":"PKS-rakennusvalvontojen ohjeet ja suositukset lasikaiteista","datePublished":"2026-07-03"},{"@type":"Legislation","name":"Rakentamislaki (751/2023)","url":"https://www.finlex.fi/fi/laki/ajantasa/2023/20230751"},{"@type":"Legislation","name":"Asunto-osakeyhtiölaki (1599/2009)","url":"https://www.finlex.fi/fi/laki/ajantasa/2009/20091599"}]},{"@type":"FAQPage","@id":"https://korjauspartnerit.fi/parvekelasien-tarkastus/#faq","mainEntity":[{"@type":"Question","name":"Mitä parvekelasien tarkastus sisältää?","acceptedAnswer":{"@type":"Answer","text":"Lasilevyjen paksuusmittauksen, tukipinta-alan ja kiinnitysten tarkastuksen, kaiteen mekaanisen koestuksen standardin SFS-EN 1991-1-1 mukaiselle vaakakuormalle, lasilevyjen tarkastuksen (halkeamat, siruilu, laminoinnin kunto) sekä kirjallisen raportin jatkotoimenpidesuosituksineen. Parvekelasituksista tarkastetaan lisäksi kiskot, kiinnitykset ja lukitukset."}},{"@type":"Question","name":"Mitä eroa on lasikaiteella ja parvekelasituksella?","acceptedAnswer":{"@type":"Answer","text":"Lasikaide on parvekkeen kaide, jonka tehtävä on estää putoaminen. Parvekelasitus on kaiteen päälle asennettu avattava lasiseinä, joka suojaa säältä mutta ei ole putoamissuoja. Tarkastuksen painopiste on lasikaiteissa, mutta lasitukset kannattaa tarkastaa samalla, koska niiden kiinnitykset ja tuulikuorma rasittavat kaidetta."}},{"@type":"Question","name":"Kuka saa tehdä parvekelasien tarkastuksen?","acceptedAnswer":{"@type":"Answer","text":"Lasi- ja metallirakenteisiin perehtynyt pätevä asiantuntija. Suomen Tasolasiyhdistys suosittelee riippumatonta tarkastajaa, joka ei ole asentanut kyseisiä kaiteita. Pyydä tarkastajalta CV ja referenssit vastaavista kohteista."}},{"@type":"Question","name":"Onko parvekelasien tarkastus pakollinen?","acceptedAnswer":{"@type":"Answer","text":"Laissa ei ole yksittäistä pykälää, joka pakottaisi tarkastukseen. Rakentamislaki velvoittaa rakennuksen omistajan pitämään rakennuksen kunnossa ja turvallisena, ja asunto-osakeyhtiölain mukaan hallituksen on huolehdittava kunnossapidosta. OTKESin onnettomuusuhkailmoitus (21.5.2026) ja rakennusvalvontojen ohjeet (3.7.2026) tekevät riskistä tunnetun, joten tarkastus on käytännössä välttämätön."}},{"@type":"Question","name":"Mitkä parvekkeet on tarkastettava kiireellisimmin?","acceptedAnswer":{"@type":"Answer","text":"Ennen vuotta 2023 asennetut lasikaiteet, parvekkeet, joissa on sementtikuitulevyjä putoamissuojana, sekä kaikki parvekkeet, joiden kaiteissa näkyy halkeamia, ruostetta tai löysyyttä. Korjauspartnerit on tarkastanut syksyllä 2026 yli 1 000 lasikaideparveketta, eikä yksikään ole täyttänyt turvallisuusvaatimuksia."}},{"@type":"Question","name":"Onko pakko rajoittaa parvekkeen käyttöä ennen tarkastusta?","acceptedAnswer":{"@type":"Answer","text":"Ei automaattisesti, mutta taloyhtiön on arvioitava riski tapauskohtaisesti. Jos kaiteessa näkyy halkeamia, löysyyttä tai ruostetta, käytön rajoittaminen ennen tarkastusta on viisasta. Helsingin rakennusvalvonta mainitsee käyttökiellon mahdollisuutena, ei velvollisuutena."}},{"@type":"Question","name":"Mitä parvekelasien tarkastus maksaa?","acceptedAnswer":{"@type":"Answer","text":"Hinta määräytyy parvekkeiden lukumäärän ja tyypin, kaide- ja lasitusratkaisujen, koestettavien lasien määrän sekä kulkuyhteyksien mukaan. Kun kaikki parvekkeet tarkastetaan kerralla, parvekekohtainen hinta on edullisempi. Korjauspartnerit antaa kiinteähintaisen tarjouksen etukäteen."}},{"@type":"Question","name":"Mitä tapahtuu, jos parvekelasit eivät läpäise tarkastusta?","acceptedAnswer":{"@type":"Answer","text":"Raportti kertoo puutteet ja niiden vakavuuden. Vakavissa puutteissa parvekkeen käyttö rajoitetaan välittömästi, lievemmissä laaditaan korjaussuunnitelma ja aikataulu. Korjausvaihtoehdot ovat kiinnitysten korjaus, lasilevyjen vaihto, koko kaiteen uusiminen tai laajempi parvekekorjaus."}},{"@type":"Question","name":"Voiko saman yrityksen asentaja myös tarkastaa kaiteet?","acceptedAnswer":{"@type":"Answer","text":"Teknisesti se on mahdollista, mutta Suomen Tasolasiyhdistys suosittelee riippumatonta tarkastajaa. Isännöintiliiton lakiasiantuntija Sara Rintamo huomauttaa, että käytännön asennuksen ja rakenteellisen mitoituksen arviointi saattaa edellyttää eri asiantuntijaa."}},{"@type":"Question","name":"Kuka vastaa parvekelaseista – taloyhtiö vai osakas?","acceptedAnswer":{"@type":"Answer","text":"Lasikaide on putoamissuoja ja osa rakennusta, joten siitä vastaa taloyhtiö. Parvekelasituksen vastuu riippuu asentajasta: yhtiön teettämä lasitus kuuluu yleensä yhtiölle, osakkaan muutostyönä asentama lähtökohtaisesti osakkaalle, ellei toisin ole sovittu. Tarkastus kannattaa tilata taloyhtiön kautta kaikista parvekkeista kerralla."}},{"@type":"Question","name":"Korvaako vakuutus, jos onnettomuus sattuu tarkastamattomalla parvekkeella?","acceptedAnswer":{"@type":"Answer","text":"Vakuutusyhtiö voi rajoittaa korvausta, jos taloyhtiö on laiminlyönyt tiedossa olevan turvallisuuspuutteen. OTKESin uhkailmoituksen ja rakennusvalvontojen ohjeiden jälkeen riski on yleisesti tunnettu, joten tarkastuksen laiminlyönti on vaikea perustella."}},{"@type":"Question","name":"Saavatko osakkaat nähdä tarkastusraportin?","acceptedAnswer":{"@type":"Answer","text":"Raportti ei ole julkinen, mutta se kuuluu taloyhtiön hallinnon asiakirjoihin, joihin osakkailla on asunto-osakeyhtiölain mukainen tiedonsaantioikeus. Raportin keskeiset tulokset kannattaa kertoa osakkaille tiedotteella."}}]},{"@type":"HowTo","name":"Miten taloyhtiö tilaa parvekelasien tarkastuksen","description":"Vaiheittainen ohje parvekelasien turvallisuustarkastuksen tilaamiseen taloyhtiölle.","step":[{"@type":"HowToStep","position":1,"name":"Selvitä parvekkeiden ikä ja tyyppi","text":"Tarkista rakennuspiirustuksista tai isännöitsijätodistuksesta, milloin parvekkeet on rakennettu tai viimeksi peruskorjattu ja onko kaiteissa lasia vai sementtikuitulevyä."},{"@type":"HowToStep","position":2,"name":"Tee hallituksen päätös ja dokumentoi se","text":"Kirjaa hallituksen pöytäkirjaan, että tarkastus tilataan OTKESin ja rakennusvalvonnan ohjeiden perusteella."},{"@type":"HowToStep","position":3,"name":"Pyydä tarjous riippumattomalta asiantuntijalta","text":"Pyydä tarjous, CV ja referenssit ja varmista, että tarkastukseen kuuluu mekaaninen koestus."},{"@type":"HowToStep","position":4,"name":"Tiedota asukkaille etukäteen","text":"Ilmoita osakkaille ja vuokralaisille tarkastuksen ajankohdasta ja pyydä tyhjentämään parvekkeet."},{"@type":"HowToStep","position":5,"name":"Toimi raportin mukaan välittömästi","text":"Jos raportti osoittaa vakavia puutteita, rajoita parvekkeiden käyttöä heti ja käynnistä korjausten suunnittelu."}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Etusivu","item":"https://korjauspartnerit.fi/"},{"@type":"ListItem","position":2,"name":"Ajankohtaista","item":"https://korjauspartnerit.fi/ajankohtaista/"},{"@type":"ListItem","position":3,"name":"Parvekelasien tarkastus","item":"https://korjauspartnerit.fi/parvekelasien-tarkastus/"}]}]}]]></wp:meta_value></wp:postmeta>
 	</item>
 	<item>
 		<title><![CDATA[Tiiveyden mittaukset]]></title>
