@@ -1,0 +1,7 @@
+IKKUNAREMONTTI SALO – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Ikkunaremontti Salo → Muokkaa
+  Otsikko (title):   Ikkunaremontti Salo – myös Perniö, Halikko ja Särkisalo
+  Osoite (slug):     /ikkunat-ikkunaremontti-salo/   (ei muutu)
+  Ote (kuvaus):      Ikkunaremontti koko Salossa: keskustan taloyhtiöt, maaseudun vanhat talot ja rannikon mökit. Mittatilaus-Skaala-ikkunat ja ilmainen mittaus.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunat-ikkunaremontti-salo.html koodilla.
