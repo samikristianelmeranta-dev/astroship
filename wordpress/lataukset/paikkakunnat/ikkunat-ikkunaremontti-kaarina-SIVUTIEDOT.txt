@@ -1,0 +1,7 @@
+IKKUNAREMONTTI KAARINA – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Ikkunaremontti Kaarina → Muokkaa
+  Otsikko (title):   Ikkunaremontti Kaarina – Littoinen, Piikkiö ja Kuusisto
+  Osoite (slug):     /ikkunat-ikkunaremontti-kaarina/   (ei muutu)
+  Ote (kuvaus):      Ikkunaremontti Kaarinassa avaimet käteen: ilmainen mittaus Littoisista Piikkiöön ja Kuusistoon, Skaala-ikkunat ja asennus 1–3 päivässä.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunat-ikkunaremontti-kaarina.html koodilla.
