@@ -1,0 +1,7 @@
+IKKUNAREMONTTI RAISIO – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Ikkunaremontti Raisio → Muokkaa
+  Otsikko (title):   Ikkunaremontti Raisio – naapurista Maskusta
+  Osoite (slug):     /ikkunat-ikkunaremontti-raisio/   (ei muutu)
+  Ote (kuvaus):      Ikkunaremontti Raisiossa omakotitaloihin ja taloyhtiöihin: ilmainen mittaus usein jo samalla viikolla, Skaala-ikkunat ja asennus 1–3 päivässä.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunat-ikkunaremontti-raisio.html koodilla.
