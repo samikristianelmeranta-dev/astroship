@@ -1,0 +1,7 @@
+IKKUNAREMONTTI NAANTALI – SIVUN TIEDOT WORDPRESSIIN (päivitys)
+
+Sivut → Ikkunaremontti Naantali → Muokkaa
+  Otsikko (title):   Ikkunaremontti Naantali – myös Rymättylä ja saaristo
+  Osoite (slug):     /ikkunat-ikkunaremontti-naantali/   (ei muutu)
+  Ote (kuvaus):      Ikkunaremontti Naantalissa: meri-ilmastoa kestävät Skaala-ikkunat vanhan Naantalin puutaloihin, omakotitaloihin ja saaristoon. Ilmainen mittaus.
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunat-ikkunaremontti-naantali.html koodilla.
