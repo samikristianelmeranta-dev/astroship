@@ -45,8 +45,11 @@
           '/oviremontti/'           => 'Oviremontti',
           '/huolto/'                => 'Huolto',
           '/energiansaastolaskuri/' => 'Laskuri',
-          '/yhteystiedot/'          => 'Yhteystiedot',
         );
+        if ( nordic_references_page() ) {
+          $nordic_menu['/referenssit/'] = 'Referenssit';
+        }
+        $nordic_menu['/yhteystiedot/'] = 'Yhteystiedot';
         if ( nordic_is_regional() ) {
           $nordic_menu = nordic_region()['menu'];
         }

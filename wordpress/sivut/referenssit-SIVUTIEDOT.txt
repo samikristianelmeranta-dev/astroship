@@ -1,0 +1,12 @@
+REFERENSSIT – SIVUN TIEDOT
+
+Teema 2.12.0 luo sivun automaattisesti, kun avaat WordPressin hallinnan (osoite /referenssit/),
+ja lisää sen päävalikkoon Yhteystietojen eteen. Mitään ei tarvitse tehdä käsin.
+
+Jos haluat luoda sivun itse:
+  Otsikko:  Referenssit – toteutetut ikkuna- ja ovikohteet
+  Osoite:   /referenssit/
+  Ote:      Toteutettuja ikkuna- ja ovikohteitamme: uudiskohteet ja remontit kuvineen. Skaala-ikkunat ja -ovet asennettuna.
+  Sisältö:  Mukautettu HTML -lohko → tiedoston referenssit.html koodi
+
+Uuden kohteen lisääminen: lähetä kuvat ja tiedot Claudelle (kohde lisätään teemaan).

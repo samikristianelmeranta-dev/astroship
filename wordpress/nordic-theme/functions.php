@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.11.1' );
+define( 'NORDIC_VERSION', '2.12.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1921,3 +1921,94 @@ add_filter( 'the_content', function ( $html ) {
 	}
 	return $html . $block;
 }, 27 );
+
+/* =========================================================================
+ * Referenssit [nordic_referenssit] (2.12.0)
+ * Uusi kohde: lisää rivi nordic_references()-listaan ja kuvat kansioon
+ * assets/img/referenssit/ (iso: nimi.webp, pieni: nimi-800.webp).
+ * ========================================================================= */
+
+function nordic_references() {
+	return apply_filters( 'nordic_references', array(
+		array(
+			'id'      => 'yllas-uudiskohde',
+			'title'   => 'Uudiskohde Ylläksellä',
+			'place'   => 'Ylläs, Lappi',
+			'type'    => 'Uudiskohde',
+			'work'    => 'Kaikki ikkunat ja ovet asennettuna',
+			'text'    => array(
+				'Ylläksen uudiskohteeseen toimitimme ja asensimme kaikki ikkunat ja ovet. Suuret lasipinnat avaavat näkymän ympäröivään männikköön, ja tummat karmit sopivat mustaksi käsiteltyyn pystypaneloituun julkisivuun.',
+				'Lapin olosuhteissa ikkunoilta vaaditaan paljon: kova pakkanen, lumi ja suuret lämpötilaerot. Mittatilaustyönä valmistetut Skaala-ikkunat ja huolellinen asennus pitävät rakenteen tiiviinä ja lämpimänä myös suurissa lasipinnoissa.',
+			),
+			'images'  => array(
+				array( 'yllas-1', 'Suuret maisemaikkunat ja lasiovet tummilla karmeilla Ylläksen uudiskohteessa', 2000, 1500 ),
+				array( 'yllas-2', 'Lasiovi ja suuri kiinteä ikkuna sisäänkäynnin vieressä', 2000, 1500 ),
+				array( 'yllas-3', 'Lasiseinät talon kulmauksessa männikön keskellä', 1500, 2000 ),
+				array( 'yllas-4', 'Kolme suurta ikkunaa rinnakkain mustassa julkisivussa', 2000, 1500 ),
+			),
+		),
+	) );
+}
+
+function nordic_references_html() {
+	$out = '<div class="refs">';
+	foreach ( nordic_references() as $r ) {
+		$imgs = '';
+		foreach ( $r['images'] as $i => $im ) {
+			$full  = nordic_asset_uri( 'img/referenssit/' . $im[0] . '.webp' );
+			$small = nordic_asset_uri( 'img/referenssit/' . $im[0] . '-800.webp' );
+			$imgs .= '<a class="ref-photo' . ( 0 === $i ? ' ref-photo--main' : '' ) . '" href="' . esc_url( $full ) . '" data-ref-full="' . esc_url( $full ) . '" data-ref-caption="' . esc_attr( $im[1] ) . '">'
+				. '<img src="' . esc_url( $small ) . '" srcset="' . esc_url( $small ) . ' 800w, ' . esc_url( $full ) . ' 1600w" sizes="(max-width: 760px) 100vw, 50vw" width="' . (int) $im[2] . '" height="' . (int) $im[3] . '" alt="' . esc_attr( $im[1] ) . '" loading="' . ( 0 === $i ? 'eager' : 'lazy' ) . '" decoding="async"></a>';
+		}
+		$out .= '<article class="ref" id="' . esc_attr( $r['id'] ) . '">'
+			. '<div class="ref-gallery">' . $imgs . '</div>'
+			. '<div class="ref-body"><p class="ref-eyebrow">' . esc_html( $r['type'] . ' · ' . $r['place'] ) . '</p><h2>' . esc_html( $r['title'] ) . '</h2>'
+			. implode( '', array_map( function ( $p ) { return '<p>' . esc_html( $p ) . '</p>'; }, $r['text'] ) )
+			. '<dl class="ref-facts"><div><dt>Kohde</dt><dd>' . esc_html( $r['type'] ) . '</dd></div><div><dt>Paikka</dt><dd>' . esc_html( $r['place'] ) . '</dd></div><div><dt>Työ</dt><dd>' . esc_html( $r['work'] ) . '</dd></div><div><dt>Tuotteet</dt><dd>Skaala</dd></div></dl>'
+			. '</div></article>';
+	}
+	wp_enqueue_script( 'nordic-refs', nordic_asset_uri( 'js/referenssit.js' ), array(), NORDIC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	return $out . '</div>';
+}
+add_shortcode( 'nordic_referenssit', 'nordic_references_html' );
+
+function nordic_references_page() {
+	$page = get_page_by_path( 'referenssit' );
+	return $page && 'publish' === $page->post_status ? $page : null;
+}
+
+/** Luo Referenssit-sivun kerran teeman mukana tulevasta sisällöstä (pääsivusto). */
+add_action( 'admin_init', function () {
+	if ( get_option( 'nordic_refs_created' ) || nordic_is_regional() || ! current_user_can( 'publish_pages' ) ) {
+		return;
+	}
+	update_option( 'nordic_refs_created', 1 );
+	if ( get_page_by_path( 'referenssit' ) ) {
+		return;
+	}
+	$html = (string) file_get_contents( get_template_directory() . '/content/referenssit.html' );
+	if ( '' === $html ) {
+		return;
+	}
+	wp_insert_post( array(
+		'post_type'    => 'page',
+		'post_status'  => 'publish',
+		'post_title'   => 'Referenssit – toteutetut ikkuna- ja ovikohteet',
+		'post_name'    => 'referenssit',
+		'post_excerpt' => 'Toteutettuja ikkuna- ja ovikohteitamme: uudiskohteet ja remontit kuvineen. Skaala-ikkunat ja -ovet asennettuna.',
+		'post_content' => "<!-- wp:html -->\n" . $html . "\n<!-- /wp:html -->",
+	) );
+} );
+
+/** Referenssit päävalikkoon ennen Yhteystietoja, jos sitä ei ole lisätty valikkoon itse. */
+add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
+	$page = nordic_references_page();
+	if ( ! $page || nordic_is_regional() || 'primary' !== ( $args->theme_location ?? '' ) || false !== strpos( $items, '/referenssit/' ) ) {
+		return $items;
+	}
+	$current = is_page( $page->ID );
+	$li      = '<li class="menu-item' . ( $current ? ' current-menu-item' : '' ) . '"><a href="' . esc_url( get_permalink( $page ) ) . '"' . ( $current ? ' aria-current="page"' : '' ) . '>Referenssit</a></li>';
+	$at = strpos( $items, '/yhteystiedot/' );
+	$pos = false !== $at ? strrpos( substr( $items, 0, $at ), '<li' ) : false;
+	return false !== $pos ? substr_replace( $items, $li, $pos, 0 ) : $items . $li;
+}, 10, 2 );
