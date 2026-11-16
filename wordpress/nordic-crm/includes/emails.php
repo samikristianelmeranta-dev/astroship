@@ -79,7 +79,7 @@ HTML
 				),
 				array(
 					'key'      => 'tarjous-lasit',
-					'wait'     => 4,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Kolmi- vai nelilasinen ikkuna?',
 					'preheader'=> 'Ero näkyy lämmityslaskussa. Tässä mitä se tarkoittaa käytännössä.',
 					'body'     => <<<'HTML'
@@ -94,7 +94,7 @@ HTML
 				),
 				array(
 					'key'      => 'tarjous-kotitalousvahennys',
-					'wait'     => 5,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Kotitalousvähennys: laskuesimerkki',
 					'preheader'=> 'Paljonko asennustyöstä saa takaisin verotuksessa.',
 					'body'     => <<<'HTML'
@@ -109,7 +109,7 @@ HTML
 				),
 				array(
 					'key'      => 'tarjous-kysyttavaa',
-					'wait'     => 7,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Jäikö jotain kysyttävää?',
 					'preheader'=> 'Maksutavat, talviasennus, vanhojen ikkunoiden poisvienti.',
 					'body'     => <<<'HTML'
@@ -174,7 +174,7 @@ HTML
 				),
 				array(
 					'key'      => 'taloyhtio-rahoitus',
-					'wait'     => 5,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Rahoitus ja kustannusten jako osakkaille',
 					'preheader'=> 'Kolme tavallisinta tapaa rahoittaa remontti.',
 					'body'     => <<<'HTML'
@@ -192,7 +192,7 @@ HTML
 				),
 				array(
 					'key'      => 'taloyhtio-kokous',
-					'wait'     => 7,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Tarvitaanko hinta-arvio yhtiökokoukseen?',
 					'preheader'=> 'Kertokaa aikataulu, niin sovitetaan tarjous siihen.',
 					'body'     => <<<'HTML'
@@ -260,7 +260,7 @@ HTML
 				),
 				array(
 					'key'      => 'esite-mittaus',
-					'wait'     => 7,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Tarkka hinta omaan taloosi',
 					'preheader'=> 'Mittauskäynti on maksuton eikä sido mihinkään.',
 					'body'     => <<<'HTML'
@@ -374,7 +374,7 @@ HTML
 				),
 				array(
 					'key'      => 'laskuri-kotikaynti',
-					'wait'     => 7,
+					'wait'     => NORDIC_CRM_MARKETING_GAP_DAYS,
 					'subject'  => 'Laskurista tarkkaan arvioon',
 					'preheader'=> 'Maksuton mittauskäynti ja kirjallinen tarjous.',
 					'body'     => <<<'HTML'

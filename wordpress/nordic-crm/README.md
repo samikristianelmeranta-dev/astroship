@@ -10,11 +10,17 @@ antoi markkinointiluvan, perään lähtee lyhyt jatkosarja.
 
 | Yhteydenotto | Heti (kaikille) | Jatkosarja (vain luvan antaneille) |
 |---|---|---|
-| Tarjouspyyntö | Tarjouspyyntösi on perillä | 2 pv: mittauskäynti · +4 pv: kolmi- vai nelilasinen · +5 pv: kotitalousvähennys · +7 pv: jäikö kysyttävää |
-| Tarjouspyyntö taloyhtiösivulta | Tarjouspyyntönne on perillä | 2 pv: PTS ja kuntotarkastus · +5 pv: rahoitus ja kustannusten jako · +7 pv: hinta-arvio yhtiökokoukseen |
-| Esitteen tilaus | Pyytämäsi esite | 3 pv: mistä hinta muodostuu · +7 pv: tarkka hinta mittauskäynnillä |
-| Laskurin tulos sähköpostiin | Säästölaskelmasi (asiakkaan omat luvut) | 3 pv: U-arvo · +7 pv: laskurista tarkkaan arvioon |
+| Tarjouspyyntö | Tarjouspyyntösi on perillä | 2 pv: mittauskäynti · +30 pv: kolmi- vai nelilasinen · +30 pv: kotitalousvähennys · +30 pv: jäikö kysyttävää |
+| Tarjouspyyntö taloyhtiösivulta | Tarjouspyyntönne on perillä | 2 pv: PTS ja kuntotarkastus · +30 pv: rahoitus ja kustannusten jako · +30 pv: hinta-arvio yhtiökokoukseen |
+| Esitteen tilaus | Pyytämäsi esite | 3 pv: mistä hinta muodostuu · +30 pv: tarkka hinta mittauskäynnillä |
+| Laskurin tulos sähköpostiin | Säästölaskelmasi (asiakkaan omat luvut) | 3 pv: U-arvo · +30 pv: laskurista tarkkaan arvioon |
 | Oppaan lataus | Pyytämäsi opas: *oppaan nimi* | 7 pv: Vieläkö mietit ikkuna- ja oviratkaisua? (yhteystiedot) |
+
+**Enintään yksi markkinointiviesti kuukaudessa:** jatkosarjojen viestit lähtevät 30 päivän välein,
+eikä uutta jatkosarjaa aloiteta, jos kontakti on jo toisessa jatkosarjassa tai sellainen on ollut
+käynnissä viimeisen 30 päivän aikana. Palveluviestit (vahvistus, esite, opas, laskelma) lähtevät aina,
+koska asiakas on itse pyytänyt ne. Väliä voi muuttaa wp-config.php:ssä:
+`define( 'NORDIC_CRM_MARKETING_GAP_DAYS', 30 );`
 
 Lisäksi lisäosa:
 - luo tagit (Lähde: …, Markkinointilupa, Asiakas, Ei kiinnostunut) ja
@@ -93,7 +99,7 @@ Jos lomakkeessa on jo Fluent Formsin oma *FluentCRM-integraatio*, poista se
 käytöstä. Nordic CRM hoitaa kontaktin luonnin ja luvan käsittelyn.
 
 ### 4. Lisäosa
-1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.2.6.zip` → Aktivoi.
+1. Lisäosat → Lisää uusi → Lataa lisäosa → `nordic-crm-v1.3.0.zip` → Aktivoi.
    Päivitettäessä valitse *Korvaa nykyinen*. Uudet automaatiot asennetaan
    automaattisesti, kun avaat seuraavan kerran hallintapaneelin.
 2. Avaa jokin hallintasivu. Lisäosa luo tagit, kentät ja 8 automaatiota, ja

@@ -246,6 +246,23 @@ function nordic_crm_campaign_hash( $campaign ) {
  * Päivittää olemassa olevan automaation viestit, jos niitä ei ole muokattu käsin.
  */
 function nordic_crm_update_flow( $flow, $info, $force, &$result ) {
+	// Odotusajat (esim. markkinointiviestien 30 päivän väli) päivitetään järjestyksessä.
+	$waits = array_values( array_filter( array_map( function ( $s ) { return (int) $s['wait']; }, $flow['steps'] ) ) );
+	$seqs  = FunnelSequence::where( 'funnel_id', (int) $info['funnel_id'] )->where( 'action_name', 'fluentcrm_wait_times' )->orderBy( 'sequence', 'ASC' )->get();
+	foreach ( $seqs as $i => $seq ) {
+		if ( ! isset( $waits[ $i ] ) ) {
+			break;
+		}
+		$set = (array) $seq->settings;
+		if ( (int) ( $set['wait_time_amount'] ?? 0 ) !== $waits[ $i ] || 'days' !== ( $set['wait_time_unit'] ?? '' ) ) {
+			$set['wait_time_amount'] = $waits[ $i ];
+			$set['wait_time_unit']   = 'days';
+			$seq->settings           = $set;
+			$seq->title              = nordic_crm_wait_label( $waits[ $i ] );
+			$seq->save();
+			$result['updated'][] = $flow['title'] . ': odotus ' . $waits[ $i ] . ' pv';
+		}
+	}
 	foreach ( $flow['steps'] as $step ) {
 		$step_info = isset( $info['steps'][ $step['key'] ] ) ? $info['steps'][ $step['key'] ] : null;
 		$campaign  = ( $step_info && $step_info['campaign_id'] ) ? FunnelCampaign::find( (int) $step_info['campaign_id'] ) : null;

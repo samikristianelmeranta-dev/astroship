@@ -118,6 +118,12 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 			return;
 		}
 
+		// Enintään yksi markkinointiviesti kuukaudessa: uutta jatkosarjaa ei aloiteta, jos kontakti on
+		// jo toisessa Nordicin jatkosarjassa tai sellainen on ollut käynnissä viimeisen 30 päivän aikana.
+		if ( 'consent' === $audience && self::recent_marketing( $subscriber->id, (int) $funnel->id ) ) {
+			return;
+		}
+
 		// Jo sarjassa?
 		if ( FunnelHelper::ifAlreadyInFunnel( $funnel->id, $subscriber->id ) ) {
 			$run_multiple = ( ( (array) $funnel->conditions )['run_only_one'] ?? 'yes' ) === 'no';
@@ -151,6 +157,26 @@ class Nordic_CRM_Lead_Trigger extends BaseTrigger {
 			'source_trigger_name' => $this->triggerName,
 			'source_ref_id'       => 0,
 		) );
+	}
+
+	/** Onko kontakti toisessa Nordicin markkinointisarjassa nyt tai NORDIC_CRM_MARKETING_GAP_DAYS päivän sisällä? */
+	public static function recent_marketing( $subscriber_id, $except_funnel_id ) {
+		$ids = array();
+		foreach ( nordic_crm_installed_funnels() as $info ) {
+			if ( 'consent' === ( $info['audience'] ?? '' ) && ! empty( $info['funnel_id'] ) && (int) $info['funnel_id'] !== $except_funnel_id ) {
+				$ids[] = (int) $info['funnel_id'];
+			}
+		}
+		if ( ! $ids ) {
+			return false;
+		}
+		$since = gmdate( 'Y-m-d H:i:s', time() - NORDIC_CRM_MARKETING_GAP_DAYS * DAY_IN_SECONDS );
+		return FunnelSubscriber::where( 'subscriber_id', (int) $subscriber_id )
+			->whereIn( 'funnel_id', $ids )
+			->where( function ( $q ) use ( $since ) {
+				$q->whereIn( 'status', array( 'active', 'pending', 'waiting' ) )->orWhere( 'updated_at', '>=', $since );
+			} )
+			->first() !== null;
 	}
 
 	/**
