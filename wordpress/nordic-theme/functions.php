@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.12.2' );
+define( 'NORDIC_VERSION', '2.12.3' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -367,6 +367,8 @@ function nordic_article_slugs() {
 		'miten-valita-ikkunat-mokille',
 		'edulliset-ikkunat',
 		'ikkunoiden-hinta',
+		'kesamokki-ymparivuotiseksi-ikkunat-ja-ovet',
+		'lapsiturvallinen-ikkuna',
 	) );
 }
 

@@ -53,3 +53,17 @@ ikkunoiden-hinta.html
   Osoite (slug):     /ikkunoiden-hinta/
   Ote (kuvaus):      Mitä uusi ikkuna maksaa ilman asennusta ja asennettuna? Suuntaa-antavat hinnat 2027, hinnanmuodostus ja laskuesimerkki kotitalousvähennyksellä.  [143 merkkiä]
   H1 sivulla:        Ikkunat hinta: mitä ikkunat maksavat vuonna 2027?
+
+LISÄTTY 16.11.2026 (hero ilman kuvaa, vaatii teeman 2.12.3)
+
+kesamokki-ymparivuotiseksi-ikkunat-ja-ovet.html
+  Otsikko (title):   Kesämökki ympärivuotiseksi: ikkunat ja ovet talvikäyttöön
+  Osoite (slug):     /kesamokki-ymparivuotiseksi-ikkunat-ja-ovet/
+  Ote (kuvaus):      Teetkö kesämökistä talviasuttavan? Näin valitset ikkunat ja ulko-oven, oikean remonttijärjestyksen ja huomioit saariston merituulen ja luvat.  [141 merkkiä]
+  H1 sivulla:        Kesämökki ympärivuotiseksi: mitä ikkunoille ja oville pitää tehdä?
+
+lapsiturvallinen-ikkuna.html
+  Otsikko (title):   Lapsiturvallinen ikkuna: turvalasi, rajoitin ja tuuletusasento
+  Osoite (slug):     /lapsiturvallinen-ikkuna/
+  Ote (kuvaus):      Näin teet ikkunoista lapsiturvalliset: avautumisrajoitin, lukittava painike, turvalasi ja tuuletusasento. Muistilista lapsiperheen ikkunavalintoihin.  [149 merkkiä]
+  H1 sivulla:        Lapsiturvallinen ikkuna: turvalasi, avautumisrajoitin ja tuuletusasento
