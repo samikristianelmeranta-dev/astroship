@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.12.1' );
+define( 'NORDIC_VERSION', '2.12.2' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -42,7 +42,7 @@ function nordic_regions() {
 	$region_menu = array(
 		'/'                          => 'Etusivu',
 		'/ikkunat/'                  => 'Ikkunat',
-		'/ulko-ovet/'                => 'Ulko-ovet',
+		'/ulko-ovet/'                => 'Ovet',
 		'/ikkunaremontit/'           => 'Ikkunaremontit',
 		'/oviremontit/'              => 'Oviremontit',
 		'/energiansaastolaskuri/'    => 'Energialaskuri',
@@ -2029,3 +2029,8 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	$pos = false !== $at ? strrpos( substr( $items, 0, $at ), '<li' ) : false;
 	return false !== $pos ? substr_replace( $items, $li, $pos, 0 ) : $items . $li;
 }, 10, 2 );
+
+/** Päävalikon kohta "Ulko-ovet" näytetään muodossa "Ovet" (myös WordPressissä tehdyssä valikossa). */
+add_filter( 'nav_menu_item_title', function ( $title, $item, $args ) {
+	return 'primary' === ( $args->theme_location ?? '' ) && 'Ulko-ovet' === trim( wp_strip_all_tags( $title ) ) ? 'Ovet' : $title;
+}, 10, 3 );
