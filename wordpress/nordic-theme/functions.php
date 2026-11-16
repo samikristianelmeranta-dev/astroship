@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.12.0' );
+define( 'NORDIC_VERSION', '2.12.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1947,6 +1947,23 @@ function nordic_references() {
 				array( 'yllas-4', 'Kolme suurta ikkunaa rinnakkain mustassa julkisivussa', 2000, 1500 ),
 			),
 		),
+		array(
+			'id'       => 'turku-moisio-uudiskohde',
+			'title'    => 'Uudiskohde Moisiossa, Turussa',
+			'place'    => 'Moisio, Turku',
+			'type'     => 'Uudiskohde',
+			'work'     => 'Ikkunoiden ja ovien asennus',
+			'products' => 'Asiakkaan tilaamat',
+			'text'     => array(
+				'Turun Moisiossa asensimme uudiskohteeseen asiakkaan itse tilaamat ikkunat ja ovet. Asennus onnistuu, vaikka tuotteet olisi hankittu muualta: huolehdimme karmien suoruudesta, tiivistyksestä ja säädöistä, jotta ikkunat ja ovet toimivat niin kuin pitää.',
+				'Huolellinen asennus ratkaisee, pysyykö ikkuna tiiviinä ja vedottomana vuosikymmeniä. Asennustyöstä saa myös kotitalousvähennystä.',
+			),
+			'images'   => array(
+				array( 'moisio-1', 'Asennettu ikkuna harmaassa julkisivussa valkoisin vuorilaudoin', 1500, 2000 ),
+				array( 'moisio-2', 'Asennettu lasiovi keittiössä', 1200, 1600 ),
+				array( 'moisio-3', 'Kaksi rinnakkaista ikkunaa sisältä', 1600, 1200 ),
+			),
+		),
 	) );
 }
 
@@ -1964,7 +1981,7 @@ function nordic_references_html() {
 			. '<div class="ref-gallery">' . $imgs . '</div>'
 			. '<div class="ref-body"><p class="ref-eyebrow">' . esc_html( $r['type'] . ' · ' . $r['place'] ) . '</p><h2>' . esc_html( $r['title'] ) . '</h2>'
 			. implode( '', array_map( function ( $p ) { return '<p>' . esc_html( $p ) . '</p>'; }, $r['text'] ) )
-			. '<dl class="ref-facts"><div><dt>Kohde</dt><dd>' . esc_html( $r['type'] ) . '</dd></div><div><dt>Paikka</dt><dd>' . esc_html( $r['place'] ) . '</dd></div><div><dt>Työ</dt><dd>' . esc_html( $r['work'] ) . '</dd></div><div><dt>Tuotteet</dt><dd>Skaala</dd></div></dl>'
+			. '<dl class="ref-facts"><div><dt>Kohde</dt><dd>' . esc_html( $r['type'] ) . '</dd></div><div><dt>Paikka</dt><dd>' . esc_html( $r['place'] ) . '</dd></div><div><dt>Työ</dt><dd>' . esc_html( $r['work'] ) . '</dd></div><div><dt>Tuotteet</dt><dd>' . esc_html( $r['products'] ?? 'Skaala' ) . '</dd></div></dl>'
 			. '</div></article>';
 	}
 	wp_enqueue_script( 'nordic-refs', nordic_asset_uri( 'js/referenssit.js' ), array(), NORDIC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
