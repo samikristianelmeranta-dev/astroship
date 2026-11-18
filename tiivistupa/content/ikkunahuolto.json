@@ -1,0 +1,607 @@
+{
+  "main": {
+    "sections": [
+      {
+        "id": "mita-sisaltaa",
+        "h2": "Mitä ikkunahuolto sisältää?",
+        "html": "<p>Ikkunahuolto on kokonaisuus, jossa ikkuna tarkastetaan ja huolletaan osa kerrallaan. Tavoite on, että ikkuna sulkeutuu tiiviisti, aukeaa kevyesti ja ohjaa veden pois rakenteesta. Samalla selviää, onko jossain alkava vaurio, joka kannattaa hoitaa ennen kuin se kasvaa.</p>\n<ul>\n<li><strong>Kuntotarkastus:</strong> katsomme puitteet, karmin, lasit ja pintakäsittelyn sisältä ja ulkoa. Kokeilemme puun kovuuden etenkin alapuitteesta ja karmin alaosasta.</li>\n<li><strong>Tiivisteet:</strong> tarkistamme, ovatko tiivisteet kovettuneet, litistyneet tai irronneet. Vaihdamme ne tarvittaessa.</li>\n<li><strong>Saranat ja helat:</strong> säädämme ja voitelemme saranat, pitkäsulkimet, aukipitolaitteet ja puitteiden väliset kytkimet.</li>\n<li><strong>Painikkeet ja sulkimet:</strong> kiristämme löystyneet painikkeet ja varmistamme, että suljin vetää puitteen tasaisesti karmia vasten.</li>\n<li><strong>Puitteiden käynti:</strong> säädämme puitteen niin, ettei se laahaa karmiin tai roiku saranoiltaan.</li>\n<li><strong>Lasituslistat ja kittaukset:</strong> tarkistamme, pitävätkö ne lasin paikallaan ja veden ulkona.</li>\n<li><strong>Vesipellit ja liittymät:</strong> katsomme pellin kallistuksen, kiinnityksen ja sen, miten pelti liittyy karmiin ja seinään.</li>\n<li><strong>Välitilat:</strong> puhdistamme puitteiden välin pölystä, hyönteisistä ja roskista.</li>\n<li><strong>Huoltosuositukset:</strong> kirjaamme, mitä tehtiin ja mitä kannattaa tehdä seuraavaksi.</li>\n</ul>"
+      },
+      {
+        "id": "merkit",
+        "h2": "Mistä tunnistat, että ikkunat kaipaavat huoltoa?",
+        "html": "<p>Useimmat ikkunaviat kehittyvät hitaasti, joten niihin tottuu. Nämä merkit kertovat, että ikkunahuolto on ajankohtainen:</p>\n<ul>\n<li>Ikkunan vieressä tuntuu vetoa tai ikkunalauta on talvella selvästi kylmä.</li>\n<li>Puite on raskas avata, jumittaa tai painike vaatii voimaa.</li>\n<li>Ikkuna ei pysy auki tai kiinni, tai se painuu alanurkastaan karmiin.</li>\n<li>Tiiviste on kova, halkeillut tai roikkuu irti urastaan.</li>\n<li>Lasien väliin kertyy huurretta tai kosteutta pakkasella.</li>\n<li>Välitilassa on pölyä, kuolleita hyönteisiä tai hämähäkinseittiä.</li>\n<li>Ulkopuitteen maali hilseilee tai alapuitteen puu tuntuu pehmeältä.</li>\n<li>Katumelu kuuluu sisälle aiempaa selvemmin.</li>\n</ul>\n<p>Yksittäinen oire ei vielä kerro syytä. Huurtuminen voi johtua vuotavasta sisäpuitteen tiivisteestä, ja jumittava puite voi johtua yhtä hyvin saranasta kuin turvonneesta puusta. Siksi aloitamme aina tarkastuksesta emmekä arvaile.</p>"
+      },
+      {
+        "id": "eteneminen",
+        "h2": "Miten ikkunahuolto etenee?",
+        "html": "<ol>\n<li><strong>Yhteydenotto.</strong> Kerro, millainen talo on ja mitä olet ikkunoissa huomannut. Vastaamme viimeistään seuraavana arkipäivänä.</li>\n<li><strong>Maksuton kartoituskäynti.</strong> Käymme ikkunat läpi paikan päällä, laskemme avattavat ja kiinteät ikkunat ja kirjaamme havainnot.</li>\n<li><strong>Kirjallinen tarjous.</strong> Saat sitoumuksettoman tarjouksen, jossa työn sisältö on eritelty. Näet, mikä kuuluu perushuoltoon ja mikä on erillistä korjausta.</li>\n<li><strong>Työ sovittuna päivänä.</strong> Huollamme ikkunat huone kerrallaan. Ikkunoiden edustat kannattaa tyhjentää etukäteen, muuta valmistelua ei yleensä tarvita.</li>\n<li><strong>Läpikäynti.</strong> Kierrämme ikkunat kanssasi, näytämme tehdyt työt ja annamme huoltosuositukset jatkoa varten.</li>\n</ol>\n<p>Tavallisen omakotitalon ikkunat huolletaan usein yhden tai kahden työpäivän aikana. Kesto riippuu ikkunoiden määrästä ja siitä, kuinka paljon tiivisteitä vaihdetaan.</p>"
+      },
+      {
+        "id": "hyodyt",
+        "h2": "Mitä hyötyä ikkunahuollosta on?",
+        "html": "<h3>Vähemmän vetoa, tasaisempi lämpö</h3>\n<p>Kun tiivisteet ovat ehjät ja puite painuu tasaisesti karmia vasten, kylmä ilma ei pääse virtaamaan sisään puitteen raoista. Huone tuntuu lämpimämmältä samalla lämpötilalla, ja se voi pienentää lämmityskuluja.</p>\n<h3>Hiljaisempi koti</h3>\n<p>Ääni kulkee samoista raoista kuin ilma. Tiivis ja oikein säädetty ikkuna vaimentaa liikenteen ja tuulen ääniä selvästi paremmin kuin rakoileva.</p>\n<h3>Kevyempi käyttö</h3>\n<p>Voidellut saranat ja säädetyt sulkimet tekevät tuuletuksesta ja ikkunanpesusta helppoa. Painikkeita ei tarvitse runnoa, jolloin helat myös kestävät pidempään.</p>\n<h3>Pidempi käyttöikä</h3>\n<p>Puuikkuna kestää hyvin huollettuna vuosikymmeniä. Ratkaisevaa on, että vesi ei jää seisomaan alapuitteelle, kittauksiin tai vesipellin liittymään. Huollossa nämä kohdat tulevat katsotuiksi ajoissa.</p>"
+      },
+      {
+        "id": "ei-riita",
+        "h2": "Milloin ikkunahuolto ei riitä?",
+        "html": "<p>Huolto on perushoitoa. Se ei korjaa rakenteellisia vaurioita. Kerromme kartoituksessa suoraan, jos ikkuna tarvitsee muuta:</p>\n<ul>\n<li><strong>Tiivisteet ovat läpeensä kuluneet koko talossa.</strong> Silloin järkevin työ on koko <a href=\"/ikkunoiden-tiivistys/\">ikkunoiden tiivistys</a>, jossa tiivisteurat puhdistetaan ja kaikki tiivisteet uusitaan kerralla.</li>\n<li><strong>Puussa on lahoa, lasi on rikki tai hela on poikki.</strong> Nämä hoidetaan <a href=\"/ikkunoiden-korjaus/\">ikkunoiden korjauksena</a>, esimerkiksi puupaikkauksella tai osan vaihdolla.</li>\n<li><strong>Maali hilseilee ja puu on paljaana.</strong> Paljas puu imee vettä, joten edessä on <a href=\"/ikkunapuitteiden-huolto/\">ikkunapuitteiden huolto ja maalaus</a>.</li>\n</ul>\n<p>Joskus mikään näistä ei enää kannata. Jos rakenne on läpilaho, umpiolasit ovat laajasti sameat tai ikkuna on tullut käyttöikänsä päähän, sanomme sen ja suosittelemme vaihtoa. Emme huolla ikkunaa, josta ei huoltamalla tule toimivaa.</p>"
+      },
+      {
+        "id": "talotyypit",
+        "h2": "Miten ikkunahuolto eroaa eri talotyypeissä?",
+        "html": "<h3>Rintamamiestalo</h3>\n<p>Vanhoissa puuikkunoissa on usein kaksi erillistä puitetta, kitatut lasit ja yksinkertaiset helat. Puu on tyypillisesti tiheää ja kestävää, mutta kittaukset halkeilevat ja maalipinta vaatii säännöllistä hoitoa. Huollossa painottuvat kittausten ja lasituslistojen tarkastus, saranoiden kunto ja puitteiden käynti.</p>\n<h3>1970–80-lukujen omakotitalo</h3>\n<p>Tämän ajan ikkunoissa on yleensä kolme lasia ja sisäpuitteessa umpiolasi. Tiivisteet ovat usein alkuperäiset ja kovettuneet. Tiivisteet kovettuvat tyypillisesti 10–15 vuodessa, joten vaihdon tarve on tavallinen löydös. Tarkistamme myös alapuitteen ja vesipellin liittymän, koska ne ovat ikkunan säärasitetuimmat kohdat.</p>\n<h3>Rivitalo ja taloyhtiö</h3>\n<p>Taloyhtiössä samanlaisia ikkunoita on paljon, joten huolto kannattaa tehdä koko yhtiölle kerralla. Laadimme havainnoista ikkunakohtaisen yhteenvedon, jota hallitus voi käyttää kunnossapidon suunnittelussa. Vastuu ikkunoiden kunnossapidosta jakautuu yhtiön ja osakkaan kesken, joten tilaajasta kannattaa sopia isännöitsijän kanssa.</p>\n<h3>Mökki ja vapaa-ajan asunto</h3>\n<p>Kylmillään olevassa rakennuksessa puu elää kosteuden mukana ja puitteet turpoavat. Helat jäykistyvät, kun niitä ei käytetä kuukausiin. Mökillä huolto keskittyy käynnin säätöön, helojen voiteluun ja ulkopuitteiden pinnan kuntoon.</p>"
+      },
+      {
+        "id": "ajankohta",
+        "h2": "Mikä on paras ajankohta ikkunahuollolle?",
+        "html": "<p>Ikkunahuoltoa voi tehdä lähes ympäri vuoden, koska suurin osa työstä tehdään sisältä käsin. Parhaat kaudet ovat kevät ja syksy. Keväällä talven jäljet näkyvät selvästi ja ulkopuoliset kohdat on helppo tarkastaa. Syksyllä ikkunat saadaan tiiviiksi ennen lämmityskautta.</p>\n<p>Kovalla pakkasella ikkunoita ei kannata pitää pitkään auki, ja jäiset vesipellit vaikeuttavat ulkopuolen tarkastusta. Jos huollon yhteydessä tehdään maalausta tai puukorjauksia, ne vaativat kuivaa säätä tai puitteiden irrotuksen sisätiloihin.</p>\n<p>Huoltoväli riippuu ikkunan iästä ja rasituksesta. Meren äärellä ja talon etelä- ja länsisivuilla ikkunat kuluvat nopeammin kuin suojaisilla seinillä. Nyrkkisääntönä ikkunat kannattaa käydä läpi muutaman vuoden välein ja aina, kun käytössä tuntuu muutos.</p>"
+      },
+      {
+        "id": "itse",
+        "h2": "Mitä voit tehdä itse huoltojen välillä?",
+        "html": "<p>Pieni vuosittainen hoito pidentää huoltoväliä. Näihin et tarvitse erikoistyökaluja:</p>\n<ul>\n<li>Pese karmit ja puitteet ikkunanpesun yhteydessä ja pyyhi tiivisteet kostealla liinalla.</li>\n<li>Tarkista, että vesipelti on puhdas lehdistä ja että vesi pääsee valumaan pois.</li>\n<li>Avaa jokainen avattava ikkuna ainakin kerran vuodessa, myös ne, joita et tavallisesti käytä.</li>\n<li>Katso alapuitteen ulkopinta: halkeamat maalissa ja tummuneet kohdat kannattaa kirjata muistiin.</li>\n<li>Älä maalaa tiivisteiden tai helojen yli.</li>\n</ul>\n<p>Säädöt ja tiivisteiden vaihto kannattaa jättää ammattilaiselle. Väärän paksuinen tiiviste voi estää ikkunaa sulkeutumasta tai jättää raon, ja liian tiukaksi säädetty suljin rasittaa heloja. Jos kotona on muutakin säädettävää, <a href=\"/ovihuolto/\">ovihuolto</a> hoituu luontevasti samalla käynnillä.</p>"
+      },
+      {
+        "id": "hinta",
+        "h2": "Mistä ikkunahuollon hinta muodostuu?",
+        "html": "<p>Emme anna hintaa näkemättä ikkunoita, koska työmäärä vaihtelee paljon talosta toiseen. Hintaan vaikuttavat ainakin nämä asiat:</p>\n<ul>\n<li>avattavien ikkunoiden ja puitteiden määrä</li>\n<li>ikkunatyyppi ja helojen määrä ikkunaa kohden</li>\n<li>kuinka paljon tiivisteitä vaihdetaan</li>\n<li>ikkunoiden korkeus ja pääsy ulkopuolelle</li>\n<li>välitilojen kaihtimet ja niiden irrotus puhdistuksen ajaksi</li>\n<li>kohteen sijainti ja matka</li>\n</ul>\n<p>Kartoituskäynnin jälkeen saat kirjallisen tarjouksen, josta näet koko työn sisällön. Mahdolliset lisätyöt sovitaan aina erikseen ennen kuin niitä tehdään.</p>\n<h3>Kotitalousvähennys</h3>\n<p>Omassa kodissa tai vapaa-ajan asunnossa tehty ikkunahuolto on kunnossapitotyötä, josta voi yleensä saada kotitalousvähennyksen. Vähennys on 35 % työn osuudesta, omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa. Erittelemme työn osuuden laskulle. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+      },
+      {
+        "id": "palvelualue",
+        "h2": "Ikkunahuolto Turussa ja muualla Varsinais-Suomessa",
+        "html": "<p>Tukikohtamme on Maskussa, ja teemme ikkunahuoltoja Turussa ja ympäri Varsinais-Suomea. Kauempana ja saaristossa sovimme käynnit niin, että samalle päivälle tulee useampi kohde. Kaupunkikohtaiset sivut kertovat tarkemmin paikallisista erityispiirteistä:</p>\n<ul>\n<li><a href=\"/ikkunahuolto-salo/\">Ikkunahuolto Salo</a></li>\n<li><a href=\"/ikkunahuolto-kaarina/\">Ikkunahuolto Kaarina</a></li>\n<li><a href=\"/ikkunahuolto-naantali/\">Ikkunahuolto Naantali</a></li>\n<li><a href=\"/ikkunahuolto-raisio/\">Ikkunahuolto Raisio</a></li>\n<li><a href=\"/ikkunahuolto-parainen/\">Ikkunahuolto Parainen</a></li>\n<li><a href=\"/ikkunahuolto-paimio/\">Ikkunahuolto Paimio</a></li>\n<li><a href=\"/ikkunahuolto-lieto/\">Ikkunahuolto Lieto</a></li>\n<li><a href=\"/ikkunahuolto-masku/\">Ikkunahuolto Masku</a></li>\n</ul>\n<p>Jos kotikuntasi ei ole listalla, kysy silti. Palvelemme koko maakunnan alueella.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Mitä ikkunahuolto tarkoittaa käytännössä?",
+        "a": "Ikkunahuolto tarkoittaa ikkunan tarkastusta ja perushuoltoa: tiivisteiden kunnon tarkastusta ja vaihtoa tarvittaessa, saranoiden ja helojen säätöä ja voitelua, painikkeiden ja sulkimien huoltoa, puitteiden käynnin säätöä, lasituslistojen, kittausten ja vesipeltien tarkastusta sekä välitilojen puhdistusta. Huollon päätteeksi saat suositukset mahdollisista jatkotoimista."
+      },
+      {
+        "q": "Kuinka usein ikkunat pitäisi huoltaa?",
+        "a": "Ikkunat kannattaa tarkastaa ja huoltaa muutaman vuoden välein. Tiheämpi väli on paikallaan meren äärellä, tuulisilla paikoilla ja talon aurinkoisilla sivuilla, joissa puitteet ja tiivisteet kuluvat nopeammin. Ikkunahuolto on ajankohtainen heti, jos ikkuna alkaa vetää, jumittaa tai huurtua lasien välistä."
+      },
+      {
+        "q": "Kuinka kauan ikkunahuolto kestää?",
+        "a": "Tavallisen omakotitalon ikkunahuolto kestää usein yhdestä kahteen työpäivää. Aikaan vaikuttavat avattavien ikkunoiden määrä, ikkunatyyppi ja se, kuinka monta tiivistettä vaihdetaan. Arvioimme keston maksuttomalla kartoituskäynnillä, ja se kirjataan tarjoukseen, jotta voit suunnitella päivän etukäteen."
+      },
+      {
+        "q": "Vaihdetaanko tiivisteet aina ikkunahuollossa?",
+        "a": "Tiivisteitä ei vaihdeta ikkunahuollossa automaattisesti. Tarkistamme jokaisen tiivisteen ja vaihdamme ne, jotka ovat kovettuneet, litistyneet tai rikki. Jos lähes kaikki talon tiivisteet ovat huonossa kunnossa, suosittelemme erillistä ikkunoiden tiivistystä, jossa myös tiivisteurat puhdistetaan ja tiivistys tehdään koko taloon yhtenäisesti."
+      },
+      {
+        "q": "Miksi ikkuna huurtuu lasien välistä?",
+        "a": "Lasien välinen huurre syntyy tavallisesti, kun lämmintä ja kosteaa sisäilmaa pääsee sisäpuitteen ohi kylmään välitilaan. Syy on usein kulunut sisäpuitteen tiiviste tai huonosti sulkeutuva puite. Ikkunahuollossa selvitämme vuotokohdan. Ulkopuitteen kuuluu jäädä tuulettuvaksi, jotta kosteus pääsee välitilasta pois."
+      },
+      {
+        "q": "Voiko ikkunahuollon tehdä talvella?",
+        "a": "Ikkunahuollon voi tehdä talvellakin, koska säädöt, voitelut ja tiivisteiden vaihto tehdään pääosin sisältä. Kovalla pakkasella työ jaksotetaan niin, ettei huone ehdi jäähtyä. Ulkopuolen tarkastus on helpompaa sulan maan aikaan, ja maalaus- ja puutyöt vaativat kuivaa säätä."
+      },
+      {
+        "q": "Saako ikkunahuollosta kotitalousvähennyksen?",
+        "a": "Ikkunahuollosta voi yleensä saada kotitalousvähennyksen, kun työ tehdään omassa asunnossa tai vapaa-ajan asunnossa. Vähennys on 35 % työn osuudesta, omavastuu 150 € ja enimmäismäärä 1 600 € henkilöltä vuodessa. Materiaaleista ja matkakuluista vähennystä ei saa. Tarkista ajantasaiset ehdot Verohallinnosta."
+      },
+      {
+        "q": "Kannattaako vanhat ikkunat huoltaa vai vaihtaa?",
+        "a": "Vanhat puuikkunat kannattaa useimmiten huoltaa, jos puu on tervettä ja lasit kirkkaat. Hyvin huollettu puuikkuna kestää vuosikymmeniä. Vaihto on perusteltu, kun rakenne on läpilaho, umpiolasit ovat laajasti sameat tai ikkuna on tullut käyttöikänsä päähän. Kerromme arviomme suoraan kartoituskäynnillä."
+      },
+      {
+        "q": "Teettekö ikkunahuoltoja taloyhtiöille Turun seudulla?",
+        "a": "Teemme ikkunahuoltoja taloyhtiöille Turussa ja muualla Varsinais-Suomessa. Käymme ikkunat läpi asunto kerrallaan ja kokoamme havainnoista yhteenvedon hallitukselle ja isännöitsijälle. Yhteenvedosta näkee, missä asunnoissa riittää perushuolto ja missä tarvitaan tiivistystä, korjausta tai puitteiden maalausta."
+      }
+    ],
+    "title": "Ikkunahuolto Turku ja Varsinais-Suomi – ikkunat kuntoon",
+    "meta": "Ikkunahuolto Turussa ja Varsinais-Suomessa: tarkastamme tiivisteet, helat, puitteet ja vesipellit. Maksuton kartoituskäynti ja kirjallinen tarjous.",
+    "h1": "Ikkunahuolto Turussa ja Varsinais-Suomessa",
+    "lead": "Ikkunahuolto pitää ikkunat tiiviinä, kevyesti toimivina ja kuivina. Teemme ikkunahuoltoja Turussa ja koko Varsinais-Suomessa omakotitaloihin, rivitaloihin, taloyhtiöihin ja vapaa-ajan asuntoihin. Käymme jokaisen ikkunan läpi tiivisteistä vesipelteihin ja kerromme suoraan, mikä on kunnossa ja mikä vaatii toimia.",
+    "short_answer": "Ikkunahuolto on ikkunan kokonaistarkastus ja perushuolto samalla käynnillä. Turussa ja Varsinais-Suomessa tekemämme ikkunahuolto sisältää kuntotarkastuksen, tiivisteiden tarkastuksen ja tarvittaessa vaihdon, saranoiden ja helojen säädön ja voitelun, painikkeiden ja sulkimien huollon, puitteiden käynnin säädön, lasituslistojen, kittausten, vesipeltien ja liittymien tarkastuksen sekä välitilojen puhdistuksen. Lopuksi saat kirjalliset huoltosuositukset. Huolto vähentää vetoa, helpottaa ikkunoiden käyttöä ja pidentää niiden käyttöikää. Jos tarkastuksessa löytyy lahoa, rikkinäisiä osia tai hilseilevää maalia, ohjaamme tiivistykseen, korjaukseen tai puitteiden maalaukseen. Kartoituskäynti on maksuton ja tarjous sitoumukseton."
+  },
+  "cities": {
+    "salo": {
+      "sections": [
+        {
+          "id": "salon-talot",
+          "h2": "Millaisia ikkunoita Salon taloissa on?",
+          "html": "<p>Salon rakennuskanta on kirjavaa. Vanhojen kuntakeskusten ja kylien raitilla on runsaasti rintamamiestaloja, joiden ikkunoissa on kaksi erillistä puitetta ja kitatut lasit. Taajamien omakotialueilla taas on paljon 1970–80-lukujen taloja, joissa ikkunat ovat kolmilasisia ja tiivisteet usein yhä alkuperäiset.</p>\n<p>Maatilojen päärakennuksissa ikkunoita on tyypillisesti paljon ja ne ovat isoja. Osa on ristikarmillisia ja monijakoisia, jolloin yhdessä aukossa voi olla kuusikin erillistä puitetta. Rannikon vapaa-ajan asunnoissa ikkunat ovat talven kylmillään ja elävät kosteuden mukana.</p>\n<p>Jokainen näistä vaatii huollossa hieman eri otteen, ja siksi katsomme ikkunat aina paikan päällä ennen tarjousta.</p>"
+        },
+        {
+          "id": "tyypilliset-viat",
+          "h2": "Mitä vikoja Salossa tulee useimmin vastaan?",
+          "html": "<ul>\n<li><strong>Halkeilleet kittaukset.</strong> Vanha kitti irtoaa lasin reunasta ja päästää sadeveden puitteen sisään.</li>\n<li><strong>Kiinni maalatut puitteet.</strong> Vuosien maalikerrokset ovat liimanneet ulkopuitteen karmiin, eikä ikkunaa ole avattu aikoihin.</li>\n<li><strong>Jäykät tai löysät saranat.</strong> Painava puite on painunut, ja alanurkka ottaa kiinni karmiin.</li>\n<li><strong>Kovettuneet tiivisteet.</strong> 70- ja 80-lukujen taloissa tiiviste on usein litteä nauha, joka ei enää jousta.</li>\n<li><strong>Turvonneet mökki-ikkunat.</strong> Keväällä puite ei tahdo aueta, syksyllä se ei mene kunnolla kiinni.</li>\n</ul>\n<p>Kiinni maalatun puitteen avaamme varovasti niin, ettei lasi tai puu vaurioidu. Usein vasta sen jälkeen nähdään välitilan ja sisemmän puitteen todellinen kunto.</p>"
+        },
+        {
+          "id": "alueet",
+          "h2": "Missä päin Saloa teemme ikkunahuoltoja?",
+          "html": "<p>Ajamme koko kaupungin alueelle. Kohteitamme on keskustassa ja Halikossa, etelässä Perniössä, Särkisalossa ja Teijolla sekä pohjoisen ja idän kylissä: Kiskossa, Kiikalassa, Suomusjärvellä, Muurlassa, Perttelissä ja Kuusjoella.</p>\n<p>Turusta Saloon on noin 50 kilometriä, ja kaupungin laidalta toiselle on vielä pitkä matka lisää. Siksi suunnittelemme reitit etukäteen. Jos sinulla ja naapurillasi on molemmilla huollettavaa, kertokaa siitä yhteydenotossa. Samalla kylällä tehdyt työt lyhentävät ajoa ja helpottavat aikataulun sopimista.</p>"
+        },
+        {
+          "id": "tyon-kulku",
+          "h2": "Näin ikkunahuolto Salossa sujuu",
+          "html": "<ol>\n<li>Ota yhteyttä ja kerro talon ikä, ikkunoiden määrä ja osoite. Palaamme asiaan viimeistään seuraavana arkipäivänä.</li>\n<li>Sovimme maksuttoman kartoituskäynnin päivälle, jolloin olemme muutenkin Salon suunnalla.</li>\n<li>Saat kirjallisen tarjouksen. Se ei sido sinua mihinkään.</li>\n<li>Teemme huollon sovittuna päivänä. Isossa maatilan päärakennuksessa työ jaetaan tarvittaessa kahdelle päivälle.</li>\n<li>Käymme lopuksi ikkunat yhdessä läpi ja jätämme kirjalliset suositukset.</li>\n</ol>\n<p>Jos mökki on tyhjillään, kartoitus onnistuu myös niin, että sovimme avaimesta tai tulet itse paikalle samana päivänä.</p>"
+        },
+        {
+          "id": "jatkotoimet",
+          "h2": "Entä jos huollossa löytyy korjattavaa?",
+          "html": "<p>Vanhoissa puuikkunoissa löytyy usein jotain, mikä ei kuulu perushuoltoon. Pehmennyt alapuite tai haljennut lasi hoidetaan erikseen, ja siitä kerrotaan <a href=\"/ikkunoiden-korjaus-salo/\">ikkunoiden korjaus Salossa</a> -sivulla. Jos maali on kulunut puhki ja puu harmaantunut, oikea työ on <a href=\"/ikkunapuitteiden-huolto-salo/\">ikkunapuitteiden maalaus ja kunnostus Salossa</a>.</p>\n<p>Kun koko talon tiivisteet ovat lopussa, kannattaa tehdä kerralla <a href=\"/ikkunoiden-tiivistys-salo/\">ikkunoiden tiivistys</a>. Yleiskuvan siitä, mitä huoltoon kuuluu, saat <a href=\"/ikkunahuolto/\">ikkunahuollon pääsivulta</a>.</p>\n<p>Sanomme myös, jos ikkunaa ei kannata enää kunnostaa. Läpilahoa puitetta ei huolto pelasta.</p>"
+        },
+        {
+          "id": "vahennys",
+          "h2": "Kotitalousvähennys ikkunahuollosta",
+          "html": "<p>Ikkunahuolto omassa kodissa tai omalla mökillä on yleensä kotitalousvähennykseen oikeuttavaa kunnossapitoa. Vähennyksen saa työn osuudesta, josta hyvitetään 35 %. Omavastuu on 150 € ja katto 1 600 € henkilöä kohti vuodessa. Kahden aikuisen taloudessa lasku kannattaa usein jakaa. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Teettekö ikkunahuoltoja Salon haja-asutusalueilla?",
+          "a": "Teemme ikkunahuoltoja koko Salon alueella, myös haja-asutusalueilla kuten Kiikalassa, Kiskossa, Suomusjärvellä ja Kuusjoella. Pitkien matkojen vuoksi sovimme käynnit päiville, joille tulee useampi kohde samalta suunnalta. Kartoituskäynti on maksuton myös kauempana keskustasta."
+        },
+        {
+          "q": "Voiko rintamamiestalon alkuperäiset ikkunat vielä huoltaa?",
+          "a": "Rintamamiestalon alkuperäiset ikkunat voi useimmiten huoltaa, sillä niiden puu on tyypillisesti tiheää ja kestävää. Salossa näitä ikkunoita on paljon. Huollossa tarkistamme kittaukset, saranat, puitteiden käynnin ja puun kunnon. Jos alapuitteessa on lahoa, se korjataan erikseen puupaikkauksella."
+        },
+        {
+          "q": "Huollatteko mökin ikkunat Särkisalossa tai Teijolla?",
+          "a": "Huollamme vapaa-ajan asuntojen ikkunoita Salon rannikolla, myös Särkisalossa ja Teijolla. Mökillä ikkunahuolto painottuu turvonneiden puitteiden käynnin säätöön, jäykistyneiden helojen voiteluun ja ulkopuitteiden pinnan tarkastukseen. Paras aika on kevät tai alkukesä, kun rakennus on ehtinyt kuivua talven jäljiltä."
+        },
+        {
+          "q": "Kuinka kauan ikkunahuolto kestää salolaisessa omakotitalossa?",
+          "a": "Ikkunahuolto kestää salolaisessa omakotitalossa tavallisesti päivän tai kaksi. Maatilan isossa päärakennuksessa, jossa on paljon monipuitteisia ikkunoita, aikaa kuluu enemmän. Arvioimme keston kartoituskäynnillä ja kirjaamme sen tarjoukseen, jotta tiedät etukäteen, kuinka pitkään työ vie."
+        },
+        {
+          "q": "Miten sovin kartoituskäynnin Saloon?",
+          "a": "Kartoituskäynnin Saloon sovit jättämällä yhteydenoton, jossa kerrot osoitteen, talon iän ja ikkunoiden määrän suunnilleen. Vastaamme viimeistään seuraavana arkipäivänä ja ehdotamme ajankohtaa, jolloin liikumme Salon suunnalla. Käynti ei maksa mitään eikä velvoita tilaamaan ikkunahuoltoa."
+        }
+      ],
+      "title": "Ikkunahuolto Salo – vanhat puuikkunat toimiviksi",
+      "meta": "Ikkunahuolto Salossa keskustasta Perniöön ja Suomusjärvelle. Huollamme omakotitalojen, maatilojen ja mökkien ikkunat. Pyydä maksuton kartoituskäynti.",
+      "h1": "Ikkunahuolto Salossa",
+      "lead": "Salossa on paljon taloja, joiden ikkunat ovat palvelleet puoli vuosisataa tai pidempään. Ikkunahuolto Salossa tarkoittaa meille usein juuri näiden puuikkunoiden läpikäyntiä: helat liikkeelle, tiivisteet kuntoon ja lahon alut esiin ennen kuin niistä tulee iso remontti.",
+      "short_answer": "Ikkunahuolto Salossa kattaa ikkunoiden kuntotarkastuksen, tiivisteiden tarkastuksen ja tarvittavat vaihdot, saranoiden, sulkimien ja painikkeiden säädön ja voitelun, puitteiden käynnin säädön, kittausten, lasituslistojen ja vesipeltien tarkastuksen sekä välitilojen puhdistuksen. Palvelemme koko kaupungin alueella keskustasta Halikkoon, Perniöön, Kiskoon ja Suomusjärvelle. Koska Salo on laaja ja matkaa meiltä kertyy, sovimme kartoitukset ja työt samoille päiville naapurikohteiden kanssa. Kartoituskäynti on maksuton, tarjous kirjallinen ja työstä voi yleensä hakea kotitalousvähennystä."
+    },
+    "kaarina": {
+      "sections": [
+        {
+          "id": "ika",
+          "h2": "Mitä ikkunan ikä kertoo huollon tarpeesta?",
+          "html": "<p>Kaarinassa talon rakennusvuosi antaa hyvän vihjeen siitä, mihin huollossa kannattaa varautua.</p>\n<h3>1970–80-lukujen talot</h3>\n<p>Ikkunat ovat tyypillisesti puuta ja kolmilasisia. Tiivisteet ovat monessa talossa vaihtamatta, ja ulkopuitteen alaosa on ehtinyt olla säälle alttiina vuosikymmeniä. Näissä tarkistamme puun kunnon erityisen huolella.</p>\n<h3>1990-luvun talot</h3>\n<p>Ulkopinnassa on usein jo alumiiniverhous, joka suojaa puuta. Helat ja tiivisteet ovat silti samassa iässä kuin talo. Jäykkä painike ja raskas puite ovat tavallisia.</p>\n<h3>2000-luvun talot</h3>\n<p>Ikkunat ovat vielä nuoria, mutta ensimmäinen huolto on ajankohtainen. Säätö ja voitelu ajoissa estävät helojen ennenaikaisen kulumisen.</p>"
+        },
+        {
+          "id": "rivitalot",
+          "h2": "Ikkunahuolto Kaarinan rivitaloissa ja taloyhtiöissä",
+          "html": "<p>Kaarinassa on paljon rivitaloyhtiöitä, joissa kaikki ikkunat ovat samaa mallia ja samalta vuodelta. Kun yhden asunnon ikkunat alkavat vetää, sama on yleensä edessä naapurissakin. Yhtiön kannalta järkevintä on huoltaa ikkunat asunto kerrallaan samalla kertaa.</p>\n<p>Kirjaamme havainnot huoneistoittain. Hallitus saa listan, josta näkyy vaihdetut tiivisteet, tehdyt säädöt ja kohdat, jotka kaipaavat korjausta tai maalausta lähivuosina. Asukkaan tarvitsee vain huolehtia, että ikkunoiden eteen pääsee.</p>\n<p>Yksittäinen osakas voi myös tilata huollon itse. Varmista silloin isännöitsijältä, miten kunnossapitovastuu on yhtiössänne jaettu.</p>"
+        },
+        {
+          "id": "alueet",
+          "h2": "Kaarinan alueet, joilla käymme",
+          "html": "<p>Liikumme Kaarinassa viikoittain. Piispanristin ja Hovirinnan pientaloalueet ovat aivan Turun rajalla, ja Littoisiin sekä Empoon on yhtä lyhyt matka. Piikkiössä palvelemme sekä taajaman omakotitaloja että ympäröivän maaseudun taloja.</p>\n<p>Kuusiston suunnalla talot ovat lähellä merta. Siellä tuuli painaa sadetta ikkunoihin eri tavalla kuin suojaisilla tonteilla, ja meren puoleiset ikkunat kuluvat tyypillisesti muita nopeammin. Rantatalossa huoltoväli kannattaa pitää lyhyempänä ja tarkistaa erityisesti vesipeltien liittymät ja ulkopuitteiden alareunat.</p>"
+        },
+        {
+          "id": "viat",
+          "h2": "Mistä kaarinalainen huomaa, että ikkunat kannattaa huoltaa?",
+          "html": "<ul>\n<li>Olohuoneen iso ikkuna hohkaa kylmää, vaikka patteri on lämmin.</li>\n<li>Tuuletusikkunan painike pyörii tyhjää tai ei käänny loppuun.</li>\n<li>Ikkunaa pestessä puitteiden välinen kytkin ei aukea tai ei mene enää kiinni.</li>\n<li>Sälekaihtimet välitilassa ovat pölyn peitossa.</li>\n<li>Makuuhuoneeseen kuuluu liikenteen ääni selvemmin kuin ennen.</li>\n<li>Tiivisteestä jää sormiin mustaa tai se murenee.</li>\n</ul>\n<p>Mikään näistä ei yksin tarkoita, että ikkuna olisi huono. Ne kertovat, että huoltamatonta aikaa on kertynyt. Useimmat korjaantuvat säädöllä, voitelulla ja uusilla tiivisteillä.</p>"
+        },
+        {
+          "id": "eteneminen",
+          "h2": "Miten huoltokäynti Kaarinassa etenee?",
+          "html": "<p>Aloitamme kartoituksesta, joka ei maksa mitään. Lyhyen matkan ansiosta käynti järjestyy Kaarinaan yleensä nopeasti. Katsomme ikkunat, kysymme havaintosi ja lähetämme kirjallisen, sitoumuksettoman tarjouksen.</p>\n<p>Huoltopäivänä etenemme huone kerrallaan. Avaamme puitteet, puhdistamme välitilan, tarkistamme ja vaihdamme tiivisteet, voitelemme helat ja säädämme käynnin. Lopuksi kokeilemme jokaisen ikkunan kanssasi ja kerromme, mitä kannattaa seurata.</p>\n<p>Laajempi kuvaus huollon sisällöstä on <a href=\"/ikkunahuolto/\">ikkunahuollon pääsivulla</a>.</p>"
+        },
+        {
+          "id": "muut-palvelut",
+          "h2": "Kun huolto ei yksin riitä",
+          "html": "<p>Jos tiivisteet ovat lopussa joka ikkunassa, suosittelemme <a href=\"/ikkunoiden-tiivistys-kaarina/\">ikkunoiden tiivistystä Kaarinassa</a>. Lahonnut alapuite, samea umpiolasi tai rikkinäinen suljin kuuluu <a href=\"/ikkunoiden-korjaus-kaarina/\">ikkunoiden korjaukseen</a>. Monessa talossa myös terassin tai parvekkeen ovi vetää, ja <a href=\"/ovihuolto-kaarina/\">ovihuolto Kaarinassa</a> onnistuu saman käynnin aikana.</p>\n<p>Jos ikkunat ovat niin huonot, ettei kunnostus kannata, sanomme senkin ja suosittelemme vaihtoa.</p>"
+        },
+        {
+          "id": "kotitalousvahennys",
+          "h2": "Voiko ikkunahuollosta saada kotitalousvähennyksen?",
+          "html": "<p>Voi yleensä, kun huolto tehdään omistamassasi ja käyttämässäsi asunnossa. Verosta vähennetään 35 % laskun työosuudesta 150 €:n omavastuun jälkeen, enintään 1 600 € vuodessa henkilöä kohden. Taloyhtiön tilaamasta ja maksamasta työstä osakas ei vähennystä saa. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kuinka nopeasti saatte ikkunahuollon tehtyä Kaarinassa?",
+          "a": "Ikkunahuolto Kaarinassa alkaa maksuttomalla kartoituskäynnillä, joka järjestyy lyhyen matkan ansiosta yleensä joustavasti. Vastaamme yhteydenottoon viimeistään seuraavana arkipäivänä. Itse huoltopäivä sovitaan tarjouksen hyväksymisen jälkeen, ja tavallinen omakotitalo valmistuu usein päivässä tai kahdessa."
+        },
+        {
+          "q": "Tarvitseeko 2000-luvulla rakennetun talon ikkunoita huoltaa?",
+          "a": "Myös 2000-luvulla rakennetun talon ikkunat hyötyvät huollosta. Kaarinassa näitä taloja on paljon, ja niiden ikkunoissa helat ja tiivisteet ovat jo ehtineet kulua. Säätö, voitelu ja tiivisteiden tarkastus ajoissa pitävät ikkunat kevytkäyttöisinä ja ehkäisevät kalliimpia korjauksia myöhemmin."
+        },
+        {
+          "q": "Huollatteko koko rivitaloyhtiön ikkunat Kaarinassa?",
+          "a": "Huollamme kokonaisten rivitaloyhtiöiden ikkunat Kaarinassa. Etenemme asunto kerrallaan sovitun aikataulun mukaan ja kirjaamme havainnot huoneistoittain. Hallitus ja isännöitsijä saavat yhteenvedon, josta näkyvät tehdyt työt sekä ikkunat, jotka tarvitsevat tiivistystä, korjausta tai maalausta."
+        },
+        {
+          "q": "Kuluvatko ikkunat Kuusistossa nopeammin kuin muualla Kaarinassa?",
+          "a": "Meren lähellä, kuten Kuusiston suunnalla, ikkunat kuluvat tyypillisesti nopeammin kuin sisämaan suojaisilla tonteilla. Tuuli ja viistosade rasittavat ulkopuitteita, vesipeltejä ja tiivisteitä. Rantatalossa ikkunahuolto kannattaa tehdä hieman tiheämmin ja kiinnittää huomiota erityisesti meren puoleiseen julkisivuun."
+        },
+        {
+          "q": "Puhdistetaanko sälekaihtimet ikkunahuollon yhteydessä?",
+          "a": "Ikkunahuoltoon kuuluu välitilojen puhdistus, ja samalla pyyhimme välitilassa olevat sälekaihtimet pölystä. Varsinainen ikkunanpesu ei kuulu huoltoon. Jos kaihtimen nostonaru tai säätömekanismi on rikki, kerromme sen huoltosuosituksissa, jotta voit päättää jatkosta."
+        }
+      ],
+      "title": "Ikkunahuolto Kaarina – omakoti- ja rivitalojen ikkunat",
+      "meta": "Ikkunahuolto Kaarinassa: säädämme helat, tarkastamme tiivisteet ja puhdistamme välitilat. Piispanristi, Littoinen, Piikkiö ja Kuusisto. Kysy tarjous.",
+      "h1": "Ikkunahuolto Kaarinassa",
+      "lead": "Kaarinan pientaloalueet ovat rakentuneet pääosin 1970-luvulta 2000-luvulle. Sen ikäisissä ikkunoissa runko on yleensä hyvä, mutta liikkuvat osat ja tiivisteet alkavat väsyä. Ikkunahuolto Kaarinassa on siksi useimmiten ennakoivaa työtä, jolla ikkunoille saadaan lisää käyttövuosia.",
+      "short_answer": "Ikkunahuolto Kaarinassa on tarkoitettu omakoti- ja rivitaloille sekä taloyhtiöille, joiden ikkunat halutaan pitää tiiviinä ja helppokäyttöisinä. Käymme läpi tiivisteet, saranat, pitkäsulkimet, painikkeet ja puitteiden käynnin, tarkistamme lasituslistat, vesipellit ja liittymät ja puhdistamme lasien välit. Vaihdamme kuluneet tiivisteet tarpeen mukaan. Palvelemme muun muassa Piispanristillä, Littoisissa, Piikkiössä, Kuusistossa, Hovirinnassa ja Emmossa. Kaarina on Turun naapuri, joten matka on lyhyt ja ajat järjestyvät joustavasti. Ensin teemme maksuttoman kartoituksen ja kirjallisen tarjouksen."
+    },
+    "naantali": {
+      "sections": [
+        {
+          "id": "meri-ilmasto",
+          "h2": "Miksi meri-ilmasto lisää ikkunahuollon tarvetta?",
+          "html": "<p>Rannikolla ikkunaan kohdistuu kolme rasitusta yhtä aikaa.</p>\n<ul>\n<li><strong>Tuuli.</strong> Kova tuuli painaa ilmaa pienistäkin raoista sisään. Tiiviste, joka sisämaassa vielä välttäisi, vetää Naantalissa selvästi.</li>\n<li><strong>Viistosade.</strong> Vesi ei tule ylhäältä vaan sivusta. Se hakeutuu lasituslistojen alle, puitteen ja karmin väliin ja vesipellin päätyihin.</li>\n<li><strong>Suola.</strong> Suolainen kosteus nopeuttaa metalliosien ruostumista ja haurastuttaa maalipintaa.</li>\n</ul>\n<p>Seuraus on, että meren puoleiset ikkunat vanhenevat usein selvästi nopeammin kuin saman talon suojan puolen ikkunat. Huollossa käsittelemme ne siksi erikseen ja tarkemmin.</p>"
+        },
+        {
+          "id": "tarkastuskohdat",
+          "h2": "Mihin kiinnitämme Naantalissa erityistä huomiota?",
+          "html": "<h3>Ulkopuitteen alareuna ja karmin alaosa</h3>\n<p>Vesi kerääntyy alas. Painamme puuta piikillä ja etsimme pehmenneet kohdat, jotka maali vielä peittää.</p>\n<h3>Vesipellit</h3>\n<p>Pellin pitää kallistua ulospäin ja liittyä tiiviisti karmiin. Löysä tai taakse kallistunut pelti ohjaa veden suoraan rakenteeseen.</p>\n<h3>Helat</h3>\n<p>Ruostunut sarana tai suljin jäykistyy ja lopulta katkeaa. Puhdistamme ja voitelemme helat ja kerromme, jos jokin niistä on vaihtokunnossa.</p>\n<h3>Tiivisteet ja puitteen puristus</h3>\n<p>Tuulisella paikalla sulkimen pitää vetää puite tasaisesti kiinni koko matkalta. Säädämme sulkimet ja vaihdamme litistyneet tiivisteet.</p>"
+        },
+        {
+          "id": "vanhakaupunki",
+          "h2": "Vanhankaupungin puutalot ja niiden ikkunat",
+          "html": "<p>Naantalin Vanhassakaupungissa on vanhoja puutaloja, joiden ikkunat ovat osa talon ilmettä. Puitteet ovat kapeita, lasit kitattuja ja helat perinteisiä hakoja ja kulmarautoja. Tällaisia ikkunoita ei huolleta kuten uudempia tehdasikkunoita.</p>\n<p>Etenemme varovasti. Kittauksen murtumat, irtoileva maali ja löystyneet nurkkaliitokset kirjataan tarkasti. Sisäpuitteet tiivistetään niin, että ulkopuite saa edelleen tuulettua. Jos puitteet tarvitsevat kunnostusmaalauksen, siitä kerromme sivulla <a href=\"/ikkunapuitteiden-huolto-naantali/\">ikkunapuitteiden huolto Naantalissa</a>.</p>\n<p>Vanhassa talossa mahdollisista suojelumääräyksistä vastaa omistaja. Huolto ja kunnostus säilyttävät alkuperäiset ikkunat, mikä on yleensä myös talon ilmeen kannalta paras vaihtoehto.</p>"
+        },
+        {
+          "id": "saaret",
+          "h2": "Ikkunahuolto Luonnonmaalla, Rymättylässä ja saarissa",
+          "html": "<p>Luonnonmaa on sillan päässä, ja Rymättylään ja Merimaskuun ajaa tietä pitkin. Velkuan suunnalla ja muissa saarikohteissa kulku vaatii enemmän suunnittelua. Sovimme silloin etukäteen, miten perille päästään ja missä auton saa jätettyä.</p>\n<p>Saariin tehdään kartoitus ja huolto mahdollisuuksien mukaan niin, että samalla matkalla hoituu useampi talo. Jos naapurimökillä on samaa tarvetta, vinkkaa siitä meille.</p>\n<p>Vapaa-ajan asunnoissa ikkunat ovat talven lämmittämättä. Keväällä puitteet ovat turvoksissa ja helat kankeat. Huolto kannattaa ajoittaa alkukesään, kun rakennus on kuivunut ja ikkunat asettuneet.</p>"
+        },
+        {
+          "id": "prosessi",
+          "h2": "Kartoituksesta läpikäyntiin",
+          "html": "<ol>\n<li>Kerro yhteydenotossa kohteen sijainti ja se, onko talo meren äärellä.</li>\n<li>Tulemme maksuttomalle kartoituskäynnille ja katsomme ikkunat myös ulkoa.</li>\n<li>Lähetämme kirjallisen tarjouksen, johon et sitoudu ennen hyväksyntää.</li>\n<li>Huollamme ikkunat sovittuna päivänä.</li>\n<li>Kierrämme lopuksi talon kanssasi ja käymme läpi tehdyt työt ja suositukset.</li>\n</ol>\n<p>Vastaamme viesteihin viimeistään seuraavana arkipäivänä. Yleisesti huollon sisällöstä kerrotaan <a href=\"/ikkunahuolto/\">ikkunahuolto-sivulla</a>.</p>"
+        },
+        {
+          "id": "liittyvat",
+          "h2": "Muut työt samalla kertaa ja kotitalousvähennys",
+          "html": "<p>Rannikolla huollon yhteydessä löytyy tavallista useammin korjattavaa. Pehmennyt puu ja ruostuneet helat hoituvat <a href=\"/ikkunoiden-korjaus-naantali/\">ikkunoiden korjauksena Naantalissa</a>. Jos veto on pääongelma, katso <a href=\"/ikkunoiden-tiivistys-naantali/\">ikkunoiden tiivistys Naantalissa</a>. Kerromme myös rehellisesti, jos ikkuna on niin huono, että vaihto on järkevämpi kuin kunnostus.</p>\n<p>Kotitalousvähennystä voi yleensä hakea sekä vakituisen kodin että oman mökin ikkunahuollosta. Vähennys lasketaan työn osuudesta: 35 %, omavastuu 150 € ja yläraja 1 600 € henkilölle vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kuinka usein ikkunat pitäisi huoltaa Naantalissa?",
+          "a": "Naantalissa ikkunat kannattaa tarkastaa tiheämmin kuin sisämaassa, koska tuuli, viistosade ja suola kuluttavat puitteita, heloja ja tiivisteitä. Meren puoleiset ikkunat on hyvä katsoa parin vuoden välein. Suojan puolella väli voi olla pidempi. Arvioimme sopivan huoltovälin kartoituskäynnillä talon sijainnin mukaan."
+        },
+        {
+          "q": "Teettekö ikkunahuoltoja Naantalin saarissa?",
+          "a": "Teemme ikkunahuoltoja myös Naantalin saarikohteissa, esimerkiksi Rymättylän, Merimaskun ja Velkuan suunnalla. Kulku sovitaan etukäteen, ja pyrimme hoitamaan samalla matkalla useamman kohteen. Kerro yhteydenotossa, pääseekö perille autolla vai tarvitaanko venekyytiä tai yhteysalusta."
+        },
+        {
+          "q": "Miten vanhan puutalon ikkunat huolletaan Naantalin Vanhassakaupungissa?",
+          "a": "Vanhan puutalon ikkunat huolletaan Naantalin Vanhassakaupungissa alkuperäisiä rakenteita säilyttäen. Tarkistamme kittaukset, maalipinnan, nurkkaliitokset ja perinteiset helat, säädämme puitteiden käynnin ja tiivistämme sisäpuitteet. Ulkopuite jätetään tuulettuvaksi. Suuremmat kunnostukset, kuten maalaus ja puukorjaukset, tarjotaan erikseen."
+        },
+        {
+          "q": "Miksi ikkunan helat ruostuvat meren lähellä?",
+          "a": "Ikkunan helat ruostuvat meren lähellä, koska ilman kosteus ja suola nopeuttavat metallin syöpymistä. Naantalissa ilmiö näkyy etenkin ulkopuitteen saranoissa ja sulkimissa. Ikkunahuollossa puhdistamme ja voitelemme helat. Pahoin ruostunut osa kannattaa vaihtaa ennen kuin se katkeaa."
+        },
+        {
+          "q": "Milloin mökin ikkunat kannattaa huoltaa Naantalin saaristossa?",
+          "a": "Mökin ikkunat kannattaa huoltaa Naantalin saaristossa alkukesällä, kun rakennus on kuivunut talven jäljiltä ja puitteet ovat asettuneet. Silloin käynnin säätö onnistuu luotettavasti. Syksyllä tehty huolto taas varmistaa, että ikkunat sulkeutuvat tiiviisti ennen kuin mökki jää talveksi tyhjilleen."
+        }
+      ],
+      "title": "Ikkunahuolto Naantali – meri-ilmaston kuluttamat ikkunat",
+      "meta": "Ikkunahuolto Naantalissa mantereella ja saarissa. Tuuli, viistosade ja suola kuluttavat puitteita ja heloja. Tarkastamme ja huollamme ikkunat ajoissa.",
+      "h1": "Ikkunahuolto Naantalissa",
+      "lead": "Naantalissa ikkunat ovat kovemmalla koetuksella kuin sisämaassa. Mereltä puhaltava tuuli painaa sateen vaakasuoraan lasia ja puitteita vasten, ja ilman suola käy helojen kimppuun. Ikkunahuolto Naantalissa on siksi ennen kaikkea sään jälkien tarkastamista ja korjaamista ajoissa.",
+      "short_answer": "Ikkunahuolto Naantalissa pitää merellisen kaupungin ikkunat tiiviinä ja toimivina. Tarkistamme puitteiden, karmien ja pintakäsittelyn kunnon, tiivisteet, saranat, sulkimet ja painikkeet, säädämme puitteiden käynnin, käymme läpi kittaukset, lasituslistat, vesipellit ja liittymät ja puhdistamme välitilat. Meri-ilmastossa painotamme ulkopuitteiden alaosia, vesipeltien kallistuksia ja helojen ruostumista. Palvelemme Vanhassakaupungissa, Luonnonmaalla, Rymättylässä, Merimaskussa ja Velkualla, myös saarikohteissa. Tukikohtamme Maskussa on lähellä. Kartoitus on maksuton ja tarjous kirjallinen."
+    },
+    "raisio": {
+      "sections": [
+        {
+          "id": "taloyhtiot",
+          "h2": "Ikkunahuolto raisiolaisessa taloyhtiössä",
+          "html": "<p>Raisiossa on runsaasti kerros- ja rivitaloyhtiöitä, joiden ikkunat lähestyvät viidenkymmenen vuoden ikää. Hallituksessa mietitään silloin usein, pitääkö ikkunat vaihtaa. Ennen sitä päätöstä kannattaa selvittää, missä kunnossa ne oikeasti ovat.</p>\n<p>Ikkunahuolto antaa tähän tietoa. Kun jokainen ikkuna avataan ja tarkastetaan, nähdään, ovatko ongelmat kuluneissa tiivisteissä ja heloissa vai itse puussa ja laseissa. Ensin mainitut korjaantuvat huollolla. Jälkimmäiset vaativat korjausta tai lopulta vaihtoa.</p>\n<p>Yhtiö saa meiltä listan huoneistoittain: mitä tehtiin, mitä havaittiin ja mitä suosittelemme. Listaa voi käyttää kunnossapitotarveselvityksen tukena.</p>"
+        },
+        {
+          "id": "vastuunjako",
+          "h2": "Kuka ikkunahuollon tilaa: yhtiö vai osakas?",
+          "html": "<p>Tämä on Raisiossa yleinen kysymys. Kunnossapitovastuu määräytyy yhtiöjärjestyksen ja yhtiön oman vastuunjakotaulukon mukaan. Usein ulkopuoliset osat ovat yhtiön ja sisäpuoliset osakkaan vastuulla, mutta käytännöt vaihtelevat.</p>\n<p>Varmista jako isännöitsijältä ennen tilausta. Jos yhtiö tilaa huollon, se sovitaan hallituksen kanssa ja asukkaille ilmoitetaan aikataulu. Jos tilaat huollon itse omaan asuntoosi, teemme sen samalla tavalla kuin omakotitaloon ja kerromme, mitkä havainnot kannattaa viedä yhtiön tietoon.</p>"
+        },
+        {
+          "id": "tyypillista",
+          "h2": "Mikä 1960–80-lukujen ikkunoissa tyypillisesti kuluu?",
+          "html": "<ul>\n<li><strong>Kytketyt puitteet.</strong> Sisä- ja ulkopuite on liitetty toisiinsa kytkimillä. Ne löystyvät tai jumittuvat, jolloin puitteet eivät pysy yhdessä tai eivät aukea pesua varten.</li>\n<li><strong>Saranat.</strong> Painava kaksoispuite roikkuu samoilla saranoilla vuosikymmeniä. Puite painuu ja alkaa hangata.</li>\n<li><strong>Tuuletusikkunat.</strong> Kapea tuuletusikkuna on talon käytetyin, ja sen suljin ja tiiviste kuluvat ensimmäisinä.</li>\n<li><strong>Tiivisteet.</strong> Alkuperäinen tiiviste on tyypillisesti kovettunut tai puuttuu osin kokonaan.</li>\n<li><strong>Ulkopuitteen alaosa.</strong> Maali on ohentunut ja puu voi olla harmaata tai pehmeää.</li>\n</ul>\n<p>Hyvä uutinen on, että sen ajan puuikkunoissa runko on usein tervettä. Kun liikkuvat osat huolletaan, ikkuna toimii taas kuten pitää.</p>"
+        },
+        {
+          "id": "omakotitalot",
+          "h2": "Omakoti- ja rivitalot Raision kaupunginosissa",
+          "html": "<p>Kaanaan, Ihalan ja Kerttulan pientaloalueilla on paljon omakotitaloja, joissa on isoja maisemaikkunoita ja niiden vieressä kapeat tuuletusikkunat. Petäsmäessä, Vaisaaressa ja Tikanmaalla on vastaavaa rakennuskantaa sekä rivitaloja. Kuloisten suunnalla kohteet ovat usein taloyhtiöitä.</p>\n<p>Omakotitalossa huolto on suoraviivaista. Yksi omistaja päättää, ja kaikki ikkunat tehdään kerralla. Raisio on Turun kyljessä ja Maskun tukikohtamme naapurissa, joten ehdimme kohteisiin vaivatta ja pystymme sopimaan myös lyhyitä käyntejä.</p>"
+        },
+        {
+          "id": "kulku",
+          "h2": "Miten työ Raisiossa tehdään?",
+          "html": "<ol>\n<li><strong>Yhteydenotto.</strong> Vastaus tulee viimeistään seuraavana arkipäivänä.</li>\n<li><strong>Kartoituskäynti.</strong> Maksuton. Taloyhtiössä katsomme tavallisesti muutaman esimerkkiasunnon eri puolilta rakennusta.</li>\n<li><strong>Tarjous.</strong> Kirjallinen ja sitoumukseton. Yhtiölle erittelemme työn niin, että hallitus voi käsitellä sen kokouksessaan.</li>\n<li><strong>Huolto.</strong> Sovittuna päivänä. Taloyhtiössä asunnot käydään läpi rappu tai rivi kerrallaan etukäteen jaetun aikataulun mukaan.</li>\n<li><strong>Läpikäynti.</strong> Omakotitalossa omistajan kanssa, yhtiössä hallituksen tai isännöitsijän edustajan kanssa.</li>\n</ol>"
+        },
+        {
+          "id": "jatko",
+          "h2": "Mitä huollon jälkeen?",
+          "html": "<p>Huoltosuosituksissa kerromme, mitä kannattaa tehdä seuraavaksi ja millä aikataululla. Tavallisia jatkotöitä ovat koko rakennuksen <a href=\"/ikkunoiden-tiivistys-raisio/\">ikkunoiden tiivistys</a>, ulkopuitteiden kunnostusmaalaus eli <a href=\"/ikkunapuitteiden-huolto-raisio/\">ikkunapuitteiden huolto Raisiossa</a> ja yksittäisten vaurioiden <a href=\"/ikkunoiden-korjaus-raisio/\">korjaus</a>.</p>\n<p>Jos ikkunat ovat tulleet tiensä päähän, emme ehdota niiden huoltamista. Laajasti lahot puitteet tai sameiksi menneet umpiolasit ovat merkki siitä, että vaihto on oikea ratkaisu. Lisää palvelun sisällöstä löydät <a href=\"/ikkunahuolto/\">ikkunahuollon yleissivulta</a>.</p>"
+        },
+        {
+          "id": "vahennys",
+          "h2": "Kotitalousvähennys Raisiossa",
+          "html": "<p>Kun maksat ikkunahuollon itse omaan asuntoosi, voit yleensä hakea kotitalousvähennystä. Sen määrä on 35 % työn hinnasta, vuotuinen omavastuu 150 € ja enimmäissumma 1 600 € henkilöltä. Yhtiön maksamasta huollosta vähennystä ei saa, koska kulu ei ole osakkaan oma. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kannattaako taloyhtiön huoltaa vai vaihtaa vanhat ikkunat Raisiossa?",
+          "a": "Raisiolaisen taloyhtiön kannattaa selvittää ikkunoiden todellinen kunto ennen päätöstä. Jos puu on tervettä ja lasit kirkkaat, ikkunahuolto ja tiivistys antavat ikkunoille usein lisää käyttövuosia. Jos puitteet ovat laajasti lahot tai umpiolasit sameat, vaihto on perusteltu. Kerromme arviomme suoraan kartoituksen jälkeen."
+        },
+        {
+          "q": "Voiko osakas tilata ikkunahuollon itse raisiolaiseen kerros- tai rivitaloasuntoon?",
+          "a": "Osakas voi tilata ikkunahuollon itse omaan asuntoonsa Raisiossa. Sitä ennen kannattaa tarkistaa isännöitsijältä, miten ikkunoiden kunnossapitovastuu on yhtiössä jaettu. Huollamme asunnon ikkunat normaalisti ja kerromme, mitkä havainnot, esimerkiksi ulkopuitteen laho, kuuluu ilmoittaa taloyhtiölle."
+        },
+        {
+          "q": "Miksi 1970-luvun ikkunan puitteet eivät pysy yhdessä?",
+          "a": "1970-luvun ikkunoissa sisä- ja ulkopuite on usein kytketty toisiinsa erillisillä kytkimillä. Kun kytkimet kuluvat tai löystyvät, puitteet irtoavat toisistaan avattaessa. Raisiossa vika on yleinen. Ikkunahuollossa kiristämme ja voitelemme kytkimet, ja rikkinäinen kytkin voidaan vaihtaa korjaustyönä."
+        },
+        {
+          "q": "Missä Raision kaupunginosissa teette ikkunahuoltoja?",
+          "a": "Teemme ikkunahuoltoja kaikissa Raision kaupunginosissa, muun muassa Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Raisio on tukikohtamme Maskun naapuri, joten matka on lyhyt ja kartoituskäynti järjestyy yleensä nopeasti."
+        },
+        {
+          "q": "Kuinka taloyhtiön ikkunahuolto aikataulutetaan?",
+          "a": "Taloyhtiön ikkunahuolto aikataulutetaan yhdessä hallituksen ja isännöitsijän kanssa. Asunnot käydään läpi rappu tai rivitalon rivi kerrallaan, ja asukkaat saavat aikataulun etukäteen. Asukkaan tehtävä on tyhjentää ikkunoiden edustat. Raisiossa lyhyt matka helpottaa myös paikkauskäyntien sopimista."
+        },
+        {
+          "q": "Kuuluuko ikkunoiden pesu ikkunahuoltoon?",
+          "a": "Ikkunoiden pesu ei kuulu ikkunahuoltoon. Huollossa puhdistamme puitteiden välitilat pölystä ja roskista, pyyhimme tiivisteet ja tiivisteurat sekä puhdistamme helat ennen voitelua. Lasien pesu kannattaa ajoittaa huollon jälkeen, kun puitteet aukeavat taas kevyesti."
+        }
+      ],
+      "title": "Ikkunahuolto Raisio – taloyhtiöt, rivitalot ja omakotitalot",
+      "meta": "Ikkunahuolto Raisiossa 1960–80-lukujen taloihin ja taloyhtiöihin. Tiivisteet, helat, puitteiden säätö ja välitilat kuntoon. Maksuton kartoitus.",
+      "h1": "Ikkunahuolto Raisiossa",
+      "lead": "Raisio rakentui vauhdilla 1960-luvulta 1980-luvulle, ja suuri osa kaupungin ikkunoista on yhä tuolta ajalta. Ne on tehty kestämään, mutta eivät huoltamatta. Ikkunahuolto Raisiossa palauttaa vanhenevat ikkunat tiiviiksi ja kevyiksi käyttää, olipa kyse omakotitalosta tai koko taloyhtiöstä.",
+      "short_answer": "Ikkunahuolto Raisiossa sopii erityisesti 1960–80-lukujen omakotitaloihin, rivitaloihin ja taloyhtiöihin. Huollossa tarkastamme ikkunoiden kunnon, vaihdamme kuluneet tiivisteet, säädämme ja voitelemme saranat, sulkimet ja puitteiden väliset kytkimet, korjaamme puitteiden käynnin, tarkistamme lasituslistat, kittaukset ja vesipellit ja puhdistamme välitilat. Toimimme koko Raisiossa: Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Taloyhtiöille laadimme huoneistokohtaisen yhteenvedon. Työ alkaa maksuttomalla kartoituskäynnillä, jonka jälkeen saat kirjallisen tarjouksen ilman sitoumusta."
+    },
+    "parainen": {
+      "sections": [
+        {
+          "id": "kaksi-kohdetta",
+          "h2": "Ympärivuotinen koti vai vapaa-ajan asunto?",
+          "html": "<p>Paraisilla huollamme kahta hyvin erilaista ikkunaryhmää.</p>\n<h3>Ympäri vuoden asutut talot</h3>\n<p>Lämmitetyssä talossa ikkunan sisäpuoli pysyy kuivana ja puu liikkuu vähän. Ongelmat ovat tuttuja: veto tiivisteiden ohi, jäykät helat ja meren puolella kuluva ulkopinta. Huollolla haetaan ennen kaikkea asumismukavuutta ja pienempää lämmöntarvetta.</p>\n<h3>Vapaa-ajan asunnot</h3>\n<p>Mökki on talven kylmillään, ja ilmankosteus pääsee vaikuttamaan puuhun molemmin puolin. Puitteet turpoavat ja kutistuvat vuodenaikojen mukaan. Ikkuna, joka heinäkuussa toimii moitteetta, voi toukokuussa olla juuttunut karmiinsa. Mökillä tärkeintä on, että ikkunat aukeavat ja sulkeutuvat luotettavasti ja että vesi pysyy rakenteen ulkopuolella.</p>\n<p>Kerro yhteydenotossa, kummasta on kyse. Se vaikuttaa sekä huollon sisältöön että parhaaseen ajankohtaan.</p>"
+        },
+        {
+          "id": "vanhat-puutalot",
+          "h2": "Vanhan puutalokannan ikkunat",
+          "html": "<p>Paraisilla on paljon vanhoja puutaloja niin keskustan tuntumassa kuin saariston kylissä. Niiden ikkunat ovat tyypillisesti käsityönä tehtyjä: ohuet puitteet, kitatut ruudut ja erilliset sisäikkunat, jotka joissain taloissa nostetaan paikalleen vain talveksi.</p>\n<p>Tällaisen ikkunan huollossa katsomme ensin kitin. Kun kitti lohkeilee, vesi pääsee lasin ja puun väliin ja laho alkaa puitteen alakulmista. Seuraavaksi tarkistamme nurkkaliitokset, saranat ja haat. Irtonaiset sisäikkunat sovitetaan niin, että ne istuvat tiiviisti, mutta ulompi ikkuna saa hengittää.</p>\n<p>Hyväkuntoinen vanha puuikkuna on arvokas. Se kannattaa pitää kunnossa pienin toimin mieluummin kuin päästää niin huonoksi, ettei kunnostus enää onnistu.</p>"
+        },
+        {
+          "id": "lautat",
+          "h2": "Miten ikkunahuolto järjestyy lauttojen taakse?",
+          "html": "<p>Nauvoon, Korppooseen, Houtskariin ja Iniöön kuljetaan lautoilla, ja se rytmittää työpäivän. Otamme sen huomioon jo suunnittelussa.</p>\n<ul>\n<li>Sovimme kartoituksen ja huollon mahdollisimman usein samalle saarelle samaksi päiväksi useammalle asiakkaalle.</li>\n<li>Pyydämme etukäteen valokuvia ikkunoista. Niiden avulla osaamme varata oikeat tiivisteet ja tarvikkeet mukaan, jotta yhtä puuttuvaa osaa ei tarvitse hakea mantereelta.</li>\n<li>Lauttojen aikataulut ja mahdolliset jonot kesäsesonkina vaikuttavat päivän pituuteen, joten sovimme saapumisajan väljästi.</li>\n<li>Jos mökille kuljetaan viimeinen osuus veneellä, sovitaan kyydistä erikseen.</li>\n</ul>\n<p>Keskustaan ja Kirjalaan pääsee siltoja pitkin, joten siellä käynnit järjestyvät kuten muuallakin Turun seudulla.</p>"
+        },
+        {
+          "id": "havainnot",
+          "h2": "Mitä saaristossa huollossa yleensä löytyy?",
+          "html": "<p>Meri-ilmastossa samat kohdat toistuvat kohteesta toiseen. Ulkopuitteiden alareunoissa maali on kulunut ja puu paikoin pehmeää. Vesipellit ovat irronneet päistään tai niiden kallistus on väärä. Saranat ja sulkimet ovat ruosteessa. Tiivisteet ovat kovia tai niitä ei ole lainkaan.</p>\n<p>Mökeillä löytyy lisäksi talven jälkiä: välitilassa on hyönteisiä ja hiirenkin jälkiä, ja puite on voinut jäädä syksyllä raolleen, kun se ei mahtunut kiinni.</p>\n<p>Osa näistä hoituu huollossa. Loput kirjaamme suosituksiin. Pehmenneen puun paikkaus kuuluu <a href=\"/ikkunoiden-korjaus-parainen/\">ikkunoiden korjaukseen Paraisilla</a> ja kuluneen maalipinnan uusiminen <a href=\"/ikkunapuitteiden-huolto-parainen/\">ikkunapuitteiden huoltoon</a>. Saaristossa on järkevää tehdä mahdollisimman paljon yhdellä matkalla, joten tarjoamme nämä tarvittaessa samaan pakettiin. Usein mukaan otetaan myös <a href=\"/ovihuolto-parainen/\">ovihuolto</a>, koska mökin ulko-ovi kärsii samasta kosteudesta.</p>"
+        },
+        {
+          "id": "eteneminen",
+          "h2": "Yhteydenotosta valmiiseen työhön",
+          "html": "<ol>\n<li>Lähetä viesti ja liitä mukaan muutama kuva ikkunoista, jos mahdollista.</li>\n<li>Vastaamme viimeistään seuraavana arkipäivänä ja sovimme maksuttoman kartoituksen.</li>\n<li>Saat kirjallisen tarjouksen, joka ei velvoita tilaamaan.</li>\n<li>Huolto tehdään sovittuna päivänä. Mökillä sinun ei välttämättä tarvitse olla paikalla, jos avaimesta sovitaan.</li>\n<li>Lopuksi käymme työn läpi paikan päällä tai kuvien avulla, jos olet muualla.</li>\n</ol>\n<p>Palvelun koko sisältö on kuvattu <a href=\"/ikkunahuolto/\">ikkunahuollon pääsivulla</a>.</p>"
+        },
+        {
+          "id": "verovahennys",
+          "h2": "Kotitalousvähennys myös mökin ikkunahuollosta",
+          "html": "<p>Kotitalousvähennys koskee yleensä myös omassa käytössä olevaa vapaa-ajan asuntoa, mikä on Paraisilla monelle olennainen tieto. Työn osuudesta saa vähentää 35 %. Omavastuu on 150 € vuodessa ja vähennyksen enimmäismäärä 1 600 € henkilöä kohden. Matkakulut ja tarvikkeet eivät kuulu vähennyksen piiriin. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Teettekö ikkunahuoltoja Nauvossa, Korppoossa ja Houtskarissa?",
+          "a": "Teemme ikkunahuoltoja koko Paraisten alueella, myös Nauvossa, Korppoossa, Houtskarissa ja Iniössä. Saaristokäynnit suunnitellaan lauttayhteyksien mukaan ja sovitaan hyvissä ajoin. Pyrimme hoitamaan samalla matkalla useamman kohteen, joten naapureiden kannattaa ottaa yhteyttä yhtä aikaa."
+        },
+        {
+          "q": "Milloin mökin ikkunahuolto kannattaa tehdä Paraisilla?",
+          "a": "Mökin ikkunahuolto kannattaa tehdä Paraisilla alkukesästä, kun rakennus on kuivunut ja puitteet ovat palanneet mittoihinsa. Silloin säädöt pitävät koko kauden. Toinen hyvä hetki on alkusyksy ennen mökin sulkemista, jolloin varmistetaan, että ikkunat menevät talveksi kunnolla kiinni."
+        },
+        {
+          "q": "Miksi mökin ikkuna juuttuu keväällä kiinni?",
+          "a": "Mökin ikkuna juuttuu keväällä, koska lämmittämättömässä rakennuksessa puu imee talven aikana kosteutta ja turpoaa. Paraisten saaristossa ilmiö on tavallinen. Ikkunahuollossa säädämme puitteen käynnin ja tarkistamme pintakäsittelyn, sillä ehjä maalipinta vähentää puun kosteuselämistä. Puitetta ei pidä höylätä hätäisesti märkänä."
+        },
+        {
+          "q": "Voiko vanhan saaristolaistalon alkuperäiset ikkunat säilyttää?",
+          "a": "Vanhan saaristolaistalon alkuperäiset ikkunat voi useimmiten säilyttää, jos puu on pääosin tervettä. Paraisilla tällaisia ikkunoita on paljon. Ikkunahuollossa tarkistamme kittaukset, liitokset ja helat ja sovitamme sisäikkunat tiiviiksi. Yksittäiset lahot kohdat korjataan puupaikkauksella erillisenä työnä."
+        },
+        {
+          "q": "Pitääkö minun olla paikalla, kun ikkunat huolletaan saaristomökillä?",
+          "a": "Sinun ei välttämättä tarvitse olla paikalla, kun ikkunat huolletaan saaristomökillä Paraisilla. Sovimme etukäteen avaimesta ja kulusta kohteeseen. Työn jälkeen saat kirjallisen yhteenvedon ja valokuvat tehdyistä töistä ja havainnoista, ja käymme ne kanssasi läpi."
+        }
+      ],
+      "title": "Ikkunahuolto Parainen – saariston talot ja mökit",
+      "meta": "Ikkunahuolto Paraisilla ja saaristossa: Nauvo, Korppoo, Houtskari ja Iniö. Huollamme vanhojen puutalojen ja mökkien ikkunat. Maksuton kartoituskäynti.",
+      "h1": "Ikkunahuolto Paraisilla",
+      "lead": "Paraisilla ikkunan elämää määrää meri. Kosteus, tuuli ja pitkät lämmittämättömät jaksot näkyvät puitteissa aivan eri tavalla kuin kaupunkitalossa mantereella. Ikkunahuolto Paraisilla suunnitellaan siksi aina kohteen mukaan: ympärivuotinen koti keskustassa on eri asia kuin kesämökki lauttamatkan päässä.",
+      "short_answer": "Ikkunahuolto Paraisilla tarkoittaa ikkunoiden tarkastusta ja perushuoltoa saaristo-oloissa. Säädämme puitteiden käynnin, voitelemme ja säädämme saranat, sulkimet ja painikkeet, tarkastamme tiivisteet ja vaihdamme huonot, katsomme kittaukset, lasituslistat, vesipellit ja liittymät sekä puhdistamme välitilat. Saat lopuksi kirjalliset huoltosuositukset. Palvelemme keskustassa ja Kirjalassa sekä saaristossa Nauvossa, Korppoossa, Houtskarissa ja Iniössä. Lauttayhteyksien takia saaristokäynnit sovitaan hyvissä ajoin ja useampi kohde hoidetaan samalla matkalla. Kartoituskäynti on maksuton, ja tarjous tulee kirjallisena ilman sitoutumista."
+    },
+    "paimio": {
+      "sections": [
+        {
+          "id": "kysymykset",
+          "h2": "Kolme kysymystä, joilla arvioit ikkunoidesi tilan",
+          "html": "<p>Ennen kuin otat yhteyttä, voit tehdä pienen kierroksen itse. Se auttaa kertomaan meille olennaisen.</p>\n<h3>Aukeaako ja sulkeutuuko jokainen ikkuna?</h3>\n<p>Kokeile kaikki avattavat ikkunat, myös yläkerran ja kodinhoitohuoneen. Kirjaa ne, jotka jumittavat, laahaavat tai joiden painike ei käänny loppuun.</p>\n<h3>Tuntuuko veto?</h3>\n<p>Vie käsi tuulisena päivänä puitteen ja karmin rajaan. Jos ilma liikkuu, tiiviste ei tee tehtäväänsä tai suljin ei purista puitetta kiinni.</p>\n<h3>Miltä ulkopuoli näyttää?</h3>\n<p>Katso alapuitteen ulkopinta ja vesipelti. Halkeillut maali, tummat läikät puussa ja irti repsottava pelti ovat asioita, jotka huollossa tarkistetaan ensimmäisenä.</p>\n<p>Jos vastaus johonkin näistä mietityttää, ikkunahuolto on paikallaan.</p>"
+        },
+        {
+          "id": "eri-ikaiset",
+          "h2": "Ikkunahuolto eri vuosikymmenten paimiolaistaloissa",
+          "html": "<p>Paimiossa on omakotitaloja monelta aikakaudelta, ja se näkyy töissämme.</p>\n<ul>\n<li><strong>Sodanjälkeiset puutalot.</strong> Kaksinkertaiset, kitatut ikkunat. Työssä korostuvat kittaukset, puun kunto ja helojen toiminta.</li>\n<li><strong>1960–70-lukujen tiilitalot.</strong> Leveät ikkunat ja painavat puitteet. Saranat ovat kovilla, ja puitteet tarvitsevat usein noston ja säädön.</li>\n<li><strong>1980–90-lukujen talot.</strong> Kolmilasiset ikkunat, joissa tiivisteet ovat jo kertaalleen tai kahdesti käyttöikänsä päässä.</li>\n<li><strong>Uudemmat talot.</strong> Ulkopinta on usein alumiinia. Huolto on kevyempi, mutta helat ja tiivisteet tarvitsevat silti huomiota.</li>\n</ul>\n<p>Samassa talossa voi myös olla eri-ikäisiä ikkunoita, jos osa on vaihdettu remontissa. Käsittelemme ne tarjouksessa erikseen.</p>"
+        },
+        {
+          "id": "maaseutu",
+          "h2": "Maaseudun talot Paimionjoen varrella",
+          "html": "<p>Paimionjoen varren viljelysmaisemassa talot seisovat usein avoimella paikalla. Peltoaukean yli puhaltava tuuli löytää jokaisen raon, ja sade pieksee tuulen puoleista seinää ilman puuston suojaa. Tuulen puolen ikkunat kuluvat siksi tyypillisesti eri tahtiin kuin pihan puolen.</p>\n<p>Vanhoissa maalaistaloissa on lisäksi ikkunoita tiloissa, joita ei lämmitetä tasaisesti: kuisteissa, vinttikamareissa ja kylmissä eteisissä. Niissä puu elää enemmän ja maali kuluu nopeammin. Otamme nämä huoltoon mukaan, jos haluat, ja arvioimme jokaisen kohdalla, kannattaako sitä tiivistää vai jättää tuulettuvaksi.</p>"
+        },
+        {
+          "id": "alueet-ja-matkat",
+          "h2": "Missä Paimiossa palvelemme ja miten käynnit sovitaan?",
+          "html": "<p>Teemme ikkunahuoltoja keskustassa sekä Vistan, Kevolan ja Hajalan suunnilla ja niiden ympäristön haja-asutusalueilla. Paimio sijaitsee Turun ja Salon puolivälissä, ja ajamme siitä ohi viikoittain. Kartoituskäynti onnistuu siksi usein muun reitin varrella.</p>\n<p>Kulku on sama kuin muuallakin:</p>\n<ol>\n<li>yhteydenotto, johon vastaamme viimeistään seuraavana arkipäivänä</li>\n<li>maksuton kartoituskäynti</li>\n<li>kirjallinen ja sitoumukseton tarjous</li>\n<li>työ sovittuna päivänä</li>\n<li>läpikäynti kanssasi ja huoltosuositukset</li>\n</ol>"
+        },
+        {
+          "id": "rajaukset",
+          "h2": "Mitä ikkunahuoltoon ei kuulu?",
+          "html": "<p>On hyvä tietää myös, mitä huolto ei ole. Huollossa emme paikkaa lahoa puuta, vaihda rikkoutuneita laseja emmekä maalaa puitteita. Ne ovat omia töitään, joista saat tarvittaessa erillisen tarjouksen:</p>\n<ul>\n<li><a href=\"/ikkunoiden-korjaus-paimio/\">ikkunoiden korjaus Paimiossa</a>, kun puussa, lasissa tai heloissa on vaurio</li>\n<li><a href=\"/ikkunapuitteiden-huolto-paimio/\">ikkunapuitteiden huolto</a>, kun maalipinta on pettänyt</li>\n<li><a href=\"/ikkunoiden-tiivistys-paimio/\">ikkunoiden tiivistys</a>, kun tiivisteet uusitaan koko talosta</li>\n</ul>\n<p>Tarkempi kuvaus itse huollosta löytyy sivulta <a href=\"/ikkunahuolto/\">ikkunahuolto Turku ja Varsinais-Suomi</a>.</p>"
+        },
+        {
+          "id": "kotitalousvahennys",
+          "h2": "Kotitalousvähennys pähkinänkuoressa",
+          "html": "<p>Ikkunahuolto on tavallisesti kotitalousvähennykseen kelpaavaa kunnossapitoa. Laskun työosuudesta voi vähentää 35 %, kun 150 €:n omavastuu ylittyy. Yksi henkilö voi saada vähennystä enintään 1 600 € vuodessa. Merkitsemme työn ja tarvikkeet laskulle omille riveilleen. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kuinka pian pääsette kartoituskäynnille Paimioon?",
+          "a": "Kartoituskäynti Paimioon järjestyy yleensä sujuvasti, koska Paimio on Turun ja Salon välisen reittimme varrella. Vastaamme yhteydenottoon viimeistään seuraavana arkipäivänä ja ehdotamme sopivaa päivää. Käynti on maksuton, ja sen jälkeen saat kirjallisen tarjouksen ikkunahuollosta."
+        },
+        {
+          "q": "Voiko samassa talossa huoltaa eri-ikäisiä ikkunoita?",
+          "a": "Samassa talossa voi huoltaa eri-ikäisiä ikkunoita, ja Paimiossa tämä on tavallista, koska osa ikkunoista on usein vaihdettu remonttien yhteydessä. Tarkastamme jokaisen ikkunan erikseen. Vanhemmat ikkunat tarvitsevat tyypillisesti enemmän työtä, ja se näkyy tarjouksessa eriteltynä."
+        },
+        {
+          "q": "Kannattaako kuistin tai vintin kylmät ikkunat huoltaa?",
+          "a": "Kuistin ja vintin kylmien tilojen ikkunat kannattaa huoltaa, koska ne ovat usein talon huonokuntoisimmat. Ikkunahuollossa tarkistamme niiden puun, kittaukset ja helat. Kylmän tilan ikkunaa ei aina kannata tiivistää täysin, jotta tila pääsee tuulettumaan. Arvioimme tämän tapauskohtaisesti."
+        },
+        {
+          "q": "Miksi tuulen puoleiset ikkunat vetävät Paimiossa enemmän?",
+          "a": "Tuulen puoleiset ikkunat vetävät enemmän, koska tuuli painaa ilmaa puitteen ja karmin välisistä raoista sisään. Paimion avoimilla peltoaukeilla ei ole puustoa suojana, joten vaikutus korostuu. Ikkunahuollossa säädämme sulkimet niin, että puite puristuu tasaisesti, ja vaihdamme litistyneet tiivisteet."
+        },
+        {
+          "q": "Saako ikkunahuollosta Paimiossa kotitalousvähennyksen?",
+          "a": "Paimiossa tehdystä ikkunahuollosta saa yleensä kotitalousvähennyksen, kun työ tehdään omassa kodissa tai vapaa-ajan asunnossa. Vähennys on 35 % työn osuudesta, omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta."
+        }
+      ],
+      "title": "Ikkunahuolto Paimio – tarkastus, säädöt ja tiivisteet",
+      "meta": "Ikkunahuolto Paimiossa omakotitaloihin ja maaseudun taloihin. Käymme läpi tiivisteet, helat, puitteet ja vesipellit. Maksuton kartoitus ja tarjous.",
+      "h1": "Ikkunahuolto Paimiossa",
+      "lead": "Paimiossa samalla kadulla voi olla taloja viideltä eri vuosikymmeneltä, ja joen varren maaseudulla vielä vanhempia. Yhtä huolto-ohjetta kaikille ei siis ole. Ikkunahuolto Paimiossa alkaa siitä, että katsomme, millaiset ikkunat juuri sinun talossasi on ja mitä ne tarvitsevat.",
+      "short_answer": "Ikkunahuolto Paimiossa on ikkunoiden perusteellinen läpikäynti: kunnon tarkastus, tiivisteiden tarkastus ja uusiminen tarpeen mukaan, saranoiden ja helojen voitelu ja säätö, painikkeiden ja sulkimien huolto, puitteiden käynnin säätö, lasituslistojen, kittausten, vesipeltien ja liittymien tarkastus sekä välitilojen puhdistus. Huollamme eri-ikäisten omakotitalojen ja maaseudun talojen ikkunat keskustassa, Vistalla, Kevolassa ja Hajalassa. Paimio on Turun ja Salon välissä, joten käynti yhdistyy luontevasti muihin ajoihimme. Kartoitus on maksuton, tarjous kirjallinen, ja kerromme suoraan, jos ikkunaa ei kannata enää huoltaa."
+    },
+    "lieto": {
+      "sections": [
+        {
+          "id": "ensimmainen-huolto",
+          "h2": "Miksi 20–40 vuotta vanha ikkuna kannattaa huoltaa juuri nyt?",
+          "html": "<p>Tämän ikäinen ikkuna on taitekohdassa. Puu, lasit ja karmi ovat tyypillisesti hyvässä kunnossa. Kuluvat osat taas ovat tulleet siihen pisteeseen, että ne alkavat rasittaa muuta rakennetta.</p>\n<p>Kuiva sarana kuluttaa itseään joka avauksella. Jäykkää suljinta väännetään voimalla, kunnes painike tai sulkimen tanko antaa periksi. Kovettunut tiiviste päästää kosteaa huoneilmaa välitilaan, ja huurre kastelee ulkopuitteen sisäpintaa talvi toisensa jälkeen.</p>\n<p>Kun nämä hoidetaan ajoissa, ikkuna palvelee hyvin vielä pitkään. Jos odotetaan, pienestä huollosta tulee korjaus.</p>"
+        },
+        {
+          "id": "sisalto",
+          "h2": "Mitä ikkunahuolto Liedossa pitää sisällään?",
+          "html": "<p>Käymme jokaisen avattavan ikkunan läpi samassa järjestyksessä.</p>\n<ol>\n<li>Avaamme puitteet ja tarkastamme puun, lasit ja pintakäsittelyn.</li>\n<li>Puhdistamme välitilan ja pyyhimme kaihtimet.</li>\n<li>Tutkimme tiivisteet ja vaihdamme ne, jotka eivät enää palaudu puristuksesta.</li>\n<li>Puhdistamme ja voitelemme saranat, sulkimet ja kytkimet.</li>\n<li>Säädämme puitteen niin, että se kulkee vapaasti ja sulkeutuu tasaisesti.</li>\n<li>Kiristämme painikkeet ja kokeilemme lukituksen.</li>\n<li>Tarkastamme ulkoa lasituslistat, vesipellin ja sen liittymät.</li>\n</ol>\n<p>Kiinteät ikkunat tarkastetaan silmämääräisesti sisältä ja ulkoa. Yleiskuvaus palvelusta on <a href=\"/ikkunahuolto/\">ikkunahuollon pääsivulla</a>.</p>"
+        },
+        {
+          "id": "oireet",
+          "h2": "Tutut oireet lietolaisissa omakotitaloissa",
+          "html": "<ul>\n<li><strong>Painike on löysä tai jää puoliväliin.</strong> Suljin kaipaa puhdistusta ja voitelua, joskus kiinnitysruuvit ovat löystyneet.</li>\n<li><strong>Ikkuna naksahtaa tai narisee avattaessa.</strong> Saranat ovat kuivat.</li>\n<li><strong>Puite ei osu kohdalleen suljettaessa.</strong> Se on painunut saranoiltaan ja tarvitsee säädön.</li>\n<li><strong>Lasien välissä on talviaamuisin huurua.</strong> Sisäpuitteen tiiviste vuotaa.</li>\n<li><strong>Alumiiniverhouksen alla näkyy tummumaa.</strong> Vesi ei poistu kunnolla, ja kohta pitää tarkastaa.</li>\n<li><strong>Lattianrajassa ikkunan alla on viileää.</strong> Syy voi olla tiivisteissä tai karmin ja seinän välisessä saumassa.</li>\n</ul>\n<p>Viimeksi mainitussa tapauksessa pelkkä huolto ei aina riitä. Sauman tiivistys tehdään osana <a href=\"/ikkunoiden-tiivistys-lieto/\">ikkunoiden tiivistystä Liedossa</a>.</p>"
+        },
+        {
+          "id": "alueet",
+          "h2": "Asuinalueet ja maaseutu: missä Liedossa liikumme?",
+          "html": "<p>Lieto on kasvanut tasaisesti, ja uusia omakotialueita on noussut vuosikymmen toisensa perään. Lieton keskustan ympäristössä sekä Ilmaristen, Loukinaisten ja Littoisten suunnilla on runsaasti 1980–2000-lukujen pientaloja. Samalla kadulla talot ovat usein samalta vuodelta, jolloin ikkunatkin ikääntyvät yhtä matkaa. Naapurusten kannattaa harkita huoltoa samalle päivälle.</p>\n<p>Tarvasjoella ja Yliskulmalla sekä Aurajoen varrella asutus on maaseutumaista. Siellä huollamme myös vanhempia taloja ja maatilojen päärakennuksia, joissa ikkunat voivat olla hyvin eri-ikäisiä keskenään.</p>"
+        },
+        {
+          "id": "aikataulu",
+          "h2": "Kuinka huolto käytännössä sovitaan?",
+          "html": "<p>Jätä yhteydenotto ja kerro talon rakennusvuosi sekä ikkunoiden arvioitu määrä. Palaamme asiaan viimeistään seuraavana arkipäivänä. Lietoon on meiltä lyhyt matka, joten maksuton kartoitus järjestyy tavallisesti nopeasti.</p>\n<p>Kartoituksen jälkeen lähetämme kirjallisen tarjouksen. Jos hyväksyt sen, sovimme päivän. Työn aikana voit olla kotona tai töissä. Lopuksi näytämme, mitä tehtiin, ja kerromme, milloin seuraava tarkastus on ajankohtainen.</p>"
+        },
+        {
+          "id": "lisatyot",
+          "h2": "Huollon rinnalle: ovet, korjaukset ja kotitalousvähennys",
+          "html": "<p>Saman ikäisessä talossa myös ovet ovat usein säädön tarpeessa. <a href=\"/ovihuolto-lieto/\">Ovihuolto Liedossa</a> kannattaa tilata samalle käynnille, jos terassin ovi laahaa tai ulko-ovi ei mene kunnolla lukkoon. Jos tarkastuksessa löytyy rikkinäinen hela, vaurioitunut lasi tai lahoa puuta, tarjoamme <a href=\"/ikkunoiden-korjaus-lieto/\">ikkunoiden korjauksen</a> erikseen. Ja jos ikkuna on huonompi kuin miltä näyttää, esimerkiksi umpiolasit laajasti sameat, suosittelemme suoraan vaihtoa.</p>\n<p>Ikkunahuollon työosuudesta voi yleensä tehdä kotitalousvähennyksen. Prosentti on 35, omavastuuosuus 150 € ja henkilökohtainen vuosiraja 1 600 €. Puolisot voivat kumpikin hakea vähennystä omasta osuudestaan. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Tarvitseeko 1990-luvun talon ikkunoita huoltaa, jos ne toimivat?",
+          "a": "1990-luvun talon ikkunat kannattaa huoltaa, vaikka ne vielä toimisivat. Liedossa tämän ikäisiä taloja on paljon, ja niiden ikkunoissa tiivisteet ovat tyypillisesti kovettuneet ja helat kuivuneet. Ikkunahuolto ajoissa estää osien rikkoutumisen ja pitää ikkunat tiiviinä seuraavat vuodet."
+        },
+        {
+          "q": "Mitä ikkunahuolto maksaa Liedossa?",
+          "a": "Ikkunahuollon hinta Liedossa riippuu ikkunoiden määrästä, tyypistä ja kunnosta sekä vaihdettavien tiivisteiden määrästä, joten emme ilmoita hintaa näkemättä kohdetta. Teemme maksuttoman kartoituskäynnin ja annamme sen perusteella kirjallisen tarjouksen, joka ei sido sinua tilaamaan."
+        },
+        {
+          "q": "Voivatko naapurit tilata ikkunahuollon yhdessä?",
+          "a": "Naapurit voivat tilata ikkunahuollon samalle päivälle tai peräkkäisille päiville. Lieton omakotialueilla talot ovat usein samalta vuodelta ja ikkunat samaa mallia, joten tarpeet ovat samankaltaiset. Jokainen talous saa oman kartoituksensa, tarjouksensa ja laskunsa, mikä on tarpeen myös kotitalousvähennystä varten."
+        },
+        {
+          "q": "Miksi alumiiniverhottu ikkuna tarvitsee huoltoa?",
+          "a": "Alumiiniverhottu ikkuna tarvitsee huoltoa, koska verhous suojaa vain ulkopintaa. Tiivisteet, saranat, sulkimet ja painikkeet kuluvat samalla tavalla kuin puuikkunassa. Lisäksi ikkunahuollossa tarkistetaan, että vesi pääsee poistumaan verhouksen alta eikä jää seisomaan puuta vasten."
+        },
+        {
+          "q": "Teettekö ikkunahuoltoja myös Tarvasjoella?",
+          "a": "Teemme ikkunahuoltoja koko Liedon alueella, myös Tarvasjoella ja Yliskulmalla. Maaseudulla huollamme niin uudempia omakotitaloja kuin vanhoja päärakennuksia. Kauempana sijaitsevat käynnit sovimme mielellään samalle päivälle muiden lähialueen kohteiden kanssa."
+        }
+      ],
+      "title": "Ikkunahuolto Lieto – 1980–2000-lukujen talojen ikkunat",
+      "meta": "Ikkunahuolto Liedossa: ensimmäinen kunnon huolto 1980–2000-lukujen ikkunoille. Säädöt, voitelut, tiivisteet ja tarkastus. Pyydä maksuton kartoitus.",
+      "h1": "Ikkunahuolto Liedossa",
+      "lead": "Liedossa on paljon omakotitaloja, joiden ikkunat ovat kahdesta neljään vuosikymmentä vanhoja ja joille ei ole tehty asennuksen jälkeen juuri mitään. Ne toimivat vielä, mutta eivät enää hyvin. Ikkunahuolto Liedossa on monelle talolle ensimmäinen kunnollinen huolto, ja sillä on usein yllättävän suuri vaikutus.",
+      "short_answer": "Ikkunahuolto Liedossa sopii etenkin 1980–2000-luvuilla rakennettuihin omakotitaloihin, joiden ikkunoita ei ole aiemmin huollettu. Tarkastamme ikkunoiden kunnon, vaihdamme kovettuneet tiivisteet, voitelemme ja säädämme saranat, pitkäsulkimet ja painikkeet, korjaamme puitteiden käynnin, tarkistamme lasituslistat, vesipellit ja liittymät ja puhdistamme välitilat kaihtimineen. Palvelemme Lieton keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Lieto on Turun naapurikunta, joten käynnit järjestyvät helposti. Aloitamme maksuttomalla kartoituksella, ja saat kirjallisen tarjouksen sitoutumatta mihinkään."
+    },
+    "masku": {
+      "sections": [
+        {
+          "id": "lahella",
+          "h2": "Mitä hyötyä on siitä, että tekijä on lähellä?",
+          "html": "<p>Ikkunahuollossa läheisyys ei ole vain mukavuuskysymys. Se vaikuttaa siihen, miten työ voidaan tehdä.</p>\n<ul>\n<li><strong>Kartoitus järjestyy pian.</strong> Lyhyen matkan vuoksi käynti on helppo sovittaa muiden töiden lomaan.</li>\n<li><strong>Pienikin työ kannattaa.</strong> Yhden tuuletusikkunan säätö tai parin tiivisteen vaihto ei vaadi pitkää ajoa.</li>\n<li><strong>Työ voidaan jakaa osiin.</strong> Jos haluat huoltaa tänä vuonna yläkerran ja ensi vuonna alakerran, se onnistuu.</li>\n<li><strong>Seuranta on helppoa.</strong> Jos jokin säätö kaipaa hienosäätöä ensimmäisten pakkasten jälkeen, käynti on helppo sopia.</li>\n</ul>\n<p>Puu elää vuodenaikojen mukaan, ja kesällä tehty säätö voi tuntua talvella erilaiselta. Kun matka on lyhyt, tällaiset asiat hoituvat ilman suurta järjestelyä.</p>"
+        },
+        {
+          "id": "talot",
+          "h2": "Maskun omakotitalot ja niiden ikkunat",
+          "html": "<p>Masku on omakotitalovaltainen kunta. Taloja on eri vuosikymmeniltä, ja ikkunoiden kirjo on sen mukainen: vanhoja kaksipuitteisia puuikkunoita, kolmilasisia puuikkunoita ja uudempia alumiiniverhottuja malleja.</p>\n<p>Omakotitalossa ikkunoita on tyypillisesti parikymmentä, ja ne ovat eri käytössä. Keittiön ja makuuhuoneen tuuletusikkunat avataan päivittäin, ja niiden helat ja tiivisteet kuluvat nopeimmin. Olohuoneen isot ikkunat avataan vain pesua varten, jolloin niiden saranat ja kytkimet ehtivät jäykistyä. Kellarin ja varaston ikkunat unohtuvat helposti kokonaan.</p>\n<p>Huollossa käymme läpi nekin ikkunat, joita et arjessa ajattele. Juuri niistä löytyy usein eniten tehtävää.</p>"
+        },
+        {
+          "id": "vuodenkierto",
+          "h2": "Milloin ikkunat kannattaa huoltaa Maskussa?",
+          "html": "<h3>Kevät</h3>\n<p>Talven jälkeen näkee, mitkä ikkunat huurtuivat ja mistä veti. Muistikuvat ovat tuoreita, ja ne kannattaa kertoa meille. Ulkopuolen tarkastus onnistuu hyvin, kun lumi on poissa vesipelleiltä.</p>\n<h3>Kesä</h3>\n<p>Ikkunoita voi pitää huoletta auki, ja huolto etenee ripeästi. Jos samalla tehdään maalausta tai puukorjauksia, kuiva kesäsää on niille sopivin.</p>\n<h3>Syksy</h3>\n<p>Kysytyin aika. Ikkunat halutaan tiiviiksi ennen pakkasia. Ota yhteyttä hyvissä ajoin, niin sopiva päivä löytyy.</p>\n<h3>Talvi</h3>\n<p>Säädöt ja tiivisteiden vaihdot onnistuvat sisältä käsin talvellakin. Avaamme yhden ikkunan kerrallaan, jotta huone ei jäähdy.</p>"
+        },
+        {
+          "id": "kylat",
+          "h2": "Maskun keskustasta Askaisiin",
+          "html": "<p>Liikumme koko kunnan alueella. Maskun keskustan ja Kurittulan omakotialueet ovat aivan tukikohtamme vieressä, ja Humikkalaan on yhtä lyhyt matka. Lemussa ja Askaisissa on taajamien lisäksi maaseutua ja merenrantaa, ja siellä huollamme omakotitalojen ohella myös vapaa-ajan asuntojen ikkunoita.</p>\n<p>Rannan tuntumassa ikkunat ovat tuulelle ja kosteudelle alttiimpia kuin keskustan suojaisilla tonteilla. Niissä katsomme tarkemmin ulkopuitteiden pinnan ja helojen kunnon.</p>"
+        },
+        {
+          "id": "kulku",
+          "h2": "Näin ikkunahuolto Maskussa käytännössä hoituu",
+          "html": "<ol>\n<li><strong>Viesti meille.</strong> Kerro lyhyesti, mikä ikkunoissa vaivaa. Vastaamme viimeistään seuraavana arkipäivänä.</li>\n<li><strong>Käymme katsomassa.</strong> Kartoitus on maksuton, ja Maskussa se sopii lähes mihin tahansa väliin.</li>\n<li><strong>Tarjous paperilla.</strong> Näet kirjallisesta tarjouksesta, mitä työhön kuuluu. Sitoudut vasta, kun hyväksyt sen.</li>\n<li><strong>Huoltopäivä.</strong> Tulemme sovittuun aikaan ja teemme työn huone kerrallaan.</li>\n<li><strong>Katselmus.</strong> Kokeilet ikkunat itse, ja käymme havainnot ja suositukset läpi.</li>\n</ol>\n<p>Tarkempaa tietoa huollon työvaiheista on sivulla <a href=\"/ikkunahuolto/\">ikkunahuolto</a>.</p>"
+        },
+        {
+          "id": "muut",
+          "h2": "Muut palvelut ja kotitalousvähennys",
+          "html": "<p>Ikkunahuolto paljastaa joskus tarpeen suuremmalle työlle. Jos tiivisteet ovat läpeensä kuluneet, katso <a href=\"/ikkunoiden-tiivistys-masku/\">ikkunoiden tiivistys Maskussa</a>. Hilseilevä maali ja paljas puu hoidetaan <a href=\"/ikkunapuitteiden-huolto-masku/\">ikkunapuitteiden huoltona</a>. Ovien säädöt ja tiivisteet kuuluvat <a href=\"/ovihuolto-masku/\">ovihuoltoon</a>, ja ne voi tilata samalle päivälle. Jos ikkuna on käyttöikänsä päässä, sanomme sen emmekä myy sille huoltoa.</p>\n<p>Kotitalousvähennys pienentää huollon todellista kustannusta. Saat vähentää verosta 35 % työn osuudesta. Omavastuu on 150 € ja vähennyksen yläraja 1 600 € vuodessa henkilöä kohti. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kuinka nopeasti saan ikkunahuollon Maskuun?",
+          "a": "Ikkunahuolto Maskuun järjestyy yleensä nopeasti, koska tukikohtamme on Maskussa. Vastaamme yhteydenottoon viimeistään seuraavana arkipäivänä, ja kartoituskäynti on lyhyen matkan ansiosta helppo sovittaa kalenteriin. Varsinainen huoltopäivä sovitaan, kun olet hyväksynyt kirjallisen tarjouksen."
+        },
+        {
+          "q": "Voinko tilata huollon vain yhdelle tai kahdelle ikkunalle?",
+          "a": "Voit tilata ikkunahuollon myös vain yhdelle tai kahdelle ikkunalle. Maskussa tämä on helppoa, koska matka kohteeseen on lyhyt. Jumittava tuuletusikkuna tai vetävä makuuhuoneen ikkuna kannattaa hoitaa heti. Samalla voimme vilkaista muut ikkunat ja kertoa, missä kunnossa ne ovat."
+        },
+        {
+          "q": "Voiko ikkunahuollon jakaa usealle vuodelle?",
+          "a": "Ikkunahuollon voi jakaa usealle vuodelle, esimerkiksi kerros tai julkisivu kerrallaan. Maskussa jaksottaminen on vaivatonta lyhyiden välimatkojen ansiosta. Suosittelemme aloittamaan ikkunoista, jotka ovat huonoimmassa kunnossa tai eniten säälle alttiina, ja kirjaamme loput huoltosuosituksiin."
+        },
+        {
+          "q": "Huollatteko myös mökkien ikkunat Askaisissa ja Lemussa?",
+          "a": "Huollamme myös vapaa-ajan asuntojen ikkunoita Maskun Askaisissa ja Lemussa. Mökillä ikkunahuollossa korostuvat puitteiden käynnin säätö, helojen voitelu ja ulkopintojen kunnon tarkastus, koska lämmittämätön rakennus ja rannan kosteus rasittavat puuta enemmän kuin ympäri vuoden asutussa talossa."
+        },
+        {
+          "q": "Tuletteko tarkistamaan säädöt huollon jälkeen?",
+          "a": "Säätöjen tarkistuksesta voi sopia, jos ikkunan käynti muuttuu huollon jälkeen esimerkiksi vuodenajan vaihtuessa. Puu elää kosteuden mukana, ja kesällä säädetty puite voi tuntua pakkasella erilaiselta. Maskussa käynti on helppo sopia, koska olemme lähellä. Ota yhteyttä, niin katsomme tilanteen."
+        },
+        {
+          "q": "Mitä maskulaisen kannattaa tehdä ennen huoltokäyntiä?",
+          "a": "Ennen ikkunahuoltoa kannattaa tyhjentää ikkunalaudat ja siirtää huonekalut niin, että ikkunoiden eteen mahtuu työskentelemään. Kirjaa myös muistiin ikkunat, jotka ovat vetäneet, huurtuneet tai jumittaneet. Maskussa voimme tarvittaessa käydä nämä läpi jo kartoituskäynnillä ennen varsinaista huoltopäivää."
+        }
+      ],
+      "title": "Ikkunahuolto Masku – paikallinen huolto omalta kylältä",
+      "meta": "Ikkunahuolto Maskussa paikalliselta tekijältä. Tukikohtamme on Maskussa, joten kartoitus ja pienetkin huollot järjestyvät nopeasti. Kysy tarjous.",
+      "h1": "Ikkunahuolto Maskussa",
+      "lead": "Masku on kotikenttämme. Tukikohtamme on täällä, joten maskulaisiin koteihin on meiltä muutaman minuutin matka. Ikkunahuolto Maskussa onnistuu siksi joustavasti: voimme tulla katsomaan yhtä jumittavaa ikkunaa tai huoltaa koko talon kerralla.",
+      "short_answer": "Ikkunahuolto Maskussa hoituu paikallisesti, koska TiivisTuvan tukikohta sijaitsee Maskussa. Huolto sisältää ikkunoiden kuntotarkastuksen, tiivisteiden tarkastuksen ja vaihdon tarvittaessa, saranoiden ja helojen säädön ja voitelun, painikkeiden ja sulkimien huollon, puitteiden käynnin säädön, lasituslistojen, kittausten ja vesipeltien tarkastuksen sekä välitilojen puhdistuksen. Palvelemme Maskun keskustassa, Lemussa, Askaisissa, Humikkalassa ja Kurittulassa. Lyhyiden välimatkojen ansiosta kartoituskäynti järjestyy nopeasti ja jälkitarkastukset ovat helppoja sopia. Kartoitus on maksuton ja tarjous kirjallinen ja sitoumukseton."
+    }
+  }
+}
