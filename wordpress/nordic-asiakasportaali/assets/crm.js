@@ -35,6 +35,7 @@
     ['kalenteri', 'Kalenteri', 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4'],
     ['asiakkaat', 'Asiakkaat', 'M16 11a4 4 0 10-8 0 4 4 0 008 0zM4 21c1-4 4-6 8-6s7 2 8 6'],
     ['tehtavat', 'Tehtävät', 'M4 6l2 2 4-4M4 14l2 2 4-4M13 6h7M13 14h7'],
+    ['laskuri', 'Laskuri', 'M6 3h12v18H6zM9 7h6M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01'],
     ['saapuneet', 'Saapuneet', 'M3 6h18v12H3zM3 7l9 6 9-6'],
     ['uusi', 'Uusi tarjouspyyntö', 'M12 5v14M5 12h14']
   ];
@@ -315,12 +316,14 @@
   function openOffer(c, pid) {
     var w = document.querySelector('[data-offw="' + pid + '"]'); if (!w) return;
     var p = c.projects.filter(function (x) { return x.id === pid; })[0], o = p.offer || {};
-    var pdfFirst = o.mode ? o.mode === 'pdf' : true;
+    var calcFirst = !!window.NAPLaskuri && (!o.mode || !!o.calc);
+    var pdfFirst = !calcFirst && (o.mode ? o.mode === 'pdf' : true);
     w.innerHTML = '<form class="apprf" enctype="multipart/form-data"><h3>' + (p.offer ? 'Päivitetty tarjous' : 'Tarjous asiakkaalle') + '</h3>' +
       '<p class="small muted" style="margin:0">Asiakas avaa tarjouksen sähköpostin linkistä ja voi hyväksyä sen tai kysyä tarkennusta.</p>' +
-      '<div class="choices"><label><input type="radio" name="mode" value="pdf"' + (pdfFirst ? ' checked' : '') + '><span><b>Valmis PDF-tarjous</b> – erittely, hinta ja voimassaolo ovat PDF:ssä</span></label>' +
-      '<label><input type="radio" name="mode" value="fields"' + (pdfFirst ? '' : ' checked') + '><span><b>Täytä tiedot</b> – hinta, työn osuus ja sisältö näkyvät asiakkaalle sivulla (PDF valinnainen)</span></label></div><div class="fields">' +
-      '<label class="fld wide">Tarjous PDF:nä (Skaalan tarjoustyökalusta)<span class="muted small" data-pdfhint>' + (o.file ? ' – jätä tyhjäksi, niin edellinen PDF säilyy' : '') + '</span><input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
+      '<div class="choices">' + (window.NAPLaskuri ? '<label><input type="radio" name="mode" value="calc"' + (calcFirst ? ' checked' : '') + '><span><b>Laskuri</b> – laske tarjous riveittäin, CRM tekee siitä PDF:n ja lähettää sen</span></label>' : '') +
+      '<label><input type="radio" name="mode" value="pdf"' + (pdfFirst ? ' checked' : '') + '><span><b>Valmis PDF-tarjous</b> – erittely, hinta ja voimassaolo ovat PDF:ssä</span></label>' +
+      '<label><input type="radio" name="mode" value="fields"' + (pdfFirst || calcFirst ? '' : ' checked') + '><span><b>Täytä tiedot</b> – hinta, työn osuus ja sisältö näkyvät asiakkaalle sivulla (PDF valinnainen)</span></label></div><div data-calc hidden></div><div class="fields">' +
+      '<label class="fld wide" data-pdffile>Tarjous PDF:nä (Skaalan tarjoustyökalusta)<span class="muted small" data-pdfhint>' + (o.file ? ' – jätä tyhjäksi, niin edellinen PDF säilyy' : '') + '</span><input name="pdf" type="file" accept="application/pdf,.pdf"></label>' +
       '<label class="fld" data-pdfonly>Hinta myyntiputkeen (€, valinnainen)<input name="sum_pdf" type="number" min="0" step="1" value="' + (o.sum || p.value || '') + '"><span class="muted small" style="font-weight:400">Ei näy asiakkaalle.</span></label>' +
       '<label class="fld" data-fieldsonly>Hinta yhteensä (€, sis. alv) *<input name="sum" type="number" min="1" step="1" value="' + (o.sum || p.value || '') + '"></label>' +
       '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
@@ -328,15 +331,41 @@
       '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
       '<p class="small muted" style="margin:0">Tarjous on voimassa ' + S.offerDays + ' päivää lähetyksestä (' + esc(fdate(addDays(S.offerDays))) + ' asti). Asiakas avaa sen suoraan sähköpostin linkistä ilman kirjautumista.</p>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
-      '<div class="actions"><button class="btn p">Lähetä tarjous</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
-    var f = w.querySelector('form');
+      '<p class="small muted" style="margin:0" data-calchint hidden>Haluatko lähettää tarjouksen omasta sähköpostistasi? Ota yllä oleva rasti pois, paina Lataa PDF ja liitä tiedosto viestiisi. Kun painat sen jälkeen Lähetä tarjous, tarjous kirjautuu CRM:ään ja asiakkaan Oma kohde -sivulle ilman CRM:n sähköpostia.</p>' +
+      '<div class="actions"><button class="btn p">Lähetä tarjous</button><button type="button" class="btn" data-preview hidden>Esikatsele PDF</button><button type="button" class="btn" data-download hidden>Lataa PDF</button><button type="button" class="btn" data-cancel>Peruuta</button></div></form>';
+    var f = w.querySelector('form'), L = null, validUntil = (function (d) { var a = d.split('-'); return (+a[2]) + '.' + (+a[1]) + '.' + a[0]; })(addDays(S.offerDays));
     function onMode() {
-      var pdf = f.mode.value === 'pdf';
-      f.querySelectorAll('[data-fieldsonly]').forEach(function (el) { el.hidden = pdf; });
+      var pdf = f.mode.value === 'pdf', calc = f.mode.value === 'calc';
+      f.querySelectorAll('[data-fieldsonly]').forEach(function (el) { el.hidden = pdf || calc; });
       f.querySelectorAll('[data-pdfonly]').forEach(function (el) { el.hidden = !pdf; });
-      f.sum.required = !pdf;
+      f.querySelector('[data-pdffile]').hidden = calc;
+      f.querySelector('[data-calc]').hidden = !calc;
+      f.querySelector('[data-preview]').hidden = !calc;
+      f.querySelector('[data-download]').hidden = !calc;
+      f.querySelector('[data-calchint]').hidden = !calc;
+      f.sum.required = !pdf && !calc;
       f.pdf.required = pdf && !o.file;
+      if (calc && !L) {
+        L = window.NAPLaskuri.mount(f.querySelector('[data-calc]'), {
+          state: o.calc || null, jspdf: C.jspdf, laskija: S.me.name, asiakas: c.name,
+          kohde: p.address || [c.address, c.city].filter(Boolean).join(', '),
+          numero: new Date().getFullYear() + '-' + ('000' + p.id).slice(-4) + (o.version ? '-' + (o.version + 1) : ''),
+          newNumber: !!o.version   // päivitetty tarjous saa uuden numeron
+        });
+      }
     }
+    f.querySelector('[data-download]').addEventListener('click', function () {
+      if (!L || !L.compute().items.length) { toast('Valitse laskurista vähintään yksi rivi.', true); return; }
+      var b = this; b.disabled = true;
+      L.pdf({ validUntil: validUntil }).then(function (blob) { savePdf(blob, L.fileName()); b.disabled = false; toast('PDF ladattu'); })
+        .catch(function (err) { b.disabled = false; fail(err); });
+    });
+    f.querySelector('[data-preview]').addEventListener('click', function () {
+      if (!L || !L.compute().items.length) { toast('Valitse laskurista vähintään yksi rivi.', true); return; }
+      var win = window.open('', '_blank');
+      L.pdf({ validUntil: validUntil }).then(function (blob) { var u = URL.createObjectURL(blob); if (win) { win.location = u; } else { savePdf(blob, L.fileName()); } })
+        .catch(function (err) { if (win) win.close(); fail(err); });
+    });
     f.querySelectorAll('[name=mode]').forEach(function (r) { r.addEventListener('change', onMode); });
     onMode();
     w.querySelector('[data-cancel]').addEventListener('click', function () { loadCard(c.id); });
@@ -345,8 +374,22 @@
       var fd = new FormData(f); fd.set('notify', f.notify.checked ? '1' : '');
       if (f.mode.value === 'pdf') fd.set('sum', f.sum_pdf.value || '0');
       fd.delete('sum_pdf');
+      var ready = Promise.resolve(fd);
+      if (f.mode.value === 'calc') {
+        var comp = L.compute();
+        if (!comp.items.length || !comp.gross) { toast('Valitse laskurista vähintään yksi rivi ja anna hinta.', true); return; }
+        // Laskurin tarjous lähtee PDF-tarjouksena: PDF tehdään selaimessa ja laskelma tallennetaan muokkausta varten.
+        ready = L.pdf({ validUntil: validUntil }).then(function (blob) {
+          var d = new FormData();
+          d.set('mode', 'pdf'); d.set('notify', f.notify.checked ? '1' : '');
+          d.set('sum', String(Math.round(comp.gross * 100) / 100));
+          d.set('calc', JSON.stringify(L.getState()));
+          d.set('pdf', blob, L.fileName());
+          return d;
+        });
+      }
       f.querySelector('.btn.p').disabled = true;
-      api('projects/' + pid + '/offer', { method: 'POST', form: fd }).then(function (np) {
+      ready.then(function (body) { return api('projects/' + pid + '/offer', { method: 'POST', form: body }); }).then(function (np) {
         S.board = S.board.map(function (x) { return x.id === np.id ? Object.assign(x, np) : x; });
         return api('tasks').then(function (t) { S.tasks = t; drawNav('asiakkaat'); });
       }).then(function () { toast('Tarjous lähetetty'); loadCard(c.id); })
@@ -675,12 +718,31 @@
     });
   }
 
+  /* ---------- Laskuri (ilman asiakasta: pikalaskelma ja PDF) ---------- */
+  function savePdf(blob, name) {
+    var a = document.createElement('a'), u = URL.createObjectURL(blob);
+    a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
+  }
+  function viewCalc() {
+    main.innerHTML = head('Laskuri', 'Laske hinta ja tee PDF. Asiakkaalle lähetettävä tarjous tehdään asiakkaan kortilta: Lähetä tarjous → Laskuri.') +
+      '<div class="card"><div id="calcbox"></div><div class="actions" style="margin-top:12px"><button type="button" class="btn p" id="calcpdf">Lataa PDF</button></div></div>';
+    var L = window.NAPLaskuri.mount(document.getElementById('calcbox'), { laskija: S.me.name, jspdf: C.jspdf });
+    var b = document.getElementById('calcpdf');
+    L.onChange(function (c) { b.disabled = !c.items.length; });
+    b.addEventListener('click', function () {
+      b.disabled = true;
+      L.pdf({}).then(function (blob) { savePdf(blob, L.fileName()); b.disabled = false; }).catch(function (e) { b.disabled = false; fail(e); });
+    });
+  }
+
   function render() {
     var r = route();
     drawNav(r.v);
     if (r.v === 'putki') return viewBoard();
     if (r.v === 'asiakkaat') return viewCustomers(r.id);
     if (r.v === 'tehtavat') return viewTasks();
+    if (r.v === 'laskuri') return viewCalc();
     if (r.v === 'uusi') return viewNew(r.id);
     if (r.v === 'kalenteri' && window.NAPV.visits) return r.visit ? window.NAPV.visits.viewVisit(r.visit) : window.NAPV.visits.viewCalendar(r.week);
     if (r.v === 'saapuneet' && isOwner()) return viewInbox(r.id);

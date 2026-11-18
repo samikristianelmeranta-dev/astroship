@@ -7,6 +7,7 @@ $nap_cfg = array(
 	'logout' => wp_logout_url( home_url( '/crm/' ) ),
 	'admin'  => current_user_can( 'nap_users' ) ? admin_url( 'options-general.php?page=nordic-asiakasportaali' ) : '',
 	'users'  => current_user_can( 'create_users' ) ? admin_url( 'user-new.php' ) : '',
+	'jspdf'  => esc_url_raw( NAP_URL . 'assets/jspdf.umd.min.js?v=2.5.1' ),
 );
 ?><!doctype html>
 <html lang="fi">
@@ -33,6 +34,7 @@ $nap_cfg = array(
 <script>window.NAP = <?php echo wp_json_encode( $nap_cfg ); ?>;</script>
 <script src="<?php echo esc_url( NAP_URL . 'assets/crm.js?v=' . NAP_VERSION ); ?>"></script>
 <script src="<?php echo esc_url( NAP_URL . 'assets/crm-visits.js?v=' . NAP_VERSION ); ?>"></script>
+<script src="<?php echo esc_url( NAP_URL . 'assets/crm-laskuri.js?v=' . NAP_VERSION ); ?>"></script>
 <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register(<?php echo wp_json_encode( home_url( '/crm/sw.js' ) ); ?>, { scope: <?php echo wp_json_encode( wp_parse_url( home_url( '/crm/' ), PHP_URL_PATH ) ); ?> }).catch(function () {});</script>
 </body>
 </html>

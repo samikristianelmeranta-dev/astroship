@@ -106,6 +106,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       <div class="fields">
         <label class="f" for="asiakas">Asiakas<input type="text" id="asiakas" autocomplete="off"></label>
         <label class="f" for="kohde">Kohde / osoite<input type="text" id="kohde" autocomplete="off"></label>
+        <label class="f" for="laskija">Tarjouksen laskija / asiantuntija<input type="text" id="laskija" autocomplete="off" maxlength="80"></label>
         <label class="f" for="numero">Tarjousnumero<input type="text" id="numero" autocomplete="off" maxlength="30"></label>
         <label class="f" for="ikkunat">Ikkunoita, kpl<input type="number" id="ikkunat" class="num" min="0" step="1" inputmode="numeric"></label>
         <label class="f" for="ovet">Ovia, kpl<input type="number" id="ovet" class="num" min="0" step="1" inputmode="numeric"></label>
@@ -115,7 +116,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
     <section class="panel" aria-labelledby="h-tyot">
       <h2 id="h-tyot">Toimenpiteet</h2>
-      <p class="hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kirjoita kohtaan "Josta tarvikkeet", paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan. Ikkunat ja ovet ovat tuotteita, joista vähennystä ei saa.</p>
+      <p class="hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kirjoita kohtaan "Josta tarvikkeet", paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan. Ikkunat, ovet ja Tarvikkeet-rivi ovat tuotteita, joista vähennystä ei saa.</p>
       <div class="rows" id="rows">
         <div class="row head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Josta tarvikkeet</span><span class="r">Yhteensä</span><span></span></div>
       </div>
@@ -186,6 +187,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     { id: 'maalaus', name: 'Puitteiden maalaus', unit: 'kpl', from: 'ikkunat' },
     { id: 'pellitys', name: 'Pellitys', unit: 'kpl', from: 'ikkunat' },
     { id: 'listoitus', name: 'Listoitus', unit: 'kpl', from: 'ikkunat' },
+    { id: 'korjaus', name: 'Ikkunan / oven korjaustyöt', unit: 'kpl' },
+    { id: 'tarvikkeet', name: 'Tarvikkeet', unit: 'erä', product: true, ph: 'tarvike' },
     { id: 'tunti', name: 'Tuntityö', unit: 'h', price: 48 }
   ];
   var UNITS = ['kpl', 'm', 'm²', 'h', 'erä'];
@@ -245,7 +248,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       (custom ? '<button type="button" class="del" aria-label="Poista rivi">×</button>' : '<span></span>');
     rowsEl.appendChild(el);
     var r = {
-      id: id, custom: custom, el: el, from: def.from, product: !!def.product,
+      id: id, custom: custom, el: el, from: def.from, product: !!def.product, ph: def.ph,
       on: el.querySelector('input[type="checkbox"]'),
       nameEl: custom ? el.querySelector('input.name') : null, label: def.name,
       qty: el.querySelector('#qty-' + id), unit: el.querySelector('select'),
@@ -255,7 +258,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     r.unit.value = (saved && saved.unit) || def.unit || 'kpl';
     r.price.value = saved && saved.price !== undefined && saved.price !== '' ? saved.price : (def.price !== undefined ? String(def.price) : '');
     r.mat.value = saved && saved.mat ? saved.mat : '';
-    if (r.product) { r.mat.value = ''; r.mat.disabled = true; r.mat.placeholder = 'tuote'; r.mat.setAttribute('aria-label', 'Tuote, ei työtä'); }
+    if (r.product) { r.mat.value = ''; r.mat.disabled = true; r.mat.placeholder = r.ph || 'tuote'; r.mat.setAttribute('aria-label', 'Tuote, ei työtä'); }
     r.on.addEventListener('change', function () {
       if (r.on.checked && r.qty.value === '' && r.from) {
         var c = $(r.from).value;
@@ -304,7 +307,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     var materials = incl ? mats : mats * (1 + rate);   // tarvikkeet verollisina
     return {
       items: items, rate: rate, net: net, gross: gross, vat: gross - net, materials: materials, kv: ktv(items.length ? gross : 0, materials),
-      numero: $('numero').value.trim(),
+      numero: $('numero').value.trim(), laskija: $('laskija').value.trim(),
       asiakas: $('asiakas').value.trim(), kohde: $('kohde').value.trim(),
       ikkunat: num($('ikkunat').value), ovet: num($('ovet').value), lisatiedot: $('lisatiedot').value.trim(),
       date: new Date().toLocaleDateString('fi-FI')
@@ -354,7 +357,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     if (c.asiakas) { L.push('Asiakas: ' + c.asiakas); }
     if (c.kohde) { L.push('Kohde: ' + c.kohde); }
     if (siteLine(c)) { L.push('Kohteessa: ' + siteLine(c)); }
-    if (c.asiakas || c.kohde || siteLine(c)) { L.push(''); }
+    if (c.laskija) { L.push('Tarjouksen laatija: ' + c.laskija); }
+    if (c.asiakas || c.kohde || siteLine(c) || c.laskija) { L.push(''); }
     if (!c.items.length) { L.push('(ei valittuja toimenpiteitä)'); return L.join('\n'); }
     var w = Math.max.apply(null, c.items.map(function (i) { return i.name.length; }).concat([12]));
     c.items.forEach(function (i) {
@@ -404,12 +408,12 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     doc.setFont('helvetica', 'normal'); doc.setFontSize(10); T((c.numero ? 'Nro ' + c.numero + '  ·  ' : '') + c.date, R, 23, { align: 'right' });
 
     y = 44; doc.setTextColor(20, 38, 43); doc.setFontSize(11);
-    [['Asiakas', c.asiakas], ['Kohde', c.kohde], ['Kohteessa', siteLine(c)]].forEach(function (p) {
+    [['Asiakas', c.asiakas], ['Kohde', c.kohde], ['Kohteessa', siteLine(c)], ['Tarjouksen laatija', c.laskija]].forEach(function (p) {
       if (!p[1]) { return; }
       doc.setFont('helvetica', 'bold'); T(p[0], L, y);
       doc.setFont('helvetica', 'normal');
-      var lines = doc.splitTextToSize(pdfSafe(p[1]), R - L - 30);
-      doc.text(lines, L + 30, y); y += 6 * lines.length;
+      var lines = doc.splitTextToSize(pdfSafe(p[1]), R - L - 42);
+      doc.text(lines, L + 42, y); y += 6 * lines.length;
     });
     y += 6;
 
@@ -490,7 +494,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
   function getState() {
     return {
-      numero: $('numero').value, asiakas: $('asiakas').value, kohde: $('kohde').value, ikkunat: $('ikkunat').value, ovet: $('ovet').value,
+      numero: $('numero').value, laskija: $('laskija').value, asiakas: $('asiakas').value, kohde: $('kohde').value, ikkunat: $('ikkunat').value, ovet: $('ovet').value,
       alvmode: $('alvmode').value, alv: $('alv').value, lisatiedot: $('lisatiedot').value,
       ktvOn: $('ktv-on').checked, ktvTarvikkeet: $('ktv-tarvikkeet').value, ktvHakijat: $('ktv-hakijat').value,
       rows: rows.map(function (r) {
@@ -502,6 +506,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   function setState(s) {
     rows.filter(function (r) { return r.custom; }).forEach(removeRow);
     $('numero').value = str(s.numero); numAuto = !str(s.numero);
+    if (s.laskija !== undefined) { $('laskija').value = str(s.laskija); }
     $('asiakas').value = str(s.asiakas); $('kohde').value = str(s.kohde); $('ikkunat').value = str(s.ikkunat); $('ovet').value = str(s.ovet);
     $('alvmode').value = s.alvmode === 'excl' ? 'excl' : 'incl'; $('alv').value = str(s.alv) || '25,5'; $('lisatiedot').value = str(s.lisatiedot);
     $('ktv-on').checked = s.ktvOn !== false; $('ktv-tarvikkeet').value = str(s.ktvTarvikkeet); $('ktv-hakijat').value = s.ktvHakijat === '2' ? '2' : '1';
@@ -590,7 +595,9 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
   $('add').addEventListener('click', function () { var r = addRow({ unit: 'kpl' }); r.on.checked = true; update(); r.nameEl.focus(); });
   $('numero').addEventListener('input', function () { numAuto = false; });
-  ['numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode', 'ktv-on', 'ktv-tarvikkeet', 'ktv-hakijat', 'lisatiedot'].forEach(function (id) {
+  try { $('laskija').value = localStorage.getItem('tt-laskija') || ''; } catch (e) {}
+  $('laskija').addEventListener('input', function () { try { localStorage.setItem('tt-laskija', $('laskija').value); } catch (e) {} });
+  ['laskija', 'numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode', 'ktv-on', 'ktv-tarvikkeet', 'ktv-hakijat', 'lisatiedot'].forEach(function (id) {
     $(id).addEventListener('input', update);
     $(id).addEventListener('change', update);
   });

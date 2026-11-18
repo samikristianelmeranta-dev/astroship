@@ -70,6 +70,37 @@ function nap_send_offer_pdf( $offer, $download_name = 'tarjous.pdf' ) {
 	exit;
 }
 
+/* ---------- Laskurin laskelma (tallennetaan, jotta tarjousta voi muokata ja lähettää uudelleen) ---------- */
+
+/** Siivoaa laskurin tilan: vain tunnetut kentät, tekstit puhdistettuna, enintään 60 riviä. */
+function nap_clean_calc( $raw ) {
+	if ( ! is_string( $raw ) || '' === $raw || strlen( $raw ) > 40000 ) {
+		return null;
+	}
+	$d = json_decode( $raw, true );
+	if ( ! is_array( $d ) ) {
+		return null;
+	}
+	$out = array();
+	foreach ( array( 'laskija', 'numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alvmode', 'alv', 'hakijat', 'muut' ) as $k ) {
+		$out[ $k ] = isset( $d[ $k ] ) && is_scalar( $d[ $k ] ) ? mb_substr( sanitize_text_field( (string) $d[ $k ] ), 0, 200 ) : '';
+	}
+	$out['lisatiedot'] = isset( $d['lisatiedot'] ) && is_string( $d['lisatiedot'] ) ? mb_substr( sanitize_textarea_field( $d['lisatiedot'] ), 0, 3000 ) : '';
+	$out['ktvon']      = ! isset( $d['ktvon'] ) || false !== $d['ktvon'];
+	$out['rows']       = array();
+	foreach ( array_slice( isset( $d['rows'] ) && is_array( $d['rows'] ) ? $d['rows'] : array(), 0, 60 ) as $r ) {
+		if ( ! is_array( $r ) ) {
+			continue;
+		}
+		$row = array( 'on' => ! empty( $r['on'] ) );
+		foreach ( array( 'id', 'name', 'qty', 'unit', 'price', 'mat' ) as $k ) {
+			$row[ $k ] = isset( $r[ $k ] ) && is_scalar( $r[ $k ] ) ? mb_substr( sanitize_text_field( (string) $r[ $k ] ), 0, 200 ) : '';
+		}
+		$out['rows'][] = $row;
+	}
+	return $out;
+}
+
 /* ---------- Tarjouksen lähetys (CRM) ---------- */
 
 function nap_api_offer( WP_REST_Request $req ) {
@@ -116,6 +147,7 @@ function nap_api_offer( WP_REST_Request $req ) {
 		'notes'       => $pdf ? '' : sanitize_textarea_field( (string) $req->get_param( 'notes' ) ),
 		'file'        => $file,
 		'file_name'   => $fname,
+		'calc'        => $pdf ? nap_clean_calc( $req->get_param( 'calc' ) ) : null,
 		'sent_at'     => nap_now(),
 		'sent_by'     => (int) $me->ID,
 		'sent_name'   => $me->display_name,

@@ -175,3 +175,12 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - REST-rajapinta `nap/v1` vaatii kirjautumisen ja tarkistaa oikeuden jokaiseen asiakkaaseen ja kohteeseen erikseen.
 - Kirjautumislinkistä tallennetaan vain tiiviste. Linkki on kertakäyttöinen, ja asiakkaan istuntoeväste on allekirjoitettu.
 - Sivut ovat `noindex` eivätkä mene välimuistiin. Sähköposteissa on vain linkkejä, ei henkilö- tai hintatietoja.
+
+## 0.13.0 – Nordic-laskuri
+
+- **Laskuri tarjouslomakkeessa:** asiakkaan kortilla Lähetä tarjous → Laskuri. Tarjous lasketaan riveittäin (tuotteet, asennukset, huollot, korjaukset, tuntityö, omat rivit), CRM tekee siitä PDF:n selaimessa ja lähettää sen samaa reittiä kuin ladatun PDF-tarjouksen (sähköposti + Oma kohde -linkki, hyväksyntä, muistutukset).
+- **Laskelma tallentuu tarjoukseen** (`offer.calc`), joten päivitetty tarjous avautuu samoilla riveillä ja saa uuden numeron (esim. 2026-0042-2).
+- **Lataa PDF / Esikatsele PDF:** tarjouksen voi ladata ja lähettää omasta sähköpostista. Kun sähköpostirasti otetaan pois, tarjous kirjautuu CRM:ään ilman CRM:n viestiä.
+- **Laskuri-näkymä** valikossa: pikalaskelma ja PDF ilman asiakasta.
+- Kotitalousvähennyksen arvio: tuotteet ja rivien tarvikkeet vähennetään, loppu on työtä. PDF:ssä maininta, että lopullinen vähennys määräytyy verottajan ohjeen mukaisesti.
+- PDF-kirjasto jsPDF 2.5.1 (MIT) on mukana tiedostossa `assets/jspdf.umd.min.js` ja ladataan vasta, kun PDF tehdään.
