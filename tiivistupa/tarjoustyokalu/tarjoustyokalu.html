@@ -62,6 +62,12 @@ input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-
 .summary tr.sub td { border-bottom: 0; color: var(--muted); padding-block: 4px; }
 .summary tr.total td { border-bottom: 0; border-top: 2px solid var(--ink); font: 700 1.35rem/1.2 var(--display); padding-top: 12px; }
 .empty { color: var(--muted); }
+.check { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+.check input { width: 20px; height: 20px; accent-color: var(--petrol); margin: 0; }
+.ktv { border: 1px solid var(--line); border-left: 5px solid var(--amber); padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-variant-numeric: tabular-nums; }
+.ktv .line { display: flex; justify-content: space-between; gap: 12px; }
+.ktv .line.big { font-weight: 700; font-size: 1.08rem; }
+.ktv small { color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
 .hint { color: var(--muted); font-size: 0.9rem; margin: 0; }
 .status { color: var(--ok); font-weight: 700; font-size: 0.92rem; min-height: 1.4em; margin: 0; }
 textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, monospace; }
@@ -112,6 +118,17 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
           <select id="alvmode"><option value="incl">verollisia (sis. ALV)</option><option value="excl">verottomia (ALV 0 %)</option></select></label>
         <label class="f" for="alv">ALV-%<input type="text" id="alv" class="num" value="25,5" inputmode="decimal"></label>
       </div>
+    </section>
+
+    <section class="panel" aria-labelledby="h-ktv">
+      <h2 id="h-ktv">Kotitalousvähennys</h2>
+      <label class="check" for="ktv-on"><input type="checkbox" id="ktv-on" checked> Näytä arvio kotitalousvähennyksestä tarjouksessa</label>
+      <div class="fields">
+        <label class="f" for="ktv-tarvikkeet">Tarvikkeiden ja matkakulujen osuus, € (sis. ALV)<input type="text" id="ktv-tarvikkeet" class="num" inputmode="decimal" placeholder="0"></label>
+        <label class="f" for="ktv-hakijat">Vähennyksen hakijoita
+          <select id="ktv-hakijat"><option value="1">1 henkilö</option><option value="2">2 henkilöä (esim. puolisot)</option></select></label>
+      </div>
+      <p class="hint">Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Kahdella hakijalla työ jaetaan tasan. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.</p>
     </section>
   </div>
 
@@ -236,13 +253,29 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       h += '<tr class="total"><td>Yhteensä</td><td>' + eur(gross) + '</td></tr></table>';
       sumEl.innerHTML = h;
     }
-    document.getElementById('out').value = text(items, net, vat, gross, rate);
+    var k = ktv(items.length ? gross : 0);
+    if (k) {
+      sumEl.innerHTML += '<div class="ktv"><div class="line"><span>Työn osuus</span><span>' + eur(k.work) + '</span></div>' +
+        '<div class="line big"><span>Arvio kotitalousvähennyksestä' + (k.n > 1 ? ' (' + k.n + ' hakijaa)' : '') + '</span><span>' + eur(k.ded) + '</span></div>' +
+        '<div class="line big"><span>Hinta vähennyksen jälkeen</span><span>' + eur(gross - k.ded) + '</span></div>' +
+        '<small>' + KTV_NOTE + '</small></div>';
+    }
+    document.getElementById('out').value = text(items, net, vat, gross, rate, k);
     savePrices();
+  }
+
+  var KTV_NOTE = 'Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.';
+  function ktv(gross) {
+    if (!document.getElementById('ktv-on').checked || !gross) { return null; }
+    var work = Math.max(0, gross - num(document.getElementById('ktv-tarvikkeet').value));
+    var n = parseInt(document.getElementById('ktv-hakijat').value, 10) || 1;
+    var per = Math.min(1600, Math.max(0, 0.35 * (work / n) - 150));
+    return { work: work, n: n, ded: Math.round(per * n * 100) / 100 };
   }
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
-  function text(items, net, vat, gross, rate) {
+  function text(items, net, vat, gross, rate, kv) {
     var L = ['TARJOUS – TiivisTupa', new Date().toLocaleDateString('fi-FI'), ''];
     var a = document.getElementById('asiakas').value.trim(), k = document.getElementById('kohde').value.trim();
     var ik = num(document.getElementById('ikkunat').value), ov = num(document.getElementById('ovet').value);
@@ -259,6 +292,13 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     L.push('Veroton hinta: ' + eur(net));
     L.push('ALV ' + qtyText(rate * 100) + ' %: ' + eur(vat));
     L.push('YHTEENSÄ: ' + eur(gross));
+    if (kv) {
+      L.push('');
+      L.push('Työn osuus: ' + eur(kv.work));
+      L.push('Arvio kotitalousvähennyksestä' + (kv.n > 1 ? ' (' + kv.n + ' hakijaa)' : '') + ': ' + eur(kv.ded));
+      L.push('Hinta vähennyksen jälkeen: ' + eur(gross - kv.ded));
+      L.push(KTV_NOTE);
+    }
     return L.join('\n');
   }
   function pad(s, n) { while (s.length < n) { s += ' '; } return s; }
@@ -268,7 +308,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   DEFAULTS.forEach(function (d) { addRow(d, saved[d.id]); });
 
   document.getElementById('add').addEventListener('click', function () { var r = addRow({ unit: 'kpl' }); r.on.checked = true; update(); r.nameEl.focus(); });
-  ['asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode'].forEach(function (id) {
+  ['asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode', 'ktv-on', 'ktv-tarvikkeet', 'ktv-hakijat'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', update);
     document.getElementById(id).addEventListener('change', update);
   });
@@ -284,7 +324,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       if (r.custom) { rowsEl.removeChild(r.el); } else { r.on.checked = false; r.qty.value = ''; }
     });
     rows = rows.filter(function (r) { return !r.custom; });
-    ['asiakas', 'kohde', 'ikkunat', 'ovet'].forEach(function (id) { document.getElementById(id).value = ''; });
+    ['asiakas', 'kohde', 'ikkunat', 'ovet', 'ktv-tarvikkeet'].forEach(function (id) { document.getElementById(id).value = ''; });
     document.getElementById('status').textContent = 'Tyhjennetty. Yksikköhinnat säilyivät.';
     update();
   });
