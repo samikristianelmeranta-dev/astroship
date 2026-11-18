@@ -1,0 +1,293 @@
+<title>TiivisTupa-tarjouslaskuri</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: vasemmalla syöttörivit, oikealla pysyvä erittely; puhelimella allekkain */
+:root {
+  --bg: #eaf1f2; --paper: #ffffff; --ink: #14262b; --muted: #4d6369; --line: #cbd9dc;
+  --petrol: #0f4c5c; --petrol-deep: #0a3540; --on-dark: #eaf4f5;
+  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #fff8e6; --field: #ffffff; --field-line: #9fb3b8;
+  --ok: #2f7d4a;
+  --display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0c1a1e; --paper: #132830; --ink: #e6f1f2; --muted: #9db6bb; --line: #2a444c;
+  --petrol: #17596b; --petrol-deep: #0a2c35; --on-dark: #eaf4f5;
+  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
+  --ok: #6fcf8f; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0c1a1e; --paper: #132830; --ink: #e6f1f2; --muted: #9db6bb; --line: #2a444c;
+  --petrol: #17596b; --petrol-deep: #0a2c35; --on-dark: #eaf4f5;
+  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
+  --ok: #6fcf8f; color-scheme: dark }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.5 var(--body); }
+h1, h2 { font-family: var(--display); margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: 1.5rem; } h2 { font-size: 1.15rem; }
+.top { background: var(--petrol-deep); color: var(--on-dark); }
+.wrap { max-width: 1180px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 14px; }
+.top h1 b { color: var(--amber); }
+.top p { margin: 0; color: #a9c6cb; font-size: 0.95rem; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; padding-block: 20px 40px; align-items: start; }
+.panel { background: var(--paper); border: 1px solid var(--line); padding: 18px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.stack { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+label.f { display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.9rem; min-width: 0; }
+input[type="text"], input[type="number"], select, textarea { font: inherit; color: var(--ink); background: var(--field); border: 1px solid var(--field-line); border-radius: 4px; padding: 8px 10px; width: 100%; min-width: 0; }
+input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 1px; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.rows { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 26px minmax(0, 1.6fr) 84px 76px 96px 104px 30px; gap: 8px; align-items: center; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+.row.on { background: var(--row-on); }
+.row.head { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-block: 6px; }
+.row.head span.r { text-align: right; }
+.row input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--petrol); margin: 0; }
+.row .name { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.row .sum { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.row:not(.on) .sum { color: var(--muted); font-weight: 400; }
+.row .mlabel { display: none; }
+.del { border: 0; background: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 2px 6px; border-radius: 4px; }
+.del:hover { color: var(--ink); }
+.btn { font: 700 0.95rem/1.2 var(--body); padding: 10px 16px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; }
+.btn-primary { background: var(--amber); color: var(--amber-ink); }
+.btn-line { background: transparent; border-color: var(--field-line); color: var(--ink); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.summary { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.summary table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.summary td { padding: 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.summary td:last-child { text-align: right; white-space: nowrap; padding-left: 10px; }
+.summary .detail { display: block; color: var(--muted); font-size: 0.88rem; }
+.summary tr.sub td { border-bottom: 0; color: var(--muted); padding-block: 4px; }
+.summary tr.total td { border-bottom: 0; border-top: 2px solid var(--ink); font: 700 1.35rem/1.2 var(--display); padding-top: 12px; }
+.empty { color: var(--muted); }
+.hint { color: var(--muted); font-size: 0.9rem; margin: 0; }
+.status { color: var(--ok); font-weight: 700; font-size: 0.92rem; min-height: 1.4em; margin: 0; }
+textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, monospace; }
+@media (max-width: 900px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .summary { position: static; }
+  .row.head { display: none; }
+  .row { grid-template-columns: 26px minmax(0, 1fr) 30px; row-gap: 6px; }
+  .row .cell { grid-column: 2 / 3; display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); align-items: center; gap: 8px; }
+  .row .mlabel { display: block; font-size: 0.82rem; color: var(--muted); }
+  .row .sum { grid-column: 2 / 3; text-align: left; }
+  .row .del { grid-column: 3; grid-row: 1; }
+}
+</style>
+
+<header class="top"><div class="wrap">
+  <h1>Tiivis<b>Tupa</b> · tarjouslaskuri</h1>
+  <p>Ikkunoiden ja ovien huollot ja korjaukset</p>
+</div></header>
+
+<div class="wrap grid">
+  <div class="stack">
+    <section class="panel" aria-labelledby="h-kohde">
+      <h2 id="h-kohde">Kohde</h2>
+      <div class="fields">
+        <label class="f" for="asiakas">Asiakas<input type="text" id="asiakas" autocomplete="off"></label>
+        <label class="f" for="kohde">Kohde / osoite<input type="text" id="kohde" autocomplete="off"></label>
+        <label class="f" for="ikkunat">Ikkunoita, kpl<input type="number" id="ikkunat" class="num" min="0" step="1" inputmode="numeric"></label>
+        <label class="f" for="ovet">Ovia, kpl<input type="number" id="ovet" class="num" min="0" step="1" inputmode="numeric"></label>
+      </div>
+      <p class="hint">Kun rastitat toimenpiteen, määräksi tulee valmiiksi ikkunoiden tai ovien määrä. Voit muuttaa sen.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="h-tyot">
+      <h2 id="h-tyot">Toimenpiteet</h2>
+      <div class="rows" id="rows">
+        <div class="row head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Yhteensä</span><span></span></div>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-line" id="add">+ Lisää muu työ</button>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="h-alv">
+      <h2 id="h-alv">Arvonlisävero</h2>
+      <div class="fields">
+        <label class="f" for="alvmode">Syötetyt hinnat ovat
+          <select id="alvmode"><option value="incl">verollisia (sis. ALV)</option><option value="excl">verottomia (ALV 0 %)</option></select></label>
+        <label class="f" for="alv">ALV-%<input type="text" id="alv" class="num" value="25,5" inputmode="decimal"></label>
+      </div>
+    </section>
+  </div>
+
+  <aside class="panel summary" aria-labelledby="h-sum">
+    <h2 id="h-sum">Tarjouksen erittely</h2>
+    <div id="summary"></div>
+    <div class="btn-row">
+      <button type="button" class="btn btn-primary" id="copy">Kopioi tarjous tekstinä</button>
+      <button type="button" class="btn btn-line" id="reset">Tyhjennä</button>
+    </div>
+    <p class="status" id="status" role="status"></p>
+    <label class="f" for="out">Tarjousteksti<textarea id="out" readonly></textarea></label>
+    <p class="hint">Yksikköhinnat jäävät muistiin tähän selaimeen seuraavaa tarjousta varten.</p>
+  </aside>
+</div>
+
+<script>
+(function () {
+  var DEFAULTS = [
+    { id: 'tiiv-ikk', name: 'Ikkunoiden tiivistys', unit: 'kpl', from: 'ikkunat' },
+    { id: 'tiiv-ovi', name: 'Ovien tiivistys', unit: 'kpl', from: 'ovet' },
+    { id: 'saato-ikk', name: 'Ikkunoiden säätö', unit: 'kpl', from: 'ikkunat' },
+    { id: 'saato-ovi', name: 'Ovien säätö', unit: 'kpl', from: 'ovet' },
+    { id: 'uretaani', name: 'Uretaanien vaihto', unit: 'kpl', from: 'ikkunat' },
+    { id: 'maalaus', name: 'Puitteiden maalaus', unit: 'kpl', from: 'ikkunat' },
+    { id: 'pellitys', name: 'Pellitys', unit: 'kpl', from: 'ikkunat' },
+    { id: 'listoitus', name: 'Listoitus', unit: 'kpl', from: 'ikkunat' },
+    { id: 'tunti', name: 'Tuntityö', unit: 'h', price: 48 }
+  ];
+  var UNITS = ['kpl', 'm', 'm²', 'h', 'erä'];
+  var KEY = 'tt-tarjous-hinnat-v1';
+  var rowsEl = document.getElementById('rows');
+  var rows = [];          // { id, custom, el, on, name, qty, unit, price }
+  var customSeq = 0;
+
+  function loadPrices() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+  function savePrices() {
+    var p = {};
+    rows.forEach(function (r) { if (!r.custom) { p[r.id] = { price: r.price.value, unit: r.unit.value }; } });
+    try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {}
+  }
+  function num(v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) && n > 0 ? n : 0; }
+  function eur(n) { return n.toLocaleString('fi-FI', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €'; }
+  function qtyText(n) { return n.toLocaleString('fi-FI', { maximumFractionDigits: 2 }); }
+
+  function addRow(def, saved) {
+    var custom = !def.id;
+    var id = def.id || 'muu-' + (++customSeq);
+    var el = document.createElement('div');
+    el.className = 'row';
+    var unitOpts = UNITS.map(function (u) { return '<option>' + u + '</option>'; }).join('');
+    el.innerHTML =
+      '<input type="checkbox" id="on-' + id + '" aria-label="Valitse tarjoukseen">' +
+      (custom
+        ? '<input type="text" id="name-' + id + '" class="name" placeholder="Muu työ, kuvaus" aria-label="Työn kuvaus">'
+        : '<label class="name" for="on-' + id + '"></label>') +
+      '<div class="cell"><span class="mlabel">Määrä</span><input type="text" id="qty-' + id + '" class="num" inputmode="decimal" aria-label="Määrä"></div>' +
+      '<div class="cell"><span class="mlabel">Yksikkö</span><select id="unit-' + id + '" aria-label="Yksikkö">' + unitOpts + '</select></div>' +
+      '<div class="cell"><span class="mlabel">Hinta / yks.</span><input type="text" id="price-' + id + '" class="num" inputmode="decimal" aria-label="Hinta per yksikkö, euroa"></div>' +
+      '<div class="sum" id="sum-' + id + '"></div>' +
+      (custom ? '<button type="button" class="del" aria-label="Poista rivi">×</button>' : '<span></span>');
+    rowsEl.appendChild(el);
+    var r = {
+      id: id, custom: custom, el: el, from: def.from,
+      on: el.querySelector('input[type="checkbox"]'),
+      nameEl: custom ? el.querySelector('input.name') : null, label: def.name,
+      qty: el.querySelector('#qty-' + id), unit: el.querySelector('select'),
+      price: el.querySelector('#price-' + id), sum: el.querySelector('.sum')
+    };
+    if (!custom) { el.querySelector('label.name').textContent = def.name; }
+    r.unit.value = (saved && saved.unit) || def.unit || 'kpl';
+    r.price.value = saved && saved.price !== undefined && saved.price !== '' ? saved.price : (def.price !== undefined ? String(def.price) : '');
+    r.on.addEventListener('change', function () {
+      if (r.on.checked && r.qty.value === '' && r.from) {
+        var c = document.getElementById(r.from).value;
+        if (num(c)) { r.qty.value = c; }
+      }
+      update();
+    });
+    [r.qty, r.price, r.unit].forEach(function (i) {
+      i.addEventListener('input', function () { if (i !== r.unit && i.value !== '' && !r.on.checked) { r.on.checked = true; } update(); });
+      i.addEventListener('change', update);
+    });
+    if (custom) {
+      r.nameEl.addEventListener('input', update);
+      el.querySelector('.del').addEventListener('click', function () { rowsEl.removeChild(el); rows = rows.filter(function (x) { return x !== r; }); update(); });
+    }
+    rows.push(r);
+    return r;
+  }
+
+  function selected() {
+    return rows.filter(function (r) { return r.on.checked; }).map(function (r) {
+      var q = num(r.qty.value), p = num(r.price.value);
+      return { name: r.custom ? (r.nameEl.value.trim() || 'Muu työ') : r.label, qty: q, unit: r.unit.value, price: p, total: q * p };
+    });
+  }
+
+  function update() {
+    rows.forEach(function (r) {
+      var t = num(r.qty.value) * num(r.price.value);
+      r.el.classList.toggle('on', r.on.checked);
+      r.sum.textContent = t ? eur(t) : '–';
+    });
+    var items = selected();
+    var total = items.reduce(function (s, i) { return s + i.total; }, 0);
+    var rate = num(document.getElementById('alv').value) / 100;
+    var incl = document.getElementById('alvmode').value === 'incl';
+    var net = incl ? total / (1 + rate) : total;
+    var gross = incl ? total : total * (1 + rate);
+    var vat = gross - net;
+    var sumEl = document.getElementById('summary');
+    if (!items.length) {
+      sumEl.innerHTML = '<p class="empty">Rastita toimenpiteet, jotka kuuluvat tarjoukseen. Erittelyssä näkyvät vain valitut rivit.</p>';
+    } else {
+      var h = '<table>';
+      items.forEach(function (i) {
+        h += '<tr><td>' + esc(i.name) + '<span class="detail">' + qtyText(i.qty) + ' ' + esc(i.unit) + ' × ' + eur(i.price) + '</span></td><td>' + eur(i.total) + '</td></tr>';
+      });
+      h += '<tr class="sub"><td>Veroton hinta</td><td>' + eur(net) + '</td></tr>';
+      h += '<tr class="sub"><td>ALV ' + qtyText(rate * 100) + ' %</td><td>' + eur(vat) + '</td></tr>';
+      h += '<tr class="total"><td>Yhteensä</td><td>' + eur(gross) + '</td></tr></table>';
+      sumEl.innerHTML = h;
+    }
+    document.getElementById('out').value = text(items, net, vat, gross, rate);
+    savePrices();
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function text(items, net, vat, gross, rate) {
+    var L = ['TARJOUS – TiivisTupa', new Date().toLocaleDateString('fi-FI'), ''];
+    var a = document.getElementById('asiakas').value.trim(), k = document.getElementById('kohde').value.trim();
+    var ik = num(document.getElementById('ikkunat').value), ov = num(document.getElementById('ovet').value);
+    if (a) { L.push('Asiakas: ' + a); }
+    if (k) { L.push('Kohde: ' + k); }
+    if (ik || ov) { L.push('Kohteessa: ' + [ik ? ik + ' ikkunaa' : '', ov ? ov + ' ovea' : ''].filter(Boolean).join(', ')); }
+    if (a || k || ik || ov) { L.push(''); }
+    if (!items.length) { L.push('(ei valittuja toimenpiteitä)'); return L.join('\n'); }
+    var w = Math.max.apply(null, items.map(function (i) { return i.name.length; }).concat([12]));
+    items.forEach(function (i) {
+      L.push(pad(i.name, w) + '  ' + lpad(qtyText(i.qty) + ' ' + i.unit, 9) + ' × ' + lpad(eur(i.price), 10) + ' = ' + lpad(eur(i.total), 12));
+    });
+    L.push('');
+    L.push('Veroton hinta: ' + eur(net));
+    L.push('ALV ' + qtyText(rate * 100) + ' %: ' + eur(vat));
+    L.push('YHTEENSÄ: ' + eur(gross));
+    return L.join('\n');
+  }
+  function pad(s, n) { while (s.length < n) { s += ' '; } return s; }
+  function lpad(s, n) { while (s.length < n) { s = ' ' + s; } return s; }
+
+  var saved = loadPrices();
+  DEFAULTS.forEach(function (d) { addRow(d, saved[d.id]); });
+
+  document.getElementById('add').addEventListener('click', function () { var r = addRow({ unit: 'kpl' }); r.on.checked = true; update(); r.nameEl.focus(); });
+  ['asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', update);
+    document.getElementById(id).addEventListener('change', update);
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var out = document.getElementById('out'), st = document.getElementById('status');
+    function fallback() { out.focus(); out.select(); st.textContent = 'Teksti on valittu. Kopioi se näppäimillä Ctrl+C tai ⌘C.'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(out.value).then(function () { st.textContent = 'Tarjous kopioitu leikepöydälle.'; }, fallback);
+    } else { fallback(); }
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    rows.slice().forEach(function (r) {
+      if (r.custom) { rowsEl.removeChild(r.el); } else { r.on.checked = false; r.qty.value = ''; }
+    });
+    rows = rows.filter(function (r) { return !r.custom; });
+    ['asiakas', 'kohde', 'ikkunat', 'ovet'].forEach(function (id) { document.getElementById(id).value = ''; });
+    document.getElementById('status').textContent = 'Tyhjennetty. Yksikköhinnat säilyivät.';
+    update();
+  });
+  update();
+})();
+</script>
