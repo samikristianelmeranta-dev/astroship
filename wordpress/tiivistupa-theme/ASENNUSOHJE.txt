@@ -1,0 +1,27 @@
+TIIVISTUPA-TEEMA – ASENNUS
+
+Teema on tarkoitettu TiivisTuvan OMAAN WordPress-asennukseen (esim. tiivistupa.fi).
+Älä asenna sitä ikkunakauppias.fi-sivustolle: se korvaisi sen teeman.
+
+1. Asenna WordPress uuteen verkkotunnukseen.
+2. Ulkoasu → Teemat → Lisää uusi → Lataa teema → valitse tiivistupa-theme-v1.0.0.zip → Asenna → Ota käyttöön.
+3. Teema luo käyttöönotossa automaattisesti 56 sivua (etusivu, 6 palvelusivua, 48 aluesivua, palvelualue),
+   asettaa etusivun ja osoitemuodon /sivun-nimi/.
+4. Ulkoasu → Mukauta → TiivisTupa: yhteystiedot: tarkista puhelin, sähköposti, tarjouspyyntöjen vastaanottaja,
+   yrityksen nimi ja Y-tunnus.
+5. Asetukset → Lukeminen: varmista, ettei kohta "Estä hakukoneita indeksoimasta" ole valittuna, kun sivusto julkaistaan.
+6. Asetukset → Tietosuoja: luo tai valitse tietosuojaseloste. Linkki ilmestyy lomakkeen alle ja alapalkkiin.
+
+TARJOUSPYYNNÖT
+- Lomakkeen pyynnöt tallentuvat hallintaan kohtaan "Tarjouspyynnöt" ja lähtevät sähköpostilla vastaanottajalle.
+- Sähköpostin luotettava perillemeno vaatii SMTP-lisäosan (esim. sama kuin ikkunakauppias.fi:ssä).
+
+SISÄLLÖN MUOKKAUS
+- Jokainen sivu on WordPressissä tavallinen sivu, jonka sisältö on Mukautettu HTML -lohkossa.
+- Hakukoneen kuvaus on sivun Ote-kentässä.
+- Ulkoasu → TiivisTupa-sisältö: "Luo puuttuvat sivut" tai "Palauta teeman sisältö" (jälkimmäinen korvaa omat muokkaukset).
+
+HAKUKONEET JA TEKOÄLY
+- Sivukartta: /wp-sitemap.xml (lähetä Google Search Consoleen)
+- Tekoälyhakujen yhteenveto: /llms.txt
+- Rakenteinen tieto (yritys, palvelu, alue, UKK, murupolku) tulostuu jokaiselle sivulle automaattisesti.

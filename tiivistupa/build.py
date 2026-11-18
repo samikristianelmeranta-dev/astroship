@@ -3,13 +3,17 @@
 
   python3 build.py            -> dist/    (tuotanto: /slug/index.html, sitemap.xml, robots.txt, llms.txt)
   python3 build.py preview    -> preview/ (esikatselu: litteät .html-tiedostot, suhteelliset linkit)
+  python3 build.py wp         -> ../wordpress/tiivistupa-theme/content/pages.json (WordPress-teeman sivusisältö)
 """
 import html, json, os, re, shutil, sys, importlib.util
 from datetime import date
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-PREVIEW = len(sys.argv) > 1 and sys.argv[1] == 'preview'
+MODE = sys.argv[1] if len(sys.argv) > 1 else 'dist'
+PREVIEW = MODE == 'preview'
+WP = MODE == 'wp'
 OUT = os.path.join(ROOT, 'preview' if PREVIEW else 'dist')
+THEME = os.path.join(ROOT, '..', 'wordpress', 'tiivistupa-theme')
 
 # --- Sivuston tiedot: muuta nämä, jos tiedot eivät pidä paikkaansa -------------------
 SITE = {
@@ -309,7 +313,22 @@ def hub_page():
     return {'slug': 'palvelualue', 'kind': 'hub', 'service': None, 'city': None, 'data': data, 'body': body}
 
 
+def export_wp():
+    pages = load_pages() + [hub_page()]
+    out = []
+    for p in pages:
+        d = p['data']
+        body = hero(p) + (p.get('body') or body_sections(p))
+        out.append({'slug': p['slug'] or 'etusivu', 'front': p['slug'] == '', 'kind': p['kind'], 'service': p['service'], 'city': p['city'],
+                    'seo_title': d['title'], 'meta': d['meta'], 'h1': d['h1'], 'content': body})
+    os.makedirs(os.path.join(THEME, 'content'), exist_ok=True)
+    json.dump(out, open(os.path.join(THEME, 'content', 'pages.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    print(len(out), 'sivua -> pages.json')
+
+
 def main():
+    if WP:
+        return export_wp()
     if os.path.exists(OUT):
         shutil.rmtree(OUT)
     os.makedirs(OUT)
