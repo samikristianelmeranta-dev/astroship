@@ -31,7 +31,7 @@ h1 { font-size: 1.5rem; } h2 { font-size: 1.15rem; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 14px; }
 .top h1 b { color: var(--amber); }
 .top p { margin: 0; color: #a9c6cb; font-size: 0.95rem; }
-.grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; padding-block: 20px 40px; align-items: start; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 20px; padding-block: 20px 40px; align-items: start; }
 .panel { background: var(--paper); border: 1px solid var(--line); padding: 18px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
 .stack { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
@@ -40,7 +40,7 @@ input[type="text"], input[type="number"], select, textarea { font: inherit; colo
 input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid var(--amber); outline-offset: 1px; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 .rows { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
-.row { display: grid; grid-template-columns: 26px minmax(0, 1.6fr) 84px 76px 96px 104px 30px; gap: 8px; align-items: center; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 26px minmax(0, 1fr) 62px 68px 86px 86px 98px 30px; gap: 8px; align-items: center; padding: 8px 6px; border-bottom: 1px solid var(--line); }
 .row.on { background: var(--row-on); }
 .row.head { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-block: 6px; }
 .row.head span.r { text-align: right; }
@@ -105,16 +105,18 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       <div class="fields">
         <label class="f" for="asiakas">Asiakas<input type="text" id="asiakas" autocomplete="off"></label>
         <label class="f" for="kohde">Kohde / osoite<input type="text" id="kohde" autocomplete="off"></label>
+        <label class="f" for="numero">Tarjousnumero<input type="text" id="numero" autocomplete="off" maxlength="30"></label>
         <label class="f" for="ikkunat">Ikkunoita, kpl<input type="number" id="ikkunat" class="num" min="0" step="1" inputmode="numeric"></label>
         <label class="f" for="ovet">Ovia, kpl<input type="number" id="ovet" class="num" min="0" step="1" inputmode="numeric"></label>
       </div>
-      <p class="hint">Kun rastitat toimenpiteen, määräksi tulee valmiiksi ikkunoiden tai ovien määrä. Voit muuttaa sen.</p>
+      <p class="hint">Kun rastitat toimenpiteen, määräksi tulee valmiiksi ikkunoiden tai ovien määrä. Voit muuttaa sen. Tarjousnumero ehdotetaan automaattisesti, ja sen voi vaihtaa.</p>
     </section>
 
     <section class="panel" aria-labelledby="h-tyot">
       <h2 id="h-tyot">Toimenpiteet</h2>
+      <p class="hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kirjoita kohtaan "Josta tarvikkeet", paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan.</p>
       <div class="rows" id="rows">
-        <div class="row head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Yhteensä</span><span></span></div>
+        <div class="row head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Josta tarvikkeet</span><span class="r">Yhteensä</span><span></span></div>
       </div>
       <div class="btn-row">
         <button type="button" class="btn btn-line" id="add">+ Lisää muu työ</button>
@@ -134,11 +136,11 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       <h2 id="h-ktv">Kotitalousvähennys</h2>
       <label class="check" for="ktv-on"><input type="checkbox" id="ktv-on" checked> Näytä arvio kotitalousvähennyksestä tarjouksessa</label>
       <div class="fields">
-        <label class="f" for="ktv-tarvikkeet">Tarvikkeiden ja matkakulujen osuus, € (sis. ALV)<input type="text" id="ktv-tarvikkeet" class="num" inputmode="decimal" placeholder="0"></label>
+        <label class="f" for="ktv-tarvikkeet">Matkakulut ja muut vähennykseen kuulumattomat kulut, € (sis. ALV)<input type="text" id="ktv-tarvikkeet" class="num" inputmode="decimal" placeholder="0"></label>
         <label class="f" for="ktv-hakijat">Vähennyksen hakijoita
           <select id="ktv-hakijat"><option value="1">1 henkilö</option><option value="2">2 henkilöä (esim. puolisot)</option></select></label>
       </div>
-      <p class="hint">Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Kahdella hakijalla työ jaetaan tasan. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.</p>
+      <p class="hint">Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Työn osuus on yhteishinta ilman rivien tarvikkeita ja yllä olevia kuluja. Kahdella hakijalla työ jaetaan tasan. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.</p>
     </section>
 
     <section class="panel" aria-labelledby="h-lisa">
@@ -193,11 +195,23 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   var db = null, downloads = null;
   var currentId = null;       // avatun tai tallennetun tarjouksen tunniste
   var savedDocs = [];
+  var numAuto = true;         // tarjousnumero on ehdotus, kunnes käyttäjä kirjoittaa oman
+
+  /** Seuraava vapaa numero muodossa VVVV-NNN tallennettujen tarjousten perusteella. */
+  function suggestNumber() {
+    if (!numAuto || currentId) { return; }
+    var year = String(new Date().getFullYear()), max = 0;
+    savedDocs.forEach(function (d) {
+      var m = /^(\d{4})-(\d+)$/.exec(str(d.data.numero));
+      if (m && m[1] === year) { max = Math.max(max, parseInt(m[2], 10)); }
+    });
+    $('numero').value = year + '-' + ('00' + (max + 1)).slice(-3);
+  }
 
   function loadPrices() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
   function savePrices() {
     var p = {};
-    rows.forEach(function (r) { if (!r.custom) { p[r.id] = { price: r.price.value, unit: r.unit.value }; } });
+    rows.forEach(function (r) { if (!r.custom) { p[r.id] = { price: r.price.value, unit: r.unit.value, mat: r.mat.value }; } });
     try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {}
   }
   function num(v) { var n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isFinite(n) && n > 0 ? n : 0; }
@@ -220,6 +234,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       '<div class="cell"><span class="mlabel">Määrä</span><input type="text" id="qty-' + id + '" class="num" inputmode="decimal" aria-label="Määrä"></div>' +
       '<div class="cell"><span class="mlabel">Yksikkö</span><select id="unit-' + id + '" aria-label="Yksikkö">' + unitOpts + '</select></div>' +
       '<div class="cell"><span class="mlabel">Hinta / yks.</span><input type="text" id="price-' + id + '" class="num" inputmode="decimal" aria-label="Hinta per yksikkö, euroa"></div>' +
+      '<div class="cell"><span class="mlabel">Josta tarvikkeet</span><input type="text" id="mat-' + id + '" class="num" inputmode="decimal" aria-label="Josta tarvikkeita per yksikkö, euroa"></div>' +
       '<div class="sum" id="sum-' + id + '"></div>' +
       (custom ? '<button type="button" class="del" aria-label="Poista rivi">×</button>' : '<span></span>');
     rowsEl.appendChild(el);
@@ -228,11 +243,12 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       on: el.querySelector('input[type="checkbox"]'),
       nameEl: custom ? el.querySelector('input.name') : null, label: def.name,
       qty: el.querySelector('#qty-' + id), unit: el.querySelector('select'),
-      price: el.querySelector('#price-' + id), sum: el.querySelector('.sum')
+      price: el.querySelector('#price-' + id), mat: el.querySelector('#mat-' + id), sum: el.querySelector('.sum')
     };
     if (!custom) { el.querySelector('label.name').textContent = def.name; }
     r.unit.value = (saved && saved.unit) || def.unit || 'kpl';
     r.price.value = saved && saved.price !== undefined && saved.price !== '' ? saved.price : (def.price !== undefined ? String(def.price) : '');
+    r.mat.value = saved && saved.mat ? saved.mat : '';
     r.on.addEventListener('change', function () {
       if (r.on.checked && r.qty.value === '' && r.from) {
         var c = $(r.from).value;
@@ -240,8 +256,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       }
       update();
     });
-    [r.qty, r.price, r.unit].forEach(function (i) {
-      i.addEventListener('input', function () { if (i !== r.unit && i.value !== '' && !r.on.checked) { r.on.checked = true; } update(); });
+    [r.qty, r.price, r.unit, r.mat].forEach(function (i) {
+      i.addEventListener('input', function () { if (i !== r.unit && i !== r.mat && i.value !== '' && !r.on.checked) { r.on.checked = true; } update(); });
       i.addEventListener('change', update);
     });
     if (custom) {
@@ -255,17 +271,18 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
   function selected() {
     return rows.filter(function (r) { return r.on.checked; }).map(function (r) {
-      var q = num(r.qty.value), p = num(r.price.value);
-      return { name: r.custom ? (r.nameEl.value.trim() || 'Muu työ') : r.label, qty: q, unit: r.unit.value, price: p, total: q * p };
+      var q = num(r.qty.value), p = num(r.price.value), m = Math.min(num(r.mat.value), p);
+      return { name: r.custom ? (r.nameEl.value.trim() || 'Muu työ') : r.label, qty: q, unit: r.unit.value, price: p, total: q * p, mat: m, matTotal: q * m };
     });
   }
 
-  function ktv(gross) {
+  function ktv(gross, materials) {
     if (!$('ktv-on').checked || !gross) { return null; }
-    var work = Math.max(0, gross - num($('ktv-tarvikkeet').value));
+    var other = num($('ktv-tarvikkeet').value);
+    var work = Math.max(0, gross - materials - other);
     var n = parseInt($('ktv-hakijat').value, 10) || 1;
     var per = Math.min(1600, Math.max(0, 0.35 * (work / n) - 150));
-    return { work: work, n: n, ded: Math.round(per * n * 100) / 100 };
+    return { work: work, n: n, ded: Math.round(per * n * 100) / 100, materials: materials, other: other };
   }
 
   /** Koko tarjouksen laskettu sisältö: käytetään erittelyssä, tekstissä ja PDF:ssä. */
@@ -276,8 +293,11 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     var incl = $('alvmode').value === 'incl';
     var net = incl ? total / (1 + rate) : total;
     var gross = incl ? total : total * (1 + rate);
+    var mats = items.reduce(function (s, i) { return s + i.matTotal; }, 0);
+    var materials = incl ? mats : mats * (1 + rate);   // tarvikkeet verollisina
     return {
-      items: items, rate: rate, net: net, gross: gross, vat: gross - net, kv: ktv(items.length ? gross : 0),
+      items: items, rate: rate, net: net, gross: gross, vat: gross - net, materials: materials, kv: ktv(items.length ? gross : 0, materials),
+      numero: $('numero').value.trim(),
       asiakas: $('asiakas').value.trim(), kohde: $('kohde').value.trim(),
       ikkunat: num($('ikkunat').value), ovet: num($('ovet').value), lisatiedot: $('lisatiedot').value.trim(),
       date: new Date().toLocaleDateString('fi-FI')
@@ -299,14 +319,17 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     } else {
       var h = '<table>';
       c.items.forEach(function (i) {
-        h += '<tr><td>' + esc(i.name) + '<span class="detail">' + qtyText(i.qty) + ' ' + esc(i.unit) + ' × ' + eur(i.price) + '</span></td><td>' + eur(i.total) + '</td></tr>';
+        h += '<tr><td>' + esc(i.name) + '<span class="detail">' + qtyText(i.qty) + ' ' + esc(i.unit) + ' × ' + eur(i.price) + (i.matTotal ? ', josta tarvikkeet ' + eur(i.matTotal) : '') + '</span></td><td>' + eur(i.total) + '</td></tr>';
       });
       h += '<tr class="sub"><td>Veroton hinta</td><td>' + eur(c.net) + '</td></tr>';
       h += '<tr class="sub"><td>ALV ' + qtyText(c.rate * 100) + ' %</td><td>' + eur(c.vat) + '</td></tr>';
       h += '<tr class="total"><td>Yhteensä</td><td>' + eur(c.gross) + '</td></tr></table>';
       h += '<p class="hint">' + MATERIALS_NOTE + '</p>';
       if (c.kv) {
-        h += '<div class="ktv"><div class="line"><span>Työn osuus</span><span>' + eur(c.kv.work) + '</span></div>' +
+        h += '<div class="ktv">' +
+          '<div class="line"><span>Tarvikkeiden osuus</span><span>' + eur(c.kv.materials) + '</span></div>' +
+          (c.kv.other ? '<div class="line"><span>Matka- ja muut kulut</span><span>' + eur(c.kv.other) + '</span></div>' : '') +
+          '<div class="line"><span>Työn osuus</span><span>' + eur(c.kv.work) + '</span></div>' +
           '<div class="line big"><span>' + ktvLabel(c.kv) + '</span><span>' + eur(c.kv.ded) + '</span></div>' +
           '<div class="line big"><span>Hinta vähennyksen jälkeen</span><span>' + eur(c.gross - c.kv.ded) + '</span></div>' +
           '<small>' + KTV_NOTE + '</small></div>';
@@ -320,7 +343,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   }
 
   function text(c) {
-    var L = ['TARJOUS – TiivisTupa', c.date, ''];
+    var L = ['TARJOUS – TiivisTupa', (c.numero ? 'Tarjous nro ' + c.numero + ' · ' : '') + c.date, ''];
     if (c.asiakas) { L.push('Asiakas: ' + c.asiakas); }
     if (c.kohde) { L.push('Kohde: ' + c.kohde); }
     if (siteLine(c)) { L.push('Kohteessa: ' + siteLine(c)); }
@@ -337,6 +360,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     L.push(MATERIALS_NOTE);
     if (c.kv) {
       L.push('');
+      L.push('Tarvikkeiden osuus: ' + eur(c.kv.materials));
+      if (c.kv.other) { L.push('Matka- ja muut kulut: ' + eur(c.kv.other)); }
       L.push('Työn osuus: ' + eur(c.kv.work));
       L.push(ktvLabel(c.kv) + ': ' + eur(c.kv.ded));
       L.push('Hinta vähennyksen jälkeen: ' + eur(c.gross - c.kv.ded));
@@ -369,7 +394,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     doc.setFont('helvetica', 'bold'); doc.setFontSize(22); doc.setTextColor(255, 255, 255); T('Tiivis', L, 19);
     doc.setTextColor(245, 173, 27); T('Tupa', L + doc.getTextWidth('Tiivis'), 19);
     doc.setTextColor(255, 255, 255); doc.setFontSize(16); T('TARJOUS', R, 16, { align: 'right' });
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(10); T(c.date, R, 23, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10); T((c.numero ? 'Nro ' + c.numero + '  ·  ' : '') + c.date, R, 23, { align: 'right' });
 
     y = 44; doc.setTextColor(20, 38, 43); doc.setFontSize(11);
     [['Asiakas', c.asiakas], ['Kohde', c.kohde], ['Kohteessa', siteLine(c)]].forEach(function (p) {
@@ -408,11 +433,13 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     if (c.kv) {
       doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
       var note = doc.splitTextToSize(pdfSafe(KTV_NOTE), R - L - 12);
-      var bh = 27 + note.length * 4;
+      var bh = 33.5 + (c.kv.other ? 6.5 : 0) + note.length * 4;
       need(bh + 6);
       doc.setDrawColor(203, 217, 220); doc.rect(L, y, R - L, bh);
       doc.setFillColor(245, 173, 27); doc.rect(L, y, 1.6, bh, 'F');
       var by = y + 7; doc.setFontSize(10.5); doc.setTextColor(20, 38, 43);
+      T('Tarvikkeiden osuus', L + 6, by); T(eur(c.kv.materials), R - 4, by, { align: 'right' }); by += 6.5;
+      if (c.kv.other) { T('Matka- ja muut kulut', L + 6, by); T(eur(c.kv.other), R - 4, by, { align: 'right' }); by += 6.5; }
       T('Työn osuus', L + 6, by); T(eur(c.kv.work), R - 4, by, { align: 'right' }); by += 6.5;
       doc.setFont('helvetica', 'bold');
       T(ktvLabel(c.kv), L + 6, by); T(eur(c.kv.ded), R - 4, by, { align: 'right' }); by += 6.5;
@@ -435,7 +462,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   function fileName(c) {
     var who = (c.asiakas || 'tarjous').toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'tarjous';
     var d = new Date();
-    return 'tiivistupa-tarjous-' + who + '-' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.pdf';
+    return 'tiivistupa-tarjous-' + (c.numero ? c.numero.replace(/[^A-Za-z0-9]+/g, '-') + '-' : '') + who + '-' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.pdf';
   }
 
   $('pdf').addEventListener('click', function () {
@@ -456,47 +483,51 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
   function getState() {
     return {
-      asiakas: $('asiakas').value, kohde: $('kohde').value, ikkunat: $('ikkunat').value, ovet: $('ovet').value,
+      numero: $('numero').value, asiakas: $('asiakas').value, kohde: $('kohde').value, ikkunat: $('ikkunat').value, ovet: $('ovet').value,
       alvmode: $('alvmode').value, alv: $('alv').value, lisatiedot: $('lisatiedot').value,
       ktvOn: $('ktv-on').checked, ktvTarvikkeet: $('ktv-tarvikkeet').value, ktvHakijat: $('ktv-hakijat').value,
       rows: rows.map(function (r) {
-        return { id: r.custom ? '' : r.id, name: r.custom ? r.nameEl.value : '', on: r.on.checked, qty: r.qty.value, unit: r.unit.value, price: r.price.value };
+        return { id: r.custom ? '' : r.id, name: r.custom ? r.nameEl.value : '', on: r.on.checked, qty: r.qty.value, unit: r.unit.value, price: r.price.value, mat: r.mat.value };
       })
     };
   }
   function str(v) { return typeof v === 'string' ? v : (typeof v === 'number' ? String(v) : ''); }
   function setState(s) {
     rows.filter(function (r) { return r.custom; }).forEach(removeRow);
+    $('numero').value = str(s.numero); numAuto = !str(s.numero);
     $('asiakas').value = str(s.asiakas); $('kohde').value = str(s.kohde); $('ikkunat').value = str(s.ikkunat); $('ovet').value = str(s.ovet);
     $('alvmode').value = s.alvmode === 'excl' ? 'excl' : 'incl'; $('alv').value = str(s.alv) || '25,5'; $('lisatiedot').value = str(s.lisatiedot);
     $('ktv-on').checked = s.ktvOn !== false; $('ktv-tarvikkeet').value = str(s.ktvTarvikkeet); $('ktv-hakijat').value = s.ktvHakijat === '2' ? '2' : '1';
-    rows.forEach(function (r) { r.on.checked = false; r.qty.value = ''; });
+    rows.forEach(function (r) { r.on.checked = false; r.qty.value = ''; r.mat.value = ''; });
     (Array.isArray(s.rows) ? s.rows : []).slice(0, 60).forEach(function (d) {
       if (!d || typeof d !== 'object') { return; }
       var r = d.id ? rows.filter(function (x) { return x.id === d.id; })[0] : addRow({ unit: 'kpl' });
       if (!r) { return; }
       if (r.custom) { r.nameEl.value = str(d.name); }
-      r.on.checked = d.on === true; r.qty.value = str(d.qty); r.price.value = str(d.price);
+      r.on.checked = d.on === true; r.qty.value = str(d.qty); r.price.value = str(d.price); r.mat.value = str(d.mat);
       if (UNITS.indexOf(d.unit) !== -1) { r.unit.value = d.unit; }
     });
     update();
   }
   function clearForm() {
     currentId = null;
+    var saved = loadPrices();   // luetaan ennen tyhjennystä, koska tyhjennys tallentaa tyhjät tarvikehinnat
     setState({ rows: [], alv: $('alv').value, alvmode: $('alvmode').value });
-    var saved = loadPrices();
-    rows.forEach(function (r) { var p = saved[r.id]; if (p && p.price !== undefined) { r.price.value = p.price; r.unit.value = p.unit || r.unit.value; } });
-    update(); renderSaved();
+    rows.forEach(function (r) { var p = saved[r.id]; if (p && p.price !== undefined) { r.price.value = p.price; r.unit.value = p.unit || r.unit.value; r.mat.value = p.mat || ''; } });
+    suggestNumber(); update(); renderSaved();
   }
 
   $('save').addEventListener('click', function () {
     var c = compute();
     if (!db || !c.items.length) { return; }
     var btn = $('save'); btn.disabled = true; say('Tallennetaan…');
+    var wasId = currentId, wasAuto = numAuto;
     var ref = currentId ? db.collection('tarjoukset').doc(currentId) : db.collection('tarjoukset').doc();
-    ref.set({ state: getState(), asiakas: c.asiakas, kohde: c.kohde, yhteensa: c.gross, updatedAt: Date.now() }).then(function () {
-      currentId = ref.id; say('Tarjous tallennettu.'); btn.disabled = false; renderSaved();
+    currentId = ref.id; numAuto = false;   // asetetaan ennen kirjoitusta, ettei oma tallennus vaihda numeroa
+    ref.set({ state: getState(), numero: c.numero, asiakas: c.asiakas, kohde: c.kohde, yhteensa: c.gross, updatedAt: Date.now() }).then(function () {
+      say('Tarjous tallennettu.'); btn.disabled = false; renderSaved();
     }, function () {
+      currentId = wasId; numAuto = wasAuto;
       say('Tallennus ei onnistunut. Sinulla ei ehkä ole muokkausoikeutta tähän sivuun.'); btn.disabled = false;
     });
   });
@@ -510,7 +541,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       var acts = document.createElement('div'); acts.className = 'acts';
       var meta = document.createElement('div'); meta.className = 'meta';
       var when = typeof d.data.updatedAt === 'number' ? new Date(d.data.updatedAt).toLocaleDateString('fi-FI') : '';
-      meta.textContent = [when, str(d.data.kohde), typeof d.data.yhteensa === 'number' ? eur(d.data.yhteensa) : ''].filter(Boolean).join(' · ');
+      meta.textContent = [str(d.data.numero), when, str(d.data.kohde), typeof d.data.yhteensa === 'number' ? eur(d.data.yhteensa) : ''].filter(Boolean).join(' · ');
       var open = document.createElement('button'); open.type = 'button'; open.className = 'btn btn-line btn-s'; open.textContent = d.id === currentId ? 'Avattu' : 'Avaa';
       open.disabled = d.id === currentId;
       open.addEventListener('click', function () {
@@ -539,7 +570,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       if (!snap.metadata || !snap.metadata.fromCache) { clearTimeout(timer); }
       savedDocs = snap.docs.map(function (d) { return { id: d.id, data: d.data() || {} }; });
       note.textContent = savedDocs.length ? 'Tallennetut tarjoukset näkyvät kaikille, joille tämä sivu on jaettu.' : 'Ei vielä tallennettuja tarjouksia. Tee tarjous ja paina Tallenna tarjous.';
-      renderSaved();
+      suggestNumber(); renderSaved(); update();
     }, function () {
       clearTimeout(timer); note.textContent = 'Tallennettuja tarjouksia ei voitu hakea.';
     });
@@ -551,7 +582,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   DEFAULTS.forEach(function (d) { addRow(d, savedPrices[d.id]); });
 
   $('add').addEventListener('click', function () { var r = addRow({ unit: 'kpl' }); r.on.checked = true; update(); r.nameEl.focus(); });
-  ['asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode', 'ktv-on', 'ktv-tarvikkeet', 'ktv-hakijat', 'lisatiedot'].forEach(function (id) {
+  $('numero').addEventListener('input', function () { numAuto = false; });
+  ['numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alv', 'alvmode', 'ktv-on', 'ktv-tarvikkeet', 'ktv-hakijat', 'lisatiedot'].forEach(function (id) {
     $(id).addEventListener('input', update);
     $(id).addEventListener('change', update);
   });
@@ -562,8 +594,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       navigator.clipboard.writeText(out.value).then(function () { say('Tarjous kopioitu leikepöydälle.'); }, fallback);
     } else { fallback(); }
   });
-  $('reset').addEventListener('click', function () { clearForm(); say('Uusi tarjous aloitettu. Yksikköhinnat säilyivät.'); });
-  update();
+  $('reset').addEventListener('click', function () { numAuto = true; clearForm(); say('Uusi tarjous aloitettu. Yksikköhinnat säilyivät.'); });
+  suggestNumber(); update();
 
   var use = window.claude && window.claude.use ? window.claude.use.bind(window.claude) : function () { return Promise.resolve(null); };
   use('downloads').then(function (d) { if (d) { downloads = d; $('pdf').hidden = false; } }, function () {});
