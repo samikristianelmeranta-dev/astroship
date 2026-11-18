@@ -508,7 +508,7 @@
    "meta": "Ovihuolto Liedossa: ulko-ovien, terassiovien ja autotallin käyntiovien säätö, tiivisteet ja lukitus 1980–2000-lukujen taloihin. Maksuton kartoituskäynti.",
    "h1": "Ovihuolto Liedossa",
    "lead": "Lieto on kasvava omakotitalokunta, jossa suuri osa taloista on 1980–2000-luvuilta. Näissä taloissa ovet ovat parhaassa huoltoiässä: runko on hyvä, mutta tiivisteet, saranat ja lukitus ovat tehneet jo paljon työtä. Ovihuolto Liedossa tuo oven käynnin ja tiiviyden lähelle sitä, mitä ne olivat uutena.",
-   "short_answer": "Ovihuolto Liedossa on suunnattu omakotitaloille, rivitaloille ja maaseudun kiinteistöille. Huollamme ulko-ovet, terassiovet, parvekeovet sekä autotallin ja varaston käyntiovet. Säädämme käynnin ja saranat, voitelemme, tarkistamme ja vaihdamme tiivisteet, katsomme kynnyksen ja kynnystiivisteen sekä säädämme lukkorungon vastaraudan ja painikkeet. Lieton 1980–2000-lukujen taloissa tyypillisiä ovat litistyneet tiivisteet, talvella kuroutuva pääovi ja terassiovi, jonka lukitus on raskas. Palvelemme keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Kartoitus on maksuton ja tarjous kirjallinen.",
+   "short_answer": "Ovihuolto Liedossa on suunnattu omakotitaloille, rivitaloille ja maaseudun kiinteistöille. Huollamme ulko-ovet, terassiovet, parvekeovet sekä autotallin ja varaston käyntiovet. Säädämme käynnin ja saranat, voitelemme, tarkistamme ja vaihdamme tiivisteet, katsomme kynnyksen ja kynnystiivisteen sekä säädämme lukkorungon vastaraudan ja painikkeet. Liedon 1980–2000-lukujen taloissa tyypillisiä ovat litistyneet tiivisteet, talvella kuroutuva pääovi ja terassiovi, jonka lukitus on raskas. Palvelemme keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Kartoitus on maksuton ja tarjous kirjallinen.",
    "sections": [
     {
      "id": "huoltoika-lieto",
@@ -523,7 +523,7 @@
     {
      "id": "alueet-lieto",
      "h2": "Missä päin Lietoa palvelemme?",
-     "html": "<p>Lieto on Turun koillinen naapuri, ja pääsemme sinne nopeasti. Teemme ovihuoltoja Lieton keskustassa sekä Ilmarisissa ja Loukinaisissa, joissa on paljon omakotitaloalueita. Littoisten suunnalla palvelemme pientaloja ja rivitaloyhtiöitä.</p><p>Tarvasjoella ja Yliskulmalla kohteet ovat useammin maaseudun taloja Aurajoen varren maisemissa. Niissä on tyypillisesti vanhempia ovia ja useita ulkorakennuksia, joten varaamme käynnille enemmän aikaa.</p>"
+     "html": "<p>Lieto on Turun koillinen naapuri, ja pääsemme sinne nopeasti. Teemme ovihuoltoja Liedon keskustassa sekä Ilmarisissa ja Loukinaisissa, joissa on paljon omakotitaloalueita. Littoisten suunnalla palvelemme pientaloja ja rivitaloyhtiöitä.</p><p>Tarvasjoella ja Yliskulmalla kohteet ovat useammin maaseudun taloja Aurajoen varren maisemissa. Niissä on tyypillisesti vanhempia ovia ja useita ulkorakennuksia, joten varaamme käynnille enemmän aikaa.</p>"
     },
     {
      "id": "ongelmat-lieto",

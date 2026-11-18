@@ -47,7 +47,7 @@ Tulos on yksi JSON-tiedosto `content/<palvelu>.json`. Kieli: suomi.
 - **Raisio** (raisio): Turun naapuri lännessä. Alueita: Kaanaa, Ihala, Kerttula, Petäsmäki, Vaisaari, Tikanmaa, Kuloinen. Paljon 1960–80-lukujen omakoti- ja rivitaloja ja taloyhtiöitä.
 - **Parainen** (parainen): saaristokaupunki, kaksikielinen. Alueita: keskusta, Kirjala, Nauvo, Korppoo, Houtskari, Iniö. Vanhaa puutalokantaa, paljon vapaa-ajan asuntoja, lauttayhteydet saaristoon. Meri-ilmasto.
 - **Paimio** (paimio): pikkukaupunki Turun ja Salon välissä. Alueita: keskusta, Vista, Kevola, Hajala. Omakotitaloja eri vuosikymmeniltä ja maaseutuasutusta Paimionjoen varrella.
-- **Lieto** (lieto): Turun naapuri koillisessa. Alueita: Lieton keskusta, Ilmarinen, Loukinainen, Littoinen, Tarvasjoki, Yliskulma. Kasvava omakotitalokunta, paljon 1980–2000-lukujen taloja, myös maaseutua Aurajoen varrella.
+- **Lieto** (lieto): Turun naapuri koillisessa. Alueita: Liedon keskusta, Ilmarinen, Loukinainen, Littoinen, Tarvasjoki, Yliskulma. Kasvava omakotitalokunta, paljon 1980–2000-lukujen taloja, myös maaseutua Aurajoen varrella.
 - **Masku** (masku): TiivisTuvan tukikohta. Alueita: Maskun keskusta, Lemu, Askainen, Humikkala, Kurittula. Omakotitalovaltainen, lyhyet välimatkat meiltä.
 
 ## Tyyli
