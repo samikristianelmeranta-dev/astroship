@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $tt_phone = tt_opt( 'tt_phone' );
 $tt_email = tt_opt( 'tt_email' );
+$tt_phone2 = tt_opt( 'tt_phone2' );
 ?>
 <div class="seal" aria-hidden="true"></div>
 <section class="quote" id="tarjous"><div class="wrap quote-grid">
@@ -14,7 +15,8 @@ $tt_email = tt_opt( 'tt_email' );
 <h2>Pyydä maksuton kartoitus ja tarjous</h2>
 <p>Kerro lyhyesti, mitä ikkunoissasi tai ovissasi on vialla. Vastaamme viimeistään seuraavana arkipäivänä ja sovimme kartoituskäynnin. Tarjous on kirjallinen eikä sido sinua mihinkään.</p>
 <ul class="contact-list">
-<?php if ( $tt_phone ) : ?><li><span>Puhelin</span><a href="tel:<?php echo esc_attr( tt_phone_intl() ); ?>"><b><?php echo esc_html( $tt_phone ); ?></b></a></li><?php endif; ?>
+<?php if ( $tt_phone ) : ?><li><span>Myynti</span><a href="tel:<?php echo esc_attr( tt_phone_intl() ); ?>"><b><?php echo esc_html( $tt_phone ); ?></b></a></li><?php endif; ?>
+<?php if ( $tt_phone2 ) : ?><li><span>Asennus</span><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $tt_phone2 ) ); ?>"><b><?php echo esc_html( $tt_phone2 ); ?></b></a></li><?php endif; ?>
 <?php if ( $tt_email ) : ?><li><span>Sähköposti</span><a href="mailto:<?php echo esc_attr( $tt_email ); ?>"><b><?php echo esc_html( $tt_email ); ?></b></a></li><?php endif; ?>
 <li><span>Tukikohta</span><?php echo esc_html( tt_opt( 'tt_locality' ) ); ?>, Varsinais-Suomi</li>
 </ul>
@@ -37,14 +39,17 @@ $tt_email = tt_opt( 'tt_email' );
 <li><a href="<?php echo esc_url( home_url( '/palvelualue/' ) ); ?>">Kaikki aluesivut</a></li>
 </ul></div>
 <div><h2>Yhteystiedot</h2><ul>
-<?php if ( $tt_phone ) : ?><li><?php echo esc_html( $tt_phone ); ?></li><?php endif; ?>
+<?php if ( $tt_phone ) : ?><li>Myynti <?php echo esc_html( $tt_phone ); ?></li><?php endif; ?>
+<?php if ( $tt_phone2 ) : ?><li>Asennus <?php echo esc_html( $tt_phone2 ); ?></li><?php endif; ?>
 <?php if ( $tt_email ) : ?><li><?php echo esc_html( $tt_email ); ?></li><?php endif; ?>
 <li><?php echo esc_html( tt_opt( 'tt_locality' ) ); ?>, Varsinais-Suomi</li>
+<li><a href="<?php echo esc_url( home_url( '/yhteystiedot/' ) ); ?>">Yhteystiedot ja tiimi</a></li>
+<li><a href="<?php echo esc_url( TT_PARENT_URL ); ?>">Uudet ikkunat ja ovet: www.ikkunakauppias.fi</a></li>
 <?php if ( get_privacy_policy_url() ) : ?><li><a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">Tietosuojaseloste</a></li><?php endif; ?>
 </ul></div>
 </div>
 <div class="wrap foot-bottom">
-<span><?php if ( tt_opt( 'tt_legal' ) ) : ?>TiivisTupa on <?php echo esc_html( tt_opt( 'tt_legal' ) ); ?>:n markkinointinimi.<?php endif; ?><?php if ( tt_opt( 'tt_ytunnus' ) ) : ?> Y-tunnus <?php echo esc_html( tt_opt( 'tt_ytunnus' ) ); ?>.<?php endif; ?></span>
+<span><?php echo esc_html( TT_LEGAL_NOTE ); ?><?php if ( tt_opt( 'tt_ytunnus' ) ) : ?> Y-tunnus <?php echo esc_html( tt_opt( 'tt_ytunnus' ) ); ?>.<?php endif; ?></span>
 <span>© <?php echo esc_html( gmdate( 'Y' ) ); ?> TiivisTupa</span>
 </div>
 </footer>

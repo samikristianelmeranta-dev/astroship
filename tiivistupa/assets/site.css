@@ -66,6 +66,7 @@ p { margin: 0; }
 .hero-points li::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--amber); margin-right: 9px; }
 .hero-art { min-width: 0; }
 .hero-art svg { display: block; width: 100%; height: auto; }
+.hero-art img { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 18px 40px rgba(0,0,0,0.28); }
 .hero.is-city .hero-grid { grid-template-columns: minmax(0, 1fr); padding-block: 44px 52px; }
 
 /* Tiivistenauha: toistuva tiivisteprofiili osioiden välissä */
@@ -125,6 +126,22 @@ p { margin: 0; }
 .chips { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .chips a { display: block; padding: 7px 14px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.97rem; }
 .chips a:hover { border-color: var(--petrol); }
+
+/* Yhteystiedot ja tiimi */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.contact-big { font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.prose ul.contact-big li { padding-left: 0; display: flex; gap: 14px; flex-wrap: wrap; }
+.prose ul.contact-big li::before { display: none; }
+.contact-big span { color: var(--muted); min-width: 6.5rem; }
+.contact-big b { user-select: all; }
+.band-img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.team-grid { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+.team-card { background: var(--paper); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+.team-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.team-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; }
+.team-body h3 { font-size: 1.1rem; }
+.team-body p { color: var(--muted); font-size: 0.97rem; line-height: 1.45; }
+@media (max-width: 860px) { .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 
 /* Tarjouslomake */
 .quote { background: var(--petrol); color: var(--on-dark); scroll-margin-top: 110px; }

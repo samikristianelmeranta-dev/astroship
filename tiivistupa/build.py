@@ -23,9 +23,11 @@ SITE = {
     'ytunnus': '3653098-6',
     'locality': 'Masku',
     'region': 'Varsinais-Suomi',
-    'phone': '045 7832 5070',                   # OLETUS: sama numero kuin ikkunakauppias.fi (myynti)
+    'phone': '045 7832 5070',                   # Myynti (sama kuin ikkunakauppias.fi)
+    'phone2': '045 7830 4746',                  # Asennus
     'phone_intl': '+358457832 5070'.replace(' ', ''),
-    'email': 'info@ikkunakauppias.fi',          # OLETUS: vaihdetaan, kun TiivisTuvalla on oma osoite
+    'email': 'info@tiivistupa.fi',
+    'parent_url': 'https://www.ikkunakauppias.fi/',
     'form_action': '/tarjouspyynto/',           # OLETUS: lomakkeen vastaanottaja päätetään julkaisualustan mukaan
 }
 
@@ -43,6 +45,13 @@ CITIES = [  # slug, nimi, missä
     ('raisio', 'Raisio', 'Raisiossa'), ('parainen', 'Parainen', 'Paraisilla'), ('paimio', 'Paimio', 'Paimiossa'),
     ('lieto', 'Lieto', 'Liedossa'), ('masku', 'Masku', 'Maskussa'),
 ]
+TEAM = [  # kuva, nimi, tehtävä
+    ('jussi', 'Jussi Henriksson', 'Asennus ja tarjouslaskenta'),
+    ('anton', 'Anton Hörkkö', 'Asennus, tarjouslaskenta ja energiatehokkuus'),
+    ('matias', 'Matias Sirkiä', 'Asennus ja myynti'),
+    ('sami', 'Sami Elmeranta', 'Markkinointi ja asiakaspalvelu'),
+]
+LEGAL_NOTE = 'TiivisTupa on Nordic Ikkunat & Ovet Oy:n markkinointinimi ikkuna- ja ovihuolloille.'
 CITY_NAME = {c: n for c, n, _ in CITIES}
 CITY_IN = {c: i for c, _, i in CITIES}
 
@@ -57,6 +66,13 @@ def url(slug):
     return '/' + (slug + '/' if slug else '')
 
 
+def asset(path):
+    """Kuvan osoite: esikatselussa suhteellinen, tuotannossa /assets/, WordPressissä teeman kansio."""
+    if WP:
+        return '{{tt-assets}}/' + path
+    return path if PREVIEW else '/assets/' + path
+
+
 def absurl(slug):
     slug = slug.strip('/')
     return SITE['domain'] + '/' + (slug + '/' if slug else '')
@@ -65,7 +81,7 @@ def absurl(slug):
 def fix_links(h):
     def rep(m):
         href = m.group(1)
-        if href.startswith('#'):
+        if href.startswith('#') or href.startswith('http'):
             return m.group(0)
         return 'href="%s"' % url(href)
     return re.sub(r'href="([^"]*)"', rep, h)
@@ -110,7 +126,8 @@ def jsonld(page):
     org = {
         '@type': 'HomeAndConstructionBusiness', '@id': SITE['domain'] + '/#yritys', 'name': SITE['brand'],
         'legalName': SITE['legal'], 'url': SITE['domain'] + '/', 'telephone': SITE['phone_intl'], 'email': SITE['email'],
-        'taxID': SITE['ytunnus'],
+        'taxID': SITE['ytunnus'], 'image': SITE['domain'] + '/assets/img/og-huolto.jpg',
+        'parentOrganization': {'@type': 'Organization', 'name': SITE['legal'], 'url': SITE['parent_url']},
         'address': {'@type': 'PostalAddress', 'addressLocality': SITE['locality'], 'addressRegion': SITE['region'], 'addressCountry': 'FI'},
         'areaServed': [{'@type': 'City', 'name': 'Turku'}] + [{'@type': 'City', 'name': n} for _, n, _ in CITIES]
                       + [{'@type': 'AdministrativeArea', 'name': 'Varsinais-Suomi'}],
@@ -123,6 +140,8 @@ def jsonld(page):
         crumbs.append((CITY_NAME[page['city']], slug))
     if page['kind'] == 'hub':
         crumbs.append(('Palvelualue', slug))
+    if page['kind'] == 'contact':
+        crumbs.append(('Yhteystiedot', slug))
     graph = [org, {
         '@type': 'WebPage', '@id': absurl(slug) + '#sivu', 'url': absurl(slug), 'name': d['title'], 'description': d['meta'],
         'inLanguage': 'fi', 'isPartOf': {'@id': SITE['domain'] + '/#sivusto'}, 'about': {'@id': SITE['domain'] + '/#yritys'},
@@ -150,7 +169,8 @@ def header(page):
     cur = page['service'] if page['kind'] in ('service', 'city') else None
     nav = ''.join('<li><a href="%s"%s>%s</a></li>' % (url(s), ' aria-current="page"' if s == cur else '', e(n)) for s, n, _ in SERVICES)
     nav += '<li><a href="%s"%s>Palvelualue</a></li>' % (url('palvelualue'), ' aria-current="page"' if page['kind'] == 'hub' else '')
-    flag = '<div class="preview-flag">Esikatselu: sisältö ja yhteystiedot ovat luonnoksia, lomake ei lähetä viestejä.</div>' if PREVIEW else ''
+    nav += '<li><a href="%s"%s>Yhteystiedot</a></li>' % (url('yhteystiedot'), ' aria-current="page"' if page['kind'] == 'contact' else '')
+    flag = '<div class="preview-flag">Esikatselu: lomake ei lähetä viestejä.</div>' if PREVIEW else ''
     return f'''{flag}<header class="site-head">
 <div class="wrap head-row">
 <a class="logo" href="{url('')}" aria-label="TiivisTupa, etusivu">{LOGO_SVG}<span>Tiivis<b>Tupa</b></span></a>
@@ -169,6 +189,8 @@ def hero(page):
         crumbs.append((CITY_NAME[page['city']], None))
     if page['kind'] == 'hub':
         crumbs.append(('Palvelualue', None))
+    if page['kind'] == 'contact':
+        crumbs.append(('Yhteystiedot', None))
     bc = ''
     if len(crumbs) > 1:
         parts = []
@@ -176,7 +198,10 @@ def hero(page):
             last = i == len(crumbs) - 1
             parts.append(f'<span aria-current="page">{e(n)}</span>' if last else f'<a href="{url(s)}">{e(n)}</a>')
         bc = '<nav class="crumbs" aria-label="Murupolku">' + '<span aria-hidden="true">›</span>'.join(parts) + '</nav>'
-    art = f'<div class="hero-art">{WINDOW_SVG}</div>' if page['kind'] in ('front', 'service') else ''
+    art = ''
+    if page['kind'] in ('front', 'service'):
+        art = (f'<div class="hero-art"><img src="{asset("img/hero-huolto.webp")}" srcset="{asset("img/hero-huolto-600.webp")} 600w, {asset("img/hero-huolto.webp")} 1000w" '
+               'sizes="(max-width: 860px) 300px, 400px" width="1000" height="1250" alt="Huollot ja korjaukset ikkunoille ja oville: TiivisTupa" fetchpriority="high" decoding="async"></div>')
     cls = 'hero' if art else 'hero is-city'
     place = CITY_IN[page['city']] if page['city'] else 'Turussa ja Varsinais-Suomessa'
     return f'''<section class="{cls}"><div class="wrap hero-grid"><div class="hero-text">
@@ -239,7 +264,7 @@ def quote(page):
     return f'''<div class="seal" aria-hidden="true"></div><section class="quote" id="tarjous"><div class="wrap quote-grid">
 <div class="quote-text"><h2>Pyydä maksuton kartoitus ja tarjous</h2>
 <p>Kerro lyhyesti, mitä ikkunoissasi tai ovissasi on vialla. Vastaamme viimeistään seuraavana arkipäivänä ja sovimme kartoituskäynnin. Tarjous on kirjallinen eikä sido sinua mihinkään.</p>
-<ul class="contact-list"><li><span>Puhelin</span><b>{e(SITE['phone'])}</b></li><li><span>Sähköposti</span><b>{e(SITE['email'])}</b></li><li><span>Tukikohta</span>{e(SITE['locality'])}, {e(SITE['region'])}</li></ul></div>
+<ul class="contact-list"><li><span>Myynti</span><b>{e(SITE['phone'])}</b></li><li><span>Asennus</span><b>{e(SITE['phone2'])}</b></li><li><span>Sähköposti</span><b>{e(SITE['email'])}</b></li><li><span>Tukikohta</span>{e(SITE['locality'])}, {e(SITE['region'])}</li></ul></div>
 <form class="quote-form" id="quote-form" action="{e(SITE['form_action'])}" method="post" novalidate>
 <div class="field"><label for="q-nimi">Nimi</label><input id="q-nimi" name="nimi" type="text" autocomplete="name" required></div>
 <div class="field"><label for="q-puhelin">Puhelin</label><input id="q-puhelin" name="puhelin" type="tel" autocomplete="tel" required></div>
@@ -260,8 +285,8 @@ def footer():
 <div><h2>TiivisTupa</h2><p>Ikkunoiden ja ovien huoltoremontit Turussa ja Varsinais-Suomessa: huolto, tiivistys, korjaus ja puitteiden maalaus.</p></div>
 <div><h2>Palvelut</h2><ul>{sv}</ul></div>
 <div><h2>Paikkakunnat</h2><ul>{ct}<li><a href="{url('palvelualue')}">Kaikki aluesivut</a></li></ul></div>
-<div><h2>Yhteystiedot</h2><ul><li>{e(SITE['phone'])}</li><li>{e(SITE['email'])}</li><li>{e(SITE['locality'])}, {e(SITE['region'])}</li></ul></div>
-</div><div class="wrap foot-bottom"><span>TiivisTupa on {e(SITE['legal'])}:n markkinointinimi. Y-tunnus {e(SITE['ytunnus'])}.</span><span>© {date.today().year} TiivisTupa</span></div></footer>'''
+<div><h2>Yhteystiedot</h2><ul><li>Myynti {e(SITE['phone'])}</li><li>Asennus {e(SITE['phone2'])}</li><li>{e(SITE['email'])}</li><li>{e(SITE['locality'])}, {e(SITE['region'])}</li><li><a href="{url('yhteystiedot')}">Yhteystiedot ja tiimi</a></li><li><a href="{SITE['parent_url']}">Uudet ikkunat ja ovet: www.ikkunakauppias.fi</a></li></ul></div>
+</div><div class="wrap foot-bottom"><span>{e(LEGAL_NOTE)} Y-tunnus {e(SITE['ytunnus'])}.</span><span>© {date.today().year} TiivisTupa</span></div></footer>'''
 
 
 SCRIPT = '''<script>
@@ -287,7 +312,8 @@ def render(page, css):
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <meta property="og:type" content="website"><meta property="og:site_name" content="TiivisTupa"><meta property="og:locale" content="fi_FI">
 <meta property="og:title" content="{e(d['title'])}"><meta property="og:description" content="{e(d['meta'])}"><meta property="og:url" content="{absurl(slug)}">
-<meta name="twitter:card" content="summary"><meta name="geo.region" content="FI-19"><meta name="geo.placename" content="{e(CITY_NAME.get(page['city'], 'Turku'))}">
+<meta property="og:image" content="{SITE['domain']}/assets/img/og-huolto.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="geo.region" content="FI-19"><meta name="geo.placename" content="{e(CITY_NAME.get(page['city'], 'Turku'))}">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'''
     return f'''<!doctype html>
 <html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -314,7 +340,7 @@ def hub_page():
 
 
 def export_wp():
-    pages = load_pages() + [hub_page()]
+    pages = load_pages() + [hub_page(), contact_page()]
     out = []
     for p in pages:
         d = p['data']
@@ -323,7 +349,55 @@ def export_wp():
                     'seo_title': d['title'], 'meta': d['meta'], 'h1': d['h1'], 'content': body})
     os.makedirs(os.path.join(THEME, 'content'), exist_ok=True)
     json.dump(out, open(os.path.join(THEME, 'content', 'pages.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+    copy_images(os.path.join(THEME, 'assets', 'img'))
     print(len(out), 'sivua -> pages.json')
+
+
+def contact_page():
+    # WordPressissä numerot ja sähköposti tulevat Mukauta-asetuksista.
+    ph, ph2, em = ('{{tt-phone}}', '{{tt-phone2}}', '{{tt-email}}') if WP else (e(SITE['phone']), e(SITE['phone2']), e(SITE['email']))
+    team = ''.join(
+        f'<li class="team-card"><img src="{asset("img/tiimi/" + k + ".webp")}" srcset="{asset("img/tiimi/" + k + "-300.webp")} 300w, {asset("img/tiimi/" + k + ".webp")} 600w" '
+        f'sizes="(max-width: 600px) 45vw, 250px" width="600" height="799" loading="lazy" decoding="async" alt="{e(n)}"><div class="team-body"><h3>{e(n)}</h3><p>{e(r)}</p></div></li>'
+        for k, n, r in TEAM)
+    body = f'''<section class="band is-paper" id="sisalto"><div class="wrap contact-grid">
+<div class="prose">
+<h2>Ota yhteyttä</h2>
+<p>Nopeimmin asia etenee, kun jätät tarjouspyynnön tai soitat. Vastaamme yhteydenottoihin viimeistään seuraavana arkipäivänä ja sovimme maksuttoman kartoituskäynnin.</p>
+<ul class="contact-big">
+<li><span>Myynti</span><b>{ph}</b></li>
+<li><span>Asennus</span><b>{ph2}</b></li>
+<li><span>Sähköposti</span><b>{em}</b></li>
+<li><span>Tukikohta</span>{e(SITE['locality'])}, {e(SITE['region'])}</li>
+<li><span>Palvelualue</span>Turku ja koko Varsinais-Suomi</li>
+</ul>
+<p><a class="btn btn-primary" href="#tarjous">Pyydä maksuton kartoitus</a></p>
+</div>
+<div class="prose">
+<h2>Yritys</h2>
+<p>{e(LEGAL_NOTE)} Sama yritys myy ja asentaa uudet ikkunat ja ovet nimellä Ikkunakauppias.</p>
+<ul>
+<li><strong>Yritys:</strong> {e(SITE['legal'])}</li>
+<li><strong>Y-tunnus:</strong> {e(SITE['ytunnus'])}</li>
+<li><strong>Kotipaikka:</strong> {e(SITE['locality'])}</li>
+<li><strong>Uudet ikkunat ja ovet:</strong> <a href="{SITE['parent_url']}">www.ikkunakauppias.fi</a></li>
+</ul>
+</div>
+</div></section>
+<section class="band"><div class="wrap">
+<img class="band-img" src="{asset("img/band-huolto.webp")}" srcset="{asset("img/band-huolto-800.webp")} 800w, {asset("img/band-huolto.webp")} 1600w" sizes="(max-width: 1160px) 100vw, 1080px" width="1600" height="600" loading="lazy" decoding="async" alt="Huollot ja korjaukset ikkunoille ja oville">
+<div class="band-head" style="margin-top:36px"><h2>Tiimi</h2><p>Sama neljän hengen tiimi kartoittaa kohteen, tekee tarjouksen ja hoitaa työn. Tavoitat meidät numeroista {ph} (myynti) ja {ph2} (asennus) sekä osoitteesta {em}.</p></div>
+<ul class="team-grid">{team}</ul>
+</div></section>'''
+    data = {'title': 'Yhteystiedot: TiivisTupa, ikkuna- ja ovihuollot Turku',
+            'meta': 'TiivisTuvan yhteystiedot: myynti 045 7832 5070, asennus 045 7830 4746, info@tiivistupa.fi. Ikkuna- ja ovihuollot Turussa ja Varsinais-Suomessa.',
+            'h1': 'Yhteystiedot',
+            'lead': 'Soita, lähetä sähköpostia tai jätä tarjouspyyntö. ' + LEGAL_NOTE, 'faq': []}
+    return {'slug': 'yhteystiedot', 'kind': 'contact', 'service': None, 'city': None, 'data': data, 'body': body}
+
+
+def copy_images(dest):
+    shutil.copytree(os.path.join(ROOT, 'assets', 'img'), dest, dirs_exist_ok=True)
 
 
 def main():
@@ -333,7 +407,8 @@ def main():
         shutil.rmtree(OUT)
     os.makedirs(OUT)
     css = open(os.path.join(ROOT, 'assets', 'site.css'), encoding='utf-8').read()
-    pages = load_pages() + [hub_page()]
+    pages = load_pages() + [hub_page(), contact_page()]
+    copy_images(os.path.join(OUT, 'img') if PREVIEW else os.path.join(OUT, 'assets', 'img'))
     for p in pages:
         h = render(p, css)
         if PREVIEW:
@@ -343,7 +418,7 @@ def main():
             os.makedirs(os.path.dirname(path), exist_ok=True)
         open(path, 'w', encoding='utf-8').write(h)
     if not PREVIEW:
-        os.makedirs(os.path.join(OUT, 'assets'))
+        os.makedirs(os.path.join(OUT, 'assets'), exist_ok=True)
         shutil.copy(os.path.join(ROOT, 'assets', 'site.css'), os.path.join(OUT, 'assets', 'site.css'))
         open(os.path.join(OUT, 'assets', 'favicon.svg'), 'w').write(LOGO_SVG.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '))
         today = date.today().isoformat()
@@ -358,7 +433,7 @@ def main():
         for p in pages:
             if p['kind'] == 'city':
                 ll.append(f'- [{p["data"]["h1"]}]({absurl(p["slug"])}): {p["data"]["meta"]}')
-        ll += ['', '## Yhteystiedot', '', f'- Puhelin: {SITE["phone"]}', f'- Sähköposti: {SITE["email"]}', f'- Yritys: {SITE["legal"]}, Y-tunnus {SITE["ytunnus"]}, {SITE["locality"]}', '']
+        ll += ['', '## Yhteystiedot', '', f'- Myynti: {SITE["phone"]}', f'- Asennus: {SITE["phone2"]}', f'- Sähköposti: {SITE["email"]}', f'- Yritys: {SITE["legal"]}, Y-tunnus {SITE["ytunnus"]}, {SITE["locality"]}', '- ' + LEGAL_NOTE, f'- Uudet ikkunat ja ovet samalta yritykseltä: {SITE["parent_url"]}', '']
         open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf-8').write('\n'.join(ll))
     print(len(pages), 'sivua ->', OUT)
 

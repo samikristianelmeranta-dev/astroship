@@ -50,6 +50,7 @@ PAGE = {
 <li>ovi on vääntynyt pysyvästi tai sen rakenne on vaurioitunut</li>
 </ul>
 <p>Kartoituskäynnillä käymme jokaisen ikkunan ja oven läpi ja kerromme rehellisesti, kumpaan ryhmään se kuuluu. Jos huolto ei enää kannata, sanomme sen suoraan. Usein paras ratkaisu on yhdistelmä: suurin osa huolletaan ja vain huonokuntoisimmat vaihdetaan.</p>
+<p>TiivisTupa on Nordic Ikkunat &amp; Ovet Oy:n markkinointinimi ikkuna- ja ovihuolloille. Jos ikkunat tai ovet on järkevintä vaihtaa, sama yritys toimittaa ja asentaa uudet. Tutustu uusiin ikkunoihin ja oviin osoitteessa <a href="https://www.ikkunakauppias.fi/">www.ikkunakauppias.fi</a>.</p>
 """},
         {"id": "palvelut", "h2": "Huoltoremontin palvelut", "html": """
 <p>Jokaisella palvelulla on oma sivunsa, jolla kerromme työn sisällön tarkasti.</p>
@@ -117,7 +118,7 @@ PAGE = {
 <p>Ikkunoiden ja ovien huolto- ja korjaustyö on kotitalousvähennykseen oikeuttavaa kunnossapitotyötä, kun se tehdään omassa tai omaisen käytössä olevassa asunnossa tai vapaa-ajan asunnossa. Vähennyksen saa työn osuudesta, ei tarvikkeista. Vähennys on 35 % työn osuudesta, omavastuu on 150 euroa ja enimmäismäärä 1 600 euroa henkilöä kohden vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta. Erittelemme työn osuuden tarjoukseen ja laskuun valmiiksi.</p>
 """},
         {"id": "alue", "h2": "Palvelualue: Turku ja koko Varsinais-Suomi", "html": """
-<p>Tukikohtamme on Maskussa, ja teemme huoltoremontteja Turussa ja kaikkialla Varsinais-Suomessa. Jokaisella paikkakunnalla on omat sivunsa, joilla kerromme paikallisista erityispiirteistä.</p>
+<p>Tukikohtamme on Maskussa, ja teemme huoltoremontteja Turussa ja kaikkialla Varsinais-Suomessa. Tiimin ja kaikki numerot löydät <a href="/yhteystiedot/">yhteystiedoista</a>. Jokaisella paikkakunnalla on omat sivunsa, joilla kerromme paikallisista erityispiirteistä.</p>
 <ul>
 <li><a href="/ikkunahuolto-salo/">Salo</a>: laaja alue Halikosta Perniöön ja Särkisaloon</li>
 <li><a href="/ikkunahuolto-kaarina/">Kaarina</a>: Piispanristi, Littoinen, Piikkiö ja Kuusisto</li>
@@ -139,6 +140,7 @@ PAGE = {
         {"q": "Paljonko ikkunoiden ja ovien huoltoremontti maksaa?", "a": "Hinta riippuu ikkunoiden ja ovien määrästä, tehtävistä töistä ja rakenteiden kunnosta. Siksi annamme hinnan aina maksuttoman kartoituskäynnin jälkeen kirjallisena, sitoumuksettomana tarjouksena."},
         {"q": "Saako huoltoremontista kotitalousvähennystä?", "a": "Ikkunoiden ja ovien huolto- ja korjaustyöstä voi saada kotitalousvähennystä työn osuudesta. Vähennys on 35 % työn osuudesta, omavastuu 150 euroa ja enimmäismäärä 1 600 euroa henkilöä kohden vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta."},
         {"q": "Kuinka usein ikkunat ja ovet pitää huoltaa?", "a": "Ikkunoiden ja ovien kunto kannattaa tarkastaa vuosittain ja tiivisteet uusia, kun ne kovettuvat, tyypillisesti 10–15 vuoden välein. Ulkopuitteiden maalipinta tarvitsee huoltoa heti, kun se alkaa hilseillä. Meren rannalla huoltoväli on lyhyempi."},
+        {"q": "Kuka on TiivisTuvan takana?", "a": "TiivisTupa on Nordic Ikkunat & Ovet Oy:n markkinointinimi ikkuna- ja ovihuolloille. Sama maskulainen yritys myy ja asentaa uudet ikkunat ja ovet nimellä Ikkunakauppias, joten huollon ja vaihdon saa samalta tekijältä."},
         {"q": "Missä TiivisTupa tekee huoltoremontteja?", "a": "TiivisTupa tekee ikkunoiden ja ovien huoltoremontteja Turussa ja koko Varsinais-Suomessa, muun muassa Salossa, Kaarinassa, Naantalissa, Raisiossa, Paraisilla, Paimiossa, Liedossa ja Maskussa. Tukikohtamme on Maskussa."},
         {"q": "Tehdäänkö huoltoremontti myös taloyhtiöihin?", "a": "Kyllä. Taloyhtiöissä ja rivitaloissa ikkunoiden ja ovien huoltoremontti kannattaa tehdä kaikkiin asuntoihin samalla kertaa. Kartoitamme kunnon asunnoittain ja toimitamme hallitukselle yhteenvedon ja tarjouksen."},
         {"q": "Pitääkö kotona olla paikalla huoltoremontin aikana?", "a": "Kartoituskäynnillä ja työn alkaessa on hyvä olla paikalla, jotta pääsemme kaikkiin huoneisiin ja voimme käydä havainnot läpi. Työn aikana asumista ei tarvitse keskeyttää, ja ikkunat ja ovet ovat käytössä koko ajan."},

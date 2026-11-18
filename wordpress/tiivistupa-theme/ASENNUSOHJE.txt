@@ -4,11 +4,11 @@ Teema on tarkoitettu TiivisTuvan OMAAN WordPress-asennukseen (esim. tiivistupa.f
 Älä asenna sitä ikkunakauppias.fi-sivustolle: se korvaisi sen teeman.
 
 1. Asenna WordPress uuteen verkkotunnukseen.
-2. Ulkoasu → Teemat → Lisää uusi → Lataa teema → valitse tiivistupa-theme-v1.0.0.zip → Asenna → Ota käyttöön.
-3. Teema luo käyttöönotossa automaattisesti 56 sivua (etusivu, 6 palvelusivua, 48 aluesivua, palvelualue),
+2. Ulkoasu → Teemat → Lisää uusi → Lataa teema → valitse tiivistupa-theme-v1.1.0.zip → Asenna → Ota käyttöön.
+3. Teema luo käyttöönotossa automaattisesti 57 sivua (etusivu, 6 palvelusivua, 48 aluesivua, palvelualue, yhteystiedot),
    asettaa etusivun ja osoitemuodon /sivun-nimi/.
-4. Ulkoasu → Mukauta → TiivisTupa: yhteystiedot: tarkista puhelin, sähköposti, tarjouspyyntöjen vastaanottaja,
-   yrityksen nimi ja Y-tunnus.
+4. Ulkoasu → Mukauta → TiivisTupa: yhteystiedot: tarkista puhelimet (myynti ja asennus), sähköposti (info@tiivistupa.fi),
+   tarjouspyyntöjen vastaanottaja, yrityksen nimi ja Y-tunnus. Yhteystiedot-sivun numerot päivittyvät näistä.
 5. Asetukset → Lukeminen: varmista, ettei kohta "Estä hakukoneita indeksoimasta" ole valittuna, kun sivusto julkaistaan.
 6. Asetukset → Tietosuoja: luo tai valitse tietosuojaseloste. Linkki ilmestyy lomakkeen alle ja alapalkkiin.
 
@@ -25,3 +25,8 @@ HAKUKONEET JA TEKOÄLY
 - Sivukartta: /wp-sitemap.xml (lähetä Google Search Consoleen)
 - Tekoälyhakujen yhteenveto: /llms.txt
 - Rakenteinen tieto (yritys, palvelu, alue, UKK, murupolku) tulostuu jokaiselle sivulle automaattisesti.
+
+PÄIVITYS VERSIOSTA 1.0.0
+- Asenna zip vanhan päälle (Korvaa nykyinen). Uusi Yhteystiedot-sivu syntyy itsestään kohdasta
+  Ulkoasu → TiivisTupa-sisältö → Luo puuttuvat sivut.
+- Vanhat sivut saavat uudet kuvat ja tekstit vain kohdasta "Palauta teeman sisältö". Se korvaa omat muokkauksesi.

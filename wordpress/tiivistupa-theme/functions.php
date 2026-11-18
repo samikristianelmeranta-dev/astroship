@@ -10,7 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'TT_VERSION', '1.0.0' );
+define( 'TT_VERSION', '1.1.0' );
+define( 'TT_PARENT_URL', 'https://www.ikkunakauppias.fi/' );
+define( 'TT_LEGAL_NOTE', 'TiivisTupa on Nordic Ikkunat & Ovet Oy:n markkinointinimi ikkuna- ja ovihuolloille.' );
 
 /* =========================================================================
  * Perustiedot
@@ -44,7 +46,8 @@ function tt_cities() {
 function tt_defaults() {
 	return array(
 		'tt_phone'    => '045 7832 5070',
-		'tt_email'    => 'info@ikkunakauppias.fi',
+		'tt_phone2'   => '045 7830 4746',
+		'tt_email'    => 'info@tiivistupa.fi',
 		'tt_legal'    => 'Nordic Ikkunat & Ovet Oy',
 		'tt_ytunnus'  => '3653098-6',
 		'tt_locality' => 'Masku',
@@ -84,6 +87,10 @@ function tt_page_info( $post = null ) {
 	$services = tt_services();
 	if ( 'palvelualue' === $slug ) {
 		$info['kind'] = 'hub';
+		return $info;
+	}
+	if ( 'yhteystiedot' === $slug ) {
+		$info['kind'] = 'contact';
 		return $info;
 	}
 	if ( isset( $services[ $slug ] ) ) {
@@ -143,7 +150,8 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'priority'    => 30,
 	) );
 	$fields = array(
-		'tt_phone'    => array( 'Puhelinnumero', 'text' ),
+		'tt_phone'    => array( 'Puhelin, myynti', 'text' ),
+		'tt_phone2'   => array( 'Puhelin, asennus', 'text' ),
 		'tt_email'    => array( 'Sähköposti (näkyy sivuilla)', 'email' ),
 		'tt_notify'   => array( 'Tarjouspyyntöjen vastaanottaja (tyhjä = sama kuin yllä)', 'email' ),
 		'tt_legal'    => array( 'Yrityksen virallinen nimi', 'text' ),
@@ -330,7 +338,10 @@ add_action( 'wp_head', function () {
 	echo '<meta property="og:title" content="' . esc_attr( tt_seo_title( $post ) ) . '">' . "\n";
 	echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
 	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
-	echo '<meta name="twitter:card" content="summary">' . "\n";
+	echo '<meta property="og:image" content="' . esc_url( get_template_directory_uri() . '/assets/img/og-huolto.jpg' ) . '">' . "\n";
+	echo '<meta property="og:image:width" content="1200">' . "\n";
+	echo '<meta property="og:image:height" content="630">' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
 	echo '<meta name="geo.region" content="FI-19">' . "\n";
 	echo '<meta name="geo.placename" content="' . esc_attr( $place ) . '">' . "\n";
 	echo '<script type="application/ld+json">' . wp_json_encode( tt_jsonld( $post ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
@@ -380,6 +391,8 @@ function tt_jsonld( $post ) {
 		'telephone'  => tt_phone_intl(),
 		'email'      => tt_opt( 'tt_email' ),
 		'taxID'      => tt_opt( 'tt_ytunnus' ),
+		'image'      => get_template_directory_uri() . '/assets/img/og-huolto.jpg',
+		'parentOrganization' => array( '@type' => 'Organization', 'name' => tt_opt( 'tt_legal' ), 'url' => TT_PARENT_URL ),
 		'address'    => array(
 			'@type'           => 'PostalAddress',
 			'addressLocality' => tt_opt( 'tt_locality' ),
@@ -397,7 +410,7 @@ function tt_jsonld( $post ) {
 	}
 	if ( 'city' === $info['kind'] ) {
 		$crumbs[] = array( $cities[ $info['city'] ], $url );
-	} elseif ( in_array( $info['kind'], array( 'hub', 'other' ), true ) ) {
+	} elseif ( in_array( $info['kind'], array( 'hub', 'contact', 'other' ), true ) ) {
 		$crumbs[] = array( get_the_title( $post ), $url );
 	}
 	$items = array();
@@ -507,9 +520,12 @@ add_action( 'init', function () {
 	}
 	$lines[] = '## Yhteystiedot';
 	$lines[] = '';
-	$lines[] = '- Puhelin: ' . tt_opt( 'tt_phone' );
+	$lines[] = '- Myynti: ' . tt_opt( 'tt_phone' );
+	$lines[] = '- Asennus: ' . tt_opt( 'tt_phone2' );
 	$lines[] = '- Sähköposti: ' . tt_opt( 'tt_email' );
 	$lines[] = '- Yritys: ' . tt_opt( 'tt_legal' ) . ', Y-tunnus ' . tt_opt( 'tt_ytunnus' ) . ', ' . tt_opt( 'tt_locality' );
+	$lines[] = '- ' . TT_LEGAL_NOTE;
+	$lines[] = '- Uudet ikkunat ja ovet samalta yritykseltä: ' . TT_PARENT_URL;
 	status_header( 200 );
 	header( 'Content-Type: text/plain; charset=utf-8' );
 	echo implode( "\n", $lines ) . "\n"; // phpcs:ignore
@@ -718,8 +734,27 @@ function tt_nav_html() {
 	}
 	$cur  = 'hub' === $info['kind'] ? ' aria-current="page"' : '';
 	$out .= '<li><a href="' . esc_url( home_url( '/palvelualue/' ) ) . '"' . $cur . '>Palvelualue</a></li>';
+	$cur  = 'contact' === $info['kind'] ? ' aria-current="page"' : '';
+	$out .= '<li><a href="' . esc_url( home_url( '/yhteystiedot/' ) ) . '"' . $cur . '>Yhteystiedot</a></li>';
 	return $out;
 }
+
+/**
+ * Sisällön kuvat viittaavat teeman kansioon tunnisteella {{tt-assets}}, jotta osoitteet toimivat
+ * teeman kansion nimestä ja sivuston osoitteesta riippumatta. Yhteystietosivun numerot ja sähköposti
+ * tulevat Mukauta-näkymän asetuksista.
+ */
+add_filter( 'the_content', function ( $html ) {
+	if ( false === strpos( $html, '{{tt-' ) ) {
+		return $html;
+	}
+	return strtr( $html, array(
+		'{{tt-assets}}' => esc_url( get_template_directory_uri() . '/assets' ),
+		'{{tt-phone}}'  => esc_html( tt_opt( 'tt_phone' ) ),
+		'{{tt-phone2}}' => esc_html( tt_opt( 'tt_phone2' ) ),
+		'{{tt-email}}'  => esc_html( tt_opt( 'tt_email' ) ),
+	) );
+}, 5 );
 
 /** Sivu on teeman HTML-sivu, jos sisällössä on teeman hero. Muut sivut saavat tavallisen otsikon ja palstan. */
 function tt_is_theme_page( $post = null ) {
