@@ -9,7 +9,7 @@
    {
     "id": "mita-sisaltaa",
     "h2": "Mitä ikkunapuitteiden huolto sisältää?",
-    "html": "<p>Ikkunapuitteiden huolto on meillä kokonaisuus, jossa maalaus ja puukorjaus kulkevat käsi kädessä. Pelkkä uusi maalikerros vanhan hilseilevän päälle ei kestä, joten suurin osa työstä on pohjatyötä.</p><ul><li><strong>Hilseilevän maalin poisto.</strong> Irtonainen ja halkeillut maali kaavitaan ja hiotaan pois. Tiukasti kiinni oleva, ehjä maali voi jäädä pohjaksi, kun sen reunat hiotaan loiviksi.</li><li><strong>Puun kunnon tarkastus.</strong> Kokeilemme puun kovuuden etenkin alapuitteesta, nurkkaliitoksista ja karmin alaosasta. Näihin kohtiin vesi jää seisomaan.</li><li><strong>Lahokohtien korjaus.</strong> Pehmennyt puu poistetaan terveeseen puuhun asti ja tilalle sovitetaan uusi puupala. Pienet kolot ja halkeamat täytetään ulkokäyttöön sopivalla kitillä.</li><li><strong>Pohjustus.</strong> Paljas puu käsitellään pohjusteella, jotta se ei ime vettä eikä pintamaalia epätasaisesti.</li><li><strong>Kittaus ja lasituslistat.</strong> Halkeillut lasituskitti uusitaan ja irronneet tai lahonneet lasituslistat vaihdetaan. Lasin ja puun sauman pitää olla tiivis, muuten vesi valuu puitteen sisään.</li><li><strong>Maalaus.</strong> Pinnat maalataan yleensä kahteen kertaan vanhan maalityypin kanssa yhteensopivalla maalilla. Maali vedetään hieman lasin puolelle, jolloin sauma sulkeutuu.</li></ul><p>Käsittelemme tarpeen mukaan sisä- ja ulkopuitteet, välipuitteet ja karmit. Saranoita, tiivisteitä ja tiivisteuria ei maalata umpeen, ja puitteiden käynti tarkistetaan lopuksi.</p>"
+    "html": "<p>Ikkunapuitteiden huolto on meillä kokonaisuus, jossa maalaus ja puukorjaus kulkevat käsi kädessä. Pelkkä uusi maalikerros vanhan hilseilevän päälle ei kestä, joten suurin osa työstä on pohjatyötä.</p><ul><li><strong>Hilseilevän maalin poisto.</strong> Irtonainen ja halkeillut maali kaavitaan ja hiotaan pois. Tiukasti kiinni oleva, ehjä maali voi jäädä pohjaksi, kun sen reunat hiotaan loiviksi.</li><li><strong>Puun kunnon tarkastus.</strong> Kokeilemme puun kovuuden etenkin alapuitteesta, nurkkaliitoksista ja karmin alaosasta. Näihin kohtiin vesi jää seisomaan.</li><li><strong>Lahokohtien korjaus.</strong> Pehmennyt puu poistetaan terveeseen puuhun asti ja tilalle sovitetaan uusi puupala. Pienet kolot ja halkeamat täytetään ulkokäyttöön sopivalla kitillä.</li><li><strong>Pohjustus.</strong> Paljas puu käsitellään pohjusteella, jotta se ei ime vettä eikä pintamaalia epätasaisesti.</li><li><strong>Kittaus ja lasituslistat.</strong> Halkeillut lasituskitti uusitaan ja irronneet tai lahonneet lasituslistat vaihdetaan. Lasin ja puun sauman pitää olla tiivis, muuten vesi valuu puitteen sisään.</li><li><strong>Maalaus.</strong> Pinnat maalataan yleensä kahteen kertaan vanhan maalityypin kanssa yhteensopivalla maalilla. Maali vedetään hieman lasin puolelle, jolloin sauma sulkeutuu.</li></ul><p>Käsittelemme tarpeen mukaan sisä- ja ulkopuitteet, välipuitteet ja karmit. Saranoita, tiivisteitä ja tiivisteuria ei maalata umpeen, ja puitteiden käynti tarkistetaan lopuksi.</p><p>Ulkopuitteet ovat säälle alttiimmat, joten niissä työtä on yleensä eniten. Sisäpuitteen sisäpinta on suojassa sateelta, mutta talvella lasiin tiivistyvä kosteus voi kuluttaa sen alareunaa. Karmista tarkistamme etenkin alakappaleen ja sen liittymän vesipeltiin, koska sinne valuu kaikki ikkunaa pitkin tuleva vesi.</p>"
    },
    {
     "id": "merkit",
@@ -24,7 +24,7 @@
    {
     "id": "hyodyt",
     "h2": "Mitä hyötyä puitteiden kunnostusmaalauksesta on?",
-    "html": "<h3>Käyttöikä</h3><p>Tärkein hyöty on ikkunan käyttöiän piteneminen. Puuikkuna kestää hyvin huollettuna vuosikymmeniä, mutta vain niin kauan kuin maalipinta ja kittaukset pitävät veden poissa puusta. Ehjä pinta on paljon halvempi ylläpitää kuin lahonnut alapuite korjata.</p><h3>Lämpö ja veto</h3><p>Maalaus ei itsessään lämmitä taloa. Kunnostuksessa kuitenkin korjataan raot, halkeillut kitit ja löystyneet lasituslistat, joista ilma ja vesi pääsevät rakenteeseen. Kun puite ei enää turpoa ja väänny kosteudesta, se sulkeutuu tasaisesti tiivistettä vasten. Tämä voi vähentää vedon tunnetta ja pienentää lämmityskuluja. Jos tiivisteet ovat kovettuneet, ne kannattaa uusia samalla. Lue lisää sivulta <a href=\"/ikkunoiden-tiivistys/\">ikkunoiden tiivistys</a>.</p><h3>Melu</h3><p>Tiiviisti sulkeutuva puite ja ehjät lasin saumat päästävät läpi vähemmän ulkoa tulevaa ääntä kuin rakoileva ja helisevä ikkuna.</p><h3>Ulkonäkö ja arvo</h3><p>Siistit puitteet muuttavat koko julkisivun ilmettä. Kuntotarkastuksessa hilseilevät ikkunat nousevat lähes aina esiin, joten huollettu pinta on eduksi myös taloa myytäessä.</p>"
+    "html": "<h3>Käyttöikä</h3><p>Tärkein hyöty on ikkunan käyttöiän piteneminen. Puuikkuna kestää hyvin huollettuna vuosikymmeniä, mutta vain niin kauan kuin maalipinta ja kittaukset pitävät veden poissa puusta. Ehjä pinta on paljon halvempi ylläpitää kuin lahonnut alapuite korjata.</p><h3>Lämpö ja veto</h3><p>Maalaus ei itsessään lämmitä taloa. Kunnostuksessa kuitenkin korjataan raot, halkeillut kitit ja löystyneet lasituslistat, joista ilma ja vesi pääsevät rakenteeseen. Kun puite ei enää turpoa ja väänny kosteudesta, se sulkeutuu tasaisesti tiivistettä vasten. Tämä voi vähentää vedon tunnetta ja pienentää lämmityskuluja. Jos tiivisteet ovat kovettuneet, ne kannattaa uusia samalla. Lue lisää sivulta <a href=\"/ikkunoiden-tiivistys/\">ikkunoiden tiivistys</a>.</p><h3>Melu</h3><p>Tiiviisti sulkeutuva puite ja ehjät lasin saumat päästävät läpi vähemmän ulkoa tulevaa ääntä kuin rakoileva ja helisevä ikkuna.</p><h3>Ulkonäkö ja arvo</h3><p>Siistit puitteet muuttavat koko julkisivun ilmettä. Kuntotarkastuksessa hilseilevät ikkunat nousevat lähes aina esiin, joten huollettu pinta on eduksi myös taloa myytäessä.</p><p>Hyödyt riippuvat lähtötilanteesta. Jos veto on pääongelma ja maalipinta ehjä, tiivistys auttaa enemmän kuin maalaus. Jos taas maali on mennyt ja puu harmaantuu, maalaus on kiireellisempi, koska tiivisteen voi vaihtaa myöhemminkin mutta lahonnutta puuta ei saa takaisin.</p>"
    },
    {
     "id": "ei-riita",
@@ -39,12 +39,12 @@
    {
     "id": "ajankohta",
     "h2": "Milloin ikkunapuitteet kannattaa maalata?",
-    "html": "<p>Ulkopuolinen maalaus vaatii kuivaa säätä ja riittävää lämpöä, joten paikan päällä tehtävien töiden pääkausi on loppukeväästä alkusyksyyn. Puun pitää olla kuivaa ennen pohjustusta. Sateen jälkeen odotetaan, että pinta ehtii kuivua, ja suorassa paahteessa maalaamista vältetään, koska maali kuivuu silloin liian nopeasti.</p><p>Kun puitteet irrotetaan ja käsitellään sisätiloissa, työ ei ole samalla tavalla säästä kiinni. Tämä tapa laajentaa työkautta ja sopii kohteisiin, joissa korjattavaa on paljon.</p><p>Kartoituksen voi tehdä mihin aikaan vuodesta tahansa. Kesän työt kannattaa sopia hyvissä ajoin, koska kuivat viikot täyttyvät nopeasti. Huoltomaalauksen tarve riippuu ilmansuunnasta ja suojaisuudesta. Säälle alttiit ulkopuitteet tarvitsevat uutta pintaa selvästi useammin kuin räystään suojassa olevat. Hyvä tapa on katsoa puitteet läpi joka kevät ikkunanpesun yhteydessä.</p>"
+    "html": "<p>Ulkopuolinen maalaus vaatii kuivaa säätä ja riittävää lämpöä, joten paikan päällä tehtävien töiden pääkausi on loppukeväästä alkusyksyyn. Puun pitää olla kuivaa ennen pohjustusta. Sateen jälkeen odotetaan, että pinta ehtii kuivua, ja suorassa paahteessa maalaamista vältetään, koska maali kuivuu silloin liian nopeasti.</p><p>Kun puitteet irrotetaan ja käsitellään sisätiloissa, työ ei ole samalla tavalla säästä kiinni. Tämä tapa laajentaa työkautta ja sopii kohteisiin, joissa korjattavaa on paljon.</p><p>Kartoituksen voi tehdä mihin aikaan vuodesta tahansa. Kesän työt kannattaa sopia hyvissä ajoin, koska kuivat viikot täyttyvät nopeasti. Huoltomaalauksen tarve riippuu ilmansuunnasta ja suojaisuudesta. Säälle alttiit ulkopuitteet tarvitsevat uutta pintaa selvästi useammin kuin räystään suojassa olevat. Hyvä tapa on katsoa puitteet läpi joka kevät ikkunanpesun yhteydessä.</p><p>Kaikkia ikkunoita ei tarvitse maalata samana vuonna. Usein on järkevää tehdä ensin sään puoleinen julkisivu ja muut sitten, kun niiden pinta alkaa kulua. Näin huolto jakautuu tasaisemmin eikä mikään ikkuna ehdi huonoon kuntoon.</p>"
    },
    {
     "id": "virheet",
     "h2": "Mikä puitteiden maalauksessa menee useimmin pieleen?",
-    "html": "<p>Näemme usein ikkunoita, jotka on maalattu muutama vuosi sitten ja jotka hilseilevät jo uudelleen. Syy on lähes aina pohjatöissä.</p><ul><li><strong>Maalataan irtoavan maalin päälle.</strong> Uusi kerros irtoaa vanhan mukana.</li><li><strong>Maalataan kosteaa puuta.</strong> Kosteus jää maalin alle ja nostaa pinnan kuplille.</li><li><strong>Paljas puu jää pohjustamatta.</strong> Pintamaali ei yksin tartu eikä suojaa riittävästi.</li><li><strong>Kittaukset ja lasituslistat jätetään ennalleen.</strong> Vesi pääsee edelleen lasin ja puun väliin, vaikka pinta näyttää uudelta.</li><li><strong>Tiivisteet, saranat ja käyntivälit maalataan umpeen.</strong> Puite jumittuu ja tiiviste kovettuu.</li><li><strong>Laho peitetään kitillä.</strong> Pehmeä puu jatkaa lahoamista paikan alla.</li></ul><p>Jos et ole varma, missä kunnossa ikkunasi kokonaisuutena ovat, hyvä lähtökohta on <a href=\"/ikkunahuolto/\">ikkunahuolto</a>. Siinä tarkistetaan myös helat, tiivisteet ja vesipellit, ja saat suosituksen siitä, mitkä ikkunat tarvitsevat puitteiden maalausta.</p>"
+    "html": "<p>Näemme usein ikkunoita, jotka on maalattu muutama vuosi sitten ja jotka hilseilevät jo uudelleen. Syy on lähes aina pohjatöissä.</p><ul><li><strong>Maalataan irtoavan maalin päälle.</strong> Uusi kerros irtoaa vanhan mukana.</li><li><strong>Maalataan kosteaa puuta.</strong> Kosteus jää maalin alle ja nostaa pinnan kuplille.</li><li><strong>Paljas puu jää pohjustamatta.</strong> Pintamaali ei yksin tartu eikä suojaa riittävästi.</li><li><strong>Kittaukset ja lasituslistat jätetään ennalleen.</strong> Vesi pääsee edelleen lasin ja puun väliin, vaikka pinta näyttää uudelta.</li><li><strong>Tiivisteet, saranat ja käyntivälit maalataan umpeen.</strong> Puite jumittuu ja tiiviste kovettuu.</li><li><strong>Laho peitetään kitillä.</strong> Pehmeä puu jatkaa lahoamista paikan alla.</li><li><strong>Ulkopuite tukitaan.</strong> Ulkopuitteen kuuluu tuulettua. Jos sen raot täytetään maalilla tai massalla, välitila alkaa huurtua.</li></ul><p>Jos et ole varma, missä kunnossa ikkunasi kokonaisuutena ovat, hyvä lähtökohta on <a href=\"/ikkunahuolto/\">ikkunahuolto</a>. Siinä tarkistetaan myös helat, tiivisteet ja vesipellit, ja saat suosituksen siitä, mitkä ikkunat tarvitsevat puitteiden maalausta.</p>"
    },
    {
     "id": "hinta",
@@ -107,7 +107,7 @@
     {
      "id": "salon-talot",
      "h2": "Millaisia ikkunoita Salon taloissa on ja mitä se merkitsee puitteiden huollolle?",
-     "html": "<p>Salo on pinta-alaltaan laaja, ja sen talot ovat hyvin eri-ikäisiä. Kolme ryhmää tulee meillä vastaan useimmin.</p><h3>Rintamamiestalot</h3><p>Puolitoistakerroksisissa taloissa on usein kymmenkunta kaksipuitteista ikkunaa, joiden lasit istuvat kitin varassa. Yläkerran päätyikkunat ovat korkealla ja jäävät helposti maalaamatta vuosikymmeniksi. Niistä löytyy monesti talon huonoin maalipinta, vaikka alakerta olisi siisti.</p><h3>Maatilojen päärakennukset</h3><p>Vanhoissa päärakennuksissa ikkunat ovat suuria ja moniruutuisia. Jokainen välipuite ja ruutu lisää kitattavaa ja maalattavaa saumaa. Avoimella peltoaukealla tuuli painaa sateen suoraan lasiin, eikä puusto anna suojaa.</p><h3>1970–80-lukujen omakotitalot</h3><p>Näissä lasit on kiinnitetty listoilla. Ulkopuitteen alalista ja alapuitteen päädyt kastuvat ensimmäisinä, ja juuri niistä maalaus kannattaa aloittaa ajoissa.</p>"
+     "html": "<p>Salo on pinta-alaltaan laaja, ja sen talot ovat hyvin eri-ikäisiä. Kolme ryhmää tulee meillä vastaan useimmin.</p><h3>Rintamamiestalot</h3><p>Puolitoistakerroksisissa taloissa on usein kymmenkunta kaksipuitteista ikkunaa, joiden lasit istuvat kitin varassa. Yläkerran päätyikkunat ovat korkealla ja jäävät helposti maalaamatta vuosikymmeniksi. Niistä löytyy monesti talon huonoin maalipinta, vaikka alakerta olisi siisti.</p><h3>Maatilojen päärakennukset</h3><p>Vanhoissa päärakennuksissa ikkunat ovat suuria ja moniruutuisia. Jokainen välipuite ja ruutu lisää kitattavaa ja maalattavaa saumaa. Avoimella peltoaukealla tuuli painaa sateen suoraan lasiin, eikä puusto anna suojaa.</p><h3>1970–80-lukujen omakotitalot</h3><p>Näissä lasit on kiinnitetty listoilla. Ulkopuitteen alalista ja alapuitteen päädyt kastuvat ensimmäisinä, ja juuri niistä maalaus kannattaa aloittaa ajoissa.</p><p>Kaikissa kolmessa ryhmässä pätee sama sääntö: puu on useimmiten parempaa kuin miltä pinta näyttää. Kartoituksessa selvitämme tämän ikkuna kerrallaan.</p>"
     },
     {
      "id": "tyypilliset-viat",
@@ -127,7 +127,7 @@
     {
      "id": "mokit",
      "h2": "Sopiiko ikkunapuitteiden huolto Salon rannikon mökeille?",
-     "html": "<p>Sopii, ja vapaa-ajan asunnolla se on usein kannattavinta juuri siksi, että ikkunat ovat vanhoja ja puutavara hyvää. Mökillä kiinnitämme huomiota kolmeen asiaan. Meren puolen ikkunat ovat lähes aina muita huonommat. Ulkopuitteen alareunan tuuletus on pidettävä auki, jotta välitila kuivuu. Lisäksi ajoitus sovitaan kesäkauteen, jolloin rakennus on käytössä ja puu kuivaa.</p><p>Mökin omistaja voi olla paikalla vain kartoituksessa ja loppukatselmuksessa. Väliajan työt hoituvat, kun kulusta on sovittu.</p>"
+     "html": "<p>Sopii, ja vapaa-ajan asunnolla se on usein kannattavinta juuri siksi, että ikkunat ovat vanhoja ja puutavara hyvää. Mökillä kiinnitämme huomiota kolmeen asiaan. Meren puolen ikkunat ovat lähes aina muita huonommat. Ulkopuitteen alareunan tuuletus on pidettävä auki, jotta välitila kuivuu. Lisäksi ajoitus sovitaan kesäkauteen, jolloin rakennus on käytössä ja puu kuivaa.</p><p>Mökin omistaja voi olla paikalla vain kartoituksessa ja loppukatselmuksessa. Väliajan työt hoituvat, kun kulusta on sovittu.</p><p>Jos mökki on ollut pitkään käyttämättä, varaudu siihen, että osa puitteista on turvonnut kiinni. Avaamme ne varovasti ja annamme puun kuivua ennen kuin pintoja käsitellään.</p>"
     },
     {
      "id": "muut-palvelut",
@@ -155,7 +155,7 @@
     },
     {
      "q": "Maksaako kartoituskäynti Salossa, kun matkaa on paljon?",
-     "a": "Kartoituskäynti on maksuton myös Salossa. Sovitamme sen päivälle, jolloin liikumme alueella muutenkin. Käynnin jälkeen saat kirjallisen tarjouksen ikkunapuitteiden maalauksesta ja korjauksesta. Tarjous on sitoumukseton, eli päätät rauhassa, tilaatko työn."
+     "a": "Kartoituskäynti on maksuton myös Salossa. Sovitamme sen päivälle, jolloin liikumme alueella muutenkin. Käynnin jälkeen saat kirjallisen tarjouksen ikkunapuitteiden maalauksesta ja korjauksesta. Tarjous on sitoumukseton, eli päätät rauhassa, tilaatko työn. Kuvat ikkunoista etukäteen nopeuttavat käyntiä."
     },
     {
      "q": "Miten ikkunapuitteiden korjaus tehdään, jos alapuite on pehmeä?",
@@ -177,7 +177,7 @@
     {
      "id": "ajoitus",
      "h2": "Miksi ikkunapuitteiden maalaus kannattaa Kaarinassa tehdä ajoissa?",
-     "html": "<p>Kaarinassa on paljon taloja, joiden ikkunat ovat peräisin 1970–2000-luvuilta. Tämän ikäisissä ikkunoissa puutavara on yleensä vielä kovaa, mutta alkuperäinen tai kertaalleen uusittu maali on käyttöikänsä lopussa. Tilanne on kunnostuksen kannalta hyvä: työ on enimmäkseen maalin poistoa ja maalausta, ja puukorjauksia tarvitaan vähän.</p><p>Jos sama ikkuna jätetään vielä muutamaksi vuodeksi, vesi ehtii imeytyä paljaaseen puuhun. Silloin alapuitetta joudutaan paikkaamaan, ja työtä on selvästi enemmän. Kun huomaat ensimmäiset halkeamat maalissa, on oikea hetki pyytää kartoitus.</p>"
+     "html": "<p>Kaarinassa on paljon taloja, joiden ikkunat ovat peräisin 1970–2000-luvuilta. Tämän ikäisissä ikkunoissa puutavara on yleensä vielä kovaa, mutta alkuperäinen tai kertaalleen uusittu maali on käyttöikänsä lopussa. Tilanne on kunnostuksen kannalta hyvä: työ on enimmäkseen maalin poistoa ja maalausta, ja puukorjauksia tarvitaan vähän.</p><p>Jos sama ikkuna jätetään vielä muutamaksi vuodeksi, vesi ehtii imeytyä paljaaseen puuhun. Silloin alapuitetta joudutaan paikkaamaan, ja työtä on selvästi enemmän. Kun huomaat ensimmäiset halkeamat maalissa, on oikea hetki pyytää kartoitus.</p><p>Ajoissa tehty huolto näkyy myös lopputuloksessa. Kun vanha maali on vielä pääosin kiinni, uusi pinta saadaan tasaiseksi ilman paksuja paikkauksia.</p>"
     },
     {
      "id": "rakennuskanta",
@@ -192,7 +192,7 @@
     {
      "id": "alueet",
      "h2": "Missä päin Kaarinaa palvelemme?",
-     "html": "<p>Teemme ikkunapuitteiden huoltoa kaikissa Kaarinan osissa: Piispanristillä, Littoisissa, Piikkiössä, Kuusistossa, Hovirinnassa ja Empossa. Kaarina on Turun itänaapuri ja meille helppo suunta, joten kartoitus ja työpäivät löytyvät yleensä joustavasti.</p><p>Lyhyen matkan ansiosta myös pienet kohteet onnistuvat hyvin. Voimme esimerkiksi huoltaa ensin kaksi huonointa ikkunaa ja palata muihin seuraavana kesänä.</p>"
+     "html": "<p>Teemme ikkunapuitteiden huoltoa kaikissa Kaarinan osissa: Piispanristillä, Littoisissa, Piikkiössä, Kuusistossa, Hovirinnassa ja Empossa. Kaarina on Turun itänaapuri ja meille helppo suunta, joten kartoitus ja työpäivät löytyvät yleensä joustavasti.</p><p>Lyhyen matkan ansiosta myös pienet kohteet onnistuvat hyvin. Voimme esimerkiksi huoltaa ensin kaksi huonointa ikkunaa ja palata muihin seuraavana kesänä.</p><p>Piikkiön suunnalla on myös vanhempia taloja, joiden kitatut ikkunat kunnostetaan perinteisemmin menetelmin. Kerro talon ikä yhteydenotossa, niin osaamme varautua oikein.</p>"
     },
     {
      "id": "eteneminen",
@@ -247,12 +247,12 @@
     {
      "id": "meri-ilmasto",
      "h2": "Mitä meri-ilmasto tekee ikkunapuitteille Naantalissa?",
-     "html": "<p>Kolme asiaa erottaa rannikon ikkunat muista.</p><ul><li><strong>Viistosade.</strong> Tuuli painaa veden vaakasuoraan ikkunaa vasten. Vesi ei valu vain pintaa pitkin, vaan tunkeutuu jokaiseen rakoon: kitin ja lasin väliin, lasituslistan taakse ja nurkkaliitoksiin.</li><li><strong>Suola.</strong> Meri-ilman mukana pinnoille kertyy suolaa, joka sitoo kosteutta. Pinta pysyy nihkeänä pidempään, ja saranat ja muut metalliosat ruostuvat herkemmin.</li><li><strong>Aurinko ja heijastus.</strong> Avoimella rannalla puitteet saavat valoa myös veden pinnasta. Maali haurastuu ja menettää joustonsa nopeammin.</li></ul><p>Yhdessä nämä tarkoittavat, että maalikalvoon syntyy hiushalkeamia aiemmin kuin suojaisella tontilla. Halkeamasta vesi pääsee puuhun, puu turpoaa ja repii maalia lisää. Kierre katkaistaan huoltomaalauksella silloin, kun pinta on vasta himmennyt ja halkeillut eikä vielä irronnut.</p>"
+     "html": "<p>Kolme asiaa erottaa rannikon ikkunat muista.</p><ul><li><strong>Viistosade.</strong> Tuuli painaa veden vaakasuoraan ikkunaa vasten. Vesi ei valu vain pintaa pitkin, vaan tunkeutuu jokaiseen rakoon: kitin ja lasin väliin, lasituslistan taakse ja nurkkaliitoksiin.</li><li><strong>Suola.</strong> Meri-ilman mukana pinnoille kertyy suolaa, joka sitoo kosteutta. Pinta pysyy nihkeänä pidempään, ja saranat ja muut metalliosat ruostuvat herkemmin.</li><li><strong>Aurinko ja heijastus.</strong> Avoimella rannalla puitteet saavat valoa myös veden pinnasta. Maali haurastuu ja menettää joustonsa nopeammin.</li></ul><p>Yhdessä nämä tarkoittavat, että maalikalvoon syntyy hiushalkeamia aiemmin kuin suojaisella tontilla. Halkeamasta vesi pääsee puuhun, puu turpoaa ja repii maalia lisää. Kierre katkaistaan huoltomaalauksella silloin, kun pinta on vasta himmennyt ja halkeillut eikä vielä irronnut.</p><p>Rannikolla kannattaa siis seurata pintaa tiheämmin ja hyväksyä, että tuulen puolen ikkunat tarvitsevat uuden maalin useammin kuin muut. Se on edullisempaa kuin odottaa, että koko talon ikkunat ovat samassa kunnossa.</p>"
     },
     {
      "id": "vanhakaupunki",
      "h2": "Miten Vanhankaupungin puutalojen ikkunat kunnostetaan?",
-     "html": "<p>Vanhankaupungin vanhoissa puutaloissa ikkunat ovat osa talon ilmettä, ja ne halutaan tavallisesti säilyttää. Hyvä puoli on, että vanha puutavara on usein tiheää ja kestää korjaamista. Työläämpi puoli on maalikerrosten määrä ja lasien kittaukset.</p><h3>Paksu maalikerros</h3><p>Kun maalia on kertynyt vuosikymmenten ajalta, kerros on jäykkä ja lohkeilee. Poistamme sen niiltä osin kuin se ei ole enää kunnolla kiinni. Vanhassa maalissa voi olla haitallisia aineita, joten pöly ja kaavintajäte kerätään tarkasti.</p><h3>Kittaukset</h3><p>Kovettunut ja irtoileva kitti poistetaan varoen, ettei vanha lasi rikkoudu. Kyntteet pohjustetaan, lasi kitataan uudelleen ja kitin annetaan nahkoittua ennen maalausta. Maali vedetään kapealti lasin päälle, jolloin sauma on suojassa.</p><h3>Yhteensopiva maali</h3><p>Uusi maali valitaan vanhan pohjan mukaan. Väärä yhdistelmä voi irrota jo parissa vuodessa.</p>"
+     "html": "<p>Vanhankaupungin vanhoissa puutaloissa ikkunat ovat osa talon ilmettä, ja ne halutaan tavallisesti säilyttää. Hyvä puoli on, että vanha puutavara on usein tiheää ja kestää korjaamista. Työläämpi puoli on maalikerrosten määrä ja lasien kittaukset.</p><h3>Paksu maalikerros</h3><p>Kun maalia on kertynyt vuosikymmenten ajalta, kerros on jäykkä ja lohkeilee. Poistamme sen niiltä osin kuin se ei ole enää kunnolla kiinni. Vanhassa maalissa voi olla haitallisia aineita, joten pöly ja kaavintajäte kerätään tarkasti.</p><h3>Kittaukset</h3><p>Kovettunut ja irtoileva kitti poistetaan varoen, ettei vanha lasi rikkoudu. Kyntteet pohjustetaan, lasi kitataan uudelleen ja kitin annetaan nahkoittua ennen maalausta. Maali vedetään kapealti lasin päälle, jolloin sauma on suojassa.</p><h3>Yhteensopiva maali</h3><p>Uusi maali valitaan vanhan pohjan mukaan. Väärä yhdistelmä voi irrota jo parissa vuodessa. Selvitämme vanhan maalin tyypin kartoituksessa ja kerromme tarjouksessa, millä tuotetyypillä pinnat käsitellään.</p><p>Vanhassa talossa ikkunat ovat harvoin täysin suorassa. Emme pakota puitteita uuteen muotoon, vaan sovitamme ne käymään karmissaan niin hyvin kuin vanha rakenne sallii.</p>"
     },
     {
      "id": "ongelmat",
@@ -262,7 +262,7 @@
     {
      "id": "alueet-ja-saaret",
      "h2": "Alueet ja saarikohteet: miten pääsemme perille?",
-     "html": "<p>Palvelemme koko Naantalia: Vanhaakaupunkia, Luonnonmaata, Rymättylää, Merimaskua ja Velkuaa. Tukikohtamme Maskussa on lähellä, joten mantereen kohteisiin matka on lyhyt.</p><p>Saarikohteissa suunnittelu ratkaisee. Selvitämme kartoituksessa, miten kohteeseen kuljetaan, missä tarvikkeita voi säilyttää ja onko käytössä sähköä hiontaa varten. Varaamme mukaan kaiken tarvittavan kerralla, koska unohtunutta tarviketta ei haeta hetkessä. Saman saaren tai saman suunnan kohteet pyrimme hoitamaan peräkkäin.</p><p>Avoimilla paikoilla sää vaihtuu nopeasti. Tuulisena tai kosteana päivänä ulkopintoja ei maalata, vaan tehdään korjauksia ja pohjatöitä tai siirretään työpäivää. Puitteiden irrottaminen ja käsittely sisätiloissa on rannikolla usein varmin tapa pitää aikataulu.</p>"
+     "html": "<p>Palvelemme koko Naantalia: Vanhaakaupunkia, Luonnonmaata, Rymättylää, Merimaskua ja Velkuaa. Tukikohtamme Maskussa on lähellä, joten mantereen kohteisiin matka on lyhyt.</p><p>Saarikohteissa suunnittelu ratkaisee. Selvitämme kartoituksessa, miten kohteeseen kuljetaan, missä tarvikkeita voi säilyttää ja onko käytössä sähköä hiontaa varten. Varaamme mukaan kaiken tarvittavan kerralla, koska unohtunutta tarviketta ei haeta hetkessä. Saman saaren tai saman suunnan kohteet pyrimme hoitamaan peräkkäin.</p><p>Avoimilla paikoilla sää vaihtuu nopeasti. Tuulisena tai kosteana päivänä ulkopintoja ei maalata, vaan tehdään korjauksia ja pohjatöitä tai siirretään työpäivää. Puitteiden irrottaminen ja käsittely sisätiloissa on rannikolla usein varmin tapa pitää aikataulu.</p><p>Vapaa-ajan asunnolla sovimme kulusta ja avaimista etukäteen, jolloin sinun ei tarvitse olla paikalla joka päivä.</p>"
     },
     {
      "id": "eteneminen",
@@ -272,7 +272,7 @@
     {
      "id": "vahennys",
      "h2": "Voiko työstä hakea kotitalousvähennystä?",
-     "html": "<p>Voi. Vähennykseen oikeuttaa työn osuus sekä vakituisessa asunnossa että vapaa-ajan asunnolla. Prosentti on 35, omavastuu 150 € ja suurin vähennys 1 600 € vuodessa henkilöä kohden. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
+     "html": "<p>Voi. Vähennykseen oikeuttaa työn osuus sekä vakituisessa asunnossa että vapaa-ajan asunnolla. Prosentti on 35, omavastuu 150 € ja suurin vähennys 1 600 € vuodessa henkilöä kohden. Laskulla työ on eritelty tarvikkeista, koska vähennys koskee vain työtä. Tarkista ajantasaiset ehdot Verohallinnosta.</p>"
     }
    ],
    "faq": [
@@ -282,7 +282,7 @@
     },
     {
      "q": "Teettekö ikkunapuitteiden huoltoa Naantalin saarissa?",
-     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Luonnonmaalla, Rymättylässä, Merimaskussa ja Velkualla, myös saarikohteissa. Kulkuyhteydet, sähkön saanti ja tarvikkeiden säilytys selvitetään kartoituksessa, ja saman suunnan kohteet hoidetaan mahdollisuuksien mukaan peräkkäin."
+     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Luonnonmaalla, Rymättylässä, Merimaskussa ja Velkualla, myös saarikohteissa. Kulkuyhteydet, sähkön saanti ja tarvikkeiden säilytys selvitetään aina etukäteen kartoituksessa, ja saman suunnan kohteet hoidetaan mahdollisuuksien mukaan peräkkäin."
     },
     {
      "q": "Voiko Naantalin Vanhankaupungin vanhat ikkunat säilyttää kunnostamalla?",
@@ -300,7 +300,7 @@
   },
   "raisio": {
    "title": "Ikkunapuitteiden huolto Raisio – maalaus ja kunnostus",
-   "meta": "Ikkunapuitteiden huolto Raisiossa 1960–80-lukujen omakotitaloihin, rivitaloihin ja taloyhtiöille. Puitteiden maalaus, kittaus ja lahokorjaus kartoituksesta.",
+   "meta": "Ikkunapuitteiden huolto Raisiossa 1960–80-lukujen omakotitaloihin, rivitaloihin ja taloyhtiöille. Puitteiden maalaus, kittaus ja lahokorjaukset.",
    "h1": "Ikkunapuitteiden huolto Raisiossa",
    "lead": "Raisiossa moni talo on rakennettu 1960–80-luvuilla, ja niiden puuikkunat ovat ehtineet ikään, jossa maalaus ei enää ole pelkkä ulkonäköasia. Ikkunapuitteiden huolto ratkaisee, kestävätkö ikkunat vielä pitkään vai alkaako laho. Kunnostamme puitteet ja karmit omakotitaloissa, rivitaloissa ja taloyhtiöissä.",
    "short_answer": "Ikkunapuitteiden huolto Raisiossa on puitteiden ja karmien kunnostusmaalaus, johon kuuluvat maalin poisto, puun kunnon arviointi, lahokorjaukset, pohjustus, kittaus ja maalaus sekä lasituslistojen ja kittausten uusinta. Raision 1960–80-lukujen omakoti- ja rivitaloissa ikkunat ovat usein alkuperäisiä, ja ne on voitu maalata vain kerran tai kaksi. Arvioimme jokaisen ikkunan erikseen: osa selviää maalauksella, osa tarvitsee puupaikkoja ja jotkin on järkevämpi vaihtaa. Taloyhtiöille teemme kartoituksen, jonka pohjalta hallitus voi päättää laajuudesta. Kartoitus on maksuton ja tarjous kirjallinen.",
@@ -323,7 +323,7 @@
     {
      "id": "alueet",
      "h2": "Raision alueet, joilla teemme ikkunapuitteiden huoltoa",
-     "html": "<p>Palvelemme koko Raisiota. Tuttuja alueita ovat Kaanaa, Ihala, Kerttula, Petäsmäki, Vaisaari, Tikanmaa ja Kuloinen. Raisio on Turun länsinaapuri ja lähellä tukikohtaamme Maskussa, joten siirtymiin ei kulu aikaa ja työpäivät ovat tehokkaita.</p>"
+     "html": "<p>Palvelemme koko Raisiota. Tuttuja alueita ovat Kaanaa, Ihala, Kerttula, Petäsmäki, Vaisaari, Tikanmaa ja Kuloinen. Raisio on Turun länsinaapuri ja lähellä tukikohtaamme Maskussa, joten siirtymiin ei kulu aikaa ja työpäivät ovat tehokkaita.</p><p>Vanhoilla omakotialueilla tontit ovat usein puustoisia. Varjossa ja puiden alla ikkunat pysyvät kosteina pitkään ja niihin kertyy leväkasvustoa, joka pestään pois ennen maalausta. Avoimilla tonteilla taas aurinko haurastuttaa etelän puolen maalipintaa.</p>"
     },
     {
      "id": "tyovaiheet",
@@ -356,7 +356,7 @@
     },
     {
      "q": "Miten testaan itse, onko ikkunapuite lahonnut?",
-     "a": "Avaa ikkuna ja paina puitteen alareunaa ja kulmia kynnellä tai ruuvitaltan kärjellä. Terve puu on kovaa eikä painu. Jos kärki uppoaa helposti tai puu tuntuu sienimäiseltä, ikkunapuite on alkanut lahota ja tarvitsee korjausta ennen maalausta."
+     "a": "Avaa ikkuna ja paina puitteen alareunaa ja kulmia kynnellä tai ruuvitaltan kärjellä. Terve puu on kovaa eikä painu lainkaan. Jos kärki uppoaa helposti tai puu tuntuu sienimäiseltä, ikkunapuite on alkanut lahota ja tarvitsee korjausta ennen maalausta."
     },
     {
      "q": "Pitääkö asukkaan olla kotona, kun ikkunapuitteita maalataan Raisiossa?",
@@ -378,12 +378,12 @@
     {
      "id": "saaristo-olot",
      "h2": "Miksi ikkunapuitteet kuluvat saaristossa nopeasti?",
-     "html": "<p>Saaristossa talot seisovat usein avoimella paikalla kallion päällä tai rannan tuntumassa. Puusto ei suojaa, ja tuuli tuo sateen ikkunoihin joka suunnasta. Suolainen kosteus jää pinnoille ja hidastaa kuivumista.</p><p>Toinen tekijä on käyttötapa. Vapaa-ajan asunto on kylmillään suuren osan vuodesta. Kun sisälämpötila seuraa ulkoilmaa, puitteet imevät kosteutta sekä ulkoa että sisältä eivätkä kuivu kunnolla ennen kesää. Maali kestää tällaista vaihtelua huonommin kuin tasaisesti lämmitetyssä talossa.</p><p>Kolmas tekijä on aika. Mökillä vietetään lomaa, ja ikkunoiden maalaus siirtyy helposti vuodesta toiseen. Kun vaurio lopulta huomataan, alapuite on usein jo pehmeä.</p>"
+     "html": "<p>Saaristossa talot seisovat usein avoimella paikalla kallion päällä tai rannan tuntumassa. Puusto ei suojaa, ja tuuli tuo sateen ikkunoihin joka suunnasta. Suolainen kosteus jää pinnoille ja hidastaa kuivumista.</p><p>Toinen tekijä on käyttötapa. Vapaa-ajan asunto on kylmillään suuren osan vuodesta. Kun sisälämpötila seuraa ulkoilmaa, puitteet imevät kosteutta sekä ulkoa että sisältä eivätkä kuivu kunnolla ennen kesää. Maali kestää tällaista vaihtelua huonommin kuin tasaisesti lämmitetyssä talossa.</p><p>Kolmas tekijä on aika. Mökillä vietetään lomaa, ja ikkunoiden maalaus siirtyy helposti vuodesta toiseen. Kun vaurio lopulta huomataan, alapuite on usein jo pehmeä.</p><p>Hyvä uutinen on, että saaristossa ikkunat on usein tehty kestävästä puusta ja ne on rakennettu korjattaviksi. Kun pinta saadaan kuntoon ja huoltoväli pidetään jatkossa lyhyempänä, sama ikkuna kestää vielä pitkään.</p>"
     },
     {
      "id": "vanhat-puutalot",
      "h2": "Vanhan puutalon ikkunat: mitä kunnostuksessa otetaan huomioon?",
-     "html": "<p>Paraisten keskustan ja saariston kylien vanhoissa puutaloissa on tyypillisesti kitattuja, usein moniruutuisia ikkunoita. Niiden kunnostuksessa pätee muutama periaate.</p><ul><li><strong>Säilytetään mahdollisimman paljon.</strong> Vanha, hitaasti kasvanut puu on usein kestävämpää kuin uusi. Vaihdamme vain sen osan, joka on oikeasti lahonnut.</li><li><strong>Paikkapuu sovitetaan tarkasti.</strong> Uuden palan syysuunta ja muoto tehdään vanhan mukaan, jotta liitos ei näy eikä kerää vettä.</li><li><strong>Lasit irrotetaan vain tarvittaessa.</strong> Vanha lasi on haurasta. Jos kitti on tiukasti kiinni ja ehjä, se jätetään ja vain halkeilleet osuudet uusitaan.</li><li><strong>Ulkopuitteen tuuletus säilytetään.</strong> Ulkopuitetta ei tukita maalilla tai kitillä umpeen, jotta lasien välitila pääsee kuivumaan.</li></ul><p>Näin ikkuna säilyttää ulkonäkönsä ja toimii niin kuin se on aikanaan suunniteltu.</p>"
+     "html": "<p>Paraisten keskustan ja saariston kylien vanhoissa puutaloissa on tyypillisesti kitattuja, usein moniruutuisia ikkunoita. Niiden kunnostuksessa pätee muutama periaate.</p><ul><li><strong>Säilytetään mahdollisimman paljon.</strong> Vanha, hitaasti kasvanut puu on usein kestävämpää kuin uusi. Vaihdamme vain sen osan, joka on oikeasti lahonnut.</li><li><strong>Paikkapuu sovitetaan tarkasti.</strong> Uuden palan syysuunta ja muoto tehdään vanhan mukaan, jotta liitos ei näy eikä kerää vettä.</li><li><strong>Lasit irrotetaan vain tarvittaessa.</strong> Vanha lasi on haurasta. Jos kitti on tiukasti kiinni ja ehjä, se jätetään ja vain halkeilleet osuudet uusitaan.</li><li><strong>Ulkopuitteen tuuletus säilytetään.</strong> Ulkopuitetta ei tukita maalilla tai kitillä umpeen, jotta lasien välitila pääsee kuivumaan.</li></ul><p>Näin ikkuna säilyttää ulkonäkönsä ja toimii niin kuin se on aikanaan suunniteltu.</p><p>Jos puite on lahonnut niin pahasti, ettei tervettä puuta jää paikan pohjaksi, kerromme sen suoraan. Silloin vaihto on järkevämpi kuin korjaus.</p>"
     },
     {
      "id": "logistiikka",
@@ -409,11 +409,11 @@
    "faq": [
     {
      "q": "Teettekö ikkunapuitteiden huoltoa Nauvossa, Korppoossa, Houtskarissa ja Iniössä?",
-     "a": "Teemme ikkunapuitteiden huoltoa koko Paraisten alueella, myös Nauvossa, Korppoossa, Houtskarissa ja Iniössä. Lauttayhteyksien takia kartoitus ja työjaksot suunnitellaan etukäteen ja saman suunnan kohteet yhdistetään, jotta käyntejä tarvitaan mahdollisimman vähän."
+     "a": "Teemme ikkunapuitteiden huoltoa koko Paraisten alueella, myös Nauvossa, Korppoossa, Houtskarissa ja Iniössä. Lauttayhteyksien takia kartoitus ja työjaksot suunnitellaan etukäteen ja saman suunnan kohteet yhdistetään, jotta käyntejä tarvitaan mahdollisimman vähän. Kartoituskäynti on maksuton myös saaristossa."
     },
     {
      "q": "Voiko mökin ikkunapuitteet viedä Paraisilta muualle maalattavaksi?",
-     "a": "Voi. Saaristokohteissa ikkunapuitteet irrotetaan usein ja kunnostetaan sisätiloissa, jolloin sää ei viivästytä työtä. Aukot suojataan puitteiden poissaolon ajaksi. Valmiit puitteet asennetaan takaisin ja niiden käynti säädetään. Tapa sovitaan Paraisilla kartoituskäynnin yhteydessä."
+     "a": "Voi. Saaristokohteissa ikkunapuitteet irrotetaan usein ja kunnostetaan sisätiloissa, jolloin sää ei viivästytä työtä. Aukot suojataan puitteiden poissaolon ajaksi. Valmiit puitteet asennetaan takaisin ja niiden käynti säädetään. Tapa sovitaan Paraisilla aina kartoituskäynnin yhteydessä."
     },
     {
      "q": "Onko harmaantunut ikkunapuite jo pilalla?",
@@ -439,12 +439,12 @@
     {
      "id": "eri-vuosikymmenet",
      "h2": "Miten ikkunapuitteiden maalaus eroaa eri-ikäisissä paimiolaistaloissa?",
-     "html": "<p>Emme käytä samaa kaavaa joka taloon. Ikkunan rakenne ja vanha maali ratkaisevat työtavan.</p><h3>Vanhat maalaistalot ja rintamamiestalot</h3><p>Lasit on kitattu, puitteet ovat erilliset ja maali on usein perinteistä öljypohjaista. Pinta kuluu jauhemaisesti eikä aina hilseile, joten huoltomaalaus voi olla kevyt: pesu, hionta, kittausten paikkaus ja uusi kerros. Jos päälle on myöhemmin vedetty toisentyyppistä maalia, se lohkeilee levyinä ja joudutaan poistamaan kokonaan.</p><h3>1970–90-lukujen talot</h3><p>Tehdasvalmisteisissa ikkunoissa on lasituslistat ja usein kuultava tai peittävä tehdaskäsittely. Ulkopuitteen alaosa on ohut ja lahoaa nopeasti, kun pinta pettää. Näissä tarkistamme aina listojen alla olevan kyntteen.</p><h3>2000-luvun talot</h3><p>Puu-alumiini-ikkunoissa ulkopinta on metallia, ja huolto koskee sisäpuolen puupintoja. Kokonaan puisissa ikkunoissa ensimmäinen huoltomaalaus alkaa olla ajankohtainen, vaikka mitään vikaa ei vielä näy kaukaa.</p>"
+     "html": "<p>Emme käytä samaa kaavaa joka taloon. Ikkunan rakenne ja vanha maali ratkaisevat työtavan.</p><h3>Vanhat maalaistalot ja rintamamiestalot</h3><p>Lasit on kitattu, puitteet ovat erilliset ja maali on usein perinteistä öljypohjaista. Pinta kuluu jauhemaisesti eikä aina hilseile, joten huoltomaalaus voi olla kevyt: pesu, hionta, kittausten paikkaus ja uusi kerros. Jos päälle on myöhemmin vedetty toisentyyppistä maalia, se lohkeilee levyinä ja joudutaan poistamaan kokonaan.</p><h3>1970–90-lukujen talot</h3><p>Tehdasvalmisteisissa ikkunoissa on lasituslistat ja usein kuultava tai peittävä tehdaskäsittely. Ulkopuitteen alaosa on ohut ja lahoaa nopeasti, kun pinta pettää. Näissä tarkistamme aina listojen alla olevan kyntteen.</p><h3>2000-luvun talot</h3><p>Puu-alumiini-ikkunoissa ulkopinta on metallia, ja huolto koskee sisäpuolen puupintoja. Kokonaan puisissa ikkunoissa ensimmäinen huoltomaalaus alkaa olla ajankohtainen, vaikka mitään vikaa ei vielä näy kaukaa.</p><p>Kerro yhteydenotossa talon rakennusvuosi ja se, onko ikkunoita maalattu aiemmin. Näiden tietojen perusteella tiedämme jo ennen käyntiä, millaista työtä on odotettavissa.</p>"
     },
     {
      "id": "jokilaakso",
      "h2": "Maaseudun talot Paimionjoen varrella",
-     "html": "<p>Paimionjoen varren viljelymaisemassa talot ovat usein avoimella paikalla. Tuulelta suojaavaa puustoa on vähän, ja sade osuu seinään täydellä voimalla. Tämän huomaa etenkin päätyikkunoista ja yläkerran ikkunoista, joiden yläpuolella räystäs on lyhyt.</p><p>Maatilan päärakennuksessa ikkunoita voi olla pari-kolmekymmentä. Kaikkia ei tarvitse tehdä kerralla. Tavallinen ratkaisu on jakaa työ kahdelle tai kolmelle kesälle ja aloittaa huonoimmasta julkisivusta. Kartoituksessa laadimme järjestyksen, jossa kiireellisimmät ikkunat ovat ensin.</p><p>Vanhoissa pihapiireissä on myös aittoja, saunoja ja muita piharakennuksia, joiden ikkunat ovat jääneet huoltamatta. Ne voidaan ottaa mukaan samaan tarjoukseen.</p>"
+     "html": "<p>Paimionjoen varren viljelymaisemassa talot ovat usein avoimella paikalla. Tuulelta suojaavaa puustoa on vähän, ja sade osuu seinään täydellä voimalla. Tämän huomaa etenkin päätyikkunoista ja yläkerran ikkunoista, joiden yläpuolella räystäs on lyhyt.</p><p>Maatilan päärakennuksessa ikkunoita voi olla pari-kolmekymmentä. Kaikkia ei tarvitse tehdä kerralla. Tavallinen ratkaisu on jakaa työ kahdelle tai kolmelle kesälle ja aloittaa huonoimmasta julkisivusta. Kartoituksessa laadimme järjestyksen, jossa kiireellisimmät ikkunat ovat ensin.</p><p>Vanhoissa pihapiireissä on myös aittoja, saunoja ja muita piharakennuksia, joiden ikkunat ovat jääneet huoltamatta. Ne voidaan ottaa mukaan samaan tarjoukseen. Kylmän piharakennuksen ikkunoissa tavoite on pitää vesi poissa puusta ja lasi paikallaan, eikä pinnalta vaadita samaa viimeistelyä kuin asuinrakennuksessa.</p>"
     },
     {
      "id": "ongelmat",
@@ -454,7 +454,7 @@
     {
      "id": "alueet-ja-reitit",
      "h2": "Missä päin Paimiota palvelemme ja miten käynnit sovitaan?",
-     "html": "<p>Teemme ikkunapuitteiden huoltoa Paimion keskustassa, Vistassa, Kevolassa ja Hajalassa sekä ympäröivällä maaseudulla. Paimio on Turun ja Salon puolivälissä, joten se osuu luontevasti reitille, kun ajamme itään päin. Käytännössä kartoitus järjestyy usein samalle päivälle jonkin toisen käynnin kanssa.</p><p>Työ etenee näin:</p><ol><li>Yhteydenotto. Kuulet meistä viimeistään seuraavana arkipäivänä.</li><li>Maksuton kartoitus, jossa katsotaan kaikki ikkunat ja sovitaan tärkeysjärjestys.</li><li>Kirjallinen tarjous ilman sitoumusta.</li><li>Työ sovittuna päivänä: suojaus, maalin poisto, korjaukset, pohjustus, kittaus ja maalaus.</li><li>Yhteinen läpikäynti ja ohjeet pintojen seurantaan.</li></ol><p>Ulkotyöt tehdään poutasäällä. Sateisena kesänä puitteet irrotetaan ja kunnostetaan sisätiloissa.</p>"
+     "html": "<p>Teemme ikkunapuitteiden huoltoa Paimion keskustassa, Vistassa, Kevolassa ja Hajalassa sekä ympäröivällä maaseudulla. Paimio on Turun ja Salon puolivälissä, joten se osuu luontevasti reitille, kun ajamme itään päin. Käytännössä kartoitus järjestyy usein samalle päivälle jonkin toisen käynnin kanssa.</p><p>Työ etenee näin:</p><ol><li>Yhteydenotto. Kuulet meistä viimeistään seuraavana arkipäivänä.</li><li>Maksuton kartoitus, jossa katsotaan kaikki ikkunat ja sovitaan tärkeysjärjestys.</li><li>Kirjallinen tarjous ilman sitoumusta.</li><li>Työ sovittuna päivänä: suojaus, maalin poisto, korjaukset, pohjustus, kittaus ja maalaus.</li><li>Yhteinen läpikäynti ja ohjeet pintojen seurantaan.</li></ol><p>Ulkotyöt tehdään poutasäällä. Sateisena kesänä puitteet irrotetaan ja kunnostetaan sisätiloissa, ja aukot suojataan siksi aikaa.</p>"
     },
     {
      "id": "linkit",
@@ -470,11 +470,11 @@
    "faq": [
     {
      "q": "Teettekö ikkunapuitteiden huoltoa Paimion maaseudulla?",
-     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Paimion keskustan lisäksi Vistassa, Kevolassa, Hajalassa ja maaseudun taloissa Paimionjoen varrella. Maatilojen päärakennuksissa työ jaetaan usein useammalle kesälle, ja myös piharakennusten ikkunat voidaan ottaa mukaan."
+     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Paimion keskustan lisäksi Vistassa, Kevolassa, Hajalassa ja maaseudun taloissa Paimionjoen varrella. Maatilojen päärakennuksissa työ jaetaan usein useammalle kesälle, ja myös piharakennusten ikkunat voidaan ottaa mukaan samaan tarjoukseen."
     },
     {
      "q": "Voiko ison talon ikkunapuitteiden maalauksen jakaa usealle vuodelle Paimiossa?",
-     "a": "Voi. Kun ikkunoita on paljon, ikkunapuitteiden maalaus kannattaa aloittaa huonoimmasta julkisivusta ja jatkaa seuraavina kesinä. Paimiossa laadimme kartoituksessa tärkeysjärjestyksen, jonka mukaan kiireellisimmät ikkunat tehdään ensin ja loput suunnitellusti myöhemmin."
+     "a": "Voi. Kun ikkunoita on paljon, ikkunapuitteiden maalaus kannattaa aloittaa huonoimmasta julkisivusta ja jatkaa seuraavina kesinä. Paimiossa laadimme kartoituksessa tärkeysjärjestyksen, jonka mukaan kiireellisimmät ikkunat tehdään ensin ja loput suunnitellusti myöhemmin, kun niiden vuoro tulee."
     },
     {
      "q": "Mitä tehdään, jos ikkuna on maalattu umpeen eikä aukea?",
@@ -486,7 +486,7 @@
     },
     {
      "q": "Tarvitseeko 2000-luvulla rakennetun paimiolaistalon ikkunapuitteita vielä huoltaa?",
-     "a": "Kokonaan puisissa ikkunoissa ensimmäinen huoltomaalaus voi olla ajankohtainen jo parinkymmenen vuoden iässä, etenkin etelän ja lännen puolella. Paimiossa avoimilla tonteilla pinta kuluu nopeammin. Puu-alumiini-ikkunoissa tarkistetaan sisäpuolen puupinnat ja karmit."
+     "a": "Kokonaan puisissa ikkunoissa ensimmäinen huoltomaalaus voi olla ajankohtainen jo parinkymmenen vuoden iässä, etenkin etelän ja lännen puolella. Paimiossa avoimilla tonteilla pinta kuluu nopeammin. Puu-alumiini-ikkunoissa tarkistetaan sisäpuolen puupinnat ja karmit, koska ulkopinta on metallia."
     },
     {
      "q": "Onko kartoituskäynti Paimiossa maksuton?",
@@ -496,7 +496,7 @@
   },
   "lieto": {
    "title": "Ikkunapuitteiden huolto Lieto – puitteiden huoltomaalaus",
-   "meta": "Ikkunapuitteiden huolto Liedossa: ensimmäinen huoltomaalaus 1980–2000-lukujen taloihin sekä maaseudun vanhojen ikkunoiden maalaus ja korjaus. Kysy kartoitusta.",
+   "meta": "Ikkunapuitteiden huolto Liedossa: ensimmäinen huoltomaalaus 1980–2000-lukujen taloihin ja maaseudun vanhojen ikkunoiden korjaus. Kysy maksutonta kartoitusta.",
    "h1": "Ikkunapuitteiden huolto Liedossa",
    "lead": "Liedossa on paljon omakotitaloja, joiden ikkunoita ei ole maalattu kertaakaan rakentamisen jälkeen. Tehdaspinta kestää pitkään, mutta ei loputtomiin. Ikkunapuitteiden huolto ennen ensimmäisiä vaurioita on selvästi kevyempi työ kuin korjaus niiden jälkeen. Hoidamme myös Aurajoen varren vanhempien talojen ikkunat.",
    "short_answer": "Ikkunapuitteiden huolto Liedossa tarkoittaa puitteiden ja karmien kunnostusmaalausta ja tarvittavia puukorjauksia. Työssä poistetaan huonosti kiinni oleva maali, tarkistetaan puun kunto, korjataan lahokohdat, pohjustetaan, kitataan ja maalataan sekä kunnostetaan lasituslistat ja kittaukset. Liedon rakennuskannassa korostuvat 1980–2000-lukujen omakotitalot, joissa ensimmäinen huoltomaalaus on monin paikoin ajankohtainen. Maaseudulla Aurajoen varrella on vanhempia taloja, joissa työ on perinteisempää kittausta ja puupaikkausta. Aloitamme maksuttomalla kartoituksella, annamme tarjouksen kirjallisena ja käymme valmiin työn läpi kanssasi.",
@@ -504,7 +504,7 @@
     {
      "id": "ensimmainen-maalaus",
      "h2": "Milloin tehdasmaalattu ikkuna tarvitsee ensimmäisen huoltomaalauksen?",
-     "html": "<p>Tehtaalla käsitelty pinta näyttää pitkään hyvältä, ja siksi huolto unohtuu. Muutos tapahtuu vähitellen. Ensin kiilto katoaa. Sitten pinta alkaa liituuntua, eli sormeen jää vaaleaa jauhetta, kun puitetta pyyhkäisee. Lopulta maalikalvoon tulee halkeamia nurkkiin ja puun syiden suuntaan.</p><p>Huoltomaalaus on helpointa tehdä liituuntumisvaiheessa. Silloin riittää pesu, kevyt hionta ja uusi maalikerros, eikä vanhaa pintaa tarvitse poistaa. Kun halkeamia on jo ja puu näkyy, pohjatyötä tulee enemmän, mutta ikkuna on edelleen hyvin kunnostettavissa.</p><p>Kuultokäsitellyt puitteet kuluvat peittomaalattuja nopeammin, koska ohut kalvo suojaa heikommin auringolta. Niissä huoltoväli on lyhyempi.</p>"
+     "html": "<p>Tehtaalla käsitelty pinta näyttää pitkään hyvältä, ja siksi huolto unohtuu. Muutos tapahtuu vähitellen. Ensin kiilto katoaa. Sitten pinta alkaa liituuntua, eli sormeen jää vaaleaa jauhetta, kun puitetta pyyhkäisee. Lopulta maalikalvoon tulee halkeamia nurkkiin ja puun syiden suuntaan.</p><p>Huoltomaalaus on helpointa tehdä liituuntumisvaiheessa. Silloin riittää pesu, kevyt hionta ja uusi maalikerros, eikä vanhaa pintaa tarvitse poistaa. Kun halkeamia on jo ja puu näkyy, pohjatyötä tulee enemmän, mutta ikkuna on edelleen hyvin kunnostettavissa.</p><p>Kuultokäsitellyt puitteet kuluvat peittomaalattuja nopeammin, koska ohut kalvo suojaa heikommin auringolta. Niissä huoltoväli on lyhyempi.</p><p>Moni olettaa, että uudehko ikkuna on huoltovapaa. Puuikkuna ei ole sitä koskaan. Se on kuitenkin korjattavissa ja maalattavissa kerta toisensa jälkeen, mikä on sen suurin etu.</p>"
     },
     {
      "id": "mista-kuluminen-alkaa",
@@ -514,7 +514,7 @@
     {
      "id": "maaseutu",
      "h2": "Vanhemmat talot Aurajoen varrella ja Tarvasjoella",
-     "html": "<p>Liedon maaseudulla on taloja, joiden ikkunat ovat aivan eri aikakaudelta kuin uusilla asuinalueilla. Aurajoen varren tiloilla ja Tarvasjoen ja Yliskulman suunnalla tapaa kitattuja, kaksipuitteisia ikkunoita, joiden puu on vuosikymmenten jälkeenkin kovaa.</p><p>Näissä työ on erilaista. Paksut maalikerrokset poistetaan siltä osin kuin ne irtoavat, kovettunut kitti uusitaan ja alapuitteiden nurkat tarkistetaan huolella. Avoimessa peltomaisemassa talon tuulenpuoleinen sivu on tyypillisesti selvästi muita huonompi, ja se kannattaa tehdä ensin.</p><p>Vanhaa ikkunaa ei kannata vaihtaa vain siksi, että se näyttää ränsistyneeltä. Ränsistynyt pinta ja terve puu on yleinen yhdistelmä.</p>"
+     "html": "<p>Liedon maaseudulla on taloja, joiden ikkunat ovat aivan eri aikakaudelta kuin uusilla asuinalueilla. Aurajoen varren tiloilla ja Tarvasjoen ja Yliskulman suunnalla tapaa kitattuja, kaksipuitteisia ikkunoita, joiden puu on vuosikymmenten jälkeenkin kovaa.</p><p>Näissä työ on erilaista. Paksut maalikerrokset poistetaan siltä osin kuin ne irtoavat, kovettunut kitti uusitaan ja alapuitteiden nurkat tarkistetaan huolella. Avoimessa peltomaisemassa talon tuulenpuoleinen sivu on tyypillisesti selvästi muita huonompi, ja se kannattaa tehdä ensin.</p><p>Vanhaa ikkunaa ei kannata vaihtaa vain siksi, että se näyttää ränsistyneeltä. Ränsistynyt pinta ja terve puu on yleinen yhdistelmä. Jos puu on kuitenkin läpilahoa, sanomme sen suoraan.</p>"
     },
     {
      "id": "alueet",
@@ -556,7 +556,7 @@
     },
     {
      "q": "Miksi ikkunapuitteen alareuna kuluu nopeammin kuin muut osat?",
-     "a": "Alareunan pinta on lähes vaakasuora, joten sade- ja sulamisvesi viipyy siinä pisimpään. Lisäksi pystypuiden alapäät imevät vettä puun päätysyiden kautta. Siksi ikkunapuitteiden huolto aloitetaan aina alapuun ja alimman lasituslistan tarkastuksesta."
+     "a": "Alareunan pinta on lähes vaakasuora, joten sade- ja sulamisvesi viipyy siinä pisimpään. Lisäksi pystypuiden alapäät imevät vettä puun päätysyiden kautta. Siksi ikkunapuitteiden huolto aloitetaan aina alapuun ja alimman lasituslistan tarkastuksesta, myös Liedossa."
     },
     {
      "q": "Saako Liedossa tehdystä ikkunapuitteiden huollosta kotitalousvähennyksen?",
@@ -565,7 +565,7 @@
    ]
   },
   "masku": {
-   "title": "Ikkunapuitteiden huolto Masku – maalaus läheltä",
+   "title": "Ikkunapuitteiden huolto Masku – maalaus ja korjaus läheltä",
    "meta": "Ikkunapuitteiden huolto Maskussa paikalliselta tekijältä. Puitteiden ja karmien maalaus, kittaus ja lahokorjaus omakotitaloihin. Kartoitus maksutta.",
    "h1": "Ikkunapuitteiden huolto Maskussa",
    "lead": "Masku on kotikenttämme, sillä tukikohtamme on täällä. Ikkunapuitteiden huolto onnistuu Maskussa joustavasti: voimme seurata säätä, tulla paikalle lyhyellä varoitusajalla ja tehdä työn sopivissa osissa. Maalaamme ja korjaamme puitteet ja karmit omakotitaloissa kaikkialla kunnan alueella.",
@@ -574,12 +574,12 @@
     {
      "id": "laheisyys",
      "h2": "Mitä hyötyä on siitä, että tekijä on Maskusta?",
-     "html": "<p>Ikkunoiden maalaus on säästä ja kuivumisesta riippuvaista työtä. Lähellä oleva tekijä voi käyttää tämän hyväksi.</p><ul><li><strong>Säätä voi seurata.</strong> Jos aamu on sumuinen tai yöllä on satanut, aloitamme myöhemmin tai vaihdamme päivää ilman, että kenenkään aikataulu kaatuu.</li><li><strong>Kerrokset saavat kuivua rauhassa.</strong> Voimme käydä maalaamassa yhden kerroksen ja palata seuraavaan, kun pinta on valmis. Pitkän matkan päässä houkutus kiirehtiä on suurempi.</li><li><strong>Pienet työt onnistuvat.</strong> Yksi hilseilevä ikkuna tai autotallin pari puitetta on meille täällä järkevä kohde.</li><li><strong>Jälkikäynti on helppo.</strong> Jos jokin puite ottaa kiinni maalin kuivuttua, tulemme säätämään sen.</li></ul>"
+     "html": "<p>Ikkunoiden maalaus on säästä ja kuivumisesta riippuvaista työtä. Lähellä oleva tekijä voi käyttää tämän hyväksi.</p><ul><li><strong>Säätä voi seurata.</strong> Jos aamu on sumuinen tai yöllä on satanut, aloitamme myöhemmin tai vaihdamme päivää ilman, että kenenkään aikataulu kaatuu.</li><li><strong>Kerrokset saavat kuivua rauhassa.</strong> Voimme käydä maalaamassa yhden kerroksen ja palata seuraavaan, kun pinta on valmis. Pitkän matkan päässä houkutus kiirehtiä on suurempi.</li><li><strong>Pienet työt onnistuvat.</strong> Yksi hilseilevä ikkuna tai autotallin pari puitetta on meille täällä järkevä kohde.</li><li><strong>Jälkikäynti on helppo.</strong> Jos jokin puite ottaa kiinni maalin kuivuttua, tulemme säätämään sen.</li></ul><p>Laatu ei riipu matkasta, mutta aikataulun joustavuus riippuu. Maalaus onnistuu parhaiten, kun työ tehdään puun ja sään ehdoilla eikä kalenterin.</p>"
     },
     {
      "id": "maskun-talot",
      "h2": "Millaisia ikkunoita Maskun omakotitaloissa on?",
-     "html": "<p>Masku on omakotitalovaltainen kunta. Taloja on usealta vuosikymmeneltä, ja suurimmassa osassa on puuikkunat tai puu-alumiini-ikkunat. Omakotitalossa ikkunoiden kunto on kokonaan omistajan vastuulla, eikä kukaan muistuta huollosta.</p><p>Tyypillinen tilanne on tämä: talon etupuoli pidetään siistinä, mutta takapihan ja päätyjen ikkunat jäävät vähemmälle. Terassin ja kasvillisuuden takana oleva ikkuna voi olla huonossa kunnossa kenenkään huomaamatta. Pensaat ja köynnökset pitävät alapuitteen ja vesipellin kosteana, ja maali irtoaa niiden takana nopeammin.</p><p>Askaisten ja Lemun suunnalla on myös vanhempia maalaistaloja ja meren läheisyydessä olevia kohteita. Niissä ikkunat ovat usein kitattuja, ja tuuli tuo lisärasitusta.</p>"
+     "html": "<p>Masku on omakotitalovaltainen kunta. Taloja on usealta vuosikymmeneltä, ja suurimmassa osassa on puuikkunat tai puu-alumiini-ikkunat. Omakotitalossa ikkunoiden kunto on kokonaan omistajan vastuulla, eikä kukaan muistuta huollosta.</p><p>Tyypillinen tilanne on tämä: talon etupuoli pidetään siistinä, mutta takapihan ja päätyjen ikkunat jäävät vähemmälle. Terassin ja kasvillisuuden takana oleva ikkuna voi olla huonossa kunnossa kenenkään huomaamatta. Pensaat ja köynnökset pitävät alapuitteen ja vesipellin kosteana, ja maali irtoaa niiden takana nopeammin.</p><p>Askaisten ja Lemun suunnalla on myös vanhempia maalaistaloja ja meren läheisyydessä olevia kohteita. Niissä ikkunat ovat usein kitattuja, ja tuuli tuo lisärasitusta.</p><p>Puu-alumiini-ikkunoissa ulkopinta ei kaipaa maalia, mutta sisäpuitteen ja karmin puuosat kuluvat silti. Niissä huolto on kevyempi ja koskee lähinnä sisäpintoja.</p>"
     },
     {
      "id": "ongelmat",
@@ -610,11 +610,11 @@
    "faq": [
     {
      "q": "Kuinka nopeasti saan kartoituksen ikkunapuitteiden huoltoa varten Maskussa?",
-     "a": "Vastaamme yhteydenottoon viimeistään seuraavana arkipäivänä. Koska tukikohtamme on Maskussa, kartoituskäynti järjestyy yleensä nopeasti ja joustavasti. Käynti on maksuton, ja sen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen ikkunapuitteiden huollosta."
+     "a": "Vastaamme yhteydenottoon viimeistään seuraavana arkipäivänä. Koska tukikohtamme on Maskussa, kartoituskäynti järjestyy yleensä nopeasti ja joustavasti. Käynti on maksuton, ja sen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen ikkunapuitteiden huollosta. Työpäivät sovitaan tarjouksen hyväksymisen jälkeen."
     },
     {
      "q": "Teettekö Maskussa myös pieniä töitä, kuten yhden ikkunan puitteiden maalauksen?",
-     "a": "Teemme. Maskussa välimatkat ovat meille lyhyitä, joten yksittäisen ikkunan tai yhden julkisivun ikkunapuitteiden maalaus on järkevä toteuttaa. Usein kannattaa aloittaa huonoimmista ikkunoista ja jatkaa muihin myöhemmin, kun niiden vuoro tulee."
+     "a": "Teemme. Maskussa välimatkat ovat meille lyhyitä, joten yksittäisen ikkunan tai yhden julkisivun ikkunapuitteiden maalaus on järkevä toteuttaa. Usein kannattaa aloittaa huonoimmista ikkunoista ja jatkaa muihin myöhemmin, kun niiden vuoro tulee. Kartoituksessa katsomme silti kaikki ikkunat."
     },
     {
      "q": "Miksi maali kupruilee ikkunapuitteessa?",
@@ -626,7 +626,7 @@
     },
     {
      "q": "Palveletteko myös Lemussa ja Askaisissa?",
-     "a": "Kyllä. Teemme ikkunapuitteiden huoltoa koko Maskussa: keskustassa, Lemussa, Askaisissa, Humikkalassa ja Kurittulassa. Vanhempien maalaistalojen kitatut ikkunat ja meren lähellä olevat kohteet kunnostetaan samalla huolellisuudella kuin taajaman omakotitalot."
+     "a": "Kyllä. Teemme ikkunapuitteiden huoltoa koko Maskussa: keskustassa, Lemussa, Askaisissa, Humikkalassa ja Kurittulassa. Vanhempien maalaistalojen kitatut ikkunat ja meren lähellä olevat kohteet kunnostetaan samalla huolellisuudella kuin taajaman omakotitalot. Matka on kaikkialle lyhyt."
     },
     {
      "q": "Voiko ikkunapuitteita maalata Maskussa keväällä tai syksyllä?",

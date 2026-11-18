@@ -183,7 +183,7 @@
     {
      "id": "alueet-kaarina",
      "h2": "Kaarinan alueet, joilla palvelemme",
-     "html": "<p>Teemme ovihuoltoja kaikkialla Kaarinassa. Piispanristillä ja Hovirinnassa kohteet ovat tyypillisesti omakoti- ja rivitaloja, Littoisissa on paljon eri-ikäisiä pientaloalueita ja Piikkiössä myös väljempää asutusta ja vanhempia taloja. Empossa ja Kuusistossa huollamme ovia niin vakituisissa kodeissa kuin rantojen läheisissä taloissa.</p><p>Kaarina on Turun naapurikaupunki, joten matka tukikohdastamme on lyhyt ja käyntiajat löytyvät joustavasti.</p>"
+     "html": "<p>Teemme ovihuoltoja kaikkialla Kaarinassa. Piispanristillä ja Hovirinnassa kohteet ovat tyypillisesti omakoti- ja rivitaloja, Littoisissa on paljon eri-ikäisiä pientaloalueita ja Piikkiössä myös väljempää asutusta ja vanhempia taloja. Empossa ja Kuusistossa huollamme ovia niin vakituisissa kodeissa kuin rantojen läheisissä taloissa.</p><p>Kaarina on Turun naapurikaupunki, joten matka tukikohdastamme on lyhyt ja käyntiajat löytyvät joustavasti. Jos samalla kadulla on useampi talo, jonka ovet kaipaavat huoltoa, kartoitukset voi sopia peräkkäin samalle päivälle.</p>"
     },
     {
      "id": "taloyhtiot-kaarina",
@@ -253,7 +253,7 @@
     {
      "id": "merkit-naantali",
      "h2": "Mistä huomaat, että ovi kaipaa huoltoa?",
-     "html": "<p>Rannikolla merkit ovat osin samat kuin muualla, mutta muutama kannattaa tarkistaa erikseen:</p><ul><li>Saranoista valuu ruskeita ruostejälkiä karmia pitkin.</li><li>Oven alareunan maali on halkeillut tai puu tuntuu pehmeältä sormella painaessa.</li><li>Myrskyllä ovi vinkuu tai tuuli tuntuu avaimenreiän ja pielen kohdalla.</li><li>Kynnykselle jää sateen jälkeen lammikko.</li><li>Lukko jäykistyy kosteana kautena ja löystyy kuivana.</li><li>Parvekeovi ei pysy tuuletusasennossa tai painike ei lukitu.</li></ul><p>Mitä aikaisemmin näihin tartutaan, sitä pienemmällä työllä selvitään. Syvälle edennyt ruoste tai kostunut alareuna vaatii jo osien vaihtoa.</p>"
+     "html": "<p>Rannikolla merkit ovat osin samat kuin muualla, mutta muutama kannattaa tarkistaa erikseen:</p><ul><li>Saranoista valuu ruskeita ruostejälkiä karmia pitkin.</li><li>Oven alareunan maali on halkeillut tai puu tuntuu pehmeältä sormella painaessa.</li><li>Myrskyllä ovi vinkuu tai tuuli tuntuu avaimenreiän ja pielen kohdalla.</li><li>Kynnykselle jää sateen jälkeen lammikko.</li><li>Lukko jäykistyy kosteana kautena ja löystyy kuivana.</li><li>Parvekeovi ei pysy tuuletusasennossa tai painike ei lukitu.</li></ul><p>Tee kierros sateisen ja tuulisen päivän jälkeen, jolloin jäljet näkyvät parhaiten. Mitä aikaisemmin näihin tartutaan, sitä pienemmällä työllä selvitään. Syvälle edennyt ruoste tai kostunut alareuna vaatii jo osien vaihtoa.</p>"
     },
     {
      "id": "alueet-naantali",
@@ -296,6 +296,10 @@
     {
      "q": "Mihin aikaan vuodesta ovihuolto kannattaa Naantalissa tehdä?",
      "a": "Ovihuollon voi Naantalissa tehdä mihin vuodenaikaan tahansa. Alkusyksy on hyvä hetki, koska ovi saadaan tiiviiksi ennen syysmyrskyjä ja pakkasia. Vapaa-ajan asunnoissa huolto kannattaa ajoittaa kauteen, jolloin paikalla ollaan. Pintojen käsittelyä vaativat työt onnistuvat varmimmin kuivalla ja lämpimällä säällä."
+    },
+    {
+     "q": "Mitä ovihuolto Naantalissa sisältää?",
+     "a": "Ovihuolto Naantalissa sisältää oven käynnin ja saranoiden säädön, metalliosien puhdistuksen ja voitelun, tiivisteiden tarkastuksen ja vaihdon tarvittaessa, kynnyksen tarkastuksen, lukkorungon ja vastaraudan säädön sekä painikkeiden huollon. Merellisen ilmaston vuoksi katsomme erityisen tarkasti oven alareunan, karmin alaosat ja ruostumiselle alttiit kohdat."
     }
    ]
   },
@@ -319,7 +323,7 @@
     {
      "id": "alueet-raisio",
      "h2": "Ovihuolto Raision kaupunginosissa",
-     "html": "<p>Raisio on Turun läntinen naapuri ja lyhyen ajomatkan päässä tukikohdastamme. Teemme ovihuoltoja koko kaupungissa:</p><ul><li><strong>Kaanaa ja Ihala:</strong> omakoti- ja rivitaloalueita, joissa on paljon samanikäisiä ovia.</li><li><strong>Kerttula ja Petäsmäki:</strong> pientaloja ja taloyhtiöitä, joissa parveke- ja terassiovet ovat yleisiä huoltokohteita.</li><li><strong>Vaisaari ja Tikanmaa:</strong> eri vuosikymmenten asuintaloja ja yhtiöitä.</li><li><strong>Kuloinen:</strong> omakotitaloja, joissa on usein myös autotallin tai varaston käyntiovi.</li></ul>"
+     "html": "<p>Raisio on Turun läntinen naapuri ja lyhyen ajomatkan päässä tukikohdastamme. Teemme ovihuoltoja koko kaupungissa:</p><ul><li><strong>Kaanaa ja Ihala:</strong> omakoti- ja rivitaloalueita, joissa on paljon samanikäisiä ovia.</li><li><strong>Kerttula ja Petäsmäki:</strong> pientaloja ja taloyhtiöitä, joissa parveke- ja terassiovet ovat yleisiä huoltokohteita.</li><li><strong>Vaisaari ja Tikanmaa:</strong> eri vuosikymmenten asuintaloja ja yhtiöitä.</li><li><strong>Kuloinen:</strong> omakotitaloja, joissa on usein myös autotallin tai varaston käyntiovi.</li></ul><p>Jos et ole varma, kuuluuko osoitteesi alueeseemme, laita viesti. Naapurikunnan rajalla olevat kohteet hoituvat yhtä lailla.</p>"
     },
     {
      "id": "yleiset-viat-raisio",
@@ -352,7 +356,7 @@
     },
     {
      "q": "Millä alueilla Raisiossa teette ovihuoltoja?",
-     "a": "Teemme ovihuoltoja koko Raisiossa, muun muassa Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Raisio on lähellä tukikohtaamme, joten kartoituskäynnit ja työpäivät on helppo sovittaa aikatauluusi."
+     "a": "Teemme ovihuoltoja koko Raisiossa, muun muassa Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Raisio on lähellä tukikohtaamme, joten kartoituskäynnit ja työpäivät on helppo sovittaa aikatauluusi. Palvelemme sekä omakotitaloja että rivitalo- ja kerrostaloyhtiöitä."
     },
     {
      "q": "Miksi ovi kolisee tuulella?",
@@ -374,7 +378,7 @@
     {
      "id": "saaristo-ovet",
      "h2": "Mikä tekee ovihuollosta Paraisilla erilaista?",
-     "html": "<p>Parainen on saaristokaupunki, ja se määrää tahdin. Osa kohteista on keskustan tuntumassa siltojen takana, osa yhden tai useamman lautan päässä. Ovien kannalta olennaista on ilmasto: merellinen ilma on kosteaa ympäri vuoden ja tuuli pääsee puhaltamaan vapaasti.</p><p>Rakennuskannassa on paljon vanhaa puutaloa. Niiden ovet ovat usein käsityötä, eikä karmi ole luotisuorassa. Uudemmissa omakotitaloissa ovet ovat tehdasvalmisteisia, mutta sää kuluttaa niitäkin: tiivisteet haurastuvat, lukot jäykistyvät ja oven alareuna kärsii roiskevedestä.</p><p>Kolmas ryhmä ovat vapaa-ajan asunnot. Niissä ovi voi olla kuukausia koskematta, ja juuri se on mekanismeille pahinta.</p>"
+     "html": "<p>Parainen on saaristokaupunki, ja se määrää tahdin. Osa kohteista on keskustan tuntumassa siltojen takana, osa yhden tai useamman lautan päässä. Ovien kannalta olennaista on ilmasto: merellinen ilma on kosteaa ympäri vuoden ja tuuli pääsee puhaltamaan vapaasti.</p><p>Rakennuskannassa on paljon vanhaa puutaloa. Niiden ovet ovat usein käsityötä, eikä karmi ole luotisuorassa. Uudemmissa omakotitaloissa ovet ovat tehdasvalmisteisia, mutta sää kuluttaa niitäkin: tiivisteet haurastuvat, lukot jäykistyvät ja oven alareuna kärsii roiskevedestä.</p><p>Kolmas ryhmä ovat vapaa-ajan asunnot. Niissä ovi voi olla kuukausia koskematta, ja juuri se on mekanismeille pahinta. Voiteluaine kuivuu, kosteus pääsee lukkoon ja saranoihin, eikä kukaan ole huomaamassa, kun ovi alkaa ottaa kiinni.</p><p>Huollon tavoite on sama kaikissa kolmessa: ovi, joka aukeaa ja sulkeutuu ongelmitta säästä riippumatta ja pitää tuulen ulkona.</p>"
     },
     {
      "id": "viat-parainen",
@@ -399,7 +403,7 @@
     {
      "id": "vahennys-parainen",
      "h2": "Ajankohta ja kotitalousvähennys",
-     "html": "<p>Saaristossa ovihuolto ajoittuu luontevasti kevääseen, kun mökki avataan, tai alkusyksyyn ennen kuin paikka suljetaan. Vakituisissa asunnoissa ajankohdan voi valita vapaammin.</p><p>Kotitalousvähennystä voi yleensä hakea ovihuollon työn osuudesta sekä vakituisessa että vapaa-ajan asunnossa. Vähennys on 35 % työstä, omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta. Palvelun yleiskuvaus on <a href=\"/ovihuolto/\">ovihuollon pääsivulla</a>.</p>"
+     "html": "<p>Saaristossa ovihuolto ajoittuu luontevasti kevääseen, kun mökki avataan, tai alkusyksyyn ennen kuin paikka suljetaan. Vakituisissa asunnoissa ajankohdan voi valita vapaammin. Talvikaudella lauttojen aikataulut ja sää voivat rajoittaa kauimmaisiin saariin pääsyä, joten sinne suuntautuvat työt kannattaa sopia hyvissä ajoin sulan veden aikaan.</p><p>Kotitalousvähennystä voi yleensä hakea ovihuollon työn osuudesta sekä vakituisessa että vapaa-ajan asunnossa. Vähennys on 35 % työstä, omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa. Tarkista ajantasaiset ehdot Verohallinnosta. Palvelun yleiskuvaus on <a href=\"/ovihuolto/\">ovihuollon pääsivulla</a>.</p>"
     }
    ],
    "faq": [
@@ -413,7 +417,7 @@
     },
     {
      "q": "Onko kartoituskäynti maksuton myös lauttamatkan päässä?",
-     "a": "Kartoituskäynti on maksuton myös Paraisten saaristossa. Koska matkaan kuluu aikaa, pyydämme usein etukäteen valokuvia ovista ja yhdistämme saman suunnan käynnit samalle päivälle. Kartoituksen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen."
+     "a": "Kartoituskäynti on maksuton myös Paraisten saaristossa. Koska matkaan kuluu aikaa, pyydämme usein etukäteen valokuvia ovista ja yhdistämme saman suunnan käynnit samalle päivälle. Kartoituksen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen, jossa työt on eritelty ovittain."
     },
     {
      "q": "Voitteko huoltaa oven, jos en itse pääse paikalle?",
@@ -449,7 +453,12 @@
     {
      "id": "oireet-paimio",
      "h2": "Mistä tiedät, että ovihuolto on tarpeen?",
-     "html": "<p>Kysy itseltäsi nämä kysymykset:</p><ul><li>Pitääkö ovea vetää kahvasta ylöspäin, jotta se menee kiinni?</li><li>Jääkö oven ja karmin väliin ylhäällä leveämpi rako kuin alhaalla?</li><li>Tuntuuko kynnyksen kohdalla kylmää, kun pidät kättä lattian rajassa?</li><li>Kuuluuko ulkoa enemmän ääntä kuin ennen?</li><li>Onko kynnyksen pinta kulunut puulle tai irti alustastaan?</li><li>Jääkö avain jumiin tai kääntyykö se vain tietyssä asennossa?</li></ul><p>Jos vastaat yhteenkin kyllä, ovessa on säädettävää. Usea kyllä samassa ovessa tarkoittaa, että huolto kannattaa tehdä kokonaisena eikä paikata yhtä oiretta kerrallaan.</p>"
+     "html": "<p>Kysy itseltäsi nämä kysymykset:</p><ul><li>Pitääkö ovea vetää kahvasta ylöspäin, jotta se menee kiinni?</li><li>Jääkö oven ja karmin väliin ylhäällä leveämpi rako kuin alhaalla?</li><li>Tuntuuko kynnyksen kohdalla kylmää, kun pidät kättä lattian rajassa?</li><li>Kuuluuko ulkoa enemmän ääntä kuin ennen?</li><li>Onko kynnyksen pinta kulunut puulle tai irti alustastaan?</li><li>Jääkö avain jumiin tai kääntyykö se vain tietyssä asennossa?</li></ul><p>Käy kysymykset läpi jokaisen ulos johtavan oven kohdalla, myös kellarin ja varaston. Jos vastaat yhteenkin kyllä, ovessa on säädettävää. Usea kyllä samassa ovessa tarkoittaa, että huolto kannattaa tehdä kokonaisena eikä paikata yhtä oiretta kerrallaan.</p>"
+    },
+    {
+     "id": "hyodyt-paimio",
+     "h2": "Mitä ovihuollolla saavutetaan?",
+     "html": "<p>Tavoite on ovi, jota ei tarvitse ajatella. Se aukeaa kevyesti, sulkeutuu itsestään loppuun asti ja lukittuu yhdellä avaimen käännöllä.</p><p>Samalla paranee asumismukavuus. Kun kynnyksen ja pielien raot on saatu kiinni, tuulikaapin ja eteisen lämpötila tasaantuu ja lattia tuntuu jalan alla lämpimämmältä. Tiiviimpi ovi voi pienentää lämmityskuluja, ja valtatien tai pihatien äänet kuuluvat sisälle hiljempaa.</p><p>Kolmas hyöty on huomaamattomin: ovi kestää pidempään. Hankaava ovi kuluttaa maalipintaa ja paljastaa puun kosteudelle, ja väkisin suljettava lukko kuluu loppuun ennen aikojaan. Säädetty ovi säästää itse itseään.</p>"
     },
     {
      "id": "alueet-paimio",
@@ -487,6 +496,10 @@
     {
      "q": "Milloin ovi kannattaa vaihtaa eikä huoltaa?",
      "a": "Ovi kannattaa vaihtaa, jos sen alaosa tai karmi on lahonnut läpi, ovilevy on vääntynyt pysyvästi tai pinta on irronnut rungosta. Myös ovi, jonka lukkoon ei saa varaosia, voi olla järkevämpi uusia. Arvioimme tämän Paimiossa maksuttomalla kartoituskäynnillä ja sanomme suosituksemme suoraan."
+    },
+    {
+     "q": "Kuinka kauan ovihuolto Paimiossa kestää?",
+     "a": "Ovihuollon kesto Paimiossa riippuu ovien määrästä ja kunnosta. Yksi ovi, jossa riittää säätö ja voitelu, valmistuu nopeasti. Jos samalla vaihdetaan tiivisteet ja korjataan kynnystä usealle ovelle, työhön kuluu enemmän aikaa. Kerromme arvion kartoituskäynnin jälkeen tarjouksessa."
     }
    ]
   },
@@ -494,7 +507,7 @@
    "title": "Ovihuolto Lieto – omakotitalon ovet käyntiin ja tiiviiksi",
    "meta": "Ovihuolto Liedossa: ulko-ovien, terassiovien ja autotallin käyntiovien säätö, tiivisteet ja lukitus 1980–2000-lukujen taloihin. Maksuton kartoituskäynti.",
    "h1": "Ovihuolto Liedossa",
-   "lead": "Lieto on kasvava omakotitalokunta, jossa suuri osa taloista on 1980–2000-luvuilta. Näissä taloissa ovet ovat parhaassa huoltoiässä: runko on hyvä, mutta tiivisteet, saranat ja lukitus ovat tehneet jo paljon työtä. Ovihuolto Liedossa tuo oven takaisin siihen kuntoon, jossa se oli asennuspäivänä.",
+   "lead": "Lieto on kasvava omakotitalokunta, jossa suuri osa taloista on 1980–2000-luvuilta. Näissä taloissa ovet ovat parhaassa huoltoiässä: runko on hyvä, mutta tiivisteet, saranat ja lukitus ovat tehneet jo paljon työtä. Ovihuolto Liedossa tuo oven käynnin ja tiiviyden lähelle sitä, mitä ne olivat uutena.",
    "short_answer": "Ovihuolto Liedossa on suunnattu omakotitaloille, rivitaloille ja maaseudun kiinteistöille. Huollamme ulko-ovet, terassiovet, parvekeovet sekä autotallin ja varaston käyntiovet. Säädämme käynnin ja saranat, voitelemme, tarkistamme ja vaihdamme tiivisteet, katsomme kynnyksen ja kynnystiivisteen sekä säädämme lukkorungon vastaraudan ja painikkeet. Lieton 1980–2000-lukujen taloissa tyypillisiä ovat litistyneet tiivisteet, talvella kuroutuva pääovi ja terassiovi, jonka lukitus on raskas. Palvelemme keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Kartoitus on maksuton ja tarjous kirjallinen.",
    "sections": [
     {
@@ -523,6 +536,11 @@
      "html": "<p>Lähetä yhteydenotto, niin vastaamme viimeistään seuraavana arkipäivänä. Sovimme maksuttoman kartoituskäynnin, joka kestää tavallisessa omakotitalossa lyhyen tovin: käymme jokaisen oven läpi ja kirjaamme havainnot.</p><p>Saat kirjallisen tarjouksen, joka ei velvoita mihinkään. Kun työ sovitaan, tulemme paikalle sovittuna päivänä tarvikkeet mukana. Lopuksi suljet ja avaat jokaisen oven itse, ja kerromme, mitä kannattaa seurata.</p><p>Koko palvelun kuvaus on <a href=\"/ovihuolto/\">ovihuollon sivulla</a>. Samanikäisissä taloissa myös ikkunoiden tiivisteet ovat usein tulleet tiensä päähän, joten katso myös <a href=\"/ikkunoiden-tiivistys-lieto/\">ikkunoiden tiivistys Liedossa</a> ja <a href=\"/ikkunahuolto-lieto/\">ikkunahuolto Liedossa</a>. Pelkkään tiivisteiden uusimiseen sopii <a href=\"/ovien-tiivistys-lieto/\">ovien tiivistys</a>.</p>"
     },
     {
+     "id": "ei-kannata-lieto",
+     "h2": "Entä jos ovea ei kannata huoltaa?",
+     "html": "<p>Useimmat Liedon omakotitalojen ovet ovat huollettavissa, mutta poikkeuksia on. Vaihtoa on syytä harkita, jos oven pintalevy kupruilee tai on irti rungosta, lasiaukon umpiolasi on sameutunut sisältä tai karmin alapää on pehmennyt lahosta.</p><p>Maaseudun vanhoissa taloissa Tarvasjoen ja Yliskulman suunnalla tulee joskus vastaan ovi, jonka alaosa on ollut vuosia roiskeveden armoilla. Silloin punnitaan, riittääkö korjaus vai onko uusi ovi järkevämpi.</p><p>Kerromme arviomme kartoituksessa suoraan. Emme tarjoa huoltoa oveen, jota se ei auta. Jos taas ikkunoissa on vastaavia vaurioita, niihin löytyy apu <a href=\"/ikkunoiden-korjaus-lieto/\">ikkunoiden korjauksesta</a>.</p>"
+    },
+    {
      "id": "vahennys-lieto",
      "h2": "Kotitalousvähennys pienentää omaa osuutta",
      "html": "<p>Omakotitalon ovihuolto on kunnossapitoa, ja sen työn osuudesta voi yleensä hakea kotitalousvähennystä. Vähennys on 35 % työstä. Omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa, ja kaksi aikuista voi kumpikin hakea vähennystä omasta osuudestaan. Tarkista ajantasaiset ehdot Verohallinnosta.</p><p>Tarjouksessa ja laskussa työ ja tarvikkeet ovat omilla riveillään, joten vähennyksen hakeminen on helppoa.</p>"
@@ -539,7 +557,7 @@
     },
     {
      "q": "Huollatteko ovia myös Tarvasjoella ja Yliskulmalla?",
-     "a": "Kyllä. Teemme ovihuoltoja koko Liedon alueella: keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Maaseudun kohteissa huollamme samalla käynnillä myös ulkorakennusten käyntiovet, jos niin sovitaan kartoituksessa."
+     "a": "Kyllä. Teemme ovihuoltoja koko Liedon alueella: keskustassa, Ilmarisissa, Loukinaisissa, Littoisissa, Tarvasjoella ja Yliskulmalla. Maaseudun kohteissa huollamme samalla käynnillä myös ulkorakennusten käyntiovet, jos niin sovitaan kartoituksessa. Lieto on Turun naapurikunta, joten matkat pysyvät lyhyinä."
     },
     {
      "q": "Voiko ovihuollon tehdä talvella Liedossa?",
@@ -548,6 +566,10 @@
     {
      "q": "Saako Liedossa tehdystä ovihuollosta kotitalousvähennyksen?",
      "a": "Liedossa omassa kodissa teetetystä ovihuollosta voi yleensä hakea kotitalousvähennystä. Vähennys on 35 % työn osuudesta, omavastuu on 150 € ja enimmäismäärä 1 600 € henkilöä kohden vuodessa. Tarvikkeista vähennystä ei saa. Tarkista ajantasaiset ehdot Verohallinnosta."
+    },
+    {
+     "q": "Mitä ovihuolto Liedossa sisältää?",
+     "a": "Ovihuolto Liedossa sisältää käynnin ja saranoiden säädön, voitelun, tiivisteiden tarkastuksen ja vaihdon tarvittaessa, kynnyksen ja kynnystiivisteen tarkastuksen, lukkorungon ja vastaraudan säädön sekä painikkeiden huollon. Arvioimme myös oven ja karmin pintojen kunnon. Huollamme ulko-ovet, terassi- ja parvekeovet sekä autotallin ja varaston käyntiovet."
     }
    ]
   },
@@ -571,7 +593,12 @@
     {
      "id": "syyt-masku",
      "h2": "Ovi laahaa tai vetää: mistä se johtuu?",
-     "html": "<p>Sama oire voi johtua eri syistä, ja väärä korjaus pahentaa tilannetta. Kolme tavallista esimerkkiä:</p><p><strong>Ovi hankaa kynnykseen lukon puolelta.</strong> Useimmiten yläsarana on antanut periksi. Ruuvit ovat löystyneet tai ruuvinreiät väljentyneet. Kiinnitys korjataan ja ovi nostetaan takaisin, eikä alareunaa tarvitse höylätä.</p><p><strong>Ovi vetää ylä- ja alakulmasta vain kovalla pakkasella.</strong> Tämä on kuroutumista. Ovi käyristyy lämpötilaeron takia ja suoristuu, kun sää lauhtuu. Säädöllä ja joustavammilla tiivisteillä kulmat saadaan yleensä tiiviimmiksi.</p><p><strong>Ovi vetää koko lukon puolen matkalta.</strong> Silloin ovi ei painu tiivisteeseen tarpeeksi. Vastarautaa säätämällä ovi saadaan sulkeutumaan tiukemmin.</p><p>Kartoituksessa näytämme, mikä näistä omassa ovessasi on kyseessä.</p>"
+     "html": "<p>Sama oire voi johtua eri syistä, ja väärä korjaus pahentaa tilannetta. Kolme tavallista esimerkkiä:</p><p><strong>Ovi hankaa kynnykseen lukon puolelta.</strong> Useimmiten yläsarana on antanut periksi. Ruuvit ovat löystyneet tai ruuvinreiät väljentyneet. Kiinnitys korjataan ja ovi nostetaan takaisin, eikä alareunaa tarvitse höylätä.</p><p><strong>Ovi vetää ylä- ja alakulmasta vain kovalla pakkasella.</strong> Tämä on kuroutumista. Ovi käyristyy lämpötilaeron takia ja suoristuu, kun sää lauhtuu. Säädöllä ja joustavammilla tiivisteillä kulmat saadaan yleensä tiiviimmiksi.</p><p><strong>Ovi vetää koko lukon puolen matkalta.</strong> Silloin ovi ei painu tiivisteeseen tarpeeksi. Vastarautaa säätämällä ovi saadaan sulkeutumaan tiukemmin.</p><p>Kartoituksessa näytämme, mikä näistä omassa ovessasi on kyseessä. Joskus syitä on kaksi yhtä aikaa, ja silloin ne korjataan oikeassa järjestyksessä: ensin oven asento, sitten sulkeutumisen tiukkuus ja viimeisenä tiivisteet.</p>"
+    },
+    {
+     "id": "ajankohta-masku",
+     "h2": "Milloin ovihuolto kannattaa tehdä?",
+     "html": "<p>Paras hetki on silloin, kun vika alkaa häiritä. Ovihuolto ei ole sidottu vuodenaikaan, koska suurin osa työstä on säätämistä, voitelua ja osien vaihtoa.</p><p>Vuodenajoilla on silti omat etunsa. Syksyllä ovi ehditään saada tiiviiksi ennen lämmityskauden kylmintä jaksoa. Talvella nähdään suoraan, mistä kohdista ovi vuotaa ja kuinka paljon se pakkasella kuroutuu. Keväällä ja kesällä on helpointa tehdä työt, joissa oven alareunan tai kynnyksen pintaa käsitellään, koska puu on kuivaa.</p><p>Maskussa voimme tarvittaessa tulla katsomaan ovea juuri sellaisella säällä, jolla vika ilmenee. Se on lähityön etu: jos ovi oireilee vain kovalla pakkasella tai rankkasateella, kerro siitä, niin ajoitamme kartoituksen sen mukaan mahdollisuuksien rajoissa.</p>"
     },
     {
      "id": "alueet-masku",
@@ -596,11 +623,11 @@
     },
     {
      "q": "Millä alueilla Maskussa teette ovihuoltoja?",
-     "a": "Teemme ovihuoltoja koko Maskun alueella: Maskun keskustassa, Lemussa, Askaisissa, Humikkalassa ja Kurittulassa. Koska tukikohtamme on Maskussa, kaikki kunnan osat ovat lyhyen ajomatkan päässä ja kartoituskäynnit on helppo sopia."
+     "a": "Teemme ovihuoltoja koko Maskun alueella: Maskun keskustassa, Lemussa, Askaisissa, Humikkalassa ja Kurittulassa. Koska tukikohtamme on Maskussa, kaikki kunnan osat ovat lyhyen ajomatkan päässä ja kartoituskäynnit on helppo sopia. Huollamme sekä taajamien omakotitalot että kylien pihapiirit ulkorakennuksineen."
     },
     {
      "q": "Kuinka pian saan vastauksen yhteydenottoon?",
-     "a": "Vastaamme yhteydenottoihin viimeistään seuraavana arkipäivänä. Sen jälkeen sovimme maksuttoman kartoituskäynnin sinulle sopivaan aikaan. Maskussa käyntiajat järjestyvät yleensä joustavasti, koska toimimme samalla paikkakunnalla. Kartoituksen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen ovihuollosta."
+     "a": "Vastaamme yhteydenottoihin viimeistään seuraavana arkipäivänä. Sen jälkeen sovimme maksuttoman kartoituskäynnin sinulle sopivaan aikaan. Maskussa käyntiajat järjestyvät yleensä joustavasti, koska toimimme samalla paikkakunnalla ja matkat ovat lyhyitä. Kartoituksen jälkeen saat kirjallisen, sitoumuksettoman tarjouksen ovihuollosta."
     },
     {
      "q": "Pitääkö laahaava ovi höylätä?",
@@ -609,6 +636,10 @@
     {
      "q": "Huollatteko Maskussa myös autotallin käyntiovet?",
      "a": "Kyllä. Ovihuolto Maskussa kattaa ulko-ovien, parvekeovien ja terassiovien lisäksi autotallin ja varaston käyntiovet. Säädämme niiden käynnin ja saranat, huollamme lukituksen ja tarkistamme tiivisteet. Lämpimässä autotallissa tiivis käyntiovi voi pienentää lämmityskuluja."
+    },
+    {
+     "q": "Mitä ovihuolto Maskussa sisältää?",
+     "a": "Ovihuolto Maskussa sisältää oven käynnin ja saranoiden säädön, voitelun, tiivisteiden tarkastuksen ja tarvittaessa vaihdon, kynnyksen ja kynnystiivisteen tarkastuksen, lukkorungon ja vastaraudan säädön sekä painikkeiden huollon. Selvitämme myös, miksi ovi laahaa tai kuroutuu, ja arvioimme pintojen kunnon. Lopuksi käymme työn läpi kanssasi."
     }
    ]
   }
