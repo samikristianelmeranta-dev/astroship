@@ -1,13 +1,13 @@
-<title>TiivisTupa-tarjouslaskuri</title>
+<title>Nordic Ikkunat & Ovet tarjouslaskuri</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 /* Layout: vasemmalla syöttörivit, oikealla pysyvä erittely; puhelimella allekkain */
 :root {
-  --bg: #eaf1f2; --paper: #ffffff; --ink: #14262b; --muted: #4d6369; --line: #cbd9dc;
-  --petrol: #0f4c5c; --petrol-deep: #0a3540; --on-dark: #eaf4f5;
-  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #fff8e6; --field: #ffffff; --field-line: #9fb3b8;
+  --bg: #ebf1f3; --paper: #ffffff; --ink: #16303b; --muted: #4d6369; --line: #cbd9dc;
+  --petrol: #1d5e79; --petrol-deep: #16303b; --on-dark: #eaf4f5;
+  --amber: #ffd866; --amber-ink: #16303b; --row-on: #fff8e6; --field: #ffffff; --field-line: #9fb3b8;
   --ok: #2f7d4a;
   --display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
   --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
@@ -15,12 +15,12 @@
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #0c1a1e; --paper: #132830; --ink: #e6f1f2; --muted: #9db6bb; --line: #2a444c;
   --petrol: #17596b; --petrol-deep: #0a2c35; --on-dark: #eaf4f5;
-  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
+  --amber: #ffd866; --amber-ink: #16303b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
   --ok: #6fcf8f; color-scheme: dark } }
 :root[data-theme="dark"] {
   --bg: #0c1a1e; --paper: #132830; --ink: #e6f1f2; --muted: #9db6bb; --line: #2a444c;
   --petrol: #17596b; --petrol-deep: #0a2c35; --on-dark: #eaf4f5;
-  --amber: #f5ad1b; --amber-ink: #14262b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
+  --amber: #ffd866; --amber-ink: #16303b; --row-on: #2b2a17; --field: #0e2027; --field-line: #44626a;
   --ok: #6fcf8f; color-scheme: dark }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.5 var(--body); }
@@ -42,6 +42,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-
 .rows { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
 .row { display: grid; grid-template-columns: 26px minmax(0, 1fr) 62px 68px 86px 86px 98px 30px; gap: 8px; align-items: center; padding: 8px 6px; border-bottom: 1px solid var(--line); }
 .row.on { background: var(--row-on); }
+.row.group { display: block; padding: 14px 6px 6px; font: 700 0.95rem/1.2 var(--display); color: var(--petrol); border-bottom: 2px solid var(--petrol); }
 .row.head { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-block: 6px; }
 .row.head span.r { text-align: right; }
 .row input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--petrol); margin: 0; }
@@ -74,7 +75,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-
 .btn[disabled] { opacity: 0.55; cursor: default; }
 .check { display: flex; gap: 8px; align-items: center; font-weight: 600; }
 .check input { width: 20px; height: 20px; accent-color: var(--petrol); margin: 0; }
-.ktv { border: 1px solid var(--line); border-left: 5px solid var(--amber); padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-variant-numeric: tabular-nums; }
+.ktv { border: 1px solid var(--line); border-left: 5px solid var(--petrol); padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; font-variant-numeric: tabular-nums; }
 .ktv .line { display: flex; justify-content: space-between; gap: 12px; }
 .ktv .line.big { font-weight: 700; font-size: 1.08rem; }
 .ktv small { color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
@@ -94,8 +95,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 </style>
 
 <header class="top"><div class="wrap">
-  <h1>Tiivis<b>Tupa</b> · tarjouslaskuri</h1>
-  <p>Ikkunoiden ja ovien huollot ja korjaukset</p>
+  <h1>Nordic <b>Ikkunat & Ovet</b> · tarjouslaskuri</h1>
+  <p>Ikkunat, ovet, asennukset, huollot ja korjaukset</p>
 </div></header>
 
 <div class="wrap grid">
@@ -114,7 +115,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
     <section class="panel" aria-labelledby="h-tyot">
       <h2 id="h-tyot">Toimenpiteet</h2>
-      <p class="hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kirjoita kohtaan "Josta tarvikkeet", paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan.</p>
+      <p class="hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kirjoita kohtaan "Josta tarvikkeet", paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan. Ikkunat ja ovet ovat tuotteita, joista vähennystä ei saa.</p>
       <div class="rows" id="rows">
         <div class="row head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Josta tarvikkeet</span><span class="r">Yhteensä</span><span></span></div>
       </div>
@@ -140,7 +141,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
         <label class="f" for="ktv-hakijat">Vähennyksen hakijoita
           <select id="ktv-hakijat"><option value="1">1 henkilö</option><option value="2">2 henkilöä (esim. puolisot)</option></select></label>
       </div>
-      <p class="hint">Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Työn osuus on yhteishinta ilman rivien tarvikkeita ja yllä olevia kuluja. Kahdella hakijalla työ jaetaan tasan. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.</p>
+      <p class="hint">Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Työn osuus on yhteishinta ilman tuotteita, rivien tarvikkeita ja yllä olevia kuluja. Kahdella hakijalla työ jaetaan tasan. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.</p>
     </section>
 
     <section class="panel" aria-labelledby="h-lisa">
@@ -173,7 +174,11 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 <script>
 (function () {
   var DEFAULTS = [
-    { id: 'tiiv-ikk', name: 'Ikkunoiden tiivistys', unit: 'kpl', from: 'ikkunat' },
+    { id: 'tuote-ikk', name: 'Ikkunat', unit: 'kpl', from: 'ikkunat', product: true, group: 'Tuotteet ja asennus' },
+    { id: 'asennus-ikk', name: 'Ikkunoiden asennus', unit: 'kpl', from: 'ikkunat' },
+    { id: 'tuote-ovi', name: 'Ovet', unit: 'kpl', from: 'ovet', product: true },
+    { id: 'asennus-ovi', name: 'Ovien asennus', unit: 'kpl', from: 'ovet' },
+    { id: 'tiiv-ikk', name: 'Ikkunoiden tiivistys', unit: 'kpl', from: 'ikkunat', group: 'Huolto ja korjaus' },
     { id: 'tiiv-ovi', name: 'Ovien tiivistys', unit: 'kpl', from: 'ovet' },
     { id: 'saato-ikk', name: 'Ikkunoiden säätö', unit: 'kpl', from: 'ikkunat' },
     { id: 'saato-ovi', name: 'Ovien säätö', unit: 'kpl', from: 'ovet' },
@@ -185,9 +190,9 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   ];
   var UNITS = ['kpl', 'm', 'm²', 'h', 'erä'];
   var KEY = 'tt-tarjous-hinnat-v1';
-  var COMPANY = 'TiivisTupa · Nordic Ikkunat & Ovet Oy · Y-tunnus 3653098-6 · 045 7832 5070 · info@ikkunakauppias.fi';
+  var COMPANY = 'Nordic Ikkunat & Ovet Oy · Y-tunnus 3653098-6 · 045 7832 5070 · info@ikkunakauppias.fi · ikkunakauppias.fi';
   var KTV_NOTE = 'Arvio: 35 % työn osuudesta, omavastuu 150 € ja enintään 1 600 € henkilöä kohden vuodessa. Lopullinen kotitalousvähennys määräytyy verottajan ohjeen mukaisesti.';
-  var MATERIALS_NOTE = 'Työvaiheiden hinnat sisältävät tarvikkeet.';
+  var MATERIALS_NOTE = 'Asennusten ja työvaiheiden hinnat sisältävät tarvikkeet.';
   var $ = function (id) { return document.getElementById(id); };
   var rowsEl = $('rows');
   var rows = [];
@@ -223,6 +228,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   function addRow(def, saved) {
     var custom = !def.id;
     var id = def.id || 'muu-' + (++customSeq);
+    if (def.group) { var g = document.createElement('div'); g.className = 'row group'; g.textContent = def.group; rowsEl.appendChild(g); }
     var el = document.createElement('div');
     el.className = 'row';
     var unitOpts = UNITS.map(function (u) { return '<option>' + u + '</option>'; }).join('');
@@ -239,7 +245,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       (custom ? '<button type="button" class="del" aria-label="Poista rivi">×</button>' : '<span></span>');
     rowsEl.appendChild(el);
     var r = {
-      id: id, custom: custom, el: el, from: def.from,
+      id: id, custom: custom, el: el, from: def.from, product: !!def.product,
       on: el.querySelector('input[type="checkbox"]'),
       nameEl: custom ? el.querySelector('input.name') : null, label: def.name,
       qty: el.querySelector('#qty-' + id), unit: el.querySelector('select'),
@@ -249,6 +255,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     r.unit.value = (saved && saved.unit) || def.unit || 'kpl';
     r.price.value = saved && saved.price !== undefined && saved.price !== '' ? saved.price : (def.price !== undefined ? String(def.price) : '');
     r.mat.value = saved && saved.mat ? saved.mat : '';
+    if (r.product) { r.mat.value = ''; r.mat.disabled = true; r.mat.placeholder = 'tuote'; r.mat.setAttribute('aria-label', 'Tuote, ei työtä'); }
     r.on.addEventListener('change', function () {
       if (r.on.checked && r.qty.value === '' && r.from) {
         var c = $(r.from).value;
@@ -271,8 +278,8 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
 
   function selected() {
     return rows.filter(function (r) { return r.on.checked; }).map(function (r) {
-      var q = num(r.qty.value), p = num(r.price.value), m = Math.min(num(r.mat.value), p);
-      return { name: r.custom ? (r.nameEl.value.trim() || 'Muu työ') : r.label, qty: q, unit: r.unit.value, price: p, total: q * p, mat: m, matTotal: q * m };
+      var q = num(r.qty.value), p = num(r.price.value), m = r.product ? p : Math.min(num(r.mat.value), p);
+      return { name: r.custom ? (r.nameEl.value.trim() || 'Muu työ') : r.label, qty: q, unit: r.unit.value, price: p, total: q * p, mat: m, matTotal: q * m, product: r.product };
     });
   }
 
@@ -319,7 +326,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     } else {
       var h = '<table>';
       c.items.forEach(function (i) {
-        h += '<tr><td>' + esc(i.name) + '<span class="detail">' + qtyText(i.qty) + ' ' + esc(i.unit) + ' × ' + eur(i.price) + (i.matTotal ? ', josta tarvikkeet ' + eur(i.matTotal) : '') + '</span></td><td>' + eur(i.total) + '</td></tr>';
+        h += '<tr><td>' + esc(i.name) + '<span class="detail">' + qtyText(i.qty) + ' ' + esc(i.unit) + ' × ' + eur(i.price) + (i.matTotal && !i.product ? ', josta tarvikkeet ' + eur(i.matTotal) : '') + '</span></td><td>' + eur(i.total) + '</td></tr>';
       });
       h += '<tr class="sub"><td>Veroton hinta</td><td>' + eur(c.net) + '</td></tr>';
       h += '<tr class="sub"><td>ALV ' + qtyText(c.rate * 100) + ' %</td><td>' + eur(c.vat) + '</td></tr>';
@@ -327,7 +334,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       h += '<p class="hint">' + MATERIALS_NOTE + '</p>';
       if (c.kv) {
         h += '<div class="ktv">' +
-          '<div class="line"><span>Tarvikkeiden osuus</span><span>' + eur(c.kv.materials) + '</span></div>' +
+          '<div class="line"><span>Tuotteiden ja tarvikkeiden osuus</span><span>' + eur(c.kv.materials) + '</span></div>' +
           (c.kv.other ? '<div class="line"><span>Matka- ja muut kulut</span><span>' + eur(c.kv.other) + '</span></div>' : '') +
           '<div class="line"><span>Työn osuus</span><span>' + eur(c.kv.work) + '</span></div>' +
           '<div class="line big"><span>' + ktvLabel(c.kv) + '</span><span>' + eur(c.kv.ded) + '</span></div>' +
@@ -343,7 +350,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   }
 
   function text(c) {
-    var L = ['TARJOUS – TiivisTupa', (c.numero ? 'Tarjous nro ' + c.numero + ' · ' : '') + c.date, ''];
+    var L = ['TARJOUS – Nordic Ikkunat & Ovet Oy', (c.numero ? 'Tarjous nro ' + c.numero + ' · ' : '') + c.date, ''];
     if (c.asiakas) { L.push('Asiakas: ' + c.asiakas); }
     if (c.kohde) { L.push('Kohde: ' + c.kohde); }
     if (siteLine(c)) { L.push('Kohteessa: ' + siteLine(c)); }
@@ -360,7 +367,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     L.push(MATERIALS_NOTE);
     if (c.kv) {
       L.push('');
-      L.push('Tarvikkeiden osuus: ' + eur(c.kv.materials));
+      L.push('Tuotteiden ja tarvikkeiden osuus: ' + eur(c.kv.materials));
       if (c.kv.other) { L.push('Matka- ja muut kulut: ' + eur(c.kv.other)); }
       L.push('Työn osuus: ' + eur(c.kv.work));
       L.push(ktvLabel(c.kv) + ': ' + eur(c.kv.ded));
@@ -389,10 +396,10 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     }
     function need(h) { if (y + h > H - 22) { footer(); doc.addPage(); y = 20; } }
 
-    doc.setFillColor(10, 53, 64); doc.rect(0, 0, W, 30, 'F');
-    doc.setFillColor(245, 173, 27); doc.rect(0, 30, W, 1.6, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(22); doc.setTextColor(255, 255, 255); T('Tiivis', L, 19);
-    doc.setTextColor(245, 173, 27); T('Tupa', L + doc.getTextWidth('Tiivis'), 19);
+    doc.setFillColor(22, 48, 59); doc.rect(0, 0, W, 30, 'F');
+    doc.setFillColor(255, 216, 102); doc.rect(0, 30, W, 1.6, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(18); doc.setTextColor(255, 255, 255); T('Nordic ', L, 18.5);
+    doc.setTextColor(255, 216, 102); T('Ikkunat & Ovet Oy', L + doc.getTextWidth('Nordic '), 18.5);
     doc.setTextColor(255, 255, 255); doc.setFontSize(16); T('TARJOUS', R, 16, { align: 'right' });
     doc.setFont('helvetica', 'normal'); doc.setFontSize(10); T((c.numero ? 'Nro ' + c.numero + '  ·  ' : '') + c.date, R, 23, { align: 'right' });
 
@@ -436,9 +443,9 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       var bh = 33.5 + (c.kv.other ? 6.5 : 0) + note.length * 4;
       need(bh + 6);
       doc.setDrawColor(203, 217, 220); doc.rect(L, y, R - L, bh);
-      doc.setFillColor(245, 173, 27); doc.rect(L, y, 1.6, bh, 'F');
+      doc.setFillColor(29, 94, 121); doc.rect(L, y, 1.6, bh, 'F');
       var by = y + 7; doc.setFontSize(10.5); doc.setTextColor(20, 38, 43);
-      T('Tarvikkeiden osuus', L + 6, by); T(eur(c.kv.materials), R - 4, by, { align: 'right' }); by += 6.5;
+      T('Tuotteiden ja tarvikkeiden osuus', L + 6, by); T(eur(c.kv.materials), R - 4, by, { align: 'right' }); by += 6.5;
       if (c.kv.other) { T('Matka- ja muut kulut', L + 6, by); T(eur(c.kv.other), R - 4, by, { align: 'right' }); by += 6.5; }
       T('Työn osuus', L + 6, by); T(eur(c.kv.work), R - 4, by, { align: 'right' }); by += 6.5;
       doc.setFont('helvetica', 'bold');
@@ -462,7 +469,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
   function fileName(c) {
     var who = (c.asiakas || 'tarjous').toLowerCase().replace(/[äå]/g, 'a').replace(/ö/g, 'o').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'tarjous';
     var d = new Date();
-    return 'tiivistupa-tarjous-' + (c.numero ? c.numero.replace(/[^A-Za-z0-9]+/g, '-') + '-' : '') + who + '-' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.pdf';
+    return 'nordic-tarjous-' + (c.numero ? c.numero.replace(/[^A-Za-z0-9]+/g, '-') + '-' : '') + who + '-' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.pdf';
   }
 
   $('pdf').addEventListener('click', function () {
@@ -504,7 +511,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
       var r = d.id ? rows.filter(function (x) { return x.id === d.id; })[0] : addRow({ unit: 'kpl' });
       if (!r) { return; }
       if (r.custom) { r.nameEl.value = str(d.name); }
-      r.on.checked = d.on === true; r.qty.value = str(d.qty); r.price.value = str(d.price); r.mat.value = str(d.mat);
+      r.on.checked = d.on === true; r.qty.value = str(d.qty); r.price.value = str(d.price); r.mat.value = r.product ? '' : str(d.mat);
       if (UNITS.indexOf(d.unit) !== -1) { r.unit.value = d.unit; }
     });
     update();
@@ -513,7 +520,7 @@ textarea#out { min-height: 220px; font: 0.88rem/1.45 ui-monospace, Consolas, mon
     currentId = null;
     var saved = loadPrices();   // luetaan ennen tyhjennystä, koska tyhjennys tallentaa tyhjät tarvikehinnat
     setState({ rows: [], alv: $('alv').value, alvmode: $('alvmode').value });
-    rows.forEach(function (r) { var p = saved[r.id]; if (p && p.price !== undefined) { r.price.value = p.price; r.unit.value = p.unit || r.unit.value; r.mat.value = p.mat || ''; } });
+    rows.forEach(function (r) { var p = saved[r.id]; if (p && p.price !== undefined) { r.price.value = p.price; r.unit.value = p.unit || r.unit.value; r.mat.value = r.product ? '' : (p.mat || ''); } });
     suggestNumber(); update(); renderSaved();
   }
 
