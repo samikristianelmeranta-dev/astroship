@@ -282,7 +282,7 @@
     },
     {
      "q": "Teettekö ikkunapuitteiden huoltoa Naantalin saarissa?",
-     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Luonnonmaalla, Rymättylässä, Merimaskussa ja Velkualla, myös saarikohteissa. Kulkuyhteydet, sähkön saanti ja tarvikkeiden säilytys selvitetään aina etukäteen kartoituksessa, ja saman suunnan kohteet hoidetaan mahdollisuuksien mukaan peräkkäin."
+     "a": "Teemme. Ikkunapuitteiden huolto onnistuu Luonnonmaalla, Rymättylässä, Merimaskussa ja Velkualla, myös saarikohteissa. Kulkuyhteydet, sähkön saanti ja tarvikkeiden säilytys selvitetään aina etukäteen kartoituksessa, ja saman suunnan kohteet hoidetaan mahdollisuuksien mukaan peräkkäin. Kartoitus on maksuton."
     },
     {
      "q": "Voiko Naantalin Vanhankaupungin vanhat ikkunat säilyttää kunnostamalla?",
@@ -294,7 +294,7 @@
     },
     {
      "q": "Pitääkö suola pestä pois ennen ikkunapuitteiden maalausta?",
-     "a": "Pitää. Rannikolla pinnoille kertyy suolaa ja likaa, jotka heikentävät maalin tarttumista. Naantalin kohteissa pesemme puitteet ja karmit ennen hiontaa ja annamme puun kuivua kunnolla. Vasta sen jälkeen paljaat kohdat pohjustetaan ja pinnat maalataan."
+     "a": "Pitää. Rannikolla pinnoille kertyy suolaa ja likaa, jotka heikentävät maalin tarttumista. Naantalin kohteissa pesemme puitteet ja karmit ennen hiontaa ja annamme puun kuivua kunnolla ennen seuraavaa työvaihetta. Vasta sen jälkeen paljaat kohdat pohjustetaan ja pinnat maalataan."
     }
    ]
   },
@@ -352,11 +352,11 @@
     },
     {
      "q": "Millä Raision alueilla ikkunapuitteiden maalaus onnistuu?",
-     "a": "Ikkunapuitteiden maalaus onnistuu kaikkialla Raisiossa, esimerkiksi Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Tukikohtamme on naapurikunnassa Maskussa, joten matka on lyhyt ja käynnit saadaan sovittua joustavasti."
+     "a": "Ikkunapuitteiden maalaus onnistuu kaikkialla Raisiossa, esimerkiksi Kaanaassa, Ihalassa, Kerttulassa, Petäsmäessä, Vaisaaressa, Tikanmaalla ja Kuloisissa. Tukikohtamme on naapurikunnassa Maskussa, joten matka on lyhyt ja käynnit saadaan sovittua joustavasti. Palvelemme omakotitaloja, rivitaloja ja taloyhtiöitä."
     },
     {
      "q": "Miten testaan itse, onko ikkunapuite lahonnut?",
-     "a": "Avaa ikkuna ja paina puitteen alareunaa ja kulmia kynnellä tai ruuvitaltan kärjellä. Terve puu on kovaa eikä painu lainkaan. Jos kärki uppoaa helposti tai puu tuntuu sienimäiseltä, ikkunapuite on alkanut lahota ja tarvitsee korjausta ennen maalausta."
+     "a": "Avaa ikkuna ja paina puitteen alareunaa ja kulmia kynnellä tai ruuvitaltan kärjellä. Terve puu on kovaa eikä painu lainkaan. Jos kärki uppoaa helposti tai puu tuntuu sienimäiseltä, ikkunapuite on alkanut lahota ja tarvitsee korjausta ennen maalausta. Testaa etenkin sään puolen ikkunat."
     },
     {
      "q": "Pitääkö asukkaan olla kotona, kun ikkunapuitteita maalataan Raisiossa?",
@@ -496,7 +496,7 @@
   },
   "lieto": {
    "title": "Ikkunapuitteiden huolto Lieto – puitteiden huoltomaalaus",
-   "meta": "Ikkunapuitteiden huolto Liedossa: ensimmäinen huoltomaalaus 1980–2000-lukujen taloihin ja maaseudun vanhojen ikkunoiden korjaus. Kysy maksutonta kartoitusta.",
+   "meta": "Ikkunapuitteiden huolto Liedossa: ensimmäinen huoltomaalaus 1980–2000-lukujen taloihin ja maaseudun vanhojen ikkunoiden korjaus. Kysy kartoitusta.",
    "h1": "Ikkunapuitteiden huolto Liedossa",
    "lead": "Liedossa on paljon omakotitaloja, joiden ikkunoita ei ole maalattu kertaakaan rakentamisen jälkeen. Tehdaspinta kestää pitkään, mutta ei loputtomiin. Ikkunapuitteiden huolto ennen ensimmäisiä vaurioita on selvästi kevyempi työ kuin korjaus niiden jälkeen. Hoidamme myös Aurajoen varren vanhempien talojen ikkunat.",
    "short_answer": "Ikkunapuitteiden huolto Liedossa tarkoittaa puitteiden ja karmien kunnostusmaalausta ja tarvittavia puukorjauksia. Työssä poistetaan huonosti kiinni oleva maali, tarkistetaan puun kunto, korjataan lahokohdat, pohjustetaan, kitataan ja maalataan sekä kunnostetaan lasituslistat ja kittaukset. Liedon rakennuskannassa korostuvat 1980–2000-lukujen omakotitalot, joissa ensimmäinen huoltomaalaus on monin paikoin ajankohtainen. Maaseudulla Aurajoen varrella on vanhempia taloja, joissa työ on perinteisempää kittausta ja puupaikkausta. Aloitamme maksuttomalla kartoituksella, annamme tarjouksen kirjallisena ja käymme valmiin työn läpi kanssasi.",
@@ -548,7 +548,7 @@
     },
     {
      "q": "Palveletteko Liedossa myös Tarvasjoen ja Yliskulman suunnalla?",
-     "a": "Kyllä. Teemme ikkunapuitteiden huoltoa Lieton keskustan, Ilmaristen, Loukinaisten ja Littoisten lisäksi Tarvasjoella ja Yliskulmalla. Maaseudun kohteissa yhdistämme käynnit samalle päivälle, ja vanhojen talojen kitatut ikkunat kunnostetaan niille sopivalla tavalla."
+     "a": "Kyllä. Teemme ikkunapuitteiden huoltoa Lieton keskustan, Ilmaristen, Loukinaisten ja Littoisten lisäksi Tarvasjoella ja Yliskulmalla. Maaseudun kohteissa yhdistämme käynnit mahdollisuuksien mukaan samalle päivälle, ja vanhojen talojen kitatut ikkunat kunnostetaan niille sopivalla tavalla."
     },
     {
      "q": "Riittääkö Liedossa pelkkä ikkunapuitteiden maalaus vai tarvitaanko korjausta?",
@@ -574,7 +574,7 @@
     {
      "id": "laheisyys",
      "h2": "Mitä hyötyä on siitä, että tekijä on Maskusta?",
-     "html": "<p>Ikkunoiden maalaus on säästä ja kuivumisesta riippuvaista työtä. Lähellä oleva tekijä voi käyttää tämän hyväksi.</p><ul><li><strong>Säätä voi seurata.</strong> Jos aamu on sumuinen tai yöllä on satanut, aloitamme myöhemmin tai vaihdamme päivää ilman, että kenenkään aikataulu kaatuu.</li><li><strong>Kerrokset saavat kuivua rauhassa.</strong> Voimme käydä maalaamassa yhden kerroksen ja palata seuraavaan, kun pinta on valmis. Pitkän matkan päässä houkutus kiirehtiä on suurempi.</li><li><strong>Pienet työt onnistuvat.</strong> Yksi hilseilevä ikkuna tai autotallin pari puitetta on meille täällä järkevä kohde.</li><li><strong>Jälkikäynti on helppo.</strong> Jos jokin puite ottaa kiinni maalin kuivuttua, tulemme säätämään sen.</li></ul><p>Laatu ei riipu matkasta, mutta aikataulun joustavuus riippuu. Maalaus onnistuu parhaiten, kun työ tehdään puun ja sään ehdoilla eikä kalenterin.</p>"
+     "html": "<p>Ikkunoiden maalaus on säästä ja kuivumisesta riippuvaista työtä. Lähellä oleva tekijä voi käyttää tämän hyväksi.</p><ul><li><strong>Säätä voi seurata.</strong> Jos aamu on sumuinen tai yöllä on satanut, aloitamme myöhemmin tai vaihdamme päivää ilman, että kenenkään aikataulu kaatuu.</li><li><strong>Kerrokset saavat kuivua rauhassa.</strong> Voimme käydä maalaamassa yhden kerroksen ja palata seuraavaan, kun pinta on valmis. Pitkän matkan päässä houkutus kiirehtiä on suurempi.</li><li><strong>Pienet työt onnistuvat.</strong> Yksi hilseilevä ikkuna tai autotallin pari puitetta on meille täällä järkevä kohde.</li><li><strong>Jälkikäynti on helppo.</strong> Jos jokin puite ottaa kiinni maalin kuivuttua, tulemme säätämään sen.</li></ul><p>Laatu ei riipu matkasta, mutta aikataulun joustavuus riippuu. Maalaus onnistuu hyvin, kun työ tehdään puun ja sään ehdoilla eikä kalenterin.</p>"
     },
     {
      "id": "maskun-talot",
@@ -618,11 +618,11 @@
     },
     {
      "q": "Miksi maali kupruilee ikkunapuitteessa?",
-     "a": "Kupruilu johtuu kosteudesta, joka on päässyt puuhun maalin alle ja pyrkii ulos. Vesi tulee tavallisesti halkeilleesta kitistä, lasituslistan takaa tai auenneesta nurkkaliitoksesta. Ikkunapuitteiden korjauksessa vuotokohta etsitään ja tiivistetään, puu kuivataan ja pinta maalataan uudelleen."
+     "a": "Kupruilu johtuu kosteudesta, joka on päässyt puuhun maalin alle ja pyrkii ulos. Vesi tulee tavallisesti halkeilleesta kitistä, lasituslistan takaa tai auenneesta nurkkaliitoksesta. Ikkunapuitteiden korjauksessa vuotokohta etsitään ja tiivistetään, puu kuivataan ja pinta maalataan uudelleen. Pelkkä päälle maalaaminen ei auta."
     },
     {
      "q": "Voinko maalata osan ikkunapuitteista itse ja tilata loput teiltä Maskussa?",
-     "a": "Voit. Maskussa teemme tarvittaessa vain osan työstä, esimerkiksi puukorjaukset, kittausten uusinnan tai korkealla olevat ikkunat. Hyväkuntoisten puitteiden huoltomaalauksen voit tehdä itse. Sovimme työnjaon kartoituskäynnillä ja kirjaamme sen tarjoukseen."
+     "a": "Voit. Maskussa teemme tarvittaessa vain osan työstä, esimerkiksi puukorjaukset, kittausten uusinnan tai korkealla olevat ikkunat. Hyväkuntoisten puitteiden huoltomaalauksen voit tehdä itse. Sovimme työnjaon kartoituskäynnillä ja kirjaamme sen selkeästi tarjoukseen, jotta vastuut ovat selvät."
     },
     {
      "q": "Palveletteko myös Lemussa ja Askaisissa?",
