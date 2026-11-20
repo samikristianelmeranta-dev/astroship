@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.12.3' );
+define( 'NORDIC_VERSION', '2.13.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -405,7 +405,45 @@ function nordic_city_from_slug( $slug ) {
 			return isset( $cities[ $key ] ) ? $cities[ $key ] : '';
 		}
 	}
+	$huolto = nordic_huolto_info( $slug );
+	if ( $huolto && $huolto['city'] ) {
+		return nordic_cities()[ $huolto['city'] ];
+	}
 	return '';
+}
+
+/**
+ * Huoltopalvelut: slug → nimi. Jokaisella on pääsivu (/ikkunahuolto/) ja
+ * paikkakuntasivut (/ikkunahuolto-salo/). Yläsivu on /huolto/.
+ */
+function nordic_huolto_services() {
+	return array(
+		'ikkunahuolto'            => 'Ikkunahuolto',
+		'ovihuolto'               => 'Ovihuolto',
+		'ikkunoiden-tiivistys'    => 'Ikkunoiden tiivistys',
+		'ovien-tiivistys'         => 'Ovien tiivistys',
+		'ikkunoiden-korjaus'      => 'Ikkunoiden korjaus',
+		'ikkunapuitteiden-huolto' => 'Ikkunapuitteiden huolto',
+	);
+}
+
+/**
+ * Huoltosivun tiedot slugista: array( 'service' => palvelun slug, 'city' => paikkakunnan avain tai '' ), muuten null.
+ */
+function nordic_huolto_info( $slug ) {
+	$services = nordic_huolto_services();
+	if ( isset( $services[ $slug ] ) ) {
+		return array( 'service' => $slug, 'city' => '' );
+	}
+	foreach ( $services as $service => $name ) {
+		if ( strpos( $slug, $service . '-' ) === 0 ) {
+			$key = substr( $slug, strlen( $service ) + 1 );
+			if ( isset( nordic_cities()[ $key ] ) ) {
+				return array( 'service' => $service, 'city' => $key );
+			}
+		}
+	}
+	return null;
 }
 
 /**
@@ -437,6 +475,13 @@ function nordic_page_type( $slug ) {
  * @return array|null array( 'slug' => ..., 'name' => ... )
  */
 function nordic_parent_for_slug( $slug ) {
+	$huolto = nordic_huolto_info( $slug );
+	if ( $huolto ) {
+		// Paikkakuntasivun yläsivu on palvelun pääsivu, palvelun pääsivun yläsivu on Huolto.
+		return $huolto['city']
+			? array( 'slug' => $huolto['service'], 'name' => nordic_huolto_services()[ $huolto['service'] ] )
+			: array( 'slug' => 'huolto', 'name' => 'Huolto' );
+	}
 	if ( strpos( $slug, 'ikkunat-ikkunaremontti-' ) === 0 ) {
 		return array( 'slug' => 'ikkunaremontti', 'name' => 'Ikkunaremontti' );
 	}
@@ -466,13 +511,17 @@ function nordic_breadcrumb_trail( $post_id ) {
 	$trail = array(
 		array( 'name' => 'Etusivu', 'url' => home_url( '/' ) ),
 	);
-	$parent = nordic_parent_for_slug( $slug );
-	if ( $parent ) {
+	// Yläsivut ketjuna (esim. Huolto › Ikkunahuolto), enintään kolme tasoa.
+	$parents = array();
+	$parent  = nordic_parent_for_slug( $slug );
+	for ( $i = 0; $parent && $i < 3; $i++ ) {
 		$parent_page = get_page_by_path( $parent['slug'] );
 		if ( $parent_page && 'publish' === $parent_page->post_status ) {
-			$trail[] = array( 'name' => $parent['name'], 'url' => get_permalink( $parent_page ) );
+			array_unshift( $parents, array( 'name' => $parent['name'], 'url' => get_permalink( $parent_page ) ) );
 		}
+		$parent = nordic_parent_for_slug( $parent['slug'] );
 	}
+	$trail   = array_merge( $trail, $parents );
 	$trail[] = array( 'name' => nordic_short_title( $post_id ), 'url' => get_permalink( $post_id ) );
 	return $trail;
 }
@@ -1053,6 +1102,12 @@ function nordic_head_meta() {
 		$city = nordic_city_from_slug( $slug );
 		if ( $city ) {
 			$service['areaServed'] = array( '@type' => 'City', 'name' => $city );
+		}
+		$huolto = nordic_huolto_info( $slug );
+		if ( $huolto || 'huolto' === $slug ) {
+			// Huolto ei ole Skaalan tuotemyyntiä: merkin tilalle palvelun tyyppi.
+			unset( $service['brand'] );
+			$service['serviceType'] = $huolto ? nordic_huolto_services()[ $huolto['service'] ] : 'Ikkuna- ja ovihuolto';
 		}
 		$graph[] = $service;
 	}
@@ -2036,3 +2091,150 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 add_filter( 'nav_menu_item_title', function ( $title, $item, $args ) {
 	return 'primary' === ( $args->theme_location ?? '' ) && 'Ulko-ovet' === trim( wp_strip_all_tags( $title ) ) ? 'Ovet' : $title;
 }, 10, 3 );
+
+/* =========================================================================
+ * Huoltosivut: /huolto/ ja sen alle kuuluvat palvelu- ja paikkakuntasivut
+ * ========================================================================= */
+
+/**
+ * Luo tai päivittää huoltosivut teeman sisällöstä (content/huolto-sivut.json ja content/huolto.html).
+ *
+ * @param string $mode missing = luo vain puuttuvat sivut, hub = korvaa Huolto-sivun sisällön,
+ *                     all = korvaa kaikkien huoltosivujen sisällön.
+ * @return array( created, updated, skipped )
+ */
+function nordic_huolto_import( $mode = 'missing' ) {
+	$res  = array( 'created' => 0, 'updated' => 0, 'skipped' => 0 );
+	$dir  = get_template_directory() . '/content/';
+	$data = json_decode( (string) file_get_contents( $dir . 'huolto-sivut.json' ), true );
+	if ( ! is_array( $data ) || empty( $data['pages'] ) ) {
+		return $res;
+	}
+	$pages   = $data['pages'];
+	$pages[] = array(
+		'slug'    => 'huolto',
+		'title'   => $data['hub']['title'],
+		'meta'    => $data['hub']['meta'],
+		'content' => (string) file_get_contents( $dir . 'huolto.html' ),
+		'hub'     => true,
+	);
+	kses_remove_filters(); // teeman oma HTML: luokat ja ankkurit säilyvät
+	foreach ( $pages as $p ) {
+		if ( empty( $p['slug'] ) || empty( $p['content'] ) ) {
+			continue;
+		}
+		$is_hub   = ! empty( $p['hub'] );
+		$existing = get_page_by_path( $p['slug'] );
+		$post     = array(
+			'post_type'    => 'page',
+			'post_status'  => 'publish',
+			'post_name'    => $p['slug'],
+			'post_title'   => $p['title'],
+			'post_excerpt' => $p['meta'],
+			'post_content' => "<!-- wp:html -->\n" . $p['content'] . "\n<!-- /wp:html -->",
+		);
+		if ( ! $existing ) {
+			$id = wp_insert_post( wp_slash( $post ) );
+			if ( $id && ! is_wp_error( $id ) ) {
+				$res['created']++;
+			}
+		} elseif ( 'all' === $mode || ( 'hub' === $mode && $is_hub ) ) {
+			$post['ID']          = $existing->ID;
+			$post['post_status'] = $existing->post_status;
+			wp_update_post( wp_slash( $post ) );
+			delete_post_meta( $existing->ID, '_nordic_schema_json' ); // UKK-skeema luetaan uudesta sisällöstä
+			$res['updated']++;
+		} else {
+			$res['skipped']++;
+		}
+	}
+	kses_init_filters();
+	return $res;
+}
+
+/** Luo puuttuvat huoltosivut kerran teeman päivityksen jälkeen (pääsivusto). Olemassa oleviin sivuihin ei kosketa. */
+add_action( 'admin_init', function () {
+	if ( '1' === get_option( 'nordic_huolto_created' ) || nordic_is_regional() || ! current_user_can( 'publish_pages' ) ) {
+		return;
+	}
+	update_option( 'nordic_huolto_created', '1' );
+	nordic_huolto_import( 'missing' );
+} );
+
+add_action( 'admin_menu', function () {
+	if ( ! nordic_is_regional() ) {
+		add_theme_page( 'Huoltosivut', 'Huoltosivut', 'manage_options', 'nordic-huolto', 'nordic_huolto_admin_page' );
+	}
+} );
+
+function nordic_huolto_admin_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	$msg = '';
+	if ( isset( $_POST['nordic_huolto'] ) && check_admin_referer( 'nordic_huolto' ) ) {
+		$mode = sanitize_key( wp_unslash( $_POST['nordic_huolto'] ) );
+		if ( 'all' === $mode && empty( $_POST['nordic_confirm'] ) ) {
+			$msg = 'Sivuja ei muutettu: rastita vahvistus, jos haluat korvata kaikkien huoltosivujen sisällön.';
+		} elseif ( in_array( $mode, array( 'missing', 'hub', 'all' ), true ) ) {
+			$r   = nordic_huolto_import( $mode );
+			$msg = sprintf( 'Valmis. Luotu %d, päivitetty %d, ennallaan %d sivua.', $r['created'], $r['updated'], $r['skipped'] );
+		}
+	}
+	$data    = json_decode( (string) file_get_contents( get_template_directory() . '/content/huolto-sivut.json' ), true );
+	$slugs   = array_merge( array( 'huolto' ), wp_list_pluck( isset( $data['pages'] ) ? $data['pages'] : array(), 'slug' ) );
+	$missing = 0;
+	foreach ( $slugs as $slug ) {
+		if ( ! get_page_by_path( $slug ) ) {
+			$missing++;
+		}
+	}
+	echo '<div class="wrap"><h1>Huoltosivut</h1>';
+	if ( $msg ) {
+		echo '<div class="notice notice-success"><p>' . esc_html( $msg ) . '</p></div>';
+	}
+	echo '<p>Teemassa on Huolto-sivu, 6 palvelusivua ja 48 paikkakuntasivua. Näistä puuttuu WordPressistä ' . (int) $missing . '.</p>';
+	echo '<form method="post">';
+	wp_nonce_field( 'nordic_huolto' );
+	echo '<h2>Luo puuttuvat sivut</h2><p>Luo ne huoltosivut, joita ei vielä ole. Olemassa oleviin sivuihin ei kosketa.</p>';
+	echo '<p><button class="button button-primary" name="nordic_huolto" value="missing">Luo puuttuvat sivut</button></p>';
+	echo '<h2>Päivitä Huolto-sivun sisältö</h2><p>Korvaa sivun <code>/huolto/</code> sisällön, otsikon ja otteen teeman uudella, laajemmalla versiolla. Sivun nykyinen sisältö jää WordPressin versiohistoriaan.</p>';
+	echo '<p><button class="button" name="nordic_huolto" value="hub">Päivitä Huolto-sivun sisältö</button></p>';
+	echo '<h2>Palauta kaikki huoltosivut teeman sisältöön</h2><p>Korvaa kaikkien huoltosivujen sisällön teeman versiolla. <strong>WordPressissä tehdyt muokkaukset näihin sivuihin katoavat.</strong></p>';
+	echo '<p><label><input type="checkbox" name="nordic_confirm" value="1"> Ymmärrän, että muokkaukseni korvataan</label></p>';
+	echo '<p><button class="button" name="nordic_huolto" value="all">Palauta kaikki huoltosivut</button></p>';
+	echo '</form></div>';
+}
+
+/** Huolto päävalikkoon Oviremontin jälkeen, jos sitä ei ole lisätty valikkoon itse (pääsivusto). */
+add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
+	if ( nordic_is_regional() || 'primary' !== ( $args->theme_location ?? '' ) || false !== strpos( $items, '/huolto/' ) ) {
+		return $items;
+	}
+	$page = get_page_by_path( 'huolto' );
+	if ( ! $page || 'publish' !== $page->post_status ) {
+		return $items;
+	}
+	$slug    = is_page() ? (string) get_post_field( 'post_name', get_queried_object_id() ) : '';
+	$current = 'huolto' === $slug;
+	$inside  = (bool) nordic_huolto_info( $slug );
+	$li      = '<li class="menu-item' . ( $current ? ' current-menu-item' : ( $inside ? ' current-menu-ancestor' : '' ) ) . '"><a href="' . esc_url( get_permalink( $page ) ) . '"' . ( $current ? ' aria-current="page"' : '' ) . '>Huolto</a></li>';
+	// Paikka: Oviremontin jälkeen, muuten ennen Referenssejä tai Yhteystietoja, muuten loppuun.
+	$at = strpos( $items, '/oviremontti/' );
+	if ( false !== $at ) {
+		$end = strpos( $items, '</li>', $at );
+		if ( false !== $end ) {
+			return substr_replace( $items, $li, $end + 5, 0 );
+		}
+	}
+	foreach ( array( '/referenssit/', '/yhteystiedot/' ) as $needle ) {
+		$at = strpos( $items, $needle );
+		if ( false !== $at ) {
+			$pos = strrpos( substr( $items, 0, $at ), '<li' );
+			if ( false !== $pos ) {
+				return substr_replace( $items, $li, $pos, 0 );
+			}
+		}
+	}
+	return $items . $li;
+}, 9, 2 );

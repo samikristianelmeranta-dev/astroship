@@ -1,0 +1,10 @@
+HUOLTO-SIVU – SIVUN TIEDOT WORDPRESSIIN
+
+huolto.html
+  Otsikko (title):   Ikkuna- ja ovihuolto Turku – huolto, tiivistys ja korjaus
+  Osoite (slug):     /huolto/
+  Ote (kuvaus):      Ikkuna- ja ovihuolto Turussa ja Varsinais-Suomessa: ikkunahuolto, ovihuolto, tiivistys, korjaus ja puitteiden maalaus. Ilmainen kartoitus ja tarjous.  [149 merkkiä]
+  H1 sivulla:        Ikkuna- ja ovihuolto Turussa ja Varsinais-Suomessa
+
+Sisältö liitetään Mukautettu HTML -lohkoon nykyisen sisällön tilalle. Saman voi tehdä yhdellä painalluksella
+kohdasta Ulkoasu → Huoltosivut → "Päivitä Huolto-sivun sisältö" (teema 2.13.0).
