@@ -184,3 +184,13 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - **Laskuri-näkymä** valikossa: pikalaskelma ja PDF ilman asiakasta.
 - Kotitalousvähennyksen arvio: tuotteet ja rivien tarvikkeet vähennetään, loppu on työtä. PDF:ssä maininta, että lopullinen vähennys määräytyy verottajan ohjeen mukaisesti.
 - PDF-kirjasto jsPDF 2.5.1 (MIT) on mukana tiedostossa `assets/jspdf.umd.min.js` ja ladataan vasta, kun PDF tehdään.
+
+## 0.14.0 – Huoltolomake ja yhteydenottolomake
+
+- **`[nap_huoltolomake]`**: huoltosivujen oma lomake. Kysyy paikkakunnan ja postinumeron, kohteen tyypin, ikkunoiden ja ovien määrän, ikkunoiden iän, ongelmat, ajankohdan, päätöksentekijän ja ostovalmiuden. Luo CRM:ään asiakkaan, kohteen "Ikkuna- ja ovihuolto" ja tehtävän "Soita ja sovi huoltokartoitus". Vastaukset tallentuvat kohteen tietoihin, ostovalmius ensimmäisenä.
+- **Kuuma liidi**: jos asiakas on valmis toteuttamaan huollon heti tai 1–3 kk sisällä, aikoo tehdä sen lähiaikoina ja on mukana päätöksessä, tehtävä ja ilmoitusviesti alkavat sanalla KUUMA.
+- Asiakas saa oman kiitosviestin ("Huoltopyyntösi on perillä") ja Oma kohde -linkin.
+- **`[nap_yhteydenotto]`**: yleinen yhteydenottolomake. Viesti lähtee henkilökunnalle (asetus "Ilmoitukset henkilökunnalle", muuten vastausosoite), ja vastaus menee suoraan lähettäjälle. Olemassa olevan asiakkaan viesti kirjautuu asiakkaan historiaan. Uutta asiakasta tai kohdetta ei luoda.
+- Molemmissa roskapostisuoja: piilokenttä, allekirjoitettu aikaleima, linkkien esto ja määrärajat.
+- Teema 2.13.1 näyttää huoltolomakkeen automaattisesti huoltosivujen lopussa ja yhteydenottolomakkeen Yhteystiedot-sivulla.
+

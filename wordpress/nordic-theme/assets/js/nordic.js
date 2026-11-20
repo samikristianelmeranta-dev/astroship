@@ -157,8 +157,13 @@
   var stickyCta = $('#sticky-cta');
 
   function inlineForm() {
-    return $('#tarjous .contact-form-col') || $('#tarjous-lomake') ||
-      $('.page-content .fluentform, .page-content form');
+    // Yleinen yhteydenottolomake (data-no-quote) ei ole tarjouslomake: sen ohi mennään.
+    var forms = doc.querySelectorAll('.page-content .fluentform, .page-content form');
+    var quoteForm = null;
+    for (var i = 0; i < forms.length && !quoteForm; i++) {
+      if (!forms[i].closest('[data-no-quote]')) quoteForm = forms[i];
+    }
+    return $('#tarjous .contact-form-col') || $('#tarjous-lomake') || quoteForm;
   }
 
   function scrollToEl(el) {

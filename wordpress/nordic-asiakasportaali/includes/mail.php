@@ -97,9 +97,20 @@ function nap_ack_block_reason( $email, $message = '' ) {
  * Kiitosviesti tarjouspyynnöstä. Korvaa myös Nordic CRM:n (FluentCRM) vahvistusviestin, joten sisältö on sama
  * ja lisäksi Oma kohde -linkki. Vastaukset menevät asetusten vastausosoitteeseen.
  */
-function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'asennus', $taloyhtio = false ) {
+function nap_mail_welcome( $customer, $link, $measure_date = '', $delivery = 'asennus', $taloyhtio = false, $huolto = false ) {
 	$hi    = 'Hei ' . nap_first_name( $customer['name'] ) . ',';
 	$terms = trim( (string) nap_settings()['measure_terms'] );
+	if ( $huolto ) {
+		$subject = 'Huoltopyyntösi on perillä';
+		$lines   = array(
+			$hi,
+			'kiitos huoltopyynnöstä! Se tuli perille.',
+			'Otamme sinuun yhteyttä viimeistään seuraavana arkipäivänä ja sovimme maksuttoman kartoituskäynnin. Käynnillä käymme ikkunat ja ovet läpi ja kerromme, mitä kannattaa huoltaa, tiivistää tai korjata. Sen jälkeen saat kirjallisen tarjouksen.',
+			'Oma kohde -sivulta näet huoltosi vaiheet ja myöhemmin myös tarjouksen ja dokumentit. Kirjautumiseen ei tarvita salasanaa.',
+			'Jos haluat kertoa jo nyt jotain lisää tai lähettää kuvia ikkunoista ja ovista, vastaa suoraan tähän viestiin.',
+		);
+		return nap_mail( $customer['email'], $subject, 'Kiitos huoltopyynnöstä', $lines, array( 'Avaa Oma kohde', $link ) );
+	}
 	if ( $taloyhtio ) {
 		$subject = 'Tarjouspyyntönne on perillä';
 		$lines   = array(

@@ -136,6 +136,7 @@ function nap_next_workday( $from = null ) {
  */
 function nap_intake( $lead ) {
 	$s        = nap_settings();
+	$huolto   = 'huolto' === ( $lead['kind'] ?? '' ); // huoltolomake: oma tehtävä, kiitosviesti ja ilmoitus
 	$owner    = (int) $s['default_owner'] ?: null;
 	$referrer = null;
 	if ( ! empty( $_COOKIE['nap_ref'] ) ) {
@@ -178,21 +179,24 @@ function nap_intake( $lead ) {
 		'delivery'    => $lead['delivery'] ?? 'asennus',
 	) );
 
-	nap_log( $cid, $pid, 'request', 'Tarjouspyyntö vastaanotettu (' . $source . ')' . ( $referrer ? ', suositteli ' . $referrer['name'] : '' ), true );
+	nap_log( $cid, $pid, 'request', ( $huolto ? 'Huoltopyyntö' : 'Tarjouspyyntö' ) . ' vastaanotettu (' . $source . ')' . ( $referrer ? ', suositteli ' . $referrer['name'] : '' ), true );
+	if ( $huolto && ! empty( $lead['hot'] ) ) {
+		nap_log( $cid, $pid, 'note', 'Kuuma liidi: valmis toteuttamaan pian, aikoo tehdä huollon lähiaikoina ja on mukana päätöksessä. Soita ensin.' );
+	}
 	if ( $lead['message'] ) {
 		nap_log( $cid, $pid, 'note', 'Asiakkaan viesti: ' . $lead['message'] );
 	}
 	nap_create_task( array(
 		'project_id'  => $pid,
 		'customer_id' => $cid,
-		'title'       => nap_first_task_title( $lead['delivery'] ?? 'asennus' ) . ': ' . ( $customer['name'] ?: $customer['email'] ),
+		'title'       => ( $huolto ? ( ! empty( $lead['hot'] ) ? 'KUUMA: soita ja sovi huoltokartoitus' : 'Soita ja sovi huoltokartoitus' ) : nap_first_task_title( $lead['delivery'] ?? 'asennus' ) ) . ': ' . ( $customer['name'] ?: $customer['email'] ),
 		'assignee_id' => $customer['owner_id'] ?: $owner,
 		'due_date'    => nap_next_workday(),
 	) );
 
 	$blocked = nap_ack_block_reason( $customer['email'], $lead['message'] );
 	if ( '' === $blocked ) {
-		nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus', nap_is_taloyhtio_page( $lead['page'] ?? '' ) );
+		nap_mail_welcome( $customer, nap_create_login_link( $cid ), '', $lead['delivery'] ?? 'asennus', ! $huolto && nap_is_taloyhtio_page( $lead['page'] ?? '' ), $huolto );
 		nap_log( $cid, $pid, 'mail', 'Kiitosviesti ja Oma kohde -linkki lähetetty asiakkaalle' );
 	} else {
 		nap_log( $cid, $pid, 'mail', 'Automaattista kiitosviestiä ei lähetetty: ' . $blocked . '. Tarkista, onko tarjouspyyntö aito.' );
@@ -201,9 +205,9 @@ function nap_intake( $lead ) {
 	if ( $s['staff_notify'] ) {
 		nap_mail(
 			array_filter( array_map( 'trim', explode( ',', $s['staff_notify'] ) ) ),
-			'Uusi tarjouspyyntö: ' . ( $customer['name'] ?: $customer['email'] ),
-			'Uusi tarjouspyyntö',
-			array_filter( array( $customer['name'] . ' · ' . $customer['email'] . ' · ' . $customer['phone'], $address, 'Toimitustapa: ' . nap_deliveries()[ nap_delivery( $lead ) ], $details, 'Lähde: ' . $source ) ),
+			( $huolto ? ( ! empty( $lead['hot'] ) ? 'KUUMA huoltopyyntö: ' : 'Uusi huoltopyyntö: ' ) : 'Uusi tarjouspyyntö: ' ) . ( $customer['name'] ?: $customer['email'] ),
+			$huolto ? 'Uusi huoltopyyntö' : 'Uusi tarjouspyyntö',
+			array_filter( array( $customer['name'] . ' · ' . $customer['email'] . ' · ' . $customer['phone'], $address, $huolto ? '' : 'Toimitustapa: ' . nap_deliveries()[ nap_delivery( $lead ) ], $details, 'Lähde: ' . $source ) ),
 			array( 'Avaa CRM', home_url( '/crm/#asiakas-' . $cid ) )
 		);
 	}

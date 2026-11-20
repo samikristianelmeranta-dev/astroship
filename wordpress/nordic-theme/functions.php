@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.13.0' );
+define( 'NORDIC_VERSION', '2.13.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1342,6 +1342,9 @@ function nordic_page_has_form() {
 	if ( ! is_singular( 'page' ) ) {
 		return false;
 	}
+	if ( nordic_huolto_form_active() ) {
+		return true; // huoltosivulla on oma lomake sivun lopussa
+	}
 	$content = (string) get_post_field( 'post_content', get_the_ID() );
 	return strpos( $content, '[fluentform' ) !== false || strpos( $content, '[nordic_tarjouslomake' ) !== false;
 }
@@ -2238,3 +2241,56 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 	}
 	return $items . $li;
 }, 9, 2 );
+
+/**
+ * Huoltosivuilla (Huolto, palvelu- ja paikkakuntasivut) käytetään omaa huoltolomaketta,
+ * kun CRM-lisäosan lyhytkoodi [nap_huoltolomake] on käytössä. Muuten sivuilla on tavallinen tarjouslomake.
+ */
+function nordic_huolto_form_active() {
+	if ( nordic_is_regional() || ! is_singular( 'page' ) || ! shortcode_exists( 'nap_huoltolomake' ) ) {
+		return false;
+	}
+	$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+	return 'huolto' === $slug || (bool) nordic_huolto_info( $slug );
+}
+
+/** Korvaa huoltosivun lopun tarjousosion huoltolomakkeella. Painikkeet "Pyydä tarjous" vierittävät lomakkeeseen. */
+add_filter( 'the_content', function ( $html ) {
+	if ( ! in_the_loop() || ! nordic_huolto_form_active() || false !== strpos( $html, 'nap-hf' ) ) {
+		return $html;
+	}
+	$form = '<section class="final-cta" id="tarjous"><div class="wrap">'
+		. '<h2>Pyydä ilmainen huoltokartoitus</h2>'
+		. '<p>Vastaa muutamaan kysymykseen, niin osaamme varata kartoitukseen oikean ajan ja tarvikkeet. Vastaamme viimeistään seuraavana arkipäivänä.</p>'
+		. '<div class="huolto-form-wrap">' . do_shortcode( '[nap_huoltolomake]' ) . '</div>'
+		. '</div></section>';
+	$out = preg_replace_callback( '#<section class="final-cta" id="tarjous">.*?</section>#s', function () use ( $form ) {
+		return $form;
+	}, $html, 1, $count );
+	return $count ? $out : $html . $form;
+}, 12 );
+
+/**
+ * Yhteystiedot-sivulle yleinen yhteydenottolomake (pääsivusto), kun CRM-lisäosan lyhytkoodi
+ * [nap_yhteydenotto] on käytössä eikä sivulle ole lisätty sitä itse. Lomake tulee ennen sivun viimeistä osiota.
+ */
+add_filter( 'the_content', function ( $html ) {
+	if ( ! is_page() || ! in_the_loop() || nordic_is_regional() || ! shortcode_exists( 'nap_yhteydenotto' ) ) {
+		return $html;
+	}
+	if ( 'yhteystiedot' !== get_post_field( 'post_name', get_the_ID() ) || false !== strpos( $html, 'nap-cf' ) ) {
+		return $html;
+	}
+	$block = '<section class="article-body contact-message" id="laheta-viesti"><div class="wrap">'
+		. '<h2>Lähetä meille viesti</h2>'
+		. '<p>Kysy mitä tahansa ikkunoista, ovista, huollosta tai käynnissä olevasta remontista. Tarjouspyynnön voit jättää Pyydä tarjous -painikkeesta.</p>'
+		. do_shortcode( '[nap_yhteydenotto]' )
+		. '</div></section>';
+	foreach ( array( '<section class="final-cta"', '<section class="contact' ) as $anchor ) {
+		$pos = strrpos( $html, $anchor );
+		if ( false !== $pos ) {
+			return substr_replace( $html, $block, $pos, 0 );
+		}
+	}
+	return $html . $block;
+}, 13 );
