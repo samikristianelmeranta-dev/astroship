@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.13.1' );
+define( 'NORDIC_VERSION', '2.14.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -2294,3 +2294,39 @@ add_filter( 'the_content', function ( $html ) {
 	}
 	return $html . $block;
 }, 13 );
+
+/* =========================================================================
+ * Asiakaslupaus-banneri (2.14.0)
+ * ========================================================================= */
+
+/**
+ * Banneri näytetään pääsivustolla kirjautumattomille kävijöille. Ei yhteystieto-, kiitos- eikä tietosuojasivuilla
+ * eikä Meistä-sivulla, jonne banneri itse ohjaa.
+ */
+function nordic_promise_banner_enabled() {
+	if ( ! get_theme_mod( 'nordic_promise_banner', 1 ) || nordic_is_regional() || is_user_logged_in() || ( ! is_singular( 'page' ) && ! is_front_page() ) ) {
+		return false;
+	}
+	$about = nordic_about_page();
+	if ( $about && (int) $about->ID === (int) get_queried_object_id() ) {
+		return false;
+	}
+	$slug = (string) get_post_field( 'post_name', get_queried_object_id() );
+	return ! in_array( $slug, array( 'yhteystiedot', 'kiitos', 'tietosuojaseloste', 'evasteet' ), true );
+}
+
+add_action( 'wp_enqueue_scripts', function () {
+	if ( nordic_promise_banner_enabled() ) {
+		wp_enqueue_script( 'nordic-promise', nordic_asset_uri( 'js/promise-banner.js' ), array( 'nordic' ), NORDIC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	}
+}, 20 );
+
+add_action( 'customize_register', function ( $wp_customize ) {
+	$wp_customize->add_setting( 'nordic_promise_banner', array( 'default' => 1, 'sanitize_callback' => 'absint' ) );
+	$wp_customize->add_control( 'nordic_promise_banner', array(
+		'section'     => 'nordic_site',
+		'label'       => 'Asiakaslupaus-banneri (20 sekunnin jälkeen)',
+		'description' => 'Pieni kortti sivun alakulmassa, kun kävijä on ollut sivustolla yli 20 sekuntia. Kävijä voi sulkea sen, ja suljettu banneri pysyy poissa 14 päivää. Ei näy kirjautuneille.',
+		'type'        => 'checkbox',
+	) );
+}, 21 );

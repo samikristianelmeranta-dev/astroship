@@ -3,7 +3,7 @@ Theme Name: Nordic Ikkunat & Ovet
 Theme URI: https://ikkunakauppias.fi
 Author: Nordic Ikkunat & Ovet Oy
 Description: Räätälöity WordPress-teema Nordic Ikkunat & Ovet -sivustolle. Versio 2: moderni design-järjestelmä, animaatiot, tarjouslomake-modaali, parannettu tekninen SEO (JSON-LD @graph, Open Graph, kuvaoptimointi) sekä AI-haun tuki (llms.txt).
-Version: 2.13.1
+Version: 2.14.0
 Requires at least: 6.3
 Requires PHP: 7.4
 Text Domain: nordic
@@ -1635,3 +1635,43 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 .ref-lb-prev { left: 10px; top: 45%; }
 .ref-lb-next { right: 10px; top: 45%; }
 @media (max-width: 860px) { .ref { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   ASIAKASLUPAUS-BANNERI (liukuu näkyviin 20 sekunnin jälkeen)
+   ========================================================================= */
+.promise-banner {
+  position: fixed; z-index: 60; left: 20px; bottom: 20px; width: min(360px, calc(100vw - 40px));
+  border-radius: var(--radius-lg); overflow: hidden; isolation: isolate;
+  background: var(--spruce); color: #fff; text-align: center;
+  box-shadow: 0 24px 60px rgba(16, 37, 48, 0.38);
+  opacity: 0; transform: translateY(24px); pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+.promise-banner.is-open { opacity: 1; transform: none; pointer-events: auto; }
+.promise-banner-photos { position: absolute; inset: 0; z-index: -2; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.promise-banner-photos img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.promise-banner::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22, 48, 59, 0.78), rgba(29, 94, 121, 0.86)); }
+.promise-banner-body { padding: 26px 22px 22px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.promise-banner-body .promise-banner-title { font-family: var(--font-display, "Space Grotesk", sans-serif); font-weight: 700; font-size: 1.45rem; line-height: 1.1; margin: 0; color: #fff; }
+.promise-banner-body p { margin: 0; color: rgba(255, 255, 255, 0.94); font-size: 0.95rem; line-height: 1.5; font-weight: 600; }
+.promise-banner-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 6px; }
+.promise-banner-link { color: rgba(255, 255, 255, 0.9) !important; font-weight: 600; font-size: 0.95rem; text-decoration: underline; text-underline-offset: 3px; }
+.promise-banner-link:hover { color: #fff !important; }
+.promise-banner-close {
+  position: absolute; top: 8px; right: 8px; width: 36px; height: 36px; border: 0; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center; background: rgba(255, 255, 255, 0.16); color: #fff;
+}
+.promise-banner-close:hover { background: rgba(255, 255, 255, 0.3); }
+.promise-banner-close:focus-visible, .promise-banner-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.promise-banner-close svg { width: 18px; height: 18px; }
+@media (max-width: 760px) {
+  /* Puhelimessa kiinteän tarjouspainikkeen yläpuolelle, tiiviimpänä */
+  .promise-banner { left: 12px; right: 12px; width: auto; bottom: 86px; }
+  .promise-banner-body { padding: 20px 16px 16px; gap: 8px; }
+  .promise-banner-body .promise-banner-title { font-size: 1.25rem; }
+  .promise-banner-body p { font-size: 0.9rem; }
+  .promise-banner-actions { flex-direction: row; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .promise-banner { transition: none; transform: none; } }
+@media print { .promise-banner { display: none !important; } }
+

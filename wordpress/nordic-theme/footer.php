@@ -132,6 +132,28 @@
   </a>
 </div>
 
+<?php /* Asiakaslupaus-banneri: liukuu näkyviin, kun sivustolla on oltu yli 20 sekuntia (promise-banner.js) */ ?>
+<?php if ( nordic_promise_banner_enabled() ) : ?>
+<aside class="promise-banner" id="promise-banner" data-delay="20" aria-labelledby="promise-banner-title" hidden>
+  <div class="promise-banner-photos" aria-hidden="true">
+    <?php foreach ( nordic_team() as $nordic_m ) : ?>
+    <img src="<?php echo esc_url( nordic_asset_uri( 'img/tiimi/' . $nordic_m['key'] . '-300.webp' ) ); ?>" alt="" width="300" height="400" loading="lazy" decoding="async">
+    <?php endforeach; ?>
+  </div>
+  <button class="promise-banner-close" type="button" data-promise-close aria-label="<?php esc_attr_e( 'Sulje', 'nordic' ); ?>"><?php echo nordic_icon( 'close' ); // phpcs:ignore ?></button>
+  <div class="promise-banner-body">
+    <p class="promise-banner-title" id="promise-banner-title">Asiakaslupauksemme</p>
+    <p>Mittaamme, asennamme ja viimeistelemme kotisi ikkunat ja ovet itse – kohde kerrallaan, paremman energiatehokkuuden puolesta. Otamme vastuun jokaisesta työstä ensikäynnistä luovutukseen.</p>
+    <div class="promise-banner-actions">
+      <a class="btn btn-primary" href="#tarjous" data-quote>Pyydä tarjous</a>
+      <?php if ( nordic_about_url() ) : ?>
+      <a class="promise-banner-link" href="<?php echo esc_url( nordic_about_url() ); ?>">Tutustu meihin</a>
+      <?php endif; ?>
+    </div>
+  </div>
+</aside>
+<?php endif; ?>
+
 <?php /* Tarjouslomake modaalina sivuilla, joilla ei ole omaa lomaketta */ ?>
 <dialog class="quote-modal" id="quote-modal" aria-labelledby="quote-modal-title" data-has-inline-form="<?php echo nordic_page_has_form() ? '1' : '0'; ?>">
   <div class="quote-modal-inner">
