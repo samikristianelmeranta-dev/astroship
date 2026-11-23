@@ -76,8 +76,31 @@ function nap_offer_attachment_kinds() {
 	return array( 'esite' => 'Tuote-esite', 'kuva' => 'Tuotekuva' );
 }
 
-/** Tallentaa liitteen suojattuun kansioon. Esite: PDF tai kuva. Kuva: JPG, PNG tai WebP. Palauttaa liitteen tiedot tai WP_Errorin. */
-function nap_store_offer_attachment( $file, $kind ) {
+/** Usean tiedoston kenttä (liitteet[]) yksittäisten tiedostojen listaksi. Tyhjät rivit jätetään pois. */
+function nap_uploaded_list( $field ) {
+	$out = array();
+	if ( ! is_array( $field ) || ! isset( $field['name'] ) ) {
+		return $out;
+	}
+	if ( ! is_array( $field['name'] ) ) {
+		return '' !== (string) $field['name'] ? array( $field ) : $out;
+	}
+	foreach ( $field['name'] as $i => $name ) {
+		if ( '' === (string) $name ) {
+			continue;
+		}
+		$out[] = array(
+			'name'     => $name,
+			'tmp_name' => $field['tmp_name'][ $i ] ?? '',
+			'error'    => $field['error'][ $i ] ?? UPLOAD_ERR_NO_FILE,
+			'size'     => $field['size'][ $i ] ?? 0,
+		);
+	}
+	return $out;
+}
+
+/** Tallentaa liitteen suojattuun kansioon: PDF (esite) tai JPG-, PNG- tai WebP-kuva. Palauttaa liitteen tiedot tai WP_Errorin. */
+function nap_store_offer_attachment( $file ) {
 	if ( empty( $file['tmp_name'] ) || UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
 		return new WP_Error( 'nap', 'Liitteen lataus epäonnistui.' );
 	}
@@ -95,9 +118,10 @@ function nap_store_offer_attachment( $file, $kind ) {
 	} elseif ( 0 === strpos( $head, 'RIFF' ) && 'WEBP' === substr( $head, 8, 4 ) ) {
 		$type = array( 'image/webp', 'webp' );
 	}
-	if ( ! $type || ( 'kuva' === $kind && 'application/pdf' === $type[0] ) ) {
-		return new WP_Error( 'nap', 'kuva' === $kind ? 'Tuotekuvan pitää olla JPG-, PNG- tai WebP-kuva.' : 'Esitteen pitää olla PDF tai kuva (JPG, PNG, WebP).' );
+	if ( ! $type ) {
+		return new WP_Error( 'nap', 'Liitteen pitää olla PDF tai kuva (JPG, PNG, WebP).' );
 	}
+	$kind = 'application/pdf' === $type[0] ? 'esite' : 'kuva';
 	$name = 'liite-' . bin2hex( random_bytes( 16 ) ) . '.' . $type[1];
 	if ( ! move_uploaded_file( $file['tmp_name'], nap_private_dir() . '/' . $name ) ) {
 		return new WP_Error( 'nap', 'Liitteen tallennus epäonnistui.' );
@@ -190,19 +214,21 @@ function nap_api_offer( WP_REST_Request $req ) {
 	if ( 'pdf' === $mode && ! $file ) {
 		return nap_err( 'Liitä tarjous PDF-tiedostona.', 400 );
 	}
-	// Liitteet: uusi esite tai kuva korvaa saman lajin aiemman, muut säilyvät päivitetyssä tarjouksessa.
+	// Liitteet: uudet tiedostot lisätään aiempien perään. Yksittäisen tai kaikki aiemmat voi poistaa.
 	$atts = $req->get_param( 'remove_attachments' ) ? array() : nap_offer_attachments( $old );
-	foreach ( nap_offer_attachment_kinds() as $kind => $label ) {
-		if ( empty( $files[ 'liite_' . $kind ]['name'] ) ) {
-			continue;
-		}
-		$stored = nap_store_offer_attachment( $files[ 'liite_' . $kind ], $kind );
+	$drop = array_map( 'absint', (array) $req->get_param( 'remove_attachment' ) );
+	if ( $drop ) {
+		$atts = array_values( array_diff_key( $atts, array_flip( $drop ) ) );
+	}
+	$uploads = nap_uploaded_list( $files['liitteet'] ?? null );
+	if ( count( $atts ) + count( $uploads ) > 10 ) {
+		return nap_err( 'Tarjouksessa voi olla enintään 10 liitettä.', 400 );
+	}
+	foreach ( $uploads as $upload ) {
+		$stored = nap_store_offer_attachment( $upload );
 		if ( is_wp_error( $stored ) ) {
-			return nap_err( $stored->get_error_message(), 400 );
+			return nap_err( $stored->get_error_message() . ' (' . sanitize_file_name( (string) $upload['name'] ) . ')', 400 );
 		}
-		$atts = array_values( array_filter( $atts, function ( $a ) use ( $kind ) {
-			return ( $a['kind'] ?? '' ) !== $kind;
-		} ) );
 		$atts[] = $stored;
 	}
 	// Voimassa asetuksen mukaan (oletus 14 pv) siitä päivästä, kun tarjous lähetetään.

@@ -182,7 +182,7 @@ function nap_mail_offer( $customer, $project, $offer, $link ) {
 			'Hei ' . nap_first_name( $customer['name'] ) . ',',
 			'kiitos odottamisesta! ' . ( $offer['version'] > 1 ? 'Päivitetty tarjous' : 'Tarjouksesi' ) . ' on valmis.',
 			nap_offer_mail_lines( $project, $offer ),
-			! empty( $offer['attachments'] ) ? 'Tarjouksen mukana on myös tuote-esite tai tuotekuva. Löydät ne samalta sivulta tarjouksen alta.' : '',
+			! empty( $offer['attachments'] ) ? 'Tarjouksen mukana on myös liitteitä, kuten tuote-esite tai tuotekuvia. Löydät ne samalta sivulta tarjouksen alta.' : '',
 			'Painike avaa tarjouksen suoraan, eikä kirjautumista tarvita. Voit hyväksyä tarjouksen ja valita maksutavan tai kysyä tarkennusta, ja palata samaan linkkiin myöhemmin.',
 			'Jos haluat käydä tarjouksen läpi puhelimessa, vastaa tähän viestiin tai soita: myynti 045 7832 5070.',
 		),

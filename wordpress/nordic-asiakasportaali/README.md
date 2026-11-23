@@ -202,3 +202,8 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - **Omat rivit ja järjestys:** laskurin omia rivejä voi siirtää nuolilla mihin kohtaan tahansa. "Tallenna omat rivit ja järjestys pohjaksi" tallentaa ne hintoineen CRM:ään, jolloin ne ovat valmiina jokaisessa uudessa tarjouksessa kaikilla käyttäjillä (asetus `nap_calc_template`, vain osakas voi tallentaa).
 - **Tarjouksen liitteet:** tarjoukseen voi liittää tuote-esitteen (PDF tai kuva) ja tuotekuvan (JPG, PNG, WebP). Asiakas näkee kuvan tarjoussivulla ja avaa esitteen painikkeesta. Liitteet säilyvät päivitetyssä tarjouksessa, uusi tiedosto korvaa saman lajin liitteen.
 
+## 0.15.1 – Useita liitteitä kerralla
+
+- Tarjouslomakkeessa on yksi liitekenttä, johon voi valita kerralla useita tiedostoja (PDF-esitteet ja kuvat, enintään 10 liitettä, 15 Mt kukin).
+- Uudet liitteet lisätään aiempien perään. Päivitetyssä tarjouksessa aiemmat liitteet voi poistaa yksitellen.
+

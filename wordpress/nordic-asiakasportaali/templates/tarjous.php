@@ -156,7 +156,7 @@ textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12
     		?>
       <a href="<?php echo esc_url( $nap_url ); ?>" target="_blank" rel="noopener" style="display:block;margin-top:16px"><img src="<?php echo esc_url( $nap_url ); ?>" alt="<?php echo 'kuva' === $nap_a['kind'] ? 'Tuotekuva' : 'Tuote-esite'; ?>" style="display:block;max-width:100%;height:auto;border-radius:12px" loading="lazy"></a>
     	<?php else : ?>
-      <a class="btn o" style="margin-top:12px" href="<?php echo esc_url( $nap_url ); ?>" target="_blank" rel="noopener">Avaa tuote-esite (PDF)</a>
+      <a class="btn o" style="margin-top:12px" href="<?php echo esc_url( $nap_url ); ?>" target="_blank" rel="noopener">Avaa esite: <?php echo esc_html( preg_replace( '/\.pdf$/i', '', (string) $nap_a['name'] ) ?: 'PDF' ); ?></a>
     	<?php endif; ?>
     <?php endforeach; ?>
 

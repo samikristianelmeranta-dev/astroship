@@ -259,7 +259,7 @@
       { t: 'Tarjous', done: !!o || p.stage >= 2,
         sub: o ? (o.mode === 'pdf' ? 'PDF-tarjous' : eur(o.sum)) + ' · lähetetty ' + fdate(o.sent_at) + (o.valid_until ? ' · voimassa ' + fdate(o.valid_until) + ' asti' : '') + (o.status === 'declined' ? ' · asiakas ei ole kiinnostunut' : o.viewed_at ? ' · asiakas avasi ' + fdate(o.viewed_at) : ' · ei vielä avattu') : (p.stage >= 2 ? 'Ohitettu: tarjousta ei ole lähetetty CRM:stä.' : 'Tee tarjous laskurilla tai liitä valmis PDF.'),
         act: '<button type="button" class="btn sm p" data-offer="' + p.id + '">Tee tarjous</button>',
-        extra: !o ? (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Tee tarjous</button>' : '') : o ? (o.attachments || []).map(function (at, i) { return '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_liite=' + p.id + '&i=' + i) + '">' + (at.kind === 'kuva' ? 'Tuotekuva' : 'Tuote-esite') + '</a>'; }).join('') + (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') + (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button>' : '') : '' },
+        extra: !o ? (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Tee tarjous</button>' : '') : o ? (o.attachments || []).map(function (at, i) { return '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_liite=' + p.id + '&i=' + i) + '" title="' + esc(at.name) + '">' + (at.kind === 'kuva' ? 'Kuva' : 'Esite') + ((o.attachments || []).length > 1 ? ' ' + (i + 1) : '') + '</a>'; }).join('') + (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') + (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button>' : '') : '' },
       { t: 'Hyväksyntä', done: !!a || p.stage >= 3,
         sub: a ? 'Hyväksytty ' + fdate(a.at) + ' · ' + (a.how === 'portaali' ? 'asiakas itse tarjoussivulla' : 'asiakkaan puolesta (' + a.how_label + ', ' + a.by_name + ')') + (a.value ? ' · ' + eur(a.value) : '') : (p.stage >= 3 ? 'Ohitettu: hyväksyntää ei ole kirjattu.' : 'Asiakas hyväksyy tarjouksen itse linkistä, tai kirjaat hyväksynnän hänen puolestaan.'),
         act: '<div data-apprw="' + p.id + '"><button type="button" class="btn sm p" data-approve="' + p.id + '">Hyväksy asiakkaan puolesta</button></div>',
@@ -336,9 +336,8 @@
       '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
       '<label class="fld wide" data-fieldsonly>Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
       '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
-      '<div class="fields"><label class="fld">Tuote-esite (PDF tai kuva, valinnainen)<input name="liite_esite" type="file" accept="application/pdf,image/jpeg,image/png,image/webp"></label>' +
-      '<label class="fld">Tuotekuva (valinnainen)<input name="liite_kuva" type="file" accept="image/jpeg,image/png,image/webp"></label></div>' +
-      ((o.attachments || []).length ? '<div class="choices"><span class="small muted">Aiemmat liitteet säilyvät: ' + esc(o.attachments.map(function (a) { return (a.kind === 'kuva' ? 'tuotekuva' : 'tuote-esite') + ' (' + a.name + ')'; }).join(', ')) + '. Uusi tiedosto korvaa saman lajin liitteen.</span><label><input type="checkbox" name="remove_attachments" value="1"><span>Poista aiemmat liitteet</span></label></div>' : '<p class="small muted" style="margin:0">Liitteet näkyvät asiakkaalle tarjoussivulla tarjouksen alla.</p>') +
+      '<label class="fld">Liitteet: tuote-esitteet ja kuvat (valinnainen, voit valita useita)<input name="liitteet[]" type="file" multiple accept="application/pdf,image/jpeg,image/png,image/webp"><span class="muted small" style="font-weight:400" data-attlist>PDF, JPG, PNG tai WebP. Enintään 10 liitettä, 15 Mt kukin. Asiakas näkee ne tarjoussivulla tarjouksen alla.</span></label>' +
+      ((o.attachments || []).length ? '<div class="choices"><span class="small muted">Aiemmat liitteet säilyvät, ellet poista niitä:</span>' + o.attachments.map(function (a, i) { return '<label><input type="checkbox" name="remove_attachment[]" value="' + i + '"><span>Poista ' + (a.kind === 'kuva' ? 'kuva' : 'esite') + ': ' + esc(a.name) + '</span></label>'; }).join('') + '</div>' : '') +
       '<p class="small muted" style="margin:0">Tarjous on voimassa ' + S.offerDays + ' päivää lähetyksestä (' + esc(fdate(addDays(S.offerDays))) + ' asti). Asiakas avaa sen suoraan sähköpostin linkistä ilman kirjautumista.</p>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
       '<p class="small muted" style="margin:0" data-calchint hidden>Haluatko lähettää tarjouksen omasta sähköpostistasi? Ota yllä oleva rasti pois, paina Lataa PDF ja liitä tiedosto viestiisi. Kun painat sen jälkeen Lähetä tarjous, tarjous kirjautuu CRM:ään ja asiakkaan Oma kohde -sivulle ilman CRM:n sähköpostia.</p>' +
@@ -376,6 +375,11 @@
       L.pdf({ validUntil: validUntil }).then(function (blob) { var u = URL.createObjectURL(blob); if (win) { win.location = u; } else { savePdf(blob, L.fileName()); } })
         .catch(function (err) { if (win) win.close(); fail(err); });
     });
+    // Valittujen liitteiden nimet näkyviin, jotta useamman tiedoston valinta on helppo tarkistaa.
+    f.querySelector('[name="liitteet[]"]').addEventListener('change', function () {
+      var names = Array.prototype.map.call(this.files, function (x) { return x.name; });
+      f.querySelector('[data-attlist]').textContent = names.length ? 'Valittu ' + names.length + ': ' + names.join(', ') : 'PDF, JPG, PNG tai WebP. Enintään 10 liitettä, 15 Mt kukin.';
+    });
     f.querySelectorAll('[name=mode]').forEach(function (r) { r.addEventListener('change', onMode); });
     onMode();
     w.querySelector('[data-cancel]').addEventListener('click', function () { loadCard(c.id); });
@@ -395,8 +399,8 @@
           d.set('sum', String(Math.round(comp.gross * 100) / 100));
           d.set('calc', JSON.stringify(L.getState()));
           d.set('pdf', blob, L.fileName());
-          ['liite_esite', 'liite_kuva'].forEach(function (n) { if (f[n] && f[n].files[0]) d.set(n, f[n].files[0]); });
-          if (f.remove_attachments && f.remove_attachments.checked) d.set('remove_attachments', '1');
+          Array.prototype.forEach.call(f.querySelector('[name="liitteet[]"]').files, function (file) { d.append('liitteet[]', file); });
+          f.querySelectorAll('[name="remove_attachment[]"]:checked').forEach(function (b) { d.append('remove_attachment[]', b.value); });
           return d;
         });
       }
