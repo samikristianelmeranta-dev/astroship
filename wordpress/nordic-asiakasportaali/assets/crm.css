@@ -270,3 +270,7 @@ details.more>summary{cursor:pointer;color:var(--muted);font-size:13.5px;font-wei
   .lk-ctl{grid-column:3;grid-row:1}
   .lk-row:not(.on) .lk-cell,.lk-row:not(.on) .lk-total{display:none} /* valitsemattomat rivit pysyvät yhden rivin korkuisina */
 }
+.attpick{gap:6px}
+.attlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.attlist li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-weight:400;font-size:14px;color:var(--ink)}
+.attlist li > span{min-width:0;overflow-wrap:anywhere}

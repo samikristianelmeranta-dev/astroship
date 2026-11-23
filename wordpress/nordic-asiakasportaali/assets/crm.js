@@ -336,7 +336,10 @@
       '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
       '<label class="fld wide" data-fieldsonly>Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
       '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
-      '<label class="fld">Liitteet: tuote-esitteet ja kuvat (valinnainen, voit valita useita)<input name="liitteet[]" type="file" multiple accept="application/pdf,image/jpeg,image/png,image/webp"><span class="muted small" style="font-weight:400" data-attlist>PDF, JPG, PNG tai WebP. Enintään 10 liitettä, 15 Mt kukin. Asiakas näkee ne tarjoussivulla tarjouksen alla.</span></label>' +
+      '<div class="fld attpick"><span>Liitteet: tuote-esitteet ja kuvat (valinnainen)</span>' +
+      '<div class="actions" style="margin:0"><button type="button" class="btn sm" data-attadd>+ Lisää liitteitä</button><input type="file" data-attinput multiple hidden accept="application/pdf,image/jpeg,image/png,image/webp"></div>' +
+      '<ul class="attlist" data-attlist></ul>' +
+      '<span class="muted small" style="font-weight:400">PDF, JPG, PNG tai WebP. Voit lisätä tiedostoja yksi kerrallaan tai useita kerralla. Enintään 10 liitettä, 15 Mt kukin. Asiakas näkee ne tarjoussivulla tarjouksen alla.</span></div>' +
       ((o.attachments || []).length ? '<div class="choices"><span class="small muted">Aiemmat liitteet säilyvät, ellet poista niitä:</span>' + o.attachments.map(function (a, i) { return '<label><input type="checkbox" name="remove_attachment[]" value="' + i + '"><span>Poista ' + (a.kind === 'kuva' ? 'kuva' : 'esite') + ': ' + esc(a.name) + '</span></label>'; }).join('') + '</div>' : '') +
       '<p class="small muted" style="margin:0">Tarjous on voimassa ' + S.offerDays + ' päivää lähetyksestä (' + esc(fdate(addDays(S.offerDays))) + ' asti). Asiakas avaa sen suoraan sähköpostin linkistä ilman kirjautumista.</p>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
@@ -375,10 +378,33 @@
       L.pdf({ validUntil: validUntil }).then(function (blob) { var u = URL.createObjectURL(blob); if (win) { win.location = u; } else { savePdf(blob, L.fileName()); } })
         .catch(function (err) { if (win) win.close(); fail(err); });
     });
-    // Valittujen liitteiden nimet näkyviin, jotta useamman tiedoston valinta on helppo tarkistaa.
-    f.querySelector('[name="liitteet[]"]').addEventListener('change', function () {
-      var names = Array.prototype.map.call(this.files, function (x) { return x.name; });
-      f.querySelector('[data-attlist]').textContent = names.length ? 'Valittu ' + names.length + ': ' + names.join(', ') : 'PDF, JPG, PNG tai WebP. Enintään 10 liitettä, 15 Mt kukin.';
+    // Liitteet kerätään omaan listaan: selaimen tiedostovalitsin korvaisi aiemman valinnan joka kerta.
+    var picked = [], attInput = f.querySelector('[data-attinput]'), attList = f.querySelector('[data-attlist]');
+    var keptCount = (o.attachments || []).length;
+    function drawPicked() {
+      attList.innerHTML = picked.map(function (x, i) {
+        return '<li><span>' + esc(x.name) + ' <span class="muted">(' + (x.size > 1048576 ? (x.size / 1048576).toFixed(1).replace('.', ',') + ' Mt' : Math.max(1, Math.round(x.size / 1024)) + ' kt') + ')</span></span><button type="button" class="btn sm" data-attdel="' + i + '" aria-label="Poista liite ' + esc(x.name) + '">Poista</button></li>';
+      }).join('');
+    }
+    f.querySelector('[data-attadd]').addEventListener('click', function () { attInput.click(); });
+    attInput.addEventListener('change', function () {
+      var skipped = [];
+      Array.prototype.forEach.call(attInput.files, function (x) {
+        var dup = picked.some(function (y) { return y.name === x.name && y.size === x.size; });
+        var removing = f.querySelectorAll('[name="remove_attachment[]"]:checked').length;
+        if (dup) return;
+        if (x.size > 15 * 1048576) { skipped.push(x.name + ' on yli 15 Mt'); return; }
+        if (!/\.(pdf|jpe?g|png|webp)$/i.test(x.name)) { skipped.push(x.name + ' ei ole PDF tai kuva'); return; }
+        if (keptCount - removing + picked.length >= 10) { skipped.push(x.name + ': enintään 10 liitettä'); return; }
+        picked.push(x);
+      });
+      attInput.value = ''; // sama tiedosto voidaan valita uudelleen poiston jälkeen
+      drawPicked();
+      if (skipped.length) toast('Ei lisätty: ' + skipped.join('; '), true);
+    });
+    attList.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-attdel]'); if (!b) return;
+      picked.splice(+b.getAttribute('data-attdel'), 1); drawPicked();
     });
     f.querySelectorAll('[name=mode]').forEach(function (r) { r.addEventListener('change', onMode); });
     onMode();
@@ -386,6 +412,7 @@
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var fd = new FormData(f); fd.set('notify', f.notify.checked ? '1' : '');
+      picked.forEach(function (file) { fd.append('liitteet[]', file, file.name); });
       if (f.mode.value === 'pdf') fd.set('sum', f.sum_pdf.value || '0');
       fd.delete('sum_pdf');
       var ready = Promise.resolve(fd);
@@ -399,7 +426,7 @@
           d.set('sum', String(Math.round(comp.gross * 100) / 100));
           d.set('calc', JSON.stringify(L.getState()));
           d.set('pdf', blob, L.fileName());
-          Array.prototype.forEach.call(f.querySelector('[name="liitteet[]"]').files, function (file) { d.append('liitteet[]', file); });
+          picked.forEach(function (file) { d.append('liitteet[]', file, file.name); });
           f.querySelectorAll('[name="remove_attachment[]"]:checked').forEach(function (b) { d.append('remove_attachment[]', b.value); });
           return d;
         });

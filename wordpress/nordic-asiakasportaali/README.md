@@ -207,3 +207,8 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - Tarjouslomakkeessa on yksi liitekenttä, johon voi valita kerralla useita tiedostoja (PDF-esitteet ja kuvat, enintään 10 liitettä, 15 Mt kukin).
 - Uudet liitteet lisätään aiempien perään. Päivitetyssä tarjouksessa aiemmat liitteet voi poistaa yksitellen.
 
+## 0.15.2 – Liitteiden lisääminen yksi kerrallaan
+
+- Liitteet kerätään listaan painikkeesta "+ Lisää liitteitä". Jokainen valinta lisätään listaan eikä korvaa aiempaa, joten tiedostoja voi lisätä yksi kerrallaan eri kansioista tai useita kerralla.
+- Listan tiedostot voi poistaa yksitellen ennen lähetystä. Liian suuret tai väärän tyyppiset tiedostot hylätään heti ilmoituksen kanssa.
+
