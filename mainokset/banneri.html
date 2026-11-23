@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Kangasbanneri</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --liila: #744668; --ink: #1d1934; --cream: #fbf3ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  /* --u = 1 % bannerin korkeudesta */
+  body { --u: calc(var(--h) / 100); font-family: 'Inter', sans-serif; color: var(--cream); background: var(--ink); -webkit-font-smoothing: antialiased; }
+  .banner {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden;
+    background:
+      radial-gradient(ellipse 60% 90% at 88% 0%, rgba(222, 52, 120, .6), transparent 70%),
+      radial-gradient(ellipse 50% 80% at 0% 100%, rgba(116, 70, 104, .95), transparent 70%),
+      linear-gradient(150deg, var(--ink) 0%, #2b2552 50%, var(--sininen) 100%);
+  }
+  .ring { position: absolute; border-radius: 50%; border: calc(var(--u) * .5) solid rgba(251, 243, 234, .1); }
+  /* kuva oikealla, rajattu vyötäröltä */
+  .photo { position: absolute; z-index: 1; right: 2%; top: 10%; width: calc(var(--h) * .82); filter: drop-shadow(0 calc(var(--u) * 1.5) calc(var(--u) * 3) rgba(0,0,0,.45)); }
+  .photo img { display: block; width: 100%; height: auto; }
+  /* sisältö pidetään reunoista irti päärmeiden ja purjerenkaiden takia */
+  .content { position: absolute; z-index: 2; left: 6%; top: 50%; transform: translateY(-50%); width: 62%; display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--u) * 3.4); }
+  .name { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .86; letter-spacing: -.02em; font-size: calc(var(--u) * 16); }
+  .goal { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; line-height: .9; letter-spacing: -.015em; font-size: calc(var(--u) * 11.4); color: var(--vaalea); }
+  .row { display: flex; align-items: center; gap: calc(var(--u) * 5); margin-top: calc(var(--u) * 2); }
+  .logo { width: calc(var(--u) * 26); height: auto; display: block; }
+  .info { display: flex; flex-direction: column; gap: calc(var(--u) * 1); border-left: calc(var(--u) * .5) solid rgba(251,243,234,.3); padding-left: calc(var(--u) * 4); }
+  .url { font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: calc(var(--u) * 6); }
+  .date { font-weight: 700; font-size: calc(var(--u) * 3.6); color: rgba(251,243,234,.85); }
+  .date b { color: var(--vaalea); }
+  .payer { position: absolute; z-index: 3; left: 6%; bottom: calc(var(--u) * 4); font-size: calc(var(--u) * 1.4); color: rgba(251,243,234,.55); }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="ring" style="width:calc(var(--u)*150);height:calc(var(--u)*150);right:-12%;top:-45%"></div>
+  <div class="ring" style="width:calc(var(--u)*90);height:calc(var(--u)*90);left:-12%;bottom:-50%"></div>
+  <div class="photo"><img src="assets/sami.png" alt=""></div>
+  <div class="content">
+    <p class="name">Sami<br>Elmeranta</p>
+    <p class="goal">eduskuntaan</p>
+    <div class="row">
+      <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
+      <div class="info">
+        <p class="url">samielmeranta.fi</p>
+        <p class="date">Eduskuntavaalit <b>su 18.4.2027</b></p>
+      </div>
+    </div>
+  </div>
+  <p class="payer">Maksaja: Sami Elmeranta</p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.documentElement.style.setProperty('--w', q.get('w') + 'px');
+  document.documentElement.style.setProperty('--h', q.get('h') + 'px');
+</script>
+</body>
+</html>
