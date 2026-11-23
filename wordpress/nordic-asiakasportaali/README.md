@@ -194,3 +194,11 @@ ja viestit, kalenteri, kiitoslahja ja suosittelulahjat, yleinen muistutus meist�
 - Molemmissa roskapostisuoja: piilokenttä, allekirjoitettu aikaleima, linkkien esto ja määrärajat.
 - Teema 2.13.1 näyttää huoltolomakkeen automaattisesti huoltosivujen lopussa ja yhteydenottolomakkeen Yhteystiedot-sivulla.
 
+## 0.15.0 – Vapaa työnkulku, laskuri kaikkialta, omat rivit ja liitteet
+
+- **Työnkulun vaiheet voi tehdä missä järjestyksessä tahansa.** Jokaisen tulevan vaiheen kohdalla on "Tee tämä vaihe nyt", joka avaa vaiheen toiminnot. Aiemmat vaiheet jäävät ohitetuiksi, ja ohitetun tarjouksen tai hyväksynnän voi yhä kirjata jälkikäteen.
+- **Laskuri asiakkaan kortilla:** jokaisen kohteen yläosassa on painike "Tee tarjous laskurilla", vaiheesta riippumatta.
+- **Laskuri saapuneesta viestistä:** asiakkaaseen liitetyssä viestissä on painike "Tee tarjous laskurilla", joka avaa asiakkaan uusimman avoimen kohteen tarjouslomakkeen.
+- **Omat rivit ja järjestys:** laskurin omia rivejä voi siirtää nuolilla mihin kohtaan tahansa. "Tallenna omat rivit ja järjestys pohjaksi" tallentaa ne hintoineen CRM:ään, jolloin ne ovat valmiina jokaisessa uudessa tarjouksessa kaikilla käyttäjillä (asetus `nap_calc_template`, vain osakas voi tallentaa).
+- **Tarjouksen liitteet:** tarjoukseen voi liittää tuote-esitteen (PDF tai kuva) ja tuotekuvan (JPG, PNG, WebP). Asiakas näkee kuvan tarjoussivulla ja avaa esitteen painikkeesta. Liitteet säilyvät päivitetyssä tarjouksessa, uusi tiedosto korvaa saman lajin liitteen.
+

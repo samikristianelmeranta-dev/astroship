@@ -70,6 +70,64 @@ function nap_send_offer_pdf( $offer, $download_name = 'tarjous.pdf' ) {
 	exit;
 }
 
+/* ---------- Tarjouksen liitteet: tuote-esite ja tuotekuva ---------- */
+
+function nap_offer_attachment_kinds() {
+	return array( 'esite' => 'Tuote-esite', 'kuva' => 'Tuotekuva' );
+}
+
+/** Tallentaa liitteen suojattuun kansioon. Esite: PDF tai kuva. Kuva: JPG, PNG tai WebP. Palauttaa liitteen tiedot tai WP_Errorin. */
+function nap_store_offer_attachment( $file, $kind ) {
+	if ( empty( $file['tmp_name'] ) || UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
+		return new WP_Error( 'nap', 'Liitteen lataus epäonnistui.' );
+	}
+	if ( $file['size'] > 15 * MB_IN_BYTES ) {
+		return new WP_Error( 'nap', 'Liite on liian suuri (enintään 15 Mt).' );
+	}
+	$head = (string) file_get_contents( $file['tmp_name'], false, null, 0, 12 );
+	$type = null;
+	if ( 0 === strpos( $head, '%PDF-' ) ) {
+		$type = array( 'application/pdf', 'pdf' );
+	} elseif ( 0 === strpos( $head, "\xFF\xD8\xFF" ) ) {
+		$type = array( 'image/jpeg', 'jpg' );
+	} elseif ( 0 === strpos( $head, "\x89PNG" ) ) {
+		$type = array( 'image/png', 'png' );
+	} elseif ( 0 === strpos( $head, 'RIFF' ) && 'WEBP' === substr( $head, 8, 4 ) ) {
+		$type = array( 'image/webp', 'webp' );
+	}
+	if ( ! $type || ( 'kuva' === $kind && 'application/pdf' === $type[0] ) ) {
+		return new WP_Error( 'nap', 'kuva' === $kind ? 'Tuotekuvan pitää olla JPG-, PNG- tai WebP-kuva.' : 'Esitteen pitää olla PDF tai kuva (JPG, PNG, WebP).' );
+	}
+	$name = 'liite-' . bin2hex( random_bytes( 16 ) ) . '.' . $type[1];
+	if ( ! move_uploaded_file( $file['tmp_name'], nap_private_dir() . '/' . $name ) ) {
+		return new WP_Error( 'nap', 'Liitteen tallennus epäonnistui.' );
+	}
+	return array( 'kind' => $kind, 'file' => $name, 'name' => sanitize_file_name( (string) $file['name'] ), 'mime' => $type[0] );
+}
+
+function nap_offer_attachments( $offer ) {
+	return $offer && ! empty( $offer['attachments'] ) && is_array( $offer['attachments'] ) ? array_values( $offer['attachments'] ) : array();
+}
+
+/** Lähettää tarjouksen liitteen selaimeen (oikeus tarkistettu kutsujassa). */
+function nap_send_offer_attachment( $offer, $index ) {
+	$atts = nap_offer_attachments( $offer );
+	$a    = isset( $atts[ $index ] ) ? $atts[ $index ] : null;
+	$path = $a ? nap_private_dir() . '/' . basename( (string) $a['file'] ) : '';
+	$ok   = array( 'application/pdf', 'image/jpeg', 'image/png', 'image/webp' );
+	if ( ! $a || ! is_file( $path ) || ! in_array( $a['mime'], $ok, true ) ) {
+		status_header( 404 );
+		exit( 'Tiedostoa ei löytynyt.' );
+	}
+	nocache_headers();
+	header( 'Content-Type: ' . $a['mime'] );
+	header( 'Content-Disposition: inline; filename="' . sanitize_file_name( $a['name'] ?: 'liite' ) . '"' );
+	header( 'Content-Length: ' . filesize( $path ) );
+	header( 'X-Content-Type-Options: nosniff' );
+	readfile( $path ); // phpcs:ignore
+	exit;
+}
+
 /* ---------- Laskurin laskelma (tallennetaan, jotta tarjousta voi muokata ja lähettää uudelleen) ---------- */
 
 /** Siivoaa laskurin tilan: vain tunnetut kentät, tekstit puhdistettuna, enintään 60 riviä. */
@@ -132,6 +190,21 @@ function nap_api_offer( WP_REST_Request $req ) {
 	if ( 'pdf' === $mode && ! $file ) {
 		return nap_err( 'Liitä tarjous PDF-tiedostona.', 400 );
 	}
+	// Liitteet: uusi esite tai kuva korvaa saman lajin aiemman, muut säilyvät päivitetyssä tarjouksessa.
+	$atts = $req->get_param( 'remove_attachments' ) ? array() : nap_offer_attachments( $old );
+	foreach ( nap_offer_attachment_kinds() as $kind => $label ) {
+		if ( empty( $files[ 'liite_' . $kind ]['name'] ) ) {
+			continue;
+		}
+		$stored = nap_store_offer_attachment( $files[ 'liite_' . $kind ], $kind );
+		if ( is_wp_error( $stored ) ) {
+			return nap_err( $stored->get_error_message(), 400 );
+		}
+		$atts = array_values( array_filter( $atts, function ( $a ) use ( $kind ) {
+			return ( $a['kind'] ?? '' ) !== $kind;
+		} ) );
+		$atts[] = $stored;
+	}
 	// Voimassa asetuksen mukaan (oletus 14 pv) siitä päivästä, kun tarjous lähetetään.
 	$valid = gmdate( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' +' . (int) nap_settings()['offer_days'] . ' days' ) );
 	$pdf   = 'pdf' === $mode;
@@ -148,6 +221,7 @@ function nap_api_offer( WP_REST_Request $req ) {
 		'file'        => $file,
 		'file_name'   => $fname,
 		'calc'        => $pdf ? nap_clean_calc( $req->get_param( 'calc' ) ) : null,
+		'attachments' => $atts,
 		'sent_at'     => nap_now(),
 		'sent_by'     => (int) $me->ID,
 		'sent_name'   => $me->display_name,

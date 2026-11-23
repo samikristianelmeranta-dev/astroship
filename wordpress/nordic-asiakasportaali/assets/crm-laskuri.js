@@ -64,7 +64,8 @@
       '</div>' +
       '<p class="lk-hint">Hinta / yks. on asiakkaan hinta tarvikkeineen. Kohtaan "Josta tarvikkeet" kirjoitetaan, paljonko yksikköhinnasta on tarvikkeita. Loppu lasketaan työksi, josta kotitalousvähennys saadaan. Ikkunat, ovet ja Tarvikkeet-rivi ovat tuotteita, joista vähennystä ei saa.</p>' +
       '<div class="lk-rows" data-lk="rows"><div class="lk-row lk-head" aria-hidden="true"><span></span><span>Toimenpide</span><span class="r">Määrä</span><span>Yks.</span><span class="r">Hinta / yks.</span><span class="r">Josta tarvikkeet</span><span class="r">Yhteensä</span><span></span></div></div>' +
-      '<div><button type="button" class="btn sm" data-lk="add">+ Lisää muu työ</button></div>' +
+      '<div class="lk-tools"><button type="button" class="btn sm" data-lk="add">+ Lisää oma rivi</button></div>' +
+      '<p class="lk-hint">Omia rivejä voi siirtää nuolilla haluamaansa kohtaan.</p>' +
       '<div class="lk-fields">' +
         '<label class="fld" for="' + uid + 'alvmode">Syötetyt hinnat ovat<select id="' + uid + 'alvmode" data-lk="alvmode"><option value="incl">verollisia (sis. ALV)</option><option value="excl">verottomia (ALV 0 %)</option></select></label>' +
         fld('alv', 'ALV-%', 'num') +
@@ -80,8 +81,9 @@
     var rowsEl = q('rows');
 
     function addRow(def) {
-      var custom = !def.id, id = def.id || 'muu-' + (++customSeq), sv = saved[id];
-      if (def.group) { var g = document.createElement('div'); g.className = 'lk-row lk-group'; g.textContent = def.group; rowsEl.appendChild(g); }
+      var custom = !def.id, id = def.id || def.cid || newCustomId(), sv = custom ? def : saved[id], g = null;
+      if (custom) { var n = /^oma-(\d+)$/.exec(id); if (n) { customSeq = Math.max(customSeq, +n[1]); } }
+      if (def.group) { g = document.createElement('div'); g.className = 'lk-row lk-group'; g.textContent = def.group; rowsEl.appendChild(g); }
       var el = document.createElement('div'); el.className = 'lk-row';
       el.innerHTML =
         '<input type="checkbox" id="' + uid + 'on-' + id + '" aria-label="Valitse tarjoukseen">' +
@@ -91,15 +93,17 @@
         '<div class="lk-cell"><span class="lk-m">Hinta / yks.</span><input type="text" class="num" inputmode="decimal" data-c="price" aria-label="Hinta per yksikkö, euroa"></div>' +
         '<div class="lk-cell"><span class="lk-m">Josta tarvikkeet</span><input type="text" class="num" inputmode="decimal" data-c="mat" aria-label="Josta tarvikkeita per yksikkö, euroa"></div>' +
         '<div class="lk-total"></div>' +
-        (custom ? '<button type="button" class="lk-del" aria-label="Poista rivi">×</button>' : '<span></span>');
+        (custom ? '<span class="lk-ctl"><button type="button" class="lk-mv" data-lkmv="-1" aria-label="Siirrä rivi ylemmäs" title="Siirrä ylemmäs">↑</button>' +
+          '<button type="button" class="lk-mv" data-lkmv="1" aria-label="Siirrä rivi alemmas" title="Siirrä alemmas">↓</button>' +
+          '<button type="button" class="lk-del" aria-label="Poista rivi" title="Poista rivi">×</button></span>' : '<span></span>');
       rowsEl.appendChild(el);
-      var r = { id: id, custom: custom, el: el, from: def.from, product: !!def.product, label: def.name,
+      var r = { id: id, custom: custom, el: el, headEl: g, template: !!def.template, from: def.from, product: !!def.product, label: def.name,
         on: el.querySelector('input[type="checkbox"]'), nameEl: custom ? el.querySelector('input.lk-name') : null,
         qty: el.querySelector('[data-c="qty"]'), unit: el.querySelector('[data-c="unit"]'), price: el.querySelector('[data-c="price"]'),
         mat: el.querySelector('[data-c="mat"]'), total: el.querySelector('.lk-total') };
-      if (!custom) { el.querySelector('label.lk-name').textContent = def.name; }
+      if (!custom) { el.querySelector('label.lk-name').textContent = def.name; } else { r.nameEl.value = def.name || ''; }
       r.unit.value = (sv && sv.unit) || def.unit || 'kpl';
-      r.price.value = sv && sv.price ? sv.price : (def.price !== undefined ? String(def.price) : '');
+      r.price.value = sv && sv.price ? String(sv.price) : (def.price !== undefined ? String(def.price) : '');
       r.mat.value = sv && sv.mat && !r.product ? sv.mat : '';
       if (r.product) { r.mat.disabled = true; r.mat.placeholder = def.ph || 'tuote'; }
       r.on.addEventListener('change', function () {
@@ -113,11 +117,38 @@
       if (custom) {
         r.nameEl.addEventListener('input', update);
         el.querySelector('.lk-del').addEventListener('click', function () { removeRow(r); update(); });
+        el.querySelectorAll('.lk-mv').forEach(function (b) { b.addEventListener('click', function () { moveRow(r, +b.getAttribute("data-lkmv")); b.focus(); }); });
       }
       rows.push(r);
       return r;
     }
     function removeRow(r) { rowsEl.removeChild(r.el); rows = rows.filter(function (x) { return x !== r; }); }
+    function newCustomId() { return 'oma-' + (++customSeq); }
+    /** Rivit siinä järjestyksessä kuin ne ovat näytöllä. */
+    function syncOrder() {
+      var els = Array.prototype.slice.call(rowsEl.children);
+      rows.sort(function (a, b) { return els.indexOf(a.el) - els.indexOf(b.el); });
+    }
+    /** Siirtää rivin yhden pykälän ylös (-1) tai alas (1). Ryhmäotsikko pysyy ryhmänsä ensimmäisen rivin edellä. */
+    function moveRow(r, dir) {
+      syncOrder();
+      var i = rows.indexOf(r), other = rows[i + dir];
+      if (!other) { return; }
+      if (dir < 0) { rowsEl.insertBefore(r.el, other.headEl || other.el); }
+      else { rowsEl.insertBefore(r.el, other.el.nextSibling); }
+      syncOrder(); update();
+    }
+    /** Järjestää rivit annettuun tunnistejärjestykseen. Listasta puuttuvat rivit jäävät loppuun nykyisessä järjestyksessään. */
+    function applyOrder(ids) {
+      if (!Array.isArray(ids) || !ids.length) { return; }
+      syncOrder();
+      var rest = rows.slice(), ordered = [];
+      ids.forEach(function (id) {
+        for (var k = 0; k < rest.length; k++) { if (rest[k].id === id) { ordered.push(rest.splice(k, 1)[0]); break; } }
+      });
+      ordered.concat(rest).forEach(function (r) { if (r.headEl) { rowsEl.appendChild(r.headEl); } rowsEl.appendChild(r.el); });
+      syncOrder();
+    }
 
     function compute() {
       var items = rows.filter(function (r) { return r.on.checked; }).map(function (r) {
@@ -172,26 +203,29 @@
     }
 
     function getState() {
-      var s = { rows: rows.map(function (r) { return { id: r.custom ? '' : r.id, name: r.custom ? r.nameEl.value : '', on: r.on.checked, qty: r.qty.value, unit: r.unit.value, price: r.price.value, mat: r.mat.value }; }) };
+      syncOrder();
+      var s = { rows: rows.map(function (r) { return { id: r.id, name: r.custom ? r.nameEl.value : '', on: r.on.checked, qty: r.qty.value, unit: r.unit.value, price: r.price.value, mat: r.mat.value }; }) };
       ['laskija', 'numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alvmode', 'alv', 'hakijat', 'muut', 'lisatiedot'].forEach(function (k) { s[k] = q(k).value; });
       s.ktvon = q('ktvon').checked;
       return s;
     }
     function setState(s) {
       s = s && typeof s === 'object' ? s : {};
-      rows.filter(function (r) { return r.custom; }).forEach(removeRow);
+      rows.filter(function (r) { return r.custom && !r.template; }).forEach(removeRow); // pohjan omat rivit säilyvät
       ['laskija', 'numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'muut', 'lisatiedot'].forEach(function (k) { q(k).value = str(s[k]); });
       q('alvmode').value = s.alvmode === 'excl' ? 'excl' : 'incl'; q('alv').value = str(s.alv) || '25,5';
       q('hakijat').value = s.hakijat === '2' ? '2' : '1'; q('ktvon').checked = s.ktvon !== false;
       rows.forEach(function (r) { r.on.checked = false; r.qty.value = ''; });
       (Array.isArray(s.rows) ? s.rows : []).slice(0, 60).forEach(function (d) {
         if (!d || typeof d !== 'object') { return; }
-        var r = d.id ? rows.filter(function (x) { return x.id === d.id; })[0] : addRow({ unit: 'kpl' });
+        var r = d.id ? rows.filter(function (x) { return x.id === d.id; })[0] : null;
+        if (!r && (!d.id || /^oma-\d+$/.test(d.id) || /^muu-\d+$/.test(d.id))) { r = addRow({ unit: 'kpl', cid: /^oma-\d+$/.test(str(d.id)) ? d.id : '' }); }
         if (!r) { return; }
         if (r.custom) { r.nameEl.value = str(d.name); }
         r.on.checked = d.on === true; r.qty.value = str(d.qty); r.price.value = str(d.price); r.mat.value = r.product ? '' : str(d.mat);
         if (UNITS.indexOf(d.unit) !== -1) { r.unit.value = d.unit; }
       });
+      if (Array.isArray(s.rows) && s.rows.length) { applyOrder(s.rows.map(function (d) { return d && d.id; }).filter(Boolean)); }
       update();
     }
 
@@ -259,6 +293,27 @@
     }
 
     ROWS.forEach(addRow);
+    var tpl = opts.template && typeof opts.template === 'object' ? opts.template : {};
+    (Array.isArray(tpl.services) ? tpl.services : []).slice(0, 60).forEach(function (d) {
+      if (d && /^oma-\d+$/.test(str(d.id)) && str(d.name)) {
+        addRow({ cid: d.id, template: true, name: str(d.name), unit: UNITS.indexOf(d.unit) !== -1 ? d.unit : 'kpl', price: str(d.price), mat: str(d.mat) });
+      }
+    });
+    applyOrder(tpl.order);
+    if (opts.onSaveTemplate) {
+      var tb = document.createElement('button'); tb.type = 'button'; tb.className = 'btn sm'; tb.textContent = 'Tallenna omat rivit ja järjestys pohjaksi';
+      tb.title = 'Omat rivit hintoineen ja rivien järjestys tulevat valmiiksi jokaiseen uuteen tarjoukseen kaikille käyttäjille.';
+      q('add').parentNode.appendChild(document.createTextNode(' ')); q('add').parentNode.appendChild(tb);
+      tb.addEventListener('click', function () {
+        syncOrder();
+        var out = { order: rows.map(function (r) { return r.id; }), services: rows.filter(function (r) { return r.custom && r.nameEl.value.trim(); }).map(function (r) {
+          r.template = true;
+          return { id: r.id, name: r.nameEl.value.trim(), unit: r.unit.value, price: r.price.value, mat: r.mat.value };
+        }) };
+        tb.disabled = true;
+        Promise.resolve(opts.onSaveTemplate(out)).then(function () { tb.disabled = false; }, function () { tb.disabled = false; });
+      });
+    }
     q('add').addEventListener('click', function () { var r = addRow({ unit: 'kpl' }); r.on.checked = true; update(); r.nameEl.focus(); });
     ['laskija', 'numero', 'asiakas', 'kohde', 'ikkunat', 'ovet', 'alvmode', 'alv', 'hakijat', 'muut', 'ktvon', 'lisatiedot'].forEach(function (k) {
       q(k).addEventListener('input', update); q(k).addEventListener('change', update);

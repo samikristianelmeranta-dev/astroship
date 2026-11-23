@@ -28,6 +28,9 @@ add_action( 'rest_api_init', function () {
 		return current_user_can( 'nap_all' ); // vain osakas poistaa
 	} ) );
 	$r( '/projects/(?P<id>\d+)/approve', 'POST', 'nap_api_approve' );
+	register_rest_route( $ns, '/calc-template', array( 'methods' => 'POST', 'callback' => 'nap_api_save_calc_template', 'permission_callback' => function () {
+		return current_user_can( 'nap_all' ); // laskurin yhteinen pohja: vain osakas muuttaa
+	} ) );
 	$r( '/tasks', 'GET', 'nap_api_tasks' );
 	$r( '/tasks', 'POST', 'nap_api_create_task' );
 	$r( '/tasks/(?P<id>\d+)', 'POST', 'nap_api_update_task' );
@@ -73,8 +76,41 @@ function nap_api_bootstrap() {
 		'offer_days' => (int) nap_settings()['offer_days'],
 		'deliveries' => nap_deliveries(),
 		'measure_terms' => (string) nap_settings()['measure_terms'],
+		'calc_template' => nap_calc_template(),
 		'today'  => current_time( 'Y-m-d' ),
 	);
+}
+
+/** Laskurin yhteinen pohja: omat rivit (nimi, yksikkö, hinta, tarvikkeet) ja kaikkien rivien järjestys. */
+function nap_calc_template() {
+	$t = get_option( 'nap_calc_template' );
+	return is_array( $t ) ? $t : array( 'services' => array(), 'order' => array() );
+}
+
+function nap_api_save_calc_template( WP_REST_Request $req ) {
+	$in  = (array) $req->get_json_params();
+	$out = array( 'services' => array(), 'order' => array() );
+	foreach ( array_slice( isset( $in['services'] ) && is_array( $in['services'] ) ? $in['services'] : array(), 0, 60 ) as $s ) {
+		if ( ! is_array( $s ) || ! isset( $s['id'], $s['name'] ) || ! preg_match( '/^oma-\d{1,6}$/', (string) $s['id'] ) ) {
+			continue;
+		}
+		$name = mb_substr( sanitize_text_field( (string) $s['name'] ), 0, 120 );
+		if ( '' === $name ) {
+			continue;
+		}
+		$row = array( 'id' => (string) $s['id'], 'name' => $name );
+		foreach ( array( 'unit', 'price', 'mat' ) as $k ) {
+			$row[ $k ] = isset( $s[ $k ] ) && is_scalar( $s[ $k ] ) ? mb_substr( sanitize_text_field( (string) $s[ $k ] ), 0, 20 ) : '';
+		}
+		$out['services'][] = $row;
+	}
+	foreach ( array_slice( isset( $in['order'] ) && is_array( $in['order'] ) ? $in['order'] : array(), 0, 150 ) as $id ) {
+		if ( is_string( $id ) && preg_match( '/^[a-z0-9-]{1,40}$/', $id ) ) {
+			$out['order'][] = $id;
+		}
+	}
+	update_option( 'nap_calc_template', $out, false );
+	return $out;
 }
 
 function nap_api_board() {

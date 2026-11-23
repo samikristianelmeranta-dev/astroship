@@ -86,6 +86,13 @@ add_action( 'template_redirect', function () {
 			}
 			nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-' . $p['id'] . '.pdf' );
 		}
+		if ( isset( $_GET['tarjous_liite'] ) ) { // phpcs:ignore
+			$p = nap_get_project( absint( $_GET['tarjous_liite'] ) ); // phpcs:ignore
+			if ( ! nap_can_see_project( $p ) ) {
+				wp_die( 'Ei oikeutta.', '', array( 'response' => 403 ) );
+			}
+			nap_send_offer_attachment( nap_get_offer( $p ), isset( $_GET['i'] ) ? absint( $_GET['i'] ) : 0 ); // phpcs:ignore
+		}
 		include NAP_DIR . '/templates/crm.php';
 		exit;
 	}
@@ -162,6 +169,15 @@ function nap_handle_customer_route() {
 		}
 		nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-nordic-ikkunat.pdf' );
 	}
+	if ( isset( $_GET['tarjous_liite'] ) ) { // phpcs:ignore
+		$c = nap_current_customer();
+		$p = $c ? nap_get_project( absint( $_GET['tarjous_liite'] ) ) : null; // phpcs:ignore
+		if ( ! $p || (int) $p['customer_id'] !== (int) $c['id'] ) {
+			wp_safe_redirect( home_url( '/oma-kohde/' ) );
+			exit;
+		}
+		nap_send_offer_attachment( nap_get_offer( $p ), isset( $_GET['i'] ) ? absint( $_GET['i'] ) : 0 ); // phpcs:ignore
+	}
 	include NAP_DIR . '/templates/oma-kohde.php';
 	exit;
 }
@@ -195,6 +211,9 @@ function nap_send_manifest() {
 function nap_offer_page( $c, $p, $base ) {
 	if ( isset( $_GET['pdf'] ) ) { // phpcs:ignore
 		nap_send_offer_pdf( nap_get_offer( $p ), 'tarjous-nordic-ikkunat.pdf' );
+	}
+	if ( isset( $_GET['liite'] ) ) { // phpcs:ignore
+		nap_send_offer_attachment( nap_get_offer( $p ), absint( $_GET['liite'] ) ); // phpcs:ignore
 	}
 	if ( 'POST' === $_SERVER['REQUEST_METHOD'] ) { // phpcs:ignore
 		$action = sanitize_key( $_POST['nap_action'] ?? '' ); // phpcs:ignore

@@ -188,6 +188,7 @@
         (c.projects.length ? c.projects.map(function (p) {
           return '<div class="proj" data-proj="' + p.id + '"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' + esc(p.title) + '</b>' + (p.delivery !== 'asennus' ? '<span class="pill gold">' + esc(S.deliveries[p.delivery]) + '</span>' : '') + '</div>' +
             '<div class="small muted">' + esc(p.address) + '</div>' + (p.details ? '<div class="small" style="white-space:pre-line;margin-top:6px">' + esc(p.details) + '</div>' : '') +
+            '<div class="offer-top" data-offw="' + p.id + '">' + (!p.approval ? '<button type="button" class="btn sm p" data-offer="' + p.id + '">' + (p.offer ? 'Tee päivitetty tarjous laskurilla' : 'Tee tarjous laskurilla') + '</button>' : '') + '</div>' +
             flowBox(p, c) +
             '<details class="more"><summary>Lisätiedot: arvo, asentaja, toimitustapa</summary><div class="fields" style="margin-top:10px">' +
             '<label class="fld">Arvo (€, sis. alv)<input data-f="value" type="number" min="0" step="10" value="' + (p.value || '') + '"></label>' +
@@ -252,16 +253,17 @@
       own ? { t: 'Mitat asiakkaalta', done: p.stage >= 1, sub: p.stage >= 1 ? 'Mitat saatu.' : 'Odotetaan asiakkaan mittoja.',
         act: '<button type="button" class="btn sm p" data-flow="mitat">Mitat saatu</button>' } :
       { t: 'Mittauskäynti', done: !!(mv && mv.confirmed) || (!mv && p.stage >= 1),
-        sub: mv ? when(mv) + (mv.installer_id ? ' · ' + uname(mv.installer_id) : '') + (mv.confirmed ? ' · vahvistettu asiakkaalle' : ' · ei vielä vahvistettu asiakkaalle') : (p.stage >= 1 ? 'Kirjattu tehdyksi.' : 'Sovi päivä asiakkaan kanssa ja kirjaa se tähän: asiakas saa vahvistuksen ja muistutuksen.'),
+        sub: mv ? when(mv) + (mv.installer_id ? ' · ' + uname(mv.installer_id) : '') + (mv.confirmed ? ' · vahvistettu asiakkaalle' : ' · ei vielä vahvistettu asiakkaalle') : (p.stage >= 1 ? 'Ohitettu tai kirjattu tehdyksi ilman käyntiä.' : 'Sovi päivä asiakkaan kanssa ja kirjaa se tähän: asiakas saa vahvistuksen ja muistutuksen.'),
         act: mv ? '<button type="button" class="btn sm p" data-flow="confirm" data-visit="' + mv.id + '">Lähetä vahvistus asiakkaalle</button><a class="btn sm" href="#kaynti-' + mv.id + '">Avaa käynti</a>'
           : '<button type="button" class="btn sm p" data-flow="book" data-type="mittaus">Sovi mittauskäynti</button>' },
       { t: 'Tarjous', done: !!o || p.stage >= 2,
-        sub: o ? (o.mode === 'pdf' ? 'PDF-tarjous' : eur(o.sum)) + ' · lähetetty ' + fdate(o.sent_at) + (o.valid_until ? ' · voimassa ' + fdate(o.valid_until) + ' asti' : '') + (o.status === 'declined' ? ' · asiakas ei ole kiinnostunut' : o.viewed_at ? ' · asiakas avasi ' + fdate(o.viewed_at) : ' · ei vielä avattu') : 'Lähetä tarjous käsin: PDF tai hinta ja sisältö.',
-        act: '<div data-offw="' + p.id + '"><button type="button" class="btn sm p" data-offer="' + p.id + '">Lähetä tarjous</button></div>',
-        extra: o ? (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') + (!a ? '<span data-offw="' + p.id + '"><button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button></span>' : '') : '' },
+        sub: o ? (o.mode === 'pdf' ? 'PDF-tarjous' : eur(o.sum)) + ' · lähetetty ' + fdate(o.sent_at) + (o.valid_until ? ' · voimassa ' + fdate(o.valid_until) + ' asti' : '') + (o.status === 'declined' ? ' · asiakas ei ole kiinnostunut' : o.viewed_at ? ' · asiakas avasi ' + fdate(o.viewed_at) : ' · ei vielä avattu') : (p.stage >= 2 ? 'Ohitettu: tarjousta ei ole lähetetty CRM:stä.' : 'Tee tarjous laskurilla tai liitä valmis PDF.'),
+        act: '<button type="button" class="btn sm p" data-offer="' + p.id + '">Tee tarjous</button>',
+        extra: !o ? (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Tee tarjous</button>' : '') : o ? (o.attachments || []).map(function (at, i) { return '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_liite=' + p.id + '&i=' + i) + '">' + (at.kind === 'kuva' ? 'Tuotekuva' : 'Tuote-esite') + '</a>'; }).join('') + (o.file ? '<a class="btn sm" target="_blank" rel="noopener" href="' + esc(location.pathname + '?tarjous_pdf=' + p.id) + '">Avaa PDF</a>' : '') + (!a ? '<button type="button" class="btn sm" data-offer="' + p.id + '">Lähetä päivitetty tarjous</button>' : '') : '' },
       { t: 'Hyväksyntä', done: !!a || p.stage >= 3,
-        sub: a ? 'Hyväksytty ' + fdate(a.at) + ' · ' + (a.how === 'portaali' ? 'asiakas itse tarjoussivulla' : 'asiakkaan puolesta (' + a.how_label + ', ' + a.by_name + ')') + (a.value ? ' · ' + eur(a.value) : '') : 'Asiakas hyväksyy tarjouksen itse linkistä, tai kirjaat hyväksynnän hänen puolestaan.',
-        act: '<div data-apprw="' + p.id + '"><button type="button" class="btn sm p" data-approve="' + p.id + '">Hyväksy asiakkaan puolesta</button></div>' },
+        sub: a ? 'Hyväksytty ' + fdate(a.at) + ' · ' + (a.how === 'portaali' ? 'asiakas itse tarjoussivulla' : 'asiakkaan puolesta (' + a.how_label + ', ' + a.by_name + ')') + (a.value ? ' · ' + eur(a.value) : '') : (p.stage >= 3 ? 'Ohitettu: hyväksyntää ei ole kirjattu.' : 'Asiakas hyväksyy tarjouksen itse linkistä, tai kirjaat hyväksynnän hänen puolestaan.'),
+        act: '<div data-apprw="' + p.id + '"><button type="button" class="btn sm p" data-approve="' + p.id + '">Hyväksy asiakkaan puolesta</button></div>',
+        extra: !a ? '<div data-apprw="' + p.id + '"><button type="button" class="btn sm" data-approve="' + p.id + '">Kirjaa hyväksyntä</button></div>' : '' },
       { t: dayWord, done: !!(iv && iv.confirmed) || (!iv && p.stage >= 5),
         sub: iv ? when(iv) + (iv.installer_id ? ' · ' + uname(iv.installer_id) : '') + (iv.confirmed ? ' · varmistettu: asiakas sai vahvistuksen ja sopimusehdot' : ' · alustava, ei vielä varmistettu') : 'Syötä sovittu päivä. Kun se on varmistunut, kuittaa se: asiakas saa vahvistuksen ja sopimusehdot.',
         act: iv ? '<button type="button" class="btn sm p" data-flow="confirm" data-visit="' + iv.id + '" data-terms="1">Kuittaa varmistuneeksi</button><button type="button" class="btn sm" data-flow="edit" data-visit="' + iv.id + '">Muuta päivää</button>'
@@ -274,13 +276,17 @@
     return '<ol class="flow">' + steps.map(function (s, i) {
       var state = s.done ? 'done' : i === cur ? 'now' : 'todo';
       return '<li class="' + state + '"><span class="dot" aria-hidden="true">' + (s.done ? '✓' : i + 1) + '</span><div><b>' + esc(s.t) + '</b>' +
-        (state === 'todo' ? '' : '<div class="small muted">' + esc(s.sub) + '</div>') +
+        (state === 'todo' ? (s.act ? '<button type="button" class="flow-open" data-flowopen aria-expanded="false">Tee tämä vaihe nyt</button><div class="flow-more" hidden><div class="small muted">' + esc(s.sub) + '</div><div class="actions">' + s.act + '</div></div>' : '') : '<div class="small muted">' + esc(s.sub) + '</div>') +
         (state === 'now' && s.act ? '<div class="actions">' + s.act + '</div>' : '') +
         (state === 'done' && s.extra ? '<div class="actions">' + s.extra + '</div>' : '') + '</div></li>';
     }).join('') + '</ol>';
   }
   function bindFlow(c) {
     var VV = window.NAPV.visits;
+    // Tulevan vaiheen voi avata ja tehdä heti: aiemmat vaiheet jäävät ohitetuiksi.
+    document.querySelectorAll('#ccard [data-flowopen]').forEach(function (b) {
+      b.addEventListener('click', function () { var m = b.nextElementSibling, open = m.hidden; m.hidden = !open; b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.textContent = open ? 'Piilota' : 'Tee tämä vaihe nyt'; });
+    });
     document.querySelectorAll('#ccard [data-proj]').forEach(function (el) {
       var pid = +el.getAttribute('data-proj');
       var p = c.projects.filter(function (x) { return x.id === pid; })[0];
@@ -315,6 +321,7 @@
   function addDays(n) { var d = new Date(S.today + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
   function openOffer(c, pid) {
     var w = document.querySelector('[data-offw="' + pid + '"]'); if (!w) return;
+    w.scrollIntoView({ block: 'nearest' });
     var p = c.projects.filter(function (x) { return x.id === pid; })[0], o = p.offer || {};
     var calcFirst = !!window.NAPLaskuri && (!o.mode || !!o.calc);
     var pdfFirst = !calcFirst && (o.mode ? o.mode === 'pdf' : true);
@@ -329,6 +336,9 @@
       '<label class="fld" data-fieldsonly>Josta työn osuus (€)<input name="labor" type="number" min="0" step="1" value="' + (o.labor || '') + '"></label>' +
       '<label class="fld wide" data-fieldsonly>Sisältö (näkyy asiakkaalle)<textarea name="content" rows="4" placeholder="esim. 9 kpl Skaala Alfa -ikkunaa, ulko-ovi Aika F1, asennus ja vanhojen poisvienti">' + esc(o.content || p.title || '') + '</textarea></label>' +
       '<label class="fld wide" data-fieldsonly>Lisätiedot asiakkaalle<textarea name="notes" rows="2" placeholder="esim. toimitusaika noin 6–8 viikkoa tilauksesta">' + esc(o.notes || '') + '</textarea></label></div>' +
+      '<div class="fields"><label class="fld">Tuote-esite (PDF tai kuva, valinnainen)<input name="liite_esite" type="file" accept="application/pdf,image/jpeg,image/png,image/webp"></label>' +
+      '<label class="fld">Tuotekuva (valinnainen)<input name="liite_kuva" type="file" accept="image/jpeg,image/png,image/webp"></label></div>' +
+      ((o.attachments || []).length ? '<div class="choices"><span class="small muted">Aiemmat liitteet säilyvät: ' + esc(o.attachments.map(function (a) { return (a.kind === 'kuva' ? 'tuotekuva' : 'tuote-esite') + ' (' + a.name + ')'; }).join(', ')) + '. Uusi tiedosto korvaa saman lajin liitteen.</span><label><input type="checkbox" name="remove_attachments" value="1"><span>Poista aiemmat liitteet</span></label></div>' : '<p class="small muted" style="margin:0">Liitteet näkyvät asiakkaalle tarjoussivulla tarjouksen alla.</p>') +
       '<p class="small muted" style="margin:0">Tarjous on voimassa ' + S.offerDays + ' päivää lähetyksestä (' + esc(fdate(addDays(S.offerDays))) + ' asti). Asiakas avaa sen suoraan sähköpostin linkistä ilman kirjautumista.</p>' +
       '<div class="choices"><label><input type="checkbox" name="notify"' + (c.email ? ' checked' : ' disabled') + '><span>Lähetä asiakkaalle sähköposti, jossa linkki tarjoukseen' + (c.email ? ' (' + esc(c.email) + ')' : ' (ei sähköpostia: kerro asiakkaalle itse)') + '</span></label></div>' +
       '<p class="small muted" style="margin:0" data-calchint hidden>Haluatko lähettää tarjouksen omasta sähköpostistasi? Ota yllä oleva rasti pois, paina Lataa PDF ja liitä tiedosto viestiisi. Kun painat sen jälkeen Lähetä tarjous, tarjous kirjautuu CRM:ään ja asiakkaan Oma kohde -sivulle ilman CRM:n sähköpostia.</p>' +
@@ -347,7 +357,7 @@
       f.pdf.required = pdf && !o.file;
       if (calc && !L) {
         L = window.NAPLaskuri.mount(f.querySelector('[data-calc]'), {
-          state: o.calc || null, jspdf: C.jspdf, laskija: S.me.name, asiakas: c.name,
+          state: o.calc || null, jspdf: C.jspdf, laskija: S.me.name, asiakas: c.name, template: S.calcTemplate, onSaveTemplate: isOwner() ? saveCalcTemplate : null,
           kohde: p.address || [c.address, c.city].filter(Boolean).join(', '),
           numero: new Date().getFullYear() + '-' + ('000' + p.id).slice(-4) + (o.version ? '-' + (o.version + 1) : ''),
           newNumber: !!o.version   // päivitetty tarjous saa uuden numeron
@@ -385,6 +395,8 @@
           d.set('sum', String(Math.round(comp.gross * 100) / 100));
           d.set('calc', JSON.stringify(L.getState()));
           d.set('pdf', blob, L.fileName());
+          ['liite_esite', 'liite_kuva'].forEach(function (n) { if (f[n] && f[n].files[0]) d.set(n, f[n].files[0]); });
+          if (f.remove_attachments && f.remove_attachments.checked) d.set('remove_attachments', '1');
           return d;
         });
       }
@@ -595,7 +607,7 @@
         '<dt>Tunnistus</dt><dd class="small muted">' + esc(m.reason) + '</dd>' +
         '<dt>Asiakas</dt><dd>' + (m.customer_id ? '<a href="#asiakas-' + m.customer_id + '">' + esc(m.customer) + '</a>' : '<select id="iblink" aria-label="Liitä asiakkaaseen"><option value="">Ei liitetty – valitse asiakas</option>' + S.customers.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + '</option>'; }).join('') + '</select>') + '</dd></dl>' +
         '<div class="actions" style="margin:10px 0">' +
-        (!m.customer_id ? '<button class="btn p" id="iblead">Luo tarjouspyyntö</button>' : '') +
+        (!m.customer_id ? '<button class="btn p" id="iblead">Luo tarjouspyyntö</button>' : '<button class="btn p" id="iboffer">Tee tarjous laskurilla</button>') +
         '<a class="btn" href="mailto:' + esc(m.from_email) + '?subject=' + encodeURIComponent('Re: ' + m.subject) + '">Vastaa</a>' +
         '<button class="btn" id="ibdone">' + (m.status === 'new' ? '✓ Merkitse käsitellyksi' : 'Palauta käsittelemättömäksi') + '</button>' +
         (m.category !== 'roskaposti' ? '<button class="btn" id="ibspam1">Roskapostia</button>' : '') + '<button class="btn danger" id="ibdel1">Poista</button>' +
@@ -611,6 +623,13 @@
       var one = function (action, msg) { api('inbox/bulk', { method: 'POST', body: { action: action, ids: [m.id] } }).then(function () { toast(msg); return loadInbox(); }).then(function () { location.hash = 'saapuneet'; viewInbox(); }).catch(fail); };
       var sp = document.getElementById('ibspam1');
       if (sp) sp.addEventListener('click', function () { one('spam', 'Siirretty roskapostiin – saman lähettäjän viestit menevät jatkossa suoraan roskapostiin'); });
+      var ibo = document.getElementById('iboffer');
+      if (ibo) ibo.addEventListener('click', function () {
+        // Avataan asiakkaan uusin kohde, jota ei ole vielä hyväksytty, ja sen tarjouslomake.
+        var ps = S.board.filter(function (p) { return p.customer_id === m.customer_id && !p.approval; }).sort(function (a, b) { return b.id - a.id; });
+        if (ps[0]) S.openOffer = ps[0].id;
+        location.hash = 'asiakas-' + m.customer_id;
+      });
       document.getElementById('ibdel1').addEventListener('click', function () { if (confirm('Poistetaanko viesti pysyvästi?')) one('delete', 'Viesti poistettu'); });
       var l = document.getElementById('iblink');
       if (l) l.addEventListener('change', function () { if (l.value) upd({ customer_id: +l.value }, 'Viesti liitetty asiakkaaseen'); });
@@ -719,6 +738,9 @@
   }
 
   /* ---------- Laskuri (ilman asiakasta: pikalaskelma ja PDF) ---------- */
+  function saveCalcTemplate(tpl) {
+    return api('calc-template', { method: 'POST', body: tpl }).then(function (t) { S.calcTemplate = t; toast('Omat rivit ja järjestys tallennettu pohjaksi'); }).catch(function (e) { fail(e); throw e; });
+  }
   function savePdf(blob, name) {
     var a = document.createElement('a'), u = URL.createObjectURL(blob);
     a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
@@ -727,7 +749,7 @@
   function viewCalc() {
     main.innerHTML = head('Laskuri', 'Laske hinta ja tee PDF. Asiakkaalle lähetettävä tarjous tehdään asiakkaan kortilta: Lähetä tarjous → Laskuri.') +
       '<div class="card"><div id="calcbox"></div><div class="actions" style="margin-top:12px"><button type="button" class="btn p" id="calcpdf">Lataa PDF</button></div></div>';
-    var L = window.NAPLaskuri.mount(document.getElementById('calcbox'), { laskija: S.me.name, jspdf: C.jspdf });
+    var L = window.NAPLaskuri.mount(document.getElementById('calcbox'), { laskija: S.me.name, jspdf: C.jspdf, template: S.calcTemplate, onSaveTemplate: isOwner() ? saveCalcTemplate : null });
     var b = document.getElementById('calcpdf');
     L.onChange(function (c) { b.disabled = !c.items.length; });
     b.addEventListener('click', function () {
@@ -755,7 +777,7 @@
     reloadBoard: function () { return Promise.all([api('board'), api('tasks')]).then(function (r) { S.board = r[0]; S.tasks = r[1]; drawNav(route().v); }); } };
 
   api('bootstrap').then(function (b) {
-    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.offerDays = b.offer_days || 30; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || '';
+    S.me = b.me; S.users = b.users; S.stages = b.stages; S.today = b.today; S.offerDays = b.offer_days || 30; S.deliveries = b.deliveries || {}; S.measureTerms = b.measure_terms || ''; S.calcTemplate = b.calc_template || null;
     return Promise.all([api('board'), api('tasks'), api('customers')]);
   }).then(function (r) {
     S.board = r[0]; S.tasks = r[1]; S.customers = r[2];

@@ -148,6 +148,18 @@ textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12
       <?php if ( $offer['file'] ) : ?><a class="btn o" style="margin-top:16px" href="<?php echo esc_url( $pdf_url ); ?>" target="_blank" rel="noopener">Avaa tarjous (PDF)</a><?php endif; ?>
     <?php endif; ?>
 
+    <?php
+    // Liitteet: tuotekuva näkyy sivulla, esite avautuu omaan välilehteen.
+    foreach ( nap_offer_attachments( $offer ) as $nap_i => $nap_a ) :
+    	$nap_url = add_query_arg( 'liite', (int) $nap_i, $base );
+    	if ( 0 === strpos( (string) $nap_a['mime'], 'image/' ) ) :
+    		?>
+      <a href="<?php echo esc_url( $nap_url ); ?>" target="_blank" rel="noopener" style="display:block;margin-top:16px"><img src="<?php echo esc_url( $nap_url ); ?>" alt="<?php echo 'kuva' === $nap_a['kind'] ? 'Tuotekuva' : 'Tuote-esite'; ?>" style="display:block;max-width:100%;height:auto;border-radius:12px" loading="lazy"></a>
+    	<?php else : ?>
+      <a class="btn o" style="margin-top:12px" href="<?php echo esc_url( $nap_url ); ?>" target="_blank" rel="noopener">Avaa tuote-esite (PDF)</a>
+    	<?php endif; ?>
+    <?php endforeach; ?>
+
     <ul class="facts">
       <?php if ( $offer['valid_until'] && ! $ap ) : ?><li><span>Voimassa</span><b><?php echo esc_html( $fmt( $offer['valid_until'] ) ); ?> asti</b></li><?php endif; ?>
       <li><span>Toimitustapa</span><b><?php echo esc_html( nap_deliveries()[ $delivery ] ); ?></b></li>
