@@ -32,6 +32,16 @@
   .vaaka .name { font-size: calc(var(--u) * 15); }
   .vaaka .logo { width: calc(var(--u) * 44); }
 
+  /* ehdolla: kuva vasemmalla, "Elmeranta ehdolla eduskuntaan!" ja logo oikealla */
+  .tagline { display: none; font-family: 'Bricolage', sans-serif; font-weight: 800; color: var(--vaalea); line-height: 1; }
+  .ehdolla .badge { border-radius: calc(var(--u) * 18); }
+  .ehdolla .face { left: 5.5%; top: 13%; height: 74%; aspect-ratio: 1; }
+  .ehdolla .face img { width: 200%; left: -46%; top: 6%; }
+  .ehdolla .text { position: absolute; left: 45%; right: 5.5%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: calc(var(--u) * 3.4); }
+  .ehdolla .name { font-size: calc(var(--u) * 17.5); }
+  .ehdolla .tagline { display: block; font-size: calc(var(--u) * 10); }
+  .ehdolla .logo { width: calc(var(--u) * 34); margin-top: calc(var(--u) * 2); }
+
   /* pyöreä: kuva ylhäällä, nimi ja logo alla */
   .pyorea .badge { border-radius: 50%; }
   .pyorea .face { left: 50%; top: 8%; width: 48%; aspect-ratio: 1; transform: translateX(-50%); }
@@ -46,6 +56,7 @@
   <div class="face"><img src="assets/sami.png" alt=""></div>
   <div class="text">
     <p class="name">Sami<br>Elmeranta</p>
+    <p class="tagline">ehdolla eduskuntaan!</p>
     <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
   </div>
 </div>
@@ -54,6 +65,7 @@
   document.documentElement.style.setProperty('--w', q.get('w') + 'px');
   document.documentElement.style.setProperty('--h', q.get('h') + 'px');
   document.body.classList.add(q.get('layout') || 'vaaka');
+  if (q.get('layout') === 'ehdolla') document.querySelector('.name').textContent = 'Elmeranta';
 </script>
 </body>
 </html>

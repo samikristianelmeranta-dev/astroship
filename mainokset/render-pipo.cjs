@@ -14,6 +14,7 @@ const DPI_SCALE = 300 / 96;
 const badges = [
   { file: "pipomerkki-vaaka-100x50mm", w: 100, h: 50, layout: "vaaka" },
   { file: "pipomerkki-pyorea-70mm", w: 70, h: 70, layout: "pyorea" },
+  { file: "pipo-ehdolla-eduskuntaan-100x50mm", w: 100, h: 50, layout: "ehdolla" },
 ];
 
 (async () => {
