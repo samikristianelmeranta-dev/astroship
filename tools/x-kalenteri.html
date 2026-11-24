@@ -1,0 +1,106 @@
+<title>X-postaukset joulukuu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: päivät kalenterilistana, jokaisessa postaus kopioitavana */
+  :root {
+    --bg: #faf6f1; --surface: #ffffff; --fg: #1d1934; --muted: #6a6380; --line: #e8dfe6;
+    --accent: #b3125d; --accent-soft: #fbe7f0; --warn: #a15c00;
+    --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #15122a; --surface: #1d1934; --fg: #f3edf2; --muted: #a9a1bb; --line: #332d52;
+    --accent: #f0589a; --accent-soft: #3a1830; --warn: #f0a640; color-scheme: dark } }
+  :root[data-theme="dark"] {
+    --bg: #15122a; --surface: #1d1934; --fg: #f3edf2; --muted: #a9a1bb; --line: #332d52;
+    --accent: #f0589a; --accent-soft: #3a1830; --warn: #f0a640; color-scheme: dark }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--body); }
+  .wrap { max-width: 860px; margin: 0 auto; padding-block: 32px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  h1 { font: 800 clamp(28px, 4vw, 40px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+  .lead { color: var(--muted); margin: 0; max-width: 64ch; }
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 22px; }
+  .filters button { border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 13px var(--body); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .day { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .when { display: flex; flex-direction: column; gap: 2px; }
+  .date { font: 800 22px/1 var(--display); font-variant-numeric: tabular-nums; }
+  .time { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .body { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .kind { align-self: flex-start; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 10px; border-radius: 999px; }
+  .tweet { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+  .tweet p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .count.hi { color: var(--warn); }
+  button.copy { border: 0; background: var(--accent); color: #fff; font: 600 13px var(--body); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+  button.copy.done { background: var(--fg); color: var(--bg); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .img { font-size: 13px; color: var(--muted); }
+  .img b { color: var(--fg); font-weight: 600; }
+  .done-day .date { color: var(--muted); text-decoration: line-through; }
+  .mark { border: 1px solid var(--line); background: transparent; color: var(--muted); font: 500 12px var(--body); padding: 3px 10px; border-radius: 999px; cursor: pointer; align-self: flex-start; }
+  @media (max-width: 520px) { .day { grid-template-columns: minmax(0, 1fr); gap: 8px; } .when { flex-direction: row; align-items: baseline; gap: 10px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Sami Elmeranta · X · joulukuu 2026</span>
+    <h1>X-postaukset joulukuu</h1>
+    <p class="lead">Yksi postaus päivässä. Kopioi teksti ja liitä X:ään. Ketjuissa jokainen osa on oma postauksensa. Merkitse päivä julkaistuksi, niin näet, missä mennään.</p>
+  </header>
+  <div class="filters" id="filters" role="group" aria-label="Suodata aiheen mukaan"></div>
+  <div id="list"></div>
+</div>
+
+<script id="data" type="application/json">/*DATA*/[]</script>
+<script>
+  const days = JSON.parse(document.getElementById('data').textContent);
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem('x-done') || '{}'); } catch (e) {}
+  const save = () => { try { localStorage.setItem('x-done', JSON.stringify(done)); } catch (e) {} };
+  const kinds = ['Kaikki', ...new Set(days.map((d) => d.kind.replace(/ \(.*\)/, '')))];
+  let filter = 'Kaikki';
+
+  function copy(text, btn) {
+    const ok = () => { btn.textContent = 'Kopioitu'; btn.classList.add('done'); setTimeout(() => { btn.textContent = 'Kopioi'; btn.classList.remove('done'); }, 1500); };
+    const fallback = () => { const p = btn.closest('.tweet').querySelector('p'); const r = document.createRange(); r.selectNodeContents(p); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Valittu – Ctrl+C'; };
+    try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
+  }
+
+  function render() {
+    const fl = document.getElementById('filters'); fl.innerHTML = '';
+    kinds.forEach((k) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = k; b.setAttribute('aria-pressed', String(k === filter)); b.onclick = () => { filter = k; render(); }; fl.appendChild(b); });
+    const list = document.getElementById('list'); list.innerHTML = '';
+    days.filter((d) => filter === 'Kaikki' || d.kind.startsWith(filter)).forEach((d) => {
+      const el = document.createElement('section'); el.className = 'day' + (done[d.day] ? ' done-day' : '');
+      el.innerHTML = `<div class="when"><span class="date"></span><span class="time"></span></div><div class="body"><span class="kind"></span></div>`;
+      el.querySelector('.date').textContent = d.day;
+      el.querySelector('.time').textContent = d.time === '-' ? '' : 'klo ' + d.time;
+      el.querySelector('.kind').textContent = d.kind;
+      const body = el.querySelector('.body');
+      d.tweets.forEach((t, i) => {
+        const tw = document.createElement('div'); tw.className = 'tweet';
+        tw.innerHTML = '<p></p><div class="foot"><span class="count"></span><button type="button" class="copy">Kopioi</button></div>';
+        tw.querySelector('p').textContent = t;
+        const c = tw.querySelector('.count'); c.textContent = (d.tweets.length > 1 ? `Osa ${i + 1}/${d.tweets.length} · ` : '') + d.lens[i] + '/280';
+        if (d.lens[i] > 260) c.classList.add('hi');
+        tw.querySelector('.copy').onclick = (e) => copy(t, e.currentTarget);
+        if (d.kind === 'Tauko') tw.querySelector('.foot').hidden = true;
+        body.appendChild(tw);
+      });
+      const img = document.createElement('p'); img.className = 'img'; img.innerHTML = '<b>Kuva:</b> '; img.append(d.image); body.appendChild(img);
+      const m = document.createElement('button'); m.type = 'button'; m.className = 'mark'; m.textContent = done[d.day] ? 'Julkaistu ✓' : 'Merkitse julkaistuksi';
+      m.onclick = () => { done[d.day] = !done[d.day]; save(); render(); };
+      body.appendChild(m);
+      list.appendChild(el);
+    });
+  }
+  render();
+</script>
