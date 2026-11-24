@@ -38,6 +38,9 @@ $stats  = array(
 				<span class="hero-word block"><?php echo esc_html( se_opt( 'hero_line1' ) ); ?></span>
 				<span class="hero-word block"><?php echo esc_html( se_opt( 'hero_line2' ) ); ?></span>
 				<span class="hero-word block text-gradient"><?php echo esc_html( se_opt( 'hero_line3' ) ); ?></span>
+				<?php if ( se_opt( 'hero_line4' ) ) : ?>
+					<span class="hero-word mt-5 inline-block rounded-2xl bg-brand px-5 py-2 text-3xl text-white shadow-lg shadow-brand/30 sm:text-4xl xl:text-5xl"><?php echo esc_html( se_opt( 'hero_line4' ) ); ?></span>
+				<?php endif; ?>
 			</h1>
 			<p class="hero-word mt-7 max-w-xl text-xl leading-relaxed text-muted"><?php echo esc_html( se_opt( 'hero_lead' ) ); ?></p>
 			<div class="hero-word mt-9 flex flex-wrap gap-3">

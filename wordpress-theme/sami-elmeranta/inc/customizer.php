@@ -31,6 +31,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
 			'hero_line1' => array( 'Otsikko, rivi 1', 'text' ),
 			'hero_line2' => array( 'Otsikko, rivi 2', 'text' ),
 			'hero_line3' => array( 'Otsikko, rivi 3 (korostettu)', 'text' ),
+			'hero_line4' => array( 'Otsikon nosto (tyhjä = ei näytetä)', 'text' ),
 			'hero_lead'  => array( 'Johdanto', 'textarea' ),
 		) ),
 		'se_contact' => array( 'Yhteystiedot & lomake', array(

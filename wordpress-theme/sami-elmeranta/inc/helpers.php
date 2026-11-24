@@ -38,6 +38,7 @@ function se_defaults() {
 		'hero_line1'     => 'Hei, olen',
 		'hero_line2'     => 'Sami Elmeranta.',
 		'hero_line3'     => 'Tolkun poliitikko.',
+		'hero_line4'     => 'Ehdolla eduskuntaan',
 		'hero_lead'      => 'Isä, myynnin ja markkinoinnin kokenut johtaja, yrittäjä, poliitikko ja seutuvaikuttaja. Haluan rakentaa yhteiskuntaa, jossa tekeminen palkitsee, yhteisö tukee ja jokainen voi vaikuttaa.',
 	);
 }
