@@ -83,7 +83,7 @@
         echo '<ul class="footer-cities">';
         foreach ( array( 'turku', 'kaarina', 'raisio', 'naantali', 'lieto', 'salo', 'paimio', 'parainen' ) as $nordic_city ) {
           $nordic_cities = nordic_cities();
-          echo '<li><a href="' . esc_url( home_url( '/ikkunat-ikkunaremontti-' . $nordic_city . '/' ) ) . '">' . esc_html( $nordic_cities[ $nordic_city ] ) . '</a></li>';
+          echo '<li><a href="' . esc_url( home_url( '/' . nordic_current_slug( 'ikkunat-ikkunaremontti-' . $nordic_city ) . '/' ) ) . '">' . esc_html( $nordic_cities[ $nordic_city ] ) . '</a></li>';
         }
         echo '</ul>';
       }

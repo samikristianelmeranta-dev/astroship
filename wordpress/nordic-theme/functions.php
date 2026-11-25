@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.14.1' );
+define( 'NORDIC_VERSION', '2.15.0' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -409,7 +409,34 @@ function nordic_city_from_slug( $slug ) {
 	if ( $huolto && $huolto['city'] ) {
 		return nordic_cities()[ $huolto['city'] ];
 	}
+	// Uudelleen nimetyt paikkakuntasivut (esim. /ikkunasaneeraus-turku/).
+	$old = array_search( $slug, nordic_renamed_slugs(), true );
+	if ( false !== $old && $old !== $slug ) {
+		return nordic_city_from_slug( $old );
+	}
 	return '';
+}
+
+/**
+ * Sivut, joiden osoite on vaihdettu: vanha slug => uusi slug. Vanha osoite ohjataan uuteen (301),
+ * sisäiset linkit kirjoitetaan uuteen osoitteeseen ja sivutyyppi, murupolku ja skeema toimivat kuten ennen.
+ */
+function nordic_renamed_slugs() {
+	return apply_filters( 'nordic_renamed_slugs', array(
+		'ikkunat-ikkunaremontti-turku' => 'ikkunasaneeraus-turku',
+	) );
+}
+
+/** Sivun nykyinen slug: uusi osoite, jos sivu on nimetty uudelleen ja uusi sivu on julkaistu. */
+function nordic_current_slug( $slug ) {
+	$map = nordic_renamed_slugs();
+	if ( isset( $map[ $slug ] ) ) {
+		$page = get_page_by_path( $map[ $slug ] );
+		if ( $page && 'publish' === $page->post_status ) {
+			return $map[ $slug ];
+		}
+	}
+	return $slug;
 }
 
 /**
@@ -475,6 +502,10 @@ function nordic_page_type( $slug ) {
  * @return array|null array( 'slug' => ..., 'name' => ... )
  */
 function nordic_parent_for_slug( $slug ) {
+	$renamed_from = array_search( $slug, nordic_renamed_slugs(), true );
+	if ( false !== $renamed_from && $renamed_from !== $slug ) {
+		return nordic_parent_for_slug( $renamed_from );
+	}
 	$huolto = nordic_huolto_info( $slug );
 	if ( $huolto ) {
 		// Paikkakuntasivun yläsivu on palvelun pääsivu, palvelun pääsivun yläsivu on Huolto.
@@ -2356,3 +2387,67 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'type'        => 'checkbox',
 	) );
 }, 21 );
+
+/* =========================================================================
+ * Osoitteenmuutokset (2.15.0): /ikkunat-ikkunaremontti-turku/ → /ikkunasaneeraus-turku/
+ * ========================================================================= */
+
+/** Vanha osoite ohjataan pysyvästi uuteen, kun uusi sivu on julkaistu. */
+add_action( 'template_redirect', function () {
+	if ( is_admin() || nordic_is_regional() ) {
+		return;
+	}
+	$path = isset( $_SERVER['REQUEST_URI'] ) ? (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : ''; // phpcs:ignore
+	$base = (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+	$slug = trim( substr( $path, strlen( rtrim( $base, '/' ) ) ), '/' );
+	$map  = nordic_renamed_slugs();
+	if ( ! isset( $map[ $slug ] ) || nordic_current_slug( $slug ) === $slug ) {
+		return;
+	}
+	wp_safe_redirect( get_permalink( get_page_by_path( $map[ $slug ] ) ), 301 );
+	exit;
+}, 1 );
+
+/** Sisäiset linkit vanhaan osoitteeseen kirjoitetaan uuteen kaikilla sivuilla, joten yksikään linkki ei kulje ohjauksen kautta. */
+add_filter( 'the_content', function ( $html ) {
+	foreach ( nordic_renamed_slugs() as $old => $new ) {
+		if ( false !== strpos( $html, '/' . $old . '/' ) && nordic_current_slug( $old ) === $new ) {
+			$html = str_replace( '/' . $old . '/', '/' . $new . '/', $html );
+		}
+	}
+	return $html;
+}, 30 );
+
+/**
+ * Turun ikkunasivu: osoite, otsikko, kuvaus ja sisältö päivitetään kerran teeman mukana tulevaan
+ * Ikkunasaneeraus-versioon. Sivu pysyy samana (sama ID), ja vanha sisältö jää versiohistoriaan.
+ */
+add_action( 'admin_init', function () {
+	if ( get_option( 'nordic_turku_saneeraus' ) || nordic_is_regional() || ! current_user_can( 'publish_pages' ) ) {
+		return;
+	}
+	update_option( 'nordic_turku_saneeraus', 1 );
+	$html = (string) file_get_contents( get_template_directory() . '/content/ikkunasaneeraus-turku.html' );
+	if ( '' === $html || get_page_by_path( 'ikkunasaneeraus-turku' ) ) {
+		return;
+	}
+	$old  = get_page_by_path( 'ikkunat-ikkunaremontti-turku' );
+	$post = array(
+		'post_type'    => 'page',
+		'post_status'  => 'publish',
+		'post_name'    => 'ikkunasaneeraus-turku',
+		'post_title'   => 'Ikkunasaneeraus Turku – ikkunoiden vaihto ja kunnostus',
+		'post_excerpt' => 'Ikkunasaneeraus Turussa avaimet käteen: ikkunoiden vaihto tai kunnostus omakotitaloihin ja taloyhtiöihin. Ilmainen mittaus, Skaala-ikkunat asennettuna.',
+		'post_content' => "<!-- wp:html -->\n" . $html . "\n<!-- /wp:html -->",
+	);
+	kses_remove_filters();
+	if ( $old ) {
+		$post['ID']          = $old->ID;
+		$post['post_status'] = $old->post_status;
+		wp_update_post( wp_slash( $post ) );
+		delete_post_meta( $old->ID, '_nordic_schema_json' ); // UKK-skeema luetaan uudesta sisällöstä
+	} else {
+		wp_insert_post( wp_slash( $post ) );
+	}
+	kses_init_filters();
+} );

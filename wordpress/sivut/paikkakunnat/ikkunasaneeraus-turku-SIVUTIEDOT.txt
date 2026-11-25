@@ -1,0 +1,12 @@
+IKKUNASANEERAUS TURKU – SIVUN TIEDOT WORDPRESSIIN
+
+Teema 2.15.0 tekee muutoksen itse, kun avaat hallinnan asennuksen jälkeen. Käsin tehtynä:
+
+Sivut → Ikkunaremontti Turku → Muokkaa
+  Otsikko (title):   Ikkunasaneeraus Turku – ikkunoiden vaihto ja kunnostus  [54 merkkiä]
+  Osoite (slug):     /ikkunasaneeraus-turku/   (vanha: /ikkunat-ikkunaremontti-turku/)
+  Ote (kuvaus):      Ikkunasaneeraus Turussa avaimet käteen: ikkunoiden vaihto tai kunnostus omakotitaloihin ja taloyhtiöihin. Ilmainen mittaus, Skaala-ikkunat asennettuna.  [151 merkkiä]
+  H1 sivulla:        Ikkunasaneeraus Turussa
+  Sisältö:           Korvaa Mukautettu HTML -lohkon sisältö tiedoston ikkunasaneeraus-turku.html koodilla.
+
+Vanha osoite ohjautuu uuteen automaattisesti (301), ja sisäiset linkit päivittyvät teeman kautta.
