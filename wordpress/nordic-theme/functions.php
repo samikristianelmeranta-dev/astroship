@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'NORDIC_VERSION', '2.14.0' );
+define( 'NORDIC_VERSION', '2.14.1' );
 
 /**
  * Vanhat sivukohtaiset tyylit (_nordic_page_css) saa tarvittaessa takaisin päälle
@@ -1961,6 +1961,32 @@ function nordic_front_promos_html() {
 		. '<p>Uudet ikkunat ja ovet ovat investointi, joka näkyy lämmityslaskussa ja asumismukavuudessa vuosikymmeniä. Kotimaiset Skaala-tuotteet valmistetaan mittatilaustyönä Ylihärmässä, ja ne sopivat yhtä hyvin remonttiin kuin uudiskohteeseen.</p>'
 		. '<p>Saat tuotteet ja asennuksen samalta tiimiltä, joka vastaa työstä mittauksesta luovutukseen.</p>'
 		. '</div></div>'
+		. '</div></div></section>'
+		. nordic_front_links_html();
+}
+
+/**
+ * Etusivun "Hyvä tietää" -nosto: linkit Verohallinnon kotitalousvähennysohjeeseen ja valmistajan sivuille.
+ * Osoitteet yhdessä paikassa, jotta ne on helppo päivittää, jos kohdesivu muuttuu.
+ */
+function nordic_external_links() {
+	return apply_filters( 'nordic_external_links', array(
+		'vero'   => 'https://www.vero.fi/henkiloasiakkaat/vahennykset/kotitalousvahennys/',
+		'skaala' => 'https://www.skaala.com/',
+	) );
+}
+
+function nordic_front_links_html() {
+	$l = nordic_external_links();
+	return '<section class="front-facts"><div class="wrap">'
+		. '<div class="section-head"><div class="eyebrow-line"></div><h2>Hyvä tietää ennen remonttia</h2></div>'
+		. '<div class="types-grid">'
+		. '<article class="type-card"><h3>Kotitalousvähennys remontin työstä</h3>'
+		. '<p>Ikkuna- ja oviremontin asennustyöstä voi saada kotitalousvähennystä. Erittelemme työn osuuden tarjoukseen ja laskuun valmiiksi. Ajantasaiset ehdot ja enimmäismäärät löydät Verohallinnon sivuilta.</p>'
+		. '<a class="card-link" href="' . esc_url( $l['vero'] ) . '" target="_blank" rel="noopener">Verohallinto: kotitalousvähennys &rarr;</a></article>'
+		. '<article class="type-card"><h3>Kotimaiset Skaala-ikkunat ja -ovet</h3>'
+		. '<p>Olemme valtuutettu Skaala-jälleenmyyjä. Tuotteet valmistetaan mittatilaustyönä Ylihärmässä. Mallistoon ja teknisiin tietoihin voit tutustua valmistajan sivuilla.</p>'
+		. '<a class="card-link" href="' . esc_url( $l['skaala'] ) . '" target="_blank" rel="noopener">Skaalan sivut: skaala.com &rarr;</a></article>'
 		. '</div></div></section>';
 }
 
