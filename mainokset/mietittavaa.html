@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Mietittävää-mainos</title>
+<style>
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Bricolage'; font-weight: 200 800; src: url('assets/fonts/bricolage-grotesque-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 100 900; src: url('assets/fonts/inter-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+  :root { --fuksia: #b3125d; --vaalea: #de3478; --sininen: #5d538c; --liila: #744668; --ink: #1d1934; --cream: #fbf3ea; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  /* --u = 1 % lyhyemmästä sivusta */
+  body { --u: calc(min(var(--w), var(--h)) / 100); font-family: 'Inter', sans-serif; color: var(--cream); background: var(--ink); -webkit-font-smoothing: antialiased; }
+  .ad {
+    position: relative; width: var(--w); height: var(--h); overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 55% at 90% 5%, rgba(222, 52, 120, .6), transparent 70%),
+      radial-gradient(ellipse 70% 60% at 0% 100%, rgba(116, 70, 104, .95), transparent 70%),
+      linear-gradient(160deg, var(--ink) 0%, #2b2552 55%, var(--sininen) 100%);
+  }
+  .ring { position: absolute; border-radius: 50%; border: calc(var(--u) * .5) solid rgba(251, 243, 234, .1); }
+  .photo { position: absolute; z-index: 1; right: var(--ph-r, -10%); bottom: 0; width: var(--ph-w, 58%); filter: drop-shadow(0 calc(var(--u) * 1.5) calc(var(--u) * 3) rgba(0,0,0,.45)); }
+  .photo img { display: block; width: 100%; height: auto; }
+  .content { position: absolute; z-index: 2; left: 7%; top: var(--top, 7%); width: var(--cw, 58%); display: flex; flex-direction: column; gap: calc(var(--u) * 3.4); }
+  h1 { font-family: 'Bricolage', sans-serif; font-weight: 800; line-height: .98; letter-spacing: -.015em; font-size: var(--h1, calc(var(--u) * 10)); }
+  h1 em { font-style: normal; color: var(--vaalea); }
+  .facts { list-style: none; display: flex; flex-direction: column; gap: calc(var(--u) * 1.8); }
+  .facts li { display: grid; grid-template-columns: auto 1fr; gap: calc(var(--u) * 2); align-items: baseline; font-size: var(--fs, calc(var(--u) * 3.5)); font-weight: 600; line-height: 1.25; }
+  .facts b { font-family: 'Bricolage', sans-serif; font-weight: 800; color: var(--vaalea); font-size: 1.5em; line-height: 1; min-width: 2.6em; }
+  .cta { align-self: flex-start; font-family: 'Bricolage', sans-serif; font-weight: 800; font-size: var(--cta, calc(var(--u) * 4.4)); background: var(--fuksia); color: #fff; padding: calc(var(--u) * 1.4) calc(var(--u) * 3.2); border-radius: calc(var(--u) * 1.6); box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.3); line-height: 1.1; }
+  .foot { position: absolute; z-index: 3; left: 7%; bottom: var(--fb, 5%); display: flex; align-items: center; gap: calc(var(--u) * 3); }
+  .logo { width: var(--logo, calc(var(--u) * 22)); height: auto; display: block; }
+  .who { display: flex; flex-direction: column; gap: calc(var(--u) * .4); }
+  .name { font-family: 'Bricolage', sans-serif; font-weight: 800; text-transform: uppercase; font-size: calc(var(--u) * 3.8); line-height: 1; }
+  .url { font-weight: 700; font-size: calc(var(--u) * 2.8); color: var(--vaalea); }
+
+  .square { --ph-w: 52%; --ph-r: -9%; --h1: calc(var(--u) * 8.6); --fs: calc(var(--u) * 3.1); --cw: 56%; --top: 6%; --cta: calc(var(--u) * 3.8); }
+  .square .content { gap: calc(var(--u) * 2.8); }
+  .portrait { --ph-w: 64%; --ph-r: -20%; --top: 7%; --cw: 61%; --h1: calc(var(--u) * 9.4); --fs: calc(var(--u) * 3.5); --cta: calc(var(--u) * 4.3); }
+  .portrait .content { gap: calc(var(--u) * 4.4); }
+  .portrait .facts { gap: calc(var(--u) * 2.8); }
+  .portrait .foot { bottom: 4.5%; }
+  .wide { --ph-w: calc(var(--h) * .74); --ph-r: 2%; --h1: calc(var(--u) * 11); --fs: calc(var(--u) * 3.6); --cw: 60%; --top: 7%; --cta: calc(var(--u) * 4.4); --logo: calc(var(--u) * 20); --fb: 6%; }
+  .square { --logo: calc(var(--u) * 19); }
+  .wide .photo { bottom: -34%; }
+  .wide .facts { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 2) calc(var(--u) * 4); }
+  .wide .content { gap: calc(var(--u) * 3); }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="ring" style="width:calc(var(--u)*110);height:calc(var(--u)*110);right:-35%;top:-30%"></div>
+  <div class="ring" style="width:calc(var(--u)*70);height:calc(var(--u)*70);left:-25%;bottom:-35%"></div>
+  <div class="photo"><img src="assets/sami.png" alt=""></div>
+  <div class="content">
+    <h1>Tässä vähän <em>mietittävää?</em></h1>
+    <ul class="facts">
+      <li><b>57 %</b><span>BKT:sta julkisiin menoihin, EU:n suurin osuus</span></li>
+      <li><b>10,6 %</b><span>työttömyys, EU:n kärkeä</span></li>
+      <li><b>3 906</b><span>konkurssia vuonna 2025</span></li>
+      <li><b>20 v</b><span>lähes ilman talouskasvua</span></li>
+    </ul>
+    <p class="cta">Ehkä olisi aika kokeilla jotain uutta?</p>
+  </div>
+  <div class="foot">
+    <img class="logo" src="assets/liike-nyt-logo.png" alt="Liike Nyt">
+    <div class="who"><span class="name">Sami Elmeranta</span><span class="url">samielmeranta.fi</span></div>
+  </div>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  document.documentElement.style.setProperty('--w', q.get('w') + 'px');
+  document.documentElement.style.setProperty('--h', q.get('h') + 'px');
+  document.body.firstElementChild.classList.add(q.get('layout') || 'portrait');
+</script>
+</body>
+</html>
