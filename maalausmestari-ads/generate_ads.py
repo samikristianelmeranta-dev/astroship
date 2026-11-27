@@ -81,7 +81,7 @@ def rsa(region, group):
         "Kiinteä hinta – ei yllätyksiä",
         "3 vuoden takuu työlle",
         "Yli 1000 maalattua kohdetta",
-        "Kotimainen perheyritys",
+        "Kotimainen maalausliike",
         "Avainlippu-yritys",
         "Vastaus seuraavana arkipäivänä",
         "Tikkurilan ja Teknoksen maalit",
@@ -94,7 +94,7 @@ def rsa(region, group):
         descs = [
             f"Talon ulkomaalaus ammattitaidolla {c['loc']}. Kiinteä hinta ja 3 vuoden takuu.",
             "Kutsu meidät maksuttomalle arviokäynnille – vastaamme viimeistään seuraavana arkipäivänä.",
-            "Kotimainen perheyritys, yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit.",
+            "Yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit kotimaiselta osaajalta.",
             "Varaa ensi kesän talon maalaus jo nyt. Opastamme myös kotitalousvähennyksen hakemisessa.",
         ]
         paths = ("talon-maalaus", c["city_main"].lower())
@@ -107,7 +107,7 @@ def rsa(region, group):
         descs = [
             "Paikallinen maalausliike lähelläsi. Talon ulkomaalaus kiinteällä hinnalla ja takuulla.",
             "Kutsu meidät maksuttomalle arviokäynnille – vastaamme viimeistään seuraavana arkipäivänä.",
-            "Kotimainen perheyritys, yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit.",
+            "Yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit kotimaiselta osaajalta.",
             "Varaa ensi kesän talon maalaus jo nyt. Opastamme myös kotitalousvähennyksen hakemisessa.",
         ]
         paths = ("talon-maalaus", "paikkakunnat")
@@ -120,7 +120,7 @@ def rsa(region, group):
             "Pyydä talon maalauksesta tarkka ja kiinteä tarjous maksutta – tiedät hinnan etukäteen.",
             "Kiinteähintainen urakkasopimus ilman piilokuluja. Talon maalaukselle 3 vuoden takuu.",
             "Kutsu meidät maksuttomalle arviokäynnille – vastaamme viimeistään seuraavana arkipäivänä.",
-            "Opastamme kotitalousvähennyksen hakemisessa. Kotimainen perheyritys, yli 1000 kohdetta.",
+            "Opastamme kotitalousvähennyksen hakemisessa. Kotimainen maalausliike, yli 1000 kohdetta.",
         ]
         paths = ("talon-maalaus", "hinta")
         url = LP["price"]
@@ -131,7 +131,7 @@ def rsa(region, group):
         descs = [
             f"Rivitalojen ja taloyhtiöiden ulkomaalaukset {c['loc']}. Kiinteä urakkahinta.",
             "Kutsu meidät maksuttomalle arviokäynnille – vastaamme viimeistään seuraavana arkipäivänä.",
-            "Kotimainen perheyritys, yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit.",
+            "Yli 1000 maalattua kohdetta. Tikkurilan ja Teknoksen laatumaalit kotimaiselta osaajalta.",
             "Julkisivut, katot ja muut ulkopinnat samalta urakoitsijalta – selkeä aikataulu ja takuu.",
         ]
         paths = ("rivitalot", "taloyhtiot")
@@ -161,7 +161,7 @@ SITELINKS = [
      f"{BASE}/kotitalousvahennys-talon-maalaus-2026"),
     ("Tiilikaton pinnoitus", "5 vuoden takuu työlle", "Ormax-tiilikattomaali", f"{BASE}/tiilikaton-pinnoitusjamaalaus"),
 ]
-CALLOUTS = ["Maksuton arviokäynti", "Kiinteä urakkahinta", "3 vuoden takuu", "Kotimainen perheyritys",
+CALLOUTS = ["Maksuton arviokäynti", "Kiinteä urakkahinta", "3 vuoden takuu", "Kotimainen maalausliike",
             "Avainlippu-yritys", "Yli 1000 kohdetta", "Tikkurila & Teknos", "Vastaus 1 arkipäivässä"]
 SNIPPET = ("Palvelut", ["Talon maalaus", "Julkisivumaalaus", "Tiilikaton pinnoitus", "Peltikaton maalaus",
                         "Rivitalot ja taloyhtiöt"])

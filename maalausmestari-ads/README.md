@@ -46,7 +46,7 @@ itse tekijät, työnhakijat, sisämaalaukset ja maalikaupat.
 
 - **Sivulinkit:** Pyydä tarjous, Hintalaskuri, Referenssit ja galleria, Mitä talon maalaus maksaa,
   Kotitalousvähennys, Tiilikaton pinnoitus.
-- **Lisätiedot:** Maksuton arviokäynti, Kiinteä urakkahinta, 3 vuoden takuu, Kotimainen perheyritys,
+- **Lisätiedot:** Maksuton arviokäynti, Kiinteä urakkahinta, 3 vuoden takuu, Kotimainen maalausliike,
   Avainlippu-yritys, Yli 1000 kohdetta, Tikkurila & Teknos, Vastaus 1 arkipäivässä.
 - **Rakenteinen katkelma:** Palvelut: Talon maalaus, Julkisivumaalaus, Tiilikaton pinnoitus, Peltikaton maalaus,
   Rivitalot ja taloyhtiöt.

@@ -48,7 +48,7 @@ ORG = {
     "@id": ORG_ID,
     "name": "Maalausmestari",
     "url": f"{BASE}/",
-    "description": ("Kotimainen maalausalan perheyritys, joka on erikoistunut talojen ulkomaalauksiin, "
+    "description": ("Kotimainen maalausliike, joka on erikoistunut talojen ulkomaalauksiin, "
                     "tiilikattojen pinnoituksiin ja peltikattojen maalauksiin Varsinais-Suomessa ja "
                     "Uudellamaalla. Toimipisteet Turussa ja Helsingissä."),
     "slogan": "Ulkomaalausten vankka ammattilainen.",
@@ -130,7 +130,7 @@ WEBSITE = {
 # ---------------------------------------------------------------- palvelut
 SERVICES = {
     "talonmaalaus": ("Talon maalaus", "Talon maalaus",
-                     "Laadukas talon maalaus kotimaiselta perheyritykseltä. Korkealaatuiset maalit, "
+                     "Laadukas talon maalaus kotimaiselta maalausliikkeeltä. Korkealaatuiset maalit, "
                      "kiinteähintainen urakkasopimus ja 3 vuoden takuu.", 3),
     "ulkomaalaus": ("Ulkomaalaus", "Ulkomaalaus",
                     "Talojen ulkomaalaukset ripeästi ja ensiluokkaisella työjäljellä – talon maalaus, "
@@ -333,7 +333,7 @@ def build():
     # etusivu – FAQPage tulee jo Dudan accordion-widgetiltä (schema: true), ei tuplata
     add("1-paasivut", "", [
         webpage("", "Maalausliike Turku & Helsinki – Maalausmestari",
-                "Kotimainen perheyritys, hyvän palvelun maalausliike. Maalaamme taloja ja kattoja "
+                "Kotimainen, hyvän palvelun maalausliike. Maalaamme taloja ja kattoja "
                 "Varsinais-Suomessa (Turku) ja Uudellamaalla (Helsinki). Yli 1000 maalattua kohdetta.",
                 about={"@id": ORG_ID},
                 primaryImageOfPage={"@type": "ImageObject", "url": IMAGES[0]}),
@@ -378,7 +378,7 @@ def build():
     for slug, (city, loc, reg) in CITIES.items():
         path = f"talonmaalaus/{slug}"
         name = f"Talon maalaus {loc}"
-        desc = (f"Talon maalaus {loc} kotimaiselta perheyritykseltä. Laadukkaat Tikkurilan ja Teknoksen maalit, "
+        desc = (f"Talon maalaus {loc} kotimaiselta maalausliikkeeltä. Laadukkaat Tikkurilan ja Teknoksen maalit, "
                 "kiinteähintainen urakkasopimus ja 3 vuoden takuu.")
         area = {"@type": "City", "name": city, "containedInPlace": region(reg)}
         add("3-paikkakunnat", path, [
