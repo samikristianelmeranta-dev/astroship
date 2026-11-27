@@ -67,11 +67,9 @@ NEGATIVES = ["itse", "ohje", "ohjeet", "kurssi", "koulutus", "työpaikka", "työ
              "airless", "vuokraus", "vuokra", "käytetty", "tori", "telineet vuokra", "painepesuri",
              "kalkkimaali", "pellavaöljymaali"]
 
-LP = {
-    "general": f"{BASE}/talonmaalaus",
-    "price": f"{BASE}/laskuri",
-    "row": f"{BASE}/taloyhtiöt",
-}
+# Kaikki mainokset ohjaavat samalle sivulle (asiakkaan toive)
+LANDING = f"{BASE}/talonmaalaus"
+LP = {"general": LANDING, "price": LANDING, "row": LANDING}
 
 
 # ------------------------------------------------------------------ mainokset
@@ -91,7 +89,7 @@ def rsa(region, group):
     ]
     if group == "Talon maalaus":
         heads = [f"Talon maalaus {c['loc_head']}", f"Talon maalaus {c['city_main']}",
-                 f"Talon maalaus {c['cities_pair']}", *common, "Laske hinta-arvio netissä", c["brand_city"]]
+                 f"Talon maalaus {c['cities_pair']}", *common, "Tarjous netistä helposti", c["brand_city"]]
         pins = {heads[0]: "1", heads[1]: "1"}
         descs = [
             f"Talon ulkomaalaus ammattitaidolla {c['loc']}. Kiinteä hinta ja 3 vuoden takuu.",
@@ -113,18 +111,18 @@ def rsa(region, group):
             "Varaa ensi kesän talon maalaus jo nyt. Opastamme myös kotitalousvähennyksen hakemisessa.",
         ]
         paths = ("talon-maalaus", "paikkakunnat")
-        url = None  # avainsanakohtainen URL
+        url = LANDING
     elif group == "Talon maalaus – hinta":
-        heads = ["Mitä talon maalaus maksaa?", "Laske hinta-arvio netissä", "Talon maalaus – hinta-arvio",
+        heads = ["Mitä talon maalaus maksaa?", "Tarjous netistä helposti", "Talon maalaus – hinta-arvio",
                  f"Talon maalaus {c['loc_head']}", *common, "Selkeä ja kiinteä urakkahinta", "Ei piilokuluja"]
         pins = {heads[0]: "1", heads[1]: "1", heads[2]: "1"}
         descs = [
-            "Laske talon maalauksen hinta-arvio laskurilla ja pyydä tarkka tarjous maksutta.",
-            "Kiinteähintainen urakkasopimus – tiedät hinnan etukäteen. Työlle 3 vuoden takuu.",
+            "Pyydä talon maalauksesta tarkka ja kiinteä tarjous maksutta – tiedät hinnan etukäteen.",
+            "Kiinteähintainen urakkasopimus ilman piilokuluja. Talon maalaukselle 3 vuoden takuu.",
             "Kutsu meidät maksuttomalle arviokäynnille – vastaamme viimeistään seuraavana arkipäivänä.",
             "Opastamme kotitalousvähennyksen hakemisessa. Kotimainen perheyritys, yli 1000 kohdetta.",
         ]
-        paths = ("hinta", "laskuri")
+        paths = ("talon-maalaus", "hinta")
         url = LP["price"]
     else:  # rivitalot
         heads = ["Rivitalon maalaus", "Taloyhtiön ulkomaalaus", f"Rivitalon maalaus {c['city_main']}",
@@ -193,14 +191,14 @@ def main():
                 kw_rows.append([camp, "Talon maalaus – hinta", kw, mt, LP["price"]])
         for kw in ROW_KW:
             kw_rows.append([camp, "Rivitalot ja taloyhtiöt", kw, "Phrase", LP["row"]])
-        for city, slug in c["cities"].items():
+        for city in c["cities"]:
             for tpl in CITY_TEMPLATES:
                 kw_rows.append([camp, "Talon maalaus – paikkakunnat", tpl.format(c=city.lower()), "Phrase",
-                                f"{BASE}/talonmaalaus/{slug}"])
+                                LANDING])
 
         for g in GROUPS:
             heads, pins, descs, paths, url = rsa(region, g)
-            row = [camp, g, "Responsive search ad", url or f"{BASE}/talonmaalaus/{c['city_main'].lower()}"]
+            row = [camp, g, "Responsive search ad", url]
             for i in range(15):
                 h = heads[i] if i < len(heads) else ""
                 row += [h, pins.get(h, "")]

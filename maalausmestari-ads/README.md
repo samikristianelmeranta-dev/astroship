@@ -6,12 +6,15 @@ skripti tarkistaa merkkirajat).
 
 ## Rakenne (sama molemmissa kampanjoissa)
 
+Kaikki mainokset ja avainsanat ohjaavat sivulle **https://www.maalausmestari.fi/talonmaalaus**.
+Sivulinkit (laajennukset) ohjaavat omille sivuilleen.
+
 | Mainosryhmä | Avainsanat | Laskeutumissivu |
 |---|---|---|
 | Talon maalaus | talon maalaus, talon ulkomaalaus, omakotitalon maalaus, maalausliike, puutalon/rapatun/hirsitalon maalaus, julkisivumaalaus… (lauseke + tarkka) | `/talonmaalaus` |
-| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (11 kuntaa Uusimaa, 15 Varsinais-Suomi) | kunnan oma sivu `/talonmaalaus/<kunta>` (avainsanakohtainen URL) |
-| Talon maalaus – hinta | talon maalaus hinta, mitä maksaa talon maalaus… | `/laskuri` |
-| Rivitalot ja taloyhtiöt (pienempi paino) | rivitalon maalaus, taloyhtiön ulkomaalaus… | `/taloyhtiöt` |
+| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (11 kuntaa Uusimaa, 15 Varsinais-Suomi) | `/talonmaalaus` |
+| Talon maalaus – hinta | talon maalaus hinta, mitä maksaa talon maalaus… | `/talonmaalaus` |
+| Rivitalot ja taloyhtiöt (pienempi paino) | rivitalon maalaus, taloyhtiön ulkomaalaus… | `/talonmaalaus` |
 
 Jokaisessa ryhmässä yksi responsiivinen hakumainos: 15 otsikkoa ja 4 kuvausta. Sijaintiotsikko on kiinnitetty
 paikalle 1, muut otsikot vaihtelevat vapaasti. Kampanjatason negatiiviset avainsanat (40 kpl) karsivat
@@ -52,7 +55,7 @@ itse tekijät, työnhakijat, sisämaalaukset ja maalikaupat.
 
 ## Laskeutumissivut – korjaa ennen mainontaa
 
-- Varmista, että `/talonmaalaus` ja kuntasivuilla on tarjouslomake ja puhelinnumero heti näkyvissä mobiilissa.
+- Varmista, että `/talonmaalaus`-sivulla on tarjouslomake ja puhelinnumero heti näkyvissä mobiilissa.
 - Lomakkeen englanninkielinen virheviesti ja `locale="ENGLISH"` suomeksi.
 - Sivun nopeus: herovideo ja kolmannen osapuolen skriptit hidastavat sivua, mikä nostaa klikkihintaa
   laatupisteiden kautta.
