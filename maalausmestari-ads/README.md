@@ -12,7 +12,7 @@ Sivulinkit (laajennukset) ohjaavat omille sivuilleen.
 | Mainosryhmä | Avainsanat | Laskeutumissivu |
 |---|---|---|
 | Talon maalaus | talon maalaus, talon ulkomaalaus, omakotitalon maalaus, maalausliike, puutalon/rapatun/hirsitalon maalaus, julkisivumaalaus… (lauseke + tarkka) | `/talonmaalaus` |
-| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (10 kuntaa Uusimaa, ilman Helsinkiä; 15 Varsinais-Suomi) | `/talonmaalaus` |
+| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (asiakkaan 11 hakusanaa × 8 kuntaa Uusimaa / 9 kuntaa Varsinais-Suomi, ks. `hakusanat.md`) | `/talonmaalaus` |
 | Talon maalaus – hinta | talon maalaus hinta, mitä maksaa talon maalaus… | `/talonmaalaus` |
 | Rivitalot ja taloyhtiöt (pienempi paino) | rivitalon maalaus, taloyhtiön ulkomaalaus… | `/talonmaalaus` |
 

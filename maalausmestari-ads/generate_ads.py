@@ -33,9 +33,7 @@ CAMPAIGNS = {
         # Helsinki rajattu pois näkyvyysalueelta (asiakkaan toive)
         "exclude_locations": ["Helsinki"],
         "extra_negatives": ["helsinki", "helsingissä", "helsingin"],
-        "cities": {"Espoo": "espoo", "Vantaa": "vantaa", "Kerava": "kerava",
-                   "Järvenpää": "järvenpää", "Tuusula": "tuusula", "Nurmijärvi": "nurmijärvi",
-                   "Hyvinkää": "hyvinkää", "Kirkkonummi": "kirkkonummi", "Lohja": "lohja", "Vihti": "vihti"},
+        "cities": ["Vihti", "Kirkkonummi", "Espoo", "Kauniainen", "Hyvinkää", "Kerava", "Järvenpää", "Vantaa"],
         "brand_city": "Maalausmestari Uusimaa",
     },
     "Varsinais-Suomi": {
@@ -44,24 +42,23 @@ CAMPAIGNS = {
         "loc_head": "Turun seudulla",
         "city_main": "Turku",
         "cities_pair": "Kaarina & Raisio",
-        "cities": {"Turku": "turku", "Kaarina": "kaarina", "Raisio": "raisio", "Naantali": "naantali",
-                   "Lieto": "lieto", "Parainen": "parainen", "Salo": "salo", "Uusikaupunki": "uusikaupunki",
-                   "Masku": "masku", "Paimio": "paimio", "Rusko": "rusko", "Aura": "aura",
-                   "Mynämäki": "mynämäki", "Nousiainen": "nousiainen", "Laitila": "laitila"},
+        "cities": ["Turku", "Kaarina", "Salo", "Naantali", "Raisio", "Parainen", "Masku", "Paimio", "Lieto"],
         "brand_city": "Maalausmestari Turku",
     },
 }
 
 # ------------------------------------------------------------------ avainsanat
-GENERAL_KW = ["talon maalaus", "talon ulkomaalaus", "omakotitalon maalaus", "talon maalaus urakka",
-              "ulkomaalaus", "maalausliike", "puutalon maalaus", "rapatun talon maalaus",
-              "hirsitalon maalaus", "julkisivun maalaus", "julkisivumaalaus", "talon maalari"]
+# Asiakkaan hakusanalista – käytetään sellaisenaan ja kaupunki perässä
+CLIENT_KW = ["talon maalaus", "ulkomaalaus", "talon huoltomaalaus", "puutalon maalaus", "rapatun talon maalaus",
+             "hirsitalon maalaus", "omakotitalon maalaus", "maalausliike", "talon maalaus avaimet käteen",
+             "talon maalari", "tiilitalon maalaus"]
+GENERAL_KW = CLIENT_KW + ["talon ulkomaalaus", "julkisivun maalaus", "julkisivumaalaus"]
 PRICE_KW = ["talon maalaus hinta", "talon maalauksen hinta", "mitä maksaa talon maalaus",
             "paljonko maksaa talon maalaus", "omakotitalon maalaus hinta", "talon ulkomaalaus hinta",
             "ulkomaalaus hinta"]
 ROW_KW = ["rivitalon maalaus", "rivitalon ulkomaalaus", "taloyhtiön ulkomaalaus",
           "rivitalon maalaus hinta", "taloyhtiön julkisivun maalaus"]
-CITY_TEMPLATES = ["talon maalaus {c}", "maalausliike {c}", "talon ulkomaalaus {c}", "ulkomaalaus {c}"]
+CITY_TEMPLATES = [k + " {c}" for k in CLIENT_KW]
 
 NEGATIVES = ["itse", "ohje", "ohjeet", "kurssi", "koulutus", "työpaikka", "työpaikat", "rekry", "palkka",
              "harjoittelu", "sisämaalaus", "sisämaalaukset", "huoneiston", "asunnon maalaus", "seinän maalaus",
@@ -244,6 +241,17 @@ def main():
         w.writerow([f"Rakenteinen katkelma: {SNIPPET[0]}", "; ".join(SNIPPET[1]), "", "", ""])
         w.writerow(["Puhelu", "+358503667703", "", "", ""])
 
+    with open(OUT.parent / "hakusanat.md", "w", encoding="utf-8") as f:
+        f.write("# Hakusanalista (lausekehaku = lainausmerkeissä)\n")
+        for region, c in CAMPAIGNS.items():
+            f.write(f"\n## {region}\n\n### Ilman kaupunkia (lauseke + tarkka)\n\n")
+            for kw in GENERAL_KW:
+                f.write(f'"{kw}"  \n[{kw}]  \n')
+            f.write("\n### Kaupunki perässä (lauseke)\n")
+            for city in c["cities"]:
+                f.write(f"\n**{city}**  \n")
+                for tpl in CITY_TEMPLATES:
+                    f.write(f'"{tpl.format(c=city.lower())}"  \n')
     print(f"avainsanoja {len(kw_rows)}, mainoksia {len(ad_rows)}, negatiivisia {len(neg_rows)}")
     if errors:
         print("MERKKIRAJAT YLITTYVÄT:\n" + "\n".join(errors))
