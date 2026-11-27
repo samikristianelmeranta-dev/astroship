@@ -28,12 +28,15 @@ CAMPAIGNS = {
         "name": "Haku | Talon maalaus | Uusimaa",
         "loc": "Uudellamaalla",
         "loc_head": "Uudellamaalla",
-        "city_main": "Helsinki",
-        "cities_pair": "Espoo & Vantaa",
-        "cities": {"Helsinki": "helsinki", "Espoo": "espoo", "Vantaa": "vantaa", "Kerava": "kerava",
+        "city_main": "Espoo",
+        "cities_pair": "Vantaa & Kerava",
+        # Helsinki rajattu pois näkyvyysalueelta (asiakkaan toive)
+        "exclude_locations": ["Helsinki"],
+        "extra_negatives": ["helsinki", "helsingissä", "helsingin"],
+        "cities": {"Espoo": "espoo", "Vantaa": "vantaa", "Kerava": "kerava",
                    "Järvenpää": "järvenpää", "Tuusula": "tuusula", "Nurmijärvi": "nurmijärvi",
                    "Hyvinkää": "hyvinkää", "Kirkkonummi": "kirkkonummi", "Lohja": "lohja", "Vihti": "vihti"},
-        "brand_city": "Maalausmestari Helsinki",
+        "brand_city": "Maalausmestari Uusimaa",
     },
     "Varsinais-Suomi": {
         "name": "Haku | Talon maalaus | Varsinais-Suomi",
@@ -205,9 +208,16 @@ def main():
             row += descs + list(paths)
             ad_rows.append(row)
 
-        for n in NEGATIVES:
+        for n in NEGATIVES + c.get("extra_negatives", []):
             neg_rows.append([camp, n, "Campaign Negative Phrase"])
 
+    with open(OUT / "sijainnit.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["Campaign", "Location", "Kohdistus"])
+        for region, c in CAMPAIGNS.items():
+            w.writerow([c["name"], f"{region}, Suomi", "Kohdistettu (ihmiset sijainnissa)"])
+            for loc in c.get("exclude_locations", []):
+                w.writerow([c["name"], f"{loc}, Suomi", "Poissuljettu"])
     with open(OUT / "avainsanat.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["Campaign", "Ad group", "Keyword", "Criterion Type", "Final URL"])

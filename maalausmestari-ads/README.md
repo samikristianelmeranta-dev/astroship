@@ -12,7 +12,7 @@ Sivulinkit (laajennukset) ohjaavat omille sivuilleen.
 | Mainosryhmä | Avainsanat | Laskeutumissivu |
 |---|---|---|
 | Talon maalaus | talon maalaus, talon ulkomaalaus, omakotitalon maalaus, maalausliike, puutalon/rapatun/hirsitalon maalaus, julkisivumaalaus… (lauseke + tarkka) | `/talonmaalaus` |
-| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (11 kuntaa Uusimaa, 15 Varsinais-Suomi) | `/talonmaalaus` |
+| Talon maalaus – paikkakunnat | "talon maalaus espoo", "maalausliike turku"… (10 kuntaa Uusimaa, ilman Helsinkiä; 15 Varsinais-Suomi) | `/talonmaalaus` |
 | Talon maalaus – hinta | talon maalaus hinta, mitä maksaa talon maalaus… | `/talonmaalaus` |
 | Rivitalot ja taloyhtiöt (pienempi paino) | rivitalon maalaus, taloyhtiön ulkomaalaus… | `/talonmaalaus` |
 
@@ -23,7 +23,8 @@ itse tekijät, työnhakijat, sisämaalaukset ja maalikaupat.
 ## Kampanja-asetukset
 
 - **Verkosto:** vain Google-haku (hakukumppanit ja Display pois päältä).
-- **Sijainti:** Uusimaa / Varsinais-Suomi. Kohdistusvalinta *"Ihmiset, jotka ovat sijainnissa tai käyvät siellä
+- **Sijainti:** Uusimaa (**Helsinki poissuljettu**) / Varsinais-Suomi (`editor/sijainnit.csv`). Uusimaan kampanjassa
+  myös negatiiviset sanat *helsinki, helsingissä, helsingin*, eikä mainosteksteissä mainita Helsinkiä. Kohdistusvalinta *"Ihmiset, jotka ovat sijainnissa tai käyvät siellä
   säännöllisesti"*. **Ei** "kiinnostuneet sijainnista".
 - **Kieli:** suomi + ruotsi + englanti (selaimen kieli on usein englanti, ja suomenkieliset avainsanat rajaavat jo).
 - **Budjetti:** aloita esim. 20–40 €/pv per kampanja, Uudellemaalle isompi osuus. Klikkihinnat kannattaa
