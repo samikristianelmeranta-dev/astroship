@@ -1,89 +1,60 @@
 <!--
 SEO
 URL:              /talon-maalari
-Title (≤60):      Talon maalari – luotettava ammattilainen | Maalausmestari
-Meta description: Etsitkö talon maalaria? Näin valitset luotettavan ammattilaisen ulkomaalaukseen. Kiinteä hinta, 3 vuoden takuu ja maksuton arviokäynti. Pyydä tarjous!
+Title (≤60):      Talon maalari Turku ja Uusimaa | Maalausmestari
+Meta description: Etsitkö luotettavaa talon maalaria? Kokeneet maalarimme hoitavat talosi ulkomaalauksen kiinteällä hinnalla ja 3 vuoden takuulla. Pyydä tarjous!
 Pääkuva alt:      Maalausmestarin talon maalari maalaa omakotitalon ulkoverhousta
 -->
 
-# Talon maalari – näin valitset luotettavan ammattilaisen ulkomaalaukseen
+# Talon maalari – luotettava ammattilainen talosi ulkomaalaukseen
 
-Talon ulkomaalaus on kodin ylläpidon isoimpia investointeja. Oikein tehtynä se suojaa taloa vuosia ja nostaa kiinteistön arvoa. Huonosti tehtynä maali alkaa hilseillä jo muutaman vuoden päästä. Siksi **talon maalarin valinta** on ratkaiseva päätös: se määrää, saatko rahoillesi kestävän lopputuloksen vai uuden remontin.
+Onko talosi ulkomaalaus ajankohtainen? Mietitkö, kenelle uskaltaisit antaa kotisi suojaamisen ja ulkonäön? **Talon maalarin valinta** on iso päätös, sillä ulkomaalaus on kodin ylläpidon merkittävimpiä investointeja. Oikein tehtynä maalaus suojaa taloa vuosia ja nostaa sen arvoa. Huonosti tehtynä maali alkaa hilseillä jo muutaman vuoden päästä. Me Maalausmestarilla hoidamme **talon maalauksen** ripeästi, taidokkaasti ja ensiluokkaisella työjäljellä.
 
-Tässä artikkelissa kerromme, mitä hyvä talon maalari tekee, mitä kannattaa tarkistaa ennen sopimusta ja miksi yli 1000 kohdetta maalannut Maalausmestari on turvallinen valinta [Turun seudulla](https://www.maalausmestari.fi/talonmaalaus/turku) ja [Uudellamaalla](https://www.maalausmestari.fi/uusimaab84c772c).
+Olemme kotimainen maalausliike, jolla on toimipisteet Turussa ja Helsingissä. Toimimme koko [Varsinais-Suomen](https://www.maalausmestari.fi/varsinais-suomi) ja [Uudenmaan](https://www.maalausmestari.fi/uusimaab84c772c) alueella, ja maalattuja kohteita meillä on takana yli 1000.
 
-## Mitä talon maalari tekee?
+## Mitä hyvä talon maalari tekee?
 
-Ammattitaitoinen talon maalari ei vain vedä uutta maalia seinään. Suurin osa onnistuneesta lopputuloksesta syntyy ennen maalausta:
+Ammattitaitoinen talon maalari ei vain vedä uutta maalia seinään. Suurin osa onnistuneesta lopputuloksesta syntyy ennen maalausta: julkisivun kunnon kartoituksessa, pesussa, irtoavan maalin poistossa, hionnassa ja tarvittavissa puukorjauksissa. Vasta huolellisesti esikäsitelty pinta pohjustetaan ja maalataan pintamaalilla.
 
-- **Kuntokartoitus** – julkisivun, ikkunoiden, räystäiden ja rakenteiden kunnon arviointi.
-- **Esityöt** – pesu, irtoavan maalin poisto, hionta ja tarvittavat puukorjaukset.
-- **Pohjustus** – paljaat ja korjatut kohdat käsitellään oikealla pohjusteella.
-- **Pintamaalaus** – pinnalle sopivalla laatumaalilla, yleensä kahteen kertaan.
-- **Viimeistely ja lopputarkastus** – siisti työmaa ja asiakkaan kanssa yhdessä tarkistettu lopputulos.
+Meille jokainen maalausprojekti on tärkeä, ja valmistaudumme siihen huolellisesti. Alkuvalmistelut, huolellinen työn suoritus ja lopuksi työmaan siivous lopputarkastuksineen kuuluvat jokaiseen urakkaamme. Annamme myös vinkkejä maalipinnan ylläpitoon ja huoltoon. Lue tarkemmin, miten [puutalon ulkomaalaus etenee vaihe vaiheelta](https://www.maalausmestari.fi/puutalon-ulkomaalaus-vaihe-vaiheelta).
 
-Lue tarkemmin, miten [puutalon ulkomaalaus etenee vaihe vaiheelta](https://www.maalausmestari.fi/puutalon-ulkomaalaus-vaihe-vaiheelta).
+## Mitä talon maalarilta kannattaa vaatia?
 
-## 7 asiaa, jotka tarkistat ennen kuin valitset talon maalarin
+Kun vertailet maalareita, kiinnitä huomiota siihen, että hinta on sovittu kirjallisesti ja työllä on takuu. Tarkista myös, että yritys on rekisteröity ja kuuluu ennakkoperintärekisteriin, sillä se on edellytys kotitalousvähennyksen saamiselle. Pyydä nähtäväksi aiempia kohteita ja kysy, mitä maaleja käytetään.
 
-### 1. Yritys on rekisteröity
-Tarkista, että maalarilla on Y-tunnus ja että yritys löytyy [ytj.fi](https://www.ytj.fi)-palvelusta. Kotitalousvähennyksen saaminen edellyttää, että työn tekijä on ennakkoperintärekisterissä.
+Me toimimme juuri näin. Teemme kaikki työt **kiinteähintaisella urakkasopimuksella**, joten tiedät hinnan ennen kuin työ alkaa. [Talon maalaukselle](https://www.maalausmestari.fi/talonmaalaus) myönnämme **3 vuoden takuun**. Käytämme Tikkurilan ja Teknoksen laadukkaita tuotteita, jotka kestävät sekä katsetta että kulutusta. Toteuttamiamme kohteita voit katsoa [galleriastamme](https://www.maalausmestari.fi/galleria).
 
-### 2. Hinta on kiinteä ja kirjallinen
-Pyydä aina kirjallinen tarjous ja tee kirjallinen urakkasopimus. Kiinteä urakkahinta suojaa sinua yllätyskuluilta. Meillä kaikki työt tehdään **kiinteähintaisella urakkasopimuksella**.
+Miksi tilata meidät maalamaan talosi?
 
-### 3. Työllä on takuu
-Luotettava maalari seisoo työnsä takana. Annamme [talon maalaukselle](https://www.maalausmestari.fi/talonmaalaus) **3 vuoden takuun**, [tiilikaton pinnoitukselle](https://www.maalausmestari.fi/tiilikaton-pinnoitusjamaalaus) 5 vuoden ja [peltikaton maalaukselle](https://www.maalausmestari.fi/peltikatonmaalaus) 2 vuoden takuun.
+1. Kiinteähintainen sopimus
+2. Takuunalainen työ
+3. Realistinen ja pitävä aikataulutus
+4. Laadukkaat materiaalit
+5. Nykyaikaiset työmenetelmät
 
-### 4. Referenssejä löytyy
-Pyydä nähtäväksi aiempia kohteita. Toteuttamiamme töitä voit katsoa [galleriastamme](https://www.maalausmestari.fi/galleria).
+## Teenkö itse vai tilaanko talon maalarin?
 
-### 5. Materiaalit ovat laadukkaita
-Halvalla maalilla säästää hetken, mutta laatumaali kestää vuosia pidempään. Käytämme **Tikkurilan ja Teknoksen** ulkomaaleja ja tiilikatoille Ormaxin tuotteita.
+Omatoiminen maalaus voi tuntua säästöltä, mutta omakotitalon ulkomaalaus on iso projekti: telineet, korkeat seinät, työläät esityöt ja lyhyt maalauskausi. Kun huomioit lisäksi takuun, aikataulun ja kotitalousvähennyksen, ammattilainen on usein kokonaisuutena kannattavampi valinta. Vertailimme vaihtoehtoja artikkelissa [teenkö itse vai tilaanko ammattilaiselta](https://www.maalausmestari.fi/teenko-itse-vai-tilaanko-ammattilaiselta).
 
-### 6. Aikataulu on realistinen
-Hyvä maalari kertoo rehellisesti, milloin työ alkaa ja kauanko se kestää. Lupaamme vain aikataulun, jossa myös pysymme. Lue lisää siitä, [kauanko talon maalaus kestää](https://www.maalausmestari.fi/kauanko-talon-maalaus-kestaa).
+## Paikallinen talon maalari lähelläsi
 
-### 7. Yhteydenpito toimii
-Jo tarjousvaihe kertoo paljon. Vastaamme jokaiseen tarjouspyyntöön **viimeistään seuraavana arkipäivänä**.
+Paikallinen maalari tuntee alueen rakennuskannan ja sääolot ja on nopeasti paikalla. Esimerkiksi rannikolla ja saaristossa kosteus asettaa maalaukselle omat vaatimuksensa. Lue lisää siitä, [miksi kannattaa valita paikallinen ulkomaalausyritys](https://www.maalausmestari.fi/miksi-kannattaa-valita-paikallinen-ulkomaalausyritys).
 
-## Kannattaako talon maalaus tehdä itse?
+Varsinais-Suomessa maalaamme taloja muun muassa [Turussa](https://www.maalausmestari.fi/talonmaalaus/turku), [Kaarinassa](https://www.maalausmestari.fi/talonmaalaus/kaarina), [Raisiossa](https://www.maalausmestari.fi/talonmaalaus/raisio), [Naantalissa](https://www.maalausmestari.fi/talonmaalaus/naantali), [Liedossa](https://www.maalausmestari.fi/talonmaalaus/lieto), [Paraisilla](https://www.maalausmestari.fi/talonmaalaus/parainen) ja [Salossa](https://www.maalausmestari.fi/talonmaalaus/salo). Uudellamaalla palvelemme esimerkiksi [Espoossa](https://www.maalausmestari.fi/talonmaalaus/espoo), [Vantaalla](https://www.maalausmestari.fi/talonmaalaus/vantaa), [Keravalla](https://www.maalausmestari.fi/talonmaalaus/kerava), [Järvenpäässä](https://www.maalausmestari.fi/talonmaalaus/järvenpää), [Kirkkonummella](https://www.maalausmestari.fi/talonmaalaus/kirkkonummi), [Vihdissä](https://www.maalausmestari.fi/talonmaalaus/vihti) ja [Hyvinkäällä](https://www.maalausmestari.fi/talonmaalaus/hyvinkää).
 
-Omatoiminen maalaus voi tuntua säästöltä, mutta omakotitalon ulkomaalaus on iso projekti: telineet, korkeat seinät, työläät esityöt ja rajallinen maalauskausi. Kun lisäksi huomioit takuun, aikataulun ja kotitalousvähennyksen, ammattilainen on usein kokonaisuutena kannattavampi. Vertailimme vaihtoehtoja artikkelissa [teenkö itse vai tilaanko ammattilaiselta](https://www.maalausmestari.fi/teenko-itse-vai-tilaanko-ammattilaiselta).
+Maalaamme kaikenlaisia omakotitaloja, kuten puutaloja, [hirsitaloja](https://www.maalausmestari.fi/voiko-hirsitalon-maalata) ja [rapattuja taloja](https://www.maalausmestari.fi/rapatun-talon-maalaus). Talon maalauksen lisäksi teemme [tiilikattojen pinnoituksia](https://www.maalausmestari.fi/tiilikaton-pinnoitusjamaalaus) ja [peltikattojen maalauksia](https://www.maalausmestari.fi/peltikatonmaalaus) sekä ulkomaalauksia [taloyhtiöille](https://www.maalausmestari.fi/taloyhtiöt). Kauttamme voit siis tilata kaikki ulkomaalaustyöt.
 
-## Paikallinen talon maalari tuntee olosuhteet
-
-Paikallinen maalari tuntee alueen rakennuskannan ja sääolot, esimerkiksi rannikon ja saariston kosteuden, ja on nopeasti paikalla. Lue, [miksi kannattaa valita paikallinen ulkomaalausyritys](https://www.maalausmestari.fi/miksi-kannattaa-valita-paikallinen-ulkomaalausyritys) ja miten [talon maalaus saaristo-olosuhteissa](https://www.maalausmestari.fi/talon-maalaus-saaristo-olosuhteissa-turun-saaristo-rannikko) onnistuu.
-
-Toimipisteemme ovat Turussa ja Helsingissä, ja palvelemme koko Varsinais-Suomen ja Uudenmaan alueella. Talon maalari esimerkiksi näillä paikkakunnilla:
-
-- **Varsinais-Suomi:** [Turku](https://www.maalausmestari.fi/talonmaalaus/turku), [Kaarina](https://www.maalausmestari.fi/talonmaalaus/kaarina), [Raisio](https://www.maalausmestari.fi/talonmaalaus/raisio), [Naantali](https://www.maalausmestari.fi/talonmaalaus/naantali), [Lieto](https://www.maalausmestari.fi/talonmaalaus/lieto), [Parainen](https://www.maalausmestari.fi/talonmaalaus/parainen), [Salo](https://www.maalausmestari.fi/talonmaalaus/salo)
-- **Uusimaa:** [Espoo](https://www.maalausmestari.fi/talonmaalaus/espoo), [Vantaa](https://www.maalausmestari.fi/talonmaalaus/vantaa), [Kerava](https://www.maalausmestari.fi/talonmaalaus/kerava), [Järvenpää](https://www.maalausmestari.fi/talonmaalaus/järvenpää), [Kirkkonummi](https://www.maalausmestari.fi/talonmaalaus/kirkkonummi), [Vihti](https://www.maalausmestari.fi/talonmaalaus/vihti), [Hyvinkää](https://www.maalausmestari.fi/talonmaalaus/hyvinkää)
-
-## Näin talon maalaus etenee kanssamme
-
-1. **Tarjouspyyntö** – jätä [tarjouspyyntö](https://www.maalausmestari.fi/tarjouspyyntö) tai soita meille.
-2. **Maksuton arviokäynti** – tulemme paikan päälle ja kartoitamme talon kunnon.
-3. **Kiinteä tarjous** – saat selkeän tarjouksen, jossa työt ja materiaalit on eritelty.
-4. **Urakkasopimus** – sovimme aikataulusta ja työn sisällöstä kirjallisesti.
-5. **Maalaustyö** – kokeneet maalarimme tekevät työn huolellisesti ja sovitussa ajassa.
-6. **Lopputarkastus ja siivous** – käymme lopputuloksen läpi yhdessä, ja annamme vinkit maalipinnan ylläpitoon.
-
-Maalaamme kaikenlaisia omakotitaloja: puutaloja, [hirsitaloja](https://www.maalausmestari.fi/voiko-hirsitalon-maalata) ja [rapattuja taloja](https://www.maalausmestari.fi/rapatun-talon-maalaus). Lisäksi toteutamme ulkomaalaukset [rivitaloille ja taloyhtiöille](https://www.maalausmestari.fi/taloyhtiöt).
-
-## Usein kysyttyä
+## Yleisiä kysymyksiä talon maalarista
 
 **Paljonko talon maalari maksaa?**
-Hinta riippuu talon koosta, pinnan kunnosta ja tarvittavista esitöistä. Saat suuntaa-antavan arvion [hintalaskurilla](https://www.maalausmestari.fi/laskuri). Lue myös [mitä maksaa talon maalaus](https://www.maalausmestari.fi/mita-maksaa-talon-maalaus).
+Hinta riippuu talon koosta, pinnan kunnosta ja tarvittavista esitöistä. Suuntaa-antavan arvion saat [hintalaskurilla](https://www.maalausmestari.fi/laskuri). Lue myös [mitä maksaa talon maalaus](https://www.maalausmestari.fi/mita-maksaa-talon-maalaus).
 
 **Saako talon maalarin työstä kotitalousvähennystä?**
-Kyllä, työn osuudesta voi saada kotitalousvähennystä. Opastamme sen hakemisessa. Lisätietoa: [kotitalousvähennys talon maalauksessa](https://www.maalausmestari.fi/kotitalousvahennys-talon-maalaus-2026).
+Kyllä, työn osuudesta on mahdollista saada kotitalousvähennystä. Opastamme ja neuvomme sen hakemisessa. Lisätietoa löydät artikkelista [kotitalousvähennys talon maalauksessa](https://www.maalausmestari.fi/kotitalousvahennys-talon-maalaus-2026).
 
 **Milloin talon maalari kannattaa varata?**
-Mieluiten hyvissä ajoin ennen kesää. Maalauskauden parhaat ajat täyttyvät nopeasti, joten varaa kesän maalaus jo talvella tai keväällä.
+Mieluiten hyvissä ajoin ennen kesää. Maalauskauden parhaat ajat täyttyvät nopeasti, joten kesän maalaus kannattaa sopia jo talvella tai keväällä.
 
 ## Pyydä tarjous talon maalarilta
 
-Haluatko talon maalarin, joka tekee työn huolellisesti, pysyy aikataulussa ja antaa työlleen takuun? Kutsu meidät **maksuttomalle arviokäynnille**. Saat kiinteän hinnan koko työlle.
-
-👉 [Pyydä tarjous](https://www.maalausmestari.fi/tarjouspyyntö) tai soita **050 366 7703**
+Reilu tapa toimia on asiakaslupauksemme ytimessä. Tarjouspyyntöihin vastaamme viimeistään seuraavana arkipäivänä, ja kutsumme sinut mielellämme maksuttomalle arviokäynnille. Tavoitteenamme on aina tyytyväinen asiakas. **Pyydä sinäkin [tarjous](https://www.maalausmestari.fi/tarjouspyyntö) meiltä jo tänään, tai soita 050 366 7703!**
